@@ -3,13 +3,13 @@ package baseball.game;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static baseball.constant.Rules.CORRECT_ANSWER;
-import static baseball.constant.Rules.DEFAULT_VALUE;
-import static baseball.constant.Rules.PICK_COUNT;
-import static baseball.constant.Rules.SIMILAR_ANSWER;
-import static baseball.constant.Rules.WRONG_ANSWER;
+import static baseball.constant.Rule.PICK;
 
 public class Referee {
+    private static final String CORRECT_ANSWER = "스트라이크";
+    private static final String SIMILAR_ANSWER = "볼 ";
+    private static final String WRONG_ANSWER = "낫싱";
+    private static final int DEFAULT_VALUE = 0;
 
     public boolean isPerfectAnswer(List<Integer> targetNumbers, List<Integer> userNumbers) {
         validateNumbersLength(targetNumbers, userNumbers);
@@ -17,12 +17,12 @@ public class Referee {
         Map<String, Integer> judgeAccuracy = getJudgeAccuracy(targetNumbers, userNumbers);
         System.out.println(shout(judgeAccuracy));
 
-        return judgeAccuracy.getOrDefault(CORRECT_ANSWER, DEFAULT_VALUE) == PICK_COUNT;
+        return judgeAccuracy.getOrDefault(CORRECT_ANSWER, DEFAULT_VALUE) == PICK.getValue();
     }
 
     private void validateNumbersLength(List<Integer> targetNumbers, List<Integer> userNumbers) {
-        if (targetNumbers.size() != PICK_COUNT || userNumbers.size() != PICK_COUNT) {
-            throw new IllegalArgumentException("배열의 길이가 " + PICK_COUNT + "와 같지 않습니다");
+        if (targetNumbers.size() != PICK.getValue() || userNumbers.size() != PICK.getValue()) {
+            throw new IllegalArgumentException("배열의 길이가 " + PICK + "와 같지 않습니다");
         }
     }
 

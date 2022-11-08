@@ -1,8 +1,10 @@
 package baseball.game;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
+import static baseball.constant.Rule.PICK;
+import static baseball.constant.Want.FINISH;
+import static baseball.constant.Want.MORE;
 
 public class NumberBaseball {
     private final Staff staff = new Staff();
@@ -15,7 +17,7 @@ public class NumberBaseball {
         while (true){
             List<Integer> targetNumbers = staff.getTargetNumbers();
             game(targetNumbers);
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 " + MORE + ", 종료하려면 " + FINISH + "를 입력하세요.");
             String input = Console.readLine();
 
             if (staff.isUserWantFinish(input)) {
@@ -38,6 +40,6 @@ public class NumberBaseball {
             }
         }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(PICK + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
