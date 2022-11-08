@@ -10,4 +10,8 @@ public class Game {
         computer.createRandomNumbers();
         return computer;
     }
+    public Player preparePlayer(Player player){
+        player.createNumbers();
+        return player;
+    }
 }
