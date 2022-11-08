@@ -17,8 +17,8 @@ public class ConsoleOutput {
         System.out.print(NUMBER_INPUT_MESSAGE);
     }
 
-    public void printResultMessage(BallStrike ballStrike) {
-        System.out.println(ballStrike.toString());
+    public void printResultMessage(String resultString) {
+        System.out.println(resultString);
     }
 
     public void printFinishMessage() {
