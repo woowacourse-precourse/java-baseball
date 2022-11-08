@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
@@ -165,6 +166,25 @@ public class ImplementTest extends NsTest{
         expectedsInInteger[strike] = Integer.parseInt(expectedsInString[strike]);
         assertEquals(Referee.judge(userInput, answer)[0], expectedsInInteger[0]);
         assertEquals(Referee.judge(userInput, answer)[1], expectedsInInteger[1]);
+    }
+
+    @Tag("유저 인풋 예외 테스트")
+    @Test
+    @DisplayName("게임중 시도 인풋 테스트")
+    void checkGuessingInput_test () {
+        List<List<Integer>> exceptionCases = new ArrayList<>();
+        List<Integer> smallerSize = new ArrayList<>(Arrays.asList(1));
+        List<Integer> biggerSize = new ArrayList<>(Arrays.asList(1,2,3,4));
+        List<Integer> wrongInput = new ArrayList<>(Arrays.asList(0,3,2));
+        List<Integer> duplicatedInput = new ArrayList<>(Arrays.asList(1,1,2));
+        exceptionCases.add(smallerSize);
+        exceptionCases.add(biggerSize);
+        exceptionCases.add(wrongInput);
+        exceptionCases.add(duplicatedInput);
+        for(List<Integer> exceptions : exceptionCases) {
+            assertThatThrownBy(() -> ExceptionChecker.checkGuessingInput(exceptions))
+                .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Override
