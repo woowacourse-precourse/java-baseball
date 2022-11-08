@@ -4,6 +4,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
@@ -47,12 +48,16 @@ class Game {
         int numberIndex = 0;
 
         while (numberIndex < 3) {
-            randomNum = Randoms.pickNumberInRange(1, 9);
+            randomNum = RandomNumber();
 
             if (!Array.isArrayContains(number, randomNum)) {
                 number[numberIndex++] = randomNum;
             }
         }
+    }
+
+    private int RandomNumber() {
+        return pickNumberInRange(1, 9);
     }
 
     Game(String str) {
