@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.model;
 
 import baseball.model.Ball;
 import baseball.model.Balls;
