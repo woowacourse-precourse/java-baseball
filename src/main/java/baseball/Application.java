@@ -49,7 +49,7 @@ class Game {
         } catch (Exception e) {
             try {
                 throw new IllegalArgumentException("각 자릿수가 1~9 사이의 정수로 이루어진 세 자리 숫자를 입력해주세요");
-            } catch (Exception exception) {
+            } catch (IllegalArgumentException exception) {
                 return false;
             }
         }
@@ -62,6 +62,17 @@ class Game {
             try {
                 throw new IllegalArgumentException("세 자리 정수를 입력해주세요");
             } catch (IllegalArgumentException e){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkingContaingZero(String inputNum){
+        if(inputNum.contains("0")){
+            try {
+                throw new IllegalArgumentException("각 자릿수에는 0이 들어가지 않습니다.");
+            }catch (IllegalArgumentException e){
                 return false;
             }
         }
