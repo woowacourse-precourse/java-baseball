@@ -2,9 +2,7 @@ package baseball;
 
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGame {
@@ -12,26 +10,6 @@ public class BaseBallGame {
     private List<Integer> user;
     private String answer;
 
-    private final int LENGTH = 3;
-    private final int STARTRANGE = 1;
-    private final int FINISHRANGE = 9;
-
-
-    public List<Integer> randomNumbers() {
-        computer = new ArrayList<>();
-        while (computer.size() < LENGTH) {
-            int randomNum = Randoms.pickNumberInRange(STARTRANGE, FINISHRANGE);
-            computer = isContainNumber(computer, randomNum);
-        }
-        return computer;
-    }
-
-    public List<Integer> isContainNumber(List<Integer> computer, int randomNum) {
-        if (!computer.contains(randomNum)) {
-            computer.add(randomNum);
-        }
-        return computer;
-    }
 
     public void reStart(String userNum) {
         if (userNum.equals("1")) run();
@@ -40,9 +18,9 @@ public class BaseBallGame {
     }
 
     public void run() {
-        List<Integer> computerNumber = randomNumbers();
+        ComputerRandomNumber computerRandomNumber = new ComputerRandomNumber();
+        List<Integer> computerNumber = computerRandomNumber.randomNumbers();
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         Game game = new Game(computerNumber);
         UserInputNumber userInputNumber = new UserInputNumber();
 
