@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -19,27 +18,19 @@ class InputMappingTest extends NsTest {
     }
 
     @Test
-    void getConsoleIntCase1() {
-        systemIn("123\n");
-
-        assertThat(inputMapping.getConsoleInt()).isEqualTo(123);
+    void getRestartFlagCase1() {
+        systemIn("1\n");
+        assertThat(inputMapping.getRestartFlag()).isEqualTo(1);
     }
 
     @Test
-    void getConsoleIntCase2() {
-        systemIn("1an34\n");
+    void getRestartFlagCase2() {
+        systemIn("3\n");
 
-        assertThatThrownBy(inputMapping::getConsoleInt)
+        assertThatThrownBy(inputMapping::getRestartFlag)
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void getConsoleIntCase3() {
-        systemIn("2147483648\n"); // out of Int
-
-        assertThatThrownBy(inputMapping::getConsoleInt)
-                .isInstanceOf(IllegalArgumentException.class);
-    }
 
     @Test
     void getGameNumberListCase1(){
