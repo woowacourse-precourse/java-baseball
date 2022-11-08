@@ -6,14 +6,14 @@ import domain.UserInputNumberList;
 import service.CompareNumber;
 
 public class BaseballGame {
-    public final ComputerNumberList computerNumber;
+    public final ComputerNumberList computerNumberList;
     public final UserInputNumberList userNumberList;
     public final CompareNumber compareNumber;
 
     public BaseballGame() {
-        this.computerNumber = new ComputerNumberList();
+        this.computerNumberList = new ComputerNumberList();
         this.userNumberList = new UserInputNumberList();
-        this.compareNumber = new CompareNumber(computerNumber.computerNumber);
+        this.compareNumber = new CompareNumber(computerNumberList.computerNumber);
     }
 
     public void gameStart() {
@@ -43,8 +43,8 @@ public class BaseballGame {
             userInput = Console.readLine();
             if (userInput.equals("1")) {
                 correctiveStatus = false;
-                computerNumber.generateNewComputerRandomNumber();
-                compareNumber.setComputerNumber(computerNumber.computerNumber);
+                computerNumberList.generateNewComputerRandomNumber();
+                compareNumber.setComputerNumber(computerNumberList.computerNumber);
             } else if (userInput.equals("2")) {
                 System.out.println("게임을 종료합니다.");
             }
