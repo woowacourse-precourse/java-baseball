@@ -9,7 +9,7 @@ public class Application {
         while (true) {
             int result = game.run();
             if (result == 2) {
-                break; // 1: 게임 재시작, 2: 게임 종료}
+                break; // 1: 게임 재시작, 2: 게임 종료
             }
         }
     }
