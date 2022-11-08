@@ -2,8 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.Constant.FINISH_BUTTON;
-import static baseball.Constant.RESTART_BUTTON;
+import static baseball.Constant.*;
 import static baseball.Util.*;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class Gamer {
         gamerNumber.add(guess_number % 10);
     }
     public void inputNumber(){
-        System.out.print("\n숫자를 입력해주세요 : ");
+        System.out.print(INPUT_NUMBER);
         String input_number = Console.readLine();
         checkException(input_number);
         int guess_number = Integer.parseInt(input_number);
