@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 class BullsAndCows {
-    List<Integer> computerNumber;
-    BullsAndCowsResult bullsAndCowsResult;
+    private List<Integer> computerNumber;
+    private BullsAndCowsResult bullsAndCowsResult;
 
-    private static List<Integer> creatRandomNumber() {
+    public List<Integer> creatRandomNumber() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -30,7 +30,7 @@ class BullsAndCows {
         computerNumber = creatRandomNumber();
     }
 
-    void start() {
+    public void start() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         List<Integer> userInputNumber = checkExceptionAndInputToList(userInput);
@@ -47,14 +47,14 @@ class BullsAndCows {
         }
     }
 
-    boolean isContinue() {
+    public boolean isContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String answer = Console.readLine();
 
         return answer.equals("1");
     }
 
-    public static int findNumberIndex(List<Integer> userInputNumber, int computerIndex) {
+    public int findNumberIndex(List<Integer> userInputNumber, int computerIndex) {
         if (userInputNumber.contains(computerIndex)) {
             return userInputNumber.indexOf(computerIndex);
         } else {
@@ -62,7 +62,7 @@ class BullsAndCows {
         }
     }
 
-    public static List<Integer> checkExceptionAndInputToList(String userInput) throws IllegalArgumentException {
+    public List<Integer> checkExceptionAndInputToList(String userInput) throws IllegalArgumentException {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
@@ -88,7 +88,7 @@ class BullsAndCows {
         return userInputNumber;
     }
 
-    public static boolean isValidNumber(int number) {
+    public boolean isValidNumber(int number) {
         return 1 <= number && number <= 9;
     }
 }
