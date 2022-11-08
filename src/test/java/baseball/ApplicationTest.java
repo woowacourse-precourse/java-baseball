@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static baseball.Application.generateGoalNumber;
+import static baseball.Application.isValidInput;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,6 +43,12 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(num.charAt(0)).isNotEqualTo(num.charAt(1));
         Assertions.assertThat(num.charAt(0)).isNotEqualTo(num.charAt(2));
         Assertions.assertThat(num.charAt(1)).isNotEqualTo(num.charAt(2));
+    }
+
+    @Test
+    void 사용자_입력은_세자리_숫자이다() {
+        String num = "1248";
+        Assertions.assertThat(isValidInput(num).equals(false));
     }
 
     @Override
