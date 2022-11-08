@@ -111,6 +111,19 @@ public class Application {
         return false;
     }
 
+    public static void baseball() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean doYouWantGame = true;
+        while (doYouWantGame) {
+            List<Integer> computerNumber = setComputerNumber();
+            boolean correct = false;
+            while (!correct) {
+                correct = round(computerNumber);
+            }
+            doYouWantGame = youWantMoreGame();
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
