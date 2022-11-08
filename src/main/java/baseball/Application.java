@@ -46,6 +46,7 @@ public class Application {
         if (isFlagValue && isFlagSize) {
             return readLine;
         }
+
         throw new IllegalArgumentException();
     }
 
@@ -59,10 +60,11 @@ public class Application {
         if (isNumeric && isInputSize && isDifferentEach) {
             return readLine;
         }
+
         throw new IllegalArgumentException();
     }
 
-    public static boolean isAnswer (List<Integer> answer, List<Integer> userInput) {
+    public static boolean isAnswer(List<Integer> answer, List<Integer> userInput) {
         int ball = getBall(answer, userInput);
         int strike = getStrike(answer, userInput);
 
