@@ -13,17 +13,24 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     @Test
-    void 숫자가_아닌_값_입력() {
-        String input = "1a2";
-        boolean result = false;
-        assertThat(User.isNumberValidRange(input)).isEqualTo(result);
-    }
-
-    @Test
     void 길이가_초과한_값_입력() {
         String input = "1234";
         boolean result = false;
         assertThat(User.isNumberValidMaxSize(input)).isEqualTo(result);
+    }
+
+    @Test
+    void 중복된_수_입력() {
+        String input = "112";
+        boolean result = false;
+        assertThat(User.isNumberValidUnique(input)).isEqualTo(result);
+    }
+
+    @Test
+    void 숫자가_아닌_값_입력() {
+        String input = "1a2";
+        boolean result = false;
+        assertThat(User.isNumberValidRange(input)).isEqualTo(result);
     }
 
     @Test
