@@ -13,6 +13,7 @@ public class Application {
     }
     
     public static void gameStart() {
+    	System.out.println("숫자 야구 게임을 시작합니다.");
     	List<Integer> computerPickNums = computerPick();
     	gamePlaying(computerPickNums);
     	
@@ -21,9 +22,9 @@ public class Application {
     public static List<Integer> computerPick() {
     	List<Integer> computerPickNums = new ArrayList<>();
     	while (computerPickNums.size() < 3) {
-    	    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    	    if (!computerPickNums.contains(randomNumber)) {
-    	    	computerPickNums.add(randomNumber);
+    		int randomNumber = Randoms.pickNumberInRange(1, 9);
+    		if (!computerPickNums.contains(randomNumber)) {
+    			computerPickNums.add(randomNumber);
     	    }
     	}
     	return computerPickNums;
@@ -36,10 +37,12 @@ public class Application {
     	String score = scoreBoard(strike, ball);
     	System.out.println(score);
     	winLose(strike);
+    	gamePlaying(computerPickNums);
     	
     }
     public static List<Integer> playerPick() {
     	List<Integer> playerPickNums = new ArrayList();
+    	System.out.print("숫자를 입력해주세요 :");
 		int playerInput = Integer.parseInt(Console.readLine());
 		if (playerInput<0 || playerInput>999) {
 			// 에러 발생
@@ -94,9 +97,17 @@ public class Application {
     public static void winLose(int strike) {
     	if(strike == 3 ) {
     		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    		//처음부터 재시작 여부 
+    		gameReloader();
+    	}
+    }
+    public static void gameReloader() {
+    	System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    	int coin = Integer.parseInt(Console.readLine());
+    	if(coin==1) {
+    		gameStart();
+    	}else if(coin==2) {
     	}else {
-    		//사용자 숫자 입력부터 재시작
+    		error();
     	}
     }
 }
