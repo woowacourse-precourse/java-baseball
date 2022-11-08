@@ -8,7 +8,6 @@ public enum PrintTemplate {
 
     private final String message;
 
-
     PrintTemplate(String message) {
         this.message = message;
     }
