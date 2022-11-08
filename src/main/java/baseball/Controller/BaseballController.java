@@ -6,10 +6,10 @@ public class BaseballController {
 
     BaseballService baseballService = new BaseballService();
 
-    public void gameStart(){
+    public void gameStart() {
         baseballService.gameStartMessage();
 
         baseballService.gameInProgress();
-    }
 
+    }
 }

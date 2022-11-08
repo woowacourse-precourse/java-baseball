@@ -13,8 +13,14 @@ public class BaseballService {
 
     public void gameInProgress() {
         List<Integer> computer = pickThreeNumbers();
+        System.out.println(computer.toString());
 
         List<Integer> user = guessThreeNumbers();
+
+        while (!resultOfGuess(computer, user)) {
+            user = guessThreeNumbers();
+        }
+
     }
 
     public List<Integer> pickThreeNumbers() {
@@ -48,6 +54,38 @@ public class BaseballService {
 
         return user;
     }
+
+    public boolean resultOfGuess(List<Integer> computer, List<Integer> user) {
+
+        // 숫자 + 자리수가 모두 맞는 경우
+        if (areCorrectAllNumbers(computer, user)) {
+            return true;
+        }
+
+        // 스트라이크와 볼 계산
+        checkBallAndStrike(computer, user);
+        return false;
+    }
+
+    public boolean areCorrectAllNumbers(List<Integer> computer, List<Integer> user) {
+        boolean areCorrectAllNumbers = true;
+
+        for (int i = 0; i < 3; i++) {
+            if (user.get(i) != computer.get(i)) {
+                areCorrectAllNumbers = false;
+            }
+        }
+
+        if (areCorrectAllNumbers) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+            return true;
+        }
+
+        return false;
+    }
+
 
 
     public boolean validateInput(String input) {
