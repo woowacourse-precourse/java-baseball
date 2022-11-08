@@ -25,7 +25,6 @@ public class User {
 
     public void inputGameState() {
         String input = readLine();
-
         if (input.equals("1")) {
             this.game_state = 1;
         } else if (input.equals("2")) {
@@ -44,7 +43,6 @@ public class User {
     }
 
     public void checkNumberLength(String input) {
-
         if (input.length() == 0) {
             throw new IllegalArgumentException("입력한 수가 없습니다.");
         } else if (input.length() != 3) {
