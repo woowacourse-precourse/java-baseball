@@ -68,7 +68,7 @@ public class BaseballGame {
         return intArray;
     }
 
-    private static ArrayList<Integer> handleErrorForUserInput(String userInput) {
+    public static ArrayList<Integer> handleErrorForUserInput(String userInput) {
         if (!(isIntegerInRange(userInput) && isThreeDigit(userInput))) {
             throw new IllegalArgumentException();
         }
