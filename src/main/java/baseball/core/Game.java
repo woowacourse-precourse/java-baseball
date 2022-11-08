@@ -21,6 +21,29 @@ public class Game {
 
     private boolean isGameOver(Count count) {
         System.out.println(count);
-        return true;
+        if (count.getStrike() == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            boolean playAgain = checkUserWill();
+            if (playAgain) {
+                //TODO: Reset computer pitch
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+    
+    private boolean checkUserWill() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userWill = Console.readLine();
+        if (userWill.equals("1")) {
+            return true;
+        } else if (userWill.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
