@@ -28,7 +28,14 @@ public class Checker {
         if(user.length() != 1) {
             return true;
         }
-        
+
         return user.charAt(0) == '1' || user.charAt(0) == '2';
+    }
+
+    public static int CompareUserInputWithAnswer(String user, String answer){
+        for(int i=0; i<user.length(); i++){
+            if(user.charAt(i) != answer.charAt(i)) return -1;
+        }
+        return 1;
     }
 }
