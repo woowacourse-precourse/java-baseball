@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class Refree {
-  private static final int DIGIT_LENGTH = 3;
+  public static final int DIGIT_LENGTH = 3;
   public static int countStrike(List<Integer> answerList, List<Integer> userInputList) {
     int strike = 0;
     for (int i = 0; i < DIGIT_LENGTH; i++) {
