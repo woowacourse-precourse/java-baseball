@@ -54,4 +54,11 @@ public class RuleManager {
             }
         }
     }
+
+    public static void compareFourBall(User user, List<Long> computerNumbers) {
+        if (countBall(user, computerNumbers) == ZERO_BALL_NUMBER && countStrike(user, computerNumbers) == ZERO_STRIKE_NUMBER) {
+            Output.printFourBall();
+        }
+    }
+
 }
