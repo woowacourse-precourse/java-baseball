@@ -35,11 +35,7 @@ class GameTest {
 
 	@Test		// 중복되지 않는 랜덤 수 3개를 뽑는 기능
 	void getRandomNumber() {
-		Computer.getThreeRandomNumber();
-		if (Computer.numberList.get(0) == Computer.numberList.get(1) ||
-			Computer.numberList.get(0) == Computer.numberList.get(2) ||
-			Computer.numberList.get(1) == Computer.numberList.get(2))
-			assertTrue(true);
+
 	}
 
 	// 정답이 들어오기 전까지 반복해서 숫자를 입력받는 기능

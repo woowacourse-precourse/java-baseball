@@ -5,28 +5,36 @@ import java.util.HashSet;
 import java.util.List;
 
 class Game {
-	static final int SIZE = Application.SIZE;
-	static final int NEW_GAME = Application.NEW_GAME;
-	static final int FINISH_GAME = Application.FINISH_GAME;
+	private final int SIZE;
+	private final int NEW_GAME;
+	private final int FINISH_GAME;
 
-	static int strike = 0;
-	static int ball = 0;
-	static HashSet<Integer> strikeSet;
+	int strike = 0;
+	int ball = 0;
+	HashSet<Integer> strikeSet;
 
-	static boolean game_flag = false;
-	static boolean getAnswer = false;
+	boolean game_flag = false;
+	boolean getAnswer = false;
 
-	static final int START = 7;
-	static final int GET_NUMBER = 8;
-	static final int RESULT = 9;
+	final int START = 7;
+	final int GET_NUMBER = 8;
+	final int RESULT = 9;
 
+	Computer computer;
+	Game(final int SIZE, final int NEW_GAME, final int FINISH_GAME) {
+		this.SIZE = SIZE;
+		this.NEW_GAME = NEW_GAME;
+		this.FINISH_GAME = FINISH_GAME;
+		computer = new Computer(SIZE);
+	}
 
-	static void runGame() {
+	void start() {
+
 		printMessage(START);
 		while (true) {
 			getAnswer = false;
 			if (!game_flag) {
-				Computer.getThreeRandomNumber();
+				computer.getThreeRandomNumber();
 				game_flag = true;
 			}
 			while (!getAnswer) {
@@ -35,14 +43,14 @@ class Game {
 				getScore();
 				printMessage(RESULT);
 			}
-			Game.whenFinish();
+			whenFinish();
 			if (Player.number == FINISH_GAME)
 				return;
 			game_flag = false;
 		}
 	}
 
-	static void printMessage(int status) {
+	void printMessage(int status) {
 		if (status == START)
 			System.out.println("숫자 야구 게임을 시작합니다.");
 		if (status == GET_NUMBER)
@@ -51,7 +59,7 @@ class Game {
 			printResult();
 	}
 
-	static void printResult() {
+	void printResult() {
 		if (strike == SIZE) {
 			getAnswer = true;
 			System.out.println(SIZE + "스트라이크");
@@ -67,18 +75,18 @@ class Game {
 		System.out.println();
 	}
 
-	static void initResult() {
+	void initResult() {
 		ball = 0;
 		strike = 0;
 	}
 
-	static void getNumber() {
+	void getNumber() {
 		printMessage(GET_NUMBER);
 		Player.writeNumber();
 		changeStringToList();
 	}
 
-	private static void changeStringToList() {
+	private void changeStringToList() {
 		Player.numberList = new ArrayList<>();
 
 		checkInput();
@@ -90,7 +98,7 @@ class Game {
 			throw new IllegalArgumentException("same value");
 	}
 
-	private static void checkInput() {
+	private void checkInput() {
 		try {
 			Player.number = Integer.parseInt(Player.numberString);
 		} catch (IllegalArgumentException exception) {
@@ -103,10 +111,10 @@ class Game {
 			throw new IllegalArgumentException("wrong value");
 	}
 
-	private static boolean checkSameNumber() {
+	private boolean checkSameNumber() {
 		List<Integer> usedNumber = new ArrayList<>();
 
-		for (int num : Player.numberList){
+		for (int num : Player.numberList) {
 			if (usedNumber.contains(num))
 				return true;
 			usedNumber.add(num);
@@ -115,23 +123,23 @@ class Game {
 	}
 
 
-	static void getScore() {
+	void getScore() {
 		checkStrike();
 		checkBall();
 	}
 
-	private static void checkStrike() {
+	private void checkStrike() {
 		strikeSet = new HashSet<>();
 
 		for (int i = 0; i < SIZE; i++) {
-			if (Computer.numberList.get(i) == Player.numberList.get(i)) {
+			if (computer.numberList.get(i) == Player.numberList.get(i)) {
 				strike++;
 				strikeSet.add(i);
 			}
 		}
 	}
 
-	private static void checkBall() {
+	private void checkBall() {
 		for (int i = 0; i < SIZE; i++) {
 			if (strikeSet.contains(i))
 				continue;
@@ -139,16 +147,16 @@ class Game {
 		}
 	}
 
-	private static void addBall(int i) {
+	private void addBall(int i) {
 		for (int j = 0; j < SIZE; j++) {
-			if (Computer.numberList.get(i) == Player.numberList.get(j)) {
+			if (computer.numberList.get(i) == Player.numberList.get(j)) {
 				ball++;
 				break;
 			}
 		}
 	}
 
-	static void whenFinish() {
+	void whenFinish() {
 		Player.writeNumber();
 		checkInput();
 	}
