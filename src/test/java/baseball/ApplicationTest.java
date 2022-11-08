@@ -34,49 +34,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class ValidCheckTest {
+    class ComputerTest {
         @Test
-        void testExceptionNumber() {
-            HashMap<Integer, Integer> dummyHashmap = new HashMap<>();
-            dummyHashmap.put(1, 1);
-            dummyHashmap.put(2, 2);
-            dummyHashmap.put(3, 3);
-            assertThatThrownBy(() -> ValidCheck.checkExceptionNumber("1232", dummyHashmap))
-                    .isInstanceOf(IllegalArgumentException.class);
-        }
-
-        @Test
-        void testExceptionNumber2() {
-            HashMap<Integer, Integer> dummyHashmap = new HashMap<>();
-            dummyHashmap.put(1, 1);
-            dummyHashmap.put(2, 2);
-            assertThatThrownBy(() -> ValidCheck.checkExceptionNumber("122", dummyHashmap))
-                    .isInstanceOf(IllegalArgumentException.class);
-        }
-
-        @Test
-        void testExceptionNumber3() {
-            HashMap<Integer, Integer> dummyHashmap = new HashMap<>();
-            dummyHashmap.put(1, 1);
-            dummyHashmap.put(2, 2);
-            dummyHashmap.put(3, 3);
-            assertThat(ValidCheck.checkExceptionNumber("123", dummyHashmap)).isNull();
-        }
-
-        @Test
-        void testIsContinue() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> ValidCheck.checkExceptionIsContinue("1234"))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
-
-        @Test
-        void testIsContinue2() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> ValidCheck.checkExceptionIsContinue("a"))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
+        void generatingNumber() {
+            HashMap<Integer, Integer> RandomNumberMap = Computer.generateRandomNumber();
+            assertThat(RandomNumberMap).hasSize(3);
+            assertThat(RandomNumberMap).containsValues(1, 2, 3);
+            assertThat(RandomNumberMap).doesNotContainKey(0);
         }
     }
 
@@ -167,14 +131,51 @@ class ApplicationTest extends NsTest {
         }
     }
 
+
     @Nested
-    class ComputerTest {
+    class ValidCheckTest {
         @Test
-        void generatingNumber() {
-            HashMap<Integer, Integer> RandomNumberMap = Computer.generateRandomNumber();
-            assertThat(RandomNumberMap).hasSize(3);
-            assertThat(RandomNumberMap).containsValues(1, 2, 3);
-            assertThat(RandomNumberMap).doesNotContainKey(0);
+        void testExceptionNumber() {
+            HashMap<Integer, Integer> dummyHashmap = new HashMap<>();
+            dummyHashmap.put(1, 1);
+            dummyHashmap.put(2, 2);
+            dummyHashmap.put(3, 3);
+            assertThatThrownBy(() -> ValidCheck.checkExceptionNumber("1232", dummyHashmap))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void testExceptionNumber2() {
+            HashMap<Integer, Integer> dummyHashmap = new HashMap<>();
+            dummyHashmap.put(1, 1);
+            dummyHashmap.put(2, 2);
+            assertThatThrownBy(() -> ValidCheck.checkExceptionNumber("122", dummyHashmap))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void testExceptionNumber3() {
+            HashMap<Integer, Integer> dummyHashmap = new HashMap<>();
+            dummyHashmap.put(1, 1);
+            dummyHashmap.put(2, 2);
+            dummyHashmap.put(3, 3);
+            assertThat(ValidCheck.checkExceptionNumber("123", dummyHashmap)).isNull();
+        }
+
+        @Test
+        void testIsContinue() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> ValidCheck.checkExceptionIsContinue("1234"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        @Test
+        void testIsContinue2() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> ValidCheck.checkExceptionIsContinue("a"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
     }
 
