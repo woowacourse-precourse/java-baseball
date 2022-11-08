@@ -12,6 +12,8 @@ public class User {
     }
 
     public void setUserNumbers(String input) {
+        numbers.clear();
+
         for (String number : input.split("")) {
             final int num = parsing(number);
 
