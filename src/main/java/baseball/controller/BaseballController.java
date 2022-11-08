@@ -1,8 +1,11 @@
 package baseball.controller;
 
 import baseball.exception.WrongContinueException;
+import baseball.message.Messages;
+
 import baseball.utill.StartGame;
 import baseball.utill.Random;
+
 import baseball.view.Input;
 import baseball.view.Output;
 
@@ -23,7 +26,7 @@ public class BaseballController {
             strikeCount = startGame.calculateStrikeCount(random.randomNumbers());
             Output.printResult(ballCount, strikeCount);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(Messages.GAME_CLEAR);
     }
 
     private static void checkCountinue() {
@@ -35,7 +38,7 @@ public class BaseballController {
         }
 
         if (continueMessage.equals("2")){
-            System.out.println("게임 종료");
+            System.out.println(Messages.END_GAME);
             return;
         }
 
