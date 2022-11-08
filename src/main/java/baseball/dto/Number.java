@@ -24,7 +24,7 @@ public class Number {
         return database.add(computerNumber);
     }
 
-    public boolean remove(ComputerNumber computerNumber) {
+    public boolean delete(ComputerNumber computerNumber) {
         return database.remove(computerNumber);
     }
 

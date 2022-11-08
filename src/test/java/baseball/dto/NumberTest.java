@@ -21,6 +21,6 @@ public class NumberTest {
 
         assertThat(dao.getNumber()).isEqualTo(123);
         assertThat(dto.getAll().size()).isEqualTo(1);
-        assertThat(dto.remove(dao)).isTrue();
+        assertThat(dto.delete(dao)).isTrue();
     }
 }
