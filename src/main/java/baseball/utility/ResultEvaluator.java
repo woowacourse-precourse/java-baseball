@@ -1,9 +1,24 @@
 package baseball.utility;
 
+import baseball.dto.Score;
+
 public class ResultEvaluator {
 
     private ResultEvaluator() {
 
+    }
+
+    private static Score getScore(String computerNumber, String playerNumber) {
+        int numberLength = playerNumber.length();
+        int numStrikes = 0;
+        int numBalls = 0;
+
+        for (int i = 0; i < numberLength; i++) {
+            numStrikes += isStrikeOrNot(computerNumber, playerNumber, i);
+            numBalls += isBallOrNot(computerNumber, playerNumber, i);
+        }
+
+        return new Score(numBalls, numStrikes);
     }
 
     private static int isStrikeOrNot(String computerNumber, String playerNumber, int index) {
