@@ -12,17 +12,11 @@ public class Game {
         this.computer = computer;
     }
 
-    public void setStrike() {
+    public void setUp(List<Integer> user){
         this.strike = 0;
-    }
-
-    public void setBall() {
         this.ball = 0;
-    }
-
-
-    public void setUser(List<Integer> user) {
         this.user = user;
+
     }
 
     public void isSameNumber(){
@@ -53,9 +47,7 @@ public class Game {
     }
 
     public String gameRun(List<Integer> user){
-        setUser(user);
-        setStrike();
-        setBall();
+        setUp(user);
         isSameNumber();
         return numberToString();
     }
