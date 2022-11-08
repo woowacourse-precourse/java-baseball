@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        PrintLine.startGame();
+        PrintLine.startGamePrint();
 
         String restartNumber;
 
@@ -17,20 +17,20 @@ public class Application {
             List<Integer> computerNumberList = createComputerNumberList();
             while (true) {
                 Map<String, Integer> scoreTable = createScoreTable();
-                PrintLine.putUserNumber();
+                PrintLine.putUserNumberPrint();
                 String userNumber = Console.readLine();
                 Validation.validateUserNumber(userNumber);
                 List<Integer> userNumberList = stringToIntegerList(userNumber);
 
                 matchLists(userNumberList, computerNumberList, scoreTable);
-                PrintLine.printResult(scoreTable);
+                PrintLine.resultPrint(scoreTable);
 
                 if (scoreTable.get("스트라이크") == 3) {
                     break;
                 }
             }
 
-            PrintLine.putRestartNumber();
+            PrintLine.putRestartNumberPrint();
             restartNumber = Console.readLine();
             Validation.validateRestartNumber(restartNumber);
         } while (restartNumber.equals("1"));
