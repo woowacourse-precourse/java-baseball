@@ -7,10 +7,12 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 
 import java.io.ByteArrayInputStream;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class GameTest extends NsTest {
     @Test
+    @DisplayName("새로운 숫자야구 게임 시작 테스트")
     void start_test_game_start() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -22,6 +24,7 @@ public class GameTest extends NsTest {
     }
 
     @Test
+    @DisplayName("새로운 숫자야구 게임 시작 메시지 출력 테스트")
     void printGameStartMessage_test_print_message() {
         Game game = new Game();
         game.printGameStartMessage();
@@ -29,6 +32,7 @@ public class GameTest extends NsTest {
     }
 
     @Test
+    @DisplayName("사용자 입력 1인 경우 재시작 여부 확인 테스트")
     void askRestart_test_restart_true() {
         Game game = new Game();
         String testInput = "1";
@@ -39,6 +43,7 @@ public class GameTest extends NsTest {
     }
 
     @Test
+    @DisplayName("사용자 입력 2인 경우 재시작 여부 확인 테스트")
     void askRestart_test_restart_false() {
         Game game = new Game();
         String testInput = "2";
