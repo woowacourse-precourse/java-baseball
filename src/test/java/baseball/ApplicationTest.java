@@ -33,22 +33,28 @@ class ApplicationTest extends NsTest {
     @Test
     void 숫자_검증_테스트() {
         assertThatThrownBy(() -> validateUserNumbers("333"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 중복된 숫자가 입력되었습니다.");
 
         assertThatThrownBy(() -> validateUserNumbers("4315"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 입력된 문자열의 길이가 3이 아닙니다.");
 
         assertThatThrownBy(() -> validateUserNumbers("012"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 1 ~ 9 범위 이외의 문자가 입력되었습니다.");
 
         assertThatThrownBy(() -> validateUserNumbers("34"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 입력된 문자열의 길이가 3이 아닙니다.");
 
         assertThatThrownBy(() -> validateUserNumbers("abc"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 1 ~ 9 범위 이외의 문자가 입력되었습니다.");
 
         assertThatThrownBy(() -> validateUserNumbers("우테코"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 1 ~ 9 범위 이외의 문자가 입력되었습니다.");
 
         validateUserNumbers("123");
         validateUserNumbers("465");

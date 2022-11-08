@@ -27,7 +27,7 @@ public class Application {
 
     public static void validateUserNumbers(String userNumbers) {
         if (userNumbers.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 입력입니다. 입력된 문자열의 길이가 3이 아닙니다.");
         }
 
         // 서로 다른 3개의 숫자인지 검사할 용도의 Set
@@ -37,14 +37,14 @@ public class Application {
         for (int i = 0; i < userNumbers.length(); i++) {
             char currentChar = userNumbers.charAt(i);
             if (currentChar < '1' || currentChar > '9') {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("잘못된 입력입니다. 1 ~ 9 범위 이외의 문자가 입력되었습니다.");
             }
             characterSet.add(currentChar);
         }
 
         // 중복된 숫자가 있는지 검사한다
         if (characterSet.size() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 입력입니다. 중복된 숫자가 입력되었습니다.");
         }
     }
 
@@ -102,7 +102,7 @@ public class Application {
         } else if (userInput.equals("2")) {
             return false;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 입력입니다. 1 또는 2를 입력해야합니다.");
         }
     }
 
