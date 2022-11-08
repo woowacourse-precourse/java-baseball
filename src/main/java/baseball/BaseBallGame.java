@@ -9,9 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import javax.lang.model.type.ArrayType;
 
-//TODO setUserNumber, setComputerNumber, getUserNumber, getComputerNumber 구현하기
 
 class BaseBallGame {
     private static BaseBallGame gameProgram = new BaseBallGame();
@@ -52,11 +50,14 @@ class BaseBallGame {
     }
 
     public void gamePlaying() throws IllegalArgumentException {
-        setComputerNumber(getRandomDiff3DigitNumber());
         boolean isSolved = false;
+
+        setComputerNumber(getRandomDiff3DigitNumber());
+
         while (!isSolved) {
             isSolved = solvingProblem(computerNumber);
         }
+
         if (reStartGame()) {
             gamePlaying();
         }
@@ -73,26 +74,29 @@ class BaseBallGame {
         if (answerToReplay.equals(RESTART)) {
             return true;
         }
+
         GameDisplay.gameFinish();
         return false;
     }
 
     public boolean solvingProblem(String computerNumber) throws IllegalArgumentException {
+        int ball, strike;
+
         String inputNumber = inputNumber();
         setUserNumber(inputNumber);
-        int ball, strike;
+
         List<Integer> hint = getHint();
         ball = hint.get(0);
         strike = hint.get(1);
 
         return getSolveResult(strike, ball);
-
     }
 
     public boolean getSolveResult(int strike, int ball) {
         if (strike == GOAL) {
             GameDisplay.strike(GOAL);
             GameDisplay.answerCorrect();
+
             return true;
         }
 
@@ -109,7 +113,6 @@ class BaseBallGame {
         }
 
         return false;
-
     }
 
 
@@ -117,6 +120,7 @@ class BaseBallGame {
         GameDisplay.inputYourNumber();
         String inputStr = Console.readLine();
         inputValidation(inputStr);
+
         return inputStr;
     }
 
@@ -128,15 +132,18 @@ class BaseBallGame {
 
     public boolean is3DigitNumber(String inputStr) {
         String inputNumberRegex = "^[1-9]{3}$";
+
         return inputStr.matches(inputNumberRegex);
     }
 
 
     public boolean isDiffDigitNumber(String inputStr) {
         HashSet<String> removeDuplStr = new HashSet<String>(Arrays.asList(inputStr.split("")));
+
         if (removeDuplStr.size() != 3) {
             return false;
         }
+
         return true;
     }
 
@@ -145,12 +152,12 @@ class BaseBallGame {
 
         while (randomDiff3DigitNumber.length() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!randomDiff3DigitNumber.contains(Integer.toString(randomNumber))) {
                 randomDiff3DigitNumber += Integer.toString(randomNumber);
             }
         }
 
-//        return Integer.parseInt(randomDiff3DigitNumber);
         return randomDiff3DigitNumber;
     }
 
@@ -177,24 +184,23 @@ class BaseBallGame {
             ) {
                 ball++;
             }
-//            if (userNumList.get(currentDigit).equals(computerNumList.get((currentDigit + 1) % numLength))
-//                    || userNumList.get(currentDigit).equals(computerNumList.get((currentDigit + 2) % numLength))
-//            ) {
-//                ball++;
-//            }
-
         }
+
         ballAndStrike.add(ball);
         ballAndStrike.add(strike);
+
         return ballAndStrike;
     }
 
 
     public List<Integer> getHint() {
         List<String> userNumList = new ArrayList<String>(
-                Arrays.asList(BaseBallGame.getUserNumber().split("")));
+                Arrays.asList(BaseBallGame.getUserNumber().split(""))
+        );
+
         List<String> computerNumList = new ArrayList<String>(
-                Arrays.asList(BaseBallGame.getComputerNumber().split("")));
+                Arrays.asList(BaseBallGame.getComputerNumber().split(""))
+        );
 
         List<Integer> ballAndStrikeList = ballAndStrikeCount(userNumList, computerNumList);
 
