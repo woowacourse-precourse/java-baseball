@@ -12,6 +12,7 @@ public class BaseballApplication {
 
     private Input input;
     private Output output;
+    private BaseballQuestion question;
 
     private final int RESTART_APPLICATION = 1;
     private final int FINISH_APPLICATION = 2;
@@ -32,18 +33,26 @@ public class BaseballApplication {
     }
 
     private void startGame(BaseballType baseballType) {
-        BaseballQuestion question = new BaseballQuestion(baseballType);
+        question = new BaseballQuestion(baseballType);
 
         boolean isCorrect = false;
         while (!isCorrect) {
-            output.print(InputRequestMessage.ASK_INPUT_INTEGER);
-            int inputData = input.getInputInteger();
+            int inputData = requestInputCandidate();
+            printResult(inputData);
 
-            String result = question.ask(inputData);
-            output.println(result);
             isCorrect = question.isCorrect(inputData);
         }
         output.print(OutputMessage.CORRECT_MESSAGE);
+    }
+
+    private int requestInputCandidate() {
+        output.print(InputRequestMessage.ASK_INPUT_INTEGER);
+        return input.getInputInteger();
+    }
+
+    private void printResult(int inputData) {
+        String result = question.ask(inputData);
+        output.println(result);
     }
 
     private boolean askRestartApplication() {
