@@ -74,4 +74,9 @@ public class GameHandler {
         }
         return sb.toString();
     }
+
+    public boolean askRestart() {
+        String input = Console.readLine();
+        return input.compareTo("1") == 0;
+    }
 }
