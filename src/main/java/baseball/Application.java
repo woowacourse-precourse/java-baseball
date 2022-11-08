@@ -7,25 +7,22 @@ import java.util.List;
 
 public class Application {
 
-    static boolean keepGaming = true;
-    static boolean keepSmallGaming = true;
     static int strike, ball;
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             playSmallGame();
-            isKeepGaming();
-        } while (keepGaming);
+        } while (isKeepGaming());
     }
 
-    static void isKeepGaming() {
+    static boolean isKeepGaming() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String endGame = Console.readLine();
         if (endGame.equals("1")) {
-            keepGaming = true;
+            return true;
         } else if (endGame.equals("2")) {
-            keepGaming = false;
+            return false;
         } else {
             throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
         }
@@ -39,16 +36,15 @@ public class Application {
             userNumbers = inputNumber();
             calc(userNumbers, comNumbers);
             printAResult(ball, strike);
-            isKeepSmallGaming();
-        } while (keepSmallGaming);
+        } while (isKeepSmallGaming());
     }
 
-    static void isKeepSmallGaming() {
+    static boolean isKeepSmallGaming() {
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            keepSmallGaming = false;
+            return false;
         } else {
-            keepSmallGaming = true;
+            return true;
         }
     }
 
@@ -92,7 +88,7 @@ public class Application {
             int digit = userNumbers.get(i);
             if (digit == comNumbers.get(i)) {
                 strike++;
-            } else if (digit == comNumbers.get((i + 1) % 3) || digit == comNumbers.get((i - 1) % 3)) {
+            } else if (digit == comNumbers.get((i + 1) % 3) || digit == comNumbers.get((i + 2) % 3)) {
                 ball++;
             }
         }
