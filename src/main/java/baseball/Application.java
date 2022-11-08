@@ -50,4 +50,21 @@ public class Application {
             throw new IllegalArgumentException("잘못된 입력!");
         }
     }
+
+    public static Grade grading(List<Integer> randomInt, int inputInt) {
+        Grade grade = new Grade();
+        int now = 2;
+        while (inputInt > 0) {
+            int digit = inputInt % 10;
+            if (digit == randomInt.get(now)) {
+                grade.strikePlus();
+            } else if (randomInt.contains(digit)) {
+                grade.ballPlus();
+            }
+            inputInt /= 10;
+            now--;
+        }
+
+        return grade;
+    }
 }
