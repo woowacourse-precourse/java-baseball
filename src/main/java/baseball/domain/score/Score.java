@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Score {
+  public static final String STRIKE_ERROR_MESSAGE = "같은 자리에 같은 수가 카운트 되지 않았습니다.";
+  public static final String BALL_ERROR_MESSAGE = "다른 자리에 같은 수가 카운트 되지 않았습니다.";
+
   private Integer strikeCount = 0;
   private Integer ballCount = 0;
 
