@@ -12,16 +12,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PlayerTest {
     Player player;
+    CheckException check;
     static final int MAX_SIZE = 3;
 
     @BeforeEach
     void setUp() {
         player = new Player();
+        check = new CheckException();
     }
 
     @ParameterizedTest
     @DisplayName("잘못된 입력이 들어왔을 때 IllegalArgumentException 예외 테스트")
-    @ValueSource(strings = {"abc", "122", "a12", "133", "1224"})
+    @ValueSource(strings = {"abc", "122", "a12", "133", "1224", "a1"})
     void testWithValueSource(String stringArg) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             player.decideNumbers(stringArg);
@@ -51,7 +53,7 @@ public class PlayerTest {
     @ValueSource(strings = {"12", "a", "b", "!", "#", "3"})
     void testWithGameStatusData(String stringArg) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            player.validateGameStatusData(stringArg);
+            check.validateGameStatusData(stringArg);
         });
     }
 }

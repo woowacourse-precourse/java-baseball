@@ -7,9 +7,12 @@ public class Judge {
     private final Player player;
     private static final int MAX_SIZE = 3;
 
+    private final CheckException check;
+
     public Judge() {
         this.player = new Player();
         this.computer = new Computer();
+        this.check = new CheckException();
     }
 
     public ArrayList<Integer> getPlayerNumbers() {
@@ -36,6 +39,6 @@ public class Judge {
     }
 
     public int decideGameContinue() {
-        return this.player.validateGameStatusData(this.player.inputGameStatusData());
+        return this.check.validateGameStatusData(this.player.inputGameStatusData());
     }
 }
