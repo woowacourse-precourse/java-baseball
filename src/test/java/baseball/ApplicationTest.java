@@ -6,7 +6,6 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +54,6 @@ class ApplicationTest extends NsTest {
 
         assertThat(inputNums).isEqualTo(correct);
     }
-
 
     @Test
     @DisplayName("사용자의 입력값 길이 테스트")
@@ -111,6 +109,35 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(MessageConst.INPUT_RANGE_EXCEPTION_MSG);
     }
+
+    @Test
+    @DisplayName("사용자의 입력값 중복 테스트")
+    void 사용자_입력_중복_테스트() {
+        // given
+        InputValidation inputValidation = new InputValidation();
+        List<Integer> userCorrectInput = new ArrayList<>();
+        List<Integer> userWrongInput = new ArrayList<>();
+
+        // when
+        userCorrectInput.add(1);
+        userCorrectInput.add(2);
+        userCorrectInput.add(3);
+
+        userWrongInput.add(1);
+        userWrongInput.add(2);
+        userWrongInput.add(2);
+
+        // then
+        assertThatCode(() ->
+                inputValidation.validateInputDuplicated(userCorrectInput))
+                .doesNotThrowAnyException();
+
+        assertThatThrownBy(() ->
+                inputValidation.validateInputDuplicated(userWrongInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(MessageConst.INPUT_DUPLICATE_EXCEPTION_MSG);
+    }
+
 
     @Override
     public void runMain() {
