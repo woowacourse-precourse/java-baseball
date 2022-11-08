@@ -13,5 +13,11 @@ public class GameReferee {
 
         return checkNothing;
     }
-    
+
+    private boolean checkStrike(List<Integer> computer, List<Integer> myNumber, int i) {
+
+        boolean checkStrike = (computer.indexOf(myNumber.get(i)) == i);
+
+        return checkStrike;
+    }
 }
