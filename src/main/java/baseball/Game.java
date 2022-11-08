@@ -32,7 +32,7 @@ public class Game {
         answerNumber.RandomNumber();
         answerNumberList = answerNumber.getAnswerNumberList();
         do{
-            inputNumber.userInputNumber();
+            inputNumber.userInputBallNumber();
             inputNumberList.add(inputNumber.getUserNumber());
             strike = 0;
             ball = 0;
@@ -82,7 +82,7 @@ public class Game {
 
     public boolean askResrat(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        inputNumber.userInputNumber();
+        inputNumber.userChoiceRestartOrEnd();
         String yesOrNo = inputNumber.getUserNumber();
         return yesOrNo.equals("1");
     }
