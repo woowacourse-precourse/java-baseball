@@ -56,6 +56,8 @@
   - `Utilization` : 랜덤 숫자 생성 로직, 자료구조 변환 등 기능적 메소드들을 담는다.
   - `Validation` : 숫자 중복, 유저 입력 등을 검증한다.
 
+![](baseball.uml.image.png)
+
 # 📓 구현 로직
 
 ```
