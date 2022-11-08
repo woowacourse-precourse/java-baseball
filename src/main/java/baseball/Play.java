@@ -33,11 +33,11 @@ public class Play {
 
     public void playGame(List<Integer> computerNumber) {
         do {
-            hint.initHint();
+            hint.init();
             List<Integer> userNumber = user.getNumber();
-            hint.giveHint(computerNumber, userNumber);
-            System.out.println(hint.printHint());
-        } while (!hint.isThreeStrike());
+            hint.score(computerNumber, userNumber);
+            System.out.println(hint.toString());
+        } while (!hint.isAllStrike());
     }
 
     public boolean isRestart() {
