@@ -11,21 +11,17 @@ import net.bytebuddy.pool.TypePool.Resolution.Illegal;
  * 문자열로 입력받은 숫자들을 리스트에 옮겨담는다.
  */
 public class NumberParser {
-    public static final int NUMBER_LENGTH = 3;
-    private static final int DIVIDE_INITIATE = 100; // 나눌 초기값
-    private static final int DIVIDE_TARGET = 10; // 단계별로 줄어드는 자릿수
-
 
     /**
      * 문자열로 입력받은 플레이어의 숫자를 리스트로 변환해서 전달.
-     * @param numbers 아직 문자열로 저장되어있는 숫자들
+     * @param playerNumberString 아직 문자열로 저장되어있는 숫자들
      * @return 리스트로 입력받은 숫자를 변환
      */
-    public List<Integer> parsePlayerNumber(String playerString) {
+    public List<Integer> parsePlayerNumber(String playerNumberString) {
         List<Integer> parsedNumbers;
         int tempNumbers;
         try{
-            tempNumbers = Integer.parseInt(playerString);
+            tempNumbers = Integer.parseInt(playerNumberString);
             parsedNumbers = divideNumbers(tempNumbers);
             checkGuessPhaseExceptions(parsedNumbers);
         }
@@ -44,10 +40,10 @@ public class NumberParser {
      * @throws IllegalArgumentException
      */
     public void checkGuessPhaseExceptions(List<Integer> parsedNumbers) throws IllegalArgumentException {
-        Set<Integer> tempSet = new HashSet<Integer>(parsedNumbers);
+        Set<Integer> tempSet = new HashSet<>(parsedNumbers);
         if(tempSet.size() != parsedNumbers.size()){
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        } else if(parsedNumbers.size() != NUMBER_LENGTH){
+        } else if(parsedNumbers.size() != BaseballData.GAME_SIZE){
             throw new IllegalArgumentException("3개의 숫자만 입력해주세요");
         }
     }
@@ -59,13 +55,13 @@ public class NumberParser {
      */
     public List<Integer> divideNumbers(int dividend){
         List<Integer> tempNumbers = new ArrayList<>();
-        int divider = DIVIDE_INITIATE;
+        int divider = BaseballData.DIVIDE_INITIATE;
         int tempAnswer = 0;
         while(divider > 0){
             tempAnswer = dividend / divider; // 자랏수 임시 저장
             tempNumbers.add(tempAnswer); // 리스트에 자릿수 저장
             dividend = dividend - tempAnswer * divider; // 가장 왼쪽의 자릿값을 빼기
-            divider = divider / DIVIDE_TARGET; // 자릿수 한칸 이동
+            divider = divider / BaseballData.DIVIDE_TARGET; // 자릿수 한칸 이동
         }
         return tempNumbers;
     }
