@@ -1,13 +1,17 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Game {
 	private static final int COUNT_NUMBER = 3;
-	private static final int NEW_GAME = 1;
-	private static final int END_GAME = 2;
 
+	private static final String NEW_GAME = "1";
+	private static final String END_GAME = "2";
 	private static final String STRIKE_WORD = "스트라이크";
 	private static final String BALL_WORD = "볼";
 	private static final String NOT_MATCH_WORD = "낫싱";
+	private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+	private static final String END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	private int[] computer;
 	private int[] player;
@@ -26,10 +30,6 @@ public class Game {
 		while (!exit) {
 			playerNumber.getAnswer();
 			player = playerNumber.getNumber();
-
-			if (strike == COUNT_NUMBER) {
-
-			}
 		}
 	}
 
@@ -56,6 +56,25 @@ public class Game {
 				return BALL_WORD;
 			}
 		}
-		return null;
+		return NOT_MATCH_WORD;
 	}
+	
+	private String getResult() {
+		String result = "";
+		if (strike == 0 && ball == 0) {
+			result += NOT_MATCH_WORD;
+		}
+		if (ball != 0) {
+			result += this.ball + BALL_WORD;
+		}
+		if (strike != 0) {
+			if (this.ball != 0) {
+				result += " ";
+			}
+			result += this.strike + STRIKE_WORD;
+		}
+		
+		return result;
+	}
+	
 }
