@@ -5,10 +5,10 @@ import baseball.rule.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballChecker {
+public class BallAndStrikeChecker {
     private final List<BaseballRule> rules = new ArrayList<>();
 
-    public BaseballChecker(){
+    public BallAndStrikeChecker(){
         addRule(new Nothing());
         addRule(new OnlyBall());
         addRule(new OnlyStrike());

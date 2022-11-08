@@ -1,17 +1,16 @@
 package baseball.computer;
 
-import baseball.BaseballChecker;
-import baseball.View;
+import baseball.BallAndStrikeChecker;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.BaseballConstants.*;
+import static baseball.Constants.*;
 
 public class Computer {
     private final List<Character> baseballNumber = new ArrayList<>();
-    private final BaseballCounter baseballCounter = new BaseballCounter();
+    private final BallAndStrikeCounter ballAndStrikeCounter = new BallAndStrikeCounter();
 
     public void makeRandomNumber() {
         baseballNumber.clear();
@@ -29,18 +28,18 @@ public class Computer {
     }
 
     public void countBallAndStrike(String input) {
-        baseballCounter.countBallAndStrike(baseballNumber, input);
+        ballAndStrikeCounter.countBallAndStrike(baseballNumber, input);
     }
 
     public void replyBallAndStrike(){
-        BaseballChecker baseballchecker = new BaseballChecker();
-        int ball = baseballCounter.getBall();
-        int strike = baseballCounter.getStrike();
+        BallAndStrikeChecker baseballchecker = new BallAndStrikeChecker();
+        int ball = ballAndStrikeCounter.getBall();
+        int strike = ballAndStrikeCounter.getStrike();
         baseballchecker.reply(ball, strike);
     }
 
     public boolean isCollect() {
-        return (baseballCounter.getStrike() == ALL_STRIKE);
+        return (ballAndStrikeCounter.getStrike() == ALL_STRIKE);
     }
 
 }

@@ -3,7 +3,7 @@ package baseball.verifier;
 import baseball.verifiable.InputNumberEqualLength;
 import baseball.verifiable.InputNumberInRange;
 
-import static baseball.BaseballConstants.*;
+import static baseball.Constants.*;
 
 public class VerifierInputToEndOrNewGame extends Verifier {
     public VerifierInputToEndOrNewGame() {

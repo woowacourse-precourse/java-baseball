@@ -4,7 +4,7 @@ import baseball.verifiable.InputNumberHasDuplication;
 import baseball.verifiable.InputNumberEqualLength;
 import baseball.verifiable.InputNumberInRange;
 
-import static baseball.BaseballConstants.*;
+import static baseball.Constants.*;
 
 public class VerifierInputToBaseballGame extends Verifier {
     public VerifierInputToBaseballGame() {

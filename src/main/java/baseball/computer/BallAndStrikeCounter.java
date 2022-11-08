@@ -2,7 +2,7 @@ package baseball.computer;
 
 import java.util.List;
 
-public class BaseballCounter {
+public class BallAndStrikeCounter {
     private int ball;
     private int strike;
 

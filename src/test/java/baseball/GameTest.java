@@ -6,8 +6,8 @@ import java.io.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BaseballGameTest {
-    private final BaseballGame baseballGame = new BaseballGame();
+public class GameTest {
+    private final Game game = new Game();
 
     @Test
     void isEndGame_반환값이_true() {
@@ -15,7 +15,7 @@ public class BaseballGameTest {
         boolean result;
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        result = baseballGame.isEndGame();
+        result = game.isEndGame();
         assertThat(result).isEqualTo(true);
     }
 
@@ -25,7 +25,7 @@ public class BaseballGameTest {
         boolean result;
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        result = baseballGame.isEndGame();
+        result = game.isEndGame();
         assertThat(result).isEqualTo(false);
     }
 }

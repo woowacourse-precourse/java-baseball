@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class VerifierInputToBaseballGameTest {
+public class VerifierInputToGameTest {
     private final VerifierInputToBaseballGame verifier = new VerifierInputToBaseballGame();
     @ParameterizedTest
     @ValueSource(strings = {"123", "369", "825"})

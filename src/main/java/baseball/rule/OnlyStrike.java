@@ -2,7 +2,7 @@ package baseball.rule;
 
 import baseball.View;
 
-import static baseball.BaseballConstants.*;
+import static baseball.Constants.*;
 
 public class OnlyStrike implements BaseballRule {
     @Override

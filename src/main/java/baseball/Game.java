@@ -5,10 +5,10 @@ import baseball.verifier.VerifierInputToBaseballGame;
 import baseball.verifier.VerifierInputToEndOrNewGame;
 import baseball.verifier.Verifier;
 
-import static baseball.BaseballConstants.NEW_GAME;
+import static baseball.Constants.NEW_GAME;
 
 
-public class BaseballGame {
+public class Game {
     private final Verifier verifierInputToEndOrNewGame = new VerifierInputToEndOrNewGame();
     private final Verifier verifierInputToBaseballGame = new VerifierInputToBaseballGame();
     private final Computer computer = new Computer();

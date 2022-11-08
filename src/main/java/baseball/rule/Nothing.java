@@ -2,8 +2,8 @@ package baseball.rule;
 
 import baseball.View;
 
-import static baseball.BaseballConstants.NO_BALL;
-import static baseball.BaseballConstants.NO_STRIKE;
+import static baseball.Constants.NO_BALL;
+import static baseball.Constants.NO_STRIKE;
 
 public class Nothing implements BaseballRule {
     @Override

@@ -1,6 +1,6 @@
 package baseball;
 
-public final class BaseballConstants {
+public final class Constants {
 
     public static final int DIGIT_MAX = 3;
     public static final int LOWER_NUMBER = 1;
