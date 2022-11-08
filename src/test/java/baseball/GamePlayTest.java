@@ -116,10 +116,9 @@ public class GamePlayTest {
     void 컴퓨터의_숫자가_범위내에서_구성(){
         // given
         List<Integer> computerNumberList = computerNumber.generateNumber();
-        String numbers = "1234567989";
         // when
-        for(int i=0;i<computerNumberList.size();i++){
-            //then
+        for(int i=0; i<computerNumberList.size(); i++) {
+            assertThat(computerNumberList.get(i)).isBetween(1,9);
         }
         //then
     }
