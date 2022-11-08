@@ -30,20 +30,15 @@ public class Controller {
             String userInput = Console.readLine();
             setUserNumeralList(toList(userInput));
             judge();
-            if (isGameClear()) {
-                view.printReplay();
-                userInput = Console.readLine();
-                checkReplayInputValidation(userInput);
-                if (userInput.equals("1")) {
-                    setGameState(Game.GameState.RUNNING);
-                    computer = new Computer();
-                }
-                else if (userInput.equals("2")) setGameState(Game.GameState.OVER);
-            }
-
         }
     }
 
+    public void judge(){
+        countBall();
+        countStrike();
+        printJudgement();
+        beatGame();
+    }
 
     private Game.GameState getGameState(){
         return game.getGameState();
@@ -86,62 +81,12 @@ public class Controller {
         }
     }
 
-    public void printJudgement(){
-        if (game.getBallCount() != 0 && game.getStrikeCount() != 0){
-            view.printBallAndStrike(game.getBallCount(), game.getStrikeCount());
-        }
-        else if (game.getBallCount() != 0) {
-            view.printBall(game.getBallCount());
-        }
-        else if (game.getStrikeCount() != 0){
-            view.printStrike(game.getStrikeCount());
-        }
-        else {
-            view.printNothing();
-        }
-    }
-
-    private void countBall() {
-        game.countBall(computer.getNumeralList(), user.getNumeralList());
-    }
-
-    private void countStrike() {
-        game.countStrike(computer.getNumeralList(), user.getNumeralList());
-    }
-
-    public void judge(){
-        countBall();
-        countStrike();
-        printJudgement();
-        beatGame();
-    }
-
-    private boolean isGameClear(){
-        if (game.getStrikeCount() == Game.ANSWER_LENGTH){
+    private boolean isPatternMatched(String userInput){
+        if (Pattern.matches("^[0-9]*$", userInput)){
             return true;
         }
         return false;
     }
-
-    private void beatGame() {
-        if (isGameClear()) {
-            view.printGameClear(Game.ANSWER_LENGTH);
-            game.setGameState(Game.GameState.CLEAR);
-        }
-    }
-
-    private void checkReplayInputValidation(String userInput){
-        try {
-            if (!userInput.equals(Game.REPLAY) && !userInput.equals(Game.OVER)){
-                throw new IllegalArgumentException();
-            }
-
-        }
-        catch (IllegalArgumentException e){
-            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-        }
-    }
-
 
     private boolean hasDuplicate(String userInput){
         HashSet<Character> hashSet = new HashSet<>();
@@ -157,14 +102,67 @@ public class Controller {
         return false;
     }
 
-    private boolean isPatternMatched(String userInput){
-        if (Pattern.matches("^[0-9]*$", userInput)){
+    private void countBall() {
+        game.countBall(computer.getNumeralList(), user.getNumeralList());
+    }
+
+    private void countStrike() {
+        game.countStrike(computer.getNumeralList(), user.getNumeralList());
+    }
+
+    private boolean isGameClear(){
+        if (game.getStrikeCount() == Game.ANSWER_LENGTH){
             return true;
         }
         return false;
     }
 
+    private void beatGame() {
+        if (isGameClear()) {
+            view.printGameClear(Game.ANSWER_LENGTH);
+            game.setGameState(Game.GameState.CLEAR);
+            view.printReplay();
+            askReplay();
+        }
+    }
 
+    private void askReplay(){
+        String userInput = Console.readLine();
+        checkReplayInputValidation(userInput);
+        if (userInput.equals(Game.REPLAY)) {
+            setGameState(Game.GameState.RUNNING);
+            computer = new Computer();
+        }
+        else if (userInput.equals(Game.OVER)) setGameState(Game.GameState.OVER);
+    }
+
+
+    private void checkReplayInputValidation(String userInput){
+        try {
+            if (!userInput.equals(Game.REPLAY) && !userInput.equals(Game.OVER)){
+                throw new IllegalArgumentException();
+            }
+        }
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+    public void printJudgement(){
+        if (game.getBallCount() != 0 && game.getStrikeCount() != 0){
+            view.printBallAndStrike(game.getBallCount(), game.getStrikeCount());
+        }
+        else if (game.getBallCount() != 0) {
+            view.printBall(game.getBallCount());
+        }
+        else if (game.getStrikeCount() != 0){
+            view.printStrike(game.getStrikeCount());
+        }
+        else {
+            view.printNothing();
+        }
+    }
 
 
 }
