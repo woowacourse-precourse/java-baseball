@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Method;
+import java.util.Iterator;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -66,6 +67,25 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(invoke.size()).isEqualTo(listSize);
+    }
+
+    @Test
+    public void createComputerNumbers_생성하는_숫자_1부터_9까지_범위_테스트() throws Exception {
+        //reflection
+        Method method = Application.class.getDeclaredMethod("createComputerNumbers");
+        method.setAccessible(true);
+
+        List<Integer> invoke = (List<Integer>)method.invoke(new Application());
+        int first = invoke.get(0);
+        int second = invoke.get(1);
+        int third = invoke.get(2);
+
+        assertThat(first).isLessThan(10);
+        assertThat(second).isLessThan(10);
+        assertThat(third).isLessThan(10);
+        assertThat(first).isGreaterThan(0);
+        assertThat(second).isGreaterThan(0);
+        assertThat(third).isGreaterThan(0);
     }
 
     @Override
