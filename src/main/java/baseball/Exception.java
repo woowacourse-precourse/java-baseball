@@ -39,4 +39,10 @@ public class Exception {
 
     }
 
+    public void checkReStarNumberRange(String reStartNumber) {
+        if (!(reStartNumber.charAt(0) >= '1' && reStartNumber.charAt(0) <= '2')) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
