@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.ResultResponse.*;
+
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다");
@@ -17,12 +19,12 @@ public class Application {
                 checkInputCondition(inputNumber);
 
                 List<Integer> listedInputNumber = convertIntegerIntoList(inputNumber);
-//                System.out.println("randomNumber = " + randomNumber);
 
                 int[] countResult = countBallsAndStrikes(randomNumber, listedInputNumber);
-                String resultMessage = printResult(countResult);
+                String resultMessage = getResultMessage(countResult);
                 System.out.println(resultMessage);
-                if (countResult[1] == 3) {
+
+                if (resultMessage.equals("3스트라이크")) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
@@ -95,27 +97,32 @@ public class Application {
         return returnArr;
     }
 
-    static String printResult(int[] countResult) {
+    static String getResultMessage(int[] countResult) {
         int ballCount = countResult[0];
         int strikeCount = countResult[1];
-
-        StringBuilder outputStringBuilder = new StringBuilder();
+        String resultMessage = "";
 
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
-        } else if (ballCount > 0 && strikeCount > 0) {
-            outputStringBuilder.append(ballCount);
-            outputStringBuilder.append("볼 ");
-            outputStringBuilder.append(strikeCount);
-            outputStringBuilder.append("스트라이크");
-        } else if (ballCount == 0 && strikeCount > 0) {
-            outputStringBuilder.append(strikeCount);
-            outputStringBuilder.append("스트라이크");
-        } else if (ballCount > 0 && strikeCount == 0) {
-            outputStringBuilder.append(ballCount);
-            outputStringBuilder.append("볼");
+            resultMessage = NOTHING.getResultMessage();
+        } else if (ballCount == 1 && strikeCount == 0) {
+            resultMessage = ONE_BALL.getResultMessage();
+        } else if (ballCount == 1 & strikeCount == 1) {
+            resultMessage = ONE_BALL_ONE_STRIKE.getResultMessage();
+        } else if (ballCount == 1 && strikeCount == 2) {
+            resultMessage = ONE_BALL_TWO_STRIKE.getResultMessage();
+        } else if (ballCount == 2 && strikeCount == 0) {
+            resultMessage = TWO_BALL.getResultMessage();
+        } else if (ballCount == 2 && strikeCount == 1) {
+            resultMessage = TWO_BALL_ONE_STRIKE.getResultMessage();
+        } else if (ballCount == 0 && strikeCount == 1) {
+            resultMessage = ONE_STRIKE.getResultMessage();
+        } else if (ballCount == 0 && strikeCount == 2) {
+            resultMessage = TWO_STRIKE.getResultMessage();
+        } else if (ballCount == 3 && strikeCount == 0) {
+            resultMessage = THREE_BALL.getResultMessage();
+        } else if (ballCount == 0 && strikeCount == 3) {
+            resultMessage = THREE_STRIKE.getResultMessage();
         }
-
-        return outputStringBuilder.toString();
+        return resultMessage;
     }
 }
