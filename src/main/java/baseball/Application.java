@@ -32,6 +32,7 @@ public class Application {
 
         System.out.println(output.start);
         output.setRandomNumber(computer, gameTypeNumber);
+        new CenterGameProcess(computer, gameTypeNumber);
 
     }
 }
