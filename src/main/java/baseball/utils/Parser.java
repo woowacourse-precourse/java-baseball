@@ -17,4 +17,8 @@ public class Parser {
     private int convertCharToInt(String input, int index) {
         return input.charAt(index) - '0';
     }
+
+    public int parseInt(String input) {
+        return Integer.parseInt(input);
+    }
 }
