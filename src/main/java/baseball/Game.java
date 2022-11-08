@@ -13,7 +13,11 @@ public class Game {
 
     public List<Integer> setComputersRandomAnswer() {
         List<Integer> answer = new ArrayList<>();
-            
+
+        for (int i = 0; i < 3; i++){
+            int addNumber = ListUtil.getRandomIntegerExcludeInList(answer);
+            answer.add(addNumber);
+        }
         return answer;
     }
 
