@@ -27,38 +27,66 @@
 - InputException 클래스
     - 사용자의 입력에 대한 에러 사항들을 처리하는 역할을 담당
 
-- Play 클래스
+- Player 클래스
+    - 프로그램 동작 시에 사용자의 입력에 대한 저장과 연산을 담당
+
+- Computer 클래스
+  - 프로그램 동작 시에 사용자가 맞춰야할 정보에 대한 저장과 연산을 담당
+
+- Game 클래스
     - 숫자 야구 게임을 진행하면서 필요한 연산들을 담당
 
-- Utility 클래스
-    - 프로그램 동작 시에 필요한 입력으로부터 변수 초기화 기능을 담당
-
-- Application 클래스
-    - InputException, Play, Utility 클래스들을 활용하여 숫자 야구 게임 시물레이션을 담당
+- GameController 클래스
+    - InputException, Player, Game, view 클래스들을 활용하여 숫자 야구 게임 시물레이션을 담당
+  
+- view 클래스
+  - 콘솔 내 입출력을 담당
 
 ## 1️⃣  InputException 클래스
 - 함수 구성
-    - isProperLetter
-        - 플레이어가 입력한 문자열 내 숫자가 아닌 문자가 포함된 경우에 대한 예외 처리(예외 1)
-    - isProperLength
-        - 플레이어가 입력한 문자열의 길이가 3이 아닌 경우에 대한 예외 처리(예외 2)
-    - isDuplicate
-      - 플레이어가 입력한 문자열 내 중복된 숫자가 포함된 경우에 대한 예외 처리(예외 3)
-    - isZero
-      - 플레이어가 입력한 문자열 내 0이 포함된 경우에 대한 예외 처리(예외 4)
+  - isNotProperLetter
+      - 플레이어가 입력한 문자열 내 숫자가 아닌 문자가 포함된 경우에 대한 예외 처리(예외1)
+  - isNotProperLength
+      - 플레이어가 입력한 문자열의 길이가 3이 아닌 경우에 대한 예외 처리(예외2)
+  - isDuplicate
+    - 플레이어가 입력한 문자열 내 중복된 숫자가 포함된 경우에 대한 예외 처리(예외3)
+  - containZero
+    - 플레이어가 입력한 문자열 내 0이 포함된 경우에 대한 예외 처리(예외4)
+  - isWrongUserInput
+    - 플레이어가 입력한 문자열에 대한 예외1, 예외2, 예외3, 예외4를 검사하는 함수
 
-## 2️⃣  Play 클래스
-- Strike
-  - 같은 위치에 같은 숫자가 있는지 검사
-- Ball
-  - 다른 위치에 같은 숫자가 있는지 검사
+## 2️⃣  Player 클래스
+- 함수 구성
+    - getNumberPosition
+      - 숫자를 입력받아 플레이어가 가진 숫자 리스트내 인덱스를 반환
+    - getDigits
+      - 플레이어가 가지는 숫자 리스트를 반환
+    - transform
+      - 플레이어가 입력한 문자열을 정수형 리스트로 변환 
+    - createNumbers
+      - 플레이어의 숫자 리스트를 생성
 
-## 3️⃣  Utility 클래스
-- initializeOpponent
-    - 상대방(컴퓨터)의 3자리 수를 `camp.nextstep.edu.missionutils.Randoms`를 이용하여 초기화
-- initializePlayer
-    - 플레이어(사용자)의 3자리 수를 `camp.nextstep.edu.missionutils.Console`를 이용하여 초기화
+## 3️⃣  Game 클래스
+- 함수 구성
+  - judgeState
+    - 상대방과 플레이어의 숫자 리스트를 비교하여 스트라이크와 볼을 집계
+  - countStrike
+    - 같은 위치에 같은 숫자가 있는지 검사하여 스트라이크 수를 집계
+  - countBall
+    - 다른 위치에 같은 숫자가 있는지 검사하여 볼 수를 집계
+    
+## 4️⃣  Computer 클래스
+- 함수 구성
+  - getNumberPosition
+    - 숫자를 입력받아 컴퓨터가 가진 숫자 리스트내 인덱스를 반환
+  - getDigits
+    - 컴퓨터가 가지는 숫자 리스트를 반환
+  - createRandomNumbers
+    - 상대방(컴퓨터)의 숫자 리스트를 생성
 
-## 4️⃣  Application 클래스
-- main
-  - 숫자 야구 게임을 수행
+## 5️⃣  View 클래스
+-함수 구성
+
+## 6️⃣  GameController 클래스
+- 함수 구성
+ 
