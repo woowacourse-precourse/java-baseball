@@ -8,15 +8,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static baseball.Application.compareUserInputToAnswer;
-import static baseball.Application.getRandomThreeDigitNumberString;
-import static baseball.Application.restartGame;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    Application game = new Application();
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -38,7 +37,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 난수_생성_확인() {
-        String randomThreeDigitNumberString = getRandomThreeDigitNumberString();
+        String randomThreeDigitNumberString = game.getRandomThreeDigitNumberString();
         String pattern = "^[1-9]{3}$";
 
         assertThat(Pattern.matches(pattern, randomThreeDigitNumberString)).isTrue();
@@ -54,9 +53,9 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 사용자_입력과_정답_비교() {
-        compareUserInputToAnswer("123","321");
-        compareUserInputToAnswer("123","456");
-        compareUserInputToAnswer("123","123");
+        game.compareUserInputToAnswer("123","321");
+        game.compareUserInputToAnswer("123","456");
+        game.compareUserInputToAnswer("123","123");
 
         assertThat(output()).contains("2볼 1스트라이크","낫싱","3스트라이크");
     }
@@ -66,7 +65,7 @@ class ApplicationTest extends NsTest {
     void 게임재시작_사용자입력_예외_테스트(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() ->  restartGame())
+        assertThatThrownBy(() ->  game.restartGame())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -7,23 +7,26 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Application {
+    private String answer ="";
+
     public static void main(String[] args) {
-        gameStart();
+        Application game = new Application();
+        game.gameStart();
     }
 
-    public static String getRandomThreeDigitNumberString() {
+    public String getRandomThreeDigitNumberString() {
         List<String> computer = new ArrayList<>();
         while (computer.size() < 3) {
-            String randomNumber = Randoms.pickNumberInRange(1, 9)+"";
+            String randomNumber = Randoms.pickNumberInRange(1, 9) + "";
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-
-        return String.join("",  computer);
+        System.out.println(String.join("", computer));
+        return String.join("", computer);
     }
 
-    public static String userInput() {
+    public String userInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInputString = Console.readLine();
 
@@ -31,7 +34,7 @@ public class Application {
         return userInputString;
     }
 
-    public static void userInputValidation(String userInputString) {
+    public void userInputValidation(String userInputString) {
         String pattern = "^[1-9]{3}$";
         if (!Pattern.matches(pattern, userInputString)) {
             throw new IllegalArgumentException();
@@ -47,7 +50,7 @@ public class Application {
         }
     }
 
-    public static int compareUserInputToAnswer(String userInput, String answer) {
+    public int compareUserInputToAnswer(String userInput, String answer) {
         int strike = 0;
         int ball = 0;
 
@@ -72,7 +75,7 @@ public class Application {
         return strike;
     }
 
-    private static boolean checkGameOver(int strike) {
+    private boolean checkGameOver(int strike) {
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return restartGame();
@@ -80,7 +83,7 @@ public class Application {
         return true;
     }
 
-    public static boolean restartGame() {
+    public boolean restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInputString = Console.readLine();
         if (userInputString.equals("1")) {
@@ -92,8 +95,8 @@ public class Application {
         }
     }
 
-    private static void gameStart() {
-        String answer = getRandomThreeDigitNumberString();
+    private void gameStart() {
+        this.answer = getRandomThreeDigitNumberString();
         int strike = 0;
         while (checkGameOver(strike)) {
             strike = compareUserInputToAnswer(userInput(), answer);
