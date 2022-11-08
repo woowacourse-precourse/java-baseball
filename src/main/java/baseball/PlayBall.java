@@ -48,7 +48,7 @@ public class PlayBall {
     public void checkUserInput(String userNumberInput){
 
 
-        exceptionHandler.checkIsDigit(userNumberInput);
+        exceptionHandler.checkIsNoneZeroDigit(userNumberInput);
         exceptionHandler.checkIsValidLength(userNumberInput);
     }
 

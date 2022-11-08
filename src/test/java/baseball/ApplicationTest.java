@@ -16,7 +16,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(
                 () -> {
                     run();
-                    assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.");
+                    assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
                 }
         );
     }
