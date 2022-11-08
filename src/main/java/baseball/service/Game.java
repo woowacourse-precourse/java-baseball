@@ -22,9 +22,10 @@ public class Game {
 
     public void run() {
         OutputView.printStartMessage();
+        init();
         while (true) {
             isEnd = process();
-            if(isEnd) {
+            if (isEnd) {
                 return;
             }
         }
@@ -35,39 +36,46 @@ public class Game {
         rule.generateRandomNumber();
     }
 
-    private List<Integer> getResult() {
-        rule.getNumberByPlayer();
-        return rule.decideStrikeOrBall();
-    }
-
     private boolean process() {
-        init();
         result = getResult();
-        //다 맞았다면
+
         if (result.get(0) == SUCCESS) {
             int reStartFlag = processSucess();
             if (reStartFlag == EXIT) {
                 return true;
             }
             if (reStartFlag == RESTART) {
+                init();
                 return false;
             }
         }
-
-        if(result.get(0) == NOTHING && result.get(1) == NOTHING) {
+        if (result.get(0) == NOTHING && result.get(1) == NOTHING) {
             OutputView.printNothingMessage();
             return false;
         }
+        if (result.get(0) == NOTHING && result.get(1) > NOTHING) {
+            OutputView.printOnlyBallMessage();
+            return false;
+        }
 
-        OutputView.printHintMessage();
+        OutputView.printHintMessage(result.get(0), result.get(1));
         return false;
     }
 
+    private List<Integer> getResult() {
+        OutputView.printInputMessage();
+        rule.getNumberByPlayer();
+        return rule.decideStrikeOrBall();
+    }
+
     private int processSucess() {
+        OutputView.printOnlyStrikeMessage();
         OutputView.printSuccessMessage();
+        OutputView.printReStartMessage();
         String input = InputView.read();
         if (Validation.isValidReStart(input)) {
             return Integer.parseInt(input);
         }
+        return Integer.parseInt(input);
     }
 }
