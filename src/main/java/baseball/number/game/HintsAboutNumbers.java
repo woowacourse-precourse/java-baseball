@@ -2,8 +2,10 @@ package baseball.number.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
-import static baseball.number.game.Game.*;
+import static baseball.number.util.GameNumberRange.BALL_SIZE;
+import static baseball.number.util.GamePhrase.*;
 
 public class HintsAboutNumbers {
 
@@ -15,22 +17,21 @@ public class HintsAboutNumbers {
         playerDigitNumbers = playerNumbers;
         randomDigitNumbers = computerNumbers;
 
-        List<Integer> numbersOfBallAndStrike = countBallAndStrike();
+        int totalBall = countTotalBall();
+        int strike = countStrike();
 
-        return isBallOrStrike(numbersOfBallAndStrike);
+        return isBallOrStrike(totalBall, strike);
     }
 
-    private boolean isBallOrStrike(List<Integer> ballAndStrike) {
+    private boolean isBallOrStrike(int totalBall, int strike) {
 
-        int strike = ballAndStrike.get(0);
-        int totalBall = ballAndStrike.get(1);
         int ball = totalBall - strike;
 
         if(totalBall == strike && totalBall > 0) {
             System.out.println(strike + STRIKE_HINT_MESSAGE.getValue());
-            return strike == 3;
+            return strike == BALL_SIZE.getNumber();
         }
-        if(strike >= 0 && ball > 0 &&ball <= 3) {
+        if(strike >= 0 && ball > 0 &&ball <= BALL_SIZE.getNumber()) {
             if(strike == 0) {
                 System.out.println(ball + BALL_HINT_MESSAGE.getValue());
                 return false;
@@ -42,33 +43,29 @@ public class HintsAboutNumbers {
         System.out.println(NOTHING_HINT_MESSAGE.getValue());
         return false;
     }
-
-    public List<Integer> countBallAndStrike() {
-
-        int totalBall = 0;
-        int strike = 0;
-
-        for(int i = 0; i<3; i++) {
-            int playerDigitNumber = playerDigitNumbers.get(i);
-            int randomDigitNumber = randomDigitNumbers.get(i);
-
-            totalBall = isDigitNumberContain(playerDigitNumber, totalBall);
-            strike = isDigitNumberMatch(playerDigitNumber,randomDigitNumber,strike);
-        }
-        return List.of(strike, totalBall);
+    private int countTotalBall() {
+        int totalBall = (int) playerDigitNumbers.stream()
+                .filter(o -> randomDigitNumbers.stream()
+                        .anyMatch(Predicate.isEqual(o))).count();
+        return totalBall;
     }
 
-    public int isDigitNumberMatch (int playerDigitNumber, int randomDigitNumber, int strike) {
-        if(playerDigitNumber == randomDigitNumber) {
-            strike++;
+    private int countStrike() {
+        int strike = 0;
+
+        for(int number = 0; number<3; number++) {
+            int playerDigitNumber = playerDigitNumbers.get(number);
+            int randomDigitNumber = randomDigitNumbers.get(number);
+
+            strike = isDigitNumberMatch(playerDigitNumber,randomDigitNumber,strike);
         }
         return strike;
     }
 
-    public int isDigitNumberContain(int playerDigitNumber, int totalBall){
-        if(randomDigitNumbers.contains(playerDigitNumber)) {
-            totalBall++;
+    private int isDigitNumberMatch (int playerDigitNumber, int randomDigitNumber, int strike) {
+        if(playerDigitNumber == randomDigitNumber) {
+            strike++;
         }
-        return totalBall;
+        return strike;
     }
 }

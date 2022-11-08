@@ -14,7 +14,7 @@ public class PlayerNumberTest {
     @Test
     void 사용자는_세게의_숫자를_입력해야_한다() {
         List<Integer> expectNumber = List.of(2,3,4);
-        List<Integer> actualNumber = playerNumber.playerNumberToList("234");
+        List<Integer> actualNumber = playerNumber.playerNumberToList();
 
         assertThat(expectNumber).isEqualTo(actualNumber);
     }

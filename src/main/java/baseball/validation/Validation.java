@@ -1,71 +1,42 @@
 package baseball.validation;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.number.game.Game.*;
+import static baseball.number.util.GameNumberRange.*;
+import static baseball.number.util.GamePhrase.*;
 
 public class Validation {
 
-    static final int NUMBER_LENGTH = 3;
-    static final int ZERO = 0;
-
-    public String validatePlayerNumbers(String playersNumber) {
+    public void validatePlayerNumbers(List<Integer> playersNumberList) {
 
 
-        List<Integer> digitNumbers = digitNumbersList(playersNumber);
+        validateListRange(playersNumberList);
 
-        isListLengthEqualsThree(digitNumbers);
+        validateNumberRange(playersNumberList);
 
-        validateNumberContainsZero(digitNumbers);
+        validateDuplicateNumber(playersNumberList);
 
-        validateDuplicateNumber(digitNumbers);
-
-        return playersNumber;
     }
-    private List<Integer> validateNumbers(String[] playersNumberArr,List<Integer> digitNumbers) {
-
-        for(String playersNumber : playersNumberArr) {
-            try {
-                int number = Integer.parseInt(playersNumber);
-                digitNumbers.add(number);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException(ERROR_MESSAGE_ONLY_NUMBER.getValue());
-            }
-        }
-        return digitNumbers;
-    }
-
-    private List<Integer> digitNumbersList(String playersNumber) {
-        List<Integer> digitNumbers = new ArrayList<>();
-        String[] playersNumberArr = playersNumber.split("");
-
-        return validateNumbers(playersNumberArr, digitNumbers);
-    }
-    private void isListLengthEqualsThree(List<Integer> digitNumbers) {
-        if(digitNumbers.size() != NUMBER_LENGTH) {
+    private void validateListRange(List<Integer> digitNumbers) {
+        if(digitNumbers.size() != NUMBER_LENGTH.getNumber()) {
             throw new IllegalArgumentException(ERROR_MESSAGE_LENGTH_THREE.getValue());
         }
     }
 
-    private void validateNumberContainsZero(List<Integer> digitNumbers) {
-        if(digitNumbers.contains(ZERO)) {
+    private void validateNumberRange(List<Integer> digitNumbers) {
+        int count = (int) digitNumbers.stream()
+                .filter(number -> number >= RANGE_MIN.getNumber() && number <= RANGE_MAX.getNumber())
+                .count();
+        if(count != NUMBER_LENGTH.getNumber()) {
             throw new IllegalArgumentException(ERROR_MESSAGE_NUMBER_RANGE_ONE_TO_NINE.getValue());
         }
     }
 
     private void validateDuplicateNumber(List<Integer> digitNumbers) {
-        for(int digitNumber = 0; digitNumber< digitNumbers.size()-1; digitNumber++) {
-            for(int digitNumber2 = digitNumber+1; digitNumber2<digitNumbers.size();digitNumber2++) {
-                throwWhenDuplicateNumber(digitNumbers.get(digitNumber), digitNumbers.get(digitNumber2) );
-            }
-        }
-    }
+        int count = (int) digitNumbers.stream().distinct().count();
 
-    private void throwWhenDuplicateNumber(int number1, int number2) {
-        if(number1 == number2) {
+        if(count != NUMBER_LENGTH.getNumber()) {
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_DUPLICATE.getValue());
         }
     }
-
 }

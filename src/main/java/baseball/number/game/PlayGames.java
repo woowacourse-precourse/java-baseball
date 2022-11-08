@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.number.game.Game.*;
+import static baseball.number.util.GamePhrase.*;
 
 public class PlayGames {
 
@@ -37,11 +37,9 @@ public class PlayGames {
     public void matchNumber(List<Integer> computerNumber) { //컴퓨터의 숫자와 플레이어의 숫자가 일치하는지 확인하는 메서드
         boolean isMatched;
         do {
-            String number = inputNumber();
+            List<Integer> playerNumberList = playerNumber.playerNumberToList();
 
-            List<Integer> client = playerNumber.playerNumberToList(number);
-
-            isMatched = hint.hintAboutNumbers(client, computerNumber);
+            isMatched = hint.hintAboutNumbers(playerNumberList, computerNumber);
             //숫자 입력시 힌트 출력 메서드 추가
             printEndgameMessage(isMatched);
 
