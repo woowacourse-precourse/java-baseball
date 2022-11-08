@@ -10,6 +10,9 @@ public class printCase {
         int ballNum = 0;
 
         try{
+            /**
+             * answer과 input Number들을 비교하며 해당 인덱스에 값이 존재하는 경우 case 별로 출력
+             */
         for(int i=0; i<3; i++) {
             if(answerNumber.contains(inputNumber.get(i))) {
                 if(answerNumber.get(i).equals(inputNumber.get(i))) {
@@ -28,9 +31,16 @@ public class printCase {
 
         if(strikeNum == 0 && ballNum == 0) {
             System.out.println("낫싱");
+        } else if (ballNum == 0) {
+            System.out.printf("%d스트라이크\n", strikeNum);
+        } else if (strikeNum == 0) {
+            System.out.printf("%d볼\n", ballNum);
         } else {
             System.out.printf("%d볼 %d스트라이크\n", ballNum, strikeNum);
         }
+
+
+
         if(strikeNum == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");

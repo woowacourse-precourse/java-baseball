@@ -1,10 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
-
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -16,6 +11,7 @@ public class Application {
             if(b == 1) {
                 continue;
             } else if (b == 2) {
+                System.out.println("게임종료");
                 break;
             }
         }

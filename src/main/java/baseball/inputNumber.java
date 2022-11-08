@@ -13,9 +13,6 @@ public class inputNumber {
 
         System.out.print("숫자를 입력해주세요 : ");
 
-//        int num = in.nextInt();
-//        String s = Integer.toString(num);
-
         String num = Console.readLine();
 
 

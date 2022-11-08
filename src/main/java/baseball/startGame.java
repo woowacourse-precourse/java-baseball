@@ -31,7 +31,6 @@ public class startGame {
                     break;
                 } else {
                     returnNumber = 2;
-                    System.out.println("게임종료");
                     break;
                 }
             }
