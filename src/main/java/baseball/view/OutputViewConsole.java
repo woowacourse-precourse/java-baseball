@@ -33,7 +33,7 @@ public class OutputViewConsole implements OutputView {
 
     @Override
     public void printBaseballGameResult(BaseballGameResult result) {
-        if (result.getBall() == 0 && result.getStrike() == 0) {
+        if (result.getIsNothing()) {
             System.out.println(NOTHING_MESSAGE);
             return;
         }

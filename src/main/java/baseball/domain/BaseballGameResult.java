@@ -3,12 +3,14 @@ package baseball.domain;
 import java.util.Objects;
 
 public class BaseballGameResult {
+    private final boolean isNothing;
     private final int ball;
     private final int strike;
 
     public BaseballGameResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
+        isNothing = (ball == 0 && strike == 0);
     }
 
     public int getBall() {
@@ -17,6 +19,10 @@ public class BaseballGameResult {
 
     public int getStrike() {
         return strike;
+    }
+
+    public boolean getIsNothing(){
+        return isNothing;
     }
 
     public boolean is3Strike() {

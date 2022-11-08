@@ -37,6 +37,7 @@
     - [x] 3스트라이크를 판단하는 메소드
     - [x] ball과 strike의 개수를 저장하고 이를 반환할 getter 메소드추가
     - [x] 테스트 코드를 위해 equal, hashcode 오버라이딩
+    - [x] nothing 여부를 생성자에서 체크하고, 이를 boolean 형태로 반환
 
 - [x] 전체적인 게임의 흐름을 조정할 Controller 클래스
     - [x] 게임을 초기화하고 진행하는 메소드
