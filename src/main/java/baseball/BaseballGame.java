@@ -50,6 +50,13 @@ public class BaseballGame {
         return strikeNum;
     }
 
+    public static boolean isGameRestart() {
+        String restartNum = requireRestartNumber();
+        exceptionRestartNumber(restartNum);
+        int restartNumber = Integer.parseInt(restartNum);
+        return restartNumber == RESTART_NUM;
+    }
+
     public static List<Integer> initComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < GAME_INPUT_LENGTH) {
