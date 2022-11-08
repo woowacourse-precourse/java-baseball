@@ -14,11 +14,11 @@ class HintTest {
     public void 스트라이크_확인() throws Exception {
         //given
         int userNumber = 1;
-        int index_true = 0; // correct index
-        int index_false = 1; // incorrect index
+        int trueIndex = 0; // correct index
+        int falseIndex = 1; // incorrect index
         //when
-        boolean strike_true = hint.isStrike(computerNumber, userNumber, index_true);
-        boolean strike_false = hint.isStrike(computerNumber, userNumber, index_false);
+        boolean strike_true = hint.isStrike(computerNumber, userNumber, trueIndex);
+        boolean strike_false = hint.isStrike(computerNumber, userNumber, falseIndex);
         //then
         assertThat(strike_true).isTrue();
         assertThat(strike_false).isFalse();
@@ -27,11 +27,11 @@ class HintTest {
     @Test
     public void 볼_확인() throws Exception {
         //given
-        int userNumber_true = 3;
-        int userNumber_false = 2;
+        int trueUserNumber = 3;
+        int falseUserNumber = 2;
         //when
-        boolean ball_true = hint.isBall(computerNumber, userNumber_true);
-        boolean ball_false = hint.isBall(computerNumber, userNumber_false);
+        boolean ball_true = hint.isBall(computerNumber, trueUserNumber);
+        boolean ball_false = hint.isBall(computerNumber, falseUserNumber);
         //then
         assertThat(ball_true).isTrue();
         assertThat(ball_false).isFalse();
@@ -82,15 +82,15 @@ class HintTest {
     @Test
     public void 스트라이크가_3개인지_확인() throws Exception {
         //given
-        List<Integer> userNumber_true = List.of(1, 3, 5);
-        List<Integer> userNumber_false = List.of(1, 3, 5);
+        List<Integer> trueUserNumber = List.of(1, 3, 5);
+        List<Integer> falseUserNumber = List.of(1, 3, 5);
         //when
-        hint.score(computerNumber, userNumber_true);
+        hint.score(computerNumber, trueUserNumber);
         boolean threeStrike_true = hint.isAllStrike();
 
         hint.init();
 
-        hint.score(computerNumber, userNumber_false);
+        hint.score(computerNumber, falseUserNumber);
         boolean threeStrike_false = hint.isAllStrike();
         //then
         assertThat(threeStrike_true).isTrue();
