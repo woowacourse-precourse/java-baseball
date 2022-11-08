@@ -2,6 +2,7 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import baseball.constant.Message;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,5 +49,18 @@ public class Player {
         return number.charAt(0) != number.charAt(1)
                 && number.charAt(0) != number.charAt(2)
                 && number.charAt(1) != number.charAt(2);
+    }
+
+    public boolean restart() {
+        System.out.println(Message.RESTART_OR_END);
+
+        String restart = readLine();
+        if (restart.equals(Message.RESTART)) {
+            return true;
+        } else if (restart.equals(Message.END)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
