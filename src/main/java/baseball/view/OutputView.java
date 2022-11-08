@@ -7,9 +7,7 @@ public class OutputView {
 
     User user = new User();
 
-    public void printHint() {
-        int strike = user.getStrike();
-        int ball = user.getBall();
+    public static void printHint(int ball, int strike) {
 
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
