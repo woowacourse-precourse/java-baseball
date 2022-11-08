@@ -33,7 +33,6 @@ public class PlayGameController {
         String choiceRestartOrQuitGame = "";
         if (strike == THREE_STRIKE) {
             choiceRestartOrQuitGame = gameService.inputOneOrTwo();
-            gameService.isNotRestartedAndQuitedGame(choiceRestartOrQuitGame);
         }
         if (strike != THREE_STRIKE) {
             run();
