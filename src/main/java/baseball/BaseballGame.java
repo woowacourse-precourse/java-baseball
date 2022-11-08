@@ -20,6 +20,14 @@ public class BaseballGame {
         return camp.nextstep.edu.missionutils.Console.readLine();
     }
 
+    public static void validateCorrectInputNumber() {
+        if (askRestartGame()) {
+            startGame();
+            return;
+        }
+        System.out.println(END_GAME_ALERT);
+    }
+
     public static boolean correctInputNumber(String ballCount) {
         System.out.println(ballCount);
         return ANSWER_THREE_STRIKE.equals(ballCount);
