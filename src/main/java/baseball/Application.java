@@ -34,11 +34,8 @@ public class Application {
         int strike = 0;
         int ball = 0;
         for(int i=0; i<3; i++){
-            if(inputNumber.get(i) == computer.get(i)){
-                strike ++;
-            } else if ( computer.contains(inputNumber.get(i)) ) {
-                ball++;
-            }
+            if( inputNumber.get(i) == computer.get(i) ) strike ++;
+            else if ( computer.contains(inputNumber.get(i)) ) ball++;
         }
         result.add(strike);
         result.add(ball);
@@ -48,6 +45,10 @@ public class Application {
     public static void output(int strike, int ball) {
         if ( ball == 0 && strike == 0) {
             System.out.println("낫싱");
+        } else if ( strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         } else if ( ball == 0 ){
             System.out.println(strike+"스트라이크");
         } else if ( strike == 0 ){
@@ -77,17 +78,13 @@ public class Application {
             strike = gameResult.get(0);
             ball = gameResult.get(1);
 
-            if ( strike == 3) {
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            output(strike, ball);
 
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            if ( strike == 3) {
+
                 String repeat = Console.readLine();
                 if (repeat.equals("2")) break;
                 else computer.clear();
-
-            } else {
-                output(strike, ball);
             }
         }
     }
