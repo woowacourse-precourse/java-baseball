@@ -17,7 +17,7 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3){
-
+            
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)){
                 computer.add(randomNumber);
@@ -33,6 +33,7 @@ public class Application {
     public static List<Integer> usersChoice(){
 
         String input = Console.readLine();
+        System.out.println(input);
         inputExceptionHandler(input);   // 입력값 예외처리
 
         List<Integer> user = new ArrayList<>();
@@ -100,15 +101,16 @@ public class Application {
     /*
      * 게임 종료 후 숫자 야구 게임 재시작 여부 반환
      */
-    public static boolean restartGame(){
+    public static boolean restartOrQuitGame(){
 
         String input = Console.readLine();
+        System.out.println(input);
 
         if (Integer.valueOf(input).equals(1)){
-            return true;
+            return false;
         }
         else if (Integer.valueOf(input).equals(2)){
-            return false;
+            return true;
         }
         else{
             throw new IllegalArgumentException("you must choose between 1 and 2");
@@ -120,27 +122,25 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
         List<String> results = new ArrayList<>();
         List<Integer> user = new ArrayList<>();
-        boolean restart = false;
+        boolean quit = false;
 
         computer = computersChoice();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true){
+
+            System.out.print("숫자를 입력해주세요 : ");
             user = usersChoice();
             results.add(getGameResult(computer, user));
+            System.out.println(results.get(results.size() - 1));    // 숫자 판별 결과 출력
 
-            // 3스트라이크라면 게임 종료
-            if (getGameResult(computer, user).equals("3스트라이크")){
-                restart = restartGame();    // 게임을 재시작할지 종료할지 여부 결정
-            }
-
-            // 게임을 재시작하기로 했다면 컴퓨터는 다시 랜덤 숫자를 선택
-            if (restart){
+            if (results.get(results.size() - 1).equals("3스트라이크")){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 computer = computersChoice();
-                restart = false;    // 초기화
+                quit = restartOrQuitGame();    // 게임을 재시작할지 종료할지 여부 결정
             }
-            else if (getGameResult(computer, user).equals("3스트라이크")){
-                results.add("게임 종료");
-                System.out.println(results);
+            if (quit){
                 break;
             }
         }
