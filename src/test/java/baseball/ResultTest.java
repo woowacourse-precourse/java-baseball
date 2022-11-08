@@ -64,5 +64,4 @@ class ResultTest {
     void 컴퓨터_리스트_종료_초기화(){
         computerList.clear();
     }
-
 }

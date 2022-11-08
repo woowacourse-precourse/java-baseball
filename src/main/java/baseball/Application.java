@@ -11,5 +11,4 @@ public class Application {
         game.repeatBaseBallGame();
         // TODO: 프로그램 구현
     }
-
 }

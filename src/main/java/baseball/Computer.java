@@ -19,5 +19,4 @@ public class Computer {
         }
         this.integerList = integerList;
     }
-
 }
