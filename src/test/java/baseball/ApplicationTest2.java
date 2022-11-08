@@ -28,6 +28,19 @@ class ApplicationTest2 extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_숫자가_아닌_문자가_입력되는_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("-22"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     // strikeCount()
     @Test
     void 스트라이크_점수_계산() {
