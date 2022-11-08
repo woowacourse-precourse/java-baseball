@@ -73,30 +73,36 @@ public class Application {
 
         String userString = Console.readLine();
 
+        checkLengthOfNumber(userString);
         checkNegativeNumber(userString);
         checkZeroInNumber(userString);
-        checkLengthAndDuplication(userString);
+        checkDuplicationOfNumber(userString);
 
         return userStringToInteger(userString);
     }
 
+    public static void checkLengthOfNumber(String userString) {
+
+        if (userString.length() != Constants.NUMBER_SIZE)
+            throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
+    }
+
     public static void checkNegativeNumber(String userString) {
+
         if (userString.contains("-"))
             throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
     }
 
     public static void checkZeroInNumber(String userString) {
+
         if (userString.contains("0"))
             throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
     }
 
-    public static void checkLengthAndDuplication(String userString) {
+    public static void checkDuplicationOfNumber(String userString) {
         Set<Object> numberSet = new HashSet<>();
         for (int i = 0; i < userString.length(); i++)
             numberSet.add(userString.charAt(i));
-
-        if (userString.length() != Constants.NUMBER_SIZE)
-            throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
 
         if (numberSet.size() != Constants.NUMBER_SIZE)
             throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
