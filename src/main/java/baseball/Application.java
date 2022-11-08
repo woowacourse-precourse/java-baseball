@@ -95,16 +95,19 @@ public class Application {
     }
 
     private static void printAResult(int ball, int strike) {
+        String message = "";
         if (ball != 0) {
-            if (strike == 0) {
-                System.out.println(ball + "볼");
-            } else {
-                System.out.println(ball + "볼 " + strike + "스트라이크");
-            }
-        } else if (strike == 0) {
-            System.out.println("낫싱");
-        } else {
-            System.out.println(strike + "스트라이크");
+            message = ball + "볼";
         }
+        if (ball != 0 && strike != 0) {
+            message = message + " ";
+        }
+        if (strike != 0) {
+            message = message + strike + " 스트라이크";
+        }
+        if (ball == 0 && strike == 0) {
+            message = "낫싱";
+        }
+        System.out.println(message);
     }
 }
