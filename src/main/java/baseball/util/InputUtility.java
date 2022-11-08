@@ -1,10 +1,18 @@
 package baseball.util;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
 public class InputUtility {
+
+    public static String readLine(int type) {
+        String input = Console.readLine();
+        validationTest(input, type);
+        return input;
+    }
+
 
     private static void validationTest(String input, int type) {
 
