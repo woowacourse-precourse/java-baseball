@@ -23,6 +23,10 @@ public class CompareNumber {
                 ballCount++;
             }
         }
+        return printHint(strikeCount, ballCount);
+    }
+
+    private boolean printHint(int strikeCount, int ballCount) {
         if (strikeCount != 0 && ballCount != 0) {
             System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
         } else if (strikeCount != 0) {
@@ -34,7 +38,7 @@ public class CompareNumber {
             System.out.println(strikeCount + "스트라이크");
         } else if (ballCount != 0) {
             System.out.println(ballCount + "볼");
-        } else if (strikeCount == 0 && ballCount == 0) {
+        } else {
             System.out.println("낫싱");
         }
         return false;
