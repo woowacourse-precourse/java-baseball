@@ -1,37 +1,70 @@
-# 미션 - 숫자 야구
+# 숫자 야구 과제 (이충안)
 
-## 🔍 진행 방식
+### 과제 진행 관련 자료
+- [문제 내용(우테코 Github Repository)](https://github.com/woowacourse-precourse/java-onboarding)
+- [공부한 내용(Notion)](https://brass-thrush-37b.notion.site/2-605811a6d6b64da8aa8d0bc372b9242d)
+- [회고록(velog)](https://velog.io/@gwichanlee/%EC%9A%B0%ED%85%8C%EC%BD%94-4%EA%B8%B0-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-2%EC%A3%BC%EC%B0%A8-%ED%9A%8C%EA%B3%A0)
 
-- 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
-- 세 개의 요구 사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
-- 기능 요구 사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
+## 🔍 설계에서 신경쓴 점
 
-## 📮 미션 제출 방법
+### 확장성 고려
+- 숫자 야구 게임에서 3자리가 아닌 다른 자릿수에서도 확장해서 만들 수 있도록 함
+    - 예시) 4자리 숫자야구, 5자리 숫자 야구
+- 다른 게임 형식으로도 확장할 수 있도록 함
+    - 예시) 숫자 UpDown, 숫자 맞추기
+- Input, Output 방식을 확장할 수 있도록 함
 
-- 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
-      제출한다.
-- GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
-    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+### 도메인 분리
+- 우선적으로 구현해야 할 기능 목록을 전부 생각함
+- 현실세계와 대응하여 도메인을 분리함
+- 도메인마다 적절한 책임을 부여하여 도메인별로 기능을 구현함
+- 이외 한 Class에서 역할이 많을 경우, 다른 Class로 기능을 분리함
 
-## 🚨 과제 제출 전 체크 리스트 - 0점 방지
+### 관련 Markdown 문서
+- [구현했던 과정](./docs/PROCESS.md)
+- [구현 기능 목록](./docs/README.md) : 최대한 작업 단위로 나누려고 노력함
 
-- 기능 구현을 모두 정상적으로 했더라도 **요구 사항에 명시된 출력값 형식을 지키지 않을 경우 0점으로 처리**한다.
-- 기능 구현을 완료한 뒤 아래 가이드에 따라 테스트를 실행했을 때 모든 테스트가 성공하는지 확인한다.
-- **테스트가 실패할 경우 0점으로 처리**되므로, 반드시 확인 후 제출한다.
+## 🔍 구현에서 신경쓴 점
 
-### 테스트 실행 가이드
+### Convention
+- 우테코에서 제공하는 Convention을 지키려 노력함
+  - [Coding Covention 정리](https://brass-thrush-37b.notion.site/Coding-Convention-d1f89bdfb8954e4d914d89d294a934e9)
+  - [Git Convention 정리](https://brass-thrush-37b.notion.site/Git-Convention-99cb6513d4a4446a8a9ddf268fbd0e44)
 
-- 터미널에서 `java -version`을 실행하여 Java 버전이 11인지 확인한다. 또는 Eclipse 또는 IntelliJ IDEA와 같은 IDE에서 Java 11로 실행되는지 확인한다.
-- 터미널에서 Mac 또는 Linux 사용자의 경우 `./gradlew clean test` 명령을 실행하고,   
-  Windows 사용자의 경우  `gradlew.bat clean test` 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
+### 메서드 구현
+- 최대한 하나의 메서드에는 하나의 기능만 넣기 위해 노력함
+- 주석 사용을 최대한 안하고, 메서드 이름이나 변수 이름 만으로도 코드를 이해할 수 있게 노력함
+- java stream을 이용해 최대한 주어진 API를 이용해 간결하게 표현하려고 노력함
+- 예시 (BaseballResponse.java의 일부 코드)
+    ```java
+    private int countStrike(List<Integer> answer, List<Integer> candidate) {
+        return (int) IntStream.range(0, answer.size())
+                .filter(index -> answer.get(index) == candidate.get(index))
+                .count();
+    }
 
-```
-BUILD SUCCESSFUL in 0s
-```
+    private int countBall(List<Integer> answer, List<Integer> candidate) {
+        return (int) IntStream.range(0, candidate.size())
+                .filter(index -> isInListAndIndexNotMatched(answer, candidate.get(index), index))
+                .count();
+    }
+
+    private boolean isInListAndIndexNotMatched(List<Integer> list, int number, int index) {
+        return IntStream.range(0, list.size())
+                .filter(listIndex -> listIndex != index)
+                .filter(listIndex -> list.get(listIndex) == number)
+                .count() != 0;
+    }
+    ```
+
+### 유닛 테스트
+- 최대한 단위 기능마다 유닛 테스트를 구현함
+- Mockito를 사용하여 테스트 대상과 다른 객체의 결과에 의해 영향을 받지 않으려 함
+- 리팩토링 후에는 단위 테스트 통과를 항상 확인함
 
 ---
+# 과제 요구 사항
+- 아래의 요구 사항들을 지키기 위해 최대한 노력하였음
 
 ## 🚀 기능 요구 사항
 
@@ -152,4 +185,3 @@ while (computer.size() < 3) {
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
-- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
