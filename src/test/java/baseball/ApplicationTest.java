@@ -112,4 +112,24 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1, 2 이외의 값을 입력했습니다.");
     }
+
+    @Test
+    void printCount_볼카운트를_형식에_맞게_출력() {
+        List<Integer> input = List.of(3, 0, 0);
+        List<Integer> input2 = List.of(0, 3, 0);
+        List<Integer> input3 = List.of(0, 0, 3);
+        List<Integer> input4 = List.of(1, 2, 0);
+        List<Integer> input5 = List.of(1, 0, 2);
+        List<Integer> input6 = List.of(0, 1, 2);
+        List<Integer> input7 = List.of(1, 1, 1);
+
+        assertThat(Application.printCount(input)).isEqualTo("3스트라이크");
+        assertThat(Application.printCount(input)).isEqualTo("3볼");
+        assertThat(Application.printCount(input)).isEqualTo("낫싱");
+        assertThat(Application.printCount(input)).isEqualTo("1스트라이크 2볼");
+        assertThat(Application.printCount(input)).isEqualTo("1스트라이크");
+        assertThat(Application.printCount(input)).isEqualTo("1볼");
+        assertThat(Application.printCount(input)).isEqualTo("1스트라이크 1볼");
+
+    }
 }
