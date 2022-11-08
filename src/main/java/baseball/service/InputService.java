@@ -21,12 +21,12 @@ public class InputService {
   }
 
   private void checkPlayerNumbers(String input) {
-    if (isValidateLength(input) || hasDuplicateNumbers(input) || hasInvalidRange(input)) {
+    if (isInValidLength(input) || hasDuplicateNumbers(input) || hasInvalidRange(input)) {
       throw new IllegalArgumentException();
     }
   }
 
-  private boolean isValidateLength(String input) {
+  private boolean isInValidLength(String input) {
     return input.length() != RANDOM_NUMBER_SIZE;
   }
 
