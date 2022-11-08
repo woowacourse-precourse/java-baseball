@@ -59,4 +59,12 @@ public class Application {
         }
     }
 
+    public static boolean strikeInspection(int input, int computer) {
+
+        if (input == computer) {
+            return true;
+        }
+        return false;
+    }
+
 }
