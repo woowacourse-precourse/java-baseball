@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Game {
     private static final int RESTART = 1;
     private static final int EXIT = 2;
+
     private final Computer computer;
     private final User user;
 
