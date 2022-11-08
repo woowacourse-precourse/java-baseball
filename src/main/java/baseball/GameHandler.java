@@ -20,6 +20,39 @@ public class GameHandler {
     public static List<Integer> inputNumber;
     public static List<Integer> compareResult;
 
+    private void selectNumber() {
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
+        }
+    }
+
+    private void validationCheck(String input) {
+        if(input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        if(input.charAt(0) == input.charAt(1)) {
+            throw new IllegalArgumentException();
+        }
+
+        if(input.charAt(0) == input.charAt(2)) {
+            throw new IllegalArgumentException();
+        }
+
+        if(input.charAt(1) == input.charAt(2)) {
+            throw new IllegalArgumentException();
+        }
+
+        for(char c : input.toCharArray()) {
+            if(c < '1' || c > '9') {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
     public void init() {
         isGameEnd = false;
         computerNumber = new ArrayList<>();
@@ -29,21 +62,12 @@ public class GameHandler {
         System.out.println(GAME_START);
     }
 
-    public void inputHandler() {
+    public void inputHandler() throws IllegalArgumentException {
         System.out.println(INSERT_NUMBER);
         String input = Console.readLine();
         // validation check
         for(char c : input.toCharArray()) {
             inputNumber.add(c - '0');
-        }
-    }
-
-    private void selectNumber() {
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
-            }
         }
     }
 
