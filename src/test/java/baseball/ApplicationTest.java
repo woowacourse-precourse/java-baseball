@@ -15,11 +15,11 @@ class ApplicationTest extends NsTest {
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
-                () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-                },
-                1, 3, 5, 5, 8, 9
+            () -> {
+                run("246", "135", "1", "597", "589", "2");
+                assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+            },
+            1, 3, 5, 5, 8, 9
         );
     }
 
@@ -27,8 +27,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 입력_예외_테스트_1() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("1234"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -36,8 +36,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 입력_예외_테스트_2() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("가12"))
-                        .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("가12"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -45,8 +45,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 입력_예외_테스트_3() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("122"))
-                        .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("122"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -54,11 +54,11 @@ class ApplicationTest extends NsTest {
     @Test
     void 입력_예외_테스트_4() {
         assertRandomNumberInRangeTest(
-                () -> {
-                    assertThatThrownBy(() -> run("135","a"))
-                            .isInstanceOf(IllegalArgumentException.class);
-                },
-                1, 3, 5
+            () -> {
+                assertThatThrownBy(() -> run("135", "a"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            },
+            1, 3, 5
         );
     }
 

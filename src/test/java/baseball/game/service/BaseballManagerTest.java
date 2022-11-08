@@ -27,12 +27,12 @@ class BaseballManagerTest {
 
         assertFalse(isRegame);
     }
-    
+
     @Test
     void 잘못된_입력() {
         String regameValue = "가나다라";
 
         assertThatThrownBy(() -> BaseballManager.isRegame(regameValue))
-                .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }

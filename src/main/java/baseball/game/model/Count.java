@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Count {
+
     private final int BALL;
     private final int STRIKE;
 
@@ -16,14 +17,15 @@ public class Count {
 
     public int setBall(List<Integer> computerNumber, List<Integer> userNumber) {
         return (int) IntStream.range(0, Common.ESSENTIAL_LENGTH)
-                .filter(i -> computerNumber.get(i) != userNumber.get(i) && computerNumber.contains(userNumber.get(i)))
-                .count();
+            .filter(i -> computerNumber.get(i) != userNumber.get(i) && computerNumber.contains(
+                userNumber.get(i)))
+            .count();
     }
 
     public int setStrike(List<Integer> computerNumber, List<Integer> userNumber) {
         return (int) IntStream.range(0, Common.ESSENTIAL_LENGTH)
-                .filter(i -> computerNumber.get(i) == userNumber.get(i))
-                .count();
+            .filter(i -> computerNumber.get(i) == userNumber.get(i))
+            .count();
     }
 
     public boolean isNothing() {
@@ -50,7 +52,9 @@ public class Count {
 
     @Override
     public String toString() {
-        if (isNothing()) { return "낫싱"; }
+        if (isNothing()) {
+            return "낫싱";
+        }
 
         String hint = "";
 

@@ -16,13 +16,13 @@ public class UserNumber {
             throw new IllegalArgumentException(Exception.NO_NUMBER);
         }
 
-        if(!isDuplicateNumber(userInput)) {
+        if (!isDuplicateNumber(userInput)) {
             throw new IllegalArgumentException(Exception.DUPLICATE_NUMBER);
         }
 
         return Arrays.stream(userInput.split(""))
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
+            .map(s -> Integer.parseInt(s))
+            .collect(Collectors.toList());
 
     }
 
@@ -32,18 +32,18 @@ public class UserNumber {
 
     private static boolean isNumber(String userInput) {
 
-        return IntStream.range(0,userInput.length())
-                .filter(i -> !Character.isDigit(userInput.charAt(i)))
-                .findAny()
-                .isEmpty();
+        return IntStream.range(0, userInput.length())
+            .filter(i -> !Character.isDigit(userInput.charAt(i)))
+            .findAny()
+            .isEmpty();
     }
 
     private static boolean isDuplicateNumber(String userInput) {
         Set<String> numberSet = new HashSet<>();
 
         Arrays.stream(userInput.split(""))
-                .map(s -> numberSet.add(s))
-                .collect(Collectors.toSet());
+            .map(s -> numberSet.add(s))
+            .collect(Collectors.toSet());
 
         return numberSet.size() == 3;
     }
