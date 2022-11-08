@@ -14,6 +14,8 @@
         - userball 상태 정보가 정답인지 판단
             - 정답이면, outview 에서 정답 출력문 호출 하며 true 반환
             - 정답이 아니면 false 반환
+
+
 2. domain : 핵심 도메인 model 부분
     - 스트라이크 개수, 볼 개수 필드
     - 볼개수 업데이트 하는 메서드
@@ -21,21 +23,26 @@
     - 도메인 상태 정보 업데이트 메서드
     - 3스트라이크인지 판단하는 메서드
     - userballstatusdto 를 반환하는 메서드
+
+
 3. service : 순수 도메인만 관리하는 부분
-    1. 입력값을 판단한하는 역할 (핵심 로직) (스트라이크, 볼, 낫싱 등등)  -> UserBallService
-        - 우선 유저 입력값에 따른 UserBall 생성
-            - 이때 입력값에 따라 ball , strike가 몇개인지 판다하며 userball 업데이트 한다
-        - 정답이 아니면, 볼, 스타라이크 개수에 따라 Ouputview 출력문 호출하고 false 반환
+    - 우선 유저 입력값에 따른 UserBall 생성
+
+
 4. view : 사용자에게 화면을 보여주는 부분에 초점
     1. 입력을 받는 역할 (inputView)
         - 게임 시작 문구 출력하는 메서드
         - 정답 값을 맞추고 게임을 종료할 것인지 사용자한테 출력문 출력 메서드
     2. 출력을 받는 역할 (outputView) :"service 한테 받은" domain 정보에 따라 출력문 출력
         - 정답을 맞추면 출력하는 메서드
+
+
 5. util : 유용한 패키지 (외부의 의존성 없이 인자값만 받아 처리하는 부분, 에러 상수값)
     - 예외를 처리하는 상수 -> errorConst
     - inputView, outputView에서 사용하는 상수 -> viewConst
     - 입력값을 이 valid 한지 판단하는 로직 -> inputvalidUtil
+
+
 6. config :
     - 새로운 객체 매번 생성해주기 보다 생성자 주입 활용
     - 애플리케이션 초기 객체 설정
@@ -63,7 +70,9 @@
     3. 게임 종료 관련 로직 담당 컨트롤러 -> GameEndController
         - userball의 상태 정보에 따른 출력 메서드
         - userball 상태 정보에 따른 종료 조건 판단 메서드
-4. domain : 핵심 도메인 model 부분
+
+
+2. domain : 핵심 도메인 model 부분
     - 스트라이크 개수, 볼 개수 필드
     - 볼개수 업데이트 하는 메서드
     - 스트라이크 개수 업데이트하는 메서드
@@ -71,20 +80,27 @@
     - 도메인 상태 정보 업데이트 메서드
     - 3스트라이크인지 판단하는 메서드
     - userballstatusdto 를 반환하는 메서드
-5. service : 순수 도메인만 관리하는 부분
-    1. 입력값을 판단한하는 역할 (핵심 로직) (스트라이크, 볼, 낫싱 등등)  -> UserBallService
-        - UserBall 객체를 생성 및 입력값에 따른 ball, strike 업데이트 메서드
-6. view : 사용자에게 화면을 보여주는 부분에 초점
+
+
+3. service : 순수 도메인만 관리하는 부분
+    - UserBall 객체를 생성 및 입력값에 따른 ball, strike 업데이트 메서드
+
+
+4. view : 사용자에게 화면을 보여주는 부분에 초점
     1. 입력을 받는 역할 (inputView)
         - 게임 시작 문구 출력하는 메서드
         - 정답 값을 맞추고 게임을 종료할 것인지 사용자한테 출력문 출력 메서드
     2. 출력을 받는 역할 (outputView) :"service 한테 받은" domain 정보에 따라 출력문 출력
         - 정답을 맞추면 출력하는 메서드
-7. util : 유용한 패키지 (외부의 의존성 없이 인자값만 받아 처리하는 부분, 에러 상수값)
+
+
+5. util : 유용한 패키지 (외부의 의존성 없이 인자값만 받아 처리하는 부분, 에러 상수값)
     - 예외를 처리하는 상수 -> errorConst
     - inputView, outputView에서 사용하는 상수 -> viewConst
     - 입력값을 이 valid 한지 판단하는 로직 -> inputvalidUtil
-8. config :
+
+
+6. config :
     - 사용할 객체 생성 및 생성자 주입
 
 
