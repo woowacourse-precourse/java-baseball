@@ -6,8 +6,6 @@ import baseball.model.Result;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
-
 public class BaseBallController {
 
     private static final int CONTINUE = 1;
@@ -32,11 +30,7 @@ public class BaseBallController {
 
     private void playGame() {
         boolean isGameEnd = false;
-        List<Integer> generate = NumberGenerator.generate();
-        for (Integer integer : generate) {
-            System.out.print(integer);
-        }
-        Balls computerBalls = new Balls(generate);
+        Balls computerBalls = new Balls(NumberGenerator.generate());
 
         while (!isGameEnd) {
             Result result = matchBalls(computerBalls);
