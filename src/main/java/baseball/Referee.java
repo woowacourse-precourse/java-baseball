@@ -38,20 +38,21 @@ public class Referee {
 
     public int countBall(String input, String answer) {
         Queue<Character> compareTarget = new LinkedList<>();
-        for (int i = 0; i < answer.length(); i++) {
-            compareTarget.add(answer.charAt(i));
+        for (int answerIndex = 0; answerIndex < answer.length(); answerIndex++) {
+            char digitOfAnswer = answer.charAt(answerIndex);
+            compareTarget.add(digitOfAnswer);
         }
 
         int count = 0;
         for (int inputIdx = 0; inputIdx < input.length(); inputIdx++) {
-            char target = input.charAt(inputIdx);
-            char firstChar = compareTarget.poll();
+            char firstNumber = compareTarget.poll();
 
+            char target = input.charAt(inputIdx);
             if (compareTarget.contains(target)) {
                 count++;
             }
 
-            compareTarget.add(firstChar);
+            compareTarget.add(firstNumber);
         }
 
         return count;
