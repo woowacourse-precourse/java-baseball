@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 게임 도중에 나올 수 있는 Ball의 범위를 관리하는 enum입니다
  */
-public enum Ball {
+enum Ball {
     ZERO(0),
     ONE(1),
     TWO(2),

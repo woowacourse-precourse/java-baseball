@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 1자리 숫자의 범위를 관리하는 enum입니다
  */
-public enum Digit {
+enum Digit {
     ZERO(0),
     ONE(1),
     TWO(2),

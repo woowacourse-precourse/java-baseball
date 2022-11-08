@@ -5,7 +5,7 @@ import static baseball.config.GameConstants.BASEBALL_NUMBER_LENGTH;
 /**
  * 컴퓨터에 의해서 랜덤하게 만들어진 숫자를 가지고 있는 클래스
  */
-public final class RandomDigits extends Digits {
+final class RandomDigits extends Digits {
     private final RandomInRange random;
 
     private RandomDigits(RandomInRange random) {

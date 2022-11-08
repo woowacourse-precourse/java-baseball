@@ -8,7 +8,7 @@ import static baseball.config.GameConstants.DIGITS_OUT_OF_INDEX;
 /**
  * Digit의 배열을 감싼 일급 컬렉션입니다
  */
-public class Digits {
+class Digits {
     private final List<Digit> digitList;
 
     Digits() {

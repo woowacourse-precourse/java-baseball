@@ -3,7 +3,7 @@ package baseball.game;
 /**
  * 점수 계산의 책임을 담당하는 클래스
  */
-public final class Score {
+final class Score {
     private final Ball ball;
     private final Strike strike;
 

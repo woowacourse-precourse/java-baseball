@@ -1,5 +1,5 @@
 package baseball.game;
 
-public interface RandomInRange {
+interface RandomInRange {
     Digit pickRandomInRange(int startInclusive, int endInclusive);
 }

@@ -11,7 +11,7 @@ import static baseball.config.GameConstants.MIN_INPUT_INCLUSIVE;
 /**
  * 사용자 입력이 유효한 지 검증하는 클래스
  */
-public final class PlayerInput extends Digits {
+final class PlayerInput extends Digits {
     private PlayerInput(int value) {
         if (!isInputValidInRange(value)) {
             throw new IllegalArgumentException(INPUT_OUT_OF_RANGE);

@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 사용자로부터 입력을 받아서 종료, 재시도를 결정할 때
  * 각각에 해당하는 1,2를 모아둔 enum입니다
  */
-public enum CommandKey {
+enum CommandKey {
     RETRY(1),
     FINISH(2);
 
