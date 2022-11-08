@@ -25,9 +25,7 @@ public class Application {
 		List<Integer> computerPickNums = new ArrayList<>();
 		while (computerPickNums.size() < 3) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
-			if (!computerPickNums.contains(randomNumber)) {
-				computerPickNums.add(randomNumber);
-			}
+			overlapTest(randomNumber, computerPickNums);
 		}
 		return computerPickNums;
 	}
@@ -49,7 +47,10 @@ public class Application {
 		int numOne = (int) (playerInput / 100) % 10;
 		int numTwo = (int) (playerInput / 10) % 10;
 		int numThree = playerInput % 10;
-		if (numOne == numTwo || numTwo == numOne || numThree == numOne || numOne == 0 || numTwo == 0 || numThree == 0) {
+		if (numOne == 0 || numTwo == 0 || numThree == 0) {
+			error();
+		}
+		if (numOne == numTwo || numTwo == numThree || numThree == numOne) {
 			error();
 		}
 		answer.add(numOne);
@@ -78,13 +79,22 @@ public class Application {
 
 	public static int findball(List<Integer> computerPickNums, List<Integer> playerPickNums) {
 		int ball = 0;
-		if (playerPickNums.get(0) == computerPickNums.get(1) || playerPickNums.get(0) == computerPickNums.get(2)) {
+		if (playerPickNums.get(0) == computerPickNums.get(1)) {
 			ball++;
 		}
-		if (playerPickNums.get(1) == computerPickNums.get(2) || playerPickNums.get(1) == computerPickNums.get(0)) {
+		if (playerPickNums.get(0) == computerPickNums.get(2)) {
 			ball++;
 		}
-		if (playerPickNums.get(2) == computerPickNums.get(0) || playerPickNums.get(2) == computerPickNums.get(1)) {
+		if (playerPickNums.get(1) == computerPickNums.get(2)) {
+			ball++;
+		}
+		if (playerPickNums.get(1) == computerPickNums.get(0)) {
+			ball++;
+		}
+		if (playerPickNums.get(2) == computerPickNums.get(0)) {
+			ball++;
+		}
+		if (playerPickNums.get(2) == computerPickNums.get(1)) {
 			ball++;
 		}
 		return ball;
@@ -119,5 +129,11 @@ public class Application {
 		} else {
 			error();
 		}
+	}
+	
+	public static int overlapTest(int randomNumber, List<Integer> computerPickNums) {
+		if (!computerPickNums.contains(randomNumber)) {
+			computerPickNums.add(randomNumber);
+		}		
 	}
 }
