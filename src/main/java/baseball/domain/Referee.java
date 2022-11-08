@@ -24,4 +24,20 @@ public class Referee {
 
         return strike;
     }
+
+    public Integer countBall(List<Integer> computerList, List<Integer> myList){
+
+        for (int i = 0; i < 3; i++) {
+            if(Objects.equals(computerList.get(i), myList.get((i + 1) % 3))){
+                ball++;
+            }
+
+            if(Objects.equals(computerList.get(i), myList.get((i + 2) % 3))){
+                ball++;
+            }
+        }
+
+        return ball;
+    }
+
 }
