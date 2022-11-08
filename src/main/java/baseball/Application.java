@@ -44,5 +44,8 @@ public class Application {
                 countBall ++;
             }
         }
+
+        //결과 출력
+        System.out.println(countBall + "볼 " + countStrike + "스트라이크");
     }
 }
