@@ -31,6 +31,19 @@ public class BaseballGameService {
         player = new Player(parser.parsePlayerNumbers(playerInput));
     }
 
+    public void playBaseballGame() {
+        boolean isPlay = true;
+        while (isPlay) {
+            score = new Score(0, 0);
+            play();
+
+            if (score.getStrike() == RESULT_COUNT) {
+                System.out.println(RESULT_COUNT + GAME_SUCCESS.getMessage());
+                isPlay = false;
+            }
+        }
+    }
+
     private void play() {
         System.out.print(REQUEST_INPUT.getMessage());
         setPlayer();
