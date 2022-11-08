@@ -24,7 +24,6 @@ public class inputNumber {
             Integer integer = Integer.valueOf(string);
             inputNumber.add(integer);
         }
-//        System.out.println(inputNumber);
         return inputNumber;
     }
 }
