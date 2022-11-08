@@ -8,7 +8,7 @@ public class BaseballGame {
     private static final Input inputView = new Input();
     ComputerNumber computerNumber = new ComputerNumber();
 
-    private String correctNumber = computerNumber.getBaseballNumber();
+    private final String correctNumber = computerNumber.getBaseballNumber();
 
     private boolean exit = false;
 
@@ -19,29 +19,20 @@ public class BaseballGame {
         Output.baseballStartMessage();
 
         do {
+            System.out.println(correctNumber);
             String input = inputView.inputNumber();
             resetScore();
             compareNumber(input);
             Output.baseballResult(strike, ball);
 
             if (strike == 3) {
-                readyToExit(computerNumber);
+                exit = true;
             }
         } while (!exit);
     }
     private void resetScore() {
         strike = 0;
         ball = 0;
-    }
-
-    private void readyToExit(ComputerNumber computerNumber) {
-        String input = inputView.inputExit();
-        if ("2".equals(input)) {
-            exit = true;
-            Output.baseballEndMessage();
-        } else {
-            correctNumber = computerNumber.getBaseballNumber();
-        }
     }
 
     public void compareNumber(String input) {
