@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Constant.LENGTH_OF_NUMBER;
+import static baseball.Constant.WIN_MSG;
 
 import java.util.List;
 
@@ -33,6 +34,14 @@ public class Hint {
 
     public boolean isBall(List<Integer> computerNumber, int userNumber) {
         if (computerNumber.contains(userNumber)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isThreeStrike() {
+        if (strikeCount == LENGTH_OF_NUMBER) {
+            System.out.println(WIN_MSG);
             return true;
         }
         return false;
