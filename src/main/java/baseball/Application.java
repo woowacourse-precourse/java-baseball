@@ -44,6 +44,21 @@ public class Application {
         return strike;
     }
 
+    // 기능 목록 5 : 같은 수가 다른 자리에 있을 경우, 볼 확인
+    static int countBall(List<Integer> computer, List<Integer> player) {
+        int Ball = 0;
+
+        for (int i = 0; i < player.size(); i++) {
+            if (computer.get(i) == player.get(i)) {
+                continue;
+            } else if (computer.contains(player.get(i))) {
+                Ball += 1;
+            }
+        }
+        return Ball;
+    }
+
+
 
 
 
