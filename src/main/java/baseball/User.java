@@ -10,15 +10,20 @@ public class User {
 
     private final static int MAX_SIZE = 3;
 
-    private List<Integer> number;
+    private List<Integer> numbers = new ArrayList<>();
+    private List<Integer> answers = new ArrayList<>();
     private Integer strike;
     private Integer ball;
-    private Boolean end;
+    private boolean end;
 
     public User() {}
 
-    public List<Integer> getNumber() {
-        return number;
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public List<Integer> getAnswers() {
+        return answers;
     }
 
     public Integer getStrike() {
@@ -29,17 +34,31 @@ public class User {
         return ball;
     }
 
-    public Boolean getEnd() {
+    public boolean isEnd() {
         return end;
     }
 
+    public void insertAnswer(List<Integer> answer) {
+        this.answers = answer;
+    }
+
     public void inputNumber(String inputNumber) {
-        this.number = listConverter(inputNumber);
+        this.numbers = listConverter(inputNumber);
         this.strike = 0;
         this.ball = 0;
         this.end = false;
     }
 
+    //== 비즈니스 로직 ==//
+    public void addStrike() {
+        this.strike++;
+    }
+
+    public void addBall() {
+        this.ball++;
+    }
+
+    //== 변환 로직 ==//
     private static List<Integer> listConverter(String inputNumber) {
         List<Character> numbers = characterConverter(inputNumber);
         validation(numbers);
