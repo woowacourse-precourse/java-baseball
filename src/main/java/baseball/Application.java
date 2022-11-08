@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -35,6 +37,14 @@ public class Application {
     public static void checkNumberSize(List<Integer> numbers) {
         if (numbers.size() != 3) {
             throw new IllegalArgumentException("3개의 숫자를 입력해 주세요.");
+        }
+    }
+
+    // 중복된 숫자가 포함되어 있는지 검증하는 기능
+    public static void checkNumberDuplicate(List<Integer> numbers) {
+        Set<Integer> numbersSet = new HashSet<>(numbers);
+        if (numbersSet.size() != 3) {
+            throw new IllegalArgumentException("서로 다른 임의의 수 3개를 선택해 주세요");
         }
     }
 }
