@@ -5,6 +5,6 @@ public class Application {
         Computer computer = new Computer();
         User user = new User();
         user.printGameStart();
-        computer.printGameResult();
+        computer.gameStart();
     }
 }

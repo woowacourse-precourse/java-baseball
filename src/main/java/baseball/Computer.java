@@ -89,8 +89,7 @@ public class Computer {
         nothingCount = 0;
     }
 
-    public void printGameResult() {
-        User user = new User();
+    public void gameStart() {
         while (true) {
             compareGameScore();
             if (strikeCount == 3) {
@@ -137,7 +136,7 @@ public class Computer {
         User user = new User();
         int number = user.inputRestartNumber();
         if (number == 1) {
-            printGameResult();
+            gameStart();
         }
     }
 }
