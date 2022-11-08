@@ -6,7 +6,7 @@ import baseball.view.InputView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerNumber {
+public class Player {
 
     private List<Integer> playerNum = new ArrayList<>();
 

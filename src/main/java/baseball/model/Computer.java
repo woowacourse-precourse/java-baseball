@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNumber {
+public class Computer {
 
     private List<Integer> computerNum = new ArrayList<>();
 

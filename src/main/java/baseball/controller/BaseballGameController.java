@@ -1,13 +1,12 @@
 package baseball.controller;
 
-import baseball.model.ComputerNumber;
-import baseball.model.PlayerNumber;
+import baseball.model.Computer;
+import baseball.model.Player;
 import baseball.model.Umpire;
 import baseball.validator.PlayerInputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameController {
@@ -23,13 +22,13 @@ public class BaseballGameController {
     }
 
     public void startGame() {
-        ComputerNumber computerNumber = new ComputerNumber();
-        PlayerNumber playerNumber = new PlayerNumber();
+        Computer computer = new Computer();
+        Player player = new Player();
         Umpire umpire = new Umpire();
-        List<Integer> computerNum = computerNumber.getComputerNum();
+        List<Integer> computerNum = computer.getComputerNum();
 
         while (umpire.getStrike() != 3) {
-            List<Integer> playerNum = playerNumber.getPlayerNum();
+            List<Integer> playerNum = player.getPlayerNum();
             String baseballGameResult = umpire.gameResult(computerNum, playerNum);
             System.out.println(baseballGameResult);
         }
