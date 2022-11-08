@@ -33,13 +33,13 @@ public class Exception {
 
     private static void validateIsNumeric(String input, char startNum, char endNum) {
         for (int i = 0; i < 3; i++) {
-            checkIsDigit(input.charAt(i), startNum, endNum);
+            checkInterval(input.charAt(i), startNum, endNum);
         }
     }
 
-    private static void checkIsDigit(char input, char startNum, char endNum) {
+    private static void checkInterval(char input, char startNum, char endNum) {
         if (input < startNum || input > endNum) {
-            throw new IllegalArgumentException("숫자만 입력해주세요.");
+            throw new IllegalArgumentException(startNum+"~"+endNum+"사이의 숫자만 입력해주세요.");
         }
     }
 
