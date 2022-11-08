@@ -15,25 +15,22 @@ class BaseballNumbersTest {
         @Test
         void case1_3자리_숫자_입력() {
             String input = "123";
-            boolean result = true;
             assertThat(baseballNumbers.isNumericReadline(input))
-                    .isEqualTo(result);
+                    .isTrue();
         }
 
         @Test
         void case2_4자리_숫자_입력() {
             String input = "1234";
-            boolean result = false;
             assertThat(baseballNumbers.isNumericReadline(input))
-                    .isEqualTo(result);
+                    .isFalse();
         }
 
         @Test
         void case3_2자리_숫자_입력() {
             String input = "12";
-            boolean result = false;
             assertThat(baseballNumbers.isNumericReadline(input))
-                    .isEqualTo(result);
+                    .isFalse();
         }
 
     }
@@ -44,25 +41,22 @@ class BaseballNumbersTest {
         @Test
         void case1_records_소문자_명령어_입력() {
             String input = "records";
-            boolean result = true;
             assertThat(baseballNumbers.isCommandReadline(input))
-                    .isEqualTo(result);
+                    .isTrue();
         }
 
         @Test
         void case2_records_대문자_명령어_입력() {
             String input = "RECORDS";
-            boolean result = true;
             assertThat(baseballNumbers.isCommandReadline(input))
-                    .isEqualTo(result);
+                    .isTrue();
         }
 
         @Test
         void case3_명령어_외_다른_문자_입력() {
             String input = "record";
-            boolean result = false;
             assertThat(baseballNumbers.isNumericReadline(input))
-                    .isEqualTo(result);
+                    .isFalse();
         }
 
     }
@@ -73,25 +67,22 @@ class BaseballNumbersTest {
         @Test
         void case1_3자리_숫자_입력() {
             String input = "123";
-            boolean result = true;
             assertThat(baseballNumbers.validateReadline(input))
-                    .isEqualTo(result);
+                    .isTrue();
         }
 
         @Test
         void case2_RECORDS_명령어_입력() {
             String input = "records";
-            boolean result = true;
             assertThat(baseballNumbers.validateReadline(input))
-                    .isEqualTo(result);
+                    .isTrue();
         }
 
         @Test
         void case3_그_외_입력() {
             String input = "1234";
-            boolean result = false;
             assertThat(baseballNumbers.validateReadline(input))
-                    .isEqualTo(result);
+                    .isFalse();
         }
 
     }
@@ -102,17 +93,15 @@ class BaseballNumbersTest {
         @Test
         void case1_3자리_숫자_입력() {
             String input = "123";
-            boolean result = true;
             assertThat(baseballNumbers.checkReadline(input))
-                    .isEqualTo(result);
+                    .isTrue();
         }
 
         @Test
         void case2_records_소문자_명령어_입력() {
             String input = "records";
-            boolean result = false;
             assertThat(baseballNumbers.checkReadline(input))
-                    .isEqualTo(result);
+                    .isFalse();
         }
 
         @Test
@@ -171,14 +160,14 @@ class BaseballNumbersTest {
         void case1_숫자_입력() {
             String input = "123";
             assertThat(baseballNumbers.createBaseballNumbers(input))
-                    .isEqualTo(true);
+                    .isTrue();
         }
 
         @Test
         void case2_RECORDS_입력() {
             String input = "records";
             assertThat(baseballNumbers.createBaseballNumbers(input))
-                    .isEqualTo(false);
+                    .isFalse();
         }
 
         @Test
