@@ -93,8 +93,12 @@ public class BaseBall {
 		if (verifyBall(ball)) {
 			makeBall(ball);
 		} else {
-			throw new IllegalArgumentException();
+			illegalArgumentException();
 		}
+	}
+
+	private void illegalArgumentException() {
+		throw new IllegalArgumentException();
 	}
 
 	private String inputBall() {
@@ -249,7 +253,7 @@ public class BaseBall {
 		String order = confirmNextAction();
 
 		if (!verifyOrder(order)) {
-			throw new IllegalArgumentException();
+			illegalArgumentException();
 		}
 
 		if (order.equals(Constants.ORDER_NEW_GAME)) {
