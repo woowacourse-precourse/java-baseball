@@ -20,18 +20,33 @@ public class BaseballController {
             if (gameOn && gameCount == 0) {
                 initGame();
             }
-            playerService.setPlayerNumber(playerService.inputPlayerNumber());
-            messageService.ballCountMessage(playerService.checkBallCount(computerService.getComputerNumber()));
+            inputPlayerNumber();
+            showBallCount();
             gameCount += 1;
-            if (playerService.checkBallCount(computerService.getComputerNumber()).get(1) == 3) {
-                messageService.endGameMessage();
-                messageService.restartGameMessage();
-                gameOn = playerService.inputRestartAnswer();
+            if ( checkStrikeNumber() == 3) {
+                gameOn = confirmGameRestart();
                 gameCount = 0;
             }
         }
 
     }
+    public static boolean confirmGameRestart(){
+        messageService.endGameMessage();
+        messageService.restartGameMessage();
+        return playerService.inputRestartAnswer();
+    }
+
+    public static int checkStrikeNumber() {
+        return playerService.checkBallCount(computerService.getComputerNumber()).get(1);
+    }
+
+    public static void inputPlayerNumber(){
+        playerService.setPlayerNumber(playerService.inputPlayerNumber());
+    }
+    public static void showBallCount(){
+        messageService.ballCountMessage(playerService.checkBallCount(computerService.getComputerNumber()));
+    }
+
 
     public static void initGame(){
         computerService.setComputerNumber();
