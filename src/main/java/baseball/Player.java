@@ -12,6 +12,12 @@ public class Player {
     System.out.print("숫자를 입력해주세요 : ");
     return Console.readLine();
   }
+
+  public static String inputGameStatusData(){
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    return String.valueOf(Console.readLine());
+  }
+
   public void decideNumbers(String input){
     validateConsistsOfNumber(input);
     validateNumberLength(input);
