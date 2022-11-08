@@ -45,9 +45,23 @@ public class Application {
         return userNumbers;
     }
 
-    public static String getMatchResult(String computerNumbers, String userNumbers) {
-
-        return "";
+    public static String getMatchOutputStatement(String computerNumbers, String userNumbers) {
+        String strikeStatement = "";
+        String ballStatement = "";
+        String matchResult = countStrikeBall(computerNumbers, userNumbers);
+        if (matchResult.charAt(0) == '0' && matchResult.charAt(1) == '0') {
+            return "낫싱";
+        }
+        if (matchResult.charAt(1) != '0') {
+            ballStatement += matchResult.charAt(1) + "볼";
+        }
+        if (matchResult.charAt(0) != '0') {
+            strikeStatement += matchResult.charAt(0) + "스트라이크";
+        }
+        if (ballStatement.length() != 0 && strikeStatement.length() != 0) {
+            return ballStatement + " " + strikeStatement;
+        }
+        return ballStatement + strikeStatement;
     }
 
     public static String countStrikeBall(String computerNumbers, String userNumbers) {

@@ -53,11 +53,11 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 기능4_결과문출력_테스트 () {
-        assertThat(Application.getMatchResult("123", "312")).isEqualTo("3볼");
-        assertThat(Application.getMatchResult("123", "412")).isEqualTo("2볼");
-        assertThat(Application.getMatchResult("123", "134")).isEqualTo("1볼 1스트라이크");
-        assertThat(Application.getMatchResult("123", "123")).isEqualTo("3스트라이크");
-        assertThat(Application.getMatchResult("123", "465")).isEqualTo("낫싱");
+        assertThat(Application.getMatchOutputStatement("123", "312")).isEqualTo("3볼");
+        assertThat(Application.getMatchOutputStatement("123", "412")).isEqualTo("2볼");
+        assertThat(Application.getMatchOutputStatement("123", "134")).isEqualTo("1볼 1스트라이크");
+        assertThat(Application.getMatchOutputStatement("123", "123")).isEqualTo("3스트라이크");
+        assertThat(Application.getMatchOutputStatement("123", "465")).isEqualTo("낫싱");
     }
     @Override
     public void runMain() {
