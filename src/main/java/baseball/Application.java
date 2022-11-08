@@ -7,7 +7,42 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.println(printTheGameStartMessage());
+        playTheGame();
+    }
 
+    // 1. Game start
+    private static void playTheGame() {
+
+        // The computer choose the random number
+        String answerNumber = getRandomNumber();
+
+        // The game continues as long as the input number is valid
+        boolean inputNumberValid = true;
+        while (inputNumberValid) {
+
+            // The player guesses the number
+            String inputNumber = guessNumber();
+
+            // Check number validation
+            inputNumberValid = isInputNumberValid(inputNumber);
+
+            // Breaks the loop if the 3 strike
+            if (inputNumber.equals(answerNumber)) {
+                break;
+            }
+
+            // Print result of the current turn
+            String result = getResultOfTheCurrentTurn(getScoreOfTheCurrentTurn(inputNumber, answerNumber));
+            System.out.println(result);
+
+        }
+
+        // Ask the player to continue or exit
+        askContinueOrExitGame();
+
+        // The player chooses to continue or not
+        chooseToEndGameOrContinue();
     }
 
     // 2. Print the game start message
@@ -131,7 +166,7 @@ public class Application {
     public static void chooseToEndGameOrContinue() {
         String choiceToPlayOrEndTheGame = Console.readLine();
         if (choiceToPlayOrEndTheGame.equals("1")) {
-//            playTheGame();
+            playTheGame();
         } else if (choiceToPlayOrEndTheGame.equals("2")) {
             System.out.println("게임 종료");
         }
