@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 
 public class Computer {
@@ -59,22 +60,21 @@ public class Computer {
 
     public void printResult() // 플레이어가 입력한 숫자에 대한 결과 출력
     {
-        String result="";
-        if(ballCount !=0){
-            result+=Integer.toString(ballCount)+"볼 ";
+        String result = "";
+        if (ballCount != 0) {
+            result += Integer.toString(ballCount) + "볼 ";
         }
-        if(strikeCount!=0){
-            result+=Integer.toString(strikeCount)+"스트라이크";
-        }
-        else if(ballCount ==0 && strikeCount==0){
-            result+="낫싱";
+        if (strikeCount != 0) {
+            result += Integer.toString(strikeCount) + "스트라이크";
+        } else if (ballCount == 0 && strikeCount == 0) {
+            result += "낫싱";
         }
         System.out.println(result);
     }
 
     public boolean endGame() // 게임이 끝났는지 확인
     {
-        if(strikeCount==3){
+        if (strikeCount == 3) {
             return true;
         }
         return false;
