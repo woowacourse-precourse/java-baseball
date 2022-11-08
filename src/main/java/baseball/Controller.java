@@ -14,6 +14,8 @@ public class Controller {
 
     Vaildate vaildate = new Vaildate();
     BaseballSystem baseballSystem = new BaseballSystem();
+    User user = new User();
+
     public int[] sysNum;
 
     public void run() {
@@ -31,7 +33,7 @@ public class Controller {
         int userNum [] = getUserInput();
 
         int[] scoreTable = baseballSystem.score(sysNum, userNum, 3);
-        System.out.println(scoreTable[0] + "볼 " + scoreTable[1] + "스트라이크");
+        user.UserOutput(scoreTable[0], scoreTable[1]);
 
     }
 
