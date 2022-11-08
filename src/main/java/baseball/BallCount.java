@@ -23,5 +23,13 @@ public class BallCount {
         }
     }
     // TODO: ball 계산
+    private void countBall(List<Integer> answer, List<Integer> userAnswer) {
+        this.ball = 0;
+        for (int i = 0; i < answer.size(); i++) {
+            if (answer.contains(userAnswer.get(i)) && !answer.get(i).equals(userAnswer.get(i))) {
+                ball++;
+            }
+        }
+    }
     // TODO: ballcount comment 반환 override toString
 }
