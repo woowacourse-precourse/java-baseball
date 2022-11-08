@@ -26,16 +26,21 @@ public class Hint {
     }
 
     private void countStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        for (int i = 0; i < Config.DIGIT_SIZE; i++) {
-            if (computerNumbers.get(i).equals(playerNumbers.get(i))) {
+        for (int index = 0; index < Config.DIGIT_SIZE; index++) {
+            int computerNumber = computerNumbers.get(index);
+            int playerNumber = playerNumbers.get(index);
+
+            if (computerNumber == playerNumber) {
                 strikeCnt++;
             }
         }
     }
 
     private void countBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-        for (int i = 0; i < Config.DIGIT_SIZE; i++) {
-            if (computerNumbers.contains(playerNumbers.get(i))) {
+        for (int index = 0; index < Config.DIGIT_SIZE; index++) {
+            int playerNumber = playerNumbers.get(index);
+
+            if (computerNumbers.contains(playerNumber)) {
                 ballCnt++;
             }
         }
