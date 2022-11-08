@@ -48,6 +48,62 @@ BUILD SUCCESSFUL in 0s
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
+
+## 😵 구현할 기능 목록
+0. main
+   - 게임 시작하는 메소드 불러옴(baseBallGame())
+
+1. 게임 한 판에 해당하는 메소드 
+   - void baseBallGame() 
+   - 게임 시작 출력
+   - 해당 게임의 정답 추출 (newAnswer())
+   - 정답을 맞출 때까지 이용자가 숫자 입력하도록 do (tryGuess()) ~ while
+   - 새 게임 물어보기
+
+2. 새 게임 정답 추출하는 메소드 
+   - List<Integer> 정답 newAnswer()
+   - Randoms API 사용, List로 반환
+
+3. 이용자의 추측이 정답인지 확인하는 메소드 
+   - boolean 정답여부 tryGuess(List<Integer> 정답)
+   - 사용자 추측 input 받기(userInput())
+   - 볼카운트 체크(checkBallCount()) 
+   - 볼카운트에 따라 결과 출력, 3스트라이크시에만 return true;
+
+4. 볼카운트 확인하는 메소드
+   - List<Integer> 볼카운트 checkBallCount(List<Integer> 정답, List<Integer> 추측)
+   - checkStrike, checkBall 메소드 이용
+   - {볼 수, 스트라이크 수} 담긴 배열 반환
+
+5. 스트라이크 여부 판단하는 메소드
+   - boolean 스트라이크 여부 checkStrike(int 인덱스, List<Integer> 정답, List<Integer> 추측)
+   - 위치, 숫자 같으면 true 반환
+
+6. 볼 여부 판단하는 메소드
+   - boolean 볼 여부 checkStrike(int 숫자, List<Integer> 정답)
+   - 해당 숫자가 정답 안에 포함되어 있으면 true 반환
+
+7. 사용자 추측 입력 받는 메소드
+   - List<Integer> 사용자 추측 userInput()
+   - 숫자 입력해주세요 출력
+   - Console API 사용 입력받음
+   - gameInputException()로 입력 오류 여부 확인 > 오류시 illegalArgumentException()
+   - 오류 없을 시 guestToList() 이용, List<Integer>로 변환
+
+8. 추측(문자열)을 List로 변환하는 메소드
+    - List<Integer> 추측 guessToList(String 추측)
+
+9. 사용자 추측 입력 오류 확인하는 메소드
+    - boolean 오류여부 gameInputException(String 추측)
+    - 길이가 3이 아니거나 1~9 숫자가 아닌 경우 true 반환
+
+10. 새 게임 실행 여부 묻는 메소드
+    - boolean 새 게임 여부 askNewGame()
+    - 게임 시작하려면 1, 종료하려면 2 입력하라고 출력
+    - 사용자 입력 받아서 1이면 true, 2면 false return
+    - 이외의 입력은 illegalArgumentException() throw
+
+
 ### 입출력 요구 사항
 
 #### 입력
