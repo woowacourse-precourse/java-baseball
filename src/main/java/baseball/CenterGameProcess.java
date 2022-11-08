@@ -8,11 +8,16 @@ public class CenterGameProcess {
 
     public CenterGameProcess(List<Integer> computer, int gameTypeNumber) {
 
-        String myNumber = output.Question(output.inputNumber, gameTypeNumber);
-        List<Integer> myNumberList = output.InputNumberList(myNumber);
-        int countStrike = count.Strike(myNumberList, computer);
-        int countBall = count.Ball(myNumberList, computer);
-        output.showMessage(output.scoreBoard(countStrike, countBall));
-
+        while (true) {
+            String myNumber = output.Question(output.inputNumber, gameTypeNumber);
+            List<Integer> myNumberList = output.InputNumberList(myNumber);
+            int countStrike = count.Strike(myNumberList, computer);
+            int countBall = count.Ball(myNumberList, computer);
+            output.showMessage(output.scoreBoard(countStrike, countBall));
+            if (countStrike == computer.size()) {
+                output.showMessage(output.ending);
+                break;
+            }
+        }
     }
 }
