@@ -153,6 +153,17 @@ public class Application {
     public static boolean gameInputException(String userGuessString) {
         boolean error = false;
 
+        if (userGuessString.length() != 3) {
+            return true;
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (userGuessString.charAt(i) < 49 || userGuessString.charAt(i) > 57) {
+                error = true;
+                break;
+            }
+        }
+
         return error;
     }
 
