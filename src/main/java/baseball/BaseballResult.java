@@ -1,7 +1,11 @@
 package baseball;
 
 public class BaseballResult {
-    public BaseballScore getBaseballScore(BaseballNumber computerNumbers, BaseballNumber userNumbers) {
+    private BaseballResult() {
+
+    }
+
+    public static BaseballScore getBaseballScore(BaseballNumber computerNumbers, BaseballNumber userNumbers) {
         int strikes = 0;
         int balls = 0;
 
@@ -20,11 +24,11 @@ public class BaseballResult {
         return new BaseballScore(strikes, balls);
     }
 
-    private boolean isStrike(BaseballNumber computerNumbers, int index, int number) {
+    private static boolean isStrike(BaseballNumber computerNumbers, int index, int number) {
         return computerNumbers.isNumberInIndexEqualTo(index, number);
     }
 
-    private boolean isBall(BaseballNumber computerNumbers, int number) {
+    private static boolean isBall(BaseballNumber computerNumbers, int number) {
         return computerNumbers.contains(number);
     }
 }

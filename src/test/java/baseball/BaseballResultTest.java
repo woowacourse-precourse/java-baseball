@@ -16,9 +16,7 @@ class BaseballResultTest {
         BaseballNumber computerNumbers = new BaseballNumber(answerNumbers);
         BaseballNumber userNumbers = new BaseballNumber(answerNumbers);
 
-        BaseballResult baseballResult = new BaseballResult();
-
-        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = BaseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(3, 0);
 
         assertEquals(score.getStrikes(), expected.getStrikes());
@@ -42,9 +40,7 @@ class BaseballResultTest {
         }
         BaseballNumber userNumbers = new BaseballNumber(numbers);
 
-        BaseballResult baseballResult = new BaseballResult();
-
-        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = BaseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(0, 0);
         assertEquals(score.getStrikes(), expected.getStrikes());
         assertEquals(score.getBalls(), expected.getBalls());
@@ -71,9 +67,7 @@ class BaseballResultTest {
         }
         BaseballNumber userNumbers = new BaseballNumber(numbers);
 
-        BaseballResult baseballResult = new BaseballResult();
-
-        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = BaseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(2, 0);
         assertEquals(score.getStrikes(), expected.getStrikes());
         assertEquals(score.getBalls(), expected.getBalls());
@@ -99,9 +93,7 @@ class BaseballResultTest {
         }
         BaseballNumber userNumbers = new BaseballNumber(numbers);
 
-        BaseballResult baseballResult = new BaseballResult();
-
-        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = BaseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(0, 2);
         assertEquals(score.getStrikes(), expected.getStrikes());
         assertEquals(score.getBalls(), expected.getBalls());
@@ -127,9 +119,7 @@ class BaseballResultTest {
         }
         BaseballNumber userNumbers = new BaseballNumber(numbers);
 
-        BaseballResult baseballResult = new BaseballResult();
-
-        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = BaseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(1, 2);
         assertEquals(score.getStrikes(), expected.getStrikes());
         assertEquals(score.getBalls(), expected.getBalls());
