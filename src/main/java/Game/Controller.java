@@ -16,7 +16,6 @@ public class Controller {
 
         do {
             List<Integer> targetNumber = makeRandomWithoutDuplicate();
-            System.out.println(targetNumber);
             game = game.play(targetNumber);
             restartStatus = gameOver.work();
         } while (restartStatus);
