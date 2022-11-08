@@ -58,8 +58,28 @@ public enum GameMessage {
                 strikeAndBallDomain.getBall(),
                 strikeAndBallDomain.getStrike()
         );
-        GameMessage.BALL_AND_STRIKE.setMassage(ballAndStrike);
+        GameMessage.BALL_AND_STRIKE.setMassage(removeZeroValue(ballAndStrike, strikeAndBallDomain));
         return GameMessage.BALL_AND_STRIKE;
+    }
+
+    private static String removeZeroStrike(String string, StrikeAndBallDomain strikeAndBallDomain){
+        if(strikeAndBallDomain.getStrike() == Digits.ZERO.getDigit()){
+            return string.substring(Digits.ZERO.getDigit(), Digits.SIZE.getDigit()-1);
+        }
+        return string;
+    }
+
+    private static String removeZeroBall(String string, StrikeAndBallDomain strikeAndBallDomain){
+        if(strikeAndBallDomain.getBall() == Digits.ZERO.getDigit()){
+            return string.substring(Digits.SIZE.getDigit());
+        }
+        return string;
+    }
+
+    private static String removeZeroValue(String string, StrikeAndBallDomain strikeAndBallDomain){
+        string = removeZeroStrike(string, strikeAndBallDomain);
+        string = removeZeroBall(string, strikeAndBallDomain);
+        return string;
     }
 
     public String getMassage() {

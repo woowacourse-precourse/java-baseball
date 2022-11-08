@@ -40,7 +40,7 @@ public class GameTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("456", "789", "128", "321", "123", "2");
-                    assertThat(output()).contains("낫싱", "낫싱", "0볼 2스트라이크", "2볼 1스트라이크",
+                    assertThat(output()).contains("낫싱", "낫싱", "2스트라이크", "2볼 1스트라이크",
                             "3스트라이크", "게임 종료");
                 },
                 1, 2, 3, 2
@@ -52,7 +52,7 @@ public class GameTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("124", "123", "1", "456", "2");
-                    assertThat(output()).contains("0볼 2스트라이크", "3스트라이크",
+                    assertThat(output()).contains("2스트라이크", "3스트라이크",
                             "3스트라이크", "게임 종료");
                 },
                 1, 2, 3, 4, 5, 6

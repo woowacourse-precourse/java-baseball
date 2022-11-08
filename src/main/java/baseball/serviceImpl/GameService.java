@@ -15,7 +15,7 @@ public class GameService {
         sendMassage(GameMessage.START_MASSAGE);
 
         GameStatus restartOrEnd = GameStatus.START;
-        while (restartOrEnd != GameStatus.END) {
+        while (restartOrEnd.isStart()) {
             List<Integer> computer = getComputerDigits(new ComputerDigitGeneratorService());
             figureOutComputerDigits(computer);
             restartOrEnd = getRestartOrEndGame();
