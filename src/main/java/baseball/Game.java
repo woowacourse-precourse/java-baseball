@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.view.InputView;
+
+import static baseball.constants.Message.STRIKE_MESSAGE;
+
 public class Game {
 
   private Player player;
@@ -22,6 +26,17 @@ public class Game {
 
   public void printHint(String hint) {
     System.out.println(hint);
+  }
+
+  public void guessNumber() {
+    do {
+      setGuess(InputView.getUserNumber());
+      printHint(getHint(player, computer));
+    } while (!is3Strike(getHint(player, computer)));
+  }
+
+  public boolean is3Strike(String hint) {
+    return hint.equals(3+STRIKE_MESSAGE);
   }
 
 }
