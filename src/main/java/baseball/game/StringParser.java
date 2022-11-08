@@ -12,11 +12,6 @@ import java.util.Set;
  */
 public class StringParser {
 
-    /**
-     * 문자열로 입력받은 플레이어의 숫자를 리스트로 변환해서 전달.
-     * @param playerNumberString 아직 문자열로 저장되어있는 숫자들
-     * @return 리스트로 입력받은 숫자를 변환
-     */
     public List<Integer> parsePlayerNumber(String playerNumberString) {
         List<Integer> parsedNumbers;
         int tempNumbers;
@@ -28,12 +23,7 @@ public class StringParser {
         return parsedNumbers;
     }
 
-    /**
-     * 숫자 입력에서 발생할 수 있는 오류들 체크<br>
-     * 중복된 숫자가 있음.<br>
-     * @param parsedNumbers 플레이어가 입력한 숫자 리스트
-     * @throws IllegalArgumentException
-     */
+
     public void checkPlayerIntegerExceptions(List<Integer> parsedNumbers)
         throws IllegalArgumentException{
 
@@ -43,11 +33,6 @@ public class StringParser {
         }
     }
 
-    /**
-     * Integer형을 자릿수끼리 분리해서 리스트에 저장
-     * @param dividend 피제수
-     * @return 플레이어가 입력한 숫자들을 리스트로 전달
-     */
     public List<Integer> divideNumbers(int dividend){
         List<Integer> tempNumbers = new ArrayList<>();
         int divider = GameData.DIVIDE_INITIATE;

@@ -9,10 +9,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class PlayerNumberInput {
 
-    /**
-     * 플레이어의 숫자 3개를 입력받음
-     * @return 예외가 검출되지 않은 입력값
-     */
     public String inputPlayerString(){
         try {
             PrintData.printStringData("INPUT_STRING");
@@ -24,10 +20,6 @@ public class PlayerNumberInput {
         }
     }
 
-    /**
-     * 재시작단계에서 플레이어의 입력을 받음
-     * @return 예외가 검출되지 않은 입력값
-     */
     public String inputRestartString() {
         try {
             PrintData.printStringData("RESTART");
