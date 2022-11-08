@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
 
     public static String input;
+    public static int nextRound;
 
     // 사용자에게 3자리의 수(문자열 형태)로 리턴하는 메소드
     public static String inputNumber() {
@@ -29,5 +30,10 @@ public class User {
         if(Character.isDigit(c)) {
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
         }
+    }
+
+    public static int choiceNextRound() {
+        nextRound = Integer.parseInt(Console.readLine());
+        return nextRound;
     }
 }
