@@ -27,11 +27,11 @@ public class Application {
         }
     }
 
-    public void printStartGame() {
+    private void printStartGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void printEndGame() {
+    private void printEndGame() {
         if (computer.isThreeStrike()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하시려면 1, 종료하시려면 2를 입력하세요.");
@@ -39,7 +39,7 @@ public class Application {
         }
     }
 
-    public void checkGameFinished() {
+    private void checkGameFinished() {
         if (!user.getUserReplayInput()) {
             isGameFinished = true;
         } else {

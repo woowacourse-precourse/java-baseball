@@ -44,6 +44,7 @@ public class Computer {
         setBall(0);
     }
 
+    /** 다음 게임에서 사용할 무작위 서로 다른 3자리의 수를 골라 targetRandomNumber 에 넣는 메소드 */
     public void pickRandomNumber() {
         targetRandomNumber.clear();
         while (targetRandomNumber.size() < RANDOM_NUMBER_SIZE) {
@@ -54,6 +55,7 @@ public class Computer {
         }
     }
 
+    /** User 에게 힌트를 출력하는 메소드 */
     public void giveHintToUser() {
         if (isNothing()) {
             System.out.println("낫싱");
@@ -71,6 +73,7 @@ public class Computer {
         System.out.println();
     }
 
+    /** 예측 결과가 3스트라이크 인지를 반환하는 메소드 */
     public boolean isThreeStrike() {
         if (this.getStrike() == 3) {
             return true;
@@ -85,6 +88,7 @@ public class Computer {
         return false;
     }
 
+    /** User 의 입력값의 Strike, Ball 값을 계산하는 메소드 */
     public void calculateStrikeBall(List<Integer> inputList) {
         setBall(0);
         setStrike(0);

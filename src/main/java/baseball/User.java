@@ -28,6 +28,9 @@ public class User {
         }
     }
 
+    /**
+     * 사용자의 서로 다른 3자리의 수 입력을 받아 검증 후 userInputList 에 저장하는 메소드
+     */
     public void getUserGuessInput() {
         String userInput = camp.nextstep.edu.missionutils.Console.readLine();
         if (validateUserGuessInput(userInput)) {
@@ -35,11 +38,15 @@ public class User {
         }
     }
 
+    /**
+     * 사용자의 서로 다른 3자리의 수 입력을 검증하는 메소드
+     */
     public boolean validateUserGuessInput(String userInput) {
         try {
             int userInt = Integer.parseInt(userInput);
             int userIntLength = String.valueOf(userInt).length();
-            if (userIntLength != 3 || userInt < INPUT_LOWER_BOUND || userInt > INPUT_UPPER_BOUND || isDuplicatedInput(userInput)) {
+            if (userIntLength != 3 || userInt < INPUT_LOWER_BOUND || userInt > INPUT_UPPER_BOUND || isDuplicatedInput(
+                    userInput)) {
                 throw new NumberFormatException();
             }
             return true;
@@ -48,7 +55,7 @@ public class User {
         }
     }
 
-    private boolean isDuplicatedInput(String userInput){
+    private boolean isDuplicatedInput(String userInput) {
         char firstNumber = userInput.charAt(0);
         char secondNumber = userInput.charAt(1);
         char thirdNumber = userInput.charAt(2);
@@ -59,6 +66,7 @@ public class User {
         return Objects.equals(userInput, "1");
     }
 
+    /** 게임 재시작에 대한 사용자 입력을 받아 boolean 값을 리턴하는 메소드 */
     public boolean getUserReplayInput() {
         String userInput = Console.readLine();
         if (validateUserReplayInput(userInput)) {
