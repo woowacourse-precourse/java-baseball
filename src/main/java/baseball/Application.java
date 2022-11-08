@@ -59,6 +59,21 @@ public class Application {
         numberCheckCount.add(ballCount);
     }
 
+    // 5.스트라이크 판단
+    static void checkStrike(List<Integer>computerNumber,List<Integer>guessingNumber,List<Integer>numberCheckCount) {
+
+        int strikeCount = 0;
+
+        for(int idx=0; idx<3; idx++) {
+            int checkNumber = guessingNumber.get(idx);
+            if(computerNumber.contains(checkNumber) && checkNumber == computerNumber.get(idx)) {
+                strikeCount += 1;
+            }
+        }
+
+        numberCheckCount.add(strikeCount);
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -77,6 +92,9 @@ public class Application {
 
         // 볼 판단 함수 호출
         checkBall(computerNumber,guessingNumber,numberCheckCount);
+
+        // 스트라이크 판단 함수 호출
+        checkStrike(computerNumber,guessingNumber,numberCheckCount);
     }
 }
 
