@@ -12,7 +12,39 @@ public class Application {
         // TODO: 프로그램 구현
         while (true){
             List<Integer> computer = startGame();
+
+            int endGame = game(computer);
         }
+    }
+
+    private static int game(List<Integer> computer) {
+        int endGame = 0;
+
+        while (true) {
+            System.out.println("숫자를 입력해주세요 :");
+
+            List<Integer> user = userNumber();
+
+            int strike = strike(computer, user);
+            int ball = ball(computer, user);
+
+            String hint = hint(strike, ball);
+
+            System.out.println(hint);
+
+            if(threeStrike(strike)){
+                endGame = reGame();
+            }
+
+            if (endGame == 1 || endGame == 2){
+                break;
+            } else if (endGame ==0) {
+                continue;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+        return endGame;
     }
 
     private static List<Integer> startGame() {
