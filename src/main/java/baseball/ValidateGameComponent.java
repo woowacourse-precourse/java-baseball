@@ -7,4 +7,14 @@ public class ValidateGameComponent {
         }
         return true;
     }
+
+    public static boolean validNumberOutRange(String baseballNumber) {
+        char[] userInputList = baseballNumber.toCharArray();
+        for (char userChar : userInputList) {
+            if (userChar < '1' || userChar > '9') {
+                throw new IllegalArgumentException();
+            }
+        }
+        return true;
+    }
 }
