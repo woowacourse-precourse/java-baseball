@@ -1,6 +1,6 @@
-package baseball.domain;
+package baseball.util;
 
-public class User {
+public class Validator {
 
     public void isValidInput(String input) throws IllegalStateException{
 
