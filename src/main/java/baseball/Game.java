@@ -12,10 +12,9 @@ public class Game {
 
         while (currentNumberIndex < 3) {
             currentRandomNumber = this.getRandomNumber();
-            for (int num : number) {
-                if (num == currentRandomNumber) {
-                    number[currentNumberIndex] = currentRandomNumber;
-                }
+            if(!Function.checkArrayContain(number, currentRandomNumber)){
+                number[currentNumberIndex] = currentRandomNumber;
+                currentNumberIndex++;
             }
         }
     }
@@ -31,7 +30,11 @@ public class Game {
     }
 
     public static void init(Game computerAnswer) {
-        Game answer = Game.getAnswer();
+        Game userAnswer = Game.getAnswer();
+
+        Hint hint = new Hint();
+        hint.checkAnswer(userAnswer, computerAnswer);
+        hint.showHint();
     }
 
     private static Game getAnswer() {
@@ -65,29 +68,16 @@ public class Game {
             return false;
         }
         char[] numberArray = new char[str.length()];
-        for(int i=0; i<str.length(); i++){
-            numberArray[i] = str.charAt(i);
-        }
-        for(int num : numberArray){
-            if(num == '0'){
-                return true;
-            }
-        }
-        return false;
+        return !Function.checkArrayContain(numberArray, '0');
     }
 
     private static boolean checkEqualNumber(String str){
         char[] checkEqual = new char[str.length()];
         char[] word = new char[str.length()];
-        for(int i=0; i<str.length(); i++){
-            word[i] = str.charAt(i);
-        }
-        for(int i=0; i<str.length(); i++){
-            for(int value : checkEqual){
-                if(value == word[i]){
-                    return false;
-                }
-                checkEqual[i] = word[i];
+
+        for (int i = 0; i < str.length(); i++){
+            if (Function.checkArrayContain(checkEqual, word[i])){
+                return false;
             }
         }
         return true;
