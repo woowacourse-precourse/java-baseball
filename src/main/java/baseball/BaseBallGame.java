@@ -7,7 +7,7 @@ import util.Util;
 public class BaseBallGame {
 
     public void run() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(MessageList.GAME_START);
         while (true) {
             startGame();
             if (!isRestart()) {
@@ -16,26 +16,26 @@ public class BaseBallGame {
         }
     }
 
-    public static void startGame() {
+    private void startGame() {
         List<Integer> computer = Util.makeRandomNumbers();
         String input;
 
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(MessageList.INPUT);
             input = Console.readLine();
             InputException.validGameInput(input);
 
             List<Integer> inputNumbers = Util.toIntegerArray(input);
-            String comment = takeTurn(computer, inputNumbers);
-            System.out.println(comment);
-            if (isEnd(comment)) {
+            String message = takeTurn(computer, inputNumbers);
+            System.out.println(message);
+            if (isEnd(message)) {
                 break;
             }
         }
     }
 
-    private static boolean isRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    private boolean isRestart() {
+        System.out.println(MessageList.RESTART_OR_END);
         String input = Console.readLine();
         InputException.validRestartInput(input);
         if (input.contains("1")) {
@@ -44,46 +44,36 @@ public class BaseBallGame {
         return false;
     }
 
-    private static String takeTurn(List<Integer> computer, List<Integer> inputNumbers) {
-        String comment = "";
-        comment += countBall(computer, inputNumbers);
-        comment += countStrike(computer, inputNumbers);
-        return checkComment(comment);
+    private String takeTurn(List<Integer> computer, List<Integer> inputNumbers) {
+        String message = countBall(computer, inputNumbers) + countStrike(computer, inputNumbers);
+        return checkMessage(message);
     }
 
-    private static boolean isEnd(String comment) {
-        return comment.contains("게임 종료");
+    private boolean isEnd(String message) {
+        return message.contains("게임 종료");
     }
 
-    private static String checkComment(String comment) {
-        if (comment.isEmpty()) {
-            comment = "낫싱";
+    private String checkMessage(String message) {
+        if (message.isEmpty()) {
+            message = MessageList.NOTHING;
         }
-        if (comment.contains("3스트라이크")) {
-            comment += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        if (message.contains("3스트라이크")) {
+            message += MessageList.ALL_CORRECT;
         }
-        return comment;
+        return message;
     }
 
-    private static String countStrike(List<Integer> computer, List<Integer> inputNumbers) {
+    private String countStrike(List<Integer> computer, List<Integer> inputNumbers) {
         int strikes = 0;
         for (int i = 0; i < 3; i++) {
             if (computer.get(i).equals(inputNumbers.get(i))) {
                 strikes++;
             }
         }
-        return setStrikeComment(strikes);
+        return MessageList.setStrikeMessage(strikes);
     }
 
-    private static String setStrikeComment(int strikes) {
-        String strikeComment = String.format("%d스트라이크", strikes);
-        if (strikes == 0) {
-            strikeComment = "";
-        }
-        return strikeComment;
-    }
-
-    private static String countBall(List<Integer> computer, List<Integer> inputNumbers) {
+    private String countBall(List<Integer> computer, List<Integer> inputNumbers) {
         int balls = 0;
         for (int i = 0; i < 3; i++) {
             Integer inputNumber = inputNumbers.get(i);
@@ -91,14 +81,6 @@ public class BaseBallGame {
                 balls++;
             }
         }
-        return setBallComment(balls);
-    }
-
-    private static String setBallComment(int balls) {
-        String ballComment = String.format("%d볼 ", balls);
-        if (balls == 0) {
-            ballComment = "";
-        }
-        return ballComment;
+        return MessageList.setBallMessage(balls);
     }
 }
