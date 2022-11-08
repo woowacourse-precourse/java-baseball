@@ -10,6 +10,8 @@ import java.util.Set;
 public class BaseBall extends RandomMaker {
     public static final int MAX_BASEBALL_SIZE = 3;
 
+    private static final int INITIAL_STRIKE = 0;
+    private static final int INITIAL_BALL = 0;
     private static final int MIN_RANDOM_PICK = 1;
     private static final int MAX_RANDOM_PICK = 9;
 
@@ -36,7 +38,7 @@ public class BaseBall extends RandomMaker {
     }
 
     private int findStrike(List<Integer> input) {
-        int strike = 0;
+        int strike = INITIAL_STRIKE;
         for (int inputIndex = 0; inputIndex < MAX_BASEBALL_SIZE; inputIndex++) {
             Integer currentNumber = input.get(inputIndex);
             strike = compareAnswerWhetherStrike(strike, inputIndex, currentNumber);
@@ -73,7 +75,7 @@ public class BaseBall extends RandomMaker {
     }
 
     private int findBall(List<Integer> input) {
-        int ball = 0;
+        int ball = INITIAL_BALL;
         for (int inputIndex = 0; inputIndex < MAX_BASEBALL_SIZE; inputIndex++) {
             Integer currentNumber = input.get(inputIndex);
             ball = compareAnswerWhetherBall(ball, inputIndex, currentNumber);
