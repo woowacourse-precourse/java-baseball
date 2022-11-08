@@ -11,7 +11,7 @@ public class InputValidator {
     }
 
     public void validateWhether(String input) throws IllegalArgumentException {
-        if (input.chars().anyMatch(number -> number != '1' && number != '2')) {
+        if (input.compareTo("1") != 0 && input.compareTo("2") != 0) {
             throw new IllegalArgumentException("1 또는 2을 입력해야합니다.");
         }
     }
