@@ -89,12 +89,12 @@ class ApplicationTest extends NsTest {
             System.setOut(new PrintStream(out));
             InputStream in = new ByteArrayInputStream(input.getBytes());
             System.setIn(in);
-            HashMap<Integer, Integer> InputNumberMap = GameManager.scanNumber();
+            HashMap<Integer, Integer> inputNumberMap = GameManager.scanNumber();
             HashMap<Integer, Integer> expectResult = new HashMap<>();
             expectResult.put(1, 1);
             expectResult.put(2, 2);
             expectResult.put(3, 3);
-            assertThat(InputNumberMap).isEqualTo(expectResult);
+            assertThat(inputNumberMap).isEqualTo(expectResult);
         }
 
         @Test

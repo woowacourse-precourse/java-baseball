@@ -7,20 +7,20 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Computer {
-    private static HashMap<Integer, Integer> RandomNumberHash = new HashMap<>();
+    private static HashMap<Integer, Integer> randomNumberHash = new HashMap<>();
 
     static HashMap<Integer, Integer> generateRandomNumber() {
-        List<Integer> computer = new ArrayList<>();
-        RandomNumberHash.clear();
+        List<Integer> pickedNumbers = new ArrayList<>();
+        randomNumberHash.clear();
         int i = 1;
-        while (computer.size() < 3) {
+        while (pickedNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-                RandomNumberHash.put(randomNumber, i);
+            if (!pickedNumbers.contains(randomNumber)) {
+                pickedNumbers.add(randomNumber);
+                randomNumberHash.put(randomNumber, i);
                 i++;
             }
         }
-        return RandomNumberHash;
+        return randomNumberHash;
     }
 }

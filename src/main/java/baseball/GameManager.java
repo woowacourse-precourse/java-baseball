@@ -6,28 +6,28 @@ import java.util.HashMap;
 import java.util.List;
 
 public class GameManager {
-    private static HashMap<Integer, Integer> RandomNumberHash = new HashMap<>();
-    private static HashMap<Integer, Integer> InputNumberHash = new HashMap<>();
+    private static HashMap<Integer, Integer> randomNumberHash = new HashMap<>();
+    private static HashMap<Integer, Integer> inputNumberHash = new HashMap<>();
     private static HashMap<Character, Integer> resultHash = new HashMap<>();
     private static Boolean isContinue = true;
 
     void init() {
-        RandomNumberHash = Computer.generateRandomNumber();
+        randomNumberHash = Computer.generateRandomNumber();
     }
 
 
     static HashMap<Integer, Integer> scanNumber() {
-        InputNumberHash.clear();
+        inputNumberHash.clear();
         System.out.print("숫자를 입력해주세요 : ");
         String numberString = Console.readLine();
         int index = 0;
         for (char character : numberString.toCharArray()) {
             index++;
             int digit = character - '0';
-            InputNumberHash.put(digit, index);
+            inputNumberHash.put(digit, index);
         }
-        ValidCheck.checkExceptionNumber(numberString, InputNumberHash);
-        return InputNumberHash;
+        ValidCheck.checkExceptionNumber(numberString, inputNumberHash);
+        return inputNumberHash;
     }
 
     static void scanIsContinue() {
@@ -42,12 +42,12 @@ public class GameManager {
         resultHash.put('S', 0);
         resultHash.put('B', 0);
         resultHash.put('O', 0);
-        InputNumberHash.forEach((intNumber, intIndex) -> {
-            if (!RandomNumberHash.containsKey(intNumber)) {
+        inputNumberHash.forEach((intNumber, intIndex) -> {
+            if (!randomNumberHash.containsKey(intNumber)) {
                 resultHash.put('O', resultHash.get('O') + 1);
-            } else if (RandomNumberHash.get(intNumber) == intIndex) {
+            } else if (randomNumberHash.get(intNumber) == intIndex) {
                 resultHash.put('S', resultHash.get('S') + 1);
-            } else if (RandomNumberHash.get(intNumber) != intIndex) {
+            } else if (randomNumberHash.get(intNumber) != intIndex) {
                 resultHash.put('B', resultHash.get('B') + 1);
             }
         });
