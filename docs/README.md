@@ -78,10 +78,13 @@
 
 
 #### ✅ gameService
-| 이름                     | 설명                                                           | 구분                                | I / O                                        | 비고  |
-|:-----------------------|:-------------------------------------------------------------|:----------------------------------|:---------------------------------------------|:----|
-| checkInputPlayerNumber | 플레이어가 입력한 숫자가 유효한지 확인<br> 예외 발생시 IllegalArgumentException 발생 | input - String inputPlayerNumbers |                                              | -   |
-| checkRestartAnswer     | 게임 재시작 입력이 유효한지 확인<br> 예외 발생시 IllegalArgumentException 발생    | input - String playerAnswer       |                                              | -   |
+| 이름                         | 설명                                                                | 구분                                 | I / O                                        | 비고  |
+|:---------------------------|:------------------------------------------------------------------|:-----------------------------------|:---------------------------------------------|:----|
+| checkInputPlayerNumber     | 플레이어가 입력한 숫자가 유효한지 확인<br> 예외 발생시 IllegalArgumentException 발생      | input - String inputPlayerNumbers  |                                              | -   |
+| checkTheLength             | 플레이어가 입력한 숫자의 길이가 올바른지 확인 <br> 예외 발생시 IllegalArgumentException 발생 | input - String inputPlayerNumbers  |                                              | -   |
+| checkForDuplicateNumber    | 중복된 숫자가 없는지 확인  <br> 예외 발생시 IllegalArgumentException 발생           | input - String inputPlayerNumbers  |                                              | -   |
+| checkThePresenceOfZeros    | 0이 포함되어 있는지 확인   <br> 예외 발생시 IllegalArgumentException 발생          | input - String inputPlayerNumbers  |                                              | -   |
+| checkForCharacterExistence | 문자가 포함되어 있지 않은지 확인     <br> 예외 발생시 IllegalArgumentException 발생    | input - String inputPlayerNumbers  |                                              | -   |
 
 
 ### 💻 Controller 정의
