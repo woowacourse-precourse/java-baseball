@@ -14,6 +14,18 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    // 숫자 야구 게임을 실행하는 기능
+    private static void numberBaseballGame() {
+        List<Integer> computerNumbers = makeNumbers();
+        List<Integer> result;
+        do {
+            List<Integer> userNumbers = getUserNumbers();
+            checkRightNumber(userNumbers);
+            result = compareNumbers(computerNumbers, userNumbers);
+            printResult(result);
+        } while (checkGameFinished(result));
+    }
+
     // 임의의 세자리 숫자를 생성하는 기능
     public static List<Integer> makeNumbers() {
         List<Integer> computer = new ArrayList<>();
