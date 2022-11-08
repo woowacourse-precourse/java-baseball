@@ -24,7 +24,7 @@ public class Game {
         do {
             playGame();
             System.out.println(SystemMessage.RESTART_GAME_OR_END);
-        } while (Integer.parseInt(player.getPlayerAnswer()) == CONTINUE_GAME);
+        } while (isContinue());
     }
 
     public void playGame() {
@@ -36,7 +36,15 @@ public class Game {
             playerBalls = playerTurn();
             resultMessage = computerTurn(computerBalls, playerBalls, strikeAndBallCounts);
             initializeStrikeAndBallCounts(strikeAndBallCounts);
-        } while (!resultMessage.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER));
+        } while (!isGameOver(resultMessage));
+    }
+
+    private boolean isContinue() {
+        return Integer.parseInt(player.getPlayerAnswer()) == CONTINUE_GAME;
+    }
+
+    private boolean isGameOver(String resultMessage) {
+        return resultMessage.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER);
     }
 
     private void initializeStrikeAndBallCounts(List<Integer> strikeAndBallCounts) {
