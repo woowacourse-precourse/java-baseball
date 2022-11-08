@@ -11,6 +11,9 @@ public class NumberBaseballGame {
     private static final String INPUT_TEXT = "숫자를 입력해주세요 : ";
     private static final String RESULT_TEXT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_TEXT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String STRIKE_TEXT = "스트라이크 ";
+    private static final String BALL_TEXT = "볼 ";
+    private static final String NOTHING_TEXT = "낫싱";
 
     private final Answer answer = new Answer();
     private List<Integer> computerNumber = new ArrayList<>();
@@ -28,6 +31,8 @@ public class NumberBaseballGame {
 
             Score userScore = new Score();
             playGame(userScore);
+
+            String result = getResult(userScore);
         }
     }
 
@@ -50,5 +55,25 @@ public class NumberBaseballGame {
                 score.setBall(score.getBall() + 1);
             }
         }
+    }
+
+    public String getResult(Score score) {
+        int strike = score.getStrike();
+        int ball = score.getBall();
+
+        if (strike == 0 && ball == 0) {
+            return NOTHING_TEXT;
+        }
+
+        StringBuilder result = new StringBuilder();
+        if (ball > 0) {
+            result.append(ball);
+            result.append(BALL_TEXT);
+        }
+        if (strike > 0) {
+            result.append(strike);
+            result.append(STRIKE_TEXT);
+        }
+        return result.toString();
     }
 }
