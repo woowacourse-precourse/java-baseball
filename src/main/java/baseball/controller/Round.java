@@ -23,7 +23,7 @@ public class Round {
         retry(view);
     }
     void retry(View view) throws IllegalArgumentException {
-        Boolean retry = view.askRetry();
+        boolean retry = view.askRetry();
         if (retry) {
             play(view);
         }
