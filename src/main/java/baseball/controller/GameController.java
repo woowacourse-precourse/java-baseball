@@ -9,9 +9,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 
-    private final InputView inputView;
-    private final OutputView outputView;
-    private final Game game;
+    private final InputView INPUTVIEW;
+    private final OutputView OUTPUTVIEW;
+    private final Game GAME;
 
     private static final int RESTART=1;
     private static final int END=2;
@@ -22,23 +22,23 @@ public class GameController {
     private Computer computer;
 
     public void working(){
-        inputView.noticeGameStart();
+        INPUTVIEW.noticeGameStart();
         do {
             startGame();
             chooseGameState();
         }while(gameState);
     }
     public GameController(){
-        inputView=new InputView();
-        outputView= new OutputView();
-        game=new Game();
+        INPUTVIEW=new InputView();
+        OUTPUTVIEW= new OutputView();
+        GAME=new Game();
         player=new Player();
         computer=new Computer();
 
     }
     private void chooseGameState(){
         int userChoice;
-        inputView.requestMoreGame();
+        INPUTVIEW.requestMoreGame();
         userChoice= Integer.parseInt(Console.readLine());
         if(userChoice==END){
             gameState=false;
@@ -56,15 +56,14 @@ public class GameController {
     public void startGame(){
 
         setGameState();
-        computer=game.prepareComputer(computer);
+        computer=GAME.prepareComputer(computer);
         do {
-            inputView.requestEnteringNumbers();
-            game.initializeStrikeAndBallCount();
-            player=game.preparePlayer(player);
-            game.judgeState(computer, player);
-            game.showResult();
-
-        }while (game.isFinished());
-        outputView.showSuccessMessage();
+            INPUTVIEW.requestEnteringNumbers();
+            GAME.initializeStrikeAndBallCount();
+            player=GAME.preparePlayer(player);
+            GAME.judgeState(computer, player);
+            OUTPUTVIEW.showMessage(GAME.showResult());
+        }while (GAME.isNotFinished());
+        OUTPUTVIEW.showSuccessMessage();
     }
 }
