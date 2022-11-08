@@ -47,7 +47,7 @@ public class BaseballGame {
     private boolean runEndPhase() {
         outputGenerator.printGameEnd();
         boolean ret = false;
-        if (player.readWeatherReGame()) {
+        if (player.readWhetherReGame()) {
             computer.generateComputerNumber();
         } else {
             ret = true;

@@ -24,10 +24,10 @@ public class Player {
         ballNumber = BallNumber.fromString(ballNumberString);
     }
 
-    public boolean readWeatherReGame() throws IllegalArgumentException {
-        String weatherReGame = Console.readLine();
-        inputValidator.validateWhether(weatherReGame);
+    public boolean readWhetherReGame() throws IllegalArgumentException {
+        String whetherReGame = Console.readLine();
+        inputValidator.validateWhether(whetherReGame);
 
-        return weatherReGame.equals(YES);
+        return whetherReGame.equals(YES);
     }
 }
