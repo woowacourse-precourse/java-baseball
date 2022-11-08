@@ -7,6 +7,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.Constants.Constants;
 import baseball.Domain.ThrowBall;
+import baseball.Service.GameService;
 import baseball.Service.Rule;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -14,15 +15,15 @@ import java.util.List;
 
 public class Controller {
     Rule rule = new Rule();
+    GameService gameService = new GameService();
 
+    /**
+     * 게임시작하는 Method
+     * @return 스트라이크 볼 현황
+     */
     public String gameStart() {
         List<Integer> computerAnswer = new ArrayList<>();
-        while (computerAnswer.size() < 3) {
-            int tmp = Randoms.pickNumberInRange(1, 9);
-            if (!computerAnswer.contains(tmp)) {
-                computerAnswer.add(tmp);
-            }
-        }
+        computerAnswer.addAll(gameService.ComputerAnswer());
         String answer;
         System.out.println(Constants.GAME_START);
 
@@ -39,6 +40,11 @@ public class Controller {
         return answer;
     }
 
+    /**
+     * 재시작하는 Method
+     * @return 재시작상태 true false
+     * @throws IllegalArgumentException 예상치못한 입력값이 들어오는경우
+     */
     public boolean gameRestart() throws IllegalArgumentException {
         System.out.println(GAME_RESTART);
         String input = readLine();
