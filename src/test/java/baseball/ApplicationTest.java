@@ -40,6 +40,58 @@ class ApplicationTest extends NsTest {
         assertThat(User.convertInputAsNumber(input)).isEqualTo(result);
     }
 
+    @Test
+    void 스트라이크_개수_셈_테스트() {
+        List<Integer> answerNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(4, 2, 3);
+        int result = 2;
+        assertThat(Comparison.countStrikeNumbers(userNumber, answerNumber)).isEqualTo(result);
+    }
+
+    @Test
+    void 스트라이크_판단_여부_실패_테스트() {
+        List<Integer> answerNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(4, 2, 3);
+        int index = 0;
+        boolean result = false;
+        assertThat(Comparison.isStrike(userNumber, answerNumber, index)).isEqualTo(result);
+    }
+
+    @Test
+    void 스트라이크_판단_여부_성공_테스트() {
+        List<Integer> answerNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(4, 2, 3);
+        int index = 1;
+        boolean result = true;
+        assertThat(Comparison.isStrike(userNumber, answerNumber, index)).isEqualTo(result);
+    }
+
+    @Test
+    void 볼_개수_셈_테스트() {
+        List<Integer> answerNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(2, 3, 1);
+        int result = 3;
+        assertThat(Comparison.countBallNumbers(userNumber, answerNumber)).isEqualTo(result);
+    }
+
+    @Test
+    void 볼_판단_여부_실패_테스트() {
+        List<Integer> answerNumber = List.of(1, 2, 3);
+        Integer number = 2;
+        int index = 1;
+        boolean result = false;
+        assertThat(Comparison.isBall(answerNumber, number, index)).isEqualTo(result);
+    }
+
+    @Test
+    void 볼_판단_여부_성공_테스트() {
+        List<Integer> answerNumber = List.of(1, 2, 3);
+        Integer number = 2;
+        int index = 0;
+        boolean result = true;
+        assertThat(Comparison.isBall(answerNumber, number, index)).isEqualTo(result);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
