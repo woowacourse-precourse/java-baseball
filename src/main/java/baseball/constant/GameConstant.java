@@ -10,4 +10,8 @@ public class GameConstant {
     public final static int BALL_END = 9;
 
     public final static int ZERO = 0;
+
+    private GameConstant(){
+    }
+
 }
