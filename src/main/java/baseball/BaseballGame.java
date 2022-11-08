@@ -33,30 +33,5 @@ public class BaseballGame {
 
 }
 
-class Player {
-    String input() {
-        return Console.readLine();
-    }
 
-    public List<Integer> suggest() {
-        String input = input();
-        if (!validSuggestion()) throw new IllegalArgumentException();
-        List<Integer> suggestion;
-        suggestion = Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
-        return suggestion;
-    }
-
-    boolean validSuggestion() {
-        return false;
-    }
-
-    boolean continueGame() {
-        return false;
-    }
-
-    boolean validContinueGame() {
-        return false;
-    }
-
-}
 
