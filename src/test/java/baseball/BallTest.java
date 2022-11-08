@@ -1,7 +1,6 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -12,25 +11,6 @@ import org.junit.jupiter.api.Test;
 	DisplayNameGenerator.ReplaceUnderscores.class
 )
 public class BallTest {
-
-	private static final String NUMBER_LENGTH_ERR_MESSAGE
-		= "야구 숫자는 1~9까지만 가능합니다.";
-
-	@DisplayName("Ball 매개변수의 범위 검증")
-	@Test
-	void ball_매개변수_범위_검증() {
-		assertThatThrownBy(
-			() -> new Ball(0, 1)
-		).isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining(NUMBER_LENGTH_ERR_MESSAGE);
-
-		assertThatThrownBy(
-			() -> new Ball(10, 1)
-		).isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining(NUMBER_LENGTH_ERR_MESSAGE);
-
-		assertDoesNotThrow(() -> new Ball(1, 1));
-	}
 
 	@DisplayName("숫자 비교 테스트 - 낫싱")
 	@Test
