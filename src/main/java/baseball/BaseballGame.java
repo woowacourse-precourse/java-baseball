@@ -9,6 +9,7 @@ import static baseball.Constants.RESTART_INPUT_LENGTH;
 import static baseball.Constants.RESTART_NUM;
 
 import baseball.Constants.Message;
+import baseball.Constants.Result;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +66,27 @@ public class BaseballGame {
         System.out.println(Message.RESTART_MSG);
         String restartNumber = Console.readLine();
         return restartNumber;
+    }
+
+    public static void printResult(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            System.out.println(Result.NOTHING_WORD);
+            return;
+        }
+        if (ball == 0 && strike == 3) {
+            System.out.println(strike + Result.STRIKE_WORD);
+            System.out.println(Message.END_MSG);
+            return;
+        }
+        if (ball != 0 && strike == 0) {
+            System.out.println(ball + Result.BALL_WORD);
+            return;
+        }
+        if (ball == 0) {
+            System.out.println(strike + Result.STRIKE_WORD);
+            return;
+        }
+        System.out.println(ball + Result.BALL_WORD + " " + strike + Result.STRIKE_WORD);
     }
 
     public static void exceptionUserNumber(String Input) {
