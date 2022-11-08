@@ -11,7 +11,6 @@ public class ComputerBall {
     private static final int MIN_NUM = 1;
     private static final int MAX_NUM = 9;
     private static final int COMPUTER_NUM_LENGTH = 3;
-
     public ArrayList<Integer> computerNumber;
 
     public ComputerBall() {

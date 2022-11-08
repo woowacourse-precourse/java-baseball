@@ -22,6 +22,7 @@ public class BaseBallGame {
         }
 
         String coin = InputView.printGameStartOrStop();
+
         if (coin.equals("1")){
             playGame();
         }

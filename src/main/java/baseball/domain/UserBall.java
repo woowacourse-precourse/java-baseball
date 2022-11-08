@@ -10,11 +10,8 @@ public class UserBall {
     private static final int NINE = 57;
     private static final String ERROR_MESSAGE = "올바른 값을 입력하세요";
 
-
-
     private ArrayList<String> inputNumber;
     public ArrayList<Integer> userNumber;
-
 
     public void generateUserBall(String inputString){
         inputNumber = new ArrayList<String>();

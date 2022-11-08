@@ -24,7 +24,6 @@ public class ThrowBall {
                 strikeCount++;
                 continue;
             }
-
             if (computerBall.contains(userBall.get(i))){
                 ballCount++;
                 continue;
@@ -37,27 +36,22 @@ public class ThrowBall {
             OutputView.printHomeRun(strikeCount);
             return false;
         }
-
         if (ballCount == 0 && strikeCount == 0) {
             OutputView.printNothingMessage();
             return true;
         }
-
         if (ballCount > 0 && strikeCount > 0) {
             OutputView.printBallAndStrikeMessage(ballCount, strikeCount);
             return true;
         }
-
         if (ballCount > 0) {
             OutputView.printOnlyBallMessage(ballCount);
             return true;
         }
-
         if (strikeCount > 0) {
             OutputView.printOnlyStrikeMessage(strikeCount);
             return true;
         }
-
         return true;
     }
 }
