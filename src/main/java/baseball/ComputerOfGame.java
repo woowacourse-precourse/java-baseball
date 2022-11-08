@@ -32,4 +32,14 @@ public class ComputerOfGame {
         return randomNumber.size() == 3;
     }
 
+    public int checkAnswer(GamePlayer gamePlayer, Integer index) {
+        if (gamePlayer.checkNumberStrike(index, answer.get(index))) {
+            return STRIKE_RESULT;
+        }
+        if (gamePlayer.checkNumberBall(answer.get(index))) {
+            return BALL_RESULT;
+        }
+        return NOTHING_RESULT;
+    }
+
 }

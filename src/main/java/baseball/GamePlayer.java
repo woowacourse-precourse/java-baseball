@@ -16,7 +16,7 @@ public class GamePlayer {
         System.out.println(NUMERIC_INPUT_MESSAGE);
         String userInput = Console.readLine();
         if (!validatorOfInputValue.checkUserInput(userInput)) {
-            throw new IllegalArgumentException(INVALID_INPUT_ERROR);
+            throw new IllegalArgumentException(INVALID_GAME_INPUT_ERROR);
         }
         userInputToUserNumber(userInput);
     }
@@ -27,6 +27,14 @@ public class GamePlayer {
             tmpUserNumber.add(Character.getNumericValue(userInput.charAt(i)));
         }
         userNumber = tmpUserNumber;
+    }
+
+    public boolean checkNumberStrike(Integer idx, Integer answerNumber) {
+        return userNumber.get(idx).equals(answerNumber);
+    }
+
+    public boolean checkNumberBall(Integer answerNumber) {
+        return userNumber.contains(answerNumber);
     }
 
 }
