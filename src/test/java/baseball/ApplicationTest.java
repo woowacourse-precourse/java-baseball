@@ -29,30 +29,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 사용자_입력값_3자리_숫자보다_작을_경우_예외() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("12"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 사용자_입력값에_0이_포함된_경우_예외() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("109"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 사용자_입력값에_숫자이외의_문자_포함된_경우_예외() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1x!"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
     void 사용자_최초_입력값이_정답인_경우() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -62,7 +38,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5
         );
     }
-    
+
 
     @Override
     public void runMain() {
