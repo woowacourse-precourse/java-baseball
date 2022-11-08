@@ -2,6 +2,8 @@ package baseball.rule;
 
 import baseball.player.Computer;
 import baseball.player.Player;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class BaseballGameRule {
 
@@ -25,7 +27,7 @@ public class BaseballGameRule {
 
 	public void isPlayerNumberValidate() {
 		playerNumber = player.getNumber();
-		if (!isLength3() || !isNumber()) {
+		if (!isLength3() || !isNumber() ||!isDifferentNumbersEach()) {
 			throw new IllegalArgumentException("올바른 값을 입력하세요(서로 다른 숫자 3개");
 		}
 	}
@@ -36,6 +38,15 @@ public class BaseballGameRule {
 
 	private boolean isNumber() {
 		return playerNumber.matches("^[" + NUMBER_START + "-" + NUMBER_END + "]*$");
+	}
+
+	private boolean isDifferentNumbersEach() {
+		return playerNumber.equals(removeDistinctNumber());
+	}
+
+	private String removeDistinctNumber() {
+		return Arrays.stream(playerNumber.split("")).distinct()
+				.collect(Collectors.joining());
 	}
 
 
