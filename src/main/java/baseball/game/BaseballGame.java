@@ -4,9 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.constant.GameConstant.*;
-import static baseball.constant.GameMessage.*;
-import static baseball.game.CompareNumbers.*;
+import static baseball.constant.GameConstant.BALL_LEN;
+import static baseball.constant.GameConstant.RESTART;
+import static baseball.constant.GameMessage.END_MESSAGE;
+import static baseball.constant.GameMessage.RESTART_MESSAGE;
+import static baseball.game.CompareNumbers.compareNumber;
+import static baseball.game.CompareNumbers.resetStrikeBall;
+import static baseball.game.CompareNumbers.strike;
+import static baseball.game.CompareNumbers.userNumberResult;
 import static baseball.number.ComputerNumber.createComputerNumber;
 import static baseball.validator.RestartNumberValidator.checkValidationRestartNumber;
 import static baseball.number.UserNumber.checkInputUserNumber;

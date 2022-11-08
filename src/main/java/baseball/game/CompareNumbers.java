@@ -2,7 +2,9 @@ package baseball.game;
 
 import static baseball.constant.GameConstant.BALL_LEN;
 import static baseball.constant.GameConstant.ZERO;
-import static baseball.constant.GameMessage.*;
+import static baseball.constant.GameMessage.BALL;
+import static baseball.constant.GameMessage.NOTHING;
+import static baseball.constant.GameMessage.STRIKE;
 import static baseball.game.BaseballGame.computerNumbers;
 import static baseball.game.BaseballGame.userNumbers;
 

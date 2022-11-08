@@ -1,6 +1,5 @@
 package baseball.number;
 
-import baseball.number.ComputerNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

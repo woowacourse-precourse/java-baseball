@@ -5,7 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.constant.GameConstant.*;
+import static baseball.constant.GameConstant.BALL_LEN;
+import static baseball.constant.GameConstant.BALL_START;
+import static baseball.constant.GameConstant.BALL_END;
+
 
 public class ComputerNumber {
 
