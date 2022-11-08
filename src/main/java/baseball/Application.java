@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    private static List<Integer> numberList;
+    private static List<Integer> userNumberList;
+    private static List<Integer> answerNumberList;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 아규 게임을 시작합니다.");
@@ -16,24 +17,65 @@ public class Application {
     }
 
     private static void baseball() {
-        String answer = createRandomNumber();
+        createRandomNumber();
 
+        while(true) {
+            userInputNumber();
+            if (userNumberList.size() == 0) return;
 
+            System.out.println(roundResult());
+        }
     }
 
+    private static String roundResult() {
+        int strike = 0;
+        int ball = 0;
 
-    private static String createRandomNumber() {
-        StringBuilder randomNum = new StringBuilder();
+        for (int i = 0; i < userNumberList.size(); i++) {
+            if (userNumberList.get(i) == answerNumberList.get(i)) {
+                strike++;
+            } else if (answerNumberList.contains(userNumberList.get(i))){
+                ball++;
+            }
+        }
+        String result = "";
+        if (strike == 0 && ball == 0) {
+            result = "낫싱";
+        } else if (strike == 0 && ball != 0) {
+            result = String.format("%d볼", ball);
+        } else if (ball == 0 && strike != 0) {
+            result = String.format("%d스트라이크", strike);
+        } else {
+            result = String.format("%d볼 %d스트라이크", ball, strike);
+        }
+        return result;
+    }
+
+    private static void userInputNumber() {
+        userNumberList = new ArrayList<>();
+
+        System.out.print("숫자를 입력해주세요:");
+        String userInput = Console.readLine();
+
+        if (!userInput.matches("^[1-9]{3}$")) {
+            throw new IllegalArgumentException();
+        }
+        for(int i = 0; i < userInput.length(); i++) {
+            userNumberList.add(userInput.charAt(i) - 48);
+        }
+    }
+
+    private static void createRandomNumber() {
+        answerNumberList = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
             int random = Randoms.pickNumberInRange(1, 9);
 
-            while (randomNum.toString().contains(Integer.toString(random))) {
+            while (answerNumberList.contains((random))) {
                 random = Randoms.pickNumberInRange(1, 9);
             }
-            randomNum.append(random);
+            answerNumberList.add(random);
         }
-        return randomNum.toString();
     }
 
 
