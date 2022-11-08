@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ControllerTest {
@@ -31,6 +32,15 @@ class ControllerTest {
                 assertThatThrownBy(() -> Controller.validateNothing())
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 스트라이크_점수_계산() {
+        Map<String, Integer> scoreMap = Controller.getScoreMap();
+        scoreMap.put("스트라이크", 1);
+        Controller.increaseScore("스트라이크");
+
+        assertThat(scoreMap.get("스트라이크")).isEqualTo(2);
     }
 
     @BeforeEach
