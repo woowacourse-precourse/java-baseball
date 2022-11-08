@@ -1,9 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 import java.util.regex.Pattern;
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
-        new BaseballController(new Console(new Input(), new Output()),
+        new BaseballController(new IOManager(new Input(), new Output()),
                 new GameStatus(),
                 new BaseballGame(new Validator(), new Computer(new NumbersGenerator(), new Numbers()), new Player(new Numbers())))
                 .run();
@@ -22,15 +22,15 @@ public class Application {
 class BaseballController {
     private final int COUNT_OF_NUMBERS = 3;
 
-    private Console console;
+    private IOManager ioManager;
     private GameStatus gameStatus;
     private BaseballGame baseballGame;
 
-    BaseballController(Console console, GameStatus gameStatus, BaseballGame baseballGame) {
-        this.console = console;
+    BaseballController(IOManager ioManager, GameStatus gameStatus, BaseballGame baseballGame) {
+        this.ioManager = ioManager;
         this.gameStatus = gameStatus;
         this.baseballGame = baseballGame;
-        console.printOutput("숫자 야구 게임을 시작합니다.");
+        ioManager.printOutput("숫자 야구 게임을 시작합니다.");
     }
 
     public void run() {
@@ -47,11 +47,11 @@ class BaseballController {
 
     private void playGame(Numbers answer, int count) {
         try {
-            console.printOutput("숫자를 입력해주세요 : ");
-            Numbers inputNumbers = baseballGame.convertToNumbers(console.getInput());
+            ioManager.printOutput("숫자를 입력해주세요 : ");
+            Numbers inputNumbers = baseballGame.convertToNumbers(ioManager.getInput());
 
             BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
-            console.printOutput(ballCount.toString());
+            ioManager.printOutput(ballCount.toString());
 
             if (ballCount.isAllStrike(COUNT_OF_NUMBERS)) {
                 gameStatus.quitProgram();
@@ -59,21 +59,21 @@ class BaseballController {
             }
 
         } catch (IllegalArgumentException e) {
-            console.printOutput(e.getMessage());
+            ioManager.printOutput(e.getMessage());
         }
     }
 
     private void checkGoOrStop(BallCount ballCount) {
-        console.printOutput(COUNT_OF_NUMBERS + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+        ioManager.printOutput(COUNT_OF_NUMBERS + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        switch (console.getInput()) {
+        switch (ioManager.getInput()) {
             case "1":
                 gameStatus.restartProgram();
                 run();
                 break;
             case "2":
-                console.printOutput("게임이 종료되었습니다.");
+                ioManager.printOutput("게임이 종료되었습니다.");
                 gameStatus.quitProgram();
         }
     }
@@ -205,10 +205,9 @@ class GameStatus {
 }
 
 class Input {
-    Scanner scanner = new Scanner(System.in);
 
     public String input() {
-        return scanner.nextLine();
+        return Console.readLine();
     }
 }
 
@@ -218,11 +217,11 @@ class Output {
     }
 }
 
-class Console {
+class IOManager {
     Input input;
     Output output;
 
-    Console(Input input, Output output) {
+    IOManager(Input input, Output output) {
         this.input = input;
         this.output = output;
     }
