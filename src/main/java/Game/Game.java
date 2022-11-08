@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import Exception.CheckException;
-import baseball.ScoreBoard;
+import Score.ScoreBoard;
 
 public class Game {
 
