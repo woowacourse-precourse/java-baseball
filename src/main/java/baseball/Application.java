@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -19,6 +20,17 @@ public class Application {
             }
         }
         return randomInt;
+    }
+
+    public static void guessNumber(List<Integer> randomInt) {
+        Grade grade = new Grade();
+        while (grade.getStrike() != 3) {
+            System.out.print("숫자를 입력해주세요 : ");
+            int inputInt = getInputInt(Console.readLine());
+            grade = grading(randomInt, inputInt);
+            System.out.println(makeGradeMessage(grade));
+        }
+        System.out.println(grade.getStrike() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static int getInputInt(String input) {
