@@ -18,29 +18,28 @@ class Baseball {
     private final int NUMBER_SIZE = 3;
     private final int STRIKE_INDEX = 0;
     private final int BALL_INDEX = 1;
-    private List<Integer> computerNumber;
+    private final int ASCII_ZERO = 48;
+    private List<Character> computerNumber;
 
     public void gameStart() {
         this.computerNumber = new ArrayList<>();
-        List<Integer> playerNumber = new ArrayList<>();
-        List<Integer> baseballCount = List.of(0, 0);
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean option;
         do {
             pickRandomNumber(computerNumber);
-            gameInProgress(computerNumber, playerNumber, baseballCount);
+            gameInProgress(computerNumber);
             option = gameEnd();
-        } while (option);
+        } while (!option);
     }
-    public void gameInProgress(List<Integer> computerNumber, List<Integer> playerNumber, List<Integer> baseballCount) {
-        String getPlayerNumber;
+    public void gameInProgress(List<Character> computerNumber) {
+        String playerNumber;
+        int[] baseballCount = new int[2];
         do {
-            getPlayerNumber = getPlayerNumber();
-            playerNumberList(getPlayerNumber, playerNumber);
+            playerNumber = getPlayerNumber();
             comparisonPlayerComputer(computerNumber, playerNumber, baseballCount);
             printBaseballScore(baseballCount);
-        } while (rightAnswer(baseballCount.get(STRIKE_INDEX)));
+        } while (rightAnswer(baseballCount));
     }
     public boolean gameEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -49,34 +48,28 @@ class Baseball {
         return option;
     }
 
-    public void pickRandomNumber(List<Integer> computerNumber) {
+    public void pickRandomNumber(List<Character> computerNumber) {
         this.computerNumber.clear();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
+            char character = (char) (randomNumber + ASCII_ZERO);
+            if (!computerNumber.contains(character)) {
+                computerNumber.add(character);
             }
         }
     }
 
     public String getPlayerNumber() {
-        String getPlayerNumber = null;
+        String playerNumber = null;
         try {
             InputStreamReader ir = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(ir);
             System.out.print("숫자를 입력해주세요 : ");
-            getPlayerNumber = br.readLine();
-            getPlayerNumberError(getPlayerNumber);
+            playerNumber = br.readLine();
+            getPlayerNumberError(playerNumber);
         } catch (Exception e) {
         }
-        return getPlayerNumber;
-    }
-    public void playerNumberList(String getPlayerNumber, List<Integer> playerNumber) {
-        int playerNum = Integer.parseInt(getPlayerNumber);
-        for (int i = 0; i < NUMBER_SIZE; i++) {
-            playerNumber.add(playerNum % 10);
-            playerNum /= 10;
-        }
+        return playerNumber;
     }
 
     public void getPlayerNumberError(String getPlayerNumber) {
@@ -96,15 +89,14 @@ class Baseball {
         return getException;
     }
 
-    public void comparisonPlayerComputer(List<Integer> computerNumber, List<Integer> playerNumber, List<Integer> baseballCount) {
-
+    public void comparisonPlayerComputer(List<Character> computerNumber, String playerNumber, int[] baseballCount) {
         for (int i = 0; i < NUMBER_SIZE; i++) {
             for (int j = 0; j < NUMBER_SIZE; j++) {
-                comparisonNumber(playerNumber.get(i), computerNumber.get(j), i, j, baseballCount);
+                comparisonNumber(playerNumber.charAt(i) , computerNumber.get(j), i, j, baseballCount);
             }
         }
     }
-    public void comparisonNumber(int playerNumber, int computerNumber, int i, int j, List<Integer> baseballCount) {
+    public void comparisonNumber(int playerNumber, int computerNumber, int i, int j, int[] baseballCount) {
         if (playerNumber == computerNumber) {
             if (i == j) {
                 countBaseball(baseballCount, STRIKE_INDEX);
@@ -113,16 +105,16 @@ class Baseball {
             }
         }
     }
-    public void countBaseball(List<Integer> baseballCount, int i) {
+    public void countBaseball(int[] baseballCount, int i) {
         int count;
-        count = baseballCount.get(i) + 1;
-        baseballCount.set(i, count);
+        count = baseballCount[i] + 1;
+        baseballCount[i] = count;
     }
 
-    public void printBaseballScore(List<Integer> baseballCount) {
-        if ((baseballCount.get(STRIKE_INDEX) > 0) || (baseballCount.get(BALL_INDEX) > 0)) {
-            printBall(baseballCount.get(BALL_INDEX));
-            printStrike(baseballCount.get(STRIKE_INDEX));
+    public void printBaseballScore(int[] baseballCount) {
+        if ((baseballCount[STRIKE_INDEX] > 0) || (baseballCount[BALL_INDEX] > 0)) {
+            printBall(baseballCount[BALL_INDEX]);
+            printStrike(baseballCount[STRIKE_INDEX]);
         } else {
             System.out.print("낫싱");
         }
@@ -139,11 +131,13 @@ class Baseball {
         }
     }
 
-    public boolean rightAnswer(int strike) {
+    public boolean rightAnswer(int[] baseballCount) {
         boolean success = false;
-        if (strike == 3) {
+        if (baseballCount[STRIKE_INDEX] == 3) {
             success = true;
         }
+        baseballCount[STRIKE_INDEX] = 0;
+        baseballCount[BALL_INDEX] = 0;
         return !success;
     }
     public String gameRestartOrEnd() {
