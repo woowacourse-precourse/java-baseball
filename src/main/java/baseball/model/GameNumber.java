@@ -9,28 +9,25 @@ public class GameNumber {
     private String inputString;
     private int[] playerNumbers;
     private int[] computerNumbers;
-    NumberValidator numberValidator = new NumberValidator();
-    RandomUtility randomUtility = new RandomUtility();
 
     public void setInputString(String inputString) {
         this.inputString = inputString.replaceAll(" ", "");
-        setPlayerNumbers();
     }
 
     public String getInputString() {
         return inputString;
     }
 
-    public void setPlayerNumbers() {
-        playerNumbers = numberValidator.toValidateData(inputString);
+    public void setPlayerNumbers(int[] playerNumbers) {
+        this.playerNumbers = playerNumbers;
     }
 
     public int[] getPlayerNumbers() {
         return playerNumbers;
     }
 
-    public void setComputerNumbers() {
-        computerNumbers = randomUtility.generateRandomNumbers();
+    public void setComputerNumbers(int[] computerNumbers) {
+        this.computerNumbers = computerNumbers;
         System.out.println("computerNumbers" + Arrays.toString(computerNumbers));
     }
 

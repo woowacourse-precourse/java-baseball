@@ -16,10 +16,12 @@ public class ComputerController {
     private static final String SPACING_MESSAGE = " ";
     private int strikeCount;
     private int ballCount;
+    RandomUtility randomUtility = new RandomUtility();
     OutputView outputView = new OutputView();
 
     public void startGame(GameNumber gameNumber) {
-        gameNumber.setComputerNumbers();
+        int[] computerNumbers = randomUtility.generateRandomNumbers();
+        gameNumber.setComputerNumbers(computerNumbers);
     }
 
     public boolean proceedComputerToDo(GameNumber gameNumber) {

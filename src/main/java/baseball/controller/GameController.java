@@ -10,6 +10,7 @@ public class GameController {
     private static final String BASEBALL_GAME_END_ANSWER = "2";
     GameNumber gameNumber = new GameNumber();
     ComputerController computerController = new ComputerController();
+    NumberValidator numberValidator = new NumberValidator();
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
 
@@ -26,12 +27,16 @@ public class GameController {
     private void repeatGuessingAnswer() {
         boolean correctAnswer = false;
         while (!correctAnswer) {
-            String inputString = inputView.enterGameNumber();
-            gameNumber.setInputString(inputString);
-
+            setAndSavePlayerNumbers();
             correctAnswer = computerController.proceedComputerToDo(gameNumber);
             sendEndMessageIfTrue(correctAnswer);
         }
+    }
+
+    private void setAndSavePlayerNumbers() {
+        gameNumber.setInputString(inputView.enterGameNumber());
+        int[] playerNumbers = numberValidator.toValidateData(gameNumber.getInputString());
+        gameNumber.setPlayerNumbers(playerNumbers);
     }
 
     private void sendEndMessageIfTrue(boolean correctAnswer) {
