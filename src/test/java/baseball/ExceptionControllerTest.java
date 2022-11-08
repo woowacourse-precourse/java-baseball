@@ -1,5 +1,6 @@
 package baseball;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +8,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ExceptionControllerTest {
     @Nested
-    class 세자리_수가_아닐_때_예외발생_테스트 {
+    @DisplayName("세자리 수가 아닐 때 예외발생 테스트")
+    class Not3LengthInputTest {
         @Test
         void 네자리_수가_주어진_경우() {
             String input = "1234";
@@ -26,7 +28,8 @@ class ExceptionControllerTest {
     }
 
     @Nested
-    class 숫자가_아닌_값이_섞여있을_때_예외발생_테스트 {
+    @DisplayName("숫자가 아닌 값이 섞여있을 때 예외발생 테스트")
+    class NotNumberInputTest {
         @Test
         void 공백이_포함된_경우() {
             String input = "1 2";
@@ -53,7 +56,8 @@ class ExceptionControllerTest {
     }
 
     @Nested
-    class 입력에_중복된_숫자가_있을_때_예외발생_테스트 {
+    @DisplayName("입력에 중복된 숫자가 있을 때 예외발생 테스트")
+    class DuplicatedNumberInputTest {
         @Test
         void 중복된_숫자가_입력된_경우() {
             String input = "122";
@@ -64,7 +68,8 @@ class ExceptionControllerTest {
     }
 
     @Nested
-    class 종료코드_입력이_유효하지_않을_때_예외발생_테스트 {
+    @DisplayName("종료코드 입력값이 유효하지 않을 때 예외발생 테스트")
+    class InvalidFinishCode {
         @Test
         void 유효하지_않은_숫자가_입력된_경우_1() {
             String input = "3";
