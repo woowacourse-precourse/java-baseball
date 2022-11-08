@@ -15,7 +15,7 @@ class ValidationTest {
         String str4 = "4213";
         String str5 = "322";
 
-        assertDoesNotThrow(() -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             Validation.validateBaseballInput(str1);
         });
 

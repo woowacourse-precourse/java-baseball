@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class Validation {
     public static void validateBaseballInput(String input) {
-        if ((input.length() != 3) || hasNotFromOneToNine(input) || hasSameWord(input)) {
+        if ((input.length() != Application.GAME_SIZE) || hasNotFromOneToNine(input) || hasSameWord(input)) {
             throw new IllegalArgumentException("입력오류");
         }
     }

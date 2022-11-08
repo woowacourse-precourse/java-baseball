@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-
     List<Integer> computer;
 
     public Game() {
@@ -17,7 +16,7 @@ public class Game {
         List<Integer> computer = new ArrayList<>();
         int randomNumber;
 
-        while (computer.size() < 3) {
+        while (computer.size() < Application.GAME_SIZE) {
             randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -74,8 +73,8 @@ public class Game {
     }
 
     public void printResult(int ball, int strike) {
-        if (strike == 3) {
-            System.out.println("3스트라이크");
+        if (strike == Application.GAME_SIZE) {
+            System.out.println(Application.GAME_SIZE + "스트라이크");
             return;
         }
         if (strike == 0 && ball == 0) {

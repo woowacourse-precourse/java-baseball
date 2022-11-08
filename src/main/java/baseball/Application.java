@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    public static final int GAME_SIZE = 3;
+
     public static void main(String[] args) {
         int flag = 1;
 
