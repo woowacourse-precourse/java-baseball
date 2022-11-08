@@ -6,18 +6,17 @@ import ui.Input;
 import ui.Messages;
 import ui.Output;
 
-
 public class Game {
 
     private final int MAX_LEN;
     private static final int REPLAY_GAME = 1;
     private static final int GUESSING_NUMBER = 2;
-    private RandomBallsGenerator computer;
-    private GameResultJudgement judge;
+    private final RandomBallsGenerator generator;
+    private final GameResultJudgement judge;
 
     public Game(final int MAX_LEN) {
         this.MAX_LEN = MAX_LEN;
-        computer = new RandomBallsGenerator(MAX_LEN);
+        generator = new RandomBallsGenerator(MAX_LEN);
         judge = new GameResultJudgement(MAX_LEN);
     }
 
@@ -34,7 +33,7 @@ public class Game {
     public void play(Input input, Output output) {
         final int START_INCLUSIVE = 1;
         final int END_INCLUSIVE = 9;
-        String computerNumber = computer.generateBalls(START_INCLUSIVE, END_INCLUSIVE);
+        String computerNumber = generator.generateBalls(START_INCLUSIVE, END_INCLUSIVE);
         boolean retry;
         do {
             output.printOut(Messages.REQUEST_NUMBER_INPUT.message());
