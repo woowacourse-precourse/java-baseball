@@ -17,7 +17,8 @@ public class Application {
             game.printInputNumber();
             user.setNumber();
 
-            game.checkNothing(computer.numberList, user.numberList);
+            game.countSameNumber(computer.numberList, user.numberList);
+            game.checkNothing();
 
             if (!game.nothing) {
                 game.countStrike(computer.numberList, user.numberList);
