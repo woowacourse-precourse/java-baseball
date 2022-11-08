@@ -44,6 +44,20 @@ public class Application {
         }
     }
 
+    public static ArrayList<Integer> ConvertStringToIntegerArray(String stringNumbers) {
+        CheckExceptionInputNumber(stringNumbers);
+        Integer integerNumber = Integer.valueOf(stringNumbers);  // occur argument exception if have non-number
+
+        ArrayList<Integer> numbers = new ArrayList<>();  // numbers chosen by user
+
+        while ( integerNumber > 0 ) {
+            numbers.add(0, integerNumber % 10);
+            integerNumber /= 10;
+        }
+
+        return numbers;
+    }
+
     public static void BaseballGame() {
         int gameStatus = GAME_PROGRESS;
 
