@@ -24,7 +24,7 @@ public class User {
                 numbers.add(Character.getNumericValue(c));
             }
         }else{
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Constants.INPUT_WRONG);
         }
     }
 
