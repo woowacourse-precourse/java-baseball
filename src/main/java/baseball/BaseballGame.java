@@ -68,7 +68,7 @@ public class BaseballGame {
         String command = inputCommand();
 
         if (command.equals(COMMAND_CONTINUE)) {
-            computer.reset();
+            computer.setRandomAnswer();
         }
         return command.equals(COMMAND_END);
     }

@@ -16,10 +16,10 @@ public class Computer {
     private List<Integer> answer;
 
     public Computer() {
-        reset();
+        setRandomAnswer();
     }
 
-    public void reset() {
+    public void setRandomAnswer() {
         Set<Integer> answerSet = new HashSet<>();
         while (answerSet.size() < MAX_LENGTH) {
             int nextAnswer = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
