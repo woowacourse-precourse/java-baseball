@@ -18,7 +18,7 @@ public class BaseballGameController implements GameController {
   private final HintService hintService;
 
   public BaseballGameController(InputService inputService, HintService hintService) {
-    this.computerNumbers = getRandomNumbers();
+    this.computerNumbers = generateRandomNumbers();
     this.inputService = inputService;
     this.hintService = hintService;
   }
@@ -33,7 +33,7 @@ public class BaseballGameController implements GameController {
     } while (hintService.isContinue(hint));
   }
 
-  private List<Integer> getRandomNumbers() {
+  List<Integer> generateRandomNumbers() {
     List<Integer> randomNumbers = new ArrayList<>();
     while (randomNumbers.size() < RANDOM_NUMBER_SIZE) {
       int randomNumber = Randoms.pickNumberInRange(BEGIN, END);
@@ -44,4 +44,7 @@ public class BaseballGameController implements GameController {
     return randomNumbers;
   }
 
+  public List<Integer> getComputerNumbers() {
+    return computerNumbers;
+  }
 }
