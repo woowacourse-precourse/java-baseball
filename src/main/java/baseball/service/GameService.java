@@ -20,8 +20,6 @@ public class GameService {
 
         List<Integer> randomNumbers = computer.getRandomNumbers();
 
-        System.out.println("randomNumbers : " + randomNumbers);
-
         ScoreDTO scoreDTO = new ScoreDTO();
         for (int i=0; i<input.length(); i++) {
             int nowIndex = randomNumbers.indexOf(input.charAt(i) - '0');
