@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.lang.*;
 
 class ApplicationTest extends NsTest {
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -24,37 +25,44 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_세자리수_이상_입력() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> Application.IllegalArgumentException())
+                assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-
-    @Test
-    void 예외_테스트_세자리수_미만_입력() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("14"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-
-    @Test
-    void 예외_테스트_0값_포함_입력() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("104"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-
-    @Test
-    void 예외_테스트_숫자_외_입력() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("a13"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
+//    @Test
+//    void 예외_테스트_세자리수_미만_입력() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("14"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+//
+//
+//    @Test
+//    void 예외_테스트_0값_포함_입력() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("104"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+//
+//
+//    @Test
+//    void 예외_테스트_숫자_외_입력() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("a13"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+//
+//    @Test
+//    void 예외_테스트_중복_숫자_입력() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("113"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
 
     @Override
     public void runMain() {
