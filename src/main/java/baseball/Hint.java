@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constant.LENGTH_OF_NUMBER;
+
 import java.util.List;
 
 public class Hint {
@@ -10,6 +12,16 @@ public class Hint {
     public void initHint() {
         strikeCount = 0;
         ballCount = 0;
+    }
+
+    public void giveHint(List<Integer> computerNumber, List<Integer> userNumber) {
+        for (int i = 0; i < LENGTH_OF_NUMBER; i++) {
+            if (isStrike(computerNumber, userNumber.get(i), i)) {
+                strikeCount++;
+            } else if (isBall(computerNumber, userNumber.get(i))) {
+                ballCount++;
+            }
+        }
     }
 
     public boolean isStrike(List<Integer> computerNumber, int userNumber, int index) {
