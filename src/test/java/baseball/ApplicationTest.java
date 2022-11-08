@@ -28,6 +28,38 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예측값입력_영문포함_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1ab"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예측값입력_한글포함_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1가나"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예측값입력_특수문자포함_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1!@"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예측값입력_공백포함_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1 3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
