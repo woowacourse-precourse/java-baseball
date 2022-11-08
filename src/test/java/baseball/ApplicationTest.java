@@ -3,8 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -118,19 +120,15 @@ class ApplicationTest extends NsTest {
             return outputStreamCaptor.toString().trim();
         }
 
-        @Test
-        void printJudgeResult_ThreeBallTwoStrike_Passed() {
-            assertThat(output(2, 3)).isEqualTo("3볼 2스트라이크");
-        }
-
-        @Test
-        void printJudgeResult_Nothing_Passed() {
-            assertThat(output(0, 0)).isEqualTo("낫싱");
-        }
-
-        @Test
-        void printJudgeResult_ThreeStrike_Passed() {
-            assertThat(output(3, 0)).isEqualTo("3스트라이크");
+        @ParameterizedTest
+        @DisplayName("카운트에 따라 메시지가 맞게 출력되는지 테스트")
+        @CsvSource({
+                "3, 2, 3볼 2스트라이크",
+                "0, 0, 낫싱",
+                "0, 3, 3스트라이크"
+        })
+        void printJudgeResult_ThreeBallTwoStrike_Passed(int ball, int strike, String result) {
+            assertThat(output(ball, strike)).isEqualTo(result);
         }
     }
 }
