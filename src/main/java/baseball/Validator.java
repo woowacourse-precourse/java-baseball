@@ -1,13 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.*;
 
 public class Validator {
 
-
-    public List<Integer> convertor(String inputNum){
+    public static List<Integer> convertor(String inputNum){
         List<Integer> playerAnswer = new ArrayList<>();
         if (validateTotal(inputNum)){
             for (int i=0;i<inputNum.length();i++){
@@ -17,20 +14,20 @@ public class Validator {
         return playerAnswer;
     }
 
-    public boolean checkDuplicate(String playerNum){
+    private static boolean checkDuplicate(String playerNum){
         List<Integer> playerAnswer = new ArrayList<>();
         for(int i=0;i<playerNum.length();i++){
             playerAnswer.add(playerNum.charAt(i)-'0');
         }
         Set<Integer> inputSet = new HashSet<>(playerAnswer);
-        return inputSet.size() != playerNum.length();
+        return inputSet.size() == playerNum.length();
     }
 
-    public boolean checkLength(String playerNum){
+    private static boolean checkLength(String playerNum){
         return playerNum.length() == Range.DIGIT;
     }
 
-    public boolean checkNum(String playerNum){
+    private static boolean checkNum(String playerNum){
         boolean check = false;
         for (int i=0;i<playerNum.length();i++){
             int idxNum = playerNum.charAt(i) - '0';
@@ -43,7 +40,7 @@ public class Validator {
         return check;
     }
 
-    public boolean validateTotal(String playerNum){
+    private static boolean validateTotal(String playerNum){
         if (checkDuplicate(playerNum) && checkLength(playerNum) && checkNum(playerNum)){
             return true;
         }else{
