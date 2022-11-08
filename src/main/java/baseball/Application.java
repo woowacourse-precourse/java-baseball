@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.game.Game;
+import baseball.game.GameController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameController gameController = GameController.getInstance();
+        Game baseBallGame = gameController.getBaseBallGame();
+        baseBallGame.play();
     }
 }
