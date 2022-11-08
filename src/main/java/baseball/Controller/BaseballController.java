@@ -48,15 +48,19 @@ public class BaseballController {
 
     public List<String> readInputNumber() {
         printInputMessage();
-        String inputNumber = Console.readLine();
-        System.out.println(inputNumber);
+        String input = Console.readLine();
 
-        String[] numberToArray = inputNumber.split("");
-        List<String> userNumber = new ArrayList<String>(Arrays.asList(numberToArray));
-        baseballService.isValidInputSize(userNumber);
-        baseballService.isValidInputRange(userNumber);
+        String[] numberToArray = input.split("");
+        List<String> inputNumber = new ArrayList<String>(Arrays.asList(numberToArray));
+        checkExceptions(inputNumber);
 
-        return userNumber;
+        return inputNumber;
+    }
+
+    public void checkExceptions(List<String> inputList) {
+        baseballService.isValidInputSize(inputList);
+        baseballService.isValidInputRange(inputList);
+        baseballService.isInputDuplicate(inputList);
     }
 
 
@@ -65,7 +69,6 @@ public class BaseballController {
             countStrike(randomNumber, inputNumber, number);
             countBall(randomNumber, inputNumber, number);
         }
-        System.out.println("스트라이크: "+baseball.getStrike()+ "볼: "+baseball.getBall());
     }
 
 
