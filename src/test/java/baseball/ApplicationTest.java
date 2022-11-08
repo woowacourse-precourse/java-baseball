@@ -28,6 +28,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 사용자_입력값_3자리_숫자보다_작을_경우_예외() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

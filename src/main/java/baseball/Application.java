@@ -12,6 +12,7 @@ public class Application {
         start(randomNumber, inputNumber);
         int continueCheck = Answer.retry();//재시작 여부
 
+        //TODO: 최초 시작이 아닐 경우 사용 될 로직
         while (continueCheck ==1){
             randomNumber = ready();
             inputNumber = set();
@@ -45,11 +46,9 @@ public class Application {
         return inputNumber;
     }
 
-
-
     private static int ready() {
         int randomNumber = GameSetting.getRandomNumber();
-        System.out.println(randomNumber);
+        //System.out.println(randomNumber);
         System.out.println("숫자 야구 게임을 시작합니다.");
         return randomNumber;
     }
