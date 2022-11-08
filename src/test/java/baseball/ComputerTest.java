@@ -81,7 +81,6 @@ class ComputerTest {
             Computer computer = new Computer();
             computer.answer = List.of(1, 2, 3);
             boolean resultStrike = computer.isStrike(1, 0);
-            ;
             assertTrue(resultStrike);
         }
 
@@ -90,7 +89,6 @@ class ComputerTest {
             Computer computer = new Computer();
             computer.answer = List.of(1, 2, 3);
             boolean resultNotStrike = computer.isStrike(2, 2);
-            ;
             assertFalse(resultNotStrike);
         }
     }
