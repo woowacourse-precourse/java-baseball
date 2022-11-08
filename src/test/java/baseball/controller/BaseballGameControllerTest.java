@@ -1,4 +1,4 @@
-package baseball.components;
+package baseball.controller;
 
 import baseball.controller.BaseballGameController;
 import camp.nextstep.edu.missionutils.test.NsTest;
