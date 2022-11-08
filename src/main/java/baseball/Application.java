@@ -88,7 +88,7 @@ public class Application {
         }
         int strikes = 0;
         for (int i = 0; i < 3; i++) {
-            if (answer.get(i).equals(guess.get(i)) {
+            if (answer.get(i).equals(guess.get(i))) {
                 strikes++;
                 balls--;
             }
