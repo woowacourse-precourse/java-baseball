@@ -18,15 +18,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
-    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
-
-    @BeforeEach
-    public void setUpStreams() { System.setOut(new PrintStream(output));}
-    @AfterEach
-    public void restoreStreams(){
-        System.setOut(System.out);
-        output.reset();
-    }
     @Test
     void 낫싱(){
         List<Integer> userInput = Arrays.asList(1,2,3);
@@ -64,10 +55,9 @@ class ApplicationTest extends NsTest {
         int strike = 2;
         int ball = 0;
 
-        String result = "2스트라이크\n";
+        String result = "2스트라이크";
         printResult(strike,ball);
-
-        assertThat(result).isEqualTo(output.toString());
+        assertThat(output()).isEqualTo(result);
     }
     @Test
     void 게임종료_후_재시작() {
