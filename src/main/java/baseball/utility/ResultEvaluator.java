@@ -11,6 +11,13 @@ public class ResultEvaluator {
 
     }
 
+    public static String getHint(String computerNumber, String playerNumber) {
+        assert (PlayerNumberValidator.isPlayerNumberValid(computerNumber) && PlayerNumberValidator.isPlayerNumberValid(playerNumber));
+        assert (computerNumber.length() == playerNumber.length());
+
+        return translateScoreToHint(getScore(computerNumber, playerNumber));
+    }
+
     private static Score getScore(String computerNumber, String playerNumber) {
         int numberLength = playerNumber.length();
         int numStrikes = 0;
