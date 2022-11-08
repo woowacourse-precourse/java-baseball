@@ -13,28 +13,28 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     @Test
-    void 길이가_초과한_값_입력() {
+    void 길이가_초과한_값_입력_테스트() {
         String input = "1234";
         boolean result = false;
         assertThat(User.isNumberValidMaxSize(input)).isEqualTo(result);
     }
 
     @Test
-    void 중복된_수_입력() {
+    void 중복된_수_입력_테스트() {
         String input = "112";
         boolean result = false;
         assertThat(User.isNumberValidUnique(input)).isEqualTo(result);
     }
 
     @Test
-    void 숫자가_아닌_값_입력() {
+    void 숫자가_아닌_값_입력_테스트() {
         String input = "1a2";
         boolean result = false;
         assertThat(User.isNumberValidRange(input)).isEqualTo(result);
     }
 
     @Test
-    void 유효하지_않은_범위_내의_값_입력() {
+    void 유효하지_않은_범위_내의_값_입력_테스트() {
         String input = "102";
         boolean result = false;
         assertThat(User.isNumberValidRange(input)).isEqualTo(result);
@@ -45,6 +45,20 @@ class ApplicationTest extends NsTest {
         String input = "123";
         List<Integer> result = List.of(1, 2, 3);
         assertThat(User.convertInputAsNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void 유효하지_않은_재시작_여부값_입력_테스트() {
+        String flag = "a";
+        boolean result = true;
+        assertThat(User.isInValidFlag(flag)).isEqualTo(result);
+    }
+
+    @Test
+    void 유효한_재시작_여부값_입력_테스트() {
+        String flag = "1";
+        boolean result = false;
+        assertThat(User.isInValidFlag(flag)).isEqualTo(result);
     }
 
     @Test
