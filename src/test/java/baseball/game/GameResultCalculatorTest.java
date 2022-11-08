@@ -51,4 +51,28 @@ class GameResultCalculatorTest {
             assertThat(result).isEqualTo(List.of(0, 0));
         }
     }
+
+    @Nested
+    @DisplayName("isThreeStrike 메서드는")
+    class IsThreeStrike {
+        @Test
+        public void 모두_스트라이크_일때_true를_반환한다() {
+            Number mockRandomNumber = new Number(789);
+            Number mockPlayerInput = new Number(789);
+
+            boolean isThreeStrike = gameResultCalculator.isThreeStrike(mockRandomNumber, mockPlayerInput);
+
+            assertThat(isThreeStrike).isTrue();
+        }
+
+        @Test
+        public void 모두_스트라이크가_아니면_false를_반환한다() {
+            Number mockRandomNumber = new Number(789);
+            Number mockPlayerInput = new Number(127);
+
+            boolean isThreeStrike = gameResultCalculator.isThreeStrike(mockRandomNumber, mockPlayerInput);
+
+            assertThat(isThreeStrike).isFalse();
+        }
+    }
 }
