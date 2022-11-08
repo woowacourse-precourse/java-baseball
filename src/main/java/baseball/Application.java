@@ -9,7 +9,6 @@ public class Application {
 
     public static String inputCheck(String input) {
         if (input.length() >= 4) {
-            System.out.println("뭐가 틀렸는데");
             throw new IllegalArgumentException("");
         }else{
             return input;
