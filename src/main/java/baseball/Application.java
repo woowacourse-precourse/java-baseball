@@ -19,6 +19,17 @@ public class Application {
 
         public boolean startGame() throws IOException {
             computerNum = makeComputerNum();
+
+            while(true){
+                System.out.print("숫자를 입력해주세요 : ");
+                BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+                String input =bf.readLine();
+                List<Integer> inputNum = toInputNum(input);
+
+                int strikeCnt=strike(inputNum);
+                int ballCnt=ball(inputNum);
+                if(resultPrint(ballCnt,strikeCnt))return true;
+            }
         }
 
         public List<Integer> makeComputerNum() {
