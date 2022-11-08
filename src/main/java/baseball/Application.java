@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -32,16 +33,17 @@ public class Application {
     public static List<Integer> validateUserNumber(String userNumbers) {
         List<String> numberList = stringToStringList(userNumbers);
         validateDigit(userNumbers);
-        validateZero(numberList);
         validateSize(userNumbers, 3);
+        validateRange(userNumbers, "^[1-9]*$");
         validateDuplication(numberList);
 
         return numberList.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    private static void validateZero(List<String> numberList) {
-        if (numberList.contains("0")) {
-            throw new IllegalArgumentException("UserNumber can't have Zero");
+    private static void validateRange(String numbers, String regex) {
+
+        if (!Pattern.matches(regex, numbers)) {
+            throw new IllegalArgumentException("Number is out of range");
         }
     }
 
