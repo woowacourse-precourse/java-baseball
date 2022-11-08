@@ -17,4 +17,13 @@ public class ResultTest {
         assert (result.get(ResultType.NOTHING) == 0);
     }
 
+    @Test
+    void isNothing_낫싱_판단() {
+        Result result = new Result();
+        assert (result.isNothing());
+
+        result.add(ResultType.BALL);
+        assert (!result.isNothing());
+    }
+
 }
