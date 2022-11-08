@@ -100,6 +100,38 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 낫싱_판단_여부_실패_테스트() {
+        int ballCount = 0;
+        int strikeCount = 1;
+        boolean result = false;
+        assertThat(Comparison.isNothing(ballCount, strikeCount)).isEqualTo(result);
+    }
+
+    @Test
+    void 낫싱_판단_여부_성공_테스트() {
+        int ballCount = 0;
+        int strikeCount = 0;
+        boolean result = true;
+        assertThat(Comparison.isNothing(ballCount, strikeCount)).isEqualTo(result);
+    }
+
+    @Test
+    void 정답_판별_여부_실패_테스트() {
+        List<Integer> answerNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(4, 2, 3);
+        boolean result = false;
+        assertThat(Comparison.isAnswered(userNumber, answerNumber)).isEqualTo(result);
+    }
+
+    @Test
+    void 정답_판별_여부_성공_테스트() {
+        List<Integer> answerNumber = List.of(1, 2, 3);
+        List<Integer> userNumber = List.of(1, 2, 3);
+        boolean result = true;
+        assertThat(Comparison.isAnswered(userNumber, answerNumber)).isEqualTo(result);
+    }
+
+    @Test
     void 낫싱_메세지_출력_테스트() {
         int ballCount = 0;
         int strikeCount = 0;
