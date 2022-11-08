@@ -9,6 +9,14 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computer = makeRandomInteger();
     }
+    // 숫자 입력
+    public static List<Integer> inputNumber() {
+
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> user = inputExeption();
+        System.out.println(user);
+        return user;
+    }
     // 난수 발생기
     public static List<Integer> makeRandomInteger() {
         List<Integer> computer = new ArrayList<>();
