@@ -5,7 +5,7 @@ import baseball.domain.UserBall;
 public class OutputView {
 
 	public void printUserBallStatus(UserBall userBall) {
-		System.out.println(userBall.createUserBallStatusDto());
+		System.out.println(userBall.createUserBallStatusStringDto());
 	}
 
 	public void printSuccess() {

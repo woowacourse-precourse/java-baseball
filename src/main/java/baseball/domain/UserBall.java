@@ -17,7 +17,7 @@ public class UserBall {
 		return new UserBall(0, 0);
 	}
 
-	public String createUserBallStatusDto() {
+	public String createUserBallStatusStringDto() {
 		String userBallStatusDto = status + "";
 		return userBallStatusDto;
 	}
