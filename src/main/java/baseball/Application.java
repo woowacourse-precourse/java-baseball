@@ -30,4 +30,13 @@ public class Application {
     private static String getInput() {
         return Console.readLine();
     }
+
+    public static List<Character> tokenizeString(String input) {
+        List<Character> tokenizedResult = new ArrayList<>();
+        for(int i = 0;i<input.length();i++){
+            tokenizedResult.add(input.charAt(i));
+        }
+        return tokenizedResult;
+    }
+
 }

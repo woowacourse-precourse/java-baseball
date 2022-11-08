@@ -1,7 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -80,5 +83,16 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Nested
+    class UnitTest {
+        @Test
+        void 토큰화_test() {
+            String input = "123";
+            List<Character> result = List.of('1','2','3');
+
+            assertThat(Application.tokenizeString(input)).isEqualTo(result);
+        }
     }
 }
