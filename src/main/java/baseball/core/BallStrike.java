@@ -16,16 +16,16 @@ public class BallStrike {
 
     @Override
     public String toString() {
-        return getScoreMessage();
+        return makeHintMessage();
     }
 
-    private String getScoreMessage() {
+    private String makeHintMessage() {
         String resultMessage;
 
         if (isNothing()) {
-            resultMessage = getNothingMessage();
+            resultMessage = makeNothingMessage();
         } else {
-            resultMessage = getBallStrikeResultString();
+            resultMessage = makeBallStrikeResultString();
         }
         return resultMessage;
     }
@@ -34,11 +34,11 @@ public class BallStrike {
         return ballCount == 0 && strikeCount == 0;
     }
 
-    private String getNothingMessage() {
+    private String makeNothingMessage() {
         return NOTHING;
     }
 
-    private String getBallStrikeResultString() {
+    private String makeBallStrikeResultString() {
         StringBuilder sb = new StringBuilder();
         addBallString(sb);
         addStrikeString(sb);
