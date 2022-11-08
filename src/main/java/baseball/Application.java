@@ -5,12 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
         List<Integer> computerNumbers = getRandomNumbers();
-        int[] userNumbers;
+        List<Integer> userNumbers;
         int[] gameResult;
         String userNumber;
         String commandNumber;
@@ -75,9 +76,9 @@ public class Application {
         }
     }
 
-    static int[] getNumbersToUserNumber(String userNumber) {
+    static List<Integer> getNumbersToUserNumber(String userNumber) {
         try {
-            return Stream.of(userNumber.split("")).mapToInt(Integer::parseInt).toArray();
+            return Stream.of(userNumber.split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
@@ -127,14 +128,14 @@ public class Application {
         return randomNumbers;
     }
 
-    static int[] getGameResult(List<Integer> computerNumbers, int[] userNumbers) {
+    static int[] getGameResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int[] gameResult = {0, 0};   //스트라이크, 볼
 
         for (int index = 0; index < 3; index++) {
-            if (computerNumbers.get(index).equals(userNumbers[index])) {
+            if (computerNumbers.get(index).equals(userNumbers.get(index))) {
                 gameResult[0] += 1;
 
-            } else if (computerNumbers.contains(userNumbers[index])) {
+            } else if (computerNumbers.contains(userNumbers.get(index))) {
                 gameResult[1] += 1;
             }
         }
