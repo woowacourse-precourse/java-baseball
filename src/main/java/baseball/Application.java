@@ -60,11 +60,14 @@ public class Application {
             intprediction[i] = Integer.parseInt(splitprediction[i]);
         }
     }
-    public void compareStrike(){
+    public void setStrike(){
         for(int a =0; a<intprediction.length; a++){
             intprediction[a] = intarrcomputer[a];
            strike +=1;
         }
     }
 
+    public void setball(){
+
+    }
 }
