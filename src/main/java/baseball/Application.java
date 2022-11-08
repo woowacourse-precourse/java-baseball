@@ -15,6 +15,7 @@ public class Application {
 
     static List<Integer> computer;
     static List<Integer> numbers;
+    static boolean[] check;
 
     static int strick;
     static int ball;
@@ -26,7 +27,6 @@ public class Application {
     public static void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         selectNumber();
-
         while (!result) {
             System.out.print("숫자를 입력해 주세요 : ");
             inputNumber();
@@ -85,8 +85,18 @@ public class Application {
     public static void inputNumber(){
         String input = readLine();
         numbers = new ArrayList<>();
+        check = new boolean[10];
         for(int i=0; i<input.length(); i++){
-            numbers.add(Integer.parseInt(String.valueOf(input.charAt(i))));
+            duplicationException(Integer.parseInt(String.valueOf(input.charAt(i))));
+        }
+    }
+
+    public static void duplicationException(int num){
+        if(!check[num]){
+            numbers.add(num);
+            check[num] = true;
+        }else{
+            throw new IllegalArgumentException("중복된 입력값이 존재합니다.");
         }
     }
 
