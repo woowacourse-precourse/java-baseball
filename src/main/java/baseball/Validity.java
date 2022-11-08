@@ -55,12 +55,12 @@ public class Validity {
     private void isNumberOverlaped(String inputString){
         List<Integer> inputList= Revert.revertStringToList(inputString);
         int count=0;
-        for(int i=0; i<inputList.size(); i++){
-            if(inputList.contains(inputList.get(i))){
+        for(int i=0; i<inputList.size()-1; i++){
+            if(inputList.get(i).equals(inputList.get(i+1))){
                 count++;
             }
         }
-        if(!(count ==3)){
+        if(!(count ==0)){
              throw new IllegalArgumentException();
         }
     }
