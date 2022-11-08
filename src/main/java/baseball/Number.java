@@ -4,18 +4,17 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class GameNumber {
+public class Number {
     private static final String INPUT_SENTENCE = "숫자를 입력해주세요 : ";
     private static final int RESULT_SIZE = 2;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final String pattern = "^[1-9]{3}$";
 
-    public GameNumber() {
+    public Number() {
     }
 
     // 사용자 숫자 입력받는 메소드
