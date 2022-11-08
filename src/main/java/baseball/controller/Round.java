@@ -4,6 +4,7 @@ import baseball.model.Judge;
 import baseball.model.QuizNumber;
 import baseball.model.UserNumber;
 import baseball.view.View;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Round {
@@ -22,6 +23,17 @@ public class Round {
             }
         }
         view.end();
+        retry(view);
+    }
+    void retry(View view) throws IllegalArgumentException {
         view.askRetry();
+        String retry = Console.readLine();
+        if (retry.equals("1")) {
+            play(view);
+        } else if (retry.equals("2")) {
+
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
