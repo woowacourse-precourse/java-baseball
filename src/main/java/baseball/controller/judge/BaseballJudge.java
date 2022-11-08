@@ -22,8 +22,26 @@ public class BaseballJudge implements Judge {
         return isCorrectAnswer(strike);
     }
 
-    private boolean isCorrectAnswer(int strike) {
-        return strike == Rule.LENGTH.getValue();
+    private int checkStrike(final List<Integer> playerList, final List<Integer> goal) {
+        int count = 0;
+        for (int i = 0; i < playerList.size(); i++) {
+            if (playerList.get(i).equals(goal.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int checkBall(final List<Integer> playerList, final List<Integer> goal) {
+        int count = 0;
+        for (int i = 0; i < playerList.size(); i++) {
+            Integer playerNum = playerList.get(i);
+            Integer goalNum = goal.get(i);
+            if (goal.contains(playerNum) && !playerNum.equals(goalNum)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     @Override
@@ -46,25 +64,7 @@ public class BaseballJudge implements Judge {
         return builder.toString();
     }
 
-    private int checkStrike(final List<Integer> playerList, final List<Integer> goal) {
-        int count = 0;
-        for (int i = 0; i < playerList.size(); i++) {
-            if (playerList.get(i).equals(goal.get(i))) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    private int checkBall(final List<Integer> playerList, final List<Integer> goal) {
-        int count = 0;
-        for (int i = 0; i < playerList.size(); i++) {
-            Integer playerNum = playerList.get(i);
-            Integer goalNum = goal.get(i);
-            if (goal.contains(playerNum) && !playerNum.equals(goalNum)) {
-                count++;
-            }
-        }
-        return count;
+    private boolean isCorrectAnswer(int strike) {
+        return strike == Rule.LENGTH.getValue();
     }
 }

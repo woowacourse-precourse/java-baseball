@@ -17,11 +17,11 @@ public class ConsoleInputReader {
         return convertToIntegerList(userInputNumber);
     }
 
-    public static GameFlag getUserOpinion() {
-        String userOpinion = Console.readLine();
-        validateFlag(userOpinion);
+    public static GameFlag getUserFlag() {
+        String userFlag = Console.readLine();
+        validateFlag(userFlag);
 
-        int flag = Integer.parseInt(userOpinion);
+        int flag = Integer.parseInt(userFlag);
         return convertGameFlag(flag);
     }
 
