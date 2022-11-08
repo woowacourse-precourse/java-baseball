@@ -1,15 +1,14 @@
-package computer;
+package utils;
 
 import baseball.validator.TrialValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import utils.RandomGeneratorUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class RandomGeneratorUtilTest {
 
