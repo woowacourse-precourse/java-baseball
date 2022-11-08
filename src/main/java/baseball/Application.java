@@ -28,6 +28,7 @@ public class Application {
             inputValidator(input);
 
             String ballStrike = compareInput(Integer.toString(answerNum),input);
+            System.out.println(ballStrike);
             if(Objects.equals(ballStrike, RESTART_CONDITION)){
                 answerNum = createRandomNum();
             }
@@ -83,7 +84,7 @@ public class Application {
         }
 
         if(ball>0 && strike>0){
-            return ball + BALL_MASSAGE + strike+STRIKE_MASSAGE;
+            return ball + BALL_MASSAGE +" "+ strike+STRIKE_MASSAGE;
         }
         if(ball>0){
             return ball+ BALL_MASSAGE;
