@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class InputSystem {
+public class InputUtil {
 
-    private InputSystem(){
+    private InputUtil(){
     }
 
     public static List<Digit> inputTryNumber(){

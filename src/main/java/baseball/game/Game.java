@@ -5,7 +5,7 @@ import baseball.digit.Digit;
 import baseball.digit.Digits;
 import baseball.score.Score;
 import baseball.score.ScoreStatus;
-import utils.InputSystem;
+import utils.InputUtil;
 
 import java.util.List;
 
@@ -45,9 +45,9 @@ public class Game {
     }
 
     public boolean play(){
-        List<Digit> inputDigitNumber = InputSystem.inputTryNumber();
+        List<Digit> inputDigitNumber = InputUtil.inputTryNumber();
         List<Integer> targetNumber = computer.getTargetNumber();
-        Digits digitTragetList = new Digits(InputSystem.convertDigit(targetNumber));
+        Digits digitTragetList = new Digits(InputUtil.convertDigit(targetNumber));
         List<ScoreStatus> scoreResultList = digitTragetList.checkAllDigits(new Digits(inputDigitNumber));
         score.countTotalScore(scoreResultList);
         score.printScore();
@@ -60,7 +60,7 @@ public class Game {
     }
 
     public boolean checkRestart(){
-        return InputSystem.inputRetryNumber();
+        return InputUtil.inputRetryNumber();
     }
 
 
