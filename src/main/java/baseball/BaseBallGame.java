@@ -11,6 +11,7 @@ public class BaseBallGame {
     private String userInputValue;
 
     private static final int MAX_LENGTH = 3;
+    private static final int WIN_CONDITION = 3;
 
     private Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
     public void startGame() {
@@ -81,6 +82,16 @@ public class BaseBallGame {
         return true;
     }
 
+    public void checkResult() {
+        int strikeCount = calculateStrike(userInputValue);
+        int ballCount = calculateBall(userInputValue);
+
+        System.out.println(formatResultMessage(strikeCount, ballCount));
+        if (strikeCount >= WIN_CONDITION) {
+            System.out.println(GameMessage.END.getText());
+        }
+    }
+
     private int calculateStrike(String userInputValue) {
         int strikeCount = 0;
         for (int searchIndex = 0; searchIndex < MAX_LENGTH; searchIndex++) {
@@ -104,6 +115,28 @@ public class BaseBallGame {
         }
 
         return ballCount;
+    }
+
+    private String formatResultMessage(int strikeCount, int ballCount) {
+        StringBuilder resultMessage = new StringBuilder();
+
+        if (strikeCount == 0 && ballCount == 0) {
+            resultMessage.append("낫싱");
+        }
+
+        if (ballCount > 0) {
+            resultMessage.append(ballCount + "볼");
+        }
+
+        if (resultMessage.length() > 0) {
+            resultMessage.append(" ");
+        }
+
+        if (strikeCount > 0) {
+            resultMessage.append(strikeCount + "스트라이크");
+        }
+
+        return resultMessage.toString();
     }
 
     public boolean isAnswer() {
