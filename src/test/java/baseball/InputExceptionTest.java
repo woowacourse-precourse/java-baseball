@@ -13,14 +13,14 @@ public class InputExceptionTest {
     @CsvSource({"1234", "12", "가나", "sdg", "1가3"})
     @ParameterizedTest
     void validInput(String input) {
-        assertThatThrownBy(() -> InputException.validInput(input))
+        assertThatThrownBy(() -> InputException.validGameInput(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("사용자 입력값이 비어있으면 예외가 발생한다.")
     @Test
     void validInput() {
-        assertThatThrownBy(() -> InputException.validInput(" "))
+        assertThatThrownBy(() -> InputException.validGameInput(" "))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }

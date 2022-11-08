@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class InputException {
 
-    public static void validInput(String input) {
+    public static void validGameInput(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException("input cannot be empty.");
         }
@@ -27,4 +27,9 @@ public class InputException {
         return input.length() != inputSet.size();
     }
 
+    public static void validRestartInput(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("input must be 1 or 2.");
+        }
+    }
 }
