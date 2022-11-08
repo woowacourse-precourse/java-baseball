@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Game {
     private static int MAX_BALL_COUNT;
+    private static final int RESTART = 1;
+    private static final int FINISH = 2;
     private final Computer computer;
     private final User user;
 
@@ -21,6 +23,9 @@ public class Game {
         while (true) {
             List<Integer> computerNums = computer.createNums(MAX_BALL_COUNT);
             playStage(computerNums, MAX_BALL_COUNT);
+            if(isFinished()) {
+                break;
+            }
         }
     }
 
@@ -39,5 +44,16 @@ public class Game {
         return strike == MAX_BALL_COUNT;
     }
 
+    private boolean isFinished() {
+        int flag = Integer.parseInt(Console.readLine());
+        System.out.println(flag);
+        if (flag == RESTART) {
+            return false;
+        }
+        if (flag == FINISH) {
+            return true;
+        }
+        throw new IllegalArgumentException();
+    }
 }
 
