@@ -1,10 +1,11 @@
 package baseball.domain;
 
 import baseball.config.Assembler;
-import baseball.domain.entity.NumberRepository;
+import baseball.domain.repository.NumberRepository;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,8 +49,8 @@ public class BaseBallServiceImpl implements BaseBallService{
     @Override
     public List<Integer> stringToIntegerList(String input) {
 
+        return Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toCollection(ArrayList::new));
 
-        return Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     @Override
