@@ -60,4 +60,11 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @RepeatedTest(100)
+    void pickNumberInRange_메서드로_1과9_사이_값을_반환() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+        assertThat(randomNumber).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
+    }
 }
