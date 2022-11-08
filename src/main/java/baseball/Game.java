@@ -20,6 +20,8 @@ public class Game {
 	private int strike = 0;
 	private int ball = 0;
 
+	public Game() {}
+	
 	public void start() {
 		Number playerNumber = new Number();
 		Number computerNumber = new Number();
