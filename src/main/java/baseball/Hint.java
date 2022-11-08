@@ -3,28 +3,42 @@ package baseball;
 import java.util.List;
 
 import static baseball.constants.Constant.*;
+import static baseball.constants.Message.*;
 
 public class Hint {
+
   private Integer strike;
   private Integer ball;
 
-  private List<Integer> userNumbers;
-  private List<Integer> answer;
+  private final Player player;
+  private final Computer computer;
 
-  public Hint(List<Integer> userNumbers, List<Integer> answer) {
-    this.userNumbers = userNumbers;
-    this.answer = answer;
+  public Hint(Player player, Computer computer) {
+    this.player = player;
+    this.computer = computer;
     this.strike = 0;
     this.ball = 0;
   }
 
+  public Integer getUserNumber(int index) {
+    return player.getEachNumber(index);
+  }
+
+  public Integer getAnswerNumber(int index) {
+    return computer.getEachNumber(index);
+  }
+
+  public List<Integer> getAnswer() {
+    return computer.getAnswer();
+  }
+
   public boolean isStrike(int index) {
-    return userNumbers.get(index).equals(answer.get(index));
+    return getUserNumber(index).equals(getAnswerNumber(index));
   }
 
   public boolean isBall(int index) {
     if (!isStrike(index)) {
-      return answer.contains(userNumbers.get(index));
+      return getAnswer().contains(getUserNumber(index));
     }
     return false;
   }
@@ -65,7 +79,7 @@ public class Hint {
   }
 
   public String getHint() {
-    for (int i = 0; i < NUMBER_LENGTH; i++) {
+    for (int i = 0; i < 3; i++) {
       countStrike(i);
       countBall(i);
     }

@@ -24,4 +24,9 @@ public class Player {
     return numbers;
   }
 
+  public Integer getEachNumber(int index) {
+    return numbers.get(index);
+  }
+
+
 }

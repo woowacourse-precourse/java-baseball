@@ -23,4 +23,12 @@ public class Computer {
     }
   }
 
+  public Integer getEachNumber(int index) {
+    return answer.get(index);
+  }
+
+  public List<Integer> getAnswer(){
+    return answer;
+  }
+
 }
