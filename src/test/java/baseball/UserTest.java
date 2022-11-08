@@ -28,4 +28,12 @@ class UserTest {
         System.setIn(in);
         assertThat(user.getInputNumbers()).isEqualTo(Arrays.asList(1, 2, 3));
     }
+
+    @Test
+    void 게임_재개_여부_검사() {
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThat(user.getNumberToContinueGame()).isEqualTo(2);
+    }
 }
