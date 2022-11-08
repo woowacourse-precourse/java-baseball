@@ -21,6 +21,13 @@ public class GameController {
     private Player player;
     private Computer computer;
 
+    public void working(){
+        inputView.noticeGameStart();
+        do {
+            startGame();
+            chooseGameState();
+        }while(gameState);
+    }
     public GameController(){
         inputView=new InputView();
         outputView= new OutputView();
