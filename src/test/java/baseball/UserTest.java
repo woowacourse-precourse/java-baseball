@@ -9,23 +9,23 @@ class UserTest {
     private User user;
 
     @BeforeEach
-    void createUser() {
+    void 사용자_생성() {
         user = new User();
     }
 
     @Test
-    void canSetUserNumberByTest() {
+    void 사용자_입력값_설정() {
         user.setUserNumber("123");
         assertEquals(123, user.userNumber);
     }
     @Test
-    void isUserNumberLengthEqualsThree() {
+    void 예외_사용자_입력값_글자수_초과() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             user.setUserNumber("1234");
         });
     }
     @Test
-    void isUserNumberNotString() {
+    void 예외_사용자_입력값_문자_입력() {
         User user = new User();
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             user.setUserNumber("aaa");

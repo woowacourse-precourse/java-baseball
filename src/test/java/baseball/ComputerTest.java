@@ -11,17 +11,17 @@ class ComputerTest {
     private Computer computer;
 
     @BeforeEach
-    void createComputerAndSetRandomNumber() {
+    void 랜덤_숫자_생성() {
         computer = new Computer();
         computer.setRandomNumber();
     }
     @Test
-    void isRandomNumberLengthEqualsThree(){
+    void 랜덤_숫자_길이_검증(){
         assertEquals(3, String.valueOf(computer.getRandomNumber()).length());
     }
 
     @Test
-    void areRandomNumberDigitsAllDifferent() {
+    void 랜덤_숫자_각_자리수_비교() {
         String randomNumber = String.valueOf(computer.getRandomNumber());
         boolean check1 = !randomNumber.substring(0,1).equals(randomNumber.substring(1,2));
         boolean check2 = !randomNumber.substring(1,2).equals(randomNumber.substring(2,3));
