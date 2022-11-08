@@ -13,6 +13,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -147,51 +151,101 @@ class BaseballTest {
     @Nested
     @DisplayName("Computer 클래스")
     class Computer_test {
+        private final Computer computer = new Computer();
+
         @Nested
-        @DisplayName("getComputerRandomNumber 메소드는")
-        class getComputerRandomNumber_test {
-            private final Computer computer = new Computer();
-
+        @DisplayName("addUniqueString 메소드는")
+        class addUniqueString_test {
             @Nested
-            @DisplayName("setComputerRandomNumber를 호출하지 않았을 때")
-            class Context_without_set_method_call {
+            @DisplayName("리스트와 리스트에 이미 포함된 문자열을 입력하였을 때")
+            class Context_with_list_and_contained_string {
                 @Test
-                @DisplayName("null을 반환한다.")
-                void it_returns_null() {
-                    assertThat(computer.getComputerRandomNumber()).isNull();
+                @DisplayName("리스트에 해당 문자열을 add하지 않는다.")
+                void it_does_not_add_the_string_into_list() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+                    Method method = computer.getClass().getDeclaredMethod("addUniqueString", List.class, String.class);
+                    method.setAccessible(true);
+                    List<String> list = new ArrayList<>(List.of("1", "2", "3"));
+                    String containedString = "1";
+                    int listSize = list.size();
+
+                    method.invoke(computer, list, containedString);
+
+                    assertThat(list.size()).isEqualTo(listSize);
                 }
             }
 
             @Nested
-            @DisplayName("setComputerRandomNumber를 한 번 호출하였을 때")
-            class Context_with_set_method_call {
+            @DisplayName("리스트와 리스트에 포함되지 않은 문자열을 입력하였을 때")
+            class Context_with_list_and_new_string {
                 @Test
-                @DisplayName("동일한 값을 반환한다.")
-                void it_returns_equal_value() {
-                    computer.setComputerRandomNumber();
-                    Ball firstComputerNumber = computer.getComputerRandomNumber();
+                @DisplayName("리스트에 해당 문자열을 add한다.")
+                void it_does_not_add_the_string_into_list() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+                    Method method = computer.getClass().getDeclaredMethod("addUniqueString", List.class, String.class);
+                    method.setAccessible(true);
+                    List<String> list = new ArrayList<>(List.of("1", "2", "3"));
+                    String newString = "4";
+                    int listSize = list.size();
 
-                    Ball secondComputerNumber = computer.getComputerRandomNumber();
+                    method.invoke(computer, list, newString);
 
-                    assertThat(secondComputerNumber).isEqualTo(firstComputerNumber);
+                    assertThat(list.contains(newString)).isTrue();
                 }
             }
+        }
 
-            @Nested
-            @DisplayName("setComputerRandomNumber를 두 번 호출하였을 때")
-            class Context_with_two_set_method_calls {
-                @Test
-                @DisplayName("서로 다른 값을 반환한다.")
-                void it_returns_equal_value() {
-                    computer.setComputerRandomNumber();
-                    Ball firstComputerNumber = computer.getComputerRandomNumber();
+        @Test
+        @DisplayName("createRandomNumber 메소드가 String 숫자 하나를 반환하는지 확인")
+        void createRandomNumber_list() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+            Method method = computer.getClass().getDeclaredMethod("createRandomNumber");
+            method.setAccessible(true);
+            String numberRegularExpression = "\\d";
 
-                    computer.setComputerRandomNumber();
-                    Ball secondComputerNumber = computer.getComputerRandomNumber();
+            String randomNumber = (String) method.invoke(computer);
 
-                    assertThat(secondComputerNumber).isNotEqualTo(firstComputerNumber);
-                }
-            }
+            assertThat(randomNumber.matches(numberRegularExpression)).isTrue();
+        }
+
+        @Test
+        @DisplayName("createRandomNumberInLength 메소드에 3을 입력하였을 때 String의 중복이 없는 세 자리 숫자를 반환하는지 확인")
+        void createRandomNumberInLength_list() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+            Method method = computer.getClass().getDeclaredMethod("createRandomNumberInLength", int.class);
+            method.setAccessible(true);
+            int lengthOfThree = 3;
+            String threeNumberRegularExpression = "\\d{3}";
+
+            String randomNumber = (String) method.invoke(computer, lengthOfThree);
+
+            assertThat(randomNumber.matches(threeNumberRegularExpression)).isTrue();
+            assertThat(isContainingDuplicate(randomNumber)).isFalse();
+        }
+
+        private boolean isContainingDuplicate(String number) {
+            return number.length() != number.chars()
+                    .distinct()
+                    .count();
+        }
+
+        @Test
+        @DisplayName("createRandomBall 메소드가 Ball 객체를 반환하는지 확인")
+        void createRandomBall_list() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+            Method method = computer.getClass().getDeclaredMethod("createRandomBall");
+            method.setAccessible(true);
+
+            Ball randomNumber = (Ball) method.invoke(computer);
+
+            assertThat(randomNumber).isInstanceOf(Ball.class);
+        }
+
+        @Test
+        @DisplayName("createRandomBall 메소드가 서로 다른 Ball 객체를 반환하는지 확인")
+        void createRandomBall_twice_list() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+            Method method = computer.getClass().getDeclaredMethod("createRandomBall");
+            method.setAccessible(true);
+
+            Ball randomNumber = (Ball) method.invoke(computer);
+            Ball otherRandomNumber = (Ball) method.invoke(computer);
+
+            assertThat(randomNumber.toString()).isNotEqualTo(otherRandomNumber.toString());
         }
     }
 
