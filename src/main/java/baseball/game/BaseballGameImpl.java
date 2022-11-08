@@ -1,15 +1,20 @@
 package baseball.game;
 
-import baseball.player.Computer;
-import baseball.player.User;
-import baseball.score.Result;
-import baseball.score.Score;
+public class BaseballGameImpl {
+  private GameImpl baseball = new GameImpl();
 
-public class BaseballGameImpl implements BaseballGame {
-  public Computer computerPlayer;
-  public User userPlayer;
-  public Score score;
-  public Boolean flag = true;
+  public BaseballGameImpl(){
+    baseball.GameInit();
+    baseball.GameReady();
 
+    while(baseball.GameFlag()){
+      baseball.GameStart();
+      baseball.GameScore();
+      baseball.GameResult();
 
+      if(baseball.isStrike()){
+        baseball.GameContinuity();
+      }
+    }
+  }
 }
