@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,4 +35,27 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 특정숫자_인덱스_체크() {
+        List<Integer> userInputNumber = new ArrayList<>();
+        userInputNumber.add(10);
+        userInputNumber.add(20);
+        userInputNumber.add(30);
+
+        int numberIndex = BullsAndCows.findNumberIndex(userInputNumber, 20);
+        assertThat(numberIndex).isEqualTo(1);
+    }
+
+    @Test
+    void 특정숫자_인덱스_체크_특정숫자_없는_경우() {
+        List<Integer> userInputNumber = new ArrayList<>();
+        userInputNumber.add(10);
+        userInputNumber.add(20);
+        userInputNumber.add(30);
+
+        int numberIndex = BullsAndCows.findNumberIndex(userInputNumber, 2);
+        assertThat(numberIndex).isEqualTo(-1);
+    }
+
 }
