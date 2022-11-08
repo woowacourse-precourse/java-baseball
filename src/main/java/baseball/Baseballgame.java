@@ -22,21 +22,41 @@ public class Baseballgame {
     }
 
     public void game() {
-        Ball comBalls;
+        Com comBalls;
         Checkout check;
+        comBalls = Com.makeRandomBalls();
 
         do {
             printUserInputMessage();
+            check = Checkout.checkBalls()
 
         } while ();
 
         }
 
 
+
+
     private Boolean reGame() {
         String input = "";
 
         return input.equals(CONTINUE);
+    }
+
+    private Com makeUserBalls() {
+        Com userBalls = null;
+        while (userBalls == null) {
+            String userInput = getUserInput();
+
+            try {
+                userBalls = Com.stringToBalls(userInput);
+            } catch (NumberFormatException e) {
+                printFormatExceptionMessage();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return userBalls;
     }
 
     private String getUserInput() {

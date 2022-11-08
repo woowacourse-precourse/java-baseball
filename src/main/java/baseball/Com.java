@@ -19,15 +19,33 @@ public class Com {
     }
 
     public static Com makeRandomBalls() {
-        List<Com> com_balls = new ArrayList<>();
+        List<Com> balls = new ArrayList<>();
 
-        while (com_balls.size() < 3) {
+        while (balls.size() < 3) {
             Ball ball = new Ball(Randoms.pickNumberInRange(1,9));
 
-            if (!com_balls.contains(ball)) {
-                com_balls.add(ball);
+            if (!balls.contains(ball)) {
+                balls.add(ball);
             }
         }
-        return new Com(com_balls);
+        return new Com(balls);
+    }
+
+    public static Com stringToBalls(String str) {
+        char[] chars = str.toCharArray();
+        List<Ball> balls = new ArrayList<>();
+
+        for (char ch : chars) {
+            balls.add(new Ball(ch));
+        }
+        return new Com(balls);
+    }
+
+    private void validate(List<Ball> balls) {
+        Set<Ball> ballSet = new HashSet<>(balls);
+        if (ballSet.size() != 3) {
+            throw new IllegalArgumentException("공의 숫자가 중복 됩니다.");
+        }
+
     }
 }
