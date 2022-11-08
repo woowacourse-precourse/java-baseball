@@ -7,14 +7,21 @@ import baseball.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.model.Constant.RESTART;
 import static baseball.view.InputView.restartInput;
 
 public class Game {
-    List<Integer> computer = new ComputerGenerate().computer;
+    List<Integer> computer = new ArrayList<>();
     List<Integer> user = new ArrayList<>();
-    int result = 0;
 
     public Game() {
+        do {
+            RunGame(0);
+        } while (ReGame());
+    }
+
+    private void RunGame(int result) {
+        computer = new ComputerGenerate().computer;
         while (result != 3) {
             user = new UserGenerate().user;
             System.out.println(computer);
@@ -22,9 +29,15 @@ public class Game {
             hint.ResultHint();
             result = hint.strike;
         }
-        OutputView.EndGameOutput();
-        restartInput();
     }
 
+
+    private boolean ReGame() {
+        OutputView.EndGameOutput();
+        if (restartInput() == RESTART) {
+            return true;
+        }
+        return false;
+    }
 
 }
