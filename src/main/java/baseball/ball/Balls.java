@@ -12,7 +12,7 @@ public class Balls {
     }
 
     public boolean validateBallsSize() {
-        return balls.size() == BALL_SIZE;
+        return balls.size()==BALL_SIZE;
     }
 
     public boolean hasBall(Ball ball) {

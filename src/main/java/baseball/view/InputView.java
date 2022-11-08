@@ -9,4 +9,7 @@ public class InputView {
     public static String inputPlayerNumber(){
         return Console.readLine();
     }
+    public static String inputRestartGame(){
+        return Console.readLine();
+    }
 }

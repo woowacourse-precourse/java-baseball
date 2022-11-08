@@ -26,4 +26,11 @@ public class Game {
             judge.compareComputerAndPlayer(settingPlayerBall());
         }while(judge.getStrikeCount()!=3);
     }
+
+    public boolean isEnd(){
+        OutputView.restartGame();
+
+        Restart restart = new Restart();
+        return restart.isEndGame(InputView.inputRestartGame());
+    }
 }
