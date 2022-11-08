@@ -27,6 +27,10 @@ public class UserInterface {
     }
 
     public static boolean validateUsersInput(String input) {
+        if (input.length() != 3) {
+            return false;
+        }
+
         Set<Character> inputCharSet = new HashSet<>();
         for (char c : input.toCharArray()) {
             inputCharSet.add(c);
