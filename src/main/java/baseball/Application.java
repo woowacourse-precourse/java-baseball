@@ -30,6 +30,20 @@ public class Application {
 
         List<String> userNumberList = List.of(userInputNumber.split(""));
         CntBallAndStrike(computer, userNumberList);
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner options = new Scanner(System.in);
+        int inputOption = options.nextInt();
+        if (inputOption == 1) {
+            System.out.println("게임 시작");
+            startGame();
+        }
+        if (inputOption == 2) {
+            System.out.println("게임이 종료되었습니다.");
+        }
+        if (inputOption != 1 && inputOption !=2) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
     }
 
     private static void CntBallAndStrike(List<Integer> computer, List<String> userNumberList) throws IOException {
