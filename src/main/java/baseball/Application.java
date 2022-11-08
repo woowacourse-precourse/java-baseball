@@ -48,6 +48,43 @@ public class Application {
         return baseballNum;
     }
 
+    /**
+     * 입력값에 맞는 결과를 반환해주는 함수
+     * Strike, Ball 을 기본으로 List에 담아 return함
+     * 만약 Strike와 Ball이 없다면 Not을 3Strike라면 Success를 반환
+     * @param number
+     * @param problem
+     * @return
+     */
+    public static List<String> getResult(String number, List<String> problem) {
+        List<String> result = new ArrayList<>();
+
+        int s = 0;
+        int b = 0;
+
+        for (int i = 0; i < 3; i++) {
+            String value = String.valueOf(number.charAt(i));
+            // Strike, Ball 판별
+            if (problem.contains(value) && problem.get(i) == value) {
+                s++;
+            } else if (problem.contains(value)) {
+                b++;
+            }
+
+            // Strike, Ball의 수에 따라 Return할 결과 저장
+            if (s == 3) {
+                result.add("Success");
+            } else if (s == 0 && b == 0) {
+                result.add("Not");
+            } else {
+                result.add(String.valueOf(s));
+                result.add(String.valueOf(b));
+            }
+        }
+
+        return result;
+    }
+
 
 
     public static void reGame() {
