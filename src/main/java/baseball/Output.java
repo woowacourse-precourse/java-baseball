@@ -13,4 +13,8 @@ public class Output {
     public static void printStrike(int strike) {
         System.out.println(strike + " 스트라이크");
     }
+
+    public static void printBall(int ball) {
+        System.out.println(ball + " 볼");
+    }
 }
