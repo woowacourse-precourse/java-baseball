@@ -7,10 +7,11 @@ import java.util.List;
 
 
 public class Random {
+    static List<Integer> computer = new ArrayList<>();
     int randomNumber = 0;
 
     public void randomNum() {
-        List<Integer> computer = new ArrayList<>();
+        computer = new ArrayList<>();
         while (computer.size() < 3) {
             randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
