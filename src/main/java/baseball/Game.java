@@ -80,9 +80,11 @@ public class Game {
         return strike == 3;
     }
 
-
-
-
-
+    public boolean askResrat(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        inputNumber.userInputNumber();
+        String yesOrNo = inputNumber.getUserNumber();
+        return yesOrNo.equals("1");
+    }
 
 }
