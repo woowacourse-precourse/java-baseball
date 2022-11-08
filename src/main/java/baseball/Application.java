@@ -2,14 +2,13 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args){
         List<Integer> numbers;
-        int strike=0, ball=0;//, nothing=0;
+        int strike, ball;//, nothing=0;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -24,8 +23,11 @@ public class Application {
 
             while(true){
 
+                System.out.print("숫자를 입력해주세요 : ");
+                String player = Console.readLine();         // Console의 readLine() 사용
+
                 // 잘못된 값 입력시 IllegalArgumentException()를 throw
-                String player = illegalInput();
+                illegalInput(player, strToList(player));
 
                 // 2. 스트라이크 볼 낫싱 판별
                 List<Integer> ballList = strikeBallNothing(numbers, player);
@@ -62,16 +64,37 @@ public class Application {
         return numbers;
     }
 
-    static String illegalInput(){
-        System.out.print("숫자를 입력해주세요 : ");
-        String player = Console.readLine();         // Console의 readLine() 사용
+    static List<String> strToList(String player){
 
-        // 잘못된 입력 - IllegalArgumentException 발생
-        if(player.length() < 3 || player.length() > 3
-                || !player.chars().allMatch(Character::isDigit)){
+        List<String> playerNum = new ArrayList<>();
+
+        for(int i=0; i<player.length(); i++){
+            String num = String.valueOf(player.charAt(i));
+            playerNum.add(num);
+        }
+        return playerNum;
+    }
+
+    // 잘못된 입력 - IllegalArgumentException 발생
+    static void illegalInput(String player, List<String> playerNum){
+
+        // 길이가 3이 아닌 경우
+        if(player.length() != 3){
+            System.out.println("세 자리 숫자를 입력해주세요!");
             throw new IllegalArgumentException();
         }
-        return player;
+
+        // 숫자가 아닌 입력이 들어온 경우
+        if(player.chars().noneMatch(Character::isDigit)){
+            System.out.println("숫자를 입력해주세요!");
+            throw new IllegalArgumentException();
+        }
+
+        // 중복된 숫자가 입력으로 들어온 경우 - list.stream().distinct().count(): 중복값 제외 count
+        else if(playerNum.stream().distinct().count() != playerNum.size()){
+            System.out.println("서로 다른 숫자를 입력해주세요!");
+            throw new IllegalArgumentException();
+        }
     }
 
     // 스트라이크, 볼, 낫싱 횟수를 리턴
