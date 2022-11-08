@@ -24,7 +24,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void 입력숫자_길이_예외_테스트() {
+    public void 플레이어_입력숫자_길이_예외_테스트() {
         String input = "1234";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -34,7 +34,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void 입력숫자_빈값_예외_테스트() {
+    public void 플레이어_입력숫자_빈값_예외_테스트() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     player.insertPlayerNumbers();
@@ -42,7 +42,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void 입력숫자_중복_테스트() {
+    public void 플레이어_입력숫자_중복_테스트() {
         String input = "991";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -53,7 +53,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void 게임_재시작_입력값_테스트() {
+    public void 플레이어_게임_재시작_입력값_테스트() {
         String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -61,7 +61,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void 게임_재시작_입력값_에와테스트() {
+    public void 플래이어_게임_재시작_입력값_에와테스트() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     player.getAnswerAboutRestart();
