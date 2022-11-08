@@ -14,11 +14,13 @@ public class GameController {
   public static final int END = 9;
   private final List<Integer> computerNumbers;
 
-  private final InputService inputService = new InputService();
-  private final HintService hintService = new HintService();
+  private final InputService inputService;
+  private final HintService hintService;
 
-  public GameController() {
+  public GameController(InputService inputService, HintService hintService) {
     this.computerNumbers = getRandomNumbers();
+    this.inputService = inputService;
+    this.hintService = hintService;
   }
 
   public void play() {
