@@ -17,6 +17,8 @@ public class Application {
         private int[] ballArr;
         private int[] ballUsageArr;
 
+        private boolean[] isStrike;
+
         public BaseBall() {
             goalArr = new int[NUM_DIGIT];
             goalUsageArr = new int[NUM_BOUNDARY];
@@ -49,6 +51,16 @@ public class Application {
             checkStrike();
             checkBall();
             printPlayStatus();
+        }
+
+        private void checkStrike() {
+            isStrike = new boolean[NUM_DIGIT];
+
+            for (int idx = 0; idx < NUM_DIGIT; idx++) {
+                if (goalArr[idx] == ballArr[idx]) {
+                    isStrike[idx] = true;
+                }
+            }
         }
 
         private void Ready() {
