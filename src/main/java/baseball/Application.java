@@ -30,6 +30,32 @@ public class Application {
         }
     }
 
+    public static void result(){
+        strike=0;
+        ball=0;
+        for(int i=0;i<3;++i){
+            if(opponentNumber.contains(playerNumber.get(i)) && opponentNumber.get(i)==playerNumber.get(i)){
+                strike+=1;
+            }
+            else if(opponentNumber.contains(playerNumber.get(i)) && opponentNumber.get(i)!=playerNumber.get(i)){
+                ball+=1;
+            }
+        }
+
+        if(ball>0 && strike>0){
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        }
+        else if(ball==0 && strike>0){
+            System.out.println(strike+"스트라이크");
+        }
+        else if(ball>0 && strike==0){
+            System.out.println(ball+"볼");
+        }
+        else{
+            System.out.println("낫싱");
+        }
+    }
+
     public static void main(String[] args) {
     }
 }
