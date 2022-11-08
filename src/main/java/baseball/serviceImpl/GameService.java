@@ -26,7 +26,7 @@ public class GameService {
         boolean answer = false;
         while (!answer) {
             sendMassage(GameMessage.INPUT_NUMBER);
-            List<Integer> user = getUserDigits();
+            List<Integer> user = getUserDigits(userInput());
             answer = calculationDigits(computer, user);
         }
     }
@@ -94,9 +94,12 @@ public class GameService {
         throw new IllegalArgumentException();
     }
 
-    private List<Integer> getUserDigits() throws IllegalArgumentException {
-        String userDigits = Console.readLine();
-        return digits(userDigits);
+    private String userInput(){
+        return Console.readLine();
+    }
+
+    public List<Integer> getUserDigits(String input) throws IllegalArgumentException {
+        return digits(input);
     }
 
     public List<Integer> getComputerDigits(DigitGeneratorImpl generator) throws IllegalArgumentException {
