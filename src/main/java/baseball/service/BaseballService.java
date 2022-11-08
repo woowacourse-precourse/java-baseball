@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.util.Constant;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -20,5 +21,10 @@ public class BaseballService {
             randomNumberList.add(Randoms.pickNumberInRange(Constant.MIN, Constant.MAX));
         }
         computerNumbers = new ArrayList<>(randomNumberList);
+    }
+
+    public void inputPlayerNumber() {
+        System.out.print(Constant.INPUT_NUMBER_MESSAGE);
+        String numbers = Console.readLine();
     }
 }
