@@ -1,8 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     //git commit test
@@ -12,7 +15,7 @@ public class Application {
 
     public static String input_number_message(){
         System.out.printf("숫자를 입력해주세요 : ");
-        String input_number = camp.nextstep.edu.missionutils.Console.readLine();
+        String input_number = Console.readLine();
         return input_number;
     }
 
@@ -75,6 +78,10 @@ public class Application {
         }
     }
 
+    public static String decide_newgame_endgame() {
+        String playmore_stop_number = Console.readLine();
+        return playmore_stop_number;
+    }
 
 
     public static void main(String[] args) {
@@ -85,6 +92,7 @@ public class Application {
         String computer_number = "451";
         String[] computer_number_list = computer_number.split("");
         int three_strike_judge = 0;
+
         do {
             String input_number = input_number_message();
             String[] input_number_list = input_number.split("");
@@ -95,6 +103,8 @@ public class Application {
             three_strike_judge = three_strike_judgement(strike_ball_nothing_list);
             three_strike_message(three_strike_judge);
         } while (three_strike_judge == 0);
+
+        String playmore_stop_number = decide_newgame_endgame();
 
     }
 }
