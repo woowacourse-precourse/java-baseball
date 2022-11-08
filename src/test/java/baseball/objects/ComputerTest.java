@@ -34,15 +34,14 @@ class ComputerTest {
     @DisplayName("플레이어가 넘겨준 리스트와 심판에게 넘겨져 저장된 난수 리스트가 같은지 테스트")
     void giveNumbersToReferee() {
         // given
-        Rule rule = new Rule();
-        Referee referee = new Referee(rule);
+        Referee referee = new Referee();
 
         // when
         computer.giveNumbersToReferee(referee);
 
         // then
         List<Integer> computerNumbers = computer.getNumbers();
-        List<Integer> selectedNumbers = rule.getSelectedNumbers();
+        List<Integer> selectedNumbers = referee.getSelectedNumbers();
 
         assertThat(selectedNumbers).isEqualTo(computerNumbers);
         assertThat(selectedNumbers.size()).isEqualTo(computerNumbers.size());

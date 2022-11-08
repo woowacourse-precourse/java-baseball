@@ -30,7 +30,7 @@ public class Validation {
     }
 
     public void restartNumberValid(String readLine) {
-        if (!(Integer.valueOf(readLine).equals(1) && Integer.valueOf(readLine).equals(0))) {
+        if (!(Integer.valueOf(readLine).equals(1) || Integer.valueOf(readLine).equals(2))) {
             throw new IllegalArgumentException("Number is Not Valid Exception!!");
         }
     }

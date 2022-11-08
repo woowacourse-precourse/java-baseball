@@ -34,14 +34,13 @@ class RefereeTest {
         // given
         List<Integer> expectedValue = List.of(1, 2, 3);
 
-        Rule rule = new Rule();
-        Referee referee = new Referee(rule);
+        Referee referee = new Referee();
 
         // when
         referee.receiveComputerNumbers(expectedValue);
 
         // then
-        List<Integer> selectedNumbers = rule.getSelectedNumbers();
+        List<Integer> selectedNumbers = referee.getSelectedNumbers();
         assertThat(expectedValue).isEqualTo(selectedNumbers);
     }
 
@@ -51,8 +50,7 @@ class RefereeTest {
         // given
         List<Integer> expectedValue = List.of(1, 2, 3);
 
-        Rule rule = new Rule();
-        Referee referee = new Referee(rule);
+        Referee referee = new Referee();
 
         // when
         referee.receivePlayerNumbers(expectedValue);
@@ -72,7 +70,7 @@ class RefereeTest {
                 + "\n" + GameMessage.RESTART_OR_END.getMessage()
                 + "\n";
 
-        Referee referee = new Referee(new Rule());
+        Referee referee = new Referee();
         referee.receiveComputerNumbers(List.of(1, 2, 3));
         referee.receivePlayerNumbers(List.of(1, 2, 3));
 

@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class Game {
     private final Computer computer = new Computer();
-    private final Referee referee = new Referee(new Rule());
+    private final Referee referee = new Referee();
     private final Player player = new Player();
     private final Validation validation = new Validation();
 

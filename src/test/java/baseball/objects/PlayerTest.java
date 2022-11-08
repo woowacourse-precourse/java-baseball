@@ -28,7 +28,7 @@ class PlayerTest {
     @DisplayName("플레이어는 숫자 리스트를 심판에게 준다. 플레이어와 심판이 가지고 있는 숫자 리스트는 같아야 한다.")
     void giveNumbersToReferee() {
         // given
-        Referee referee = new Referee(new Rule());
+        Referee referee = new Referee();
 
         Player player = new Player();
         player.sayNumbers(List.of(1, 2, 3));
