@@ -18,7 +18,7 @@ public class Executor {
         Printer.gameStart();
         while(flag) {
             Printer.inputNumber();
-            Baseball userInputNumber = getUserInputNumber();
+            Baseball userInputNumber = inputUserBaseball();
             guessResult = compareNumber(computerRandomBaseball, userInputNumber);
             if(guessResult.isALLCorrect()) {
                 String resultString = guessResult.getResult();
@@ -31,9 +31,6 @@ public class Executor {
     }
     private Baseball createRandomBaseball() {
         return new Computer().createRandomBaseball();
-    }
-    public Baseball getUserInputNumber() {
-        return inputUserBaseball();
     }
     public Baseball inputUserBaseball() {
         User user = new User();
