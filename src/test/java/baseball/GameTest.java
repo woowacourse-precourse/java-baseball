@@ -10,6 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
     private static Game game;
+    private static final int strikeCount = 0;
+    private static final int ballCount = 0;
+    private static ArrayList<Integer> randomNum = new ArrayList<>();
+
 
     @BeforeAll
     static void initAll() {
@@ -41,17 +45,25 @@ class GameTest {
 
     @Test
     void comparingNum() {
+        ArrayList<Integer> sample = new ArrayList<>();
+        sample.add(1);
+        sample.add(2);
+        sample.add(3);
+        String input = "123";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertTrue(game.comparingNum(sample, strikeCount));
     }
 
     @Test
     void checkingStrike() {
-        ArrayList<Integer> randomNum = new ArrayList<>();
         randomNum.add(1);
         randomNum.add(2);
         randomNum.add(3);
         String inputNum = "123";
-        int ballCount = 0;
-        int answer = game.checkingStrike(randomNum, inputNum, ballCount);
+        int answer = game.checkingStrike(randomNum, inputNum, strikeCount);
         assertEquals(3, answer);
     }
 
@@ -62,7 +74,6 @@ class GameTest {
         randomNum.add(2);
         randomNum.add(3);
         String inputNum = "312";
-        int ballCount = 0;
         int answer = game.checkingBall(randomNum, inputNum, ballCount);
         assertEquals(3, answer);
     }

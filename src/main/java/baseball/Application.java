@@ -77,7 +77,6 @@ class Game {
                 System.out.println(ballCount + "볼 " + strikeCount + " 스트라이크");
             } else System.out.println("낫싱");
         }
-
         return true;
     }
 
