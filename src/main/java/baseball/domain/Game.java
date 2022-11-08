@@ -1,9 +1,9 @@
-package domain;
+package baseball.domain;
 
 import java.util.Objects;
-import ui.Input;
-import ui.Messages;
-import ui.Output;
+import baseball.ui.Input;
+import baseball.ui.Messages;
+import baseball.ui.Output;
 
 public class Game {
 

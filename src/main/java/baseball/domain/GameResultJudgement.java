@@ -1,4 +1,4 @@
-package domain;
+package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,9 +21,9 @@ public class GameResultJudgement {
             char ch = str2.charAt(i);
             boolean isOverlap = str1.charAt(i) == str2.charAt(i);
             if (!isOverlap && str1.contains(ch + "")) {
-                ++ball;
+                    ++ball;
             } else if (isOverlap) {
-                ++strike;
+                    ++strike;
             }
         }
         if (strike == 0 && ball == 0) {

@@ -1,4 +1,4 @@
-package ui;
+package baseball.ui;
 
 public enum Messages {
 

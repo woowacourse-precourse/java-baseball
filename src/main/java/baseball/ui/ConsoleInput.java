@@ -1,7 +1,7 @@
-package ui;
+package baseball.ui;
 
 import camp.nextstep.edu.missionutils.Console;
-import domain.ValidityChecker;
+import baseball.domain.ValidityChecker;
 import java.util.Objects;
 
 public class ConsoleInput implements Input{

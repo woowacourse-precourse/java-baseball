@@ -2,6 +2,7 @@ package domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.domain.ValidityChecker;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import ui.ConsoleInput;
+import baseball.ui.ConsoleInput;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ValidityCheckerTest {

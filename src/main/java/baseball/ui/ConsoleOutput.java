@@ -1,6 +1,6 @@
-package ui;
+package baseball.ui;
 
-import domain.GameResultConverter;
+import baseball.domain.GameResultConverter;
 import java.util.List;
 
 public class ConsoleOutput implements Output{

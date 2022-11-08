@@ -1,4 +1,4 @@
-package ui;
+package baseball.ui;
 
 import java.util.List;
 
