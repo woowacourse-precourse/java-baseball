@@ -3,7 +3,7 @@ package baseball;
 
 public class Application {
 
-    private static final String RESTART = "1";
+    private static final int RESTART = 1;
 
 
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class Application {
 
 
 
-        } while (isRestart == RESTART);
+        } while (Integer.parseInt(isRestart) == RESTART);
 
     }
 }

@@ -15,22 +15,11 @@ public class ValidateInput {
         isValidateNumber(input);
         isValidateSize(input);
         List<Integer> inputList = inputToList(input);
-        isValidateDuplicate(inputList);
         System.out.println("숫자를 입력해주세요 : "+input);
         return inputList;
     }
 
-    public void isValidateDuplicate(List<Integer> inputList) {
-        Set<Integer> inputSet = new HashSet<>(inputList);
-        List<Integer> setToList = new ArrayList<>(inputSet);
-        for (int i = 0; i < 3; i++) {
-            if (inputList.get(i) != setToList.get(i)) {
-                throw new IllegalStateException("중복된 숫자가 포함되어 있습니다.");
-            }
 
-        }
-
-    }
 
     public void isValidateSize(String input) {
         if (input.length() != 3) {
