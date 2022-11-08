@@ -53,23 +53,27 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(targetNum.size()).isEqualTo(3);
     }
 
-//    @Test
-//    @DisplayName("사용자 잘못된 값 입력시 오류 발생")
-//    void badInputException(){
-//        Assertions.assertThatThrownBy(()->
-//                Application.inputValidate(List.of("1234")))
-//                        .isInstanceOf(IllegalArgumentException.class);
-//
-//        Assertions.assertThatThrownBy(()->
-//                        Application.inputValidate(List.of("112")))
-//                .isInstanceOf(IllegalArgumentException.class);
-//
-//        Assertions.assertThatThrownBy(()->
-//                        Application.inputValidate(List.of("103")))
-//                .isInstanceOf(IllegalArgumentException.class);
-//
-//
-//    }
+    @Test
+    @DisplayName("사용자 잘못된 값 입력시 오류 발생")
+    void badInputException() throws Exception{
+        Application app= new Application();
+        Method inputValidate = app.getClass().getDeclaredMethod("inputValidate", List.class);
+        inputValidate.setAccessible(true);
+
+        Assertions.assertThatThrownBy(()->
+                inputValidate.invoke(app,List.of("1234"))).getRootCause()
+                        .isInstanceOf(IllegalArgumentException.class);
+
+        Assertions.assertThatThrownBy(()->
+                inputValidate.invoke(app,List.of("112"))).getRootCause()
+                        .isInstanceOf(IllegalArgumentException.class);
+
+        Assertions.assertThatThrownBy(()->
+                inputValidate.invoke(app,List.of("103"))).getRootCause()
+                        .isInstanceOf(IllegalArgumentException.class);
+
+
+    }
 
     @Test
     @DisplayName("1을 입력하면 게임 재시작 , 2는 종료")
