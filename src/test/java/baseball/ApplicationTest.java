@@ -28,10 +28,11 @@ class ApplicationTest extends NsTest {
         );
     }
     @Test
-    void 예외_중복숫자_테스트() {
-                assertSimpleTest(() -> runException("999"))
-                        .isInstanceOf(IllegalArgumentException.class);
-
+    void 예외_테스트_숫자가아닐시() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("/)9"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Override
