@@ -2,7 +2,7 @@ package baseball.domain.game;
 
 public interface Game {
 
-  public void GameInit();
+  public String GameInit();
 
   public void GameReady();
 
