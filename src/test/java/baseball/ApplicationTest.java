@@ -43,19 +43,30 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_세자리수_확인() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1a4"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("14"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 예외_테스트_1에서9_숫자아닌문자_확인(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1a4"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트_같은숫자_확인(){
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("122"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -65,14 +76,11 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("012"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-        assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("777"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
 
     @Override
     public void runMain() {
