@@ -84,10 +84,11 @@ class ApplicationTest extends NsTest {
         String missType = "asdasd ";
 
         //when
-//        boolean gameState = restartGameException.isRestartNumber(missType);
 
         //then
-//        assertThat(gameState).isEqualTo(true);
+        assertThatThrownBy(() -> {
+            restartGameException.isRestartNumber(missType);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
