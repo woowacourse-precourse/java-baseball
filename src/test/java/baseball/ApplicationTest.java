@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -73,6 +75,37 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
+    @Test
+    void countMatchingNumbers_맞힌_상대방의_숫자_계산_테스트() {
+        Game game = new Game();
+        game.numbersPickedByComputer=new ArrayList<>();
+        game.numbersPickedByComputer.add(1);
+        game.numbersPickedByComputer.add(2);
+        game.numbersPickedByComputer.add(3);
+
+        game.numbersPickedByUser=new ArrayList<>();
+        game.numbersPickedByUser.add(1);
+        game.numbersPickedByUser.add(2);
+        game.numbersPickedByUser.add(3);
+
+        game.countMatchingNumbers();
+        assertThat(game.strike).isEqualTo(3);
+        assertThat(game.ball).isEqualTo(0);
+
+        game.numbersPickedByUser=new ArrayList<>();
+        game.strike = 0;
+        game.ball = 0;
+        game.numbersPickedByUser.add(3);
+        game.numbersPickedByUser.add(1);
+        game.numbersPickedByUser.add(2);
+
+        game.countMatchingNumbers();
+        assertThat(game.strike).isEqualTo(0);
+        assertThat(game.ball).isEqualTo(3);
+
+        game.printResultOfGame();
+    }
 
     @Override
     public void runMain() {
