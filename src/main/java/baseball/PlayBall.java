@@ -7,16 +7,16 @@ public class PlayBall {
     private PlayBallUI playBallUI;
     private Computer computer;
     private Referee referee;
-    private ExceptionHandler exceptionHandler;
+    private ExceptionThrower exceptionThrower;
 
     public void startGame() {
         if (this.playBallUI == null){
             this.playBallUI = new PlayBallUI();
+            playBallUI.startInterface();
         }
 
-        exceptionHandler = new ExceptionHandler();
+        exceptionThrower = new ExceptionThrower();
         setComputerNumber();
-        playBallUI.startInterface();
         controlGame();
     }
 
@@ -46,9 +46,9 @@ public class PlayBall {
     }
 
     public void checkUserInput(String userNumberInput){
-        exceptionHandler.checkIsNoneZeroDigit(userNumberInput);
-        exceptionHandler.checkIsValidLength(userNumberInput);
-        exceptionHandler.checkIsUniqueNumbers(userNumberInput);
+        exceptionThrower.checkIsNoneZeroDigit(userNumberInput);
+        exceptionThrower.checkIsValidLength(userNumberInput);
+        exceptionThrower.checkIsUniqueNumbers(userNumberInput);
     }
 
     public Referee judgeUserNumber(String userNumberInput){
@@ -63,7 +63,7 @@ public class PlayBall {
     }
 
     public void whetherToRestart(String restartOptionInput) {
-        exceptionHandler.checkIsValidRestartInput(restartOptionInput);
+        exceptionThrower.checkIsValidRestartInput(restartOptionInput);
 
         if (restartOptionInput.equals("1")) {
             startGame();

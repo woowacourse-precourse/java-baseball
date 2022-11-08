@@ -1,6 +1,6 @@
 package baseball;
 
-public class ExceptionHandler {
+public class ExceptionThrower {
     public void checkIsNoneZeroDigit(String userNumber){
         for (int i = 0; i<userNumber.length(); i++){
 
