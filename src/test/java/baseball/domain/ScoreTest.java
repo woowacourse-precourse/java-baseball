@@ -15,4 +15,11 @@ class ScoreTest {
         Assertions.assertThat(score.getStrike()).isEqualTo(result);
     }
 
+    @Test
+    void increaseBallTest() {
+        Score score = new Score(0, 0);
+        int result = 1;
+        score.increaseBall();
+        Assertions.assertThat(score.getBall()).isEqualTo(result);
+    }
 }
