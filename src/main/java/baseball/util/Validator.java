@@ -1,19 +1,20 @@
 package baseball.util;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import baseball.constant.GameConstants;
 
 public class Validator {
 	public static void validateNumberInput(String numberInput) throws IllegalArgumentException {
-		if (existDuplicateNumber(numberInput) || existInvalidDigits(numberInput) || haveInvalidLength(numberInput)) {
-			throw new IllegalArgumentException();
+		if (existInvalidDigits(numberInput) || existDuplicateNumber(numberInput) || haveInvalidLength(numberInput)) {
+			throw new IllegalArgumentException("올바른 입력이 아닙니다. 게임을 종료합니다.");
 		}
 	}
 
 	public static void validateRestartOrNotInput(String input) throws IllegalArgumentException {
 		if (!input.equals(GameConstants.RESTART_GAME) && !input.equals(GameConstants.END_GAME)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("올바른 입력이 아닙니다. 게임을 종료합니다.");
 		}
 	}
 
@@ -23,7 +24,10 @@ public class Validator {
 
 	private static boolean existInvalidDigits(String numberInput) {
 		return Arrays.stream(numberInput.split(""))
-			.anyMatch(digit -> !GameConstants.VALID_DIGITS.contains(Integer.parseInt(digit)));
+			.anyMatch(letter -> !GameConstants.VALID_DIGITS.stream()
+				.map(Object::toString)
+				.collect(Collectors.toList())
+				.contains(letter));
 	}
 
 	private static boolean haveInvalidLength(String numberInput) {
