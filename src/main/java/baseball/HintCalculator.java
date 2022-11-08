@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 
 public class HintCalculator {
-
     private static boolean isBall(int number, List<Integer> playerNumber) {
         return playerNumber.contains(number);
     }
@@ -22,13 +21,13 @@ public class HintCalculator {
 
     public static boolean calculateHint(List<Integer> randomNumber, List<Integer> playerNumber) {
         int ball = 0, strike = 0;
-        for (Integer number: randomNumber) {
+        for (Integer number : randomNumber) {
             int randomNumberIndex = randomNumber.indexOf(number);
             int playerNumberIndex = playerNumber.indexOf(number);
-            if(isStrike(randomNumberIndex, playerNumberIndex)) {
-                strike ++;
+            if (isStrike(randomNumberIndex, playerNumberIndex)) {
+                strike++;
             } else if (isBall(number, playerNumber)) {
-                ball ++;
+                ball++;
             }
         }
         return HintOutput.printHint(ball, strike);

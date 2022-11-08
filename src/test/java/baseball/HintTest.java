@@ -1,15 +1,14 @@
 package baseball;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class HintTest extends NsTest {
-
     final List<Integer> randomNumber = new ArrayList<>(List.of(3, 6, 9));
 
     @Test

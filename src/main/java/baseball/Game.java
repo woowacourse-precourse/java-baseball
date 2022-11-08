@@ -1,12 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-
     public static final int NUMBER_SIZE = 3;
     public static final String RESTART_NUMBER = "1";
     public static final String TERMINATE_NUMBER = "2";
