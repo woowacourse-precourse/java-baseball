@@ -3,7 +3,7 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Exception {
+public class BaseballException {
     public static boolean isValidLength(String input) {
         if (input.length() != Computer.NUMBER_LENGTH) {
             return false;
