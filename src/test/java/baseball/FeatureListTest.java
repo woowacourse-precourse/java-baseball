@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.Nums;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -7,6 +8,11 @@ import java.util.List;
 import java.util.Set;
 
 import static baseball.Application.*;
+import static baseball.Judgment.judgment;
+import static baseball.Judgment.printJudge;
+import static baseball.Random.generateNonDuplicateRandomNumber;
+import static baseball.Random.generateRandomNumber;
+import static baseball.model.Nums.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
