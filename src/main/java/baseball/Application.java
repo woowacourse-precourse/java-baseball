@@ -1,4 +1,5 @@
 package baseball;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -10,7 +11,7 @@ public class Application {
         printProgramStart();
         gameStart();
 
-        while(restartOrNot() == 1)
+        while (restartOrNot() == 1)
             gameStart();
     }
 
@@ -102,70 +103,68 @@ public class Application {
         return strikeCnt;
     }
 
-    private static int countBall(List<Integer> answerDigits, List<Integer> trialDigits){
+    private static int countBall(List<Integer> answerDigits, List<Integer> trialDigits) {
         int ballCnt = 0;
 
-        if(trialDigits.get(0) == answerDigits.get(1) || trialDigits.get(0) == answerDigits.get(2))
+        if (trialDigits.get(0) == answerDigits.get(1) || trialDigits.get(0) == answerDigits.get(2))
             ballCnt++;
 
-        if(trialDigits.get(1) == answerDigits.get(0) || trialDigits.get(1) == answerDigits.get(2))
+        if (trialDigits.get(1) == answerDigits.get(0) || trialDigits.get(1) == answerDigits.get(2))
             ballCnt++;
 
-        if(trialDigits.get(2) == answerDigits.get(0) || trialDigits.get(2) == answerDigits.get(1))
+        if (trialDigits.get(2) == answerDigits.get(0) || trialDigits.get(2) == answerDigits.get(1))
             ballCnt++;
 
         return ballCnt;
     }
 
-    private static boolean isTrialCorrect(int ballCnt, int strikeCnt){
+    private static boolean isTrialCorrect(int ballCnt, int strikeCnt) {
 
-        if(strikeCnt == 3) {
+        if (strikeCnt == 3) {
             System.out.println("3스트라이크");
             printGameEnd();
             return true;
-        }
-
-        else if(ballCnt > 0 && strikeCnt > 0)
+        } else if (ballCnt > 0 && strikeCnt > 0)
             System.out.println(Integer.toString(ballCnt) + "볼 " + Integer.toString(strikeCnt) + "스트라이크");
 
-        else if(ballCnt > 0 && strikeCnt == 0)
+        else if (ballCnt > 0 && strikeCnt == 0)
             System.out.println(Integer.toString(ballCnt) + "볼");
 
-        else if(ballCnt == 0 && strikeCnt > 0)
+        else if (ballCnt == 0 && strikeCnt > 0)
             System.out.println(Integer.toString(strikeCnt) + "스트라이크");
 
-        else if(ballCnt == 0 && strikeCnt == 0)
+        else if (ballCnt == 0 && strikeCnt == 0)
             System.out.println("낫싱");
 
         return false;
     }
 
-    private static List<Integer> getThreeDigitsValues(int number){
+    private static List<Integer> getThreeDigitsValues(int number) {
         // 세 자리의 정수가 입력되면 각 자릿수를 List에 담아 반환
         List<Integer> digits = new ArrayList<>();
         digits.add(number / 100);
-        digits.add((number%100) / 10);
-        digits.add(number%10);
+        digits.add((number % 100) / 10);
+        digits.add(number % 10);
         return digits;
     }
 
-    private static void gameStart(){
+    private static void gameStart() {
         int trialNum = tryAnswer();
         List<Integer> answerDigits = makeAnswerNumber();
         List<Integer> trialDigits = getThreeDigitsValues(trialNum);
 
-        while(!isTrialCorrect(countBall(answerDigits, trialDigits), countStrike(answerDigits, trialDigits))) {
+        while (!isTrialCorrect(countBall(answerDigits, trialDigits), countStrike(answerDigits, trialDigits))) {
             trialNum = tryAnswer();
             trialDigits = getThreeDigitsValues(trialNum);
         }
     }
 
-    private static int restartOrNot(){
+    private static int restartOrNot() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String Input = Console.readLine();
         int restartChoice = Integer.parseInt(Input);
 
-        if(restartChoice != 1 && restartChoice != 2)
+        if (restartChoice != 1 && restartChoice != 2)
             throw new IllegalArgumentException("재시작 여부 입력값이 잘못되었습니다.");
 
         return restartChoice;
