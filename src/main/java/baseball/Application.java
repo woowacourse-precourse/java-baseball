@@ -30,6 +30,18 @@ public class Application {
         return baseballNumber;
     }
 
+    public static int getStrike(String randomNumber, String baseballNumber) {
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (randomNumber.charAt(i) == (baseballNumber.charAt(i))) {
+                strike++;
+            }
+        }
+
+        return strike;
+    }
+
     public static void baseballGame() {
         String randomNumber = "";
         String restartNumber = "";
