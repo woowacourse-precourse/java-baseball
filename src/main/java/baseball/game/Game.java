@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.game.utils.InputValidator;
+import baseball.game.utils.IntegerValidator;
 import baseball.game.utils.ScoreBoard;
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class Game {
 
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> presumeNumbers = user.presume();
-            InputValidator.validatePresume(presumeNumbers);
+            IntegerValidator.validatePresume(presumeNumbers);
 
             ScoreBoard scoreBoard = computer.scoreCheck(presumeNumbers);
             scoreBoard.printBallAndStrike();

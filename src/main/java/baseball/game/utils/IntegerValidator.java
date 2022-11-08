@@ -3,7 +3,7 @@ package baseball.game.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputValidator {
+public class IntegerValidator {
 
     private static final int GAME_NUMBER_SIZE = 3;
 

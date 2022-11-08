@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.game.utils.InputValidator;
+import baseball.game.utils.IntegerValidator;
 import java.util.Arrays;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class InputValidatorTest {
+public class IntegerValidatorTest {
 
     private static final int GAME_NUMBER_SIZE = 3;
     private static final int START_INCLUSIVE_INTEGER = 1;
@@ -33,7 +33,7 @@ public class InputValidatorTest {
                         @DisplayName("IllegalArgumentException을 반환한다.")
                         void Then_return_IllegalArgumentException() {
                             List<Integer> input = Arrays.asList(0, 1, 2);
-                            Assertions.assertThatThrownBy(() -> InputValidator.validatePresume(input))
+                            Assertions.assertThatThrownBy(() -> IntegerValidator.validatePresume(input))
                                     .isInstanceOf(IllegalArgumentException.class).hasMessageContaining(
                                             START_INCLUSIVE_INTEGER + "~" + END_INCLUSIVE_INTEGER + "사이의 숫자만 입력할 수 있습니다.");
                         }
@@ -47,7 +47,7 @@ public class InputValidatorTest {
                     @DisplayName("IllegalArgumentException을 반환한다.")
                     void Then_return_IllegalArgumentException() {
                         List<Integer> input = Arrays.asList(1, 2, 2);
-                        Assertions.assertThatThrownBy(() -> InputValidator.validatePresume(input))
+                        Assertions.assertThatThrownBy(() -> IntegerValidator.validatePresume(input))
                                 .isInstanceOf(IllegalArgumentException.class)
                                 .hasMessageContaining("중복된 숫자를 포함할 수 없습니다.");
                     }
@@ -61,7 +61,7 @@ public class InputValidatorTest {
                 @DisplayName("IllegalArgumentException을 반환한다.")
                 void Then_return_IllegalArgumentException() {
                     List<Integer> input = Arrays.asList(1, 2, 3, 4);
-                    Assertions.assertThatThrownBy(() -> InputValidator.validatePresume(input))
+                    Assertions.assertThatThrownBy(() -> IntegerValidator.validatePresume(input))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessageContaining(GAME_NUMBER_SIZE + "자리 숫자만 입력할 수 있습니다.");
                 }
@@ -74,7 +74,7 @@ public class InputValidatorTest {
                 @DisplayName("IllegalArgumentException을 반환한다.")
                 void Then_return_IllegalArgumentException() {
                     List<Integer> input = Arrays.asList(1, 2);
-                    Assertions.assertThatThrownBy(() -> InputValidator.validatePresume(input))
+                    Assertions.assertThatThrownBy(() -> IntegerValidator.validatePresume(input))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessageContaining(GAME_NUMBER_SIZE + "자리 숫자만 입력할 수 있습니다.");
                 }
@@ -95,7 +95,7 @@ public class InputValidatorTest {
                 @DisplayName("IllegalArgumentException을 반환한다.")
                 void Then_return_IllegalArgumentException() {
                     int input = 3;
-                    Assertions.assertThatThrownBy(() -> InputValidator.validateRestartChoice(input))
+                    Assertions.assertThatThrownBy(() -> IntegerValidator.validateRestartChoice(input))
                             .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("선택 옵션에 없는 숫자입니다.");
                 }
             }
