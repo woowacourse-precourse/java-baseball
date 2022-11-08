@@ -8,20 +8,21 @@ import java.util.List;
 
 public class Player {
 
-    public List<Integer> inputNumbers() {
+    public String getInput() {
+        return Console.readLine();
+    }
+
+    public List<Integer> StringToList(String input) {
 
         List<Integer> playerInputList = new ArrayList<>();
 
-        String input = Console.readLine();
-
         if (checkWrongInput(input)) throw new IllegalStateException("잘못된 입력입니다.");
 
-        for (char inputOfDigit : input.toCharArray()) {
-            playerInputList.add((int)inputOfDigit);
-        }
+        for (char inputOfDigit : input.toCharArray()) playerInputList.add(inputOfDigit-'0');
 
         return playerInputList;
     }
+
 
     public boolean checkWrongInput(String input) {
         if (input.length() != 3) return true;
