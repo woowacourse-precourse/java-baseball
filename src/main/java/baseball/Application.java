@@ -120,8 +120,14 @@ public class Application {
         return strike;
     }
 
-
     public static Integer isBall() {
-        return 0;
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if ((computerNum.get(i) != myNum.get(i)) && (computerNum.contains(myNum.get(i)))) {
+                ball +=1;
+            }
+        }
+        return ball;
     }
+
 }
