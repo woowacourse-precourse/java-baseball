@@ -7,17 +7,15 @@ public class Application {
     private static final int PLAY_AGAIN_MODE = 2;
     private static final int INPUT_CONSOLE_MODE = 1;
     private static final int OUTPUT_CONSOLE_MODE = 1;
-    //private static final int OUTPUT_TXTMODE = 2; -> 출력을 텍스트파일에다 하겠다
-    //private static final int INPUT_TXTMODE = 2 -> 입력을 텍스트파일로 넣어서 한줄씩 읽겠다.
-    private static final int INPUTLENGTH = 4;
+    private static final int INPUT_LENGTH = 3;
 
     public static void main(String[] args) {
         Game game = new Game();
-        InputOutputController ioController = new InputOutputController(INPUT_CONSOLE_MODE, OUTPUT_CONSOLE_MODE, INPUTLENGTH);
-
         int playAgainReturn;
+        InputOutputController ioController = new InputOutputController(INPUT_CONSOLE_MODE, OUTPUT_CONSOLE_MODE,
+                INPUT_LENGTH);
         do {
-            playAgainReturn = game.startAndPlayAgain(ioController, INPUTLENGTH);
+            playAgainReturn = game.startAndPlayAgain(ioController, INPUT_LENGTH);
         } while (playAgainReturn == PLAY_AGAIN_MODE);
     }
 }
