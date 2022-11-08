@@ -9,7 +9,6 @@ import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO : IllegalArgumentException 예외처리
         List<Integer> computer = Game.makeRandomNumberList();
         Game.repeatGame(computer);
         restartOrEndTheGame();
@@ -33,6 +32,11 @@ public class Application {
 
             String[] splitAnswer = myAnswer.split("");
             ArrayList<String> answerList = new ArrayList<>(Arrays.asList(splitAnswer));
+
+            if (answerList.size() > 3){
+                throw new IllegalArgumentException();
+            }
+
             return answerList;
         }
 
