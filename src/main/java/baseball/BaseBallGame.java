@@ -15,6 +15,16 @@ public class BaseBallGame {
       inputData = getUserNumberInput();
       gameNumber = createBaseBallGameNumber(inputData);
       if (gameNumber == null) isGameOver = true;
+      else {
+        GameResult result = new GameResult();
+        result.setResultByGameNumber(computer.getAnswerNumber(), gameNumber);
+        result.printResult();
+        if (result.isAnswer()) {
+          System.out.println(GameMessage.GAME_FINISH_MESSAGE.toString());
+          System.out.println(GameMessage.CHECK_RESTART_MESSAGE.toString());
+          isGameOver = !checkRestart();
+        }
+      }
     }
   }
 
