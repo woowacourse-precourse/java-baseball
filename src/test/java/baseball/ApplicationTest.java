@@ -63,8 +63,8 @@ class ApplicationTest extends NsTest {
         @Test
         void legalGetGameNumberInstanceByStringTest1() {
             String input = "123";
-            int result = 123;
-            assertThat(GameNumber.getInstance(input).toInt())
+            String  result = "123";
+            assertThat(GameNumber.getInstance(input).toString())
                     .isEqualTo(result);
         }
     }
@@ -73,9 +73,9 @@ class ApplicationTest extends NsTest {
     class RandomGameNumberGeneratorTest {
         @Test
         void randomGameNumberGeneratorTest1() {
-            int result = 154;
+            String  result = "154";
             assertRandomNumberInRangeTest(
-                    () -> assertThat(GameNumber.getRandomInstance().toInt())
+                    () -> assertThat(GameNumber.getRandomInstance().toString())
                             .isEqualTo(result),
                     1, 5, 4, 5, 8, 9
             );
@@ -83,9 +83,9 @@ class ApplicationTest extends NsTest {
 
         @Test
         void randomGameNumberGeneratorTest2() {
-            int result = 158;
+            String result = "158";
             assertRandomNumberInRangeTest(
-                    () -> assertThat(GameNumber.getRandomInstance().toInt())
+                    () -> assertThat(GameNumber.getRandomInstance().toString())
                             .isEqualTo(result),
                     1, 1, 5, 5, 8, 9
             );
@@ -93,9 +93,9 @@ class ApplicationTest extends NsTest {
 
         @Test
         void randomGameNumberGeneratorTest3() {
-            int result = 158;
+            String result = "158";
             assertRandomNumberInRangeTest(
-                    () -> assertThat(GameNumber.getRandomInstance().toInt())
+                    () -> assertThat(GameNumber.getRandomInstance().toString())
                             .isEqualTo(result),
                     1, 1, 5, 1, 5, 8, 9
             );

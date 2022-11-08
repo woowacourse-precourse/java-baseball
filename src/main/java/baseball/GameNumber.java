@@ -28,9 +28,7 @@ public class GameNumber {
 
     private GameNumber(List<Integer> integerList) {
         numberListByDigit = new ArrayList<>();
-
         numberListByDigit.addAll(integerList);
-        Collections.reverse(numberListByDigit);
     }
 
     private static void validateInput(String input) {
@@ -74,15 +72,13 @@ public class GameNumber {
         return output;
     }
 
-    public int toInt() {
-        int result = 0;
-        int digitLevel = 1;
+    public String toString() {
+        StringBuilder result = new StringBuilder();
         for(int i = 0; i < GAME_NUMBER_LENGTH; i++) {
-            result += numberListByDigit.get(i) * digitLevel;
-            digitLevel *= 10;
+            result.append(numberListByDigit.get(i));
         }
 
-        return result;
+        return result.toString();
     }
 
     public BallStrikeResult compareTo(GameNumber oth) {
