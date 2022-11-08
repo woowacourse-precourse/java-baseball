@@ -85,7 +85,38 @@ public class Application {
         return result;
     }
 
+    /**
+     * 에러 체크해서 에러면 IllegalArgumentException을 터뜨리는 함수
+     * 입력값이 3글자가 아닐 때
+     * 숫자로 변환가능한 문자열이 아닐때,
+     * 중복된 수가 있을 때 에러가 터짐
+     * @param number
+     */
+    public static void checkError(String number) {
+        // number의 길이가 3이면 패스 아니라면 에러 발생
+        // 띄워쓰기의 경우는 제거해서 편하게 해주자
+        if (number.trim().length()==3) {}
+        else {
+            System.out.println("세 자리 수만 입력 가능합니다.");
+            throw new IllegalArgumentException();
+        }
 
+        // 같은 값이 있는 지 확인할 List
+        List<String> check = new ArrayList<>();
+
+        // for문을 돌아서 숫자로 변환 가능한 문자열인지,
+        // 동일한 값을 가지지 않은 문자열인지 확인
+        for (int i = 0; i < 3; i++) {
+            if (!Character.isDigit(number.charAt(i))) {
+                throw new IllegalArgumentException();
+            } else if (check.contains(String.valueOf(number.charAt(i)))) {
+                System.out.println("서로 다른 숫자만 입력 가능합니다.");
+                throw  new IllegalArgumentException();
+            } else if (!check.contains(String.valueOf(number.charAt(i)))) {
+                check.add(String.valueOf(number.charAt(i)));
+            }
+        }
+    }
 
     public static void reGame() {
 
