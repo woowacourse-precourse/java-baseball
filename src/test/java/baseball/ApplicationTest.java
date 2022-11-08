@@ -148,5 +148,35 @@ class ApplicationTest extends NsTest {
                             Application.calculateBaseBallResult(randomNumber,List.of(7,8,9)), List.of(0,0))
             );
         }
+
+        @Test
+        void 베이스볼_결과를_출력문으로_전환() {
+            assertAll(
+                    ()-> assertEquals(
+                            Application.convertBaseBallResultToConsoleOutputString(
+                                    List.of(0 , 0)), "낫싱"),
+                    ()-> assertEquals(
+                            Application.convertBaseBallResultToConsoleOutputString(
+                                    List.of(0 , 1)), "1볼"),
+                    ()-> assertEquals(
+                            Application.convertBaseBallResultToConsoleOutputString(
+                                    List.of(0 , 2)), "2볼"),
+                    ()-> assertEquals(
+                            Application.convertBaseBallResultToConsoleOutputString(
+                                    List.of(1 , 0)), "1스트라이크"),
+                    ()-> assertEquals(
+                            Application.convertBaseBallResultToConsoleOutputString(
+                                    List.of(1 , 1)), "1볼 1스트라이크"),
+                    ()-> assertEquals(
+                            Application.convertBaseBallResultToConsoleOutputString(
+                                    List.of(1 , 2)), "2볼 1스트라이크"),
+                    ()-> assertEquals(
+                            Application.convertBaseBallResultToConsoleOutputString(
+                                    List.of(2 , 0)), "2스트라이크"),
+                    ()-> assertEquals(
+                            Application.convertBaseBallResultToConsoleOutputString(
+                                    List.of(3 , 0)), "3스트라이크")
+            );
+        }
     }
 }
