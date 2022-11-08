@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.Computer.calcResult;
 import static baseball.Computer.printResult;
+import static baseball.Computer.shouldGuessAgain;
 import static baseball.GameManager.shouldRestartGame;
 import static baseball.Number.generateRandomNumber;
 import static baseball.Number.readNum;
@@ -12,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -298,6 +298,36 @@ class ApplicationTest extends NsTest {
         String expectedResult = "3스트라이크";
 
         assertThat(output()).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void shouldGuessAgain_메서드의_결과가_false() {
+        List<Integer> score = Arrays.asList(0, 3);
+
+        boolean result = shouldGuessAgain(score);
+        boolean expectedResult = false;
+
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void shouldGuessAgain_메서드의_결과가_true_인_경우_case_1() {
+        List<Integer> score = Arrays.asList(0, 1);
+
+        boolean result = shouldGuessAgain(score);
+        boolean expectedResult = true;
+
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void shouldGuessAgain_메서드의_결과가_true_인_경우_case_2() {
+        List<Integer> score = Arrays.asList(2, 0);
+
+        boolean result = shouldGuessAgain(score);
+        boolean expectedResult = true;
+
+        assertThat(result).isEqualTo(expectedResult);
     }
 
     @Test
