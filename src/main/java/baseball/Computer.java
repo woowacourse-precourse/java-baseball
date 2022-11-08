@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    List<Integer> threeDifferntNumber;
+    public List<Integer> threeDifferntNumber;
 
     public List<Integer> getThreeDifferntNumber(){
         List<Integer> randomDifferentNumber = new ArrayList<>();
