@@ -73,4 +73,14 @@ public class ComputerTest {
         boolean result = computer.is3Strike();
         assertThat(result).isEqualTo(true);
     }
+
+    @Test
+    void askRestart_스트라이크가_3개_일때_재시작하는지_여부(){
+        computer.Answer = List.of(1,2,3);
+        computer.resetHintMap();
+        List<Integer> list1 = List.of(1,2,3);
+        computer.makeHintMap(list1);
+        boolean result = computer.askRestart();
+        assertThat(result).isEqualTo(true);
+    }
 }
