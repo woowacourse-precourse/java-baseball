@@ -8,7 +8,9 @@ public class InputUserNumber {
     private static HandleException handleException = new HandleException();
 
     public ArrayList<Integer> InputUserNumber(String userInput) {
-        handleException.handleUserInputNumberException(userInput);
+        handleException.handleUserInputNumberRangeException(userInput);
+        handleException.handleUserInputSizeException(userInput);
+        handleException.handleUserInputDuplicationException(userInput);
 
         ArrayList<Integer> userNumList = new ArrayList<>();
 
