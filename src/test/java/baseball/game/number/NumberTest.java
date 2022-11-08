@@ -93,4 +93,32 @@ class NumberTest {
         Digit thirdDigit = new Digit(digitNumbers.get(2));
         assertThat(number.third).isEqualTo(thirdDigit);
     }
+
+    @Test
+    public void 범위보다_작은_수가_들어오면_예외를_던진다() {
+        int numberlessThanRange = Randoms.pickNumberInRange(1, 99);
+        assertThatThrownBy(()-> new Number(numberlessThanRange))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3자리 수가 아닙니다.");
+    }
+
+    @Test
+    public void 범위보다_큰_수가_들어오면_예외를_던진다() {
+        int numberlessThanRange = Randoms.pickNumberInRange(1000, 9999);
+        assertThatThrownBy(()-> new Number(numberlessThanRange))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3자리 수가 아닙니다.");
+    }
+
+    private int convertDuplicateDigitNumber(List<Integer> digitNumbers) {
+        return digitNumbers.get(0) * 100 + digitNumbers.get(1)*10 + digitNumbers.get(1);
+    }
+
+    @Test
+    public void 같은_수가_포함된_수가_들어오면_예외를_던진다() {
+        int randomButNotUniqueDigitNumber = convertDuplicateDigitNumber(digitNumbers);
+        assertThatThrownBy(()-> new Number(randomButNotUniqueDigitNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("서로 다른 3자리 수가 아닙니다.");
+    }
 }
