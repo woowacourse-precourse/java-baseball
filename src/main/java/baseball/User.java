@@ -21,7 +21,7 @@ public class User {
 
     public boolean checkNumRange(String num) {
         for (int i = 0; i < num.length(); i++) {
-            if (!(num.charAt(i) >= 1 && num.charAt(0) <= 9)) {
+            if (!(num.charAt(i) >= '1' && num.charAt(0) <= '9')) {
                 return false;
             }
         }
