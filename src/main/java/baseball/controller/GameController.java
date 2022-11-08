@@ -32,11 +32,11 @@ public class GameController {
             String input = view.getInput();
             Result judgement = logic.judge(target, input);
             view.ballsAndStrikes(judgement.getBall(), judgement.getStrike());
-            decide(judgement);
+            checkThreeStrike(judgement);
         }
     }
 
-    private void decide(Result judge) {
+    private void checkThreeStrike(Result judge) {
         if (logic.isGameSet(judge)) {
             view.announceGameSet();
             threeStrike = true;
