@@ -24,5 +24,12 @@ public class Judge {
         return attack.get(index).baseballEqual(defend.get(index));
     }
 
+    private boolean isBall(int index) {
+        if (isStrike(index)) {
+            return false;
+        }
+        return attack.get(index).baseballContain(defend);
+    }
+
 
 }
