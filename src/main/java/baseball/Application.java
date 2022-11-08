@@ -1,8 +1,5 @@
 package baseball;
 
-
-import camp.nextstep.edu.missionutils.Randoms;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
