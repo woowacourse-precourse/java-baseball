@@ -1,8 +1,8 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -24,8 +24,6 @@ public class BaseballGame {
     public void compareWithTargetNum(String input) {
         int strikeCount=0;
         int ballCount=0;
-        System.out.println(targetNumber);
-
 
         for(int order=0; order<3; order++){
             int targetDigit = targetNumber.get(order);
@@ -51,13 +49,14 @@ public class BaseballGame {
             System.out.print(ballCount + "볼 " + strikeCount + "스트라이크\n");
         }
         if (strikeCount==3) {
-            endGame();
+            this.endGame();
         }
     }
 
-    private void endGame() {
+
+    public void endGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        isPlayerWin=true;
+        this.isPlayerWin=true;
         restartGame();
     }
 
@@ -65,9 +64,9 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if (input.equals("1")) {
-            isLastGame=false;
+            this.isLastGame=false;
         } else if (input.equals("2")) {
-            isLastGame=true;
+            this.isLastGame=true;
         } else {
             throw new IllegalArgumentException("1 또는 2를 입력하세요..");
         }
@@ -75,9 +74,10 @@ public class BaseballGame {
 
     public void startGame() {
         generateTargetNumber();
-        while(isPlayerWin==false){
-            String newInput = Input.getUserNumber();
-            compareWithTargetNum(newInput);
+        while(this.isPlayerWin==false){
+            Input newInput = new Input();
+            String userNumber = newInput.getUserNumber();
+            compareWithTargetNum(userNumber);
         }
     }
 }
