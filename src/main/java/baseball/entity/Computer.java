@@ -8,7 +8,7 @@ public class Computer {
 
     private static List<Integer> computerNumbers;
 
-    public static void createRandomNumber() {
+    public void createRandomNumber() {
         computerNumbers = new ArrayList<>();
 
         while(computerNumbers.size()<3) {
