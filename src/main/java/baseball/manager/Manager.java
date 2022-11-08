@@ -25,7 +25,7 @@ public class Manager {
         if(Strike != 0){
             if(sb.length() > 0) sb.append(" ");
             sb.append(Integer.toString(Strike));
-            sb.append(Strike);
+            sb.append(STRIKE);
         }
 
         if(sb.length() == 0) {
@@ -55,7 +55,7 @@ public class Manager {
             choice = readLine();
             if(IsInvalidChoice(choice))
                 throw new IllegalArgumentException("선택 규칙 위반");
-            
+
         }catch(IllegalArgumentException e){
             System.out.println("사용자 입력이 잘못되어 프로그램이 종료됩니다.");
             return false;
