@@ -1,28 +1,27 @@
-package baseball.utils;
+package baseball;
 
 import static baseball.BaseBallGame.GAME_EXIT;
 import static baseball.BaseBallGame.GAME_NUMBER_LENGTH;
 import static baseball.BaseBallGame.GAME_RESTART;
 
+import baseball.utils.InputReader;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserInput {
+public class UserInput implements Pitcher, OptionSelector {
 
     private static final Integer INPUT_LOWER_BOUND = 123;
     private static final Integer INPUT_UPPER_BOUND = 987;
 
-    private InputReader inputReader;
+    private final InputReader inputReader;
 
     public UserInput(InputReader inputReader) {
         this.inputReader = inputReader;
     }
 
+    @Override
     public boolean isContinue() {
-        if (GAME_RESTART.equals(getOptionInput())) {
-            return true;
-        }
-        return false;
+        return GAME_RESTART.equals(getOptionInput());
     }
 
     private Integer getOptionInput() {
@@ -33,12 +32,12 @@ public class UserInput {
         throw new IllegalArgumentException();
     }
 
-    public Integer[] getGameInput() {
+    @Override
+    public Integer[] pitching() {
         Integer input = getValidInput();
         checkLengthThree(input);
         Integer[] inputArray = integerToIntegerArray(input);
         checkDigitValidation(inputArray);
-
         return inputArray;
     }
 
