@@ -1,12 +1,11 @@
 package baseball;
-import java.util.List;
-
 
 import static baseball.Game.ball;
 import static baseball.Game.strike;
 import static baseball.GameStatus.EXIT;
 import static baseball.GameStatus.ON;
 
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
