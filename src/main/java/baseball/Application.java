@@ -63,6 +63,7 @@ public class Application {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         } else if (strike == 3) {
+            System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             result = "right";
         } else if (strike == 0) {
