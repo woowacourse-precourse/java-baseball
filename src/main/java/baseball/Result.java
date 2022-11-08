@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import javax.swing.plaf.synth.SynthUI;
 
 public class Result {
 
@@ -8,11 +9,18 @@ public class Result {
 
     private int ball;
 
-    public void countResult(List<Integer> baseball, List<Integer> input) {
+    public boolean countResult(List<Integer> baseball, List<Integer> input) {
         countStrike(baseball, input);
         countBall(baseball, input);
 
-        //return false;
+        System.out.println(printResult());
+
+        if (strike == 3) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void countStrike(List<Integer> baseball, List<Integer> input) {
