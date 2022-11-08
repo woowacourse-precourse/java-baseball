@@ -19,6 +19,5 @@ public class Random {
 //                    System.out.print(randomNumber); //컴퓨터 입력값 출력
             }
         }
-        System.out.println(computer);  //컴퓨터 입력값 리스트 출력
     }
 }

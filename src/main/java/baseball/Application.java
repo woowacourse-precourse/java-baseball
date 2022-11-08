@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Scanner;
 
 public class Application {
@@ -22,12 +24,6 @@ public class Application {
                 try {
                     User.enterNum();
 
-                    System.out.println(User.player);       //유저 입력값
-                    System.out.println(User.playerNumber);       //유저 비교값
-
-                    System.out.println(User.userSet.size());
-                    System.out.println(User.player.size());
-
                     exceptions.exceptionTest();
 
                 } catch (Exceptions.RedundantException re) {
@@ -45,7 +41,8 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 눌러주세요.");
             Scanner newgame = new Scanner(System.in);
-            restart = newgame.nextInt();
+            restart = Integer.parseInt(Console.readLine());
         }while (restart<2);
+//        System.out.println("게임 종료");
     }
 }
