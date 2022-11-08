@@ -1,6 +1,7 @@
 package baseball;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class NumberGenerator {
     private static final int START_RANGE = 1;
@@ -20,7 +21,7 @@ public class NumberGenerator {
         int nowNumberIndex = 0;
         while (nowNumberIndex < NEW_GAME) {
             nowRandomNum = this.getRandomNumber();
-            if (!Array.checkArrayContains(number, nowRandomNum)) {
+            if (!RelationArray.checkArrayContains(number, nowRandomNum)) {
                 number[nowNumberIndex++] = nowRandomNum;
             }
         }
@@ -36,7 +37,7 @@ public class NumberGenerator {
     }
     public static void init(NumberGenerator rightAnswer) {
         NumberGenerator answer = NumberGenerator.getAnswer();
-        Hint hint = new Hint();
+        GameInfo hint = new GameInfo();
         hint.compareAnswer(answer, rightAnswer);
         hint.showResult();
         if (hint.strike != NumberGenerator.NUMBER_LENGTH) {
@@ -65,7 +66,6 @@ public class NumberGenerator {
         System.out.println(NEW_GAME_CHECK_MESSAGE);
 
         String newGameAnswer = readLine();
-        return Application.getNewGameAnswerNumber(newGameAnswer);
         return NumberGenerator.getNewGameAnswerNumber(newGameAnswer);
     }
 
@@ -107,14 +107,14 @@ public class NumberGenerator {
         } catch (NumberFormatException e) {
             return false;
         }
-        char[] numberArray = Array.getCharArrayFromString(str);
-        return !Array.checkArrayContains(numberArray, '0');
+        char[] numberArray = RelationArray.getCharArrayFromString(str);
+        return !RelationArray.checkArrayContains(numberArray, '0');
     }
     static boolean checkEqualNumber(String str) {
         char[] checkEqual = new char[str.length()];
-        char[] word = Array.getCharArrayFromString(str);
+        char[] word = RelationArray.getCharArrayFromString(str);
         for (int i = 0; i < str.length(); i++) {
-            if (Array.checkArrayContains(checkEqual, word[i])) {
+            if (RelationArray.checkArrayContains(checkEqual, word[i])) {
                 return false;
             }
             checkEqual[i] = word[i];

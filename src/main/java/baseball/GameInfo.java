@@ -20,10 +20,10 @@ public class GameInfo extends NumberGenerator{
         int nowNumber;
         for (int i = 0; i < NumberGenerator.NUMBER_LENGTH; i++) {
             nowNumber = answer.number[i];
-            if (!Array.checkArrayContains(rightAnswer.number, nowNumber)) {
+            if (!RelationArray.checkArrayContains(rightAnswer.number, nowNumber)) {
                 continue;
             }
-            if (i == Array.getIndexFromValue(rightAnswer.number, nowNumber)) {
+            if (i == RelationArray.getIndexFromValue(rightAnswer.number, nowNumber)) {
                 addStrikeCount();
                 continue;
             }
