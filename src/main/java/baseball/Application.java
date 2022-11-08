@@ -51,6 +51,7 @@ public class Application {
     }
 
     private static ArrayList<Integer> getPlayerNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         String playerInput = Console.readLine();
 
         if (!isValid(playerInput)) {
