@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static List<Integer> generateRandomNumber() {
@@ -66,7 +64,6 @@ public class Application {
 
         while(strikeCount != 3){
             System.out.print("숫자를 입력해 주세요 : ");
-
             String userString = Console.readLine();
 
             if(userString.length() != 3){
@@ -74,18 +71,8 @@ public class Application {
             }
 
             List<Integer> userNumber = stringToList(userString);
-
-            int duplication = 0;
-            if(userNumber.get(0).equals(userNumber.get(1))){
-                duplication += 1;
-            }
-            if(userNumber.get(0).equals(userNumber.get(2))){
-                duplication += 1;
-            }
-            if(userNumber.get(1).equals(userNumber.get(3))){
-                duplication += 1;
-            }
-            if(duplication>0){
+            Set<Integer> checkDuplication = new HashSet<>(userNumber);
+            if(userNumber.size() != checkDuplication.size()){
                 throw new IllegalArgumentException("중복되지 않는 3자리 숫자 입력이 필요합니다");
             }
 
@@ -131,6 +118,7 @@ public class Application {
             runBaseballGame();
             String userStatus = Console.readLine();
             gameStatus = Integer.parseInt(userStatus);
+
             if((gameStatus!=1) && (gameStatus!=2)){
                 throw new IllegalArgumentException("1또는 2를 입력하여야 합니다");
             }
