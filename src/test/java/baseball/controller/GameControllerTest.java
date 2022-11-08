@@ -8,10 +8,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-@DisplayName("GameNumbers 테스트")
+@DisplayName("GameController 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class GameControllerTest {
-
     @Nested
     class 입력_검증 {
         @ParameterizedTest(name = "한 자리 숫자 입력 실패 => {0}")
@@ -38,6 +37,22 @@ public class GameControllerTest {
         @ValueSource(strings = {"111", "234"})
         void 세_자리_숫자_입력_성공(String input) {
             assertDoesNotThrow(() -> GameController.validateInput("^[1-9]{3}$", input));
+        }
+    }
+
+    @Nested
+    class 숫자_변환 {
+        @ParameterizedTest(name = "숫자 변환 실패 => {0}")
+        @ValueSource(strings = {"A", "a1"})
+        void 숫자_변환_실패(String input) {
+            assertThatThrownBy(() -> GameController.parseInt(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @ParameterizedTest(name = "숫자 변환 성공 => {0}")
+        @ValueSource(strings = {"1", "12", "123"})
+        void 숫자_변환_성공(String input) {
+            assertDoesNotThrow(() -> GameController.parseInt(input));
         }
     }
 }
