@@ -12,11 +12,14 @@ public class Baseball {
 
     private int ball;
 
-    public Baseball(List<String> computerNumber, List<String> inputNumber, int strike, int ball) {
+    public Baseball(List<String> computerNumber, List<String> inputNumber) {
         this.computerNumber = computerNumber;
         this.inputNumber = inputNumber;
-        this.strike = strike;
-        this.ball = ball;
+    }
+
+    public void initBaseballGame() {
+        this.strike=0;
+        this.ball=0;
     }
 
     public List<String> getComputerNumber() {
@@ -40,7 +43,7 @@ public class Baseball {
     }
 
     public void setStrike(int strikeNum) {
-        strike = strikeNum;
+        this.strike = strikeNum;
     }
 
     public int getBall() {
@@ -48,7 +51,7 @@ public class Baseball {
     }
 
     public void setBall(int ballNum) {
-        ball = ballNum;
+        this.ball = ballNum;
     }
 
 }

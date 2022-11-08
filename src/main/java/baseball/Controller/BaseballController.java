@@ -1,5 +1,6 @@
 package baseball.Controller;
 
+import baseball.Application;
 import baseball.Domain.Baseball;
 import baseball.Service.BaseballService;
 import camp.nextstep.edu.missionutils.Console;
@@ -9,20 +10,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BaseballController {
-
-    private BaseballService baseballService;
-    public Baseball baseball;
-
+    BaseballService baseballService = new BaseballService();
     public static List<String> randomList = new ArrayList<>();
     private List<String> inputList = new ArrayList<>();
-    private int strike = 0;
-    private int ball = 0;
+    public Baseball baseball = new Baseball(randomList, inputList);
+    private static final int RESTART=1;
+    private static final int END=2;
 
     //게임 시작
     public void startBaseballGame() {
 
-        baseball = new Baseball(randomList, inputList, strike, ball);
-
+        baseball.initBaseballGame();
         printStartMessage();
 
         randomList = baseballService.createRandomNumber();
@@ -32,37 +30,44 @@ public class BaseballController {
             inputList = readInputNumber();
             baseball.setInputNumber(inputList);
 
-            countStrikeOrBall(randomList, inputList);
+            countStrikeOrBall(baseball.getComputerNumber(), baseball.getInputNumber());
 
             result(baseball.getStrike(), baseball.getBall());
         }
 
         result(baseball.getStrike(), baseball.getBall());
 
-        gameExit(Integer.parseInt(Console.readLine()));
+        int answer = Integer.parseInt(Console.readLine());
+
+        gameExit(answer);
     }
 
     //유저가 입력한 숫자 받기
     public List<String> readInputNumber() {
         printInputMessage();
         String inputNumber = Console.readLine();
+        System.out.println(inputNumber);
 
         String[] numberToArray = inputNumber.split("");
         List<String> userNumber = new ArrayList<String>(Arrays.asList(numberToArray));
+        baseballService.isValidInputSize(userNumber);
+        baseballService.isValidInputRange(userNumber);
 
         return userNumber;
     }
 
     //스트라이크 또는 볼 판정
     public void countStrikeOrBall(List<String> randomNumber, List<String> inputNumber) {
+        int strikeCount=0;
+        int ballCount=0;
 
         for(String number: inputNumber) {
-            strike = countStrike(randomNumber, inputNumber, number, baseball.getStrike());
-            ball = countBall(randomNumber, inputNumber, number, baseball.getBall());
+            strikeCount = countStrike(randomNumber, inputNumber, number, baseball.getStrike());
+            ballCount = countBall(randomNumber, inputNumber, number, baseball.getBall());
         }
 
-        baseball.setStrike(strike);
-        baseball.setBall(ball);
+        baseball.setStrike(strikeCount);
+        baseball.setBall(ballCount);
     }
 
 
@@ -117,17 +122,10 @@ public class BaseballController {
 
     //프로그램 재시작 or 완전히 종료
     public void gameExit(int number) {
+        baseballService.isValidNumber(number);
 
-        if (number!=1 && number!=2) {
-            throw new IllegalArgumentException();
-        }
-
-        if (number==1) {
+        if (number==RESTART) {
             startBaseballGame();
-        }
-
-        if (number==2) {
-
         }
     }
 
