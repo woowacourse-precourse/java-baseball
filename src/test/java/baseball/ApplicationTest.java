@@ -30,13 +30,23 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("3자리_숫자_이상인_경우_테스트")
-    void 숫자3자리_이상인_경우_테스트() {
-        String input = "abc";
+    void 숫자3자리_초과인_경우_테스트() {
+        String input = "12345";
 
         assertThatThrownBy(() -> input.charAt(5))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
+    }
+
+    @Test
+    @DisplayName("3자리_숫자_미만인_경우_테스트")
+    void 숫자3자리_미만인_경우_테스트() {
+        String input = "12";
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Test
