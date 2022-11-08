@@ -20,7 +20,7 @@ class ApplicationTest extends NsTest {
     BaseBallGame testGame = new BaseBallGame();
     public static final int COMPUTER_NUMBERS_SIZE = 3;
     @Nested
-    class 게임시작기능_테스트 {
+    class GameStartTest {
         @Test
         void 게임시작하면_출력되는_시작문구_확인() {
             OutputStream out = new ByteArrayOutputStream();
@@ -36,7 +36,7 @@ class ApplicationTest extends NsTest {
         }
     }
     @Nested
-    class 게임준비기능_테스트 {
+    class GamePrepareTest {
         @BeforeEach
         void 게임준비시키기() {
             testGame.prepareGame();
@@ -58,9 +58,9 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class 게임진행기능_테스트 {
+    class GameProceedTest {
         @Nested
-        class 예외처리_테스트{
+        class ExceptionTest{
             @Test
             void 사용자입력이_3글자가_아니면_오류발생() {
                 String inValidInput = "1234";
@@ -88,7 +88,7 @@ class ApplicationTest extends NsTest {
         }
 
         @Nested
-        class 볼개수_스트라이크개수_테스트 {
+        class BallAndStrikeCountTest {
             @BeforeEach
             void 컴퓨터_수_세팅() {
                 testGame.computerNumbers = List.of(1, 2, 3);
@@ -146,7 +146,7 @@ class ApplicationTest extends NsTest {
         }
 
         @Nested
-        class 볼_스트라이크_개수에_따른_게임결과문구_테스트 {
+        class GameResultMessageTest {
             @Test
             void case1_3스트라이크() {
                 Map<String, Integer> gameResult = new HashMap<>();
@@ -202,7 +202,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class 게임종료기능_테스트 {
+    class GameTerminateOrRestartTest {
         @Test
         void 종료_또는_재시작_출력문구확인() {
             OutputStream out = new ByteArrayOutputStream();
@@ -217,7 +217,7 @@ class ApplicationTest extends NsTest {
             assertThat(actualOutput).isEqualTo(expectedOutput);
         }
         @Test
-        void 맞춘_뒤에_입력시_0이나_1이_아닌_수를_입력하면_예외처리() {
+        void 맞춘_뒤에_입력시_1이나_2가_아닌_수를_입력하면_예외처리() {
             String inValidChoice = "3";
             assertThatThrownBy(() -> testGame.inputValidator.validateChoice(inValidChoice))
                     .isInstanceOf(IllegalArgumentException.class);
