@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class BaseballGame {
     private List<Integer> computerNumber;
@@ -71,7 +70,7 @@ public class BaseballGame {
                 System.out.println(strike + "스트라이크");
         }
     }
-    static List<Integer> countBallAndStrike(List<Integer> computerList, List<Integer> inputList){ // 배열로 묶어서 주기
+    static List<Integer> countBallAndStrike(List<Integer> computerList, List<Integer> inputList){
         int strike = 0;
         int ball = 0;
         List<Integer> list = new ArrayList<>();
@@ -105,7 +104,6 @@ public class BaseballGame {
         int strike, ball;
         boolean win = false;
         List<Integer> inputList;
-//        Scanner scanner = new Scanner(System.in);
 
         while(!win){
             try{
