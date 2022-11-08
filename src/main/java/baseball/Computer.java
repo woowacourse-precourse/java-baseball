@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final int number;
-    public Computer(int number){
-        this.number = number;
+    public Computer(){
 
     }
 

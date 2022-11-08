@@ -7,10 +7,15 @@ import java.util.List;
 public class Game {
 
     private final PrintWindow printWindow;
-    private Computer computer;
+    private Validator validator = new Validator();
+    private final Computer computer;
 
-    public Game(PrintWindow printWindow) {
+    public Game(PrintWindow printWindow, Computer computer) {
         this.printWindow = printWindow;
+        this.computer = computer;
+        this.validator = validator;
+
+
     }
 
     public void gamePlay(){
@@ -22,6 +27,7 @@ public class Game {
         while (true){
             printWindow.playerTurnPrint();
             String userinput = Console.readLine();
+            validator.isValidNumber(userinput);
             int ball = 0;
 
             for (int len = comNum.size(), i=0; i<len; i++){
