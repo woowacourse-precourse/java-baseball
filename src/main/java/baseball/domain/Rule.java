@@ -5,8 +5,11 @@ import java.util.List;
 import static baseball.constant.Constant.*;
 
 public class Rule {
-    public void applyHint(List<Integer> numbers, List<Integer> computerNumbers) {
+    public void applyHint(Gamer gamer, Computer computer) {
+        List<Integer> numbers = gamer.inputNumbers();
+        List<Integer> computerNumbers = computer.getRandomNumbers();
         Hint.init();
+
         for(int i=0; i<numbers.size(); i++) {
             if(numbers.get(i) == computerNumbers.get(i)) {
                 Hint.addCount(Hint.STRIKE);

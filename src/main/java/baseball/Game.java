@@ -21,7 +21,7 @@ public class Game {
 
         while (Hint.getStrikeCount() != RANDOM_NUMBERS_LENGTH) {
             inputNumbers();
-            rule.applyHint(gamer.inputNumbers(), computer.getRandomNumbers());
+            rule.applyHint(gamer, computer);
             printHint();
         }
 
