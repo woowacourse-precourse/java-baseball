@@ -23,6 +23,8 @@ public class Application {
                 user = makeListOfUser();
                 strike = checkStrike(computer,user);
                 ball = checkBall(computer,user);
+                ball -= strike;
+                printResult(strike,ball);
             }
 
 
@@ -33,6 +35,14 @@ public class Application {
         }while(restartCounter==1);
 
         return;
+    }
+
+    private static Integer checkBall(List<Integer> computer, List<Integer> user) {
+        Integer ball = 0;
+        for(Integer n : user){
+            if(computer.contains(n)) ball++;
+        }
+        return ball;
     }
 
     private static Integer checkStrike(List<Integer> computer, List<Integer> user) {
