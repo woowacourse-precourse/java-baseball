@@ -10,7 +10,7 @@ public class Computer {
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 9;
     private static final int NUMBER_LENGTH = 3;
-    private static final String NUMBER_REGEX = "[^0-9]";
+    private static final String NUMBER_REGEX = "[^1-9]";
     private String number;
 
 
@@ -32,10 +32,6 @@ public class Computer {
         }
 
         String number = computer.toString().replaceAll(NUMBER_REGEX, "");
-
-        if (!Validator.isValid(number)) {
-            throw new IllegalArgumentException();
-        }
 
         this.number = number;
     }
