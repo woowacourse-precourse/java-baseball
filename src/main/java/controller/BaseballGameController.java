@@ -6,6 +6,9 @@ import domain.UserInputNumberList;
 import service.CompareNumber;
 
 public class BaseballGameController {
+    private static final String RESTART = "1";
+    private static final String QUIT = "2";
+
     public final ComputerNumberList computerNumberList;
     public final UserInputNumberList userNumberList;
     public final CompareNumber compareNumber;
@@ -41,11 +44,11 @@ public class BaseballGameController {
         if (correctiveStatus) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             userInput = Console.readLine();
-            if (userInput.equals("1")) {
+            if (userInput.equals(RESTART)) {
                 correctiveStatus = false;
                 computerNumberList.generateNewComputerRandomNumber();
                 compareNumber.setComputerNumber(computerNumberList.getComputerNumber());
-            } else if (userInput.equals("2")) {
+            } else if (userInput.equals(QUIT)) {
                 System.out.println("게임을 종료합니다.");
             }
             else{
