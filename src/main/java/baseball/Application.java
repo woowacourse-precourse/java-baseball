@@ -26,13 +26,14 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+
         return computer;
     }
 
-    public static List<Integer> inputUserNumber() throws IllegalArgumentException{
+    public static List<Integer> inputUserNumber() throws IllegalArgumentException {
         List<Integer> userInputNumber = new ArrayList<>();
         String inputNumber = readLine();
-        if(inputNumber.length() != MAX_NUMBER_COUNT) {
+        if (inputNumber.length() != MAX_NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
 
@@ -52,31 +53,21 @@ public class Application {
         String playResult = "";
         int strike = COUNT_INITALIZE;
         int ball = COUNT_INITALIZE;
-        for(int i = 0; i < computerNumber.size(); i++)
-        {
-            if(computerNumber.get(i).equals(userNumber.get(i))) {
+        for (int i = 0; i < computerNumber.size(); i++) {
+            if (computerNumber.get(i).equals(userNumber.get(i))) {
                 strike++;
-            }
-            else if(userNumber.contains(computerNumber.get(i)))
-            {
+            } else if (userNumber.contains(computerNumber.get(i))) {
                 ball++;
             }
         }
 
-        if (strike == COUNT_INITALIZE && ball == COUNT_INITALIZE)
-        {
+        if (strike == COUNT_INITALIZE && ball == COUNT_INITALIZE) {
             playResult = playResult + "낫싱\n";
-        }
-        else if (strike != COUNT_INITALIZE && ball == COUNT_INITALIZE)
-        {
+        } else if (strike != COUNT_INITALIZE && ball == COUNT_INITALIZE) {
             playResult = playResult + strike + "스트라이크\n";
-        }
-        else if (strike == COUNT_INITALIZE && ball != COUNT_INITALIZE)
-        {
+        } else if (strike == COUNT_INITALIZE && ball != COUNT_INITALIZE) {
             playResult = playResult + ball + "볼\n";
-        }
-        else if (strike != COUNT_INITALIZE && ball != COUNT_INITALIZE)
-        {
+        } else if (strike != COUNT_INITALIZE && ball != COUNT_INITALIZE) {
             playResult = playResult + ball + "볼" + " " + strike + "스트라이크\n";
         }
         System.out.println(playResult);
@@ -84,26 +75,31 @@ public class Application {
         return strike;
     }
 
+    public static void proceedNumberBaseballGame(List<Integer> computerNumber) throws IllegalArgumentException {
+        List<Integer> userInputNumber = new ArrayList<>();
+        int strikeCount = COUNT_INITALIZE;
+        try {
+            while (strikeCount != GAME_END_STRIKE_COUNT) {
+                userInputNumber = inputUserNumber();
+                strikeCount = numberBaseballGame(computerNumber, userInputNumber);
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int gameContinue = GAME_RESTART;
-        while(gameContinue != GAME_END) {
+        while (gameContinue != GAME_END) {
             List<Integer> computerCreateNumber = createRandomNumber();
-            List<Integer> userInputNumber = new ArrayList<>();
-            int strikeCount = COUNT_INITALIZE;
-
             try {
-                while(strikeCount != GAME_END_STRIKE_COUNT) {
-                    userInputNumber = inputUserNumber();
-                    strikeCount = numberBaseballGame(computerCreateNumber,userInputNumber);
-                }
+                proceedNumberBaseballGame(computerCreateNumber);
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException();
             }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
-
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
             gameContinue = Integer.parseInt(readLine());
         }
