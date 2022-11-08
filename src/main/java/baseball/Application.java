@@ -43,7 +43,7 @@ public class Application {
     public static List<Integer> createUserNumberList(String number) {
         List<Integer> user = new ArrayList<>();
 
-        if (isNumber(number) == false) {
+        if (isNumberValidate(number) == false) {
             throw new IllegalArgumentException();
         }
 
@@ -103,7 +103,7 @@ public class Application {
         }
     }
 
-    public static boolean isNumber(String userInput) {
+    public static boolean isNumberValidate(String userInput) {
         char check;
 
         if (userInput.equals("")) {
