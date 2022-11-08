@@ -1,6 +1,6 @@
 package baseball.util;
 
-import baseball.util.RandomNumberGenerator;
+import baseball.core.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

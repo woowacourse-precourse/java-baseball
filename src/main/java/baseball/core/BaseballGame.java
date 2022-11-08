@@ -1,7 +1,6 @@
 package baseball.core;
 
 import baseball.console.ConsoleOutput;
-import baseball.util.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
