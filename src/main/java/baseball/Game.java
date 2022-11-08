@@ -51,7 +51,7 @@ public class Game {
         }
     }
 
-    public static void printNothing(){
+    public static void printNothing() {
         System.out.println(Hint.NOTHING.message());
     }
 
