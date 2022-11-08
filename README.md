@@ -1,6 +1,6 @@
 # 미션 - 숫자 야구
 
-## Class 구성 및 기능 목록: [docs/README.md](README.md)
+## Class 구성 및 기능 목록: [README.md](docs/README.md)
 
 ## 🔍 진행 방식
 
