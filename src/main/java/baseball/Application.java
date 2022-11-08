@@ -3,6 +3,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
 
@@ -81,6 +82,17 @@ public class Application {
 
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
+    // 기능 목록 8 : 게임이 끝난 경우 재시작/종료 구분하는 1과 2중 하나의 수 생성
+    public boolean playAgain() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner scanner = new Scanner(System.in);
+        char answer = scanner.next().charAt(0);
+        if (answer == '1') {
             return true;
         }
         return false;
