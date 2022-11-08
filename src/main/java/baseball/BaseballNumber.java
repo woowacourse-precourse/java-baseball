@@ -21,6 +21,7 @@ public class BaseballNumber {
 
     public static int countStrike(List<Integer> baseballNumber, List<Integer> inputNumber) {
         int count = 0;
+
         for (Integer digit : baseballNumber) {
             int baseballIndex = baseballNumber.indexOf(digit);
             int inputIndex = inputNumber.indexOf(digit);
@@ -28,11 +29,13 @@ public class BaseballNumber {
                 count++;
             }
         }
+
         return count;
     }
 
     public static int countBall(List<Integer> baseballNumber, List<Integer> inputNumber) {
         int count = 0;
+
         for (Integer digit : baseballNumber) {
             int baseballIndex = baseballNumber.indexOf(digit);
             int inputIndex = inputNumber.indexOf(digit);
@@ -40,6 +43,7 @@ public class BaseballNumber {
                 count++;
             }
         }
+
         return count;
     }
 
