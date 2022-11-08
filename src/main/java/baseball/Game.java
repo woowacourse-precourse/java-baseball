@@ -11,8 +11,8 @@ import static camp.nextstep.edu.missionutils.Console.*;
 
 class Game {
 
-    private List<Integer> randomNumberList;
-
+    private final static Opponent opponent = new Opponent();
+    private List<Integer> answerList;
 
     public void start() {
         while (true) {
@@ -24,30 +24,31 @@ class Game {
 
     public int play() {
         initRandomNum();
-        System.out.println("숫자 야구 게임을 시작합니다");
+        System.out.println(GameMessage.START.message());
         guessWithHint();
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(GameMessage.CORRECT.message());
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GameMessage.REPLAY_OR_END.message());
         int replay = Integer.parseInt(readLine());
         return replay;
     }
 
     private void initRandomNum() {
-        randomNumberList = new ArrayList<>();
-        while (randomNumberList.size() < 3) {
+        answerList = new ArrayList<>();
+        while (answerList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumberList.contains(randomNumber)) {
-                randomNumberList.add(randomNumber);
+            if (!answerList.contains(randomNumber)) {
+                answerList.add(randomNumber);
             }
         }
 
-        System.out.println("randomNumberList = " + randomNumberList);
+        System.out.println("randomNumberList = " + answerList);
     }
 
     public void guessWithHint() {
+        Hint hint = new Hint(answerList);
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(GameMessage.TYPE_USER_GUESS.message());
             String input = readLine();
             List<Integer> guess = Arrays.stream(input.split(""))
                     .map(Integer::valueOf)
@@ -55,18 +56,15 @@ class Game {
 
             if (isCorrect(guess))
                 return;
-            String hint = getHint(guess);
-            System.out.println(hint);
+
+            System.out.println(hint.retrieve(guess));
         }
     }
 
-    private String getHint(List<Integer> guess) {
-        return " ";
-    }
 
     private boolean isCorrect(List<Integer> guess) {
-        return guess.get(0).equals(randomNumberList.get(0))
-                && guess.get(1).equals(randomNumberList.get(1))
-                && guess.get(2).equals(randomNumberList.get(2));
+        return guess.get(0).equals(answerList.get(0))
+                && guess.get(1).equals(answerList.get(1))
+                && guess.get(2).equals(answerList.get(2));
     }
 }
