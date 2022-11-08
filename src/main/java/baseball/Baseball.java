@@ -50,4 +50,24 @@ public class Baseball {
         String inputUserName = Console.readLine();
         checkInputUserName(inputUserName);
     }
+    public void compareAnswerUserNum(){
+        int strikeCount = 0;
+        int ballCount = 0;
+        compareResult="";
+        for(int index = 0;index<3;index++){
+            if(userNumber.get(index)==answerNumber.get(index))strikeCount++;
+            else if(answerNumber.contains(userNumber.get(index)))ballCount++;
+        }
+        if(strikeCount==3){
+            compareResult = answerResult;
+            System.out.println(compareResult);
+        }
+        else if(strikeCount == 0 ){
+            System.out.println("낫싱");
+        }
+        else if(strikeCount<3){
+            System.out.println(ballCount+"볼 "+strikeCount+"스트라이크 ");
+        }
+
+    }
 }
