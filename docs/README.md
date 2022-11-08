@@ -9,12 +9,13 @@
 <details>
 <summary> 기능</summary>
 
-| access modifier | method              | 설명                            |
-|-----------------|---------------------|-------------------------------|
-| public          | RandomNumber        | 랜덤한 3글자를 만들어 클래스에 저장          |
-| public          | getNumberOfStrike   | 스트라이크의 갯수를 구한다                |
-| public          | getNumberOfBall     | 볼의 갯수를 구한다                    |
-| private         | getRandomNumberList | 각자 다른 숫자 3개를 만든다              |
+| access modifier | method              | 설명                   |
+|-----------------|---------------------|----------------------|
+| public          | RandomNumber        | 랜덤한 3글자를 만들어 클래스에 저장 |
+| public          | getNumberOfStrike   | 스트라이크의 갯수를 구한다       |
+| public          | getNumberOfBall     | 볼의 갯수를 구한다           |
+| private         | setRandomNumberList | 각자 다른 숫자 3개를 만든다     |
+| private         | getRandomNumberList | 만들어진 랜덤수를 반환         |
 
 
 <details>
@@ -29,11 +30,24 @@
 </details>
 
 <details>
-<summary> getRandomNumberList </summary>
+<summary> setRandomNumberList </summary>
 
-랜덤한 3글자를 반환한다
+랜덤한 3글자를 만들어서 반환한다
 * parameter
   
+
+* result
+  * List\<Integer>
+    * 랜덤한 3글자가 저장된 List
+
+</details>
+
+<details>
+<summary> getRandomNumberList </summary>
+
+만들어진 랜덤한 3글자를 반환한다
+* parameter
+
 
 * result
   * List\<Integer>
