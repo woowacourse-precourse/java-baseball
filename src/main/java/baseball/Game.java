@@ -6,7 +6,6 @@ import java.util.Scanner;
 import utils.InputUtils;
 
 public class Game {
-    private boolean gameStatus;
     private final String ERROR_MESSAGE = "1과 2중 하나만 입력하세요";
     private GameHost gamehost;
     private Player player;
@@ -20,15 +19,10 @@ public class Game {
         while (true) {
             startGame();
             beingGame();
-            boolean isrestart = isGameRestart();
-            if (!isrestart) {
+            if (!isGameRestart()) {
                 break;
             }
         }
-    }
-
-    public boolean getGameStatus() {
-        return this.gameStatus;
     }
 
     public boolean isGameRestart() {
@@ -37,6 +31,7 @@ public class Game {
             try {
                 playerInput = isValidPlayerInput();
             } catch (IllegalArgumentException exception) {
+                exception.printStackTrace();
                 continue;
             }
             return playerInput == 1;
@@ -54,7 +49,6 @@ public class Game {
     }
 
     public void startGame() {
-        this.gameStatus = true;
         this.gamehost = new GameHost();
         this.player = new Player();
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -70,6 +64,7 @@ public class Game {
             try {
                 player.isValidBaseballNumber(playerBaseballNumber);
             } catch (IllegalArgumentException exception) {
+                exception.printStackTrace();
                 continue;
             }
 
