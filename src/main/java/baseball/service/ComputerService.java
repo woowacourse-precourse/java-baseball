@@ -10,7 +10,13 @@ public class ComputerService {
     private ComputerRepository computerRepository = new ComputerRepository();
 
     public void setComputerNumber() {
-        List<Integer> computerNumbers = Randoms.pickUniqueNumbersInRange(1,9,3);
+        List<Integer> computerNumbers = new ArrayList<>();
+        while (computerNumbers.size() < 3){
+            int randomNumber = Randoms.pickNumberInRange(1,9);
+            if (!computerNumbers.contains(randomNumber)){
+                computerNumbers.add(randomNumber);
+            }
+        }
         int firstNumber = computerNumbers.get(0);
         int secondNumber = computerNumbers.get(1);
         int thirdNumber = computerNumbers.get(2);
