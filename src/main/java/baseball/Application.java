@@ -58,6 +58,14 @@ public class Application {
             }
         }
 
+        private boolean verifyLength(String ball) {
+            if (ball.length() > NUM_DIGIT) {
+                return NOT_VERIFY;
+            } else {
+                return VERIFY;
+            }
+        }
+
         private String inputBall() {
             printSetBallStatus();
             return setBall();
