@@ -37,7 +37,7 @@ class BallTest {
     }
 
     private void addStrike(Ball ball, int count) {
-        for (int i = 0; i < count; i++) {
+        for (int now = 0; now < count; now++) {
             ball.addStrike();
         }
     }
