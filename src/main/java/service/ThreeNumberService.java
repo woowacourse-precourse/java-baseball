@@ -25,7 +25,6 @@ public class ThreeNumberService {
         strike = 0;
         ball = 0;
         nothing = true;
-        computer.reset();
         user.reset();
     }
 
