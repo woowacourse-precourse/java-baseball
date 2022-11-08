@@ -52,7 +52,10 @@ public class Application {
         int nothing = (3 - strike - ball);
 
         if (nothing != 3){
-            if (ball == 0) {
+            if (strike == 3) {
+                return null;
+            }
+            else if (ball == 0) {
                 return (strike + "스트라이크");
             }
             else if (strike == 0) {
