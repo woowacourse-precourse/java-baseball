@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import model.User;
 
 public class Play {
@@ -35,5 +36,23 @@ public class Play {
 			}
 		}
 		System.out.println(print_string);
+	}
+	
+	public boolean replay_game() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+		try {
+			int number = Integer.parseInt(Console.readLine());
+
+			if (number == 1) {
+				return true;
+			} else if (number == 2) {
+				return false;
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
 	}
 }

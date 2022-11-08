@@ -13,6 +13,7 @@ public class Application {
 			
 			Play play = new Play();
 			play.playgame(computer.getnumber());
+			isgame = play.replay_game();
 		}
 	}
 }
