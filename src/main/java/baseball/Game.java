@@ -20,7 +20,7 @@ public class Game {
         int index = 0;
         numbersMap = new HashMap<>();
 
-        while (numbersMap.size() < NUMBERS_SIZE) {
+        while (index < NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbersMap.containsKey(randomNumber)) {
                 numbersMap.put(randomNumber, index++);
