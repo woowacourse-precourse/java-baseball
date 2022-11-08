@@ -16,7 +16,12 @@ public class NumberBaseBall {
              * player 숫자가 로직에 벗어나는지체크
              * */
             NumberLogicCheck(playerNumList);
-            
+
+            List<Integer> judgeList = judge(computerNumList, playerNumList);
+            if (judgeList.get(0) == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            }
 
         }
     }
@@ -42,5 +47,42 @@ public class NumberBaseBall {
         }
         Collections.reverse((list));
         return list;
+    }
+    // Player 숫자와 Computer 숫자 비교
+    List<Integer> judge(List<Integer> computerNumList, List<Integer> playerNumList) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        List<Integer> checkList = new ArrayList<>();
+
+        strikeCount += countStrike(strikeCount, computerNumList, playerNumList);
+
+        for (int computerIdx = 0; computerIdx < computerNumList.size(); computerIdx++) {
+            ballCount += countBall(computerIdx, ballCount, computerNumList, playerNumList);
+        }
+
+        checkList.add(strikeCount);
+        checkList.add(ballCount);
+
+        return checkList;
+    }
+    int countStrike(int strikeCount, List<Integer> computerNumberList, List<Integer> userNumberList) {
+        int idx = 0;
+        while (idx < computerNumberList.size()) {
+            if (Objects.equals(computerNumberList.get(idx), userNumberList.get(idx))) {
+                strikeCount++;
+            }
+            idx++;
+        }
+        return strikeCount;
+    }
+
+    int countBall(int computerIdx, int ballCount, List<Integer> computerNumberList, List<Integer> userNumberList) {
+        for (int userIdx = 0; userIdx < userNumberList.size(); userIdx++) {
+            if (computerIdx != userIdx && Objects.equals(computerNumberList.get(computerIdx), userNumberList.get(userIdx))) {
+                ballCount++;
+            }
+        }
+        return ballCount;
     }
 }
