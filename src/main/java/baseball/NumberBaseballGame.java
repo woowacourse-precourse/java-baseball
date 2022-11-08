@@ -26,14 +26,25 @@ public class NumberBaseballGame {
         while (true) {
             System.out.println(INPUT_TEXT);
             String userInput = Console.readLine();
-            UserInputException.checkUserInput(userInput);
+            UserInputException.checkUserNumberInput(userInput);
             inputNumber = changeStringToList(userInput);
 
             Score userScore = new Score();
             playGame(userScore);
 
             String result = getResult(userScore);
+            System.out.println(result);
+
+            if (userScore.getStrike() == 3) {
+                System.out.println(RESTART_TEXT);
+                break;
+            }
         }
+
+        System.out.println(RESTART_TEXT);
+        String restartFlag = Console.readLine();
+        UserInputException.checkUserRestartInput(restartFlag);
+        if (restartGame(restartFlag)) startGame();
     }
 
     public List<Integer> changeStringToList(String userInput) {
@@ -75,5 +86,9 @@ public class NumberBaseballGame {
             result.append(STRIKE_TEXT);
         }
         return result.toString();
+    }
+
+    public boolean restartGame(String restartFlag) {
+        return restartFlag.equals("1");
     }
 }
