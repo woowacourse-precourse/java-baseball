@@ -23,7 +23,7 @@ public class User {
     }
 
     public List<Integer> getInputNumber() {
-        return this.inputNumber;
+        return new ArrayList<>(inputNumber);
     }
 
     public void resetUserNumber() {
