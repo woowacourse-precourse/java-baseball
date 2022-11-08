@@ -43,7 +43,7 @@ class Game {
         return Console.readLine();
     }
 
-    // 3. strike 개수 확인 메서드
+    // 3. strike 개수 검사 메소드
     public int checkingStrike(ArrayList<Integer> randomNum, String inputNum, int strikeCount){
         for(int i = 0; i < 3; i ++){
             if (randomNum.get(i) == inputNum.charAt(i) - '0') strikeCount ++;
@@ -51,6 +51,20 @@ class Game {
         return strikeCount;
     }
 
+    // 4. ball 개수 검사 메소드
+    public int checkingBall(ArrayList<Integer> randomNum, String inputNum, int ballCount){
+        StringBuilder SrandomNum = new StringBuilder();
+        for(int num : randomNum){
+            SrandomNum.append(num);
+        }
+        String comparing = SrandomNum.toString();
+        for(int i = 0; i < 3; i++){
+            if (comparing.contains(String.valueOf(inputNum.charAt(i))) && comparing.charAt(i) != inputNum.charAt(i)){
+                ballCount ++;
+            }
+        }
+        return ballCount;
+    }
 }
 
 class ErrorChecking{
