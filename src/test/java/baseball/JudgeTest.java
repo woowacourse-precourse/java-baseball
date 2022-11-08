@@ -71,4 +71,26 @@ public class JudgeTest {
                 .usingRecursiveComparison()
                 .isEqualTo(new Result(0, 0));
     }
+
+    @Test
+    @DisplayName("정확한 strike과 ball개수를 세는지 테스트6")
+    void testWithResults6() {
+        ArrayList<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        ArrayList<Integer> player = new ArrayList<>(Arrays.asList(1, 4, 5));
+        assertThat(judge.compareBalls(player, computer))
+                .as("실패시 -> 예상 값과 다르게 출력됨.")
+                .usingRecursiveComparison()
+                .isEqualTo(new Result(1, 0));
+    }
+
+    @Test
+    @DisplayName("정확한 strike과 ball개수를 세는지 테스트7")
+    void testWithResults7() {
+        ArrayList<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        ArrayList<Integer> player = new ArrayList<>(Arrays.asList(4, 1, 2));
+        assertThat(judge.compareBalls(player, computer))
+                .as("실패시 -> 예상 값과 다르게 출력됨.")
+                .usingRecursiveComparison()
+                .isEqualTo(new Result(0, 2));
+    }
 }
