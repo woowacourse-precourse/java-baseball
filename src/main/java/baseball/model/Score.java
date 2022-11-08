@@ -2,10 +2,11 @@ package baseball.model;
 
 import java.util.Objects;
 
+import static baseball.model.BaseBall.MAX_BASEBALL_SIZE;
+
 public class Score {
     private static final String STRIKE_AND_BALL_CANNOT_BE_OVER_THREE = "스트라이크와 볼의 합이 3초과 일수는 없습니다.";
     public static final String SPACE = " ";
-    public static final int MAX_BASEBALL_LENGTH = 3;
 
     private final int strike;
     private final int ball;
@@ -23,7 +24,7 @@ public class Score {
     }
 
     private static boolean isOverThree(int strike, int ball) {
-        return strike + ball > MAX_BASEBALL_LENGTH;
+        return strike + ball > MAX_BASEBALL_SIZE;
     }
 
     public String makeResultMessage(String ballMessage, String strikeMessage, String nothingMessage) {
@@ -59,7 +60,7 @@ public class Score {
     }
 
     public boolean canContinue() {
-        return strike != MAX_BASEBALL_LENGTH;
+        return strike != MAX_BASEBALL_SIZE;
     }
 
     @Override

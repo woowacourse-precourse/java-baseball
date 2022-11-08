@@ -3,11 +3,12 @@ package baseball.util;
 import java.util.HashSet;
 import java.util.Set;
 
+import static baseball.model.BaseBall.MAX_BASEBALL_SIZE;
+
 public class InputValidator {
     private static final String CANNOT_INPUT_DUPLICATE_NUMBER = "중복된 값을 입력할 수 없습니다.";
     private static final String INPUT_THREE_NUMBERS = "3자리의 숫자를 입력해주세요.";
     private static final String CANNOT_INPUT_ZERO = "숫자 0은 입력할 수 없습니다.";
-    private static final int MAX_INPUT_LENGTH = 3;
     public static final char ZERO = '0';
 
     private static Set<Character> duplicateChecker;
@@ -25,11 +26,11 @@ public class InputValidator {
     }
 
     private static boolean isDifferentLength(String input) {
-        return input.length() != MAX_INPUT_LENGTH;
+        return input.length() != MAX_BASEBALL_SIZE;
     }
 
     private static void hasZero(String input) {
-        for (int index = 0; index < MAX_INPUT_LENGTH; index++) {
+        for (int index = 0; index < MAX_BASEBALL_SIZE; index++) {
             ifZeroThrowException(input.charAt(index));
         }
     }
@@ -63,6 +64,6 @@ public class InputValidator {
     }
 
     private static boolean validate() {
-        return duplicateChecker.size() != MAX_INPUT_LENGTH;
+        return duplicateChecker.size() != MAX_BASEBALL_SIZE;
     }
 }
