@@ -35,8 +35,8 @@ public class user {
     }
 
     private static void checkArray(String str){
-        for (char number = str.toCharArray()){
-            if (number == '0'){
+        for (int i = 0; i < str.length(); i++){
+            if (str.contains("0")){
                 throw new IllegalArgumentException("1~9 사이의 숫자를 입력해 주세요.");
             }
         }
