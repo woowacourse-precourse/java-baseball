@@ -17,11 +17,13 @@ public class Application {
         List<Integer> computer = addToRandomNumberList();
 
         while (true) {
-            List<Integer> user = new ArrayList<>();
+
             // 사용자에게 숫자 입력받기
             String user_number = getTheUserToInputNumber();
             // 사용자의 숫자가 3자리가 아닌 경우 예외 처리
             exceptionIfNumberIsNotThreeDigits(user_number.length());
+            // 사용자가 입력한 숫자를 사용자 리스트에 추가
+            List<Integer> user = addTheNumberEnteredByTheUserList(user_number);
         }
     }
 
@@ -46,5 +48,13 @@ public class Application {
         if (len != numberOfDigits) {
             throw new IllegalArgumentException("숫자를 제대로 입력하시지 않았습니다.");
         }
+    }
+    // 사용자가 입력한 숫자를 사용자 리스트에 추가
+    public static List<Integer> addTheNumberEnteredByTheUserList(String user_number){
+        List<Integer> user = new ArrayList<>();
+        for (int i = 0; i < user_number.length(); i++) {
+            user.add(user_number.charAt(i) - '0');
+        }
+        return user;
     }
 }
