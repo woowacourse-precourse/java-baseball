@@ -71,7 +71,10 @@ public class Application {
                 .allMatch(v->
                         RANDOM_MIN<=v && v<= RANDOM_MAX);
     }
-
+    // 중복되는 수 있는지 확인
+    public static boolean isNotDuplicated(List<Integer> playerNumber){
+        return Set.copyOf(playerNumber).size() == DIGITS;
+    }
 
 
 
