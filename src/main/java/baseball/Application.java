@@ -16,6 +16,7 @@ public class Application{
     	System.out.println("숫자 야구 게임을 시작합니다.");
     	
     	while(keepGoing.equals("1")) {
+    		System.out.println(answer);//제거 요망
         	System.out.print("숫자를 입력해주세요 : ");
         	input = Console.readLine();
         	
@@ -28,12 +29,11 @@ public class Application{
         		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         		keepGoing = Console.readLine();
+        		answer = makeRandomNumber();
         	}
         	
         	if(!(keepGoing.equals("1")||keepGoing.equals("2")))
         		throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
-        	
-        	answer = makeRandomNumber();
     	}
  
     	return;
@@ -43,11 +43,10 @@ public class Application{
     	String result = "";
     	List<Integer> uniqueNumberList = new ArrayList<>();
     	
-    	uniqueNumberList = Randoms.pickUniqueNumbersInRange(1,9,9);
+    	uniqueNumberList = Randoms.pickUniqueNumbersInRange(1,9,3);
     	
-    	for(int i=0;i<3;i++) {
-    		result += uniqueNumberList.get(i);
-    	}
+    	for(int i:uniqueNumberList)
+    		result += i;
     	
     	return result;
     }
@@ -70,7 +69,7 @@ public class Application{
     	String[] userNumSet = userNum.split("");
     	HashSet<String> hash = new HashSet<>();
     	
-    	for(int i=0;i<3;i++) {
+    	for(int i=0;i<comNumSet.length;i++) {
     		hash.add(comNumSet[i]);
     		hash.add(userNumSet[i]);
     		if(comNumSet[i].equals(userNumSet[i]))
