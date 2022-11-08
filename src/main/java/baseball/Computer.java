@@ -16,6 +16,5 @@ public class Computer {
                 this.value.add(randomNumber);
             }
         }
-
     }
 }

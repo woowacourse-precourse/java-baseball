@@ -38,7 +38,6 @@ public class User {
         else{
             return false;
         }
-
     }
 
     void checkInputException(){
@@ -47,5 +46,4 @@ public class User {
             throw e;
         }
     }
-
 }

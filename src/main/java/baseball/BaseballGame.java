@@ -37,6 +37,7 @@ public class BaseballGame {
         }
     }
 
+
     public void printAnswer(){
         StringBuilder answer=new StringBuilder();
 
@@ -61,7 +62,4 @@ public class BaseballGame {
             return false;
         }
     }
-
-
-
 }
