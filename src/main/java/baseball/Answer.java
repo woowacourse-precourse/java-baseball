@@ -22,6 +22,6 @@ public class Answer implements Number {
 
     @Override
     public List<Integer> get() {
-
+        return number;
     }
 }
