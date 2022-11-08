@@ -28,8 +28,8 @@ public class Result {
         return (this.result.get(ResultType.BALL) == 0) && (this.result.get(ResultType.STRIKE) == 0);
     }
 
-    public boolean isCorrect() {
-        return this.result.get(ResultType.STRIKE) == 3;
+    public boolean isCorrect(int digit) {
+        return this.result.get(ResultType.STRIKE) == digit;
     }
 
 }

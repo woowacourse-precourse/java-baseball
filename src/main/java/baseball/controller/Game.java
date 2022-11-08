@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.Application;
 import baseball.domain.Result;
 import baseball.domain.ResultType;
 import baseball.logic.DigitNumber;
@@ -35,7 +36,7 @@ public class Game {
                 continue;
             }
 
-            if (result.isCorrect()) {
+            if (result.isCorrect(Application.DIGIT)) {
                 view.printCorrect();
                 return;
             }
