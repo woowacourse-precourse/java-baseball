@@ -7,7 +7,7 @@ import baseball.model.Input;
 import java.util.List;
 
 public class Service {
-    private final List<Integer> answer;
+    private List<Integer> answer;
 
     public Service(){
         answer = RandomNumberListGenerator.generate();
@@ -43,6 +43,10 @@ public class Service {
             return 0;
         }
         return 1;
+    }
+
+    public void resetRandomAnswer(){
+        answer = RandomNumberListGenerator.generate();
     }
 
     public List<Integer> getAnswer() {
