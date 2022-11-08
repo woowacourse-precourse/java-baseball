@@ -12,6 +12,7 @@ public class InputUserNumber {
     private static final int NUMBER = 3;
     private static final int MAXNumber = 9;
     private static final int MINNumber = 1;
+    private static final String INPUT_SENTENCE = "숫자를 입력해주세요 : ";
     private int[] eachdigit;
 
 
@@ -22,6 +23,7 @@ public class InputUserNumber {
         setDigits(str);
     }
     public void UserInputValue() {
+        System.out.print(INPUT_SENTENCE);
         String input = Console.readLine();
         setDigits(input);
     }
