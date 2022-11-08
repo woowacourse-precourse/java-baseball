@@ -20,6 +20,14 @@ public class Application {
         System.out.println(user);
         return user;
     }
+    // 예외 처리 후 String to List<Integer>
+    public static List<Integer> stringToListInteger(String num) {
+        List<Integer> userInputNum = new ArrayList<>();
+        for (int i = 0; i < num.length(); i++) {
+            userInputNum.add(Integer.parseInt(num.charAt(i) + ""));
+        }
+        return userInputNum;
+    }
     // 입력 예외 처리
     public static List<Integer> inputExeption() {
         List<Integer> userInputNum;
