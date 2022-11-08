@@ -1,5 +1,11 @@
 package baseball.view;
 
-public interface view {
-    public void show();
+public abstract class View {
+    public void show() {
+
+    }
+
+    public void printLine(String message) {
+        System.out.println(message);
+    }
 }
