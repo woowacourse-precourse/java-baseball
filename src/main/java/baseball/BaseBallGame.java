@@ -63,9 +63,13 @@ public class BaseBallGame {
     }
 
     public String requestUserInput() {
-        this.gameMessageDisplay.printInputRequestMessage();
+        printInputRequest();
         String userInput = Console.readLine();
         return userInput;
+    }
+
+    public void printInputRequest() {
+        this.gameMessageDisplay.printInputRequestMessage();
     }
 
     public boolean isValidInput(String userInput) {
