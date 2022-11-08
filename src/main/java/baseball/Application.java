@@ -13,6 +13,7 @@ public class Application {
 		try {
 			gameStart();
 		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
 		}
 	}
 
