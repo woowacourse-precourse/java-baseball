@@ -5,8 +5,7 @@ import baseball.model.Constant.Score;
 import baseball.model.UserNumber;
 import baseball.view.UserView;
 
-import static baseball.model.Constant.Score.BALL;
-import static baseball.model.Constant.Score.STRIKE;
+import static baseball.model.Constant.Score.*;
 
 
 public class BaseballGame {
@@ -41,12 +40,32 @@ public class BaseballGame {
                      ball++;
                  }
 
+                 System.out.println(this);
+                 if(strike == CNT_NUMBER){
+                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                 }
              }
-
-
 
         }
 
+    }
+
+    @Override
+    public String toString(){
+        if(strike == 0 && ball == 0){
+            return NOTHING.getValue();
+        }
+
+        StringBuilder sb = new StringBuilder();
+        if(ball > 0){
+            sb.append(ball).append(BALL.getValue()).append(" ");
+        }
+
+        if(strike > 0){
+            sb.append(strike).append(STRIKE.getValue());
+        }
+
+        return sb.toString();
     }
 
 
