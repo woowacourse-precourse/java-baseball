@@ -12,7 +12,10 @@ public class Controller {
 
     public Controller() {
         this.view = new View();
-        String randomNumber = String.valueOf(Randoms.pickNumberInRange(111, 999));
+        String randomNumber = "";
+        for (int i = 0; i < 3; i++) {
+            randomNumber += String.valueOf(Randoms.pickNumberInRange(1, 9));
+        }
         this.computer = new Model(randomNumber);
         this.user = new Model();
     }
@@ -46,6 +49,7 @@ public class Controller {
     }
 
     public void runGame() {
+        System.out.println(computer.getNumber());
         view.printLine("숫자 야구 게임을 시작합니다.");
         while (true) {
             view.print("숫자를 입력해주세요 : ");
@@ -56,7 +60,7 @@ public class Controller {
 
             view.printResult(results[0], results[1]);
 
-            if(terminateGame(results[1])){
+            if (terminateGame(results[1])) {
                 return;
             }
         }
