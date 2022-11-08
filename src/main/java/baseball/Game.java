@@ -24,7 +24,7 @@ public class Game {
     }
 
     private enum Message {
-        GAME_START("숫자를 입력해주세요 : "),
+        GAME_START("숫자 야구 게임을 시작합니다."),
         GAME_END(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Constants.NUMBER_COUNT))
         ;
         private final String message;
