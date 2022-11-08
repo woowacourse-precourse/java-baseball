@@ -25,7 +25,6 @@ public class Game {
         computer = new ComputerGenerate().computer;
         while (result != 3) {
             user = new UserGenerate().user;
-            System.out.println(computer);
             Hint hint = new Hint(computer, user);
             hint.ResultHint();
             result = hint.strike;
