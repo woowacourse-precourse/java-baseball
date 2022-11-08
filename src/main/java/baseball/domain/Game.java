@@ -9,6 +9,10 @@ public class Game {
 
     public void start() {
         init();
+        processGame();
+    }
+
+    private void processGame() {
         while (true) {
             String s = input();
             List<Ball> balls = getBalls(s);
