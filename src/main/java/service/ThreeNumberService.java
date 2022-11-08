@@ -38,6 +38,8 @@ public class ThreeNumberService {
     public boolean playGame() {
         inputData();
 
+        System.out.println(computer.getMyList().get(0) + " " + computer.getMyList().get(1) + " " + computer.getMyList().get(2));
+
         judgeResult(user.getMyList());
 
         printResult();

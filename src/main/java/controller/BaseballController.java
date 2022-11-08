@@ -22,6 +22,7 @@ public class BaseballController {
 
     public int playGame() {
         while(!isEnd()) {
+            service.reset();
             service.playGame();
         }
 
