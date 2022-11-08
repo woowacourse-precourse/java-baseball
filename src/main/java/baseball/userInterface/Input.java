@@ -11,24 +11,14 @@ public class Input {
     public static List<Integer> getUserInput() {
         ViewInputNumber();
         String userInput = Console.readLine();
-        try {
-            validateUserInput(userInput);
-        } catch (IllegalArgumentException error) {
-            System.out.println(error.getMessage());
-            return List.of(0);
-        }
+        validateUserInput(userInput);
         return parseStringToList(userInput);
     }
 
     public static int getIsPlayAgainCode() {
         viewAskPlayAgainMessage();
         String isPlayAgainCode = Console.readLine();
-        try {
-            validateIsPlayAgainCode(isPlayAgainCode);
-        } catch (IllegalArgumentException error) {
-            System.out.println(error.getMessage());
-            return 0;
-        }
+        validateIsPlayAgainCode(isPlayAgainCode);
         return Integer.parseInt(isPlayAgainCode);
     }
 
