@@ -1,6 +1,5 @@
 package baseball.service.validation;
 
-import baseball.domain.Validator;
 import baseball.exception.IllegalInputException;
 import baseball.exception.IllegalSizeException;
 import baseball.exception.InputDuplicationException;
