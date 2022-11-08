@@ -14,7 +14,7 @@ public class Executor {
     private final Checker checker = new Checker();
     private boolean flag = true;
     public void startGame() {
-        Baseball computerRandomBaseball = new Computer().createRandomBaseball();
+        Baseball computerRandomBaseball = createRandomBaseball();
         Printer.gameStart();
         while(flag) {
             Printer.inputNumber();
@@ -28,6 +28,11 @@ public class Executor {
         }
 
     }
+
+    private Baseball createRandomBaseball() {
+        return new Computer().createRandomBaseball();
+    }
+
     public BaseballResult guessNumber(Baseball computerRandomBaseball) {
         Baseball userBaseball = inputUserBaseball();
         HashMap<String, Integer> check_result = checker.start(computerRandomBaseball, userBaseball);
