@@ -7,6 +7,7 @@ import baseball.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.model.Constant.QUIT;
 import static baseball.model.Constant.RESTART;
 import static baseball.view.InputView.restartInput;
 
@@ -37,7 +38,10 @@ public class Game {
         if (restartInput() == RESTART) {
             return true;
         }
-        return false;
+        if (restartInput() == QUIT) {
+            return false;
+        }
+        throw new IllegalArgumentException("잘못된 입력");
     }
 
 }

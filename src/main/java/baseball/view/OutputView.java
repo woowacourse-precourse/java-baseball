@@ -1,9 +1,5 @@
 package baseball.view;
 
-
-import baseball.controller.Hint;
-import org.mockito.internal.matchers.Not;
-
 public class OutputView {
     public static void NothingOutput() {
         System.out.println("낫싱");
