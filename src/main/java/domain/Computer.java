@@ -8,21 +8,21 @@ import java.util.List;
 public class Computer {
     public static List<Integer> number_List;
 
-    public static void setNumber(){
-        Computer.number_List= Utils.get_ThreeRandomNumbers();
+    public static void setNumber() {
+        Computer.number_List = Utils.get_ThreeRandomNumbers();
     }
 
-    public static String getNumber(){
-        String numbers="";
+    public static String getNumber() {
+        StringBuilder numbers = new StringBuilder();
 
-        for (Integer item : Computer.number_List){
-            numbers+=Integer.toString(item);
+        for (Integer item : Computer.number_List) {
+            numbers.append(item);
         }
 
-        return numbers;
+        return numbers.toString();
     }
 
-    public static List<Integer> getNumber_List(){
+    public static List<Integer> getNumber_List() {
         return number_List;
     }
 }
