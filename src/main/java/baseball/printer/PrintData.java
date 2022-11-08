@@ -20,8 +20,10 @@ public enum PrintData {
     }
 
     public static final void printData(String label){
+        String enumField;
         for(PrintData printDataValue : PrintData.values()){
-            if(printDataValue.toString().equals(label)) {
+            enumField = printDataValue.toString();
+            if(enumField.equals(label)) {
                 System.out.print(printDataValue.printResult);
             }
         }

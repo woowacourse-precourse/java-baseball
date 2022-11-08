@@ -1,5 +1,7 @@
 package baseball.game;
 
+import baseball.printer.PrintData;
+
 import camp.nextstep.edu.missionutils.Console;
 
 /**
@@ -8,10 +10,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class PlayerNumberInput {
     public String inputPlayerString(){
-        System.out.print("숫자를 입력해주세요 : ");
         try {
+            PrintData.printData("INPUT_STRING");
             String playerString = Console.readLine();
-            System.out.print(playerString);
             return playerString;
         }
         catch (Exception e){
@@ -21,7 +22,8 @@ public class PlayerNumberInput {
     }
     public String inputRestartString() {
         try {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            PrintData.printData("RESTART");
+            PrintData.printLine();
             String restartString = Console.readLine();
             return restartString;
         }

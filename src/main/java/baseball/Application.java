@@ -41,7 +41,7 @@ public class Application {
             strike = numberComparer.checkStrike(player, computer);
             ball = numberComparer.checkBall(player, computer);
 
-            resultPrint.printGuessResult(strike, ball);
+            resultPrint.printGuessResult(strike, ball); // 스트라이크와 볼 개수에 맞춰 출력
         }
     }
 
