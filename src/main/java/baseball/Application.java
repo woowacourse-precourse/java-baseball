@@ -22,8 +22,8 @@ public class Application {
         return computer;
     }
 
-    static void errorMessage() {
-        System.out.println("IllegalArgumentException 발생!");
+    static void errorMessage(String error) {
+        System.out.printf("IllegalArgumentException 발생! : %s ", error);
         System.out.println("어플리케이션을 종료합니다.");
     }
 
@@ -35,7 +35,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            errorMessage();
+            errorMessage("입력하신 숫자가 3자리가 아닙니다.");
         }
         return result;
     }
@@ -48,7 +48,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            errorMessage();
+            errorMessage("입력하신 숫자의 범위가 1~9가 아닙니다.");
         }
         return result;
     }
@@ -62,7 +62,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            errorMessage();
+            errorMessage("입력하신 숫자에 중복이 있습니다.");
         }
         return result;
     }
