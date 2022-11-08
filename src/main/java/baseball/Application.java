@@ -22,20 +22,25 @@ public class Application {
                 strikeResult[i]=0;
             }
         }
-        public boolean startGame() throws IOException {
+        public boolean startGame(){
             computerNum = makeComputerNum();
 
             while(true){
                 System.out.print("숫자를 입력해주세요 : ");
-                BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-                String input =bf.readLine();
-                List<Integer> inputNum = toInputNum(input);
 
-                strikeResultClear();
+                try {
+                    BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+                    String input = bf.readLine();
+                    List<Integer> inputNum = toInputNum(input);
 
-                int strikeCnt=strike(inputNum);
-                int ballCnt=ball(inputNum);
-                if(resultPrint(ballCnt,strikeCnt))return true;
+                    strikeResultClear();
+
+                    int strikeCnt=strike(inputNum);
+                    int ballCnt=ball(inputNum);
+                    if(resultPrint(ballCnt,strikeCnt))return true;
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -98,23 +103,33 @@ public class Application {
         }
     }
 
-    public static int restart()throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        String input = bf.readLine();
-        return Integer.parseInt(input);
-    }
+//    public static int restart() {
+//        try {
+//            BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+//            String input = bf.readLine();
+//            return Integer.parseInt(input);
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+//    }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        Baseball baseball = new Baseball();
         int nextGame = 1;
 
         while (nextGame == 1) {
-            Baseball baseball = new Baseball();
             baseball.clear();
             if (baseball.startGame()) {
                 System.out.println("게임종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                nextGame=restart();
+                try {
+                    BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+                    String input = bf.readLine();
+                    nextGame=Integer.parseInt(input);
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
             }
         }
     }
