@@ -11,7 +11,7 @@ public enum PrintData {
     INPUT_STRING("숫자를 입력해주세요 : "),
     ALL_STRIKES(GameData.GAME_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료"),
     RESTART("게임을 새로 시작하려면 " + GameData.RESTART + ", 종료하려면 "
-        + GameData.GAME_OVER + "를 입력하세요");
+        + GameData.GAME_OVER + "를 입력하세요.");
 
     private final String printResult;
 
