@@ -24,7 +24,7 @@ public class GamePlayer {
     private List<Integer> makeListOfThreeNumbers(String threeNumber) {
         List<Integer> threeNumbers = new ArrayList<>();
 
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             int number = threeNumber.charAt(i) - '0';
             threeNumbers.add(number);
         }
