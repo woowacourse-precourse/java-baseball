@@ -17,7 +17,7 @@
 ---
 ## 기존의 Class 
 ### Application
-* 게임 시작
+* 게임을 시작합니다
 
 
 ## 생성한 Class 
