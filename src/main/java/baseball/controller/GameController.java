@@ -9,8 +9,6 @@ import baseball.domain.Balls;
 import baseball.domain.Computer;
 import baseball.domain.Hint;
 import baseball.domain.User;
-import baseball.message.InputMessage;
-import baseball.util.setting.MenuSetting;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -26,12 +24,12 @@ public class GameController {
   public void run(){
     OutputView.printMessage(START_GAME.getMessage());
     playGame();
-    while(InputView.inputMenu()== RESTART_GAME.getMenuNumber()){
+    while(InputView.inputMenu() == RESTART_GAME.getMenuNumber()){
       playGame();
     }
   }
 
-  public void playGame(){
+  private void playGame(){
     Balls computerBalls = computer.generateBalls();
     while(true){
       OutputView.printInputMessage(INPUT_PLAYER_BALLS.getMessage());
@@ -46,13 +44,13 @@ public class GameController {
     OutputView.printMessage(ASK_RESTART_GAME.getMessage());
   }
 
-  public Hint judge(Balls userBalls, Balls computerBalls){
+  private Hint judge(Balls userBalls, Balls computerBalls){
     Hint hint = new Hint();
     hint.countStrikeAndBall(userBalls, computerBalls);
     return hint;
   }
 
-  public boolean checkThreeStrike(Hint hint){
+  private boolean checkThreeStrike(Hint hint){
     return (hint.getStrike() == BALL_SIZE.getBallSetting());
   }
 

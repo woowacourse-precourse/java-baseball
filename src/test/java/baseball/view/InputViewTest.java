@@ -23,7 +23,7 @@ class InputViewTest {
   }
 
   @Test
-  @DisplayName("게임 재시작 입력 테스트")
+  @DisplayName("게임 재시작 입력값이 1,2가 아닌 경우 예외 테스트")
   void 재시작_입력값_테스트(){
     Exception exception = assertThrows(IllegalArgumentException.class,()-> inputView.validateMenu("3"));
     assertEquals(exception.getMessage(), INCORRECT_MENU_NUMBER.getErrorMessage());
