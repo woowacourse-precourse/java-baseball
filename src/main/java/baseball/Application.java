@@ -65,23 +65,17 @@ public class Application {
     }
 
     public static String outputResult() {
-        if (strick == 0 && ball == 0) {
-            System.out.println("낫싱");
+        if(strick == 0 && ball == 0){
             return "낫싱";
-        } else if (strick == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }else if(strick == 3){
             result = true;
             return "3스트라이크 \n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-        } else if (ball != 0 && strick != 0) {
-            System.out.println(ball + "볼 " + strick + "스트라이크");
-            return ball + "볼 " + strick + "스트라이크";
-        } else if (ball == 0 && strick != 0) {
-            System.out.println(strick + "스트라이크");
-            return strick + "스트라이크";
-        } else if (ball != 0 && strick == 0) {
-            System.out.println(ball + "볼");
-            return ball + "볼";
+        }else if(ball != 0 && strick != 0){
+            return ball+"볼 "+strick+"스트라이크";
+        }else if(ball == 0 && strick != 0){
+            return strick+"스트라이크";
+        }else if(ball != 0 && strick == 0){
+            return ball+"볼";
         }
         return null;
     }
