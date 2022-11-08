@@ -16,8 +16,8 @@ public class Application {
         return input;
     }
 
-    static List<Integer> separate(int input){
-        List<Integer> player = new ArrayList<>();
+    static ArrayList<Integer> separate(int input){
+        ArrayList<Integer> player = new ArrayList<>();
         while(input>0){
             player.add(input%10);
             input = input/10;
@@ -25,14 +25,14 @@ public class Application {
         return player;
     }
 
-    static void verifyPlayer(List<Integer> player){
+    static void verifyPlayer(ArrayList<Integer> player){
         if(player.size() != 3 || (player.contains(0))) throw new IllegalArgumentException();
         if(player.get(0) == player.get(1) || player.get(0) == player.get(2) || player.get(1) == player.get(2)) throw new IllegalArgumentException();
         return;
     }
 
-    static List<Integer> random(){
-        List<Integer> computer = new ArrayList<>();
+    static ArrayList<Integer> random(){
+        ArrayList<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -42,7 +42,7 @@ public class Application {
         return computer;
     }
 
-    static int getBallScore(List<Integer> computer, List<Integer> player){
+    static int getBallScore(ArrayList<Integer> computer, ArrayList<Integer> player){
         int ballScore = 0;
         for(int i=0; i<player.size(); i++){
             int playerNum = player.get(i);
@@ -52,7 +52,7 @@ public class Application {
         return ballScore;
     }
 
-    static int getStrikeScore(List<Integer> computer, List<Integer> player){
+    static int getStrikeScore(ArrayList<Integer> computer, ArrayList<Integer> player){
         int strikeScore = 0;
         for(int i=0; i<player.size(); i++){
             int playerNum = player.get(i);
@@ -78,7 +78,7 @@ public class Application {
         }
     }
 
-    static boolean compare(List<Integer> computer, List<Integer> player){
+    static boolean compare(ArrayList<Integer> computer, ArrayList<Integer> player){
         int ball = getBallScore(computer,player);
         int strike = getStrikeScore(computer,player);
         print(ball,strike);
@@ -87,8 +87,8 @@ public class Application {
     }
 
     static void game(){
-        List<Integer> computer =  new ArrayList<>();
-        List<Integer> player = new ArrayList<>();
+        ArrayList<Integer> computer = random();
+        ArrayList<Integer> player = new ArrayList<>();
         do{
             int inputInt = input();
             player = separate(inputInt);
