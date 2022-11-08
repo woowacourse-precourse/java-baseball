@@ -95,6 +95,17 @@ public class BaseBallGame {
 
     public Map<String, Integer> getGameResult() {
         Map<String, Integer> gameResult = new HashMap<>();
+
+        countBallAndStrike(gameResult);
+
+        if (isSuccess(gameResult)) {
+            this.success = true;
+        }
+
+        return gameResult;
+    }
+
+    public void countBallAndStrike(Map<String, Integer> gameResult) {
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -108,14 +119,12 @@ public class BaseBallGame {
             }
         }
 
+        setCountResult(gameResult, ballCount, strikeCount);
+    }
+
+    public void setCountResult(Map<String, Integer> gameResult, int ballCount, int strikeCount) {
         gameResult.put("ball", ballCount);
         gameResult.put("strike", strikeCount);
-
-        if (isSuccess(gameResult)) {
-            this.success = true;
-        }
-
-        return gameResult;
     }
 
     public boolean isSuccess(Map<String, Integer> gameResult) {
