@@ -20,7 +20,6 @@ public class Application {
             boolean result = false;
 
             computerPick(computerList);
-            System.out.println(computerList);
 
             while (!result) {
                 List<Integer> userList = new ArrayList<>();
