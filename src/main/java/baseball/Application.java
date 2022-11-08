@@ -63,7 +63,13 @@ public class Application {
     }
 
     private static boolean isValid(String playerInput) {
-        return true;
+        if (!playerInput.matches("^[1-9]{3}$")) {
+            return false;
+        }
+        int number1 = playerInput.charAt(0) - '0';
+        int number2 = playerInput.charAt(1) - '0';
+        int number3 = playerInput.charAt(2) - '0';
+        return number1 != number2 && number1 != number3 && number2 != number3;
     }
 
     private static ArrayList<Integer> calculateResults(
