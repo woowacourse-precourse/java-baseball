@@ -30,6 +30,23 @@ public class Game {
     }
 
 
+    public boolean wantRestart() {
+        String input;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        input = readLine();
+
+        if (input.equals("1")) {
+            return true;
+        } else if (input.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("invalid input");
+        }
+
+    }
+
+
     private void validateNumbers(List<Integer> numbers) {
         if (numbers.size() != MAX_SCORE || new HashSet<>(numbers).size() != MAX_SCORE) {
             throw new IllegalArgumentException("invalid input");
