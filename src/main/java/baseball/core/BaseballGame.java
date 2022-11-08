@@ -27,19 +27,19 @@ public class BaseballGame {
 
     private void playBaseball() {
         BallStrike answer;
+
         do {
-            inputThreeNumbers();
-            answer = processAnswering();
+            console.printNumberInputMessage();
+            player.inputThreeNumbers(Console.readLine());
+
+            List<Integer> threeNumbers = player.sayThreeNumbers();
+            answer = computer.answer(threeNumbers);
+            console.printResultMessage(answer);
+
         } while (isWrongAnswer(answer));
         console.printFinishMessage();
 
         restartOrExitGame();
-    }
-
-
-    private void inputThreeNumbers() {
-        console.printNumberInputMessage();
-        player.inputThreeNumbers(Console.readLine());
     }
 
     private void restartOrExitGame() {
@@ -51,19 +51,8 @@ public class BaseballGame {
         }
     }
 
-    private BallStrike processAnswering() {
-        List<Integer> threeNumbers = player.sayThreeNumbers();
-        BallStrike answer = computer.answer(threeNumbers);
-        console.printResultMessage(answer);
-        return answer;
-    }
-
     private boolean isWrongAnswer(BallStrike answer) {
         return answer.getStrikeCount() != STRIKE_OUT;
-    }
-
-    private void processFinishGame() {
-        console.printFinishMessage();
     }
 
     private boolean isStartCode(StatusCode code) {
