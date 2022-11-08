@@ -1,8 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
 
+import static baseball.Application.getRandomThreeDigitNumberString;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +28,21 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 난수_생성_확인() {
+        String randomThreeDigitNumberString = getRandomThreeDigitNumberString();
+        String pattern = "^[1-9]{3}$";
+
+        assertThat(Pattern.matches(pattern, randomThreeDigitNumberString)).isTrue();
+
+        for (int i = 0; i < randomThreeDigitNumberString.length(); i++) {
+            String indexDigitNumber = randomThreeDigitNumberString.charAt(i) + "";
+            String checkOverlapString = randomThreeDigitNumberString.replace(indexDigitNumber, "");
+
+            assertThat(checkOverlapString.length() < 2).isFalse();
+        }
     }
 
     @Override
