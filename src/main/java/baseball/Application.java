@@ -1,7 +1,7 @@
 package baseball;
 
 public class Application {
-    private static final int START_GAME = 1;
+    private static final int RESTART = 1;
     private static final int EXIT = 2;
 
     static NonPlayerCharacter npc;
@@ -9,13 +9,13 @@ public class Application {
     static RandomNumber randomNumber;
 
     public static void main(String[] args) {
-        int menu = START_GAME;
+        int menu = RESTART;
 
         player = new Player();
-        npc = new NonPlayerCharacter();
 
-        while (menu == START_GAME) {
+        while (menu != EXIT) {
             randomNumber = RandomNumber.getInstance();
+            npc = new NonPlayerCharacter();
 
             npc.printGameStartNotice();
 
