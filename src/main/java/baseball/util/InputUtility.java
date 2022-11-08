@@ -40,6 +40,7 @@ public class InputUtility {
             throw new IllegalArgumentException("유효하지 않은 문자입니다.");
         }
     }
+
     private static void isValidAttack(String input) {
         if (!isNaturalNumber(input)) {
             throw new IllegalArgumentException("1-9 이외의 문자가 들어있습니다. 1-9까지의 숫자만 입력해주세요");
