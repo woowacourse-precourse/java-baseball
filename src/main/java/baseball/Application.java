@@ -114,10 +114,10 @@ public class Application {
 
     static boolean continueGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String inputMenu = Console.readLine();
-        if (inputMenu.equals("1"))
+        String menu = Console.readLine();
+        if (menu.equals("1"))
             return true;
-        if (inputMenu.equals("2"))
+        if (menu.equals("2"))
             return false;
         throwException();
         return false;
