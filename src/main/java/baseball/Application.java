@@ -3,23 +3,22 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.List;
 import java.util.ArrayList;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    public int ball = 0;
-    public int strike = 0;
-    public boolean answer = true;
-    public List<Integer> inputNum = new ArrayList<>();
-    public List<Integer> comNum = new ArrayList<>();
+    private int ball = 0;
+    private int strike = 0;
+    private boolean answer = true;
+    private List<Integer> inputNum = new ArrayList<>();
+    private List<Integer> comNum = new ArrayList<>();
 
     public Application() throws IllegalArgumentException {
         createNum();
         startGame();
     }
 
-    public void createNum() {
+    private void createNum() {
         while (comNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!comNum.contains(randomNumber)) {
@@ -27,7 +26,7 @@ public class Application {
             }
         }
     }
-    public void startGame() throws IllegalArgumentException {
+    private void startGame() throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (answer) {
             try {
@@ -42,7 +41,7 @@ public class Application {
         }
     }
 
-    public void getInputNum() throws IllegalArgumentException {
+    private void getInputNum() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String numChar = Console.readLine();
 
@@ -54,7 +53,7 @@ public class Application {
         inputNum = Arrays.stream(numChar.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    public void setAnswer() {
+    private void setAnswer() {
         for (int number: inputNum) {
             if (inputNum.indexOf(number) == comNum.indexOf(number)) {
                 strike += 1;
@@ -64,7 +63,7 @@ public class Application {
         }
     }
 
-    public void showResult() {
+    private void showResult() {
         if (ball != 0 && strike != 0) {
             System.out.printf("%d볼 %d스트라이크\n", ball, strike);
         } else if (ball != 0) {
@@ -76,7 +75,7 @@ public class Application {
         }
     }
 
-    public void checkAnswer() {
+    private void checkAnswer() {
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             startOrNot();
@@ -85,12 +84,12 @@ public class Application {
         }
     }
 
-    public void resetStrikeBall() {
+    private void resetStrikeBall() {
         strike = 0;
         ball = 0;
     }
 
-    public void startOrNot() throws IllegalArgumentException {
+    private void startOrNot() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String cont = Console.readLine();
         if (cont.equals("1")) {
@@ -102,7 +101,7 @@ public class Application {
         }
     }
 
-    public void resetAll() {
+    private void resetAll() {
         strike = 0;
         ball = 0;
         answer = true;
