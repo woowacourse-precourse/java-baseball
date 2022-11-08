@@ -25,3 +25,11 @@
    - 개행이 있는 메서드
    - 개행이 없는 메서드
 
+
+## 테스트 구현 목록
+### 사용자 입력
+ - 입력한 값이 세 자리가 아닐 때 InputWrongNumberOfDigitsException 예외가 발생한다.
+ - 입력한 값이 숫자가 아니거나 0일 때, InputNotNumberOrZeroException 예외가 발생한다.
+ - 입력한 값에 중복된 숫자가 있을 때, InputSamNumberException 예외가 발생한다.
+ - 재시작 여부 입력 값에 잘못된 값을 입력했을 때, InputWrongReGameNumberException 예외가 발생한다.
+ - 
