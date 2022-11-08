@@ -111,6 +111,8 @@ public class Application {
 
             if(count > 1) {
                 throw new IllegalArgumentException("다른 숫자만 입력 해주세요");
+            } else if (userNum.charAt(i) == '0') {
+                throw new IllegalArgumentException("1~9만 입력해주세요");
             }
         }
     }
