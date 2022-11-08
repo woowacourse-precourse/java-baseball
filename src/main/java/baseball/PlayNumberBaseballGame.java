@@ -83,9 +83,7 @@ public class PlayNumberBaseballGame {
         return result;
     }
 
-
-
-    public boolean isNewGame(int playerAnswer){
+    public boolean isRetry(int playerAnswer){
         if(playerAnswer==1) {
             return true;
         }
