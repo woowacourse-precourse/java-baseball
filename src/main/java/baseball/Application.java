@@ -19,6 +19,8 @@ public class Application {
 
             strike = check_strike(computer,player);
             int same = same(computer, player);
+            int ball = check_ball(strike, same);
+
             }
         }
     }
@@ -66,8 +68,9 @@ public class Application {
         }
         return result;
     }
-    public static int check_ball(){
-
+    public static int check_ball(int strike, int same){
+        int ball = same - strike;
+        return ball;
     }
     public static void check_message(){
 
