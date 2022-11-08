@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import baseball.Comparing;
+import baseball.Comparison;
 
 public class User {
     private String userInput;
@@ -27,7 +27,7 @@ public class User {
         checkInputLength();
         checkBeforeAdd(userNum);
         addUserNum(userNum);
-        Comparing comparing = new Comparing(computerNum, userNum);
+        Comparison comparison = new Comparison(computerNum, userNum);
     }
 
     void checkInputLength() {

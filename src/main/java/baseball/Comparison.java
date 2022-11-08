@@ -3,14 +3,12 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-import baseball.Message;
-
-public class Comparing {
+public class Comparison {
     private List<Integer> computerNum;
     private List<Integer> copyUserNum;
     private int strike;
 
-    public Comparing(List<Integer> computerNum, List<Integer> userNum) {
+    public Comparison(List<Integer> computerNum, List<Integer> userNum) {
         this.computerNum = computerNum;
         checkAnswer(userNum);
     }
