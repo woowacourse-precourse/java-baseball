@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Application {
     static Scanner sc = new Scanner(System.in);
@@ -12,23 +13,40 @@ public class Application {
     public static void main(String[] args) {
         do{
             System.out.println("숫자 야구 게임을 시작합니다.");
-            List<Integer> computer = randomNumberGenerator();
+            List<Integer> computer = randomNumberGenerator(); //컴퓨터의 랜덤 숫자 생성
 
-            List<Integer> user = new ArrayList<>();
-            System.out.println("숫자를 입력해주세요 : ");
-            try{
-                String input = sc.nextLine();
-                validateInputString(input);
-                String[] splits = input.split("");
-                user = changeStringArrToIntegerList(splits);
-            }catch (IllegalArgumentException e){
-                throw e;
+            List<Integer> user;
+            Integer strike = 0;
+            Integer ball = 0;
+            while(strike!=3) {
+                user.clear();
+                user = makeListofUser();
+
             }
+
+
+
+            sc =
 
 
         }while(restartCounter==1);
 
         return;
+    }
+
+    private static List<Integer> makeListOfUser() {
+        List<Integer> user = new ArrayList<>();
+        try{
+            System.out.println("숫자를 입력해주세요 : ");
+            String input = sc.nextLine();
+            validateInputString(input);
+            String[] splits = input.split("");
+            user = changeStringArrToIntegerList(splits);
+            validateList(user);
+        }catch (IllegalArgumentException e){
+            throw e;
+        }
+        return user;
     }
 
     public static List<Integer> randomNumberGenerator(){
@@ -40,6 +58,11 @@ public class Application {
             }
         }
         return temp;
+    }
+
+    public static void validateList(List<Integer> user){
+        List<Integer> temp = user.stream().distinct().collect(Collectors.toList());
+        if(temp.size()<2) throw new IllegalArgumentException();
     }
 
     public static void validateChangedInteger(Integer a){
