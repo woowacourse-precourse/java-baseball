@@ -1,9 +1,7 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -13,19 +11,18 @@ public class Application {
         do{
             System.out.println("숫자 야구 게임을 시작합니다.");
             playBaseBall();
-            int inputNum = Integer.parseInt(readLine());
-            int judgeNum = JudgeInputNum(inputNum);
+            int judgeNum = JudgeInputNum();
             if(judgeNum == 2)
                 break;
         }
         while(true);
-
     }
 
     /* 재시작, 종료 판별 메소드 구현*/
-    private static int JudgeInputNum(int inputNum){
+    private static int JudgeInputNum(){
         while(true){
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int inputNum = Integer.parseInt(readLine());
             if(inputNum == 1 )
                 return 1;
             if(inputNum == 2)
