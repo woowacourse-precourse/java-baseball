@@ -29,6 +29,11 @@ public class Game {
         } while (!gameEnd);
 
         Message.printGameEndMessage();
-        Message.printRestartOrEndMessage();
+
+        askRestartOrEnd();
+    }
+
+    public void askRestartOrEnd() {
+        boolean restartOrEnd = player.getRestartOrEnd();
     }
 }
