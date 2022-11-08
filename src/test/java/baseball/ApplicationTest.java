@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static baseball.Application.*;
@@ -75,8 +74,6 @@ class ApplicationTest extends NsTest {
         String result = outputInText(outputInText, strikeCount, ballCount);
         assertThat(result).isEqualTo("2볼 2스트라이크");
     }
-
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
