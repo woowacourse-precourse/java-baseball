@@ -1,8 +1,9 @@
 ## 구현 기능 목록
 
 ###  예외 처리
--  입력 수 길이가 `3` 인지 체크 : `inputValidtor()`
--  게임이 끝났을때 입력 숫자가 `1` 과 `2` 인지 체크 : `startAndEnd()`
+- 입력 수 길이가 `3` 인지 체크 : `inputValidtor()`
+++예외추가 공백입력시, 0을  입력했을때 예외처리
+- 게임이 끝났을때 입력 숫자가 `1` 과 `2` 인지 체크 : `startAndEnd()`
 
 ###  유저
 -  사용자의 입력을 받는 기능 : `userInput()` -> `tolistUser()` (++ 유저를 String->List<Integer>로 입력)
