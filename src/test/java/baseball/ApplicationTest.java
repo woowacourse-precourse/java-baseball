@@ -74,6 +74,16 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(result.get(1).equals(0));
     }
 
+    @Test
+    void 두개의_숫자가_다른_위치고_하나는_다르면_2볼이다() {
+        String targetNumber = "123";
+        String userInput = "931";
+
+        List<Integer> result = compareTwoNumbers(targetNumber, userInput);
+        Assertions.assertThat(result.get(0).equals(0));
+        Assertions.assertThat(result.get(1).equals(2));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
