@@ -22,19 +22,23 @@
 - Input.java
   - 유저 입력 받기
   - 잘못된 입력 시, throws exception: 3글자, 숫자가 아닐 시
-
-
+- Score.java
+  - NOBALLSTRIKE
+  - NOBALL
+  - NOSTRIKE
+  - COMPLETE
+  - DEFAULT
 
 
 
 ## 기능 목록
 
-- [ ] 게임 시작 문구
+- [x] 게임 시작 문구
 - [x] 랜덤 넘버 생성
 - [x] 서로 다른 3자리 수 입력 받기
   - [x] 잘못된 입력 판단: `IllegalArgumentException` 발생 후 종료
 - [x] 스트라이클, 볼 판단 로직
-- [ ] 결과 출력
+- [x] 결과 출력
 - [ ] 게임 종료 및 다시 시작
 
 
