@@ -4,20 +4,27 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Exception {
+    private static int INPUT_LENGTH = 3;
+    private static int INPUT_RESTART_LENGTH = 1;
+    private static char INPUT_START = '1';
+    private static char INPUT_END = '9';
+    private static char GAME_RESTART = '1';
+    private static char GAME_END = '2';
+
     public static void validateInputNumber(String input) {
-        validateInputLength(input, 3);
+        validateInputLength(input, INPUT_LENGTH);
         validateIsDuplicate(input);
-        validateIsNumeric(input, '1', '9');
+        validateIsNumeric(input, INPUT_START, INPUT_END);
     }
 
     public static void validateInputRestart(String input) {
-        validateInputLength(input, 1);
-        validateIsNumeric(input, '1', '2');
+        validateInputLength(input, INPUT_RESTART_LENGTH);
+        validateIsNumeric(input, GAME_RESTART, GAME_END);
     }
 
     private static void validateInputLength(String input, int rightLength) {
         if (input.length() != rightLength) {
-            throw new IllegalArgumentException("길이가 "+ rightLength + "인 수를 입력해주세요.");
+            throw new IllegalArgumentException("길이가 " + rightLength + "인 수를 입력해주세요.");
         }
     }
 
@@ -39,7 +46,7 @@ public class Exception {
 
     private static void checkInterval(char input, char startNum, char endNum) {
         if (input < startNum || input > endNum) {
-            throw new IllegalArgumentException(startNum+"~"+endNum+"사이의 숫자만 입력해주세요.");
+            throw new IllegalArgumentException(startNum + "~" + endNum + "사이의 숫자만 입력해주세요.");
         }
     }
 
