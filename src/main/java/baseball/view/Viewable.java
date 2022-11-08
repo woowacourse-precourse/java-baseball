@@ -1,6 +1,6 @@
 package baseball.view;
 
-import java.util.List;
+import baseball.uitls.Hints;
 
 public interface Viewable {
 
@@ -8,7 +8,7 @@ public interface Viewable {
      * 힌트를 받아 힌트를 출력하는 메서드이다.
      * @param hints Gameplayer와 Computer의 수를 비교한 결과 나오는 hints이다.
      */
-    public void printHint(List<Integer> hints);
+    public void printHint(Hints hints);
 
     /**
      * 게임 시작 멘트를 출력하는 메서드이다.

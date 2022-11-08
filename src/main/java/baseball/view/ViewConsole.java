@@ -1,11 +1,10 @@
 package baseball.view;
 
+import baseball.uitls.Hints;
+
 import java.util.List;
 
 public class ViewConsole implements Viewable {
-
-    private final int IndexOfBall = 0;
-    private final int IndexOfStrike = 1;
 
     private final String START_LINE = "숫자 야구 게임을 시작합니다.";
     private final String INPUT_LINE = "숫자를 입력해주세요 :";
@@ -14,27 +13,23 @@ public class ViewConsole implements Viewable {
 
 
     @Override
-    public void printHint(List<Integer> hints) {
-        int Ball = hints.get(IndexOfBall);
-        int Strike = hints.get(IndexOfStrike);
-
-        calBallCount(Ball, Strike);
-
+    public void printHint(Hints hints) {
+        calBallCount(hints);
     }
 
-    private static void calBallCount(int Ball, int Strike) {
-        if (Ball != 0 && Strike != 0) {
-            System.out.println(Ball + "볼" + " " + Strike + "스트라이크");
+    private static void calBallCount(Hints hints) {
+        if (hints.hasBallStrike()) {
+            System.out.println(hints.getBall() + "볼" + " " + hints.getStrike() + "스트라이크");
             return;
         }
 
-        if (Ball != 0) {
-            System.out.println(Ball + "볼");
+        if (hints.hasOnlyBall()) {
+            System.out.println(hints.getBall() + "볼");
             return;
         }
 
-        if (Strike != 0) {
-            System.out.println(Strike + "스트라이크");
+        if (hints.hasOnlyStrike()) {
+            System.out.println(hints.getStrike() + "스트라이크");
             return;
         }
 
