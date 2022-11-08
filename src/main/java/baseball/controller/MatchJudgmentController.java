@@ -1,11 +1,14 @@
-package baseball;
+package baseball.controller;
 
 import static baseball.GameRules.*;
 
 import java.util.Collections;
 import java.util.List;
 
-public class BaseballGameModel {
+import baseball.model.ComputerPlayer;
+import baseball.model.UserPlayer;
+
+public class MatchJudgmentController {
 	private final ComputerPlayer computerPlayer;
 	private final UserPlayer userPlayer = UserPlayer.getInstance();
 	private List<Integer> computerNumbers;
@@ -14,7 +17,7 @@ public class BaseballGameModel {
 	private int strike = 0;
 	private int ball = 0;
 
-	public BaseballGameModel(ComputerPlayer computerPlayer) {
+	public MatchJudgmentController(ComputerPlayer computerPlayer) {
 		this.computerPlayer = computerPlayer;
 	}
 
