@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,4 +23,15 @@ public class BaseBallGameUtil {
     }
 
     // TODO: 데이터 입력받아, 랜덤 숫자와 같은 형태로 형태변환
+    public static List<Integer> inputUserAnswer() {
+        return toIntegerList(Console.readLine());
+    }
+
+    private static List<Integer> toIntegerList(String input) {
+        List<Integer> userAnswer = new ArrayList<>();
+        for (String digit : input.split("")) {
+            userAnswer.add(Integer.parseInt(digit));
+        }
+        return userAnswer;
+    }
 }
