@@ -14,15 +14,16 @@ public class Application {
     public static void main(String[] args) {
         int run = 1;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(run != 0){
+        while (run != 0) {
             executionGame();
             run = continueGame();
         }
     }
-    public static void executionGame(){
+
+    public static void executionGame() {
         List<Integer> computerOutput = decideComputerNumber();
 
-        while(true) {
+        while (true) {
             System.out.print("숫자를 입력해주세요 :");
 
             List<Integer> userInput = checkAndConvertUserInput(Console.readLine());
@@ -35,13 +36,14 @@ public class Application {
 
             System.out.println(result);
 
-            if(isCorrect(result)) {
+            if (isCorrect(result)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
     }
-    public static List<Integer> decideComputerNumber(){
+
+    public static List<Integer> decideComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -51,10 +53,11 @@ public class Application {
         }
         return computer;
     }
-    public static List<Integer> checkAndConvertUserInput(String input){
-        if (input.length() != 3)  throw new IllegalArgumentException();
+
+    public static List<Integer> checkAndConvertUserInput(String input) {
+        if (input.length() != 3) throw new IllegalArgumentException();
         Set<Integer> result = input.chars()
-                .filter(c->(c >= '1' && c <= '9'))
+                .filter(c -> (c >= '1' && c <= '9'))
                 .map(c -> c - '0').boxed()
                 .collect(toSet());
         if (result.size() != 3) throw new IllegalArgumentException();
@@ -63,35 +66,40 @@ public class Application {
                 .boxed()
                 .collect(toList());
     }
+
     public static Integer calculateBall(List<Integer> computer, List<Integer> user) {
         Integer ball = 0;
-        for(int i = 0; i < computer.size(); i++){
-            if(user.contains(computer.get(i)) && !computer.get(i).equals(user.get(i)))
-                ball +=1;
+        for (int i = 0; i < computer.size(); i++) {
+            if (user.contains(computer.get(i)) && !computer.get(i).equals(user.get(i)))
+                ball += 1;
         }
         return ball;
     }
-    public static Integer calculateStrike(List<Integer> computer,List<Integer> user){
+
+    public static Integer calculateStrike(List<Integer> computer, List<Integer> user) {
         Integer strike = 0;
-        for(int i = 0;i<computer.size();i++){
-            if(computer.get(i).equals(user.get(i)))
-                strike +=1;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i).equals(user.get(i)))
+                strike += 1;
         }
         return strike;
     }
-    public static String currentSituation(Integer ball , Integer strike){
-        if(ball == 0 && strike == 0) return "낫싱";
-        else if(ball == 0) return strike + "스트라이크";
-        else if(strike == 0) return ball + "볼";
+
+    public static String currentSituation(Integer ball, Integer strike) {
+        if (ball == 0 && strike == 0) return "낫싱";
+        else if (ball == 0) return strike + "스트라이크";
+        else if (strike == 0) return ball + "볼";
         else return ball + "볼" + " " + strike + "스트라이크";
     }
-    public static Integer continueGame(){
+
+    public static Integer continueGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        if(Console.readLine().equals("2")) return 0;
+        if (Console.readLine().equals("2")) return 0;
         else return 1;
     }
-    public static Boolean isCorrect(String result){
-        if(result.equals("3스트라이크")) return true;
+
+    public static Boolean isCorrect(String result) {
+        if (result.equals("3스트라이크")) return true;
         else return false;
     }
 }
