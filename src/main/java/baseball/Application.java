@@ -77,28 +77,24 @@ public class Application {
 
         return strike == 3;
     }
-    public static boolean printBallStrike(int strike, int ball) {
-        if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
-            return false;
-        }
-        if (ball != 0) {
-            System.out.print(ball);
-            System.out.print("볼");
-            if (strike != 0)
-                System.out.print(" ");
-            else if (strike == 0)
-                System.out.println("");
-        }
-        if (strike != 0) {
-            System.out.print(strike);
-            System.out.println("스트라이크 ");
-        }
+    public static void printBallStrike(int strike, int ball) {
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
+            return ;
         }
-        return false;
+
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+            return ;
+        }
+
+        if (ball > 0)
+            System.out.print(new StringBuilder().append(ball).append("볼").append(" "));
+
+        if (strike > 0)
+            System.out.print(new StringBuilder().append(strike).append("스트라이크"));
+
+        System.out.println();
     }
     public static void playGame(List<Integer> gameAnswer) {
         boolean result = false;
