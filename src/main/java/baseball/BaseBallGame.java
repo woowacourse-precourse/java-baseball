@@ -2,11 +2,13 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class BaseBallGame {
-    private int randomNumber = 0;
-    private int userInputValue = 0;
+    private String randomNumber;
+    private String userInputValue;
 
     private static final int MAX_LENGTH = 3;
 
@@ -21,9 +23,14 @@ public class BaseBallGame {
     }
 
     private void initRandomNumber() {
-        randomNumber += Randoms.pickNumberInRange(1, 9) * 100;
-        randomNumber += Randoms.pickNumberInRange(1, 9) * 10;
-        randomNumber += Randoms.pickNumberInRange(1, 9);
+        List<Integer> randomList = new ArrayList<>();
+        while (randomList.size() < 3) {
+            int randomValue = Randoms.pickNumberInRange(1, 9);
+            if (!randomList.contains(randomValue)) {
+                randomList.add(randomValue);
+                randomNumber = randomNumber.concat(String.valueOf(randomValue));
+            }
+        }
     }
 
     public void getInputValue() {
@@ -33,7 +40,7 @@ public class BaseBallGame {
         }
 
         System.out.print(GameMessage.INPUT_VALUE.getText());
-        userInputValue = Integer.parseInt(Console.readLine());
+        userInputValue = Console.readLine();
     }
 
     private boolean checkInputValue(String inputValue) {
