@@ -11,6 +11,8 @@ public class Referee {
     private List<Integer> opponentAnswer;
     private int strike;
     private int ball;
+    private final int INITIAL_VALUE = 0;
+    private final int MAX_VALUE = 3;
 
     public void saveOpponentAnswer(List<Integer> opponentAnswer) {
         this.opponentAnswer = opponentAnswer;
@@ -32,22 +34,22 @@ public class Referee {
     }
 
     private boolean isNothing() {
-        return strike + ball == 0;
+        return strike + ball == INITIAL_VALUE;
     }
 
     public boolean isAllStrike() {
-        return strike == 3;
+        return strike == MAX_VALUE;
     }
 
     private void initStrikeAndBall() {
-        strike = 0;
-        ball = 0;
+        strike = INITIAL_VALUE;
+        ball = INITIAL_VALUE;
     }
 
     public void CaculateResult(List<Integer> playerAnswer) {
         initStrikeAndBall();
 
-        for (int idx = 0; idx < playerAnswer.size(); idx++) {
+        for (int idx = INITIAL_VALUE; idx < playerAnswer.size(); idx++) {
             if (isStrike(playerAnswer, idx)) {
                 strike++;
                 continue;
@@ -67,11 +69,11 @@ public class Referee {
     }
 
     private String BallORStrike() {
-        if (strike == 0) {
+        if (strike == INITIAL_VALUE) {
             return ball + BALL;
         }
 
-        if (ball == 0) {
+        if (ball == INITIAL_VALUE) {
             return strike + STRIKE;
         }
 
