@@ -15,7 +15,7 @@ public class GameManager {
     public void playGame() {
         int strikeResult;
         int ballResult;
-        String computerNumberResult = computer.randomNumberResult(); //
+        String computerNumberResult = computer.randomNumberToStringResult(); //
         do {
             printNumberInputMessage();
             String userInput = user.inputUserNumber();
