@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class BallTest {
 
-	@ParameterizedTest(name = "야구공 유효성 테스트 {index}")
+	@ParameterizedTest(name = "{index} : 야구공 유효성 테스트 (에러 존재 : {2})")
 	@CsvSource({"1, 0, false", "1, 2, false",
 		"9, 0, false", "9, 2, false",
 		"0, 0, true", "1, 3, true",
@@ -22,5 +22,17 @@ class BallTest {
 			assertThatThrownBy(() -> new Ball(ballNumber, ballIndex))
 				.isInstanceOf(IllegalArgumentException.class);
 		}
+	}
+
+	@ParameterizedTest(name = "{index} : 야구공 비교 테스트 ({2})")
+	@CsvSource({"8, 1, STRIKE", "8, 0, BALL", "7, 1, NOTHING"})
+	public void 야구공_비교_테스트(int ballNumber, int ballIndex, BallStatus ballStatus) {
+		//given
+		Ball playerBall = new Ball(ballNumber, ballIndex);
+		Ball computerBall = new Ball(8, 1);
+		//when
+		BallStatus actual = playerBall.compare(computerBall);
+		//then
+		assertThat(actual).isEqualTo(ballStatus);
 	}
 }
