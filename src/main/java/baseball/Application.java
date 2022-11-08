@@ -9,22 +9,25 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Application {
+    static final int BALL_INT = 0;
+    static final int STRIKE_INT = 1;
+    static final int NOTHING_INT = -1;
+    static final int MIN_INT = 1;
+    static final int MAX_INT = 9;
+    static final int TARGET_LENGTH = 3;
     static final String OPENING_STR = "숫자 야구 게임을 시작합니다.";
     static final String INPUT_STR = "숫자를 입력해주세요 : ";
-    static final String RESTART_ASK_STR = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     static final String CLOSING_STR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String RESTART_ASK_STR = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     static final String CONTINUE_STR = "1";
     static final String EXIT_STR = "2";
     static final String BALL_STR = "볼 ";
     static final String STRIKE_STR = "스트라이크";
     static final String NOTHING_STR = "낫싱";
-    static final int STRIKE_INT = 1;
-    static final int NOTHING_INT = -1;
-    static final int BALL_INT = 0;
-    static final int TARGET_LENGTH = 3;
+    static final String EXCEPTION_MESSAGE_WRONG_PATTERN_STR = "Input value must be a three-digit natural number : ";
+    static final String EXCEPTION_MESSAGE_DUPLICATED_DIGITS_STR = "Each digit of input value should be unique : ";
+    static final String EXCEPTION_MESSAGE_INVALID_INPUT_KEEP_PLAYING_STR = "Invalid input : ";
 
-    static final int MIN_INT = 1;
-    static final int MAX_INT = 9;
 
     public static void main(String[] args) {
         boolean keepPlaying = true;
@@ -73,9 +76,9 @@ public class Application {
         String pattern = String.format("^[%d-%d]{%d}$", MIN_INT, MAX_INT, TARGET_LENGTH);
         boolean isNonzeroThreeDigits = Pattern.matches(pattern, userInput);
         if (!isNonzeroThreeDigits) {
-            throw new IllegalArgumentException("Input value must be a three-digit natural number : " + userInput);
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_WRONG_PATTERN_STR + userInput);
         } else if (new HashSet<>(Arrays.asList(userInput.split(""))).size() < TARGET_LENGTH) {
-            throw new IllegalArgumentException("Each digit of input value should be unique : " + userInput);
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_DUPLICATED_DIGITS_STR + userInput);
         }
     }
 
@@ -127,7 +130,7 @@ public class Application {
         } else if (userInput.equals(CONTINUE_STR)) {
             return true;
         } else {
-            throw new IllegalArgumentException("Invalid input : " + userInput);
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_INVALID_INPUT_KEEP_PLAYING_STR + userInput);
         }
     }
 }
