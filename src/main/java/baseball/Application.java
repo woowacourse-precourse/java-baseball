@@ -83,6 +83,21 @@ public class Application {
         System.out.println(output.substring(0, output.length()-1));
     }
 
+    /**
+     * 플레이어가 모든 숫자를 맞췄는지 확인하는 메소드
+     * @param score processScore()을 통해 처리된 [스트라이크 수, 볼 수, miss 수]
+     * @return 3스트라이크일때 true, 이외는 false
+     */
+    public static boolean isPlayerWon(List<Integer> score){
+        int strikes = score.get(0);
+        if (strikes == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return true;
+        }
+        return false;
+    }
+
 
     public static void main(String[] args) {
         List<Integer> computer = generateThreeDifferentNum();
