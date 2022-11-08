@@ -15,10 +15,6 @@ public class Game {
 
     List<Integer> computerNumber;
 
-    public int getComputerNumberSize(){
-        return computerNumber.size();
-    }
-
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         computerNumber = Game.generateNumber();
