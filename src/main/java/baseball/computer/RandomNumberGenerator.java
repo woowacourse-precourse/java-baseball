@@ -22,12 +22,16 @@ public class RandomNumberGenerator {
 
         while (randomNumber.size() < NUMBER_LENGTH) {
             int randomDigit = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
-            if (!randomNumber.contains(randomDigit)) {
-                randomNumber.add(randomDigit);
-            }
+            checkDuplicateDigit(randomDigit, randomNumber);
         }
 
         return randomNumber;
+    }
+
+    private static void checkDuplicateDigit(int randomDigit, List<Integer> randomNumber) {
+        if (!randomNumber.contains(randomDigit)) {
+            randomNumber.add(randomDigit);
+        }
     }
 
     public static List<Integer> getRandomNumber() {
