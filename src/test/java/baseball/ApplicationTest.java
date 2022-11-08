@@ -5,6 +5,7 @@ import org.assertj.core.api.NumberAssert;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -117,5 +118,24 @@ class ApplicationTest extends NsTest {
         }
 
         assertThat(set.size()==3);
+    }
+
+    // 볼 테스트
+    @Test
+    void 볼_테스트() {
+        List comList = new ArrayList<>();
+        List userList = new ArrayList<>();
+
+        comList.add(1);
+        comList.add(2);
+        comList.add(3);
+
+        userList.add(3);
+        userList.add(1);
+        userList.add(2);
+
+        Application.score(comList, userList);
+
+        assertThat(output()).contains("3볼");
     }
 }
