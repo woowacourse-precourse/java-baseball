@@ -1,33 +1,14 @@
 package baseball.view;
 
-import static baseball.view.InputValidator.checkIsValidRestartExitString;
-import static baseball.view.InputValidator.checkIsValidThreeNumbers;
-
-import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.List;
-
 public class InputView {
+    private static final String INPUT_HINT_STR = "숫자를 입력해주세요 : ";
+    private static final String RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public static List<Integer> inputGuessThreeNumbers() {
-        OutputView.printInputHint();
-        String inputNumbers = Console.readLine();
-        checkIsValidThreeNumbers(inputNumbers);
-        return stringToList(inputNumbers);
+    public static void inputGuessThreeNumbers() {
+        System.out.print(INPUT_HINT_STR);
     }
 
-    private static List<Integer> stringToList(String inputNumbers) {
-        List<Integer> inputThreeNumbers = new ArrayList<>();
-        for (char c : inputNumbers.toCharArray()) {
-            inputThreeNumbers.add(c - '0');
-        }
-        return inputThreeNumbers;
-    }
-
-    public static int inputRestartOrExitNumber() {
-        OutputView.printRestartOrExit();
-        String restartExitString = Console.readLine();
-        checkIsValidRestartExitString(restartExitString);
-        return Integer.parseInt(restartExitString);
+    public static void inputRestartOrExitNumber() {
+        System.out.println(RESTART_OR_EXIT);
     }
 }

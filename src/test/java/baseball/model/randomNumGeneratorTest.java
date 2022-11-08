@@ -1,7 +1,7 @@
 package baseball.model;
 
 import static baseball.model.RandomNumGenerator.generate;
-import static baseball.view.InputValidator.INPUT_LENGTH;
+import static baseball.controller.InputValidator.INPUT_LENGTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashSet;

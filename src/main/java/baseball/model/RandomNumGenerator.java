@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.view.InputValidator.INPUT_LENGTH;
+import static baseball.controller.InputValidator.INPUT_LENGTH;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

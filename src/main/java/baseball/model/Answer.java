@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.view.InputValidator.INPUT_LENGTH;
+import static baseball.controller.InputValidator.INPUT_LENGTH;
 
 import baseball.vo.Score;
 import java.util.List;

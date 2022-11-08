@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class answerTest {
+public class AnswerTest {
 
     private static Stream<Arguments> provideUserInput() {
         return Stream.of(

@@ -1,10 +1,13 @@
 package baseball.controller;
 
+import static baseball.utils.Utils.stringToList;
+
 import baseball.model.Answer;
 import baseball.model.RandomNumGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.vo.Score;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     public static final int RESTART = 1;
@@ -16,13 +19,19 @@ public class BaseballGame {
     public void gameStart() {
         Answer answer = new Answer(RandomNumGenerator.generate());
         guessAnswer(answer);
-        if (InputView.inputRestartOrExitNumber() == RESTART) {
+        InputView.inputRestartOrExitNumber();
+        String restartExitString = Console.readLine();
+        InputValidator.checkIsValidRestartExitString(restartExitString);
+        if (Integer.parseInt(restartExitString) == RESTART) {
             gameStart();
         }
     }
 
     public void guessAnswer(Answer answer) {
-        Score userScore = answer.compare(InputView.inputGuessThreeNumbers());
+        InputView.inputGuessThreeNumbers();
+        String inputNumbers = Console.readLine();
+        InputValidator.checkIsValidThreeNumbers(inputNumbers);
+        Score userScore = answer.compare(stringToList(inputNumbers));
         OutputView.printResult(userScore);
         if (answer.isUserCorrect(userScore)) {
             OutputView.printGameEnd();
