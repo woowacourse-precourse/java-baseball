@@ -1,6 +1,4 @@
-package baseball.printer;
-
-import baseball.data.GameData;
+package baseball.data;
 
 /**
  * 출력에 관한 고정된 문자열을 담아둔 열거형 클래스
@@ -22,7 +20,7 @@ public enum PrintData {
         this.printResult = result;
     }
 
-    public static final void printData(String label){
+    public static final void printStringData(String label){
         String enumField;
         for(PrintData printDataValue : PrintData.values()){
             enumField = printDataValue.toString();

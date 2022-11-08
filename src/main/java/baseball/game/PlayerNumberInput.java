@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.printer.PrintData;
+import baseball.data.PrintData;
 import camp.nextstep.edu.missionutils.Console;
 
 /**
@@ -15,7 +15,7 @@ public class PlayerNumberInput {
      */
     public String inputPlayerString(){
         try {
-            PrintData.printData("INPUT_STRING");
+            PrintData.printStringData("INPUT_STRING");
             String playerString = Console.readLine();
             return playerString;
         }
@@ -30,7 +30,7 @@ public class PlayerNumberInput {
      */
     public String inputRestartString() {
         try {
-            PrintData.printData("RESTART");
+            PrintData.printStringData("RESTART");
             PrintData.printLine();
             String restartString = Console.readLine();
             return restartString;

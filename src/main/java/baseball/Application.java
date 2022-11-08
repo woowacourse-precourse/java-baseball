@@ -5,7 +5,7 @@ import baseball.game.ComputerNumberGenerator;
 import baseball.game.NumberComparer;
 import baseball.game.StringParser;
 import baseball.game.PlayerNumberInput;
-import baseball.printer.PrintData;
+import baseball.data.PrintData;
 import baseball.printer.ResultPrint;
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class Application {
     private static final ResultPrint resultPrint = new ResultPrint();
 
     public static void main(String[] args) {
-        PrintData.printData("GAME_START");
+        PrintData.printStringData("GAME_START");
         PrintData.printLine();
         startNumberBaseballGame();
     }
