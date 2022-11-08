@@ -8,9 +8,15 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 
-    private final Game game = new Game();
-    private final Player player = new Player();
-    private Computer computer = new Computer();
+    private final Game game;
+    private final Player player;
+    private final Computer computer;
+
+    public GameController(Game game, Player player, Computer computer) {
+        this.game = game;
+        this.player = player;
+        this.computer = computer;
+    }
 
     public void run() {
         initGame();
@@ -62,7 +68,7 @@ public class GameController {
 
     private void isRestartGenerateNewComputer(String command) {
         if (GameStatus.isRestart(command)) {
-            computer = new Computer();
+            computer.generateNewBalls();
         }
     }
 

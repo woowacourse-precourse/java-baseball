@@ -11,9 +11,13 @@ import static baseball.common.Constant.*;
 
 public final class Computer {
 
-    private final Balls balls;
+    private Balls balls;
 
     public Computer() {
+        this.balls = new Balls(createRandomNumber());
+    }
+
+    public void generateNewBalls() {
         this.balls = new Balls(createRandomNumber());
     }
 
