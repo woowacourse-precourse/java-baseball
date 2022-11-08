@@ -17,6 +17,9 @@ public class Application {
     	List<Integer> playerPickNums = playerPick();
     	int strike = findStrike(computerPickNums, playerPickNums);
     	int ball = findball(computerPickNums, playerPickNums);
+    	String score = scoreBoard(strike, ball);
+    	System.out.println(score);
+    	
     	
     }
     
@@ -75,6 +78,13 @@ public class Application {
     		ball++;
     	}
     	return ball;
+    }
+    public static String scoreBoard(int strike, int ball) {
+    	if(strike==0 || ball ==0) {
+    		return "낫싱";
+    	}else {
+    		return ball+"볼"+" "+strike+"스트라이크";
+    	}
     }
     
 }
