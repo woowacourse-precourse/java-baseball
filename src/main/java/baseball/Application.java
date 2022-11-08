@@ -11,7 +11,7 @@ public class Application {
         String computer = getRandomNumber();
         printStartMsg();
         printInputMsg();
-        getInputNumber
+        String userInput = getInputNumber();
     }
 
     public static String getRandomNumber(){
@@ -47,5 +47,22 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return userInputNumber;
+    }
+    public static void printGameResult(int ballCount, int strikeCount){
+        StringBuilder result = new StringBuilder();
+
+        if(ballCount!=0){
+            result.append(ballCount+"볼");
+        }
+        if(ballCount!=0){
+            if(result.length()!=0){
+                result.append(" ");
+            }
+            result.append(strikeCount+"스트라이크");
+        }
+
+        if(result.length()==0){
+            result.append("낫싱");
+        }
     }
 }
