@@ -22,5 +22,7 @@
   - 사용자가 올바른 개수를 입력했는지 여부를 판단한다.
 - checkInputValue method
   - 사용자가 올바른 값을 입력했는지 여부를 판단한다.
+- checkEndGameInput method
+  - 게임이 끝나고 재시작 여부를 확인할때 1,2가 아닌 다른 값이 들어오지 않는지 판단한다.
 - printStrikeAndBall method
   - 스트라이크와 볼 정보를 입력받아 알맞은 양식으로 출력한다.
