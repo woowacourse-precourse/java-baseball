@@ -1,7 +1,8 @@
 package runGame;
 
+import baseball.domain.BaseBall;
 import baseball.domain.UserBaseBall;
-import baseball.generator.GenerateGameNumber;
+import baseball.refree.generator.GenerateGameNumber;
 import baseball.refree.Referee;
 import message.OutputMessage;
 import camp.nextstep.edu.missionutils.Console;
@@ -11,34 +12,43 @@ import java.util.List;
 
 public class GameStarter {
 
-    private final int START_NUM = 1;
-    private final int EXIT_NUM = 2;
+    private static final int START_NUM = 1;
+    private static final int EXIT_NUM = 2;
+    private static int restartControlNum;
 
     private static OutputMessage outputMessage = new OutputMessage();
 
-    public void GameStarter() {
+    public void start() {
+        restartControlNum = 0;
+        outputMessage.startMessage();
+        do {
+            playGame();
+            restartControlNum = gameRestartController();
+            if (restartControlNum == EXIT_NUM) {
+                outputMessage.gameExitMessage();
+            }
+        } while (restartControlNum != EXIT_NUM);
     }
 
-    public void start() {
-        // 시작 메시지 출력
-        outputMessage.startMessage();
-        // 게임 시작
-        playGame();
+    private int gameRestartController() {
+        outputMessage.gameRestartMessage();
+        int restartControlNum = controlNumber(Console.readLine());
+        outputMessage.gameRestartInputMessage(restartControlNum);
+        return restartControlNum;
     }
 
     public static void playGame() {
         int strikeCount = 0;
-        // 컴퓨터 난수 생성
         List<Integer> comBallList = new GenerateGameNumber().getGenerateNumerList();
 
         do {
-            // 사용자 입력 생성
             List<Integer> userBallList = getUserInputValue();
+            BaseBall baseBall = gameResult(comBallList, userBallList);
 
-            strikeCount = gameResult(comBallList, userBallList);
+            outputMessage.gameResultMessage(baseBall);
+            strikeCount = baseBall.getStrike();
 
-            // isStrikeOut();
-        } while(strikeCount != 0);
+        } while (strikeCount != 3);
     }
 
     public static List<Integer> getUserInputValue() throws IllegalArgumentException {
@@ -48,6 +58,7 @@ public class GameStarter {
 
         List<Integer> userInputList = userInputToList(userBaseBall.getUserInput());
         outputMessage.userInputBaseBall(userInputList);
+
         return userInputList;
     }
 
@@ -59,13 +70,30 @@ public class GameStarter {
         return userInputList;
     }
 
-    private static int gameResult(List<Integer> comBallList, List<Integer> userBallList) {
+    private static BaseBall gameResult(List<Integer> comBallList, List<Integer> userBallList) {
         Referee referee = new Referee();
+
         int strikeCount = referee.strikeCount(userBallList, comBallList);
-        int ballCount = referee.strikeCount(userBallList, comBallList);
+        int ballCount = referee.ballCount(userBallList, comBallList);
 
+        BaseBall baseBall = new BaseBall();
 
-        return 0;
+        baseBall.setBall(ballCount);
+        baseBall.setStrike(strikeCount);
+
+        return baseBall;
+    }
+
+    private static int controlNumber(String input) {
+        return validateRestart(input);
+    }
+
+    private static int validateRestart(String input) {
+        int controlNum = Integer.parseInt(input);
+        if (controlNum != START_NUM && controlNum != EXIT_NUM) {
+            throw new IllegalArgumentException("올바른 숫자를 입력해주세요.");
+        }
+        return controlNum;
     }
 
 }
