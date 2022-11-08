@@ -72,7 +72,7 @@ public class Game {
         return finished;
     }
 
-    private List<Integer> getComputerNumber() {
+    public List<Integer> getComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -84,7 +84,7 @@ public class Game {
         return computer;
     }
 
-    private String getUserInput() throws IllegalArgumentException {
+    public String getUserInput() throws IllegalArgumentException {
         String input = sc.next();
 
         for(char c : input.toCharArray()) {
@@ -95,7 +95,7 @@ public class Game {
         return input;
     }
 
-    private List<Integer> getUserNumber(String user) throws IllegalArgumentException {
+    public List<Integer> getUserNumber(String user) throws IllegalArgumentException {
         // Exception: not 3 Number
         if (user.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자 입력");
@@ -109,7 +109,7 @@ public class Game {
         return userNumbers;
     }
 
-    private int countStrikes(List<Integer> user, List<Integer> computer) {
+    public int countStrikes(List<Integer> user, List<Integer> computer) {
         int count = 0;
         for(int i=0; i<3; i++) {
             if (user.get(i).equals( computer.get(i) )) count++;
@@ -118,7 +118,7 @@ public class Game {
         return count;
     }
 
-    private int countBalls(List<Integer> user, List<Integer> computer) {
+    public int countBalls(List<Integer> user, List<Integer> computer) {
         int count = 0;
         for(int number : user) {
             if (computer.contains(number)) count++;
