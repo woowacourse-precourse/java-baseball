@@ -4,12 +4,13 @@ import baseball.game.number.Score;
 
 import java.util.List;
 
-import static baseball.game.number.Calculator.scoreCalculator;
-import static baseball.game.number.RandomNumbers.createThreeRandomNumbers;
-import static baseball.userInterface.Input.getUserInput;
+import static baseball.game.number.Calculator.*;
+import static baseball.game.number.RandomNumbers.*;
+import static baseball.userInterface.Input.*;
+import static baseball.userInterface.View.*;
+import static baseball.userInterface.Output.*;
 
 public class BaseballGame {
-
     public void start() {
         do {
             play();
