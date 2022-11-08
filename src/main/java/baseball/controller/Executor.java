@@ -10,7 +10,7 @@ public class Executor {
     private static  final int RESTART = 1;
     private static final int EXIT = 2;
 
-    private BaseballResult  result;
+    private BaseballResult guessResult;
     private final Checker checker = new Checker();
     private boolean flag = true;
     public void startGame() {
@@ -18,9 +18,9 @@ public class Executor {
         Printer.gameStart();
         while(flag) {
             Printer.inputNumber();
-            result = guessNumber(computerRandomBaseball);
-            if(result.isALLCorrect()) {
-                String resultString = result.getResult();
+            guessResult = guessNumber(computerRandomBaseball);
+            if(guessResult.isALLCorrect()) {
+                String resultString = guessResult.getResult();
                 System.out.println(resultString);
                 Printer.isALLCorrect();
                 askRestart();
