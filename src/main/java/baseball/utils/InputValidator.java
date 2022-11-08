@@ -12,11 +12,10 @@ public class InputValidator {
     private static final String TYPE_ERROR_MESSAGE = "숫자만 입력 가능합니다.";
     private static final String RESTART_SIGN_ERROR_MESSAGE = "재시작 여부는 1 혹은 2로만 입력이 가능합니다.";
 
-    public static boolean hasValidInput(List<Integer> userInput) {
+    public static void hasValidInput(List<Integer> userInput) {
         hasValidLength(userInput);
         hasValidRange(userInput);
         hasNonDuplicateNumbers(userInput);
-        return true;
     }
 
     public static void hasValidType(String userInputStr) {
