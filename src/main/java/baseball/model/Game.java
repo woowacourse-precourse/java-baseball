@@ -10,13 +10,14 @@ public class Game {
 
     private List<Integer> numbers;
 
-    public Game() {}
+    public Game() {
+    }
 
-    public Game(List<Integer> numbers){
+    public Game(List<Integer> numbers) {
         this.numbers = numbers;
     }
 
-    public boolean compare(Game userInput){
+    public boolean compare(Game userInput) {
         return gameService.compareAnswer(this.numbers, userInput.numbers);
     }
 }

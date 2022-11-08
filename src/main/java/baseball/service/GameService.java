@@ -15,9 +15,9 @@ public class GameService {
     public List<Integer> initAnswer() {
         List<Integer> newAnswer = new ArrayList<>();
 
-        while(newAnswer.size() < maxCount){
+        while (newAnswer.size() < maxCount) {
             int randomNumber = Randoms.pickNumberInRange(minValue, maxValue);
-            if(!newAnswer.contains(randomNumber)){
+            if (!newAnswer.contains(randomNumber)) {
                 newAnswer.add(randomNumber);
             }
         }
@@ -28,10 +28,10 @@ public class GameService {
     public List<Integer> initInput(String inputStr) {
         List<Integer> list = new ArrayList<>();
 
-        for(int i = 0; i < inputStr.length(); i++){
+        for (int i = 0; i < inputStr.length(); i++) {
             int nextNumber = (inputStr.charAt(i)) - '0';
 
-            if(nextNumber != ' ' - '0') {
+            if (nextNumber != ' ' - '0') {
                 list.add(nextNumber);
             }
         }
@@ -43,22 +43,22 @@ public class GameService {
         int ball = 0;
         int strike = 0;
 
-        for(int index = 0; index < answerList.size(); index++){
+        for (int index = 0; index < answerList.size(); index++) {
             int answerNum = answerList.get(index);
             int userNum = userList.get(index);
 
-            if(answerNum == userNum){
+            if (answerNum == userNum) {
                 strike++;
             }
 
-            if(answerNum != userNum && answerList.contains(userNum)){
+            if (answerNum != userNum && answerList.contains(userNum)) {
                 ball++;
             }
         }
 
         printOutput(ball, strike);
 
-        if(strike == maxCount) {
+        if (strike == maxCount) {
             return true;
         }
 
@@ -68,15 +68,15 @@ public class GameService {
     public void printOutput(int ball, int strike) {
         StringBuilder sb = new StringBuilder();
 
-        if(ball > 0){
+        if (ball > 0) {
             sb.append(ball + "볼 ");
         }
 
-        if(strike > 0){
+        if (strike > 0) {
             sb.append(strike + "스트라이크");
         }
 
-        if(strike == 0 && ball == 0){
+        if (strike == 0 && ball == 0) {
             sb.append("낫싱");
         }
 

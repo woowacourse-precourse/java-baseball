@@ -31,7 +31,7 @@ public class GameController {
 
             System.out.println(GAME_RESTART_MESSAGE);
             selection = checkUserSelection();
-        } while(selection == RESTART_GAME);
+        } while (selection == RESTART_GAME);
     }
 
     public void proceed() {
@@ -39,7 +39,7 @@ public class GameController {
         Game answer = new Game(initList);
 
         boolean result = false;
-        while(!result) {
+        while (!result) {
             System.out.print(USER_INPUT_MESSAGE);
             String inputStr = Console.readLine();
 
@@ -50,7 +50,7 @@ public class GameController {
             result = answer.compare(userInput);
         }
 
-        if(result){
+        if (result) {
             System.out.println(GAME_OVER_MESSAGE);
         }
     }
@@ -59,7 +59,7 @@ public class GameController {
         int selection = 0;
 
         boolean isValid = false;
-        while(!isValid) {
+        while (!isValid) {
             try {
                 String input = Console.readLine();
                 selection = Integer.parseInt(input);
@@ -67,11 +67,11 @@ public class GameController {
                 throw new IllegalArgumentException(USER_INPUT_ERROR);
             }
 
-            if(selection != RESTART_GAME && selection != QUIT_GAME){
+            if (selection != RESTART_GAME && selection != QUIT_GAME) {
                 System.out.println(USER_INPUT_ERROR + "다시 입력하십시오.");
             }
 
-            if(selection == RESTART_GAME || selection == QUIT_GAME){
+            if (selection == RESTART_GAME || selection == QUIT_GAME) {
                 isValid = true;
             }
         }
