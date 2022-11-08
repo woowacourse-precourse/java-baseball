@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputNumber {
+    String userBaseBallNumber;
     List<Integer> computerBaseBallNumber = new ArrayList<>();
 
 
@@ -19,7 +20,9 @@ public class InputNumber {
         }
     }
 
-
+    public void inputUserBaseballNumber() {
+        userBaseBallNumber = Console.readLine();
+    }
 
 
 }
