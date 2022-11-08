@@ -24,6 +24,11 @@ public class Settings {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
+        inputException(input);
+        return Integer.parseInt(input);
+    }
+
+    public static void inputException(String input){
         if(input.length() !=3){
             throw new IllegalArgumentException("3자리 숫자를 입력하세요");
         }
@@ -37,6 +42,5 @@ public class Settings {
                 throw new IllegalArgumentException("서로 다른 수를 입력하세요");
             }
         }
-        return Integer.parseInt(input);
     }
 }
