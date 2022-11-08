@@ -29,4 +29,17 @@ public class InputValidator {
                     "different numbers");
         }
     }
+
+    public static void validateEndGameInput(String userInput, int MAX_LENGTH) {
+        validateLength(userInput, MAX_LENGTH);
+        validateNumber(userInput);
+        validateNumberRange(userInput);
+    }
+
+    private static void validateNumberRange(String userInput) {
+        int input = Integer.parseInt(userInput);
+        if (input != 1 && input != 2) {
+            throw new IllegalArgumentException("You must enter 1 or 2.");
+        }
+    }
 }
