@@ -13,7 +13,21 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        computerNumber = createComputerNumber();
+        try {
+            do{
+                List<Integer> playerNumber = getPlayerNumber(); //숫자 아니면 예외 발생
+                isValidNumber(playerNumber); //유효하지 않으면 예외 발생
+                System.out.println(playerNumber);
+                Map<String, Integer> resultMap = checkAnswer(computerNumber, playerNumber);
+                System.out.println(giveHint(resultMap)); //힌트 출력
+                //정답인지 확인하기
+                if (isAnswer(resultMap)) {
+                    askKeepPlaying(); //예외발생할 수 있음
+                }
+            } while (isPlaying);
+        }catch (IllegalArgumentException e){
+        }
     }
 
     //1. 컴퓨터 수 생성하기
