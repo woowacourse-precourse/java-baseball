@@ -34,7 +34,7 @@ public class Scoreboard {
         this.setStrikePoint(this.getStrikePoint() + point);
     }
 
-    public void addAllPoint(baseball.Scoreboard scoreboard) {
+    public void addAllPoint(Scoreboard scoreboard) {
         this.addStrikePoint(scoreboard.getStrikePoint());
         this.addBallPoint(scoreboard.getBallPoint());
     }

@@ -1,11 +1,8 @@
 package baseball.vo;
 
-import baseball.OneDigitNumbers;
-import baseball.Scoreboard;
-
 public class TwoNumbers {
-    private final baseball.OneDigitNumbers oneDigitComputerNumbers;
-    private final baseball.OneDigitNumbers oneDigitPlayerNumbers;
+    private final OneDigitNumbers oneDigitComputerNumbers;
+    private final OneDigitNumbers oneDigitPlayerNumbers;
 
     public TwoNumbers(int computer, int player) {
         this.oneDigitComputerNumbers = new OneDigitNumbers(computer);
