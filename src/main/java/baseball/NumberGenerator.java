@@ -15,7 +15,7 @@ public class NumberGenerator {
 
     int[] number = new int[NUMBER_LENGTH];
 
-    Game() {
+    NumberGenerator() {
         int nowRandomNum;
         int nowNumberIndex = 0;
         while (nowNumberIndex < NEW_GAME) {
@@ -26,7 +26,7 @@ public class NumberGenerator {
         }
     }
 
-    Game(String str) {
+    NumberGenerator(String str) {
         for (int i = 0; i < NumberGenerator.NUMBER_LENGTH; i++) {
             number[i] = Integer.parseInt(str.charAt(i) + "");
         }
