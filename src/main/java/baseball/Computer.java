@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constant.Message;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +48,17 @@ public class Computer {
         }
 
         return ballNumber;
+    }
+
+    private String resultMessage(int strikeNumber, int ballNumber) {
+        if (strikeNumber > 0 && ballNumber > 0) {
+            return ballNumber + Message.BALL + " " + strikeNumber + Message.STRIKE;
+        } else if (strikeNumber > 0 && ballNumber == 0) {
+            return strikeNumber + Message.STRIKE;
+        } else if (strikeNumber == 0 && ballNumber > 0) {
+            return ballNumber + Message.BALL;
+        } else {
+            return Message.NOTHING;
+        }
     }
 }
