@@ -42,7 +42,7 @@ public class Controller {
         user.saveUserInput(input);
         int strikeNum = countStrike(computer, user);
         if(strikeNum == NUMBER_LENGTH){
-            boolean ask = askRestartOrExit(computer, user);
+            boolean ask = askRestartOrExit();
             if(ask){
                 computer.setRandomNumber(NUMBER_RANGE_START, NUMBER_RANGE_END);
                 return true;
@@ -58,7 +58,7 @@ public class Controller {
         }
     }
 
-    private boolean askRestartOrExit(Computer computer, User user) {
+    private boolean askRestartOrExit() {
         View.correctAnswer(NUMBER_LENGTH);
 
         String input = View.askRestartOrExit(USER_CHOICE);
