@@ -67,10 +67,9 @@ public class Player {
         INPUT_NUMBER("숫자를 입력해주세요 : "),
         INPUT_QUIT_OR_RESTART(
                 String.format("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.", RESTART_GAME_CODE, QUIT_GAME_CODE)),
-        ERROR_NUMBER_WRONG_FORMAT(String.format("[%d-%d]{%d}",
+        ERROR_NUMBER_WRONG_FORMAT(String.format("%d-%d 사이의 숫자 %d개를 입력해주세요.",
                 Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END, Constants.NUMBER_COUNT)),
-        ERROR_NUMBER_SAME_NUMBER(String.format("%d-%d 사이의 숫자 %d개를 입력해주세요.",
-                Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END, Constants.NUMBER_COUNT)),
+        ERROR_NUMBER_SAME_NUMBER("서로 다른 숫자를 입력해주세요."),
         ERROR_QUIT_OR_RESTART(String.format("%s, %s 중 하나의 수를 입력해주세요.", RESTART_GAME_CODE, QUIT_GAME_CODE))
         ;
 
