@@ -27,7 +27,7 @@ public class Controller {
     }
     private void gameStartSetting(Computer computer){
         View.gameStartMessage();
-        computer.setRandomNumber(NUMBER_RANGE_START, NUMBER_RANGE_END);
+        computer.setRandomNumber(NUMBER_RANGE_START, NUMBER_RANGE_END, NUMBER_LENGTH);
     }
 
     private void startGame(Computer computer, User user){
@@ -44,7 +44,7 @@ public class Controller {
         if(strikeNum == NUMBER_LENGTH){
             boolean ask = askRestartOrExit();
             if(ask){
-                computer.setRandomNumber(NUMBER_RANGE_START, NUMBER_RANGE_END);
+                computer.setRandomNumber(NUMBER_RANGE_START, NUMBER_RANGE_END, NUMBER_LENGTH);
                 return true;
             }
             else{
