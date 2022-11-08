@@ -16,9 +16,9 @@ class UserBallTest {
 
 	@ParameterizedTest(name = "스트라이크 개수가 3이면 isStrike 메서드에서 true 반환 아니면, false 를 반환한다")
 	@CsvSource(value = {"3, true", "2, false"})
-	void is3Strike(String strikeCount, boolean expected) {
+	void is3Strike(Integer strikeCount, boolean expected) {
 		UserBall userBallTrue = UserBall.createUserBall();
-		userBallTrue.updateStrikeCount(Integer.parseInt(strikeCount));
+		userBallTrue.updateStrikeCount(strikeCount);
 		userBallTrue.updateStatus();
 		Assertions.assertThat(userBallTrue.is3Strike()).isEqualTo(expected);
 	}

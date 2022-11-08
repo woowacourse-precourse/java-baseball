@@ -1,7 +1,16 @@
 package baseball.controller;
 
-import org.junit.jupiter.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import baseball.domain.UserBall;
 import baseball.view.InputView;
@@ -13,17 +22,33 @@ class GameEndControllerTest {
 	private InputView inputView = new InputView();
 	private GameEndController gameEndController = new GameEndController(outputView, inputView);
 
-	@Test
-	void isAnswer() {
-		UserBall userBall1 = UserBall.createUserBall();
-		userBall1.updateStrikeCount(3);
-		userBall1.updateStatus();
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-		UserBall userBall2 = UserBall.createUserBall();
-		userBall2.updateStrikeCount(2);
-		userBall2.updateStatus();
-
-		Assertions.assertTrue(gameEndController.isAnswer(userBall1));
-		Assertions.assertFalse(gameEndController.isAnswer(userBall2));
+	@BeforeEach
+	public void setUpStreams() {
+		System.setOut(new PrintStream(outContent));
 	}
+
+	@ParameterizedTest(name = "스트라이크 개수가 3이면 isAnswer 메서드에서 true 반환 아니면, false 를 반환한다")
+	@CsvSource(value = {"3, true", "2, false"})
+	void isAnswer(Integer strikeCount, boolean expected) {
+		UserBall userBall = UserBall.createUserBall();
+		userBall.updateStrikeCount(strikeCount);
+		userBall.updateStatus();
+
+		Assertions.assertThat(gameEndController.isAnswer(userBall)).isEqualTo(expected);
+	}
+
+	@DisplayName("gameEndController 의 isAnswer 호출하고 정답일 때, 올바른 출력문 확인 테스트")
+	@Test
+	void printSuccessResultTest() {
+		UserBall userBall = UserBall.createUserBall();
+		userBall.updateStrikeCount(3);
+		userBall.updateStatus();
+
+		gameEndController.isAnswer(userBall);
+
+		assertThat(outContent.toString()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료", "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+	}
+
 }
