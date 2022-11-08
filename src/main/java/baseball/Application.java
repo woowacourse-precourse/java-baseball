@@ -16,7 +16,7 @@ class Game{
         this.ball_num=0;
         this.game_clear=0;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        target_check=new int[10];
+        target_check=new int[]{0,0,0,0,0,0,0,0,0,0};
         int num1=camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(1, 9);
         target_check[num1]=1;
         int num2=0;
@@ -72,11 +72,51 @@ class Game{
         }
 
     }
+    boolean check_user_input_len(String input){
+        if(input.length()==3){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    boolean check_user_input_isnum(String input){
+        try {
+            int input_num=Integer.parseInt(input);
+        }catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
+    boolean check_user_input_isEqualExist(String input){
+        int[] input_visit=new int[]{0,0,0,0,0,0,0,0,0,0};
+        for(int i=0;i<3;++i){
+            int curNum=Integer.parseInt(input.substring(i,i+1));
+            input_visit[curNum]+=1;
+        }
+        for(int i=0;i<10;++i){
+            if(input_visit[i]>1){
+                return false;
+            }
+        }
+        return true;
+    }
+    void check_user_num(String input){
+        if(!check_user_input_len(input)){
+            throw new IllegalArgumentException();
+        }
+        if(!check_user_input_isnum(input)){
+            throw new IllegalArgumentException();
+        }
+        if(!check_user_input_isEqualExist(input)){
+            throw  new IllegalArgumentException();
+        }
+    }
     public void check(){
         strike_num=0;
         ball_num=0;
         String curString=Input();
-        int[] ball_check=new int[10];
+        check_user_num(curString);
+        int[] ball_check=new int[]{0,0,0,0,0,0,0,0,0,0};
         for(int i=0;i<3;++i){
             String partial_string=curString.substring(i,i+1);
             int partial_string_num=Integer.parseInt(partial_string);
@@ -93,7 +133,7 @@ class Game{
         }
         ball_and_strike_print(ball_num,strike_num);
         if(game_clear==1){
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int game_flag=Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
             if(game_flag==2){
                 continue_game=0;

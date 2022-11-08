@@ -8,6 +8,12 @@
 3. 게임 종료 시의 이벤트 구현
 - game_clear 플래그를 1로 set
 - 게임을 새로 시작 할 지, 종료할 지를 구현
+4. 입력을 받는 부분의 예외 처리 구현 =>check_user_num()
+- 숫자를 입력해주세요 부분
+  - 길이가 3인가? => check_user_input_len()
+  - 숫자인가? => check_user_input_isnum()
+  - 같은 숫자가 있는가? => check_user_input_isEqualExist()
+- 게임을 새로 시작하려면 1, 종료하려면 2 입력 부분
 
 
 
