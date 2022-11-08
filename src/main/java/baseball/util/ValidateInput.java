@@ -1,6 +1,8 @@
 package baseball.util;
 
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -8,8 +10,8 @@ import java.util.Set;
 
 public class ValidateInput {
 
-    public List<Integer> validateInput(String input) {
-
+    public List<Integer> validateInput() {
+        String input = Console.readLine();
         isValidateNumber(input);
         System.out.println(1);
         isValidateSize(input);
@@ -18,6 +20,7 @@ public class ValidateInput {
         System.out.println(3);
         isValidateDuplicate(inputList);
         System.out.println(4);
+        System.out.println("숫자를 입력해주세요 : "+input);
         return inputList;
     }
 

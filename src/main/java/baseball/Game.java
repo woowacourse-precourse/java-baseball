@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.util.GetRandomNumber;
+import baseball.util.PlayGame;
 import baseball.util.ValidateInput;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -10,10 +11,12 @@ public class Game {
 
     GetRandomNumber getRandomNumber;
     ValidateInput validateInput;
+    PlayGame playGame;
 
     public void readyToPlay() {
         validateInput = new ValidateInput();
         getRandomNumber = new GetRandomNumber();
+        playGame = new PlayGame();
     }
     public void play() {
 
@@ -21,9 +24,8 @@ public class Game {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> comRandomNumber = GetRandomNumber.getNumberList();
-        String input = Console.readLine();
-        List<Integer> integerList = validateInput.validateInput(input);
-        System.out.println("숫자를 입력해주세요 : "+input);
+        List<Integer> integerList = validateInput.validateInput();
+
 
 
     }
