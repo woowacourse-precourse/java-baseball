@@ -9,6 +9,17 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        welcomeMessage();
+        int isGameNotOver = 1;
+
+        while (isGameNotOver == 1) {
+            List<Integer> computer = generateComputerNumber();
+            List<Integer> userInput = getUserInputNumber();
+            while(compareUserNumberToComputers(userInput, computer)==1){
+                userInput = getUserInputNumber();
+            };
+            isGameNotOver = isGameOver();
+        }
 
     }
 
@@ -78,6 +89,7 @@ public class Application {
         if (balls == 0) {
             if (strikes == 0) {
                 System.out.println("낫싱");
+                return;
             }
             System.out.println(strikes+"스트라이크");
             return;
