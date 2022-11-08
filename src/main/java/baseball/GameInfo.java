@@ -5,8 +5,8 @@ public class GameInfo {
     private int strike;
 
     public GameInfo() {
-        this.ball = 0;
-        this.strike = 0;
+        ball = 0;
+        strike = 0;
     }
 
     public void addBall() {
@@ -24,14 +24,23 @@ public class GameInfo {
 
         StringBuilder result = new StringBuilder();
         if (ball > 0) {
-            result.append(Integer.toString(ball)).append("볼");
+            result.append(ball).append("볼");
         }
         if (strike > 0) {
             if (result.length() > 0) {
-                result.append(Integer.toString(strike)).append("스트라이크");
+                result.append(" ");
             }
+            result.append(strike).append("스트라이크");
+
         }
         return result.toString();
+    }
+
+    public boolean isEnd() {
+        if (strike == 3) {
+            return true;
+        }
+        return false;
     }
 
     public boolean isAnswer() {
