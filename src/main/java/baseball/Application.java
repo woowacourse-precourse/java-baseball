@@ -1,12 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static List<Integer> createRandomNumber() {
+    public static String createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         int randomNumber = 0;
         while (computer.size() < 3) {
@@ -15,21 +16,32 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        return computer;
+        return toString(computer);
+    }
+
+    public static String toString(List<Integer> list) {
+        return list.toString().replaceAll("[^1-9]", "");
+    }
+
+    public static String inputBaseballNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+
+        String baseballNumber = Console.readLine();
+        return baseballNumber;
     }
 
     public static void baseballGame() {
-        List<Integer> randomNumber;
+        String randomNumber = "";
         String restartNumber = "";
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             randomNumber = createRandomNumber();
-            restartNumber = startGame();
+            restartNumber = startGame(randomNumber);
         } while (!restartNumber.equals("2"));
     }
 
-    public static String startGame() {
+    public static String startGame(String randomNumber) {
         // TODO: 숫자 입력받기
         // TODO: 입력한 수에 대한 힌트
         return "";
