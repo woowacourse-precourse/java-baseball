@@ -10,11 +10,11 @@ public class User {
     private String userBaseballNumber = "";
     private String userRestartNumber = "";
 
-    public void setUserBaseballNumber(String userBaseballNumber) {
+    private void setUserBaseballNumber(String userBaseballNumber) {
         this.userBaseballNumber = userBaseballNumber;
     }
 
-    public void setUserRestartNumber(String userRestartNumber) {
+    private void setUserRestartNumber(String userRestartNumber) {
         this.userRestartNumber = userRestartNumber;
     }
 
