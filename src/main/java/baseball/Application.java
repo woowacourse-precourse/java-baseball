@@ -77,7 +77,7 @@ public class Application {
             sentence.append("볼 ");
         }
 
-        if (strikeCount < 3) {
+        if (1 <= strikeCount && strikeCount <= 2) {
             sentence.append(strikeCount);
             sentence.append("스트라이크");
         }
