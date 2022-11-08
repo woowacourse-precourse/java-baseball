@@ -1,9 +1,9 @@
 package baseball.view;
 
 import static baseball.constant.Finish.getFinishByCode;
-import static baseball.constant.Hint.BALL;
-import static baseball.constant.Hint.NOTHING;
-import static baseball.constant.Hint.STRIKE;
+import static baseball.hint.Hint.BALL;
+import static baseball.hint.Hint.NOTHING;
+import static baseball.hint.Hint.STRIKE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.constant.Finish;
