@@ -10,13 +10,13 @@ public class Baseball {
     private GameInfo gameInfo;
     private String user;
 
-    private boolean isEnd;
+    private boolean isAnswer;
 
     public Baseball() {
         computer = new ArrayList<>();
         gameInfo = new GameInfo();
         user = "";
-        isEnd = gameInfo.isEnd();
+        isAnswer = gameInfo.isEnd();
     }
 
     private void printInit() {
@@ -74,7 +74,7 @@ public class Baseball {
         printInit();
         getRandomNumbers();
 
-        while (!isEnd) {
+        while (!isAnswer) {
             gameInfo = new GameInfo();
             readNumbers();
             if (!isValidNumber()) {
@@ -82,8 +82,8 @@ public class Baseball {
             }
             compareNumber();
             printResult();
-            isEnd = gameInfo.isEnd();
-            if (isEnd) {
+            isAnswer = gameInfo.isAnswer();
+            if (isAnswer) {
                 printEnd();
             }
         }
