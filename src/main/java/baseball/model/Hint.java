@@ -10,8 +10,8 @@ public class Hint {
     private static final String NOTHING = "낫싱";
     private static final String BLANK = " ";
 
-    int strikeCnt;
-    int ballCnt;
+    private int strikeCnt;
+    private int ballCnt;
 
     public void setCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         resetCount();
