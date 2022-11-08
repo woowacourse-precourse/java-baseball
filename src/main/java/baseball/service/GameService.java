@@ -6,6 +6,7 @@ import baseball.vo.Master;
 
 import baseball.vo.User;
 import baseball.view.RequestMessage;
+import baseball.view.SystemMessage;
 import baseball.utils.NumberGenerator;
 import baseball.utils.Validator;
 
@@ -17,6 +18,7 @@ public class GameService {
     User user;
     Validator validator = new Validator();
     RequestMessage requestMessage = new RequestMessage();
+    SystemMessage systemMessage = new SystemMessage();
 
     public void setGame(int digit, int minNumber, int maxNumber) {
         master = new Master(NumberGenerator.createRandomNumbers(digit, minNumber, maxNumber));
@@ -43,6 +45,19 @@ public class GameService {
                 master.ball();
             }
         }
+
+        systemMessage.showBallCounts(master.getStrikeCount(), master.getBallCount());
+    }
+
+    public Boolean makeResult() {
+        int resultStrike = master.getStrikeCount();
+
+        if (resultStrike == 3) {
+            systemMessage.showStrikeOutMessage();
+            return true;
+        }
+
+        return false;
     }
 
 }
