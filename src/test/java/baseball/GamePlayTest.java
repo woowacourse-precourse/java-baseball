@@ -1,6 +1,9 @@
 package baseball;
 
 import baseball.domain.ComputerNumber;
+import baseball.domain.UserNumber;
+import baseball.excpetion.NumberException;
+import org.assertj.core.internal.bytebuddy.pool.TypePool;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +22,8 @@ public class GamePlayTest {
     final PrintStream standardOut = System.out;
     final GamePlay gamePlay = new GamePlay();
     final ComputerNumber computerNumber = new ComputerNumber();
+    final UserNumber userNumber = new UserNumber();
+    final NumberException numberException = new NumberException();
 
     @BeforeEach
     void setUp(){
@@ -101,19 +106,32 @@ public class GamePlayTest {
     }
     @Test
     void 컴퓨터의_숫자가_중복(){
-        // given, when
+        // given
         List<Integer> computerNumberList = computerNumber.generateNumber();
+        // when
         Set<Integer> uniqueList = new HashSet<>(computerNumberList);
         //then
         assertThat(uniqueList.size()).isEqualTo(3);
     }
     @Test
     void 컴퓨터의_숫자가_숫자로만_구성(){
-
+        // given
+        List<Integer> computerNumberList = computerNumber.generateNumber();
+        String numbers = "1234567989";
+        // when
+        for(int i=0;i<computerNumberList.size();i++){
+            //then
+        }
+        //then
     }
     @Test
     void 사용자의_숫자가_3자리(){
-
+        // given
+        String userInput = "15834";
+        // when
+        assertThatThrownBy(()-> numberException.validNumberLength(userInput))
+                // then
+                .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void 사용자의_숫자가_중복(){
