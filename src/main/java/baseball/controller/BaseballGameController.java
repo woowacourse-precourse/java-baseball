@@ -15,6 +15,7 @@ import baseball.domain.Balls;
 import baseball.domain.BaseballGameResult;
 import baseball.view.UserInputView;
 import baseball.view.UserOutputView;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGameController {
@@ -30,7 +31,7 @@ public class BaseballGameController {
 
 	public static Balls pickUserBalls() {
 		UserInputView.printPickUserBalls();
-		String userInput = UserInputView.receiveInput();
+		String userInput = Console.readLine();
 		validateInputIsNumeric(userInput);
 
 		List<Integer> ballsPickedByUser = Arrays.stream(userInput.split(""))
@@ -75,7 +76,7 @@ public class BaseballGameController {
 
 	private static boolean askRestartGame() {
 		UserInputView.printRestartGame();
-		String input = UserInputView.receiveInput();
+		String input = Console.readLine();
 		validateRestartInput(input);
 
 		int inputParseInt = Integer.parseInt(input);
