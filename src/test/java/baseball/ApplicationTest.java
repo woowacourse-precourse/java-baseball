@@ -9,6 +9,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -61,10 +62,24 @@ class ApplicationTest extends NsTest {
 
     @Test
     void getStrikeCount() {
+        List<Integer> randNum = Arrays.asList(1,2,3);
+        List<Integer> userNum = Arrays.asList(1,2,3);
+        int strikeCount=0;
+        for(Integer number : userNum){
+            strikeCount = Application.getStrikeCount(randNum, userNum, strikeCount, number);
+        }
+        assertThat(strikeCount).isEqualTo(3);
     }
 
     @Test
     void getBallCount() {
+        List<Integer> randNum = Arrays.asList(1,2,3);
+        List<Integer> userNum = Arrays.asList(2,3,4);
+        int ballCount=0;
+        for(Integer number : userNum){
+            ballCount = Application.getBallCount(randNum, userNum, ballCount, number);
+        }
+        assertThat(ballCount).isEqualTo(2);
     }
 
     @Test
