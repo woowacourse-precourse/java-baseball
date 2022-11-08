@@ -35,6 +35,7 @@ class Game {
         return gameAnswer;
     }
 
+
     private void requestAnswer() {
         System.out.println("숫자를 입력해주세요 : ");
         String userInput = readLine();
@@ -48,7 +49,18 @@ class Game {
         guessNumber = userInputList;
     }
 
+    public List<Integer> parseIntList(String userInputNumber) {
+        // String을 List<Integer>로 type-casting해주는 매서드.
+        List<Integer> userInputList = new ArrayList<>();
 
+        String[] splitString = userInputNumber.split("");
+
+        for (String s : splitString) {
+            userInputList.add(Integer.parseInt(s));
+        }
+
+        return userInputList;
+    }
 
 
     public static String validInputValue(String userInput) {
