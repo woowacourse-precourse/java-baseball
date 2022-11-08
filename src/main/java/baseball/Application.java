@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-//import java.lang.IllegalArgumentException;
+import java.lang.IllegalArgumentException;
 
 public class Application {
 
@@ -167,11 +167,12 @@ public class Application {
     }
 
     public static void IllegalArgumentException(){
-        System.out.println("입력값 오류, 시스템을 종료합니다.");
         Exception_Status = false;
+        throw new IllegalArgumentException("입력값 오류, 시스템을 종료합니다.");
     }
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         GameStart();
     }
 }
