@@ -12,7 +12,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         playGame();
-
     }
     public static void playGame() {
         List<Integer> computerNumber = makeRandom();
@@ -23,7 +22,7 @@ public class Application {
             if (!checkException(userNumber)) {
                 throw new IllegalArgumentException();
             }
-            //낫싱, 볼, 스트라이크
+            boolean nothingResult = nothing(userNumber, computerNumber);
         }
         while () {
             //게임 종료
@@ -72,5 +71,17 @@ public class Application {
         }
         return true;
     }
-
+    public static boolean nothing(List<Integer> userNumber, List<Integer> computerNumber) {
+        int count = 0;
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (!computerNumber.contains(userNumber.get(i))) {
+                count++;
+            }
+        }
+        if (count == 3){
+            System.out.println("낫싱");
+            return true;
+        }
+        return false;
+    }
 }
