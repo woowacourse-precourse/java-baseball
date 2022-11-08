@@ -19,17 +19,21 @@ public class User {
         checkInputException();
     }
 
-    boolean checkOverlapAndRange(){
-        Set<Character> overlap=new HashSet<Character>();
-
+    boolean checkRange(){
         for(int idx=0;idx<3;idx++){
             char digit=this.value.charAt(idx);
             if(digit<INPUT_LOWER_BOUND||digit>INPUT_UPPER_BOUND){
                 return true;
             }
-            else {
-                overlap.add(this.value.charAt(idx));
-            }
+        }
+        return false;
+    }
+
+    boolean checkOverlap(){
+        Set<Character> overlap=new HashSet<Character>();
+
+        for(int idx=0;idx<3;idx++){
+            overlap.add(this.value.charAt(idx));
         }
 
         if(overlap.size()<3){
@@ -41,7 +45,7 @@ public class User {
     }
 
     void checkInputException(){
-        if(value.length()!=3|| checkOverlapAndRange()){
+        if(value.length()!=3|| checkRange()|| checkOverlap()){
             IllegalArgumentException e=new IllegalArgumentException("입력 오류");
             throw e;
         }
