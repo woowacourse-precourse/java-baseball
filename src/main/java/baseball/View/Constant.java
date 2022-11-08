@@ -1,4 +1,4 @@
-package baseball;
+package baseball.View;
 
 public class Constant {
     public static final String GAME_START = "숫자 야구 게임을 시작합니다.";

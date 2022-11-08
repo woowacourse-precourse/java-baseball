@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Constant.MAX_LENGTH;
+import static baseball.View.Constant.MAX_LENGTH;
 
 public class Validator {
     public void isNumeric(String input) throws IllegalArgumentException {

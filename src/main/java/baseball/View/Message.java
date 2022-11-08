@@ -1,6 +1,6 @@
 package baseball.View;
 
-import static baseball.Constant.*;
+import static baseball.View.Constant.*;
 
 public class Message {
     public static void printStartMessage() {
