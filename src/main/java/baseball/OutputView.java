@@ -28,7 +28,7 @@ public class OutputView {
 
         // 스트라이크와 볼 모두 있는 경우
         else if (swingResult.get(Swing.STRIKE) != 0 && swingResult.get(Swing.BALL) != 0) {
-            System.out.println(swingResult.get(Swing.STRIKE) + STRIKE_TEXT + BLANK_SPACE + swingResult.get(Swing.BALL) + BALL_TEXT);
+            System.out.println(swingResult.get(Swing.BALL) + BALL_TEXT + BLANK_SPACE + swingResult.get(Swing.STRIKE) + STRIKE_TEXT);
         }
 
         // 스트라이크와 볼 모두 없는 경우
