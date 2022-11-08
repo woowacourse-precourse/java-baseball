@@ -11,9 +11,6 @@ public class GenerateGameNumber {
     private static final int RANGE_MIN_NUM = 1;
     private static final int RNAGE_MAX_NUM = 9;
 
-    private static final int GAME_MIN_NUM = 0;
-    private static final int GAME_MAX_NUM = 3;
-
     private static List<Integer> computerNumber = new ArrayList<>();
 
     public void GenerateGameNumber() {

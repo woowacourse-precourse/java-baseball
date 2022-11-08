@@ -1,17 +1,14 @@
 package runGame;
 
+import baseball.domain.UserBaseBall;
 import baseball.generator.GenerateGameNumber;
-import baseball.message.OutputMessage;
+import baseball.refree.Referee;
+import message.OutputMessage;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
-/**
- *
- */
+
 public class GameStarter {
 
     private final int START_NUM = 1;
@@ -38,71 +35,37 @@ public class GameStarter {
             // 사용자 입력 생성
             List<Integer> userBallList = getUserInputValue();
 
+            strikeCount = gameResult(comBallList, userBallList);
+
             // isStrikeOut();
         } while(strikeCount != 0);
     }
 
     public static List<Integer> getUserInputValue() throws IllegalArgumentException {
         outputMessage.userInputMessage();
-        String input = Console.readLine();
-        /**
-         * 예외처리 구현
-         */
-        return null;
+        UserBaseBall userBaseBall = new UserBaseBall();
+        userBaseBall.setUserBallNumber(Console.readLine());
+
+        List<Integer> userInputList = userInputToList(userBaseBall.getUserInput());
+        outputMessage.userInputBaseBall(userInputList);
+        return userInputList;
     }
 
     public static List<Integer> userInputToList(String userInput) {
         List<Integer> userInputList = new ArrayList<>();
         for (int i = 0; i < userInput.length(); i++) {
-            userInputList.add((int) userInput.charAt(i));
+            userInputList.add(Character.getNumericValue(userInput.charAt(i)));
         }
         return userInputList;
     }
 
+    private static int gameResult(List<Integer> comBallList, List<Integer> userBallList) {
+        Referee referee = new Referee();
+        int strikeCount = referee.strikeCount(userBallList, comBallList);
+        int ballCount = referee.strikeCount(userBallList, comBallList);
 
 
-    public static void isCorrect(int userInput, int comInput) {
-        LinkedHashMap<Integer, Integer> userMap = inputToMap(String.valueOf(userInput));
-        LinkedHashMap<Integer, Integer> comMap = inputToMap(String.valueOf(comInput));
-
-        StringBuilder sb = new StringBuilder();
-
-        int strike = 0, ball = 0, nothing = 0;
-
-        for (int i = 0; i < 3; i++) {
-            if (comMap.containsValue(userMap.get(i))) {
-                if (userMap.get(i) == comMap.get(i)) {
-                    strike++;
-                    ball--;
-                } else {
-                    ball++;
-                }
-            }
-        }
-
-        if (ball > 0) {
-            sb.append(ball).append("볼").append(" ");
-        } else if (strike > 0) {
-            sb.append(strike).append("스트라이크").append(" ");
-        } else {
-            sb.append("낫싱");
-        }
-
-        System.out.println(sb.toString());
-    }
-
-    /**
-     * 숫자와 위치정보를 담은 Map을 반환한다.
-     *
-     * @param {Integer} baseBallNumber return {Map<Integer, Integer>}
-     */
-    public static LinkedHashMap<Integer, Integer> inputToMap(String num) {
-        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
-
-        for (int i = 0; i < 3; i++) {
-            map.put(Integer.parseInt(num.split("")[i]), i);
-        }
-        return map;
+        return 0;
     }
 
 }
