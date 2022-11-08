@@ -58,6 +58,15 @@ public class User {
         this.ball++;
     }
 
+    public void correctAnswer() {
+        this.end = true;
+    }
+
+    public void reset() {
+        this.answers = new ArrayList<>();
+        this.end = false;
+    }
+
     //== 변환 로직 ==//
     private static List<Integer> listConverter(String inputNumber) {
         List<Character> numbers = characterConverter(inputNumber);
