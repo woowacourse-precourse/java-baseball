@@ -46,7 +46,7 @@ public class Game {
         }
     }
 
-    public boolean end() {
+    public boolean replay() {
         String input = getUserInput();
         if (input.length() != 1) {
             System.out.println("INPUT ERROR!");

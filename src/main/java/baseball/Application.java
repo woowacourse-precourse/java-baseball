@@ -9,8 +9,8 @@ public class Application {
             while(!game.isFinished()) {
                 game.play();
             }
-            
-            if(game.end()) { game = null; };
+
+            if(!game.replay()) { game = null; };
 
         } while(game != null);
     }
