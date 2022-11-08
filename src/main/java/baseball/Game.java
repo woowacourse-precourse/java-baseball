@@ -2,16 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 // 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임
 public class Game {
     private final int LENGTH = 3;
-    private List<Integer> computer = new ArrayList<Integer>();
-    private List<Integer> user = new ArrayList<Integer>();
+    private List<Integer> computer = new ArrayList<>();
+    private List<Integer> user = new ArrayList<>();
     private String input;
     private char[] fragmentedInputs;
 
