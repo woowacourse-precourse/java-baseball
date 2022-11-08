@@ -23,9 +23,8 @@ public class GameStartSetting {
 	}//computerNumberPut
 	
 	public String userNumberPut() {
-		String userInputNumber = "";
 		System.out.print("숫자를 입력해주세요 : ");
-		userInputNumber = Console.readLine();
+		String userInputNumber = Console.readLine();
 		if(userInputNumber.length()!=3 || !(userInputNumber.matches("[+-]?\\d*(\\.\\d+)?"))
 			|| userInputNumber.charAt(0) == userInputNumber.charAt(1)
 			|| userInputNumber.charAt(1) == userInputNumber.charAt(2)
