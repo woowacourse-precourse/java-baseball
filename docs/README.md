@@ -47,8 +47,6 @@
 1. InputView
 - [x]  플레이어 숫자 입력
 - [x]  게임 재시작 답변 입력
-   - [ ]  사용자가 1 입력 : 게임 재시작
-   - [ ]  사용자가 2 입력 : 게임 완전히 종료
 
 ### controller
 1. GameController
