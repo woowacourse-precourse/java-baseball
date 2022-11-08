@@ -51,17 +51,6 @@ public class Application {
         return false;
     }
 
-    private static boolean process_exception(boolean is_exception) {
-        try {
-            if (is_exception) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            return true;
-        }
-        return false;
-    }
-
     private static boolean compare_input(List<Integer> ans, List<Integer> input) {
         int strike = 0;
         int ball = 0;
@@ -110,8 +99,8 @@ public class Application {
             List<Integer> input_num = rand_num_input();
 
             //3. 사용자로부터 입력 받은 수가 잘못된 값인 경우 프로그램을 종료한다.
-            if (process_exception(is_execption(input_num))) {
-                break;
+            if (is_execption(input_num)){
+                throw new IllegalArgumentException();
             }
 
             //4. 사용자로부터 입력 받은 수를 상대방의 수와 비교해 결과를 출력하고, 두 수가 같은 지 판별한다.
@@ -131,8 +120,7 @@ public class Application {
             } else if (input.equals("2")){
                 break;
             } else{
-                process_exception(true);
-                break;
+                throw new IllegalArgumentException();
             }
         }
     }
