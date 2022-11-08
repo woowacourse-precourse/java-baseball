@@ -19,9 +19,9 @@ public class Application {
         while (gameStatus == ON) {
             List<Integer> answer = Computer.pickRandomNumber();
             while (true) {
-                    List<Integer> inputNumber = User.getInputNumber();
-                    int strike = strike(inputNumber, answer);
-                    int ball = ball(inputNumber, answer);
+                    User user = new User();
+                    int strike = strike(user.getValues(), answer);
+                    int ball = ball(user.getValues(), answer);
                     boolean result = Print.result(ball, strike);
                     if (result) {
                         break;
