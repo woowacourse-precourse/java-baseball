@@ -8,7 +8,7 @@ public class View {
     public static String gameStartMessage = "숫자 야구 게임을 시작합니다.";
     public static String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static String GAME_OVER = "게임 종료";
-    public static String CORRECT_ANSWER = "%d개의 숫자를 모두 맞히셨습니다. 게임 종료\n";
+    public static String CORRECT_ANSWER = "개의 숫자를 모두 맞히셨습니다. 게임 종료";
     public static void gameStartMessage(){
         System.out.println(gameStartMessage);
     }
@@ -36,8 +36,8 @@ public class View {
         return input;
     }
     public static void correctAnswer(int numberLength){
-        System.out.printf("%d스트라이크\n", numberLength);
-        System.out.printf(CORRECT_ANSWER, numberLength);
+        System.out.println(numberLength + "스트라이크");
+        System.out.println(numberLength + CORRECT_ANSWER);
     }
     public static void printGameOverMessage(){
         System.out.println(GAME_OVER);
