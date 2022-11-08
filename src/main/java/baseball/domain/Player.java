@@ -31,7 +31,10 @@ public class Player {
         HashSet<String> duplicateCheckSet = new HashSet<>(List.of(input.split("")));
         if (duplicateCheckSet.size() != 3) return true;
 
-        for (char inputOfDigit : input.toCharArray()) if (!Character.isDigit(inputOfDigit)) return true;
+        for (char inputOfDigit : input.toCharArray()) {
+            if (inputOfDigit == '0') return true;
+            if (!Character.isDigit(inputOfDigit)) return true;
+        }
 
         return false;
     }
