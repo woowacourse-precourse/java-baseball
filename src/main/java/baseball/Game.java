@@ -65,18 +65,18 @@ public class Game {
 
         return computer;
     }
-    private String getUserInput() {
+    private String getUserInput() throws IllegalArgumentException {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
         for(char c : input.toCharArray()) {
             if (48 < c && c < 57)
-                return "";
+                throw new IllegalArgumentException("숫자를 입력하세요.");
         }
 
         return input;
     }
-    private List<Integer> getUserNumber(String user) {
+    private List<Integer> getUserNumber(String user) throws IllegalArgumentException {
         // Exception: not 3 Number
         if (user.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자 입력");
