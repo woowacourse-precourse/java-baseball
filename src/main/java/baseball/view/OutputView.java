@@ -10,6 +10,7 @@ public class OutputView {
 
     public static String printRequestNumber(){
         String input = Console.readLine();
+        return input;
     }
 
     public static void printGameResult(int strikeCounter, int ballCounter){
