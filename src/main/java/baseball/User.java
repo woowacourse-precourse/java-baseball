@@ -1,9 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
     BaseballGame baseballGame;
@@ -16,6 +16,7 @@ public class User {
 
         while (exit == 1) {
             System.out.print("숫자를 입력해주세요 : ");
+
             int userNumber = input();
             checkThreeDigit(userNumber);
 
@@ -25,7 +26,7 @@ public class User {
     }
 
     public int input() {
-        String inputString =readLine();
+        String inputString = Console.readLine();
         checkInput(inputString);
 
         return Integer.parseInt(inputString);
@@ -63,6 +64,7 @@ public class User {
 
     private void checkThreeDigit(int gameNumber) {
         List<Integer> gameNumberList = new ArrayList<>();
+
         while (gameNumber > 0) {
             int n = gameNumber % 10;
             checkDuplication(n, gameNumberList);

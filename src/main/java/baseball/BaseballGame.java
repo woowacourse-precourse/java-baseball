@@ -1,9 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class BaseballGame {
     private static final int START_INCLUSIVE = 1;
@@ -25,10 +25,9 @@ public class BaseballGame {
 
     private void createNumber() {
         while (randomList.size() < 3) {
-            int randomNumber = pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+            int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             addRandomNumber(randomNumber);
         }
-        System.out.println(randomList);
     }
 
     private void addRandomNumber(int randomNumber) {
@@ -39,13 +38,13 @@ public class BaseballGame {
 
     public int checkGameResult(int comparativeNumbers) {
         countBallStrike(comparativeNumbers);
-        int status = 0;
 
+        int status = 0;
         String strikeCntString = Integer.toString(strikeCnt);
         String ballCntString = Integer.toString(ballCnt);
 
         if (strikeCnt == 0 && ballCnt == 0) {
-            gameResult =NOTHING_STR;
+            gameResult = NOTHING_STR;
         } else if (ballCnt == 0) {
             gameResult = strikeCntString+STRIKE_STR;
         } else if (strikeCnt == 0) {
@@ -55,6 +54,7 @@ public class BaseballGame {
         }
 
         System.out.println(gameResult);
+
         if(gameResult.equals(END_RESULT_STR)) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
