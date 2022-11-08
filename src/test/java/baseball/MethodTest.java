@@ -35,6 +35,14 @@ public class MethodTest extends NsTest {
         int result = 3;
         assertThat(strike).isEqualTo(result);
     }
+    @Test
+    void 출력테스트(){
+        String Msg = "2볼 1스트라이크";
+        int ball =2;
+        int strike=1;
+        printResult(ball,strike);
+        assertThat(output()).isEqualTo(Msg);
+    }
 
 
 
