@@ -8,6 +8,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static baseball.Application.getResult;
+import static baseball.Application.validateUserNumbers;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -27,6 +28,30 @@ class ApplicationTest extends NsTest {
         assertThat(resultCase2).isEqualTo("2볼 1스트라이크");
         assertThat(resultCase3).isEqualTo("1볼");
         assertThat(resultCase4).isEqualTo("낫싱");
+    }
+
+    @Test
+    void 숫자_검증_테스트() {
+        assertThatThrownBy(() -> validateUserNumbers("333"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> validateUserNumbers("4315"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> validateUserNumbers("012"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> validateUserNumbers("34"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> validateUserNumbers("abc"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> validateUserNumbers("우테코"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        validateUserNumbers("123");
+        validateUserNumbers("465");
     }
 
     @Test
