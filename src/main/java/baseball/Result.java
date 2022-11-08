@@ -27,7 +27,7 @@ public class Result {
         }else if(ballCount==0 && strikeCount>0){
             resultMessage = strikeCount + Settings.STRIKE;
         }else if(ballCount>0 && strikeCount>0){
-            resultMessage = ballCount + Settings.BALL + strikeCount + Settings.STRIKE;
+            resultMessage = ballCount + Settings.BALL + " " + strikeCount + Settings.STRIKE;
         }
 
         return resultMessage;
