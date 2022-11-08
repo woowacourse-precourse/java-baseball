@@ -1,13 +1,54 @@
 package baseball.Domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Baseball {
 
-    private int[] computerNumber;
-    private int[] userNumber;
+    private List<String> computerNumber = new ArrayList<>();
+    private List<String> inputNumber= new ArrayList<>();
 
-    public Baseball(int[] computerNumber, int[] userNumber) {
+    private int strike;
+
+    private int ball;
+
+    public Baseball(List<String> computerNumber, List<String> inputNumber, int strike, int ball) {
         this.computerNumber = computerNumber;
-        this.userNumber = userNumber;
+        this.inputNumber = inputNumber;
+        this.strike = strike;
+        this.ball = ball;
+    }
+
+    public List<String> getComputerNumber() {
+        return computerNumber;
+    }
+
+    public void setComputerNumber(List<String> randomNumberList) {
+        computerNumber = randomNumberList;
+    }
+
+    public List<String> getInputNumber() {
+        return inputNumber;
+    }
+
+    public void setInputNumber(List<String> inputNumberList) {
+        inputNumber = inputNumberList;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public void setStrike(int strikeNum) {
+        strike = strikeNum;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public void setBall(int ballNum) {
+        ball = ballNum;
     }
 
 }
