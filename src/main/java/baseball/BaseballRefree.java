@@ -26,4 +26,14 @@ public class BaseballRefree {
 
         return count;
     }
+
+    private int getStrikeCount(String numbers){
+        int count = 0;
+
+        for (int i = 0; i < numbers.length(); i++) {
+            if (numbers.charAt(i) == answerNumber.charAt(i)) count += 1;
+        }
+
+        return count;
+    }
 }
