@@ -38,4 +38,12 @@ public class RuleManager {
             }
         }
     }
+
+    public static void compareBall(User user, List<Long> computerNumbers) {
+        if (countBall(user, computerNumbers) > ZERO_BALL_NUMBER) {
+            if (countBall(user, computerNumbers) <= THREE_BALL_NUMBER && countStrike(user, computerNumbers) == ZERO_STRIKE_NUMBER) {
+                Output.printBall(countBall(user, computerNumbers));
+            }
+        }
+    }
 }
