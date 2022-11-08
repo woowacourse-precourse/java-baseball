@@ -10,7 +10,7 @@ public class BaseBallGame {
 
     public void reStart(String userNum) {
         if (userNum.equals(REGAME)) {
-            run();
+            gameStart();
         } else if (userNum.equals(FINISHGAME)) {
             return;
         } else {
@@ -19,7 +19,7 @@ public class BaseBallGame {
     }
 
 
-    public void run() {
+    public void gameStart() {
         //사용할 클래스 생성
         Computer computer = new Computer();
         User user = new User();
