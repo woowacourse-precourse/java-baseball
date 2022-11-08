@@ -25,13 +25,20 @@ public class Application {
         return computer;
     }
 
-    public static List<Integer> inputUserNumber() {
+    public static List<Integer> inputUserNumber() throws IllegalArgumentException{
         List<Integer> userInputNumber = new ArrayList<>();
         String inputNumber = readLine();
+        if(inputNumber.length() != 3) {
+            throw new IllegalArgumentException("입력 받은 숫자의 개수가 3개가 아닙니다.");
+        }
+
         String[] inputNumberSplitArray = inputNumber.split("");
-        for (int i = 0; i < inputNumberSplitArray.length; i++)
-        {
-            userInputNumber.add(Integer.parseInt(inputNumberSplitArray[i]));
+        for (int i = 0; i < inputNumberSplitArray.length; i++) {
+            if (!userInputNumber.contains(Integer.parseInt(inputNumberSplitArray[i]))) {
+                userInputNumber.add(Integer.parseInt(inputNumberSplitArray[i]));
+            } else {
+                throw new IllegalArgumentException("중복된 숫자가 포함되어 있습니다.");
+            }
         }
 
         return userInputNumber;
@@ -77,14 +84,21 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computerCreateNumber = createRandomNumber();
-        List<Integer> userInputNumber = new ArrayList<>();
         int gameContinue = gameRestart;
         while(gameContinue != gameEnd) {
+            List<Integer> userInputNumber = new ArrayList<>();
             int strikeCount = COUNT_INITALIZE;
-            while(strikeCount != GAME_END_STRIKE_COUNT)
-            {
-                strikeCount = numberBaseballGame(computerCreateNumber,userInputNumber);
+
+            try {
+                while(strikeCount != GAME_END_STRIKE_COUNT) {
+                    userInputNumber = inputUserNumber();
+                    strikeCount = numberBaseballGame(computerCreateNumber,userInputNumber);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                break;
             }
+
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
