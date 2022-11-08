@@ -1,11 +1,10 @@
-package baseball.play;
+package baseball.controller;
 
 import baseball.service.ComputerService;
 import baseball.service.MessageService;
 import baseball.service.PlayerService;
 
-public class PlayBaseball {
-
+public class BaseballController {
     private static ComputerService computerService = new ComputerService();
 
     private static PlayerService playerService = new PlayerService();
@@ -13,7 +12,7 @@ public class PlayBaseball {
     private static MessageService messageService = new MessageService();
 
 
-    public static void main(String[] args) {
+    public static void gameStart(){
         boolean gameOn = true;
         messageService.startGameMessage();
         initGame();
@@ -24,12 +23,19 @@ public class PlayBaseball {
                 messageService.endGameMessage();
                 messageService.restartGameMessage();
                 gameOn = playerService.inputRestartAnswer();
-                initGame();
+                if (gameOn){
+                    initGame();
+                }else {
+                    break;
+                }
             }
         }
+
     }
 
     public static void initGame(){
         computerService.setComputerNumber();
     }
+
+
 }
