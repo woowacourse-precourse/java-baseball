@@ -15,10 +15,14 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        do {
+        while (true) {
             gameProcess();
-            selectReplay();
-        } while (selectReplay() == String.valueOf(2));
+            int quitCommand = selectReplay();
+            if (quitCommand == 2) {
+                break;
+            }
+        };
+        System.out.println("나오면사망");
     }
 
     public static List<Integer> generateNumber() {
@@ -46,7 +50,6 @@ public class Application {
 
         if ((int) (Math.log10(inputNumber) + 1) == 3 && inputNumberSet.size() == 3 && count == 0) {
             System.out.println("숫자를 입력해주세요: " + input);
-            System.out.println(inputNumber);
             return inputNumberArrayList;
         } else
             throw new IllegalArgumentException();
@@ -66,8 +69,8 @@ public class Application {
     public static int countRawBalls(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
         int rawBall = 0;
 
-        for (int i = 0; i < generatedNumber.size(); i++) {
-            int dupCheck = Collections.frequency(inputNumber, generatedNumber.get(i));
+        for (Integer integer : generatedNumber) {
+            int dupCheck = Collections.frequency(inputNumber, integer);
             rawBall += dupCheck;
         }
         return rawBall;
@@ -97,25 +100,44 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         ArrayList<Integer> generatedNumber = new ArrayList<>(generateNumber());
-        ArrayList<Integer> inputNumber;
+        ArrayList<Integer> inputNumber = null;
+
         do {
             inputNumber = new ArrayList<>(inputNumberOfUser());
-            System.out.println(gameReferee(generatedNumber, inputNumber));
-        } while (!gameReferee(generatedNumber, inputNumber).contains("맞히셨습니다"));
+            System.out.println("뭔데이건"+gameReferee(generatedNumber, inputNumber));
+        } while (!gameReferee(generatedNumber, inputNumber).contains("3스트라이크"));
     }
-    public static String selectReplay() {
+
+//    public static String selectReplay() {
+//        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//        String action = Console.readLine();
+//        System.out.println("셀렉리플액션"+action);
+//        if (action.equals("2")) {
+//            System.out.println("게임 종료");
+//            return action;
+//        }
+//        if (action.equals("1")) {
+//            gameProcess();
+//            return action;
+//        } else {
+//            throw new IllegalArgumentException();
+//        }
+//    }
+    public static int selectReplay() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String action = Console.readLine();
-        if (action.equals("2")) {
+        int action = Integer.parseInt(Console.readLine());
+
+        if (action == 2) {
             System.out.println("게임 종료");
+            System.out.println("나가기"+action);
             return action;
         }
-        if (action.equals("1")) {
-            System.out.println("TEST");
-            gameProcess();
+        if (action == 1) {
+            System.out.println("계속하기"+action);
+            return action;
         } else {
+            System.out.println("에러발생");
             throw new IllegalArgumentException();
         }
-        return action;
     }
 }

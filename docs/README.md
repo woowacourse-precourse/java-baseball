@@ -47,3 +47,11 @@
 [x] 게임 종료 후 게임 재시작이 잘 되는가   
 [x] 3차 이상의 게임 재시작도 잘 되는가
 
+--------
+
+### fix 4. countBalls(); => countRawBalls();
+* 매직 넘버 사용으로 추후 유지 보수 확장이 어려워질 것으로 예상되어 collect.frequency로 중복값 개수 찾는 방법으로 변경   
+
+### fix 5. gameReferee();
+* 4번 변경점으로 로직이 gameReferee 메소드에서 countRawballs()에서 리턴 받은 값에 countStrike();를 빼서 ball 개수를 카운트함
+
