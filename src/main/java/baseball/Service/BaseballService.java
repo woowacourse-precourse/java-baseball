@@ -51,7 +51,7 @@ public class BaseballService {
 
 
     public boolean validateInput(String input) {
-        if (areThreeLength(input) && areNumbersFromOneToNine(input)) {
+        if (areThreeLength(input) && areNumbersFromOneToNine(input) && areNumbersDuplicated(input)) {
             return true;
         }
 
@@ -75,6 +75,16 @@ public class BaseballService {
             if (number < 1 || number > 9) {
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    public boolean areNumbersDuplicated(String input) {
+        char[] inputs = input.toCharArray();
+
+        if (inputs[0] == inputs[1] || inputs[0] == inputs[2] || inputs[1] == inputs[2]) {
+            return false;
         }
 
         return true;
