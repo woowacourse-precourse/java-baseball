@@ -6,10 +6,16 @@ import camp.nextstep.edu.missionutils.*;
 
 public class Baseball {
 
-    private static List<Integer> computer;
+    private List<Integer> computer;
+    private List<Integer> user;
+    private String input;
+    private GameInfo gameInfo;
 
     public Baseball() {
         computer = new ArrayList<>();
+        user = new ArrayList<>();
+        input = "";
+        gameInfo = new GameInfo();
     }
 
     private void printInit() {
@@ -23,6 +29,11 @@ public class Baseball {
                 computer.add(randomNum);
             }
         }
+    }
+
+
+    private void readNumbers() {
+        String number = Console.readLine();
     }
 
     public void gameStart() {
