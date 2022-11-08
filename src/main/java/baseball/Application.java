@@ -68,7 +68,7 @@ public class Application {
         }
 
         String ballCntStr = ballCnt + "볼";
-        String strikeCntStr = strikeCnt + "스크라이크";
+        String strikeCntStr = strikeCnt + "스트라이크";
 
         if (strikeCnt == 3) {
             System.out.println(strikeCntStr);
