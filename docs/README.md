@@ -56,7 +56,7 @@
    - [ ]  게임이 끝나면 재시작/종료 묻기
       - [ ]  1 입력 : 게임 재시작
       - [ ]  2 입력 : 게임 종료
-      - [ ]  1, 2 외의 값 입력 시 오류 메시지 전달 (IllegalArgumentException 발생 후 종료)
+      - [x]  1, 2 외의 값 입력 시 오류 메시지 전달 (IllegalArgumentException 발생 후 종료)
 
 
 2. ComputerController
