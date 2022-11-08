@@ -35,20 +35,4 @@ public class JudgeTest {
         //then
         assertThat(strikeCount).isEqualTo(1);
     }
-
-    @Test
-    void 알맞는_정답_여부_반환() {
-        //given
-        List<Integer> tempNums = List.of(1, 2, 3);
-        Answer testAnswer = new Answer(tempNums);
-        Judge testJudge = new Judge(testAnswer);
-
-        //when
-        List<Integer> testUserInput = List.of(1, 3, 5); // 1스트라이크 1볼
-        int strikeCount = testJudge.getStrikeCount(testUserInput);
-        boolean correct = testJudge.isCorrect(strikeCount);
-
-        //then
-        assertThat(correct).isEqualTo(false);
-    }
 }
