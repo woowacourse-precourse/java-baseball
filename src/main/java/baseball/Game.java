@@ -11,7 +11,7 @@ public class Game {
     public final UserNumber userNumber;
 
     private List<Integer> userGuessNumbers;
-    private List<Integer> computerNumberList;
+    private List<Integer> computerAnswerNumber;
 
     private int strike;
     private int ball;
@@ -21,7 +21,7 @@ public class Game {
         userNumber = new UserNumber();
 
         userGuessNumbers = new ArrayList<>();
-        computerNumberList = new ArrayList<>();
+        computerAnswerNumber = new ArrayList<>();
         strike = 0;
         ball = 0;
     }
@@ -29,7 +29,7 @@ public class Game {
     public void startPlaying() {
         System.out.println(SystemMessage.printStartMessage);
         computerNumber.makeRandomNumber();
-        computerNumberList = computerNumber.getComputerNumber();
+        computerAnswerNumber = computerNumber.getComputerNumber();
         do {
             UserNumber userNumber = new UserNumber();
             userGuessNumbers = userNumber.userInputNumber();
@@ -58,7 +58,7 @@ public class Game {
         String inputString = userGuessNumbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
-        String answerString = computerNumberList.stream()
+        String answerString = computerAnswerNumber.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
