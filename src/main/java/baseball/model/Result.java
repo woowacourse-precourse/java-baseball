@@ -2,6 +2,8 @@ package baseball.model;
 
 public class Result {
 
+    private static final int CORRECT_COUNT = 3;
+
     private int strike;
     private int ball;
 
@@ -12,6 +14,10 @@ public class Result {
         if (status.isBall()) {
             ball++;
         }
+    }
+
+    public boolean isNothing() {
+        return strike == 0 && ball == 0;
     }
 
     public int getStrike() {
