@@ -8,7 +8,17 @@ import java.util.stream.Collectors;
 
 public class Game {
     private Game() {
+        List<Integer> computerNumber = getComputerNumber();
 
+        while (true) {
+            List<Integer> userNumber = getInputUserNumber();
+            Map<String, Integer> ballStrikeCount = getBallStrikeCount(userNumber, computerNumber);
+            printGameResult(ballStrikeCount);
+
+            if (isGameEnd(ballStrikeCount.get("스트라이크"))) {
+                break;
+            }
+        }
     }
     public static void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -16,6 +26,15 @@ public class Game {
     }
     public static Game create() {
         return new Game();
+    }
+
+    public boolean isGameEnd(int strikeCount) {
+        if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return true;
+        }
+        return false;
     }
 
     public static List<Integer> getComputerNumber() {
