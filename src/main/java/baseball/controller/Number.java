@@ -6,10 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import static baseball.exception.BaseballException.vaildNum;
+import static baseball.exception.BaseballException.vaildNumArr;
 import static baseball.view.Printer.showRequestInput;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class Input {
+public class Number {
 
     /** 사용자로부터 숫자를 받는 함수 */
     public static int getInputNums() {
@@ -26,13 +27,14 @@ public class Input {
     /** 사용자 입력값을 정수 ArrayList 반환 */
     static List<Integer> getNumsArr(int num) {
         List<Integer> numsArr = Arrays.asList(0,0,0);
-
         vaildNum(num);
 
         for (int i=0; i<numsArr.size(); i++){
             numsArr.set(2 - i, num % 10);
             num = num/10;
         }
+
+        vaildNumArr(numsArr);
         return numsArr;
     }
 
