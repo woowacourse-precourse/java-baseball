@@ -33,5 +33,9 @@ public class Player {
         }
         return true;
     }
+
+    public List<Integer> getPlayerNumbers() {
+        return playerNumbers;
+    }
     // validateAnswer(): 입력받은 재시작 여부 답변에 대한 유효성 검증
 }
