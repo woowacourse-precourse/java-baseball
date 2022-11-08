@@ -34,7 +34,7 @@ public class Judge {
         return sameNumberCount;
     }
 
-    public void printHint(int strikeCount, int ballCount) {
+    public String printHint(int strikeCount, int ballCount) {
         String hint = "";
         if (ballCount != 0) {
             hint += (ballCount + GameConstant.BALL);
@@ -46,5 +46,6 @@ public class Judge {
             hint += GameConstant.NOTHING;
         }
         System.out.println(hint);
+        return hint;
     }
 }
