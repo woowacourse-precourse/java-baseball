@@ -27,11 +27,11 @@ class ApplicationTest extends NsTest {
         List<Integer> evaluation5 = Arrays.asList(0, 3);
 
         SoftAssertions softAssert = new SoftAssertions();
-        softAssert.assertThat(Application.evaluationToString(evaluation1)).isEqualTo("낫싱\n");
-        softAssert.assertThat(Application.evaluationToString(evaluation2)).isEqualTo("1볼\n");
-        softAssert.assertThat(Application.evaluationToString(evaluation3)).isEqualTo("1스트라이크\n");
-        softAssert.assertThat(Application.evaluationToString(evaluation4)).isEqualTo("2볼 1스트라이크\n");
-        softAssert.assertThat(Application.evaluationToString(evaluation5)).isEqualTo("3스트라이크\n");
+        softAssert.assertThat(Application.evaluationToString(evaluation1)).isEqualTo("낫싱");
+        softAssert.assertThat(Application.evaluationToString(evaluation2)).isEqualTo("1볼");
+        softAssert.assertThat(Application.evaluationToString(evaluation3)).isEqualTo("1스트라이크");
+        softAssert.assertThat(Application.evaluationToString(evaluation4)).isEqualTo("2볼 1스트라이크");
+        softAssert.assertThat(Application.evaluationToString(evaluation5)).isEqualTo("3스트라이크");
 
         softAssert.assertAll();
     }

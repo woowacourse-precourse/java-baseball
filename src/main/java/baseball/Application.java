@@ -65,7 +65,7 @@ public class Application {
             }
             List<Integer> guess = stringToNumberList(input);
             List<Integer> evaluation = evaluateGuess(guess, answer);
-            System.out.print(evaluationToString(evaluation));
+            System.out.println(evaluationToString(evaluation));
             if ( isEqualToAnswer(evaluation) ) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 guessCorrectness = true;
@@ -94,7 +94,6 @@ public class Application {
         if ( sb.length() == 0 ) {
             sb.append("낫싱");
         }
-        sb.append("\n");
         return sb.toString();
     }
 
