@@ -37,14 +37,16 @@ Service
 Game : 게임 전반적인 데이터를 담고 있는 객체 실제 플레이어 데이터 객체와, 랜덤하게 맞춰야할 숫자 배열을 가지고 있다.
 
 - Game : Game객체 생성시 player객체 생성 및 randNumGenerate 메서드가 호출되며 랜덤한 플레이어가 맞춰야할 숫자가 생긴다
+- randNumGenerate : 랜덤한 숫자를 생성해준다
+- check : Strike , Ball 처리
+- printBaseBallCount : 스트라이크 , 볼 숫자에 따라 다른 결과를 출력해준다
 
 Player : 실제 플레이어의 데이터를 담고 있는 객체
 
 - inputGenerate : 입력을 받아와서 처리
-- check : Strike , Ball 처리
-- printBaseBallCount : 스트라이크 , 볼 숫자에 따라 다른 결과를 출력해준다
-- randNumGenerate : 랜덤한 숫자를 생성해준다
 - errorCheck : 입력된 숫자의 예외처리를 해준다
+- plusStrike, Ball : strike, ball 카운트를 최신화 해준다
+- init : strike , ball 카운트를 초기화 해준다
 
 
 
