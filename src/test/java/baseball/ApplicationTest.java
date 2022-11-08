@@ -20,10 +20,40 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
     @Test
-    void 예외_테스트() {
+    void 게임종료_후_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("246", "135", "ab"))
+                        .isInstanceOf(IllegalArgumentException.class);
+                    },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 예외_테스트_1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 예외_테스트_2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 예외_테스트_3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("122"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
