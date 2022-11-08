@@ -58,9 +58,11 @@ public class Application {
         int strike = 0;
         int ball = 0;
 
-        int index = 0;
+        int index = -1;
         for (Integer answer: gameAnswer) {
             int tempIndex = input.indexOf(answer);
+
+            index++;
 
             if (tempIndex < 0)
                 continue;
@@ -69,8 +71,6 @@ public class Application {
                 strike++;
             else
                 ball++;
-
-            index++;
         }
 
         printBallStrike(strike, ball);
