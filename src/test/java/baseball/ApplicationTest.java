@@ -163,6 +163,16 @@ class ApplicationTest extends NsTest {
         assertEquals(expectedOneBallOneStrike, actualOneBallOneStrike);
     }
 
+    @Test
+    public void checkExitCodeTest() throws Exception{
+        //given
+        int exitCode = 3;
+        //when
+        //then
+        assertThatThrownBy(() -> Application.checkExitCode(exitCode))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
