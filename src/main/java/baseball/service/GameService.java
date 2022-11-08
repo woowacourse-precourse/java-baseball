@@ -18,7 +18,6 @@ public class GameService {
 
     public void startNumberBaseballGame() {
         List<Integer> computerRandomNumberList = getComputerRandomNumbers();
-        System.out.println(computerRandomNumberList);
         strike = Constant.STRIKE_DEFAULT;
         while (strike != Constant.THREE_STRIKE_NUMBER) {
             initNumberStrikeAndBallCount();
