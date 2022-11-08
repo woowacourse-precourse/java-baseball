@@ -1,0 +1,48 @@
+package baseball;
+
+public class BullsAndCowsResult {
+
+    private int ballCount;
+    private int strikeCount;
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public void init() {
+        ballCount = 0;
+        strikeCount = 0;
+    }
+
+    void addCount(int userIndex, int computerIndex) {
+        if (userIndex == -1) {
+            return;
+        }
+
+        if (userIndex == computerIndex) {
+            strikeCount++;
+            return;
+        }
+
+        ballCount++;
+    }
+
+    void printResult() {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        } else if (strikeCount == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
+    }
+
+    boolean finish() {
+        return strikeCount == 3;
+    }
+}
