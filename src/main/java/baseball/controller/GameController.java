@@ -1,12 +1,18 @@
-package baseball;
+package baseball.controller;
 
-public class GameManager {
+import baseball.model.BallStrikeResult;
+import baseball.model.GameNumber;
+
+import baseball.view.InputView;
+import baseball.view.OutputView;
+
+public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
 
     private GameNumber oppositeNumber;
 
-    public GameManager() {
+    public GameController() {
         inputView = new InputView();
         outputView = new OutputView();
     }

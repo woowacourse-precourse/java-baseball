@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view;
+
+import baseball.model.BallStrikeResult;
 
 public class OutputView {
     private final String START_GAME_ALERT = "숫자 야구 게임을 시작합니다.";
