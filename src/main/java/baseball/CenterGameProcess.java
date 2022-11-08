@@ -9,6 +9,7 @@ public class CenterGameProcess {
     public CenterGameProcess(List<Integer> computer, int gameTypeNumber) {
 
         String myNumber = output.Question(output.inputNumber, gameTypeNumber);
+        List<Integer> myNumberList = output.InputNumberList(myNumber);
 
     }
 }
