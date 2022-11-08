@@ -48,7 +48,7 @@ class ValidateTest {
     void 게임종료시_1입력() {
         String userInput = "1";
 
-        assertThat(Validate.isAcceptAbleEndGame(userInput)).isTrue();
+        assertThat(Validate.isAcceptAbleProcessInput(userInput)).isTrue();
     }
 
     @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
@@ -56,7 +56,7 @@ class ValidateTest {
     void 게임종료시_2입력() {
         String userInput = "2";
 
-        assertThat(Validate.isAcceptAbleEndGame(userInput)).isTrue();
+        assertThat(Validate.isAcceptAbleProcessInput(userInput)).isTrue();
     }
 
     @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
@@ -75,7 +75,7 @@ class ValidateTest {
         inputStream = generateInput(theInput);
         System.setIn(inputStream);
 
-        assertThatThrownBy(() -> Validate.isAcceptAbleEndGame(theInput))
+        assertThatThrownBy(() -> Validate.isAcceptAbleProcessInput(theInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

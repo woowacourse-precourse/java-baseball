@@ -57,7 +57,7 @@ public class Validate {
         }
     }
 
-    public static boolean isAcceptAbleEndGame(String userInput) {
+    public static boolean isAcceptAbleProcessInput(String userInput) {
         if (isReStartGame(userInput) || isFinishGame(userInput)) {
             return true;
         }
