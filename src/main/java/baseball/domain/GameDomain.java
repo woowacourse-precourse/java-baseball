@@ -25,4 +25,12 @@ public class GameDomain {
     public int getBallScore() {
         return ball;
     }
+
+    public void addStrikeScore() {
+        strike += 1;
+    }
+
+    public void addBallScore() {
+        ball += 1;
+    }
 }
