@@ -27,7 +27,7 @@ public class Validation {
         return input.length() == CNT_NUMBER;
     }
 
-    public boolean RestartAnswer(String input){
+    public boolean CheckRestartAnswer(String input){
         Pattern AnswerPattern = Pattern.compile(RestartAnswer_RegEx);
         return AnswerPattern.matcher(input).matches();
     }

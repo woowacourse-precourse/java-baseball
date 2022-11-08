@@ -26,7 +26,7 @@ public class UserView {
 
         String input = Console.readLine();
 
-        if(!validation.RestartAnswer(input)){
+        if(!validation.CheckRestartAnswer(input)){
             throw new IllegalArgumentException();
         }
 
