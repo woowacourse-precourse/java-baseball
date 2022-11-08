@@ -14,4 +14,14 @@ public class RuleManager {
         }
         return strikeCount;
     }
+
+    public static int countBall(User user, List<Long> computerNumbers) {
+        int ballCount = 0;
+        for (Long userNumber : user.getUserNumbers()) {
+            if (computerNumbers.contains(userNumber)) {
+                ballCount++;
+            }
+        }
+        return ballCount - countStrike(user, computerNumbers);
+    }
 }
