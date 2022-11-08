@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -34,7 +35,7 @@ class BaseballGameTest {
 
     @Test
     @DisplayName("사용자 입력 테스트")
-    void inputHumanNumberTest(){
+    void inputHumanNumberTest() {
         List<Integer> human = bg.inputHumanNumber("123");
         assertEquals(Arrays.toString(new int[]{1, 2, 3}), human.toString());
     }
@@ -58,6 +59,46 @@ class BaseballGameTest {
         );
     }
 
+    @Test
+    @DisplayName("볼 확인")
+    void checkBallCount() {
+        ArrayList<Integer> human = new ArrayList<>(List.of(1, 2, 3));
+        ArrayList<Integer> computuer = new ArrayList<>(List.of(5, 3, 9));
+        assertEquals(1, bg.returnBallCount(human, computuer));
+
+        human = new ArrayList<>(List.of(1, 2, 3));
+        computuer = new ArrayList<>(List.of(5, 3, 1));
+        assertEquals(2, bg.returnBallCount(human, computuer));
+
+        human = new ArrayList<>(List.of(1, 2, 3));
+        computuer = new ArrayList<>(List.of(2, 3, 1));
+        assertEquals(3, bg.returnBallCount(human, computuer));
+
+        human = new ArrayList<>(List.of(1, 2, 3));
+        computuer = new ArrayList<>(List.of(4, 5, 6));
+        assertEquals(0, bg.returnBallCount(human, computuer));
+    }
+
+    @Test
+    @DisplayName("스트라이크 확인")
+    void checkStrikeCount() {
+        ArrayList<Integer> human = new ArrayList<>(List.of(1, 2, 3));
+        ArrayList<Integer> computuer = new ArrayList<>(List.of(1, 3, 9));
+        assertEquals(1, bg.returnStrike(human, computuer));
+
+        human = new ArrayList<>(List.of(1, 2, 3));
+        computuer = new ArrayList<>(List.of(1, 2, 5));
+        assertEquals(2, bg.returnStrike(human, computuer));
+
+        human = new ArrayList<>(List.of(1, 2, 3));
+        computuer = new ArrayList<>(List.of(1, 2, 3));
+        assertEquals(3, bg.returnStrike(human, computuer));
+
+        human = new ArrayList<>(List.of(1, 2, 3));
+        computuer = new ArrayList<>(List.of(4, 5, 6));
+        assertEquals(0, bg.returnStrike(human, computuer));
+    }
+
 
     public boolean overlapTest(List<Integer> answer, boolean check) {
 
@@ -78,4 +119,6 @@ class BaseballGameTest {
         }
         return true;
     }
+
+
 }
