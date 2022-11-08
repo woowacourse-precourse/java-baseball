@@ -1,7 +1,6 @@
 package baseball.view.scanner;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.NoSuchElementException;
 
 public class NumberScanner {
@@ -13,11 +12,11 @@ public class NumberScanner {
         return inputValue;
     }
 
-    public int inputOneOrTwo() {
+    public String inputOneOrTwo() {
         String inputValue = readLine();
         validateOneOrTwo(inputValue);
 
-        return Integer.parseInt(inputValue);
+        return inputValue;
     }
 
     private String readLine() {
@@ -29,9 +28,8 @@ public class NumberScanner {
     }
 
     private void validateItIsNumber(String inputValue) {
-        try {
-            Integer.parseInt(inputValue);
-        } catch (NumberFormatException e) {
+        final String REGEX_FOR_ONLY_NUMBER = "\\d+";
+        if (!inputValue.matches(REGEX_FOR_ONLY_NUMBER)) {
             throw new IllegalArgumentException("숫자만 입력해 주세요.");
         }
     }
@@ -41,5 +39,4 @@ public class NumberScanner {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요. (게임 재시작 : 1 / 게임 종료 : 2)");
         }
     }
-
 }

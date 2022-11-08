@@ -1,8 +1,12 @@
-package baseball;
+package baseball.service;
 
+import static baseball.service.StartOptions.RESTART;
+import static baseball.service.StartOptions.START;
+import static baseball.service.StartOptions.STOP;
+
+import baseball.domain.game_number.Answer;
 import baseball.domain.game_number.CountResult;
 import baseball.domain.game_number.Guess;
-import baseball.domain.game_number.Answer;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 
@@ -18,11 +22,11 @@ public final class BaseballGame {
 
     public void start() {
         Answer answer = new Answer();
-        int oneOrTwoForRestartGame = 0;
+        StartOptions sign = START;
 
         messagePrinter.printStartMessage();
 
-        while (oneOrTwoForRestartGame != 2) {  // 0은 게임 진행 중, 1은 게임 재시작, 2는 게임 끝... 의미 전달을 잘 할순 없을까?
+        while (!sign.is(STOP)) {
             messagePrinter.printEnterNumberMessage();
 
             String inputNumber = numberScanner.inputNumber();
@@ -33,12 +37,13 @@ public final class BaseballGame {
 
             if (countResult.withThreeStrike()) {
                 messagePrinter.printCorrectAnswerMessage();
-                oneOrTwoForRestartGame = numberScanner.inputOneOrTwo();
+                String oneOrTwo = numberScanner.inputOneOrTwo();
+                sign = StartOptions.of(oneOrTwo);
             }
 
-            if (oneOrTwoForRestartGame == 1) {
+            if (sign.is(RESTART)) {
                 answer = new Answer();
-                oneOrTwoForRestartGame = 0;
+                sign = START;
             }
         }
 

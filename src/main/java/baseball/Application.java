@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.service.BaseballGame;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 
