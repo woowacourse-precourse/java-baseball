@@ -13,4 +13,8 @@ public class Flag {
             throw new IllegalArgumentException("재시작 / 종료 값은 1 또는 2가 되어야 합니다.");
         }
     }
+
+    public boolean isRestart() {
+        return this.flag.equals("1");
+    }
 }
