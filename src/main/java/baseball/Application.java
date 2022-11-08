@@ -7,9 +7,16 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+
+// 7. 유저가 게임 진행 후 2를 누를때까지 새로운 게임 진행
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean newGame = false;
+        do {
+            newGame = startGame();
+        } while (newGame);
     }
 
 
