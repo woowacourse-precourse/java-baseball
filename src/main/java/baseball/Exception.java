@@ -21,5 +21,18 @@ public class Exception {
         }
     }
 
+    public void checkOverLap(String userBaseBallNumber) throws IllegalArgumentException {
+
+        Set<Character> overLapSet = new HashSet<>();
+
+        for (int i = 0; i < userBaseBallNumber.length(); i++) {
+            overLapSet.add(userBaseBallNumber.charAt(i));
+        }
+
+        if (overLapSet.size() != userBaseBallNumber.length()) {
+            throw new IllegalArgumentException();
+        }
+
+    }
 
 }
