@@ -12,7 +12,6 @@ public class Application {
         playerNum();
 
 
-
     }
 
     public static List<Integer> CreateRandomNum(){
@@ -53,5 +52,20 @@ public class Application {
                 strike += 1;
         }
         return strike;
+    }
+
+    public static String judge(List<Integer>computerNum, List<Integer> playerNum){
+        int total = howManySame(computerNum, playerNum);
+        int strike = howManyStrike(computerNum, playerNum);
+        int ball = total - strike;
+
+        if(total == 0){
+            return "낫싱";
+        } else if (strike == 0) {
+            return ball + "볼";
+        } else if (ball == 0) {
+            return strike + "스트라이크";
+        }
+        return ball + "볼 " + strike + "스트라이크";
     }
 }
