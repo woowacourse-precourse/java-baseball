@@ -20,5 +20,9 @@ public class Judge {
         this.attack = attack;
     }
 
+    private boolean isStrike(int index) {
+        return attack.get(index).baseballEqual(defend.get(index));
+    }
+
 
 }

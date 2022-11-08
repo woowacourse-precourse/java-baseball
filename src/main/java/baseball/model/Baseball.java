@@ -18,5 +18,9 @@ public class Baseball {
         return baseball;
     }
 
+    public boolean baseballEqual(Baseball compareBall) {
+        return baseball == compareBall.getBaseball();
+    }
+
 
 }
