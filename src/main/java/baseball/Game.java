@@ -23,4 +23,22 @@ public class Game {
         }
     }
 
+    public int continueGame(Exception exception) {
+        System.out.println(GameMessage.QUESTION_CONTINUE.getValue());
+
+        int selectNext = Integer.parseInt(Console.readLine());
+
+        exception.restartException(selectNext);
+        // 새시작시 True, 종료 시  false
+        return selectNext;
+    }
+
+    public boolean printResultAndQuest(String input, Computer computer) {
+        if (computer.countStrike(input) == 3) {
+            System.out.println(GameMessage.GAME_OVER.getValue());
+            return false;
+        }
+        return true;
+    }
+
 }
