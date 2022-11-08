@@ -22,7 +22,7 @@ public class GameResultScore {
         return gameResultNumber;
     }
 
-    public List<Integer> getPlayerInput(Player player) {
+    private List<Integer> getPlayerInput(Player player) {
         String playerNumber = Console.readLine();
         return player.validateAndParse(playerNumber);
     }
@@ -33,7 +33,7 @@ public class GameResultScore {
         return playerRestartInput();
     }
 
-    public static String playerRestartInput() {
+    private static String playerRestartInput() {
         String restart = Console.readLine();
         validateCharacters(restart);
         return restart;

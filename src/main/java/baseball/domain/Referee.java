@@ -26,7 +26,7 @@ public class Referee {
         return getResult(getStrike, getBall, getCorrectCount);
     }
 
-    public String getResult(int strike, int ball, int correctCount) {
+    private String getResult(int strike, int ball, int correctCount) {
         if (ball >= STANDARD && strike == 0) {
             return ball + SystemMessage.BALL_MESSAGE;
         }
@@ -42,7 +42,7 @@ public class Referee {
         return getNothing(correctCount);
     }
 
-    public String getNothing(int correctCount) {
+    private String getNothing(int correctCount) {
         if (correctCount == 0) {
             return SystemMessage.NOTHING_MESSAGE;
         }

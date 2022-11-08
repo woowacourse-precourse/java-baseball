@@ -27,7 +27,7 @@ public class BaseballGame {
         conditionsBaseballGame();
     }
 
-    public void conditionsBaseballGame() {
+    private void conditionsBaseballGame() {
         String restartNumber = "1";
 
         while (restartNumber.equals(RESTART)) {
@@ -37,7 +37,7 @@ public class BaseballGame {
         }
     }
 
-    public void guessComputerNumbers(List<Integer> computer) {
+    private void guessComputerNumbers(List<Integer> computer) {
         String gameResultNumber = "";
 
         while (!(gameResultNumber.equals(GAME_WIN_CONDITIONS))) {
