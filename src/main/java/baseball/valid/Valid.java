@@ -42,5 +42,11 @@ public class Valid {
                 stack.push(c);
         }
     }
+
+    public static void validRestartNumber(String str){
+        if(str.equals("1") || str.equals("2")) return;
+
+        throw new IllegalArgumentException("1이나 2를 입력해야합니다");
+    }
     //endregion
 }
