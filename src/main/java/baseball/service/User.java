@@ -1,5 +1,7 @@
 package baseball.service;
 
+import static baseball.valid.Valid.*;
+
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
@@ -12,6 +14,12 @@ public class User {
      * @return User의 콘솔 입력
      */
     public String userInput(){
+        String userInput = Console.readLine();
+
+        validUserInputSize(userInput);
+        validUserInputNotNumber(userInput);
+        validDuplicateNumber(userInput);
+
         return Console.readLine();
     }
 
