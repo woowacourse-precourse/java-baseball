@@ -76,6 +76,15 @@ public class Application {
         }
     }
 
+    // 기능 목록 7 : 3스트라이크 일 경우, 게임 종료
+    static boolean threeStrike(int strike) {
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
 
 
 
@@ -83,5 +92,6 @@ public class Application {
         // TODO: 프로그램 구현
 
         startMessage();
+        List<Integer> computerNumber = makeThreeNumber();
     }
 }
