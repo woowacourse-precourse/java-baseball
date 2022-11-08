@@ -10,22 +10,32 @@ public class Comparison {
 
     public Comparison(List<Integer> computerNum, List<Integer> userNum) {
         this.computerNum = computerNum;
-        checkAnswer(userNum);
+        compareNum(userNum);
     }
 
-    void checkAnswer(List<Integer> userNum) {
-        if (computerNum.equals(userNum)) {
-            Message win = new Message();
-        } else {
-            checkSameNumber(userNum);
-            getMessage(userNum);
-        }
+    void compareNum(List<Integer> userNum) {
+        checkEqual(userNum);
+        compareDigits(userNum);
     }
 
     void checkSameNumber(List<Integer> userNum) {
         copyUserNum = new ArrayList<>(userNum);
         copyUserNum.retainAll(computerNum);
     }
+
+    void checkEqual(List<Integer> userNum){
+        if(computerNum.equals(userNum)) {
+            Message win = new Message();
+        }
+    }
+
+    void compareDigits(List<Integer> userNum){
+        if(!computerNum.equals(userNum)) {
+            checkSameNumber(userNum);
+            getMessage(userNum);
+        }
+    }
+
 
     void getMessage(List<Integer> userNum) {
         if (copyUserNum.isEmpty()) {
