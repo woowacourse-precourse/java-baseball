@@ -34,8 +34,10 @@
 > Array Size: 3
 1. 사용자에게 3자리 숫자를 입력받는다. (`String`)
 2. 플레이어가 올바른 값을 입력했는지 확인한다.
-3. 입력값(`String`)을 `char[]`로 바꾸고, 이를 통해 `ArrayList`를 생성한다.
-4. 생성한 `ArrayList`를 반환한다.
+   - 올바르지 않다면 `IllegalArgumentException`을 발생시킨다.
+3. 반환을 위한 `ArrayList<Integer>`를 생성한다.
+4. 입력값(`String`)을 통해 `ArrayList`를 초기화한다.
+5. 초기화한 `ArrayList`를 반환한다.
 
 ### 5. 플레이어가 올바른 값을 입력했는지 확인하는 기능
 > **Parameter**  

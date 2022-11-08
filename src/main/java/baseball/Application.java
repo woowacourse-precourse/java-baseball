@@ -49,7 +49,21 @@ public class Application {
     }
 
     private static ArrayList<Integer> getPlayerNumbers() {
-        return null;
+        String playerInput = Console.readLine();
+
+        if (!isValid(playerInput)) {
+            throw new IllegalArgumentException();
+        }
+
+        ArrayList<Integer> playerNumbers = new ArrayList<>();
+        for (int i = 0; i < playerInput.length(); i++) {
+            playerNumbers.add(playerInput.charAt(i) - '0');
+        }
+        return playerNumbers;
+    }
+
+    private static boolean isValid(String playerInput) {
+        return true;
     }
 
     private static ArrayList<Integer> calculateResults(
