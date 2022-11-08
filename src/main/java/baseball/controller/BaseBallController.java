@@ -52,8 +52,7 @@ public class BaseBallController {
 
     private void quitOrContinueGame() {
         printQuitAndChoiceMessage();
-        String input = Console.readLine();
-        continueOrQuit(input);
+        inputAndDecideQuitOrContinue();
     }
 
     private static void printQuitAndChoiceMessage() {
@@ -61,7 +60,13 @@ public class BaseBallController {
         InputView.printChoiceMessage();
     }
 
-    private void continueOrQuit(String input) {
+    private void inputAndDecideQuitOrContinue() {
+        String input = Console.readLine();
+        baseBallService.validateOneOrTwo(input);
+        quitOrContinue(input);
+    }
+
+    private void quitOrContinue(String input) {
         if (choiceContinue(input)) {
             gameStart();
         }

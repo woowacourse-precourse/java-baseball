@@ -13,6 +13,7 @@ public class InputValidator {
     public static final char ZERO = '0';
     public static final String NUMBER_REGEX = "^[0-9]+$";
     public static final String CANNOT_INPUT_EXCEPT_NUMBER = "입력은 숫자 이외의 다른 문자가 포함될 수 없습니다.";
+    public static final String INPUT_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
 
     private static Set<Character> duplicateChecker;
 
@@ -79,5 +80,17 @@ public class InputValidator {
 
     private static boolean validate() {
         return duplicateChecker.size() != MAX_BASEBALL_SIZE;
+    }
+
+    public static void validateOneOrTwo(String input) {
+        if (isOneOrTwo(input)) {
+            return;
+        }
+
+        throw new IllegalArgumentException(INPUT_ONE_OR_TWO);
+    }
+
+    private static boolean isOneOrTwo(String input) {
+        return input.equals("1") || input.equals("2");
     }
 }

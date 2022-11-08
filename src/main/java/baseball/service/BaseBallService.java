@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.model.BaseBall;
 import baseball.model.Score;
 import baseball.model.User;
+import baseball.util.InputValidator;
 
 import java.util.List;
 
@@ -19,5 +20,9 @@ public class BaseBallService {
     public Score compareAnswer(String input) {
         List<Integer> numbers = user.toList(input);
         return baseBall.compareAnswer(numbers);
+    }
+
+    public void validateOneOrTwo(String input) {
+        InputValidator.validateOneOrTwo(input);
     }
 }
