@@ -45,7 +45,6 @@ public class BaseballGame {
         }
     }
 
-    // inp
     private int checkBall(List<Integer> inputNumList) {
         List<Integer> checkBallNumList = new ArrayList<>();
         checkBallNumList.addAll(inputNumList);
