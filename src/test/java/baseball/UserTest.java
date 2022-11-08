@@ -26,4 +26,13 @@ class UserTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 번호가 있습니다.");
     }
+
+    @Test
+    void 숫자_갯수_입력_에러() {
+        User user = new User();
+        List<Integer> nums = List.of(1,2,3,4);
+        assertThatThrownBy(() -> user.createNums(nums, 3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자의 갯수가 올바르지 않습니다.");
+    }
 }
