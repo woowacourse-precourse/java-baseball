@@ -21,7 +21,7 @@ public class Checker {
             set.add(temp);
         }
 
-        return set.size() == 3;
+        return set.size() != 3;
     }
 
     public static boolean IsInvalidChoice(String user){
@@ -29,7 +29,7 @@ public class Checker {
             return true;
         }
 
-        return user.charAt(0) == '1' || user.charAt(0) == '2';
+        return user.charAt(0) != '1' && user.charAt(0) != '2';
     }
 
     public static int CompareUserInputWithAnswer(String user, String answer){
