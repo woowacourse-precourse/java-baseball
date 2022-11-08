@@ -1,4 +1,4 @@
-> ## Application 구현 Flow
+> ## Classes 설명
 >  > #### Computer Class  
 > > > 컴퓨터의 동작을 구현한 Class  
 > > > 1. 컴퓨터 입력 생성
@@ -18,3 +18,15 @@
 > > > - getStrikeNum() : 스트라이크 개수 세기
 > > > - getBallNum() : 볼 개수 세기
 > > > - checkSuccesssAndPrintResult() : 3진아웃인지를 확인 + 현재 상황 출력
+---
+> ## Application Flow
+> > ### Application.startGame() : 게임 스타트
+> >    1. Computer.generateTarget() : 타켓 값 생성
+> >    2. User.getUserInput() : 유저 입력 받기
+> >       - valid() : 입력 값 유효성 확인
+> >    3. Application.getStrikeNum() : 스트라이크 개수 확인
+> >    4. Application.getBallNum() : 볼 개수 세기
+> >    5. Application.checkSuccesssAndPrintResult() : 3진 아웃 확인 + 현재 상황 출력
+> >       - 3진 아웃이 아닌 경우 : 2번 Step으로 돌아가 과정 반복
+> >    6. 3진 아웃인 경우 1,2 중의 값을 입력을 받음
+> >       - 1인 경우 1번 Step으로 돌아가 과정 반복
