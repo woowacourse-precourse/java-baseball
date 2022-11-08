@@ -49,7 +49,14 @@ public class PlayerTest {
     @ParameterizedTest
     @DisplayName("플레이어가 게임 지속 여부에 대한 IllegalArgumentException 예외 테스트")
     @ValueSource(strings = {"12", "a", "b", "!", "#", "3"})
-    void testWithGameStatusData(String stringArg) {
+    void testWithGameStatusDataFail(String stringArg) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> check.validateGameStatusData(stringArg));
+    }
+
+    @ParameterizedTest
+    @DisplayName("플레이어가 게임 지속 여부에 대한 1또는 2 입력 테스트")
+    @ValueSource(strings = {"1", "2"})
+    void testWithGameStatusDataSuccess(String stringArg) {
+        assertThat(check.validateGameStatusData(stringArg)).isIn(1, 2);
     }
 }
