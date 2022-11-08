@@ -47,7 +47,7 @@ public class Score {
             return makeMessage(ball, ballMessage);
         }
 
-        return makeMessage(ball, ballMessage) + SPACE + makeMessage(strike, strikeMessage);
+        return makeBallAndStrikeMessage(ballMessage, strikeMessage);
     }
 
     private boolean isZeroScore() {
@@ -64,6 +64,10 @@ public class Score {
 
     private String makeMessage(int score, String message) {
         return score + message;
+    }
+
+    private String makeBallAndStrikeMessage(String ballMessage, String strikeMessage) {
+        return makeMessage(ball, ballMessage) + SPACE + makeMessage(strike, strikeMessage);
     }
 
     public boolean canContinue() {
