@@ -28,10 +28,10 @@
     - 주어진 숫자가 유효한지 검증하는 기능
     - 다른 SingleDigit객체와 동일한지 비교하는 기능
 
-## MultiDigitNumber
+## ThreeDigitNumber
 ### 게임에 사용되는 숫자"들"의 검증과 비교 기능을 제공하는 클래스
     - 주어진 숫자들이 유효한지 검증하는 기능
-    - 다른 MultiDigitNumber 객체와의 비교 결과를 반환하는 기능
+    - 다른 ThreeDigitNumber 객체와의 비교 결과를 반환하는 기능
 
 ## IOManager
 ### 입출력 관련 기능을 수행하는 클래스
@@ -48,7 +48,7 @@
     - 전체 게임 주기를 관리하는 기능
 
 ## NumberCompareResult -> 규칙이 변화하더라도, 데이터를 전달하는 형태는 크게 변하지 않을것으로 예상(List<List<String>>)
-### MultiDigitNumber 간의 비교 결과를 담고있는 컨테이너 클래스
+### ThreeDigitNumber 간의 비교 결과를 담고있는 컨테이너 클래스
     - 비교 결과를 문자열 형태로 바꾸어주는 기능
 
 ## IntentionOfContinuingGame
