@@ -37,4 +37,7 @@ public class Game {
     }
 
     // updateScore(): 볼 개수와 스트라이크 개수
+    private void updateScore(){
+        computer.countBallAndStrike(player.getPlayerNumbers(), score);
+    }
 }
