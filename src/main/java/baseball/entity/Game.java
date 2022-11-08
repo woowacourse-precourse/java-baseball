@@ -16,7 +16,7 @@ public class Game {
 
     // init(): Computer측 랜덤 숫자 생성
     public void init() {
-         Computer.createRandomNumber();
+        computer.createRandomNumber();
     }
 
     // start(): 상태가 진행중이면, run()을 반복해서 호출
