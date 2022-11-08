@@ -4,17 +4,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class BaseballPlay {
+public class BaseballGame {
     private Map<Swing, Integer> swingResult = new TreeMap<>();
 
     ComputerNumber computerNumber = new ComputerNumber(ComputerNumber.generateRandomNumberSet());
     List<BallNumber> computerNumbers = computerNumber.getGameNumberSet();
 
-    public void playBaseball(PlayerNumber playerNumber) {
-        playSwing(playerNumber);
+    public void startPlay() {
+        initSwingResult();
     }
 
-    public Map<Swing, Integer> playSwing(PlayerNumber playerNumber) {
+    public Map<Swing, Integer> playBaseball(PlayerNumber playerNumber) {
+        return playSwing(playerNumber);
+    }
+
+    private Map<Swing, Integer> playSwing(PlayerNumber playerNumber) {
         initSwingResult();
         compareWithComputerNumber(playerNumber);
         return swingResult;
@@ -54,5 +58,9 @@ public class BaseballPlay {
         for (Swing result : Swing.values()) {
             swingResult.put(result, 0);
         }
+    }
+
+    public Map<Swing, Integer> getSwingResult() {
+        return swingResult;
     }
 }
