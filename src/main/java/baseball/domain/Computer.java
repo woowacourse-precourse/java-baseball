@@ -57,14 +57,16 @@ public class Computer {
 
     public String printResult(List<Integer> ballStrikeList) {
         String result = "";
-        Player player = new Player();
+
         if (ballStrikeList.get(0) != 0) {
-            result += ballStrikeList.get(0) + "볼 ";
+            result += ballStrikeList.get(0) + "볼";
         }
         if (ballStrikeList.get(1) != 0) {
+            if (!result.equals("")) result += " ";
             result += ballStrikeList.get(1) + "스트라이크";
         }
         if (result.equals("")) result = "낫싱";
+
         return result;
     }
 
