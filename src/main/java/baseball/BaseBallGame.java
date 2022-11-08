@@ -48,10 +48,11 @@ public class BaseBallGame {
         boolean[] isExists = new boolean[10];
 
         for (int i = 0; i < number.length(); i++) {
-            if (isExists[number.charAt(i) - '0']) {
+            int currentIndex = number.charAt(i) - '0';
+            if (isExists[currentIndex]) {
                 throw new IllegalArgumentException("중복된 수가 입력되었습니다");
             }
-            isExists[number.charAt(i) - '0'] = true;
+            isExists[currentIndex] = true;
         }
 
         return matchAnswer(number);
