@@ -3,7 +3,6 @@ package baseball.service;
 import baseball.model.BaseBall;
 import baseball.model.Computer;
 import baseball.model.User;
-
 import java.util.List;
 
 public class BaseBallService {
