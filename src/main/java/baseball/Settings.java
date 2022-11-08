@@ -64,4 +64,9 @@ public class Settings {
         }
         return game;
     }
+    public static void exitMessage(int game){
+        if(game == 2){
+            System.out.println("프로그램이 종료됩니다.");
+        }
+    }
 }
