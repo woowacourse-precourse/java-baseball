@@ -56,4 +56,11 @@ public class Application {
             }
         }
     }
+
+    // 숫자야구에 적합한 수가 맞는지 검증하는 기능
+    public static void checkRightNumber(List<Integer> numbers) {
+        checkNumberSize(numbers);
+        checkNumberRange(numbers);
+        checkNumberDuplicate(numbers);
+    }
 }
