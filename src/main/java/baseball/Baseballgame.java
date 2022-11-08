@@ -57,6 +57,7 @@ public class Baseballgame {
         Com userBalls = null;
         while (userBalls == null) {
             String userInput = getUserInput();
+            validateUserInput(userInput);
 
             try {
                 userBalls = Com.stringToBalls(userInput);
@@ -67,6 +68,16 @@ public class Baseballgame {
             }
         }
         return userBalls;
+    }
+
+    private void validateUserInput(String userInput) {
+        if (checkUserInputLength(userInput)) {
+            throw new IllegalArgumentException("입력값의 길이가 잘못 되었습니다.");
+        }
+    }
+
+    private Boolean checkUserInputLength(String str) {
+        return str.length() != 3;
     }
 
     private String getUserInput() {
