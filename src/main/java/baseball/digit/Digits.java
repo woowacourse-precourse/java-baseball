@@ -27,7 +27,4 @@ public class Digits {
                 .orElse(ScoreStatus.NOTHING);
     }
 
-    public List<Digit> getDigitList() {
-        return digitList;
-    }
 }
