@@ -114,35 +114,41 @@ public class BaseBallGame {
     }
 
     private boolean checkBallType(){
-        boolean threeStrike;
+        boolean threeStrike = false;
+        List<String> playerResult = new ArrayList<>();
         Map<HitStatus, Integer> result = countHitStatus();
 
-        if(result.get(STRIKE) != 0){
-
+        if(result.get(STRIKE) != 0){ // 스트라이크가 1개이상 있음
+            playerResult.add(result.get(STRIKE) + STRIKE.getName());
+            if(result.get(STRIKE) == 3){
+                threeStrike = true;
+                playerResult.add("\n3개의 숫자을 모두 맞히셨습니다! 게임 종료");
+            }
         }
-        if(result.get(BALL) != 0){
-
+        if(result.get(BALL) != 0){ // 볼이 1개 이상 있음
+            playerResult.add(result.get(BALL) + BALL.getName());
         }
-        if(result.get(NOTHING) == 3){
-
+        if(result.get(NOTHING) == 3){ // 3자리 다 틀림
+            playerResult.add(NOTHING.getName());
         }
 
-        return true;
+        System.out.println();
+        return threeStrike;
     }
 
     private boolean judgeResult(){
         boolean continueGame;
-        if(checkBallType()){
+        if(checkBallType()){ // 3스트라이크일 경우
             boolean wantContinueGame = playerContinueGame();
-            if(wantContinueGame == true){
+            if(wantContinueGame == true){ // 게임 계속하길원함
                 continueGame = true;
                 initGame();
             }
-            else{
+            else{ // 게임 종료
                 continueGame = false;
             }
         }
-        else{
+        else{ // 3스트라이크가 아님
             continueGame = true;
         }
         return continueGame;
