@@ -23,11 +23,11 @@ public class BaseballController {
 
         boolean startFlag = true;
 
-        if (choice.equals("1")) {
+        if (choice.equals(InputView.RESTART_GAME_INPUT)) {
             baseBallService.resetGame();
         }
 
-        if (choice.equals("2")) {
+        if (choice.equals(InputView.EXIT_GAME_INPUT)) {
             startFlag = false;
         }
 
@@ -61,7 +61,7 @@ public class BaseballController {
     }
 
     public void validateRestart(String choice) throws IllegalArgumentException {
-        if (!choice.equals("1") && !choice.equals("2")) {
+        if (!choice.equals(InputView.RESTART_GAME_INPUT) && !choice.equals(InputView.EXIT_GAME_INPUT)) {
             throw new IllegalArgumentException("입력은 1 또는 2만 가능합니다.");
         }
     }
