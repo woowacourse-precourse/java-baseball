@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.Computer;
+import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -28,6 +29,21 @@ class ApplicationTest extends NsTest {
         assertThat(computer.getNumbers().size()).isEqualTo(3);
         computer.getNumbers().forEach(number ->
                 assertThat(number).isBetween(1, 9)
+        );
+    }
+
+    @Test
+    void 스트라이크_볼_상황_테스트() {
+        Game game = new Game();
+        game.initializeGame();
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("426");
+                    assertThat(game.getBallCount()).isEqualTo(1);
+                    assertThat(game.getStrikeCount()).isEqualTo(1);
+                },
+                1,4,6
         );
     }
 
