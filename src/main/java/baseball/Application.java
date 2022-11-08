@@ -47,4 +47,12 @@ public class Application {
             throw exception;
         }
     }
+    private static void checkInputOneOrTwo(String input){
+        int inputCode=0;
+        ableToParseInt(input);
+        inputCode = Integer.parseInt(input);
+        if (!(inputCode==1 || inputCode==2) ){
+            throw new IllegalArgumentException();
+        }
+    }
 }
