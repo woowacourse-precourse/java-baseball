@@ -11,7 +11,7 @@ import java.util.Map;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        playGame();
+        goGameOrStopGame(getEnemyNumber());
     }//public static void main
 
     public static List<Integer> getUserNumber() {
@@ -31,13 +31,18 @@ public class Application {
     }//public static void userNumber
 
     public static String exceptReadingLine(String readLine) {
+        if (readLine == null && readLine.isBlank()) {
+            throw new IllegalArgumentException("잘못된 입력. 시스템 종료");
+        }
         if (readLine.length() != 3) {
             throw new IllegalArgumentException("잘못된 입력. 시스템 종료");
         }
-        if (readLine.charAt(0) == readLine.charAt(1) || readLine.charAt(1) == readLine.charAt(2) || readLine.charAt(0) == readLine.charAt(2)) {
-            throw new IllegalArgumentException("잘못된 입력. 시스템 종료");
+        for (int i = 0; i < readLine.length(); i++) {
+            if (!Character.isDigit(readLine.charAt(i)) || readLine.charAt(i) == '0') {
+                throw new IllegalArgumentException("잘못된 입력. 시스템 종료");
+            }
         }
-        if (!readLine.matches("-?\\d+")) {
+        if (readLine.charAt(0) == readLine.charAt(1) || readLine.charAt(1) == readLine.charAt(2) || readLine.charAt(0) == readLine.charAt(2)) {
             throw new IllegalArgumentException("잘못된 입력. 시스템 종료");
         }
         return readLine;
@@ -90,7 +95,7 @@ public class Application {
         return 0;
     }//public static int compareUserWithEnemy
 
-    public static int goGameOrStopGame(List<Integer> enemyNumber) {
+    public static void goGameOrStopGame(List<Integer> enemyNumber) {
         int endNum = 0;
 
         while (endNum != 2) {
@@ -100,8 +105,6 @@ public class Application {
             }
             System.out.println();
         }
-        return endNum;
-    }//public static int goGameOrStopGame
-
+    }//public static void goGameOrStopGame
 
 }
