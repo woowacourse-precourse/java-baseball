@@ -4,6 +4,7 @@ import game.number.InputNumbers;
 
 public class User {
     InputNumbers threeNumbers;
+
     public User() {
         threeNumbers = new InputNumbers();
     }
