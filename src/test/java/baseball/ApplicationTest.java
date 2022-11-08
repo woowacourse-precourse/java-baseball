@@ -11,6 +11,28 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
+    @Nested
+    class CompareNumberTest {
+
+        @Test
+        void 숫자비교_테스트_스트라이크() {
+            int result = Application.compareNumber("356", 2, '6');
+            assertThat(result).isEqualTo(1);
+        }
+
+        @Test
+        void 숫자비교_테스트_볼() {
+            int result = Application.compareNumber("356", 1, '6');
+            assertThat(result).isEqualTo(2);
+        }
+
+        @Test
+        void 숫자비교_테스트_낫싱() {
+            int result = Application.compareNumber("356", 2, '1');
+            assertThat(result).isEqualTo(0);
+        }
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
