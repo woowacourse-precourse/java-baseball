@@ -8,6 +8,20 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while(true){
+            List<Integer> computer = initComputer();
+            int[] result;
+            do {
+                System.out.print("숫자를 입력해주세요 : ");
+                List<Integer> human = readGameStep();
+                result = match(computer, human);
+                printResult(result);
+            } while (result[1] != 3);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int restartFlag = readEndStep();
+            if(restartFlag == 2) break;
+        }
     }
 
     private static List<Integer> readGameStep(){
@@ -58,5 +72,22 @@ public class Application {
         if(result[0] == 0 && result[1] == 0) result[2] = 1;
 
         return result;
+    }
+
+    private static void printResult(int[] result){
+        if(result[1] == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }else if(result[2] == 1){
+            System.out.println("낫싱");
+        }else{
+            if(result[0] == 0){
+                System.out.println(result[1] + "스트라이크");
+            }else if(result[1] == 0){
+                System.out.println(result[0] + "볼");
+            }else{
+                System.out.println(result[0] + "볼 " + result[1] + "스트라이크");
+            }
+        }
     }
 }
