@@ -54,7 +54,7 @@ public class GameController {
         return wantRestartGame(answer);
     }
 
-    private boolean wantRestartGame(String answer) {
+    public boolean wantRestartGame(String answer) {
         if (answer.equals(BASEBALL_GAME_RESTART_ANSWER)) {
             return true;
         } else if (answer.equals(BASEBALL_GAME_END_ANSWER)) {
