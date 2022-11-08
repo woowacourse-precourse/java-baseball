@@ -1,14 +1,16 @@
 package baseball;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.mock;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.BDDMockito.times;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.BDDMockito.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 
 public class ViewTest {
@@ -30,7 +32,7 @@ public class ViewTest {
         assertEquals(actual, "457");
 
         then(view).should(times(1))
-                  .inputBaseballNumber();
+                .inputBaseballNumber();
 
     }
 
@@ -44,7 +46,7 @@ public class ViewTest {
         assertEquals(actual, "2");
 
         then(view).should(times(1))
-                  .inputExitOrRestart();
+                .inputExitOrRestart();
 
     }
 
@@ -61,7 +63,7 @@ public class ViewTest {
         testView.printBaseBallResult(baseBallDto);
 
         String actual = outputStreamCaptor.toString()
-                                          .trim();
+                .trim();
         //then
         assertEquals(actual, "1볼 2스트라이크");
 

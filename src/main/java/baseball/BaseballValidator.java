@@ -26,8 +26,8 @@ public class BaseballValidator {
     public static void hasDuplicateNumbers(String baseballNumber) {
 
         long count = Arrays.stream(baseballNumber.split(""))
-                           .distinct()
-                           .count();
+                .distinct()
+                .count();
         if (count != 3) {
             throw new IllegalArgumentException("서로 다른 정수를 입력해야 합니다.");
         }

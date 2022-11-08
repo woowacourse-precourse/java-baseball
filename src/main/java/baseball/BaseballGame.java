@@ -48,8 +48,8 @@ public class BaseballGame {
         String baseballNumber = view.inputBaseballNumber();
         BaseballValidator.validateBaseballNumber(baseballNumber);
         return Stream.of(baseballNumber.split(""))
-                     .map(Integer::parseInt)
-                     .collect(Collectors.toCollection(ArrayList::new));
+                .map(Integer::parseInt)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
 }

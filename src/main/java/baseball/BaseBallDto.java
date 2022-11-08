@@ -11,7 +11,7 @@ public class BaseBallDto {
     }
 
     public String getResult() {
-        if (strike==0&&ball==0){
+        if (strike == 0 && ball == 0) {
             return "낫싱";
         }
         if (strike == 0) {

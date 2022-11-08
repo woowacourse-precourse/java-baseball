@@ -21,8 +21,8 @@ public class BaseballService {
     private int getBall(List<Integer> userBaseballNumberList) {
         List<Integer> baseballNumberList = computerBaseball.getNumberList();
         return (int) userBaseballNumberList.stream()
-                                           .filter(baseballNumberList::contains)
-                                           .count();
+                .filter(baseballNumberList::contains)
+                .count();
     }
 
     private int getStrike(List<Integer> userBaseballNumberList) {

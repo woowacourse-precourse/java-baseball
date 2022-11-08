@@ -20,6 +20,7 @@ public class ComputerBaseball {
             }
         }
     }
+
     public List<Integer> getNumberList() {
         return numberList;
     }
