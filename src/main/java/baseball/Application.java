@@ -34,7 +34,6 @@ public class Application {
         }
     }
 
-    // 플레이어와 컴퓨터의 숫자를 비교해 결과를 리스트에 [스트라이크 수, 볼 수, miss 수] 담아 반환
     /**
      *  플레이어의 입력과 컴퓨터의 입력을 비교해 [스트라이크 수, 볼 수, miss 수]를 생성
      *
@@ -113,7 +112,21 @@ public class Application {
         }
     }
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean gameMode = true;
         List<Integer> computer = generateThreeDifferentNum();
-        String playerInput = Console.readLine();
+        List<Integer> score;
+        while(gameMode){
+            System.out.print("숫자를 입력해주세요 : ");
+            String playerInput = Console.readLine();
+            isDifferentThreeNum(playerInput);
+            score = processScore(computer, playerInput);
+            printScore(score);
+            if (isPlayerWon(score)) {
+                String gameModeInput = Console.readLine();
+                gameMode = isValidGameModeInput(gameModeInput);
+                computer = generateThreeDifferentNum();
+            }
+        }
     }
 }
