@@ -23,20 +23,20 @@ public class User {
         return inputValue;
     }
 
-    public static int startAndEnd(String userInput){
-        if (userInput.equals("1")) {
+    public int startAndEnd(String userInputNum){
+        if (userInputNum.equals("1")) {
                 return 1;
 
         }
 
-        else if(userInput.equals("2")){
+        else if(userInputNum.equals("2")){
                 return 2;
         }
 
         throw new IllegalArgumentException("예외처리");
     }
 
-    public static String restartGame(String userInput){
+    public  String restartGame(){
         return readLine();
     }
 

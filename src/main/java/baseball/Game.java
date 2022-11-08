@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.List;
 
+
+
 public class Game {
     Computer computer = new Computer();
     User user = new User();
@@ -58,30 +60,49 @@ public class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public void restartGame() {
+    public void restartGameV() {
         System.out.println("게임을 새로 시작하면 1, 종료하려면 2를 입력하세요");
     }
 
     public void allCorrect() {
 
 
+        List<Integer> computerInput = computer.computerNum();
+        System.out.println(computerInput);
+        String UserInput = user.userInput();
 
-            List<Integer> computerInput = computer.computerNum();
-            System.out.println(computerInput);
-            String UserInput = user.userInput();
-            String userIn = new String();
-            List<Integer> toUserInput = user.tolistUser(userIn);
-            System.out.println(toUserInput);
+        String userIn = new String();
+        List<Integer> toUserInput = user.tolistUser(userIn);
+//        System.out.println(toUserInput);
 
-            int toStrike = toStrike(toUserInput, computerInput);
-            int toBall = toBall(toUserInput, computerInput);
+        int toStrike = toStrike(toUserInput, computerInput);
+        int toBall = toBall(toUserInput, computerInput);
 
-            resultHint(toStrike, toBall);
+        resultHint(toStrike, toBall);
 
-            if (toStrike == 3) {
-                succesGame();
-
-            }
-
+        if (toStrike == 3) {
+            succesGame();
+        }
     }
+
+    public int validatorNumber(){
+
+        restartGameV();
+
+        String restartGame = user.restartGame();
+        String userInputNum = new String();
+        int startAndEnd = user.startAndEnd(userInputNum);
+
+        if(startAndEnd == 1){
+            System.out.println("게임 새로 시작합니다");
+
+        }
+        if(startAndEnd == 2){
+            System.out.println("게임 종료 합니다");
+            return 2;
+        }
+
+        return startAndEnd;
+    }
+
 }
