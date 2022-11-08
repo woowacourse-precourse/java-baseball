@@ -1,11 +1,20 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
 
     static class BaseBall {
 
-        public BaseBall() {
+        private static final int NUM_DIGIT = 3;
 
+        private int[] goalArr;
+        private int[] usageArr;
+
+        public BaseBall() {
+            goalArr = new int[NUM_DIGIT];
+            usageArr = new int[NUM_DIGIT];
         }
 
         public void game() {
@@ -23,6 +32,14 @@ public class Application {
 
         private void gamePrepare() {
             makeGoal();
+        }
+
+        private void makeGoal() {
+            for (int idx = 0; idx < NUM_DIGIT; idx++) {
+                int randomNum = makeNumber();
+                makeNumberOrder(randomNum);
+                makeNumberUsage(randomNum);
+            }
         }
     }
 
