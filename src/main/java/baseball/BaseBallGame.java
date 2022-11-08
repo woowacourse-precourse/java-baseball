@@ -52,7 +52,9 @@ class BaseBallGame {
     public void playing() throws IllegalArgumentException {
         boolean isSolved = false;
 
-        setComputerNumber(getRandomDiff3DigitNumber());
+        String randomNumber = getRandomDiff3DigitNumber();
+
+        setComputerNumber(randomNumber);
 
         while (!isSolved) {
             isSolved = solvingProblem(computerNumber);
