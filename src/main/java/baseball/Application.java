@@ -45,6 +45,9 @@ public class Application {
         if(!isNumber(input)) {
             return false;
         }
+        if (input.contains("0")) {
+            return false;
+        }
         Set<Integer> numberSet = new HashSet<>();
         int playerNumber =  Integer.parseInt(input);
         while(playerNumber!=0){
