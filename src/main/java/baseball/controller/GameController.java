@@ -1,20 +1,45 @@
 package baseball.controller;
 
-import baseball.model.ComputerNumber;
+import baseball.model.Computer;
 import baseball.view.InputView;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.OutputView;
 
 import java.util.ArrayList;
 
 public class GameController {
     private static InputView inputView = new InputView();
-    private static ComputerNumber computerNumber = new ComputerNumber();
+    private static OutputView outputView = new OutputView();
+    private static Computer computer = new Computer();
+    private static CompareNumbers compare = new CompareNumbers();
+    private static HandleException handleException = new HandleException();
 
     public void GameController() {
+        int strike = 0;
+
         inputView.GameStart();
-        ArrayList<Integer> computerNumber = new ComputerNumber().makeComputerNumber();
-        inputView.InputUserNum();
-        String userInputNum = Console.readLine();
-        ArrayList<Integer> UserNumList = new InputUserNumber().InputUserNumber(userInputNum);
+
+        while (true) {
+            ArrayList<Integer> computerNumber = computer.makeComputerNumber();
+            System.out.println(computerNumber);
+
+            while (true) {
+                strike = 0;
+                String userInputNum = inputView.InputUserNum();
+                ArrayList<Integer> UserNumList = new InputUserNumber().InputUserNumber(userInputNum);
+                strike = compare.compareNumbers(UserNumList, computerNumber);
+                if (strike == 3) {
+                    break;
+                }
+            }
+
+            outputView.printGameEnd();
+            int restartOrExit = Integer.parseInt(inputView.RestartOrExit());
+            handleException.handleRestartOrExitNumberException(restartOrExit);
+
+            if (restartOrExit == 2) {
+                break;
+            }
+        }
+
     }
 }
