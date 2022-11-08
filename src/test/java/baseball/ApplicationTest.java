@@ -34,6 +34,9 @@ class ApplicationTest extends NsTest {
             String expectedOutputWhenStartGame = "숫자 야구 게임을 시작합니다.";
             assertThat(actualOutputWhenStartGame).isEqualTo(actualOutputWhenStartGame);
         }
+    }
+    @Nested
+    class 게임준비기능_테스트 {
         @Test
         void 게임시작하면_설정되는_수가_3개인지_확인() {
             testGame.setComputerNumbers();
