@@ -13,7 +13,6 @@ public class Application {
         while (cont) {
             comparison = new int[2];
             computer = generateRandomNumbers();
-            printComputer(computer);
             while (comparison[1] < 3) {
                 guess = inputGuess();
                 comparison = compareGuessToComputer(guess, computer);
@@ -25,12 +24,6 @@ public class Application {
 
         }
 
-    }
-    static void printComputer(List<Integer> computer) {
-        for (int i = 0; i < computer.size(); i ++) {
-            System.out.print(computer.get(i));
-        }
-        System.out.println();
     }
     static List<Integer> generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
