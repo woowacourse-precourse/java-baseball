@@ -8,7 +8,7 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        PrintLine.startGame();
 
         String restartNumber;
 
@@ -16,39 +16,24 @@ public class Application {
             List<Integer> computerNumberList = createComputerNumberList();
             while (true) {
                 Map<String, Integer> scoreTable = createScoreTable();
-                System.out.print("숫자를 입력해주세요 : ");
+                PrintLine.putUserNumber();
                 String userNumber = Console.readLine();
                 List<Integer> userNumberList = Validation.validateUserNumber(userNumber);
 
 
                 matchLists(userNumberList, computerNumberList, scoreTable);
-                printResult(scoreTable);
+                PrintLine.printResult(scoreTable);
 
                 if (scoreTable.get("스트라이크") == 3) {
                     break;
                 }
             }
 
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            PrintLine.putRestartNumber();
             restartNumber = Console.readLine();
             Validation.validateRestartNumber(restartNumber);
         } while (restartNumber.equals("1"));
     }
-
-    private static void printResult(Map<String, Integer> scoreTable) {
-        if (scoreTable.get("스트라이크") == 0 && scoreTable.get("볼") == 0) {
-            System.out.print("낫싱");
-        }
-        if (scoreTable.get("볼") != 0) {
-            System.out.print(scoreTable.get("볼") + "볼 ");
-        }
-        if (scoreTable.get("스트라이크") != 0) {
-            System.out.print(scoreTable.get("스트라이크") + "스트라이크");
-        }
-        System.out.println();
-
-    }
-
 
     private static void matchLists(List<Integer> userNumberList, List<Integer> computerNumberList, Map<String, Integer> scoreTable) {
         for (Integer userNumber : userNumberList) {
