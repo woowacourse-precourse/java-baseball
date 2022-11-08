@@ -59,5 +59,9 @@ public class Inputer {
         return true;
     }
 
+    public void initInputer(){
+        this.flag = false;
+    }
+
 
 }
