@@ -17,7 +17,7 @@ public class Application {
             List<Integer> userInput = getUserInputNumber();
             while(compareUserNumberToComputers(userInput, computer)==1){
                 userInput = getUserInputNumber();
-            };
+            }
             isGameNotOver = isGameOver();
         }
 
@@ -41,6 +41,9 @@ public class Application {
         System.out.print("숫자를 입력해주세요 :");
         String userInput = readLine();
         List<Integer> userInputList = new ArrayList<>();
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
 
         for (int i = 0; i < userInput.length(); i++) {
             try{
@@ -102,11 +105,11 @@ public class Application {
         System.out.println();
     }
 
-    public static Integer isGameOver() throws IllegalArgumentException{
+    public static int isGameOver() throws IllegalArgumentException{
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = readLine();
-        Integer userInputNumber = 1;
+        int userInputNumber;
         if (userInput.length() != 1) {
             throw new IllegalArgumentException();
         }
