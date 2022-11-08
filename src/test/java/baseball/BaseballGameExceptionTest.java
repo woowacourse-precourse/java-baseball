@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.io.Input;
 import baseball.io.option.ReGameOption;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -45,7 +44,6 @@ public class BaseballGameExceptionTest extends NsTest {
 
     @Test
     void 게임_재시작_여부_입력_값에_잘못된_값이_들어가면_InputWrongReGameNumberException_예외_발생() {
-        Input input = new Input();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> ReGameOption.checkValidateOption("0"))
                         .isInstanceOf(IllegalArgumentException.class)
