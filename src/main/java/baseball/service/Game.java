@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.domain.Menu;
 import baseball.domain.Number;
 import baseball.domain.Numbers;
 import baseball.view.View;
@@ -18,6 +19,7 @@ public class Game {
     private static final String BLANK = "";
     private static final String SPACING = " ";
     private static final int INITIALIZE = 0;
+    private static final String THREE_STRIKE = "3스트라이크";
     private static final int EMPTY = 0;
 
     private Game() {
@@ -41,6 +43,11 @@ public class Game {
         Numbers player = new Numbers(getPlayerInput());
         compare(computer, player);
         View.printResult(RESULT.toString());
+        if (isThreeStrike()) {
+            end();
+            return;
+        }
+        play(computer);
     }
 
     private static List<Number> getPlayerInput() {
@@ -80,6 +87,24 @@ public class Game {
     private static void checkNothing() {
         if (RESULT.length() == EMPTY) {
             RESULT.append(NOTHING);
+        }
+    }
+
+    private static boolean isThreeStrike() {
+        return THREE_STRIKE.equals(RESULT.toString());
+    }
+
+    private static void end() {
+        View.printRight();
+        View.printEnd();
+        askToContinueGame();
+    }
+
+    private static void askToContinueGame() {
+        View.printMenu();
+        Menu menu = new Menu(Console.readLine());
+        if (menu.chooseRestart()) {
+            start();
         }
     }
 }
