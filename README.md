@@ -160,6 +160,33 @@ while (computer.size() < 3) {
 
 ## 기능 구현 목록
 
+### 순서도
+
+<details>
+    <summary>자세히 보기 </summary>
+
+### 전체 순서도
+
+<div style="text-align: center;">
+    <img src="https://k.kakaocdn.net/dn/cuPvdZ/btrQDFSw62b/PkUZkGg9yQoCO4tcvT3M0k/img.png" width="200">  <img src="https://k.kakaocdn.net/dn/lIIcG/btrQFZCBA7i/MgKyxEUQH3SMCNu1678Yi1/img.png" width="400">
+</div>
+
+### RandomNumberGenerator
+<div style="text-align: center";>
+    <img src="https://k.kakaocdn.net/dn/dSeV4f/btrQD9Z3FuN/IwKzA62SP2pYjMhDhDqvdk/img.png" width="200">
+</div>
+
+### HandleErrorForUserInput
+
+<div style="text-align: center";>
+    <img src="https://k.kakaocdn.net/dn/uK7P2/btrQJb3HFK4/afLnkwPek8qqGVpE2qJjFk/img.png" width="400">
+</div>
+
+### CountStrikesAndBalls
+<div style="text-align: center";>
+    <img src="https://k.kakaocdn.net/dn/cGLJ2G/btrQDvP2OiW/iXQVHukV9aohejVl183gz1/img.png" width="300">
+</div>
+</details>
 
 ### 각 모듈 별 기능과 상세 설명
 
