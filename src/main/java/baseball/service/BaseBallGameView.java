@@ -1,4 +1,4 @@
-package baseball;
+package baseball.service;
 
 public class BaseBallGameView {
     private static final String NOTHING = "낫싱";

@@ -1,5 +1,7 @@
-package baseball;
+package baseball.service;
 
+import baseball.model.BaseBallGameModel;
+import baseball.model.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
