@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.*;
 import static baseball.Function.*;
+import static baseball.Sentence.*;
 
 public class Computer {
     protected static List<Integer> Answer;
@@ -13,12 +14,12 @@ public class Computer {
     public static void resetAll(){
         Answer = new ArrayList<>();
         resetHintMap();
-        result = "";
+        result = BLANK;
     }
     public static void resetHintMap(){
         HintMap = new HashMap<>();
-        HintMap.put("스트라이크", 0);
-        HintMap.put("볼", 0);
+        HintMap.put(STRIKE, 0);
+        HintMap.put(BALL, 0);
     }
     public static void makeAnswer(){
         Answer = new ArrayList<>();
@@ -29,10 +30,10 @@ public class Computer {
 
     public static void isStrikeOrBall(int AnswerNum, int num){
         if(AnswerNum == num){
-            HintMap.replace("스트라이크", HintMap.get("스트라이크")+1);
+            HintMap.replace(STRIKE, HintMap.get(STRIKE)+1);
         }
         else{
-            HintMap.replace("볼", HintMap.get("볼")+1);
+            HintMap.replace(BALL, HintMap.get(BALL)+1);
         }
     }
 
@@ -49,21 +50,21 @@ public class Computer {
     }
 
     public static void giveHint(){
-        result = HintMap.get("볼") + "볼" + " " + HintMap.get("스트라이크") + "스트라이크";
-        if(HintMap.get("스트라이크") == 0){
-            result = HintMap.get("볼") + "볼";
+        result = HintMap.get(BALL) + BALL + SPACE + HintMap.get(STRIKE) + STRIKE;
+        if(HintMap.get(STRIKE) == 0){
+            result = HintMap.get(BALL) + BALL;
         }
-        if(HintMap.get("볼") == 0) {
-            result = HintMap.get("스트라이크") + "스트라이크";
+        if(HintMap.get(BALL) == 0) {
+            result = HintMap.get(STRIKE) + STRIKE;
         }
-        if(HintMap.get("스트라이크") == 0 && HintMap.get("볼") == 0) {
-            result = "낫싱";
+        if(HintMap.get(STRIKE) == 0 && HintMap.get(BALL) == 0) {
+            result = NOTHING;
         }
         System.out.println(result);
     }
 
     public static boolean is3Strike(){
-        if(HintMap.get("스트라이크") == 3){
+        if(HintMap.get(STRIKE) == 3){
             return true;
         }
         return false;

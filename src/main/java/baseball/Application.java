@@ -1,9 +1,8 @@
 package baseball;
 
-public class Application {
+import static baseball.Sentence.*;
 
-    public static String OK = "1";
-    public static String NO = "2";
+public class Application {
     public static void playBall (Computer computer, Player player){
         player.guessAnswer();
         computer.resetHintMap();
@@ -14,8 +13,8 @@ public class Application {
 
     public static void askRestart(Computer computer, Player player){
         if(computer.is3Strike()){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(CONGRATURATION_3STRIKE);
+            System.out.println(ASK_RESTART_OR_EXIT);
             player.responseRestart();
             decideRestart(computer, player);
         }
@@ -31,7 +30,7 @@ public class Application {
             playBall(computer, player);
         }
         else if(player.ResponseOfRestart.equals(NO)){
-            System.out.println("게임 종료");
+            System.out.println(GAMEOVER);
         }
     }
 
@@ -42,7 +41,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_GAME);
         Computer computer = new Computer();
         Player player = new Player();
         computer.makeAnswer();
