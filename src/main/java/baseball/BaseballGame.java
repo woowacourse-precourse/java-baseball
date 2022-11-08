@@ -11,6 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    public static List<Integer> initUserNumber() {
+        String userInput = requireUserNumber();
+        exceptionUserNumber(userInput);
+        List<Integer> userNumber = new ArrayList<>();
+        String[] splitStr = userInput.split("");
+        for (String s : splitStr) {
+            userNumber.add(Integer.valueOf(s));
+        }
+        return userNumber;
+    }
+
     public static String requireUserNumber() {
         System.out.print(Message.INPUT_MSG);
         String userNumber = Console.readLine();
