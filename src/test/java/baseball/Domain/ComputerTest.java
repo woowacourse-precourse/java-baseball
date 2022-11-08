@@ -15,7 +15,7 @@ public class ComputerTest {
     }
 
     @Test
-    public void 컴퓨터_숫자_생성_길이_테스트2(){ // 생성된 번호 리스트의 길이가 3인지
+    public void 컴퓨터_숫자_생성_길이_테스트2(){
         com.makeRandomNumbers();
         assertEquals(com.getGameNumbers().size(), NumberGenerator.GAME_NUM_LENGTH);
     }
