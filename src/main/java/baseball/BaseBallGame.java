@@ -5,6 +5,7 @@ import java.util.*;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static baseball.GameStatus.*;
 import static baseball.HitStatus.*;
 import static baseball.Validation.validate;
 
@@ -38,7 +39,7 @@ public class BaseBallGame {
     }
 
     private void initPlayerInput(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String number = Console.readLine();
         validate(number);
 
@@ -91,7 +92,7 @@ public class BaseBallGame {
         Map<HitStatus, Integer> result = new HashMap<>();
         result.put(STRIKE, strike);
         result.put(BALL, ball);
-        result.put(NOTHING,nothing);
+        result.put(NOTHING, nothing);
         return result;
     }
 
@@ -100,10 +101,10 @@ public class BaseBallGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String playerInput = Console.readLine();
 
-        if(playerInput.contains("1")){
+        if(playerInput.equals(START.getCode())){
             continueGame = true;
         }
-        else if(playerInput.contains("2")){
+        else if(playerInput.equals(END.getCode())){
             continueGame = false;
         }
         else{
@@ -118,6 +119,10 @@ public class BaseBallGame {
         List<String> playerResult = new ArrayList<>();
         Map<HitStatus, Integer> result = countHitStatus();
 
+        if(result.get(BALL) != 0){ // 볼이 1개 이상 있음
+            playerResult.add(result.get(BALL) + BALL.getName());
+        }
+
         if(result.get(STRIKE) != 0){ // 스트라이크가 1개이상 있음
             playerResult.add(result.get(STRIKE) + STRIKE.getName());
             if(result.get(STRIKE) == 3){
@@ -125,20 +130,19 @@ public class BaseBallGame {
                 playerResult.add("\n3개의 숫자을 모두 맞히셨습니다! 게임 종료");
             }
         }
-        if(result.get(BALL) != 0){ // 볼이 1개 이상 있음
-            playerResult.add(result.get(BALL) + BALL.getName());
-        }
+
         if(result.get(NOTHING) == 3){ // 3자리 다 틀림
             playerResult.add(NOTHING.getName());
         }
 
-        System.out.println();
+        System.out.println(String.join(" ", playerResult));
         return threeStrike;
     }
 
     private boolean judgeResult(){
         boolean continueGame;
-        if(checkBallType()){ // 3스트라이크일 경우
+        boolean isThreeStrike = checkBallType();
+        if(isThreeStrike){ // 3스트라이크일 경우
             boolean wantContinueGame = playerContinueGame();
             if(wantContinueGame == true){ // 게임 계속하길원함
                 continueGame = true;

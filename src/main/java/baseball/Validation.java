@@ -23,7 +23,7 @@ public class Validation {
 
     private static boolean isNotOverlap(String number){
         Set<Character> ch = new HashSet<>();
-        for(int i = 0; i < number.length(); i++){
+        for(int i = 0; i < 3; i++){
             ch.add(number.charAt(i));
         }
         if(ch.size() != 3){
