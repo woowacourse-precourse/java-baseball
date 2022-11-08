@@ -6,18 +6,18 @@ import java.util.List;
 
 public class Number {
     private static Number number;
-    private final List<ComputerNumber> database = new ArrayList<>();
+    private static final List<ComputerNumber> database = new ArrayList<>();
 
     private Number() {
 
     }
 
     public static Number getInstance() {
-        if (Number.number == null) {
-            Number.number = new Number();
+        if (number == null) {
+            number = new Number();
         }
 
-        return Number.number;
+        return number;
     }
 
     public boolean insert(ComputerNumber computerNumber) {
