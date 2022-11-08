@@ -1,4 +1,5 @@
-## Woowacourse - Precourse Week 2
+# Joo seong jin (NotableDeveloper)
+# Woowacourse - Precourse Week 2 (Web Backend) 
 
 ### 목표 기능 사항
 
