@@ -169,7 +169,17 @@ public class Application {
 
 
     public static boolean askNewGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         boolean newGame = false;
+
+        String input = Console.readLine();
+
+        if (input.equals("1")) {
+            newGame = true;
+        } else if (!input.equals("2")) {
+            IllegalArgumentException e = new IllegalArgumentException();
+            throw e;
+        }
 
         return newGame;
     }
