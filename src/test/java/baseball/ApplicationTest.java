@@ -7,8 +7,59 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static baseball.Application.getResult;
+import static baseball.Application.validateUserNumbers;
 
 class ApplicationTest extends NsTest {
+    @Test
+    void 숫자_결과_테스트() {
+        String answer = "723";
+        String case1 = "723";
+        String case2 = "327";
+        String case3 = "192";
+        String case4 = "946";
+
+        String resultCase1 = getResult(answer, case1);
+        String resultCase2 = getResult(answer, case2);
+        String resultCase3 = getResult(answer, case3);
+        String resultCase4 = getResult(answer, case4);
+
+        assertThat(resultCase1).isEqualTo("3스트라이크");
+        assertThat(resultCase2).isEqualTo("2볼 1스트라이크");
+        assertThat(resultCase3).isEqualTo("1볼");
+        assertThat(resultCase4).isEqualTo("낫싱");
+    }
+
+    @Test
+    void 숫자_검증_테스트() {
+        assertThatThrownBy(() -> validateUserNumbers("333"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 중복된 숫자가 입력되었습니다.");
+
+        assertThatThrownBy(() -> validateUserNumbers("4315"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 입력된 문자열의 길이가 3이 아닙니다.");
+
+        assertThatThrownBy(() -> validateUserNumbers("012"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 1 ~ 9 범위 이외의 문자가 입력되었습니다.");
+
+        assertThatThrownBy(() -> validateUserNumbers("34"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 입력된 문자열의 길이가 3이 아닙니다.");
+
+        assertThatThrownBy(() -> validateUserNumbers("abc"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 1 ~ 9 범위 이외의 문자가 입력되었습니다.");
+
+        assertThatThrownBy(() -> validateUserNumbers("우테코"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다. 1 ~ 9 범위 이외의 문자가 입력되었습니다.");
+
+        validateUserNumbers("123");
+        validateUserNumbers("465");
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -24,6 +75,22 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_중복숫자_입력() {
+        assertSimpleTest(
+                () -> assertThatThrownBy(() -> runException("133"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_다른문자_입력() {
+        assertSimpleTest(
+                () -> assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
