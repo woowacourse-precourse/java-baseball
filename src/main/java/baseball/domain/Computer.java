@@ -11,10 +11,10 @@ public class Computer {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String checkContinue = Console.readLine();
-        if (checkContinue == "1") {
+        if (checkContinue.equals("1")) {
             playGame();
         }
-        else if (checkContinue == "2") {
+        else if (checkContinue.equals("2")) {
             System.out.println("게임 종료");
         }
         else {
@@ -23,7 +23,23 @@ public class Computer {
     }
 
     public void playGame() {
+        List<Integer> computerNumberList = selectNumbers();
 
+        Player player = new Player();
+        String result = "";
+
+        while (!result.equals("3스트라이크")) {
+            String playerInput = player.getInput();
+            List<Integer> playerNumberList = player.StringToList(playerInput);
+
+            int sameNumbersCnt = checkSameNumbersCount(computerNumberList, playerNumberList);
+            int sameNumberOfDigit = checkSameNumberOfDigit(computerNumberList, playerNumberList);
+            List<Integer> ballStrikeList = getBallStrikeList(sameNumbersCnt, sameNumberOfDigit);
+            result = printResult(ballStrikeList);
+            System.out.println(result);
+        }
+
+        continueOrQuit();
     }
 
     public List<Integer> selectNumbers() {
@@ -39,15 +55,16 @@ public class Computer {
         return selectNumberList;
     }
 
-    public String printResult(List<Integer> strikeBallList) {
+    public String printResult(List<Integer> ballStrikeList) {
         String result = "";
         Player player = new Player();
-        if (strikeBallList.get(0) != 0) {
-            result += strikeBallList.get(0) + "볼 ";
+        if (ballStrikeList.get(0) != 0) {
+            result += ballStrikeList.get(0) + "볼 ";
         }
-        if (strikeBallList.get(1) != 0) {
-            result += strikeBallList.get(1) + "스트라이크";
+        if (ballStrikeList.get(1) != 0) {
+            result += ballStrikeList.get(1) + "스트라이크";
         }
+        if (result.equals("")) result = "낫싱";
         return result;
     }
 
