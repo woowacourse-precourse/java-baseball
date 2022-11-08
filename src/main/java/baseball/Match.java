@@ -47,15 +47,19 @@ class Match {
 			restartOrEnd = Integer.parseInt(Console.readLine());
 
 			if (restartOrEnd != 1 && restartOrEnd != 2) throw new IllegalArgumentException("숫자 1 혹은 2만 입력해주세요");
-		} else if (strike > 0 || ball > 0) {
+		}
+		else if (strike > 0 || ball > 0) {
 			if (strike == 0) {
 				System.out.println(ball + "볼");
-			} else if (ball == 0) {
+			}
+			else if (ball == 0) {
 				System.out.println(strike + "스트라이크");
-			} else {
+			}
+			else if (strike > 0 && ball > 0) {
 				System.out.println(ball + "볼 " + strike + "스트라이크");
 			}
-		} else {
+		}
+		else if (strike==0 && ball==0) {
 			System.out.println("낫싱");
 		}
 		return restartOrEnd;
