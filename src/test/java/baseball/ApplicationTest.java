@@ -44,6 +44,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 추가_예외_테스트_문자만_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("한글"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
