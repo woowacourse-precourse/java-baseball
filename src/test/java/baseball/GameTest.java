@@ -1,6 +1,7 @@
 package baseball;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -20,7 +21,7 @@ public class GameTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Game game = Game.getGame();
+        Game game = new Game();
         boolean replayGame = game.replayGame();
 
         assertThat(replayGame).isEqualTo(isReplay);
@@ -33,10 +34,15 @@ public class GameTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Game game = Game.getGame();
+        Game game = new Game();
 
         assertThatThrownBy(() -> game.replayGame())
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Nested
+    class GameFixedComputer extends Computer {
+
     }
 
 }

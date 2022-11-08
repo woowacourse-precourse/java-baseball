@@ -3,9 +3,9 @@ package baseball;
 public class Application {
     public static void main(String[] args) {
 
-        Game game = Game.getGame();
-        Computer computer = Computer.getComputer();
-        User user = User.getUser();
+        Game game = new Game();
+        Computer computer = new Computer();
+        User user = new User();
 
         game.turnOnGame(computer, user);
 

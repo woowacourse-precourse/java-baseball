@@ -6,18 +6,9 @@ public class Round {
 
     private final int COUNT_NUMBER = 3;
 
-    private static Round instance;
-
     private Hints hints;
 
-    private Round() {}
-
-    public static Round getRound() {
-        if (instance == null){
-            instance = new Round();
-        }
-        return instance;
-    }
+    public Round() {}
 
     public void startNewRound(User user, Computer computer)  {
         Print.printRoundStart();

@@ -10,7 +10,8 @@ public class ComputerTest {
     @DisplayName(value = "컴퓨터 난수 생성 테스트")
     @Test
     void computerConstructorTest() throws Exception {
-        Computer computer = Computer.getComputer();
+        Computer computer = new Computer();
+        computer.pickRandomNumbers();
 
         for (int i = 0; i < 3; i++) {
             Number computerNumber = computer.findComputerNumber(i);
@@ -21,7 +22,7 @@ public class ComputerTest {
     @DisplayName(value = "컴퓨터 난수 중복 테스트")
     @Test
     void computerDuplicateNumber() throws Exception {
-        Computer computer = Computer.getComputer();
+        Computer computer = new Computer();
 
         for (int i = 0; i < 10000; i++) {
             computer.pickRandomNumbers();

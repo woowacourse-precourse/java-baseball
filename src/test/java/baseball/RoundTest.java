@@ -30,7 +30,7 @@ public class RoundTest {
 
     @BeforeAll
     static void beforeAll() {
-        computer = Computer.getComputer();
+        computer = new Computer();
         computer.pickRandomNumbers();
         //컴퓨터가 선택한 숫자
         computerNumbers = 0;
@@ -49,12 +49,12 @@ public class RoundTest {
             }
         }
 
-        user = User.getUser();
+        user = new User();
     }
 
     @BeforeEach
     void beforeEach() {
-        round = Round.getRound();
+        round = new Round();
     }
 
     @DisplayName(value = "라운드 시작 시 입력 숫자 Numbers에 담기는지 테스트")

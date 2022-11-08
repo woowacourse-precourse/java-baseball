@@ -10,7 +10,6 @@
 3. Numbers 클래스
    1. 1게임에서 진행하는 3개의 Number List를 담는 클래스
    2. 1게임 당 3자리의 숫자가 입력되어야 함
-   3. 
 4. 게임을 계속할 지 나타내는 숫자를 받는 Continue 클래스 구현
    1. 1, 2만 입력하도록 검증
 
@@ -34,3 +33,7 @@
 3. Computer 클래스
    1. 컴퓨터가 고른 3개의 Number를 List로 담고있는 클래스
    2. 매 게임이 시작할 때 새로운 List를 만드는 기능
+
+---
+## 클래스 다이어그램
+![class_diagram](https://user-images.githubusercontent.com/79090478/200528976-36341644-b140-4d23-a46d-28c6c2e3f68a.png)

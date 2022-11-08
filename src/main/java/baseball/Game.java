@@ -2,25 +2,16 @@ package baseball;
 
 public class Game {
 
-    private static Game instance;
-
     private Computer computer;
     private User user;
     private Round round;
 
-    private Game() {}
-
-    public static Game getGame() {
-        if (instance == null) {
-            instance = new Game();
-        }
-        return instance;
-    }
+    public Game() {}
 
     public void turnOnGame(Computer computer, User user) {
         this.computer = computer;
         this.user = user;
-        this.round = Round.getRound();
+        this.round = new Round();
         Print.printGameStart();
     }
 
