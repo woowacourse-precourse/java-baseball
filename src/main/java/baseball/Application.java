@@ -68,12 +68,12 @@ public class Application {
             else if (com.contains(user.get(i)))
                 ballCount++;
         }
-        BallStrike(ballCount, strikeCount);
+        BallStrikeNothing(ballCount, strikeCount);
 
         return strikeCount;
     }
 
-    public static void BallStrike(int ballCount, int strikeCount) {
+    public static void BallStrikeNothing(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0)
             System.out.println("낫싱");
         else if (ballCount != 0 && strikeCount != 0)
