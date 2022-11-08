@@ -15,6 +15,7 @@ public class Application {
 
         List<Integer> computer = makeComputer();
         List<Integer> user = inputNumber();
+        checkAnswer(computer, user);
     }
 
     public static List<Integer> makeComputer(){
@@ -62,5 +63,45 @@ public class Application {
             }
             hs.add(c);
         }
+    }
+    public static void checkAnswer(List<Integer> computer, List<Integer> user){
+        int ball = 0;
+        int strike = 0;
+
+        for(int i = 0; i<user.size(); i++){
+            int num = user.get(i);
+
+            if(computer.indexOf(num) == i){
+                strike++;
+                continue;
+            }
+            if(computer.contains(num)){
+                ball++;
+            }
+        }
+        printResult(ball, strike);
+
+        if(strike == 3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+    }
+    public static void printResult(int ball, int strike){
+        StringBuilder sb = new StringBuilder();
+
+        if(ball == 0 && strike == 0){
+            System.out.println("낫싱");
+            return;
+        }
+        if(ball > 0){
+            sb.append(ball + "볼");
+        }
+        if(ball * strike > 0){
+            sb.append(" ");
+        }
+        if(strike > 0){
+            sb.append(strike + "스트라이크");
+        }
+        System.out.println(sb.toString());
     }
 }
