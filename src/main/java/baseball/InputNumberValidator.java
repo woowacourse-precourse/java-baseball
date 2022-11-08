@@ -14,6 +14,9 @@ public class InputNumberValidator {
 
 
 
+    public static boolean restartOrEndNumberCheck(String inputNumber){
+        return inputNumber.equals("1") || inputNumber.equals("2");
+    }
     public static boolean StringIndexOutOfRange(String inputNumber){
         return inputNumber.length() == 3;
     }
