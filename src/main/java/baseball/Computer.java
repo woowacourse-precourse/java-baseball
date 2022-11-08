@@ -20,9 +20,9 @@ public class Computer {
     }
 
     public void init() {
-        while (isValidateNumber(computerNumbers)) {
+        do {
             generateNumbers();
-        }
+        }while(!isValidateNumber(computerNumbers));
     }
 
     private void generateNumbers() {

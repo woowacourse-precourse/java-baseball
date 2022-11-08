@@ -9,8 +9,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Game {
     private int strike;
     private int ball;
-    private int success = 0;
-
     public Computer computer;
 
     public Game(Computer computer) {
@@ -39,6 +37,7 @@ public class Game {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (strike < 3) {
+            System.out.println("정답 : " +computer.getComputerNumbers());
             System.out.print("숫자를 입력해 주세요 : ");
             userInput = readLine();
             validateUserInput(userInput);
@@ -53,6 +52,7 @@ public class Game {
             gameMessage();
             System.out.print("\n");
         }
+        successMessage();
     }
 
     private List<Integer> stringToIntegerList(String userInput) {
@@ -138,4 +138,7 @@ public class Game {
         System.out.println(sb.toString());
     }
 
+    public void successMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
