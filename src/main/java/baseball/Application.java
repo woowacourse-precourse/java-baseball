@@ -13,6 +13,8 @@ public class Application{
     	int strikeCount = 0;
     	String keepGoing = "1";
     	
+    	System.out.println(answer);
+    	
     	System.out.println("숫자 야구 게임을 시작합니다.");
     	
     	while(keepGoing.equals("1")) {
@@ -36,7 +38,7 @@ public class Application{
     	
     	uniqueNumberList = Randoms.pickUniqueNumbersInRange(1,9,9);
     	
-    	for(int i=0;i<uniqueNumberList.size();i++) {
+    	for(int i=0;i<3;i++) {
     		result += uniqueNumberList.get(i);
     	}
     	
