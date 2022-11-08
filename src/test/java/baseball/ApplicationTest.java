@@ -43,7 +43,6 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 사용자의_수_입력_시_입력이_올바르지_않을_경우() {
-
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
