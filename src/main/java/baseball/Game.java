@@ -140,8 +140,27 @@ public class Game {
 
     }
 
-    public void endGame(){
+    public Integer confirmRestart(){
+        int input = Integer.parseInt(readLine());
+        if(input != 1 && input != 2){
+            throw new IllegalArgumentException("1 혹은 2 이외의 값이 입력되었습니다.");
+        }
 
+        return input;
+    }
+
+    public void restart(){
+        System.out.println(restartMessage);
+        state = confirmRestart();
+    }
+
+    public void printEndMessage(){
+        System.out.println(endMessage);
+    }
+
+    public void endGame(){
+        printEndMessage();
+        restart();
     }
 
 }
