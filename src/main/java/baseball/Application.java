@@ -21,9 +21,7 @@ public class Application {
 
         while (!game.isEnd(input)) {
             input = Console.readLine();
-            if (InputCheck.isInputError(input)) {
-                throw new IllegalArgumentException("입력오류");
-            }
+            Validation.validateBaseballInput(input);
             game.play(input);
         }
     }
@@ -33,9 +31,7 @@ public class Application {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         input = Console.readLine();
-        if (InputCheck.isEndInputError(input)) {
-            throw new IllegalArgumentException("입력오류");
-        }
+        Validation.validateResetInput(input);
 
         return Integer.parseInt(input);
     }

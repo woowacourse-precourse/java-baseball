@@ -1,8 +1,10 @@
 package baseball;
 
 public class Validation {
-    public static boolean isInputError(String input) {
-        return (input.length() != 3) || hasNonDigit(input) || hasSameNumber(input);
+    public static void validateBaseballInput(String input) {
+        if ((input.length() != 3) || hasNonDigit(input) || hasSameNumber(input)) {
+            throw new IllegalArgumentException("입력오류");
+        }
     }
 
     public static boolean hasNonDigit(String input) {
@@ -26,10 +28,9 @@ public class Validation {
         return (c1 == c2) || (c1 == c3) || (c2 == c3);
     }
 
-    public static boolean isEndInputError(String input) {
-        if (input.equals("1") || input.equals("2")) {
-            return false;
+    public static void validateResetInput(String input) {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("입력오류");
         }
-        return true;
     }
 }
