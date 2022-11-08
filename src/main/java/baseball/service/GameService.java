@@ -36,12 +36,10 @@ public class GameService {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String selectNumber = Console.readLine();
 
-        RANDOMBALL.clear();
-        userball.clear();
-        strike = 0;
-        ball = 0;
-
-        if(Integer.valueOf(selectNumber)==1) PlayGameController.run();
+        if(Integer.valueOf(selectNumber)==1) {
+            initData();
+            PlayGameController.run();
+        }
         if(Integer.valueOf(selectNumber)==2) System.out.println("게임 종료");
     }
     public static void checkInput() {
@@ -92,6 +90,9 @@ public class GameService {
     private static void initData(){
         strike = 0;
         ball = 0;
+        errorcheck = 0;
+        RANDOMBALL.clear();
+        userball.clear();
     }
     public static void checkStrike(){
         int prevstrike = strike;
