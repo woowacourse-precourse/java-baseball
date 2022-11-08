@@ -153,3 +153,16 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+기능 목록
+
+main문: 전체적인 flow를 담음.
+
+fun_computer(): 컴퓨터에게 랜덤 값으로 임의의 3자리 숫자를 줌.
+
+fun_getUser(): 유저가 입력한 3자리 숫자가 조건에 부합한지 확인한다. (조건: 서로 다른 숫자로 이루어진 3자리 숫자)
+
+fun_playgame(): 게임이 진행되면서 strike와 ball의 횟수를 count해주는 함수임.
+
+fun_score(): 앞서 playgame()함수에서 count한 strike와 ball의 횟수를 이용해 점수를 알려주는 함수임.
