@@ -41,7 +41,7 @@
 
 ## 기능
 
-- [ ] 게임 시작 관련 메세지 출력 `gameStart` 
+- [x] 게임 시작 관련 메세지 출력 `gameStart` 
 - [x] 컴퓨터의 숫자를 랜덤으로 선택하는 메서드 `setComputersRandomAnswer`
     - [x] 리스트 안에 들어 있는 숫자를 제외한 숫자 중에서 랜덤으로 숫자를 리턴하는 메서드 `getRandomIntegerExcludeInList`
 - [x] 게임에서 사용자의 입력을 받는 메서드 `getUserPredictedAnswer`
