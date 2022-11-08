@@ -12,6 +12,7 @@ public class JudgePitchingResult {
         this.strike = 0;
     }
 
+
     // 입력 정수값을 각 자리로 나누는 함수
     private List<Integer> changeStringToIntegerList(String inputString) {
         List<Integer> integerList = new ArrayList<>();
@@ -23,5 +24,4 @@ public class JudgePitchingResult {
         }
         return integerList;
     }
-
 }
