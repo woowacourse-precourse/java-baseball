@@ -18,13 +18,13 @@ public class ConcreteCreatorBaseBall extends GameCreator {
             System.out.print("숫자를 입력해주세요 : ");
             input = userInput.getInput();
             game.startGame(randomNumber, input);
-        }while(!input.equals(randomNumber));
+        } while (!input.equals(randomNumber));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
         }
     public void startGame() throws IOException {
         createGame();
         CreateBaseBall game = new CreateBaseBall();
-        if(!game.endGame()){
+        if (!game.endGame()){
             startGame();
         }
         System.out.println("게임 종료");

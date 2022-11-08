@@ -8,6 +8,7 @@ public class BaseBallInput implements UserInput{
         Validator.validate(input);
         return input;
     }
+
     public int getEndGameInput(){
         return Integer.parseInt(Console.readLine());
     }

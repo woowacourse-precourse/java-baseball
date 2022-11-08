@@ -17,7 +17,7 @@ public class CreateBaseBall implements Game {
         Refree.compareToUserInput(randomNumber, input);
     }
 
-    public UserInput getUserInputInput(){
+    public UserInput getUserInputInput() {
         return new BaseBallInput();
     }
 
@@ -33,7 +33,7 @@ public class CreateBaseBall implements Game {
         Validator.validate(input);
     }
 
-    public String generateRandomNumber(){
+    public String generateRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -44,9 +44,9 @@ public class CreateBaseBall implements Game {
         return translateIntegerToString(computer);
     }
 
-    private String translateIntegerToString(List<Integer> number){
+    private String translateIntegerToString(List<Integer> number) {
         StringBuilder bld = new StringBuilder();
-        for(Integer s : number){
+        for (Integer s : number) {
             bld.append(String.valueOf(s));
         }
         return bld.toString();
