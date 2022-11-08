@@ -13,22 +13,28 @@ public class Application {
         GenerateRandNumber generateNumber = new GenerateRandNumber();
         List<Integer> correctRandNumber = generateNumber.arrayNum();
 
-        boolean gameStatus = true;
-        while (gameStatus) {
+        boolean reGameStatus = true;
+        while (reGameStatus) {
+            boolean gameStatus = true;
+            while (gameStatus) {
 
-            GetUserNumber userInput = new GetUserNumber();
-            String userRandNumber = userInput.inputUserNumber();
+                GetUserNumber userInput = new GetUserNumber();
+                String userRandNumber = userInput.inputUserNumber();
 
-            CalcCount countResult = new CalcCount();
-            List<Integer> countStrBallList= countResult.CountStrike(userRandNumber, correctRandNumber);
+                CalcCount countResult = new CalcCount();
+                List<Integer> countStrBallList= countResult.CountStrike(userRandNumber, correctRandNumber);
 
-            //결과 출력
-            System.out.println(countStrBallList.get(0) + "볼 " + countStrBallList.get(1) + "스트라이크");
+                //결과 출력
+                System.out.println(countStrBallList.get(0) + "볼 " + countStrBallList.get(1) + "스트라이크");
 
-            IsRerun checkStatus = new IsRerun();
-            boolean isTrue = checkStatus.isFalse(gameStatus, countStrBallList);
-            gameStatus = isTrue;
+                IsRerun checkStatus = new IsRerun();
+                boolean isTrue = checkStatus.isFalse(gameStatus, countStrBallList);
+                gameStatus = isTrue;
 
+            }
+            GameAgain gameAgain = new GameAgain();
+            boolean reGame = gameAgain.isAgain();
+            reGameStatus = reGame;
         }
     }
 }
