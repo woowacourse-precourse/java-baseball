@@ -95,5 +95,16 @@ public class Application {
         return ballAndStrike;
     }
 
+
+    public static void printResult(List<Integer> ballAndStrike){
+        int ballNum = ballAndStrike.get(0);
+        int strikeNum = ballAndStrike.get(1);
+
+        if( ballNum == 0 && strikeNum ==0) System.out.println("낫싱");
+        else if(ballNum != 0 && strikeNum == 0) System.out.println(ballNum+"볼\n");
+        else if(ballNum == 0 && strikeNum != 0) System.out.println(strikeNum+"스트라이크\n");
+        else System.out.println(ballNum+"볼 "+ strikeNum+"스트라이크");
+    }
+
     
 }
