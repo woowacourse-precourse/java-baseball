@@ -72,4 +72,8 @@ public class Referee {
         }
         return ball + BALL + " " + strike + STRIKE;
     }
+
+    public boolean isThreeStrike(String judgement) {
+        return (judgement == THREE_STRIKE);
+    }
 }

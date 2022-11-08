@@ -41,7 +41,7 @@ public class Application {
             String judgement = referee.judge(userInput, answer);
             gameOutput.printResult(judgement);
 
-            if (judgement == Referee.THREE_STRIKE) {
+            if (referee.isThreeStrike(judgement)) {
                 gameOutput.printGameEndInfo();
                 isContinue = isFinishGame();
             }
