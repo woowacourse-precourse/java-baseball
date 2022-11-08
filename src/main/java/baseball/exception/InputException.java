@@ -4,6 +4,13 @@ import static java.util.regex.Pattern.*;
 
 public class InputException {
 
+    public static void validateInputNumber(String inputNumber) throws RuntimeException {
+        if (isEmptyInput(inputNumber) || containsNonDigit(inputNumber)
+                || isNotThreeDigits(inputNumber) || containsDuplicateDigits(inputNumber)) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
+
     // 숫자가 아닌 것이 포함된 경우 (공백 포함)
     public static Boolean containsNonDigit(String inputNumber) {
         String pattern = "^[0-9]*$";

@@ -1,5 +1,6 @@
 package baseball.core;
 
+import baseball.exception.InputException;
 import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.core.GameStatus.*;
@@ -23,12 +24,14 @@ public class GameFlow {
         while (currentStatus == ONGOING) {
             System.out.print(enterNumber);
             String inputNumber = Console.readLine();
+            InputException.validateInputNumber(inputNumber);
             Integer numberOfBall = baseballGame.countTheNumberOfBall(targetNumber, inputNumber);
             Integer numberOfStrike = baseballGame.countTheNumberOfStrike(targetNumber, inputNumber);
 
             if (numberOfStrike == 3) {
                 System.out.println(correctNumber);
                 String selectGameStatus = Console.readLine();
+                InputException.validateInputNumber(inputNumber);
                 currentStatus = changeGameStatus(currentStatus, selectGameStatus);
             } else {
                 printBallAndStrike(numberOfBall, numberOfStrike);

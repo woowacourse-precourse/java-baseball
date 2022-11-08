@@ -22,6 +22,13 @@ class InputExceptionTest {
         assertThat(bool2).isTrue();
         assertThat(bool3).isTrue();
 
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputException.validateInputNumber(nonDigit);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputException.validateInputNumber(space);
+        });
+
     }
 
     @Test
@@ -38,6 +45,12 @@ class InputExceptionTest {
         assertThat(bool2).isTrue();
         assertThat(bool3).isTrue();
 
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputException.validateInputNumber(twoDigits);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputException.validateInputNumber(fourDigits);
+        });
     }
 
     @Test
@@ -53,6 +66,13 @@ class InputExceptionTest {
         assertThat(bool1).isFalse();
         assertThat(bool2).isTrue();
         assertThat(bool3).isTrue();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputException.validateInputNumber(duplicate1);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputException.validateInputNumber(duplicate2);
+        });
     }
 
     @Test
@@ -65,5 +85,9 @@ class InputExceptionTest {
 
         assertThat(bool1).isFalse();
         assertThat(bool2).isTrue();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputException.validateInputNumber(empty);
+        });
     }
 }
