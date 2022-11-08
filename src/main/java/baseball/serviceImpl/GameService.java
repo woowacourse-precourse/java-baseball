@@ -51,7 +51,7 @@ public class GameService {
 
         sendMassage(gameMassage);
 
-        return gameMassage == GameMessage.ALL_STRIKE;
+        return gameMassage == GameMessage.THREE_STRIKE;
     }
 
     private boolean isRestart(String str) {
