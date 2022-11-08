@@ -46,16 +46,11 @@ public class BaseballGame {
     }
 
     private List<Integer> createBaseballNumberList() {
-        String baseballNumber = inputUserNumbers();
+        String baseballNumber = view.inputBaseballNumber();
+        validateBaseballNumber(baseballNumber);
         return Stream.of(baseballNumber.split(""))
                      .map(Integer::parseInt)
                      .collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    private String inputUserNumbers() {
-        String baseballNumber = view.inputBaseballNumber();
-        validateBaseballNumber(baseballNumber);
-        return baseballNumber;
     }
 
     private void validateBaseballNumber(String baseballNumber) {
@@ -63,10 +58,10 @@ public class BaseballGame {
         if (baseballNumber.length() > 3) {
             throw new IllegalArgumentException("3자리 정수를 입력해야합니다.");
         }
-        if (!Pattern.matches(pattern, baseballNumber)){
+        if (!Pattern.matches(pattern, baseballNumber)) {
             throw new IllegalArgumentException("정수만 포함되어야 합니다.");
         }
-            hasDuplicateNumbers(baseballNumber);
+        hasDuplicateNumbers(baseballNumber);
 
     }
 
