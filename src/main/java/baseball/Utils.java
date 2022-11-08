@@ -29,4 +29,14 @@ public class Utils {
       return false;
     }
   }
+
+  /**
+   * Verify string contains zero.
+   * @param string the string to be checked.
+   * @return true if zero exists.
+   */
+  public static boolean isContainZero(String string) {
+    String[] strArr = string.split("");
+    return Arrays.asList(strArr).contains("0");
+  }
 }
