@@ -6,7 +6,8 @@ public class Valid {
 	private static final String EXCEPTION_MESSAGE = "값을 잘못 입력했습니다. 게임을 종료합니다.";
 
 	public static String validInputNumber(String inputNumber) {
-		if (isWrongLength(inputNumber) && isNaturalNumber(inputNumber) && findDuplicate(inputNumber)) {
+		if (isWrongLength(inputNumber) && isNaturalNumber(inputNumber) && findDuplicate(
+			inputNumber)) {
 			return inputNumber;
 		}
 
