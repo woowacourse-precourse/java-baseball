@@ -10,6 +10,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import baseball.Application;
@@ -45,15 +46,11 @@ class GameCenterControllerTest extends NsTest {
 	}
 
 	@ParameterizedTest(name = "exit() 메서드 올바른 입력값 확인 테스트")
-	@ValueSource(strings = {"1", "2"})
-	void exitTest(String text) {
+	@CsvSource(value = {"1, false", "2, true"})
+	void exitTest(String text, boolean expected) {
 		InputStream in = new ByteArrayInputStream(text.getBytes());
 		System.setIn(in);
-		if (text.equals("1")) {
-			Assertions.assertThat(gameCenterController.exit()).isFalse();
-			return;
-		}
-		Assertions.assertThat(gameCenterController.exit()).isTrue();
+		Assertions.assertThat(gameCenterController.exit()).isEqualTo(expected);
 	}
 
 	@ParameterizedTest(name = "exit() 잘못된 입력값 테스트")
