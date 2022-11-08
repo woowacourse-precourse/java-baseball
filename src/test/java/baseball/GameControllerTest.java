@@ -10,7 +10,8 @@ import java.lang.reflect.Method;
 public class GameControllerTest {
 
     @Test
-    void inputStatementNumber_메소드로_statement_입력받음() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void inputStatementNumber_메소드로_statement_입력받음()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         GameController gameController = new GameController();
         Method method = gameController.getClass().getDeclaredMethod("inputStatementNumber");
         method.setAccessible(true);
@@ -19,13 +20,14 @@ public class GameControllerTest {
 
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        String result = (String)method.invoke(gameController);
+        String result = (String) method.invoke(gameController);
 
         Assertions.assertThat(result).isEqualTo("1");
     }
 
     @Test
-    void restartGame_메소드로_게임_재시작() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void restartGame_메소드로_게임_재시작()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         GameController gameController = new GameController();
 
         Method method = gameController.getClass().getDeclaredMethod("restartGame");
@@ -35,14 +37,14 @@ public class GameControllerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        boolean result =(boolean)method.invoke(gameController);
+        boolean result = (boolean) method.invoke(gameController);
         Assertions.assertThat(result).isTrue();
 
         String input2 = "2";
         InputStream in2 = new ByteArrayInputStream(input2.getBytes());
         System.setIn(in2);
 
-        boolean result2 =(boolean)method.invoke(gameController);
+        boolean result2 = (boolean) method.invoke(gameController);
         Assertions.assertThat(result2).isFalse();
 
     }
