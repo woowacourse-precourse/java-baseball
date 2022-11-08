@@ -8,7 +8,7 @@ public class Application {
         // TODO: 프로그램 구현
         BaseballComputer baseballComputer = new BaseballComputer();
         GameMessage gameMessage = new GameMessage();
-        gameMessage.startGameMessage();
+        gameMessage.printStartGameMessage();
         baseballComputer.start();
     }
 }
