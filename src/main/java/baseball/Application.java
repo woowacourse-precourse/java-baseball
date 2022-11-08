@@ -17,7 +17,6 @@ public class Application {
 
     public static List<Integer> getRandomNumberList() {
         List computer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        System.out.println(computer);
         return computer;
     }
 
@@ -158,7 +157,7 @@ public class Application {
     }
 
     public static void validateReGame(String choice) {
-        if (choice.equals("1") || choice.equals("2")) {
+        if (!choice.equals("1") && !choice.equals("2")) {
             throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
         }
     }
