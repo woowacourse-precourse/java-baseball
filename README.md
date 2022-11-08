@@ -153,3 +153,15 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+## 💻 구현할 기능 목록
+- 컴퓨터가 임의의 수를 선택 (setComputerNumber)
+- 문자열의 각각 character가 integer가 맞는지 확인 (isNumeric)
+- String의 각각 character를 integer로 변환하여 List에 add (convertStringToList)
+- 입력 요구사항에 따른 서로 다른 3가지 숫자 제약조건 체크 (isItWrongNumber)
+- 사용자가 값을 입력 (setUserNumber)
+- 사용자의 수 중 몇개가 컴퓨터의 수와 같은지 체크 not Ball, numsofequalnumber = Ball 개수 + Strike 개수 (numsOfEqualNumber)
+- Strike 개수를 샘 (countStrike)
+- Ball 개수를 샘 (countBall)
+- 정답을 맞췄을 시, 게임을 더 하는지 그만 하는지 결정 (youWantMoreGame)
+- 사용자가 값을 입력하는 각 Round (round)
+- 실제 야구게임 구현 (baseball)
