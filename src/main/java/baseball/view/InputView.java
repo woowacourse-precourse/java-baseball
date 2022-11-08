@@ -1,40 +1,22 @@
 package baseball.view;
 
+import baseball.util.Validation;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
     public static int getNumber() {
         String inputString =  Console.readLine();
-        int inputNumber;
+        Validation.validateInput(inputString);
 
-        try {
-            inputNumber = Integer.parseInt(inputString);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
-        }
-
-        if (inputString.length() != 3) {
-            throw new IllegalArgumentException("숫자 3자리를 입력해주세요.");
-        }
-
-        if (inputString.charAt(0) == inputString.charAt(1)
-                || inputString.charAt(0) == inputString.charAt(2)
-                || inputString.charAt(1) == inputString.charAt(2)) {
-            throw new IllegalArgumentException("서로 다른 숫자 3자리를 입력해주세요.");
-        }
-
-        return inputNumber;
+        return Integer.parseInt(inputString);
     }
 
     public static int isReplay() {
         OutputView.printReplayMessage();
 
         String inputString = Console.readLine();
-
-        if (!(inputString.equals("1") || inputString.equals("2"))) {
-            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
-        }
+        Validation.validateReplayInput(inputString);
 
         return Integer.parseInt(inputString);
     }
