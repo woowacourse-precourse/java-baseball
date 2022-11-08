@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -64,5 +65,22 @@ public class Application {
         result.add(numOfNothing);
 
         return result;
+    }
+
+    private static void repeatCorrect(List<Integer> computer) {
+        boolean correct = false;
+        List<Integer> user;
+        List<Integer> count;
+
+        while (!correct) {
+            String input = Console.readLine();
+
+            validateUserNumbers(input);
+            user = addToList(input);
+            count = countCount(computer, user);
+            System.out.println(count);
+
+            correct = count.equals(List.of(3, 0, 0));
+        }
     }
 }
