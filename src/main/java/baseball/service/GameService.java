@@ -2,7 +2,7 @@ package baseball.service;
 
 import baseball.domain.*;
 import baseball.exception.NumberExceptionUtils;
-import baseball.util.OutputUtils;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 
@@ -19,13 +19,13 @@ public class GameService {
     }
 
     public void run() {
-        OutputUtils.printInitView();
+        OutputView.printInit();
         while (!game.isExitStatus()) {
-            OutputUtils.printInputView();
+            OutputView.printInput();
             player.setInputBalls();
 
             playBaseBallGame();
-            OutputUtils.printGameResultView(game);
+            OutputView.printGameResult(game);
 
             if (game.isMaxStrike()) {
                 String command = getRestartOrExitFromPlayer();
@@ -43,8 +43,8 @@ public class GameService {
     }
 
     public String getRestartOrExitFromPlayer() {
-        OutputUtils.printFinishView();
-        OutputUtils.printRestartView();
+        OutputView.printFinish();
+        OutputView.printRestart();
         String command = Console.readLine();
         NumberExceptionUtils.isValidCommandDigit(command);
         return command;

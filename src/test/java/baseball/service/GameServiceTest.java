@@ -2,7 +2,7 @@ package baseball.service;
 
 import baseball.domain.*;
 import baseball.exception.ExceptionMessage;
-import baseball.util.OutputUtils;
+import baseball.view.OutputView;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
@@ -77,19 +77,19 @@ public class GameServiceTest {
     void 숫자_야구_게임_결과_출력() {
         Game game = new Game();
         game.setGameResult(3, 0);
-        OutputUtils.printGameResultView(game);
+        OutputView.printGameResult(game);
         assertThat(output.toString()).contains("3스트라이크");
 
         game.setGameResult(2, 1);
-        OutputUtils.printGameResultView(game);
+        OutputView.printGameResult(game);
         assertThat(output.toString()).contains("1볼 2스트라이크");
 
         game.setGameResult(0, 0);
-        OutputUtils.printGameResultView(game);
+        OutputView.printGameResult(game);
         assertThat(output.toString()).contains("낫싱");
 
         game.setGameResult(0, 1);
-        OutputUtils.printGameResultView(game);
+        OutputView.printGameResult(game);
         assertThat(output.toString()).contains("1볼");
     }
 
