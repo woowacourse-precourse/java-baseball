@@ -8,13 +8,13 @@ import java.util.List;
 public class Checker {
     public void checkLegalNumber(String number) throws IllegalArgumentException {
         if (!this.isIntegerNumeric(number)) {
-            throw new IllegalArgumentException(Texts.USER_INPUT_ILLEGAL_MISMATCHING + Texts.USER_INPUT_ILLEGAL);
+            throw new IllegalArgumentException(Texts.USER_INPUT_ILLEGAL_MISMATCHING + Texts.USER_INPUT_ILLEGAL_NOTICE + Texts.USER_INPUT_ILLEGAL + Texts.GAME_END);
         }
         if (!this.isNumberDigitLegal(number)) {
-            throw new IllegalArgumentException(Texts.USER_INPUT_ILLEGAL_DIGIT + Texts.USER_INPUT_ILLEGAL);
+            throw new IllegalArgumentException(Texts.USER_INPUT_ILLEGAL_DIGIT + Texts.USER_INPUT_ILLEGAL_NOTICE + Texts.USER_INPUT_ILLEGAL + Texts.GAME_END);
         }
         if (this.isNumberDuplicated(number)) {
-            throw new IllegalArgumentException(Texts.USER_INPUT_ILLEGAL_DUPLICATED + Texts.USER_INPUT_ILLEGAL);
+            throw new IllegalArgumentException(Texts.USER_INPUT_ILLEGAL_DUPLICATED + Texts.USER_INPUT_ILLEGAL_NOTICE + Texts.USER_INPUT_ILLEGAL + Texts.GAME_END);
         }
     }
 
