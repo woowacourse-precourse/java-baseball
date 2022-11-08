@@ -99,6 +99,38 @@ class ApplicationTest extends NsTest {
         assertThat(Comparison.isBall(answerNumber, number, index)).isEqualTo(result);
     }
 
+    @Test
+    void 낫싱_메세지_출력_테스트() {
+        int ballCount = 0;
+        int strikeCount = 0;
+        String result = "낫싱";
+        assertThat(Information.createComparisonMessage(ballCount, strikeCount)).isEqualTo(result);
+    }
+
+    @Test
+    void 볼만_존재하는_메세지_출력_테스트() {
+        int ballCount = 2;
+        int strikeCount = 0;
+        String result = "2볼";
+        assertThat(Information.createComparisonMessage(ballCount, strikeCount)).isEqualTo(result);
+    }
+
+    @Test
+    void 스트라이크만_존재하는_메세지_출력_테스트() {
+        int ballCount = 0;
+        int strikeCount = 2;
+        String result = "2스트라이크";
+        assertThat(Information.createComparisonMessage(ballCount, strikeCount)).isEqualTo(result);
+    }
+
+    @Test
+    void 볼과_스트라이크가_존재하는_메세지_출력_테스트() {
+        int ballCount = 1;
+        int strikeCount = 2;
+        String result = "1볼 2스트라이크";
+        assertThat(Information.createComparisonMessage(ballCount, strikeCount)).isEqualTo(result);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
