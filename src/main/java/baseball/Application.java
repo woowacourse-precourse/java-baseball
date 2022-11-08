@@ -9,6 +9,7 @@ public class Application {
     public static void main(String[] args) {
         String computer = getRandomNumber();
         printStartMsg();
+        printInputMsg();
     }
 
     public static String getRandomNumber(){
@@ -28,5 +29,9 @@ public class Application {
 
     public static void printStartMsg(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public static void printInputMsg(){
+        System.out.print("숫자를 입력해주세요 : ");
     }
 }
