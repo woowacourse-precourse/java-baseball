@@ -54,4 +54,8 @@ public class Rule {
     }
 
 
+    public static boolean isStrikeOut(List<Integer> result) {
+
+        return false;
+    }
 }
