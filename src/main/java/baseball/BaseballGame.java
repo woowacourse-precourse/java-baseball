@@ -58,7 +58,7 @@ public class BaseballGame {
             if (ball == 0 && strike == 0) System.out.print("낫싱");
             System.out.println("");
             if (strike == MAX_STRIKE) {
-                setGameEnd(true);
+                setIsGameEnd(true);
             }
         }
 
