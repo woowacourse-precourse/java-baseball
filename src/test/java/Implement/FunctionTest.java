@@ -52,6 +52,15 @@ public class FunctionTest extends NsTest {
     }
 
     @Test
+    @DisplayName("player의 입력값과 컴퓨터의 랜덤값을 비교해 보았을 때 정답일 때 상황에 맞게 잘 출력 되는지 확인")
+    void 정답일_때_출력_확인() {
+        List<Integer> computer = List.of(1, 2, 3);
+        List<String> player = List.of("1", "2", "3");
+        String giveHint = Application.Game.checkAnswer(computer, player);
+        assertThat(giveHint).isEqualTo("3스트라이크");
+    }
+
+    @Test
     @DisplayName("정답일 경우 종료가 된 후 재시작할 것인지 완전 종료할 것인지 묻고 완전 종료 선택이 가능한지 확인")
     void 완전_종료_여부() {
         assertRandomNumberInRangeTest(
