@@ -1,8 +1,8 @@
 package baseball.service;
 
-import static baseball.controller.GameController.BEGIN;
-import static baseball.controller.GameController.END;
-import static baseball.controller.GameController.RANDOM_NUMBER_SIZE;
+import static baseball.controller.BaseballGameController.BEGIN;
+import static baseball.controller.BaseballGameController.END;
+import static baseball.controller.BaseballGameController.RANDOM_NUMBER_SIZE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.HashSet;

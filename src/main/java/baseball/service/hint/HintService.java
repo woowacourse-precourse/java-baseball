@@ -1,6 +1,6 @@
 package baseball.service.hint;
 
-import static baseball.controller.GameController.RANDOM_NUMBER_SIZE;
+import static baseball.controller.BaseballGameController.RANDOM_NUMBER_SIZE;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class HintService {
     return new Hint(strikeCount, ballCount);
   }
 
-  int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+  private int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
     int strikeCount = 0;
     for (int i = 0; i < computerNumbers.size(); i++) {
       if (computerNumbers.get(i).equals(playerNumbers.get(i))) {

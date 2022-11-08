@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.BaseballGameController;
 import baseball.controller.GameController;
 import baseball.service.InputService;
 import baseball.service.hint.HintService;
@@ -11,7 +12,7 @@ public class Application {
     InputService inputService = new InputService();
     HintService hintService = new HintService();
     do {
-      GameController gameController = new GameController(inputService, hintService);
+      GameController gameController = new BaseballGameController(inputService, hintService);
       System.out.println("숫자 야구 게임을 시작합니다.");
       gameController.play();
     } while (inputService.doesPlayerWantToRestart());
