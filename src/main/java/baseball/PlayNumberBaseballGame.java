@@ -18,9 +18,9 @@ public class PlayNumberBaseballGame {
     public void playNumberBaseballOneGame(){
         isAnswer=false;
         computerRandomNumbers=createRandomNumberOfComputer();
-        System.out.println(GameProgressLine.START_LINE.getLine());
 
         while (!isAnswer) {
+            System.out.println(GameProgressLine.PLAYER_INPUT_LINE.getLine());
             playerInputNumbers = getInputNumbersOfPlayer();
             String outputResultLine = compareNumbersBetweenComputerAndPlayer(computerRandomNumbers, playerInputNumbers);
             System.out.println(outputResultLine);
@@ -47,6 +47,7 @@ public class PlayNumberBaseballGame {
     }
 
     public List<Integer> getInputNumbersOfPlayer(){
+
         String inputLine = Console.readLine();
         InputException.inputNotThreeNumberException(inputLine);
 
@@ -107,7 +108,8 @@ public class PlayNumberBaseballGame {
 
         if(strike==3){
             isAnswer=true;
-            result = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            result = "3스트라이크\n";
+            result += GameProgressLine.END_LINE.getLine();
         }
         else if(ball==0 && strike==0){
             result= "낫싱";
