@@ -18,7 +18,7 @@ public class Game {
         getRandomNumber = new GetRandomNumber();
         playGame = new PlayGame();
     }
-    public String play() {
+    public void play() {
 
         readyToPlay();
 
@@ -37,7 +37,9 @@ public class Game {
         if (Integer.parseInt(isRestart) != 1 && Integer.parseInt(isRestart) != 2) {
             throw new IllegalArgumentException("1, 2가 아닌 입력이 들어왔습니다.");
         }
-        return isRestart;
+        if (Integer.parseInt(isRestart) == 1) {
+            play();
+        }
 
 
 

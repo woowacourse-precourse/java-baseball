@@ -10,12 +10,12 @@ public class Application {
         Game game = new Game();
         String isRestart;
 
-        do {
-            isRestart = game.play();
+
+        game.play();
 
 
 
-        } while (Integer.parseInt(isRestart) == RESTART);
+
 
     }
 }
