@@ -11,16 +11,16 @@ public class CheckInputNumberException {
         try {
             lengthException(number);
             duplicateException(number);
-            notNumberException(number);
+            notRangeNumberException(number);
         }
         catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e);
         }
     }
 
-    private void notNumberException(String number) throws Exception{
-        if (!Pattern.matches("^[0-9]$", number)) {
-            throw new Exception("숫자를 입력해주세요");
+    private void notRangeNumberException(String number) throws Exception{
+        if (!Pattern.matches("^[1-9]*$", number)) {
+            throw new Exception("0과 문자는 입력하지마세요");
         }
     }
 
