@@ -8,7 +8,7 @@ import baseball.service.JudgeGame;
 import baseball.view.OutputView;
 
 public class GameController {
-    public static void startGame(){
+    public void startGame(){
         ComputerNumber computerNumber = new ComputerNumber();
         List<Integer> computerNumberList = computerNumber.computerNumberList;
         OutputView.printGameStart();
