@@ -98,4 +98,43 @@ public class Application {
 
         return answer;
     }
+
+    static String getAnswerCheckMessage(List<Integer> computerAnswer, List<Integer> myAnswer){
+
+        String ballMessage = "볼";
+        String strikeMessage = "스트라이크";
+        String totalMessage = "";
+
+        HashMap<Integer,Integer> indexAndNumber = getNumberAndIndexByList(myAnswer);
+        computerAnswer = answerRandomNumber;
+
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for(int com=0;com<computerAnswer.size();com++){
+            if(indexAndNumber.get(computerAnswer.get(com)) == null){
+                continue;
+            } else if(indexAndNumber.get(computerAnswer.get(com)) != null && indexAndNumber.get(computerAnswer.get(com)) == com){
+                strikeCount++;
+            } else if (indexAndNumber.get(computerAnswer.get(com)) != null && indexAndNumber.get(computerAnswer.get(com)) != com) {
+                ballCount++;
+            }
+        }
+
+        if(ballCount == 0 && strikeCount == 0){
+            totalMessage += "낫싱";
+        }
+        else {
+            if (ballCount==0){
+                totalMessage += strikeCount+strikeMessage;
+            } else if (strikeCount==0) {
+                totalMessage += ballCount+ballMessage;
+            } else if (ballCount !=0 && strikeCount != 0) {
+                totalMessage += ballCount+ballMessage+" "+strikeCount+strikeMessage;
+            }
+        }
+
+
+        return totalMessage;
+    }
 }
