@@ -16,13 +16,7 @@ public class Application {
             List<Integer> computer = createRandomNum();
             String result = "";
 
-            while(!result.equals("3스트라이크")){
-                //빼볼까 시도해보자
-                List<Integer> player = playerNum();
-                wrongAnswer(computer, player);
-                result = judge(computer, player);
-                System.out.println(result);
-            }
+            playGame(computer, result);
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             again = playAgainOrNot();
@@ -38,6 +32,16 @@ public class Application {
             }
         }
         return computerNum;
+    }
+
+    public static void playGame(List<Integer> computer, String result) {
+        while(!result.equals("3스트라이크")){
+            //빼볼까 시도해보자
+            List<Integer> player = playerNum();
+            wrongAnswer(computer, player);
+            result = judge(computer, player);
+            System.out.println(result);
+        }
     }
 
     public static List<Integer> playerNum(){
