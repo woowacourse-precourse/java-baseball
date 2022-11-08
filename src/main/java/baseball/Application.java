@@ -121,7 +121,7 @@ public class Application {
 
     private void printBallAndStrike(int ball, int strike) {
         if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
         if (ball != 0) {
             System.out.print(ball + "볼 ");
