@@ -19,6 +19,13 @@ public class BaseballGame {
         return restartNumber;
     }
 
+    public static void exceptionUserNumber(String Input) {
+        exceptionThreeNumber(Input);
+        exceptionZeroNumber(Input);
+        exceptionNoNumber(Input);
+        exceptionSameNumber(Input);
+    }
+
     public static void exceptionZeroNumber(String Input) {
         for (int i = 0; i < Input.length(); i++) {
             if (Input.charAt(i) == '0') {
