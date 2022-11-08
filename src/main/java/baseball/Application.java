@@ -9,7 +9,6 @@ import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-//        int nn = Integer.parseInt(Console.readLine());
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         //랜덤숫자를 리스트에 넣기
@@ -21,7 +20,7 @@ public class Application {
             }
         }
 
-        System.out.println(computer);
+//        System.out.println(computer);
 
         List<Integer> strike = new ArrayList<>();
 
@@ -29,6 +28,10 @@ public class Application {
             strike = new ArrayList<>(); //스트라이크 초기화
             System.out.print("숫자를 입력해 주세요 : ");
             int input = Integer.parseInt(Console.readLine());
+
+            if (input < 99 || input > 1000 ) {
+                throw new IllegalArgumentException("range out");
+            }
 
             //입력한 숫자를 리스트에 넣기
             int dv = 100;
@@ -39,6 +42,15 @@ public class Application {
                 input = input%dv;
                 dv = dv/10;
             }
+
+            if (Objects.equals(input_list.get(0), input_list.get(1)) || Objects.equals(input_list.get(0), input_list.get(2))) {
+                throw new IllegalArgumentException("not same number");
+            }
+            if (Objects.equals(input_list.get(1), input_list.get(2))) {
+                throw new IllegalArgumentException("not same number");
+            }
+
+
 
             for (int i = 0; i < 3; i++) {
                 if (Objects.equals(input_list.get(i), computer.get(i))) {
