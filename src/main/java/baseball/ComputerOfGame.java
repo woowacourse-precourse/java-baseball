@@ -1,6 +1,6 @@
 package baseball;
-import static Config.BaseResponseStatus .*;
 
+import static Config.BaseResponseStatus .*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

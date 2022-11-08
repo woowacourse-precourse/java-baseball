@@ -13,7 +13,7 @@ public class BaseResponseStatus {
     public static final int NUMBER_LENGTH = 3;
     public static final int START_OF_NUMBER = 1;
     public static final int END_OF_NUMBER = 9;
-    public static final int RESTART = 1;
+    public static final int PLAY = 1;
     public static final int TERMINATE = 2;
     public static final int NOTHING_RESULT = 0;
     public static final int STRIKE_RESULT = 1;
