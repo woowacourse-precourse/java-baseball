@@ -26,6 +26,9 @@ public class Executor {
                 Printer.isALLCorrect();
                 int restartAnswer = askRestart();
                 processRestartAnswer(restartAnswer);
+            }else {
+                String resultString = guessResult.getResult();
+                Printer.printMessage(resultString);
             }
         }
 
