@@ -6,7 +6,7 @@
 <div markdown="1">
  
 ### ComputerNumberGenerator
- - [ ]  list에 1~9 숫자 세개를 저장하기
- - [ ]  list에 중복된 수가 있는지 확인하기
+ - [X]  list에 1~9 숫자 세개를 저장하기
+ - [X]  list에 중복된 수가 있는지 확인하기
 </div>
 </details>
