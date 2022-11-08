@@ -44,13 +44,15 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("랜덤으로 설정한 숫자는 3자리 수이고 각 자리 숫자는 1과 9사이다")
-    void getRandomNumberTest(){
+    void getRandomNumberTest() {
         String number = getRandomNumber();
         assertThat(number.length()).isEqualTo(3);
         assertThat(number.matches("[1-9][1-9][1-9]")).isEqualTo(true);
 
     }
+
     @Test
+    @DisplayName("두 수를 비교했을 때 스크라이크와 볼 개수를 잘 세는지")
     void getStrikeAndBallTest() {
         List<String> computer = Arrays.asList("987", "123");
         List<String> user = Arrays.asList("987", "321");

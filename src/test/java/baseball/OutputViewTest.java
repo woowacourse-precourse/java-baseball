@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -30,6 +31,7 @@ public class OutputViewTest {
     }
 
     @Test
+    @DisplayName("스트라이크와 볼 개수에 따라 힌트를 잘 출력하는지")
     void printHintMsgTest() {
         int[][] results = {{0, 0}, {3, 0}, {1, 2}, {0, 2}};
         List<String> hintMsg = Arrays.asList("낫싱", "3스트라이크", "2볼 1스트라이크", "2볼");
