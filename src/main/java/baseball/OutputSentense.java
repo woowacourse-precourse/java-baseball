@@ -23,13 +23,13 @@ public class OutputSentense {
 
     public String Question(String str, int gameTypeNumber) throws IllegalArgumentException {
         System.out.println(str);
-        String myNumber="123";// = Console.readLine();
+        String myNumber = "123";// = Console.readLine();
         try {
             myNumber = Console.readLine();
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-        if ( myNumber == null || myNumber.length() != gameTypeNumber) {
+        if (myNumber == null || myNumber.length() != gameTypeNumber) {
             throw new IllegalArgumentException();
         }
         Integer.parseInt(myNumber);
@@ -43,7 +43,9 @@ public class OutputSentense {
     public List<Integer> InputNumberList(String InputNumbers) {
         List<String> InputList = new ArrayList(Arrays.asList(InputNumbers.split("")));
         List<Integer> myList = new ArrayList<>();
-        for (String s : InputList) myList.add(Integer.valueOf(s));
+        for (String s : InputList) {
+            myList.add(Integer.valueOf(s));
+        }
         return myList;
     }
 
@@ -56,13 +58,11 @@ public class OutputSentense {
         String sentense;
         String strStrike = String.valueOf(countStrike);
         String strBall = String.valueOf(countBall);
-        if (countStrike == 0 && countBall == 0)
+        if (countStrike == 0 && countBall == 0) {
             sentense = nothing;
-
-        else if (countStrike == 0 && !(countBall == 0))
+        } else if (countStrike == 0 && !(countBall == 0)) {
             sentense = strBall + ball;
-
-        else if (!(countStrike == 0) && countBall == 0) {
+        } else if (!(countStrike == 0) && countBall == 0) {
             sentense = strStrike + strike;
         } else {
             sentense = strBall + ball + " " + strStrike + strike;

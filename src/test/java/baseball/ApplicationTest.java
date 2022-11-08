@@ -52,6 +52,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 심판_기능_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "461", "361", "513", "895", "154", "153", "135", "2");
+                    assertThat(output()).contains("낫싱", "1볼", "2볼", "3볼", "1스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
 
     @Override
     public void runMain() {
