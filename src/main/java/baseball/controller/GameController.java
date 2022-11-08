@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.controller;
 
 import baseball.domain.*;
 import baseball.exception.NumberExceptionUtils;
@@ -6,13 +6,13 @@ import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 
-public class GameService {
+public class GameController {
 
     private final Game game;
     private final Player player;
     private Computer computer;
 
-    public GameService() {
+    public GameController() {
         game = new Game();
         player = new Player();
         computer = new Computer();
