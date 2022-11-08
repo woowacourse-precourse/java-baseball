@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -12,6 +14,7 @@ public class Application {
 
     private static boolean isRestart() {
         // TODO: 게임 재시작 여부 판단
-        return false;
+        int restartCommand = Integer.parseInt(Console.readLine());
+        return restartCommand == Constant.RESTART_NUMBER;
     }
 }
