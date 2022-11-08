@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 class ApplicationTest extends NsTest {
 
     Application application = new Application();
-    GameIO gameIO = GameIO.getInstance();
+    GameInput gameInput = GameInput.getInstance();
     Referee referee = new Referee();
 
     @Test
@@ -38,7 +38,7 @@ class ApplicationTest extends NsTest {
         String answer = application.generateAnswer();
 
         try {
-            gameIO.isLegalInput(answer);
+            gameInput.isLegalInput(answer);
         } catch (IllegalArgumentException illegalArgumentException) {
             Fail.fail("IllegalArgumentException이 발생했습니다.");
         }
@@ -56,7 +56,7 @@ class ApplicationTest extends NsTest {
     void 숫자가_아닌_입력() {
         String[] inputs = {"12a", "1a2", "a12", " 12", "12#", "  ", ""};
         for (String input : inputs) {
-            assertThatThrownBy(() -> gameIO.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> gameInput.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 
@@ -64,7 +64,7 @@ class ApplicationTest extends NsTest {
     void Zero_포함하여_입력() {
         String[] inputs = {"120", "102", "012"};
         for (String input : inputs) {
-            assertThatThrownBy(() -> gameIO.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> gameInput.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 
@@ -72,7 +72,7 @@ class ApplicationTest extends NsTest {
     void 세_자리가_아닌_입력() {
         String[] inputs = {"1234", "12", "1", "12345"};
         for (String input : inputs) {
-            assertThatThrownBy(() -> gameIO.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> gameInput.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 
@@ -80,7 +80,7 @@ class ApplicationTest extends NsTest {
     void 서로_다른_수가_아닌_입력() {
         String[] inputs = {"111", "112", "121", "211"};
         for (String input : inputs) {
-            assertThatThrownBy(() -> gameIO.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> gameInput.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 

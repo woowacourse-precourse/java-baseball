@@ -18,37 +18,38 @@ public class Application {
     String answer = "";
     int tryCount = 0;
 
-    GameIO gameIO = GameIO.getInstance();
+    GameInput gameInput = GameInput.getInstance();
+    GameOutput gameOutput = GameOutput.getInstance();
     Referee referee = Referee.getInstance();
     DB database = DB.getInstance();
 
     public void startGame() {
-        gameIO.printStartLog();
+        gameOutput.printStartLog();
         answer = generateAnswer();
 
         boolean isContinue = true;
         while (isContinue) {
             try {
-                userInput = gameIO.getInput();
-                gameIO.isLegalInput(userInput);
+                userInput = gameInput.getInput();
+                gameInput.isLegalInput(userInput);
 
                 tryCount++;
 
                 String judgement = referee.judge(userInput, answer);
-                gameIO.printResult(judgement);
+                gameOutput.printResult(judgement);
 
                 if (judgement == Referee.THREE_STRIKE) {
-                    gameIO.printGameEndInfo();
+                    gameOutput.printGameEndInfo();
                     isContinue = isFinishGame();
                 }
             } catch (IllegalArgumentException illegalArgumentException) {
-                gameIO.printInputExceptionLog();
+                gameOutput.printInputExceptionLog();
                 throw illegalArgumentException;
             }
         } // end of While
 
         database.addData(new Data(LocalDateTime.now(), tryCount));
-        gameIO.printFinishLog();
+        gameOutput.printFinishLog();
         database.showAllData();
     }
 
@@ -57,7 +58,7 @@ public class Application {
 
         while (answer.length() < MAX_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            String numberString = gameIO.convertIntToString(randomNumber);
+            String numberString = gameInput.convertIntToString(randomNumber);
             if (!answer.contains(numberString)) {
                 answer += numberString;
             }
