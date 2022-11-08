@@ -58,7 +58,7 @@ public class Validator {
         NUMBER_NOT_IN_RANGE(String.format("%d-%d 사이의 숫자를 입력해주세요.",
                 Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END)),
         NUMBER_SAME_NUMBER("서로 다른 숫자를 입력해주세요."),
-        QUIT_OR_RESTART(String.format("%s, %s 중 하나의 수를 입력해주세요.",
+        QUIT_OR_RESTART(String.format("%s,%s 중 하나의 수를 입력해주세요.",
                         Constants.RESTART_GAME_CODE, Constants.QUIT_GAME_CODE));
 
         private final String message;
