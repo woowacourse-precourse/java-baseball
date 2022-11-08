@@ -1,12 +1,13 @@
 package baseball;
 
 import baseball.data.BaseballData;
-import baseball.game.NumberParser;
-import baseball.game.NumberComparer;
 import baseball.game.ComputerNumberGenerator;
+import baseball.game.NumberComparer;
+import baseball.game.NumberParser;
 import baseball.game.PlayerNumberInput;
-import baseball.printer.ResultPrint;
 import baseball.printer.PrintData;
+import baseball.printer.ResultPrint;
+
 import java.util.List;
 
 public class Application {

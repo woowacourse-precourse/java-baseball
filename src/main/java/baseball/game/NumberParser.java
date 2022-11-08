@@ -1,12 +1,11 @@
 package baseball.game;
 
 import baseball.data.BaseballData;
-import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
+
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 
 /**
  * 1. 입력받은 문자열에서 입력 오류가 있는지 검사.
