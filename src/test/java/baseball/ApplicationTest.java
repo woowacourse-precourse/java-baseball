@@ -10,7 +10,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.InstanceOfAssertFactories.LIST;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -68,6 +67,17 @@ class ApplicationTest extends NsTest {
             }
         }
         assertThat(strike_ball_nothing_list).containsExactly(2, 0, 1);
+    }
+
+    @Test
+    void 결과_출력시_trim_기능이_제대로_작동하는지_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "189", "135", "2");
+                    assertThat(output()).contains("1볼 1스트라이크", "1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
     }
 
     @Override
