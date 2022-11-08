@@ -21,7 +21,6 @@ public class BaseBallGame {
         result.printResult();
         if (result.isAnswer()) {
           System.out.println(GameMessage.GAME_FINISH_MESSAGE.toString());
-          System.out.println(GameMessage.CHECK_RESTART_MESSAGE.toString());
           isGameOver = !checkRestart();
         }
       }
@@ -30,7 +29,6 @@ public class BaseBallGame {
 
   // 재시작 할 것인지 체크
   private boolean checkRestart(){
-    System.out.println(GameMessage.GAME_FINISH_MESSAGE.toString());
     System.out.println(GameMessage.CHECK_RESTART_MESSAGE.toString());
     while (true) {
       String input = Console.readLine();
