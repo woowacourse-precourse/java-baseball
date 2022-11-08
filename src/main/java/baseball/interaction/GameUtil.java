@@ -1,6 +1,5 @@
-package baseball.game.util;
+package baseball.interaction;
 
-import baseball.console.Interactive;
 import baseball.validation.Validator;
 import baseball.validation.Condition;
 import baseball.game.condition.AllDigitsUniqueCond;

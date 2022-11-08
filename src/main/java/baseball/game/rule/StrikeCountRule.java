@@ -2,7 +2,7 @@ package baseball.game.rule;
 
 import baseball.game.enums.GuessTarget;
 
-import static baseball.game.util.GameUtil.NUMBER_SIZE;
+import static baseball.interaction.GameUtil.NUMBER_SIZE;
 
 public class StrikeCountRule implements Rule {
 

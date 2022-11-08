@@ -5,8 +5,8 @@ import baseball.game.rule.Rule;
 import baseball.game.rule.RuleChecker;
 import baseball.game.rule.BallCountRule;
 import baseball.game.rule.StrikeCountRule;
-import baseball.game.util.GameUtil;
-import baseball.system.util.SystemUtil;
+import baseball.interaction.GameUtil;
+import baseball.interaction.SystemUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static baseball.game.message.GameMessage.*;
-import static baseball.game.util.GameUtil.STRIKE_OUT_COUNT;
+import static baseball.interaction.GameUtil.STRIKE_OUT_COUNT;
 
 public class Game {
 

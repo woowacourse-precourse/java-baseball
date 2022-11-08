@@ -1,6 +1,5 @@
-package baseball.system.util;
+package baseball.interaction;
 
-import baseball.console.Interactive;
 import baseball.message.Message;
 import baseball.system.enums.UserAction;
 import baseball.validation.Condition;

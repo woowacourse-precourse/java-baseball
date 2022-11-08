@@ -6,7 +6,7 @@ import baseball.validation.Condition;
 import java.util.HashSet;
 import java.util.Set;
 
-import static baseball.game.util.GameUtil.NUMBER_SIZE;
+import static baseball.interaction.GameUtil.NUMBER_SIZE;
 
 public class AllDigitsUniqueCond implements Condition {
 

@@ -1,4 +1,4 @@
-package baseball.console;
+package baseball.interaction;
 
 public interface Interactive<UserInput> {
 
