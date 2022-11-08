@@ -55,6 +55,9 @@ public class GameProcess {
         if(answer) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String inputOverYn = Console.readLine();
+
+            // 입력값 검증
+            Vailidator.checkInputOverYn(inputOverYn);
         }
     }
 }

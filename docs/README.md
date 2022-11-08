@@ -67,10 +67,10 @@
 - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자 종료 구분값 받음
 
 ### 7. 종료 구분 입력값 검증
-- [ ] 예외 사항 검증
+- [x] 예외 사항 검증
   - 1 또는 2가 아닌 경우
-- [ ] `IllegalArgumentException` 발생
-- [ ] 애플리케이션 종료  
+- [x] `IllegalArgumentException` 발생
+- [x] 애플리케이션 종료  
 
 ### 8. 종료 구분 입력값 체크하는 기능
 - [ ] 입력값이 **1**인 경우

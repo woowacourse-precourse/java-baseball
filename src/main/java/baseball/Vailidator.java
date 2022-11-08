@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Vailidator {
 
-    // 사용자 입력값 검증
+    // 사용자 입력값 검증 - 랜덤수
     public static void checkInputNum(String inputNumStr) {
         checkOnlyNumber(inputNumStr);
         checkInputNumLength(inputNumStr);
@@ -50,6 +50,14 @@ public class Vailidator {
                 throw new IllegalArgumentException("각자리 수는 중복될 수 없습니다.");
             }
             numList.add(num);
+        }
+    }
+
+    // 사용자 입력값 검증 - 종료여부 구분값
+    public static void checkInputOverYn(String inputOverYn) {
+        int overYnNum = Integer.parseInt(inputOverYn);
+        if (!(overYnNum == 1 || overYnNum == 2)) {
+            throw new IllegalArgumentException("입력값이 1 또는 2가 아닙니다.");
         }
     }
 }
