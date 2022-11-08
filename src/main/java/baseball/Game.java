@@ -103,7 +103,7 @@ public class Game {
 
         List<Integer> userNumbers = new ArrayList<>();
         for(char c : user.toCharArray()) {
-            userNumbers.add((int) c);
+            userNumbers.add(c - '0');
         }
 
         return userNumbers;
