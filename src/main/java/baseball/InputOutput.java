@@ -2,12 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import baseball.InputException;
 
 public class InputOutput {
     public static int[] getThreeNumber(){
         printThreeNumber();
         String line = getLine();
         // 예외처리 다 해주고
+        InputException.checkThreeNumberException(line);
 
         int[] threeWord = new int[3];
         for (int i = 0; i < line.length(); i++) {
