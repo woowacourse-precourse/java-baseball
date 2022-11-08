@@ -51,4 +51,8 @@
 - strike, 즉 같은 수가 같은 자리에 있는 경우 `addStrikeCount()`를 호출
 - ball, 즉 같은 수가 다른 자리에 있는 경우 `addBallCount()`를 호출
 
+#### `validateNewGameInput()`
+- 재시작 시 사용자의 입력값의 유효성 검증
+- 1 또는 2가 아닌 경우 `IllegalArgumentException`을 `throw`
+
 ### 🔍 각 함수별로 테스트를 작성
