@@ -25,13 +25,13 @@ public class RandomManagerTest {
                 assertRandomNumberInRangeTest(() -> {
                     run("246", "135");
                     Assertions.assertThat(RandomManager.getDistinctIntegersInRange(1, 9, 3))
-                        .isEqualTo(Arrays.array(1, 3, 5));
+                            .isEqualTo(Arrays.array(1, 3, 5));
 
                     Assertions.assertThat(RandomManager.getDistinctIntegersInRange(1, 9, 1))
-                        .isEqualTo(Arrays.array(1));
+                            .isEqualTo(Arrays.array(1));
 
                     Assertions.assertThat(RandomManager.getDistinctIntegersInRange(1, 9, 3))
-                        .isEqualTo(Arrays.array(1, 2, 3));
+                            .isEqualTo(Arrays.array(1, 2, 3));
                 }, 1, 3, 5, 1, 1, 1, 2, 3);
             }
 

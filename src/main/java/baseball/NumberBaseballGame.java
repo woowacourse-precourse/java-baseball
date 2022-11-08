@@ -10,16 +10,15 @@ public class NumberBaseballGame {
      */
     void run() {
         ThreeDigitNumber randomThreeDigitNumber = new ThreeDigitNumber(
-            RandomManager.getDistinctIntegersInRange(1, 9, 3));
+                RandomManager.getDistinctIntegersInRange(1, 9, 3));
 
         while (true) {
             IOManager.print("숫자를 입력해주세요 : ");
 
             ThreeDigitNumber userThreeDigitNumber = new ThreeDigitNumber(
-                IOManager.splitIntegerIntoIntegerArray(IOManager.getNextInt()));
+                    IOManager.splitIntegerIntoIntegerArray(IOManager.getNextInt()));
 
-            IOManager.println(
-                randomThreeDigitNumber.getCompareResult(userThreeDigitNumber).toString());
+            IOManager.println(randomThreeDigitNumber.getCompareResult(userThreeDigitNumber).toString());
 
             if (userThreeDigitNumber.equals(randomThreeDigitNumber)) {
                 break;

@@ -21,27 +21,27 @@ public class ThreeDigitNumberTest {
             @DisplayName("3자리 수여야 한다.")
             void validate_filtering_number_not_3digit_number() {
                 Assertions.assertThatThrownBy(() -> new ThreeDigitNumber(1, 2, 3, 4))
-                    .isInstanceOf(IllegalArgumentException.class);
+                        .isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
             @DisplayName("각 자리수가 중복되면 안된다.")
             void validate_filtering_number_has_duplicate_digit() {
                 Assertions.assertThatThrownBy(() -> new ThreeDigitNumber(1, 1, 2))
-                    .isInstanceOf(IllegalArgumentException.class);
+                        .isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
             @DisplayName("각 자리수는 1-9사이의 값을 가져야 한다.")
             void validate_filtering_number_has_digit_outOfRange() {
                 Assertions.assertThatThrownBy(() -> new ThreeDigitNumber(1, 0, 2))
-                    .isInstanceOf(IllegalArgumentException.class);
+                        .isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> new ThreeDigitNumber(0, 1, 2))
-                    .isInstanceOf(IllegalArgumentException.class);
+                        .isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> new ThreeDigitNumber(9, 6, 0))
-                    .isInstanceOf(IllegalArgumentException.class);
+                        .isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
@@ -51,8 +51,8 @@ public class ThreeDigitNumberTest {
                     boolean flag = true;
 
                     if (!ThreeDigitNumber.validateConsistOfThreeDigit(i)
-                        || !ThreeDigitNumber.validateEachSingleDigitIsNotDuplicate(
-                        Stream.of(String.valueOf(i).split("")).toArray(Integer[]::new))) {
+                            || !ThreeDigitNumber.validateEachSingleDigitIsNotDuplicate(
+                            Stream.of(String.valueOf(i).split("")).toArray(Integer[]::new))) {
 
                         flag = false;
                     }
@@ -63,7 +63,7 @@ public class ThreeDigitNumberTest {
                         int finalI = i;
 
                         Assertions.assertThatThrownBy(() -> new ThreeDigitNumber(finalI))
-                            .isInstanceOf(IllegalArgumentException.class);
+                                .isInstanceOf(IllegalArgumentException.class);
                     }
                 }
             }
@@ -79,16 +79,11 @@ public class ThreeDigitNumberTest {
         void validate_returns_numberOf_Strike() {
             ThreeDigitNumber threeDigitNumber = new ThreeDigitNumber(1, 2, 3);
 
-            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(1, 4, 5)))
-                .isEqualTo(1);
-            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(3, 2, 1)))
-                .isEqualTo(1);
-            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(4, 5, 6)))
-                .isEqualTo(0);
-            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(1, 2, 3)))
-                .isEqualTo(3);
-            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(1, 4, 3)))
-                .isEqualTo(2);
+            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(1, 4, 5))).isEqualTo(1);
+            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(3, 2, 1))).isEqualTo(1);
+            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(4, 5, 6))).isEqualTo(0);
+            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(1, 2, 3))).isEqualTo(3);
+            Assertions.assertThat(threeDigitNumber.getStrike(new ThreeDigitNumber(1, 4, 3))).isEqualTo(2);
         }
     }
 
@@ -101,16 +96,11 @@ public class ThreeDigitNumberTest {
         void validate_returns_numberOf_Ball() {
             ThreeDigitNumber threeDigitNumber = new ThreeDigitNumber(1, 2, 3);
 
-            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(4, 1, 5)))
-                .isEqualTo(1);
-            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(3, 2, 1)))
-                .isEqualTo(2);
-            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(4, 5, 6)))
-                .isEqualTo(0);
-            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(1, 2, 3)))
-                .isEqualTo(0);
-            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(1, 4, 3)))
-                .isEqualTo(0);
+            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(4, 1, 5))).isEqualTo(1);
+            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(3, 2, 1))).isEqualTo(2);
+            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(4, 5, 6))).isEqualTo(0);
+            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(1, 2, 3))).isEqualTo(0);
+            Assertions.assertThat(threeDigitNumber.getBall(new ThreeDigitNumber(1, 4, 3))).isEqualTo(0);
         }
     }
 
@@ -123,18 +113,14 @@ public class ThreeDigitNumberTest {
         void it_returns_CompareResult() {
             ThreeDigitNumber threeDigitNumber = new ThreeDigitNumber(1, 2, 3);
 
-            Assertions.assertThat(
-                    threeDigitNumber.getCompareResult(new ThreeDigitNumber(3, 2, 1)).toString())
-                .isEqualTo("2볼 1스트라이크");
-            Assertions.assertThat(
-                    threeDigitNumber.getCompareResult(new ThreeDigitNumber(1, 4, 5)).toString())
-                .isEqualTo("1스트라이크");
-            Assertions.assertThat(
-                    threeDigitNumber.getCompareResult(new ThreeDigitNumber(5, 6, 1)).toString())
-                .isEqualTo("1볼");
-            Assertions.assertThat(
-                    threeDigitNumber.getCompareResult(new ThreeDigitNumber(8, 4, 7)).toString())
-                .isEqualTo("낫싱");
+            Assertions.assertThat(threeDigitNumber.getCompareResult(new ThreeDigitNumber(3, 2, 1)).toString())
+                    .isEqualTo("2볼 1스트라이크");
+            Assertions.assertThat(threeDigitNumber.getCompareResult(new ThreeDigitNumber(1, 4, 5)).toString())
+                    .isEqualTo("1스트라이크");
+            Assertions.assertThat(threeDigitNumber.getCompareResult(new ThreeDigitNumber(5, 6, 1)).toString())
+                    .isEqualTo("1볼");
+            Assertions.assertThat(threeDigitNumber.getCompareResult(new ThreeDigitNumber(8, 4, 7)).toString())
+                    .isEqualTo("낫싱");
         }
     }
 }

@@ -46,13 +46,11 @@ public class IOManagerTest {
         void it_parse_integer_into_integerArray() {
             assertRandomNumberInRangeTest(() -> {
                 run("246", "135");
-                Assertions.assertThat(
-                        IOManager.splitIntegerIntoIntegerArray(IOManager.getNextInt()))
-                    .isEqualTo(Arrays.array(2, 4, 6));
+                Assertions.assertThat(IOManager.splitIntegerIntoIntegerArray(IOManager.getNextInt()))
+                        .isEqualTo(Arrays.array(2, 4, 6));
 
-                Assertions.assertThat(
-                        IOManager.splitIntegerIntoIntegerArray(IOManager.getNextInt()))
-                    .isEqualTo(Arrays.array(1, 3, 5));
+                Assertions.assertThat(IOManager.splitIntegerIntoIntegerArray(IOManager.getNextInt()))
+                        .isEqualTo(Arrays.array(1, 3, 5));
             }, 1, 3, 5);
         }
 

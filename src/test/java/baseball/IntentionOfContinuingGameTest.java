@@ -20,7 +20,7 @@ public class IntentionOfContinuingGameTest {
         @DisplayName("사용자가 1을 입력할 경우 CONTINUE 객체를 반환한다")
         void it_returns_CONTINUE_Object() {
             IntentionOfContinuingGame intentionContinue = IntentionOfContinuingGame.getMatchIntention(
-                CONTINUE);
+                    CONTINUE);
             Assertions.assertThat(intentionContinue).isEqualTo(IntentionOfContinuingGame.CONTINUE);
 
         }
@@ -29,7 +29,7 @@ public class IntentionOfContinuingGameTest {
         @DisplayName("사용자가 2를 입력할 경우 STOP 객체를 반환한다")
         void it_returns_STOP_Object() {
             IntentionOfContinuingGame intentionContinue = IntentionOfContinuingGame.getMatchIntention(
-                STOP);
+                    STOP);
             Assertions.assertThat(intentionContinue).isEqualTo(IntentionOfContinuingGame.STOP);
         }
 
@@ -38,8 +38,8 @@ public class IntentionOfContinuingGameTest {
         void throws_error_when_input_is_wrong() {
             int wrongArgument = 3;
             Assertions.assertThatThrownBy(
-                    () -> IntentionOfContinuingGame.getMatchIntention(wrongArgument))
-                .isInstanceOf(IllegalArgumentException.class);
+                            () -> IntentionOfContinuingGame.getMatchIntention(wrongArgument))
+                    .isInstanceOf(IllegalArgumentException.class);
         }
     }
 
@@ -51,7 +51,7 @@ public class IntentionOfContinuingGameTest {
         @DisplayName("CONTINUE 객체에서 사용되는 경우 true를 반환한다.")
         void it_returns_true_when_Object_is_CONTINUE() {
             Assertions.assertThat(IntentionOfContinuingGame.CONTINUE.wantContinue())
-                .isEqualTo(true);
+                    .isEqualTo(true);
         }
 
         @Test

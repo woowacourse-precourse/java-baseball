@@ -31,11 +31,10 @@ public class NumberBaseballGameTest {
         @Test
         @DisplayName("사용자가 잘못된 값을 입력한 경우 예외를 반환한다.")
         void generate_random_number_and_play_theGame() {
-            org.assertj.core.api.Assertions.assertThatThrownBy(
-                () -> assertRandomNumberInRangeTest(() -> {
-                    run("24", "135");
-                    assertThat(output()).contains("낫싱", "3스트라이크");
-                }, 1, 3, 5)).isInstanceOf(IllegalArgumentException.class);
+            org.assertj.core.api.Assertions.assertThatThrownBy(() -> assertRandomNumberInRangeTest(() -> {
+                run("24", "135");
+                assertThat(output()).contains("낫싱", "3스트라이크");
+            }, 1, 3, 5)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 

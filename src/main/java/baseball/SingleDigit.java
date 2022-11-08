@@ -11,7 +11,7 @@ public class SingleDigit {
 
     private int singleDigit;
 
-    public SingleDigit(int singleDigit) throws IllegalArgumentException{
+    public SingleDigit(int singleDigit) throws IllegalArgumentException {
         if (!validateDigitInRange(singleDigit)) {
             throw new IllegalArgumentException("각 자리의 숫자는 [1-9] 사이의 값을 가져야 합니다.");
         }

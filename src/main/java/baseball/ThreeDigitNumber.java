@@ -16,7 +16,7 @@ public class ThreeDigitNumber {
 
     List<SingleDigit> singleDigitList;
 
-    public ThreeDigitNumber(Integer... integers) throws IllegalArgumentException{
+    public ThreeDigitNumber(Integer... integers) throws IllegalArgumentException {
         if (!validateConsistOfThreeDigit(integers)) {
             throw new IllegalArgumentException("ThreeDigitNumber는 세자리 수여야 합니다.");
         }
@@ -42,9 +42,8 @@ public class ThreeDigitNumber {
     }
 
     public int getStrike(ThreeDigitNumber otherThreeDigitNumber) {
-        return (int) IntStream.range(0, 3).filter(
-                (i) -> singleDigitList.get(i).equals(otherThreeDigitNumber.singleDigitList.get(i)))
-            .count();
+        return (int) IntStream.range(0, 3)
+                .filter((i) -> singleDigitList.get(i).equals(otherThreeDigitNumber.singleDigitList.get(i))).count();
     }
 
     public int getBall(ThreeDigitNumber otherThreeDigitNumber) {

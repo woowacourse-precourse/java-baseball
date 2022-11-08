@@ -13,9 +13,10 @@ public class IOManager {
      * @return 입력으로 주어진 숫자를 반환
      * @throws IllegalArgumentException 숫자가 아닌 입력이 들어오는 경우 예외 발생
      */
-    public static Integer getNextInt() throws IllegalArgumentException{
+    public static Integer getNextInt() throws IllegalArgumentException {
         try {
             return Integer.parseInt(Console.readLine());
+
         } catch (Exception e) {
             throw new IllegalArgumentException("잘못된 입력 형식입니다.");
         }
@@ -27,8 +28,9 @@ public class IOManager {
      */
     public static Integer[] splitIntegerIntoIntegerArray(Integer integer) {
         String[] strings = String.valueOf(integer).split("");
+
         return Arrays.stream(strings).map(Integer::parseInt).collect(Collectors.toList())
-            .toArray(new Integer[strings.length]);
+                .toArray(new Integer[strings.length]);
     }
 
     public static void print(String string) {

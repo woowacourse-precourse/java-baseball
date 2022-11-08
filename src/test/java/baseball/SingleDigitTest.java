@@ -9,10 +9,8 @@ public class SingleDigitTest {
     @Test
     @DisplayName("SingleDigit 유효성 검증")
     void validateSingleDigit() {
-        Assertions.assertThatThrownBy(() -> new SingleDigit(0))
-            .isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> new SingleDigit(10))
-            .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new SingleDigit(0)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new SingleDigit(10)).isInstanceOf(IllegalArgumentException.class);
 
         for (int i = 1; i <= 9; i++) {
             new SingleDigit(i);
