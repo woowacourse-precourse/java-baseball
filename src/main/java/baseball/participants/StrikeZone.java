@@ -17,7 +17,7 @@ public class StrikeZone {
         validateLength(zone);
         validateNumberRange(zone);
         this.zone = zone.stream()
-                .map(i ->  Integer.toString(i))
+                .map(i -> Integer.toString(i))
                 .collect(Collectors.joining(""));
 
     }

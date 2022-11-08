@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Referee {
-    private boolean winsGame;
     final private int WIN_CONDITION = 3;
+    private boolean winsGame;
 
     public Referee() {
     }

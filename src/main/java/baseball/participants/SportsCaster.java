@@ -1,14 +1,14 @@
 package baseball.participants;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class SportsCaster {
-    public boolean willPlay;
     private final String PLAY_AGAIN = "1";
     private final String TERMINATE = "2";
+    public boolean willPlay;
 
     public SportsCaster() {
         willPlay = true;
@@ -34,6 +34,10 @@ public class SportsCaster {
         System.out.println(String.join("\n", guideList));
     }
 
+    public static void terminateProgram() {
+        System.out.println("게임 종료");
+    }
+
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -56,10 +60,6 @@ public class SportsCaster {
 
     public void endGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다!");
-    }
-
-    public static void terminateProgram() {
-        System.out.println("게임 종료");
     }
 
     private boolean validatePlayAgain(String againOrTerminate) {

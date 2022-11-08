@@ -1,16 +1,19 @@
 package baseball;
 
-import baseball.participants.*;
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import baseball.participants.Hitter;
+import baseball.participants.Pitcher;
+import baseball.participants.Referee;
+import baseball.participants.SportsCaster;
+import baseball.participants.StrikeZone;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -26,7 +29,8 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2"); // 값을 하나씩 입력하면서 게임 진행
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료"); // outputStream 값들 테스트
+                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크",
+                            "게임 종료"); // outputStream 값들 테스트
                 },
                 1, 3, 5, 5, 8, 9
         );
