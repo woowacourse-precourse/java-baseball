@@ -28,9 +28,11 @@ public class Baseballgame {
 
         do {
             printUserInputMessage();
-            check = Checkout.checkBalls()
+            check = Checkout.checkBalls(makeUserBalls(), comBalls);
+            //print(check);
 
-        } while ();
+
+        } while (//3스트);
 
         }
 
@@ -66,6 +68,10 @@ public class Baseballgame {
 
     private void printUserInputMessage() {
         System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    private void printResult(Checkout result) {
+
     }
 
     private void printFormatExceptionMessage() {

@@ -19,7 +19,7 @@ public class Com {
     }
 
     public static Com makeRandomBalls() {
-        List<Com> balls = new ArrayList<>();
+        List<Ball> balls = new ArrayList<>();
 
         while (balls.size() < 3) {
             Ball ball = new Ball(Randoms.pickNumberInRange(1,9));
