@@ -23,32 +23,31 @@ public class BaseballGameController implements GameController {
         this.inputer = inputer;
         this.flag = true;
     }
-
     @Override
     public void doGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         try{
-            while(flag){
-                input = inputer.getInput();
-                sig = comparator.doIntCompare(randnumVO.getRandNum(), input);
-                printGame();
-                checkGameOver();
-            }
+            playGame();
+
         } catch(IllegalArgumentException e){
             e.printStackTrace();
-            return;
-        } finally {
-            inputer.initInputer();
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            if(inputer.getInput().get(0) == 1)
-            {
-                initGame();
-                doGame();
-            }
-            else {
-                return;
-            }
+        }
+    }
+
+    private void playGame() throws IllegalArgumentException{
+        while(flag){
+            input = inputer.getInput();
+            sig = comparator.doIntCompare(randnumVO.getRandNum(), input);
+            printGame();
+            checkGameOver();
+        }
+        inputer.initInputer();
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        if(inputer.getInput().get(0) == 1)
+        {
+            initGame();
+            playGame();
         }
     }
 
