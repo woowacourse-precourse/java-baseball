@@ -14,17 +14,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     @Test
-    void 숫자_0이_들어오는지_검증() {
+    void userNumber_숫자_0이_들어오는지_검증() {
         String fistZeroNumber = "012";
         String middleZeroNumber = "103";
         String endZeroNumber = "340";
 
         assertThatThrownBy(() -> Application.validateUserNumber(fistZeroNumber))
-                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber can't have Zero");
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("Number is out of range");
         assertThatThrownBy(() -> Application.validateUserNumber(middleZeroNumber))
-                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber can't have Zero");
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("Number is out of range");
         assertThatThrownBy(() -> Application.validateUserNumber(endZeroNumber))
-                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber can't have Zero");
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("Number is out of range");
     }
 
     @Test
