@@ -18,7 +18,7 @@ public class AnswerNumber {
 
     public void RandomNumber(){
         HashSet<Integer> numbers = new LinkedHashSet<>();
-        while (numbers.size() < 3){
+        while (numbers.size() < Game.BALLSIZE){
             int num = Randoms.pickNumberInRange(1,9);
             numbers.add(num);
             if(restartNumberValidator()){
