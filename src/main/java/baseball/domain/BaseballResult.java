@@ -38,7 +38,7 @@ public class BaseballResult {
     @Override
     public String toString() {
         if (getStrike() > GameValue.ZERO && getBall() > GameValue.ZERO) {
-            return getBallMessage() + " " + getStrikeMessage();
+            return String.join(" ", getBallMessage(), getStrikeMessage());
         }
 
         if (getStrike() > GameValue.ZERO && getBall() == GameValue.ZERO) {
