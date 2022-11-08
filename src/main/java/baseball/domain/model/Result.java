@@ -1,27 +1,19 @@
 package baseball.domain.model;
 
 public class Result {
-    private final int strike;
-    private final int ball;
+    private final Score score;
     private final boolean isOut;
 
-    public Result(int strike, int ball, boolean isOut) {
-        this.strike = strike;
-        this.ball = ball;
+    public Result(Score score, boolean isOut) {
+        this.score = score;
         this.isOut = isOut;
     }
 
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
-    public boolean isOut(){
+    public boolean isOut() {
         return isOut;
     }
 
-
+    public Score getScore() {
+        return score;
+    }
 }
