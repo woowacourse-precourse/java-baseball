@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -7,11 +8,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static camp.nextstep.edu.missionutils.Console.*;
-
 class Game {
+    public static final int MAX_ANSWER_SIZE = 3;
+    public static final int MIN_ANSWER_NUMBER = 1;
+    public static final int MAX_ANSWER_NUMBER = 9;
 
-    private final static Opponent opponent = new Opponent();
+//    private final static Opponent opponent = new Opponent();
     private List<Integer> answerList;
 
     public void start() {
@@ -23,22 +25,23 @@ class Game {
     }
 
     public int play() {
-        initRandomNum();
+        initAnswerList();
         System.out.println(GameMessage.START.message());
+
         guessWithHint();
         System.out.println(GameMessage.CORRECT.message());
 
         System.out.println(GameMessage.REPLAY_OR_END.message());
-        int replay = Integer.parseInt(readLine());
-        return replay;
+        return Integer.parseInt(Console.readLine());
     }
 
-    private void initRandomNum() {
+    private void initAnswerList() {
         answerList = new ArrayList<>();
-        while (answerList.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answerList.contains(randomNumber)) {
-                answerList.add(randomNumber);
+        while (answerList.size() < MAX_ANSWER_SIZE) {
+            int randomNum = Randoms.pickNumberInRange(MIN_ANSWER_NUMBER,
+                    MAX_ANSWER_NUMBER);
+            if (!answerList.contains(randomNum)) {
+                answerList.add(randomNum);
             }
         }
 
@@ -49,7 +52,7 @@ class Game {
         Hint hint = new Hint(answerList);
         while (true) {
             System.out.print(GameMessage.TYPE_USER_GUESS.message());
-            String input = readLine();
+            String input = Console.readLine();
             List<Integer> guess = Arrays.stream(input.split(""))
                     .map(Integer::valueOf)
                     .collect(Collectors.toList());
@@ -60,7 +63,6 @@ class Game {
             System.out.println(hint.retrieve(guess));
         }
     }
-
 
     private boolean isCorrect(List<Integer> guess) {
         return guess.get(0).equals(answerList.get(0))
