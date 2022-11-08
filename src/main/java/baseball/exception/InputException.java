@@ -9,20 +9,19 @@ public class InputException {
     private static final int PROPER_LENGTH=3;
     private static final String NUMERIC="[+-]?\\d+";
     private static final String BLANK="";
-    public boolean containZero(String userInput){
+    private static final String ERROR_MESSAGE="잘못된 값을 입력하셨습니다. 프로그램을 종료합니다.";
+    public static boolean containZero(String userInput){
         return userInput.contains(ZERO);
     }
-    public boolean isProperLetter(String userInput){
-
-        return userInput.replaceAll(NUMERIC,BLANK).equals(BLANK);
+    public static boolean isNotProperLetter(String userInput){
+        return !userInput.replaceAll(NUMERIC,BLANK).equals(BLANK);
     }
-    public boolean isProperLength(String userInput){
-        return userInput.length()==PROPER_LENGTH;
+    public static boolean isNotProperLength(String userInput){
+        return userInput.length()!=PROPER_LENGTH;
     }
-    public boolean isDuplicate(String userInput){
+    public static boolean isDuplicate(String userInput){
         List<String> separatedInput = new ArrayList<>(Arrays.asList(userInput.split("")));
         Set<String> uniqueNumber = new HashSet<>(separatedInput);
-        return (uniqueNumber.size()!=PROPER_LENGTH);
+        return uniqueNumber.size()!=PROPER_LENGTH;
     }
-
 }
