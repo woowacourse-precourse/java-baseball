@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class NumberBaseballGame {
     private static final String START_TEXT = "숫자 야구 게임을 시작합니다.";
@@ -25,6 +26,8 @@ public class NumberBaseballGame {
             UserInputException.checkUserInput(userInput);
             inputNumber = changeStringToList(userInput);
 
+            Score userScore = new Score();
+            playGame(userScore);
         }
     }
 
@@ -35,5 +38,17 @@ public class NumberBaseballGame {
             changedList.add(Character.getNumericValue(digit));
         }
         return changedList;
+    }
+
+    public void playGame(Score score) {
+        for (int i=0; i<3; i++) {
+            if (Objects.equals(computerNumber.get(i), inputNumber.get(i))) {
+                score.setStrike(score.getStrike() + 1);
+                continue;
+            }
+            if (computerNumber.contains(inputNumber.get(i))) {
+                score.setBall(score.getBall() + 1);
+            }
+        }
     }
 }
