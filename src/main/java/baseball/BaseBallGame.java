@@ -23,6 +23,7 @@ public class BaseBallGame {
         }
 
         HashMap<String, Integer> result = getResult(computer.getNumList(), user.getNumList());
+        printResult(result);
     }
 
     private static HashMap<String, Integer> getResult(List<Integer> computerNumList, List<Integer> inputNumList) {
@@ -45,5 +46,20 @@ public class BaseBallGame {
         result.put("strike", strikeCnt);
 
         return result;
+    }
+
+    private void printResult(HashMap<String, Integer> result) {
+        if (result.get("ball")==0 & result.get("strike")==0) {
+            System.out.println("낫싱");
+        }
+        if (result.get("ball")>0 & result.get("strike")>0) {
+            System.out.println(result.get("ball")+"볼 "+ result.get("strike")+"스트라이크");
+        }
+        if (result.get("ball")==0 & result.get("strike")>0) {
+            System.out.println(result.get("strike")+"스트라이크");
+        }
+        if (result.get("ball")>0 & result.get("strike")==0) {
+            System.out.println(result.get("ball")+"볼");
+        }
     }
 }
