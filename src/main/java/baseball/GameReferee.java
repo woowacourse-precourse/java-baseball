@@ -29,4 +29,12 @@ public class GameReferee {
         return count;
     }
 
+    private int countBall(boolean checkNothing, boolean checkStrike) {
+        int count = 0;
+        if (checkNothing && (!checkStrike)) {
+            count = 1;
+        }
+        return count;
+    }
+
 }
