@@ -1,7 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -9,6 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    private List<Integer> computer;
+
+    @BeforeEach
+    void setup() {
+        computer = List.of(1, 7, 9);
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -26,6 +36,34 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 볼의_개수를_계산한다() {
+        List<Integer> player = List.of(9, 1, 7);
+        Ball ball = new Ball(player, computer);
+        assertThat(ball.getCount()).isEqualTo(3);
+    }
+
+    @Test
+    void 볼이_없는_경우_볼의_개수_0반환() {
+        List<Integer> player = List.of(2, 3, 8);
+        Ball ball = new Ball(player, computer);
+        assertThat(ball.getCount()).isEqualTo(0);
+    }
+
+    @Test
+    void 스트라이크_개수를_계산한다() {
+        List<Integer> player = List.of(1, 7, 8);
+        Strike strike = new Strike(player, computer);
+        assertThat(strike.getCount()).isEqualTo(2);
+    }
+
+    @Test
+    void 스트라이크_없는_경우_스트라이크_개수_0반환() {
+        List<Integer> player = List.of(9, 1, 7);
+        Strike strike = new Strike(player, computer);
+        assertThat(strike.getCount()).isEqualTo(0);
     }
 
     @Override
