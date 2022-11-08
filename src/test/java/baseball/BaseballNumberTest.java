@@ -46,6 +46,7 @@ public class BaseballNumberTest {
             int count = BaseballNumber.countStrike(baseballNumber, inputNumber);
             assertThat(count).isEqualTo(0);
         }
+
         @Test
         void 스트라이크_1개() {
             List<Integer> baseballNumber = List.of(1, 2, 3);
@@ -53,6 +54,7 @@ public class BaseballNumberTest {
             int count = BaseballNumber.countStrike(baseballNumber, inputNumber);
             assertThat(count).isEqualTo(1);
         }
+
         @Test
         void 스트라이크_2개() {
             List<Integer> baseballNumber = List.of(1, 2, 3);
@@ -60,6 +62,7 @@ public class BaseballNumberTest {
             int count = BaseballNumber.countStrike(baseballNumber, inputNumber);
             assertThat(count).isEqualTo(2);
         }
+
         @Test
         void 스트라이크_3개() {
             List<Integer> baseballNumber = List.of(1, 2, 3);
@@ -68,6 +71,7 @@ public class BaseballNumberTest {
             assertThat(count).isEqualTo(3);
         }
     }
+
     @Nested
     class 볼_개수_확인 {
         @Test
@@ -77,6 +81,7 @@ public class BaseballNumberTest {
             int count = BaseballNumber.countBall(baseballNumber, inputNumber);
             assertThat(count).isEqualTo(0);
         }
+
         @Test
         void 볼_1개() {
             List<Integer> baseballNumber = List.of(1, 2, 3);
@@ -84,6 +89,7 @@ public class BaseballNumberTest {
             int count = BaseballNumber.countBall(baseballNumber, inputNumber);
             assertThat(count).isEqualTo(1);
         }
+
         @Test
         void 볼_2개() {
             List<Integer> baseballNumber = List.of(1, 2, 3);
@@ -91,6 +97,7 @@ public class BaseballNumberTest {
             int count = BaseballNumber.countBall(baseballNumber, inputNumber);
             assertThat(count).isEqualTo(2);
         }
+
         @Test
         void 볼_3개() {
             List<Integer> baseballNumber = List.of(1, 2, 3);
@@ -100,4 +107,3 @@ public class BaseballNumberTest {
         }
     }
 }
-
