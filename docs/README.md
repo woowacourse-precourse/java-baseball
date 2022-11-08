@@ -17,24 +17,24 @@
   - 사용자로부터 `GameProgress` 값을 입력받는다
 
 ### Player
-- [ ] 값 입력하기
+- [x] 값 입력하기
   - 콘솔로 값을 입력받는다 `Console.readLine()`
-  - [ ] 숫자 추측용 값 입력
+  - [x] 숫자 추측용 값 입력
     - [ ] 숫자 추측용 값 검증
       - allowedNumbers(1~9) 숫자만 허용
       - 즉, 0은 허용되지 않는다
       - 잘못된 입력을 받을시 예외를 발생시킴 (`IllegalArgumentException`)
     - 3개 만큼의 데이터를 입력
     - `BaseballNumberBundle`에 입력값을 저장
-  - [ ] 게임진행여부 값 입력
+  - [x] 게임진행여부 값 입력
     - [ ] 게임진행여부 값 검증
       - 0 or 1 숫자만 허용
       - `GameProgress`의 CONTINUE, EXIT와 대치
       - 잘못된 입력을 받을시 예외를 발생시킴 (`IllegalArgumentException`)
     - 1개의 데이터를 입력받아야 한다
     - `GameProgress` 형태의 값을 반환
-- [ ] 숫자 입력 전처리
-  - whiteSpace 문자를 제거한다. (' ', ',', '.', '\n')
+- [x] 숫자 입력 전처리
+  - whiteSpace 및 구분하기위해 쓰이는 문자를 제거한다. (' ', ',', '.', '\n','\t','/')
 
 ### Computer
 - [x] 임의로 생각한 숫자(정답)을 저장하는 변수 (`BaseballNumberBundle`)
