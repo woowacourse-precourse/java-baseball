@@ -14,17 +14,13 @@ public class Controller {
     static int GAME_EXIT = 2;
     static int NUMBER_RANGE_START = 1;
     static int NUMBER_RANGE_END = 9;
-
     static String USER_CHOICE = "게임을 새로 시작하려면 " + GAME_RESTART + ", 종료하려면 " + GAME_EXIT + "를 입력하세요";
-
-
 
     public void run(){
         Computer computer = new Computer();
         User user = new User();
 
         gameStartSetting(computer);
-
         startGame(computer, user);
 
         View.printGameOverMessage();
@@ -63,7 +59,6 @@ public class Controller {
     }
 
     private boolean askRestartOrExit(Computer computer, User user) {
-
         View.correctAnswer(NUMBER_LENGTH);
 
         String input = View.askRestartOrExit(USER_CHOICE);
