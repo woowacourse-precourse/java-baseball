@@ -12,7 +12,7 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(again){
+        while (again) {
             List<Integer> computer = createRandomNum();
             String result = "";
 
@@ -23,11 +23,11 @@ public class Application {
         }
     }
 
-    public static List<Integer> createRandomNum(){
+    public static List<Integer> createRandomNum() {
         List<Integer> computerNum = new ArrayList<>();
-        while(computerNum.size() < 3){
+        while (computerNum.size() < 3) {
             int randomNum = pickNumberInRange(1, 9);
-            if(!computerNum.contains(randomNum)){
+            if (!computerNum.contains(randomNum)) {
                 computerNum.add(randomNum);
             }
         }
@@ -35,7 +35,7 @@ public class Application {
     }
 
     public static void playGame(List<Integer> computer, String result) {
-        while(!result.equals("3스트라이크")){
+        while (!result.equals("3스트라이크")) {
             //빼볼까 시도해보자
             List<Integer> player = playerNum();
             wrongAnswer(computer, player);
@@ -44,41 +44,41 @@ public class Application {
         }
     }
 
-    public static List<Integer> playerNum(){
+    public static List<Integer> playerNum() {
         System.out.println("숫자를 입력해주세요 : ");
         String inputNumber = readLine();
         List<Integer> playerNumber = new ArrayList<>();
 
-        for(String number : inputNumber.split("")){
+        for (String number : inputNumber.split("")) {
             playerNumber.add(Integer.parseInt(number));
         }
         return playerNumber;
     }
 
-    public static int howManySame(List<Integer> computerNum, List<Integer> playerNum){
+    public static int howManySame(List<Integer> computerNum, List<Integer> playerNum) {
         int result = 0;
-        for(int i = 0; i < playerNum.size(); i++){
-            if(computerNum.contains(playerNum.get(i)))
+        for (int i = 0; i < playerNum.size(); i++) {
+            if (computerNum.contains(playerNum.get(i)))
                 result += 1;
         }
         return result;
     }
 
-    public static int howManyStrike(List<Integer>computerNum, List<Integer> playerNum){
+    public static int howManyStrike(List<Integer> computerNum, List<Integer> playerNum) {
         int strike = 0;
-        for(int i = 0; i < playerNum.size(); i++){
-            if(computerNum.get(i) == playerNum.get(i))
+        for (int i = 0; i < playerNum.size(); i++) {
+            if (computerNum.get(i) == playerNum.get(i))
                 strike += 1;
         }
         return strike;
     }
 
-    public static String judge(List<Integer>computerNum, List<Integer> playerNum){
+    public static String judge(List<Integer> computerNum, List<Integer> playerNum) {
         int total = howManySame(computerNum, playerNum);
         int strike = howManyStrike(computerNum, playerNum);
         int ball = total - strike;
 
-        if(total == 0){
+        if (total == 0) {
             return "낫싱";
         } else if (strike == 0) {
             return ball + "볼";
@@ -88,22 +88,22 @@ public class Application {
         return ball + "볼 " + strike + "스트라이크";
     }
 
-    public static boolean playAgainOrNot(){
+    public static boolean playAgainOrNot() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String decision = readLine();
 
-        if(decision.equals("1")){
+        if (decision.equals("1")) {
             return true;
         }
 
-        if(!decision.equals("1") && !decision.equals("2")){
+        if (!decision.equals("1") && !decision.equals("2")) {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 종료합니다.");
         }
 
         return false;
     }
 
-    public static void wrongAnswer(List<Integer>computerNum, List<Integer> playerNum) {
+    public static void wrongAnswer(List<Integer> computerNum, List<Integer> playerNum) {
         if (computerNum.size() != playerNum.size())
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 종료합니다.");
     }

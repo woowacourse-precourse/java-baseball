@@ -9,19 +9,19 @@ import java.util.Arrays;
 public class JudgeTest {
     @Test
     @DisplayName("3볼 확인")
-    void ballCheck(){
-        assertThat("3볼").isEqualTo(Application.judge(Arrays.asList(3,1,2),Arrays.asList(2,3,1)));
+    void ballCheck() {
+        assertThat("3볼").isEqualTo(Application.judge(Arrays.asList(3, 1, 2), Arrays.asList(2, 3, 1)));
     }
 
     @Test
     @DisplayName("3스트라이크 확인")
-    void strikeCheck(){
-        assertThat("3스트라이크").isEqualTo(Application.judge(Arrays.asList(4,5,6),Arrays.asList(4,5,6)));
+    void strikeCheck() {
+        assertThat("3스트라이크").isEqualTo(Application.judge(Arrays.asList(4, 5, 6), Arrays.asList(4, 5, 6)));
     }
 
     @Test
     @DisplayName("낫싱확인")
-    void nothingCheck(){
-        assertThat("낫싱").isEqualTo(Application.judge(Arrays.asList(4,5,6),Arrays.asList(1,2,3)));
+    void nothingCheck() {
+        assertThat("낫싱").isEqualTo(Application.judge(Arrays.asList(4, 5, 6), Arrays.asList(1, 2, 3)));
     }
 }
