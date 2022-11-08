@@ -27,7 +27,7 @@ public class PlayBall {
         boolean isGameOver = false;
 
         while(!isGameOver){
-            String userNumberInput = playBallUI.takeUserInput();
+            String userNumberInput = playBallUI.takeUserNumberInput();
             checkUserInput(userNumberInput);
 
             this.referee = judgeUserNumber(userNumberInput);
@@ -38,6 +38,7 @@ public class PlayBall {
             isGameOver = referee.isAnswer();
         }
 
+        playBallUI.showAnswerMessage();
     }
 
     public void checkUserInput(String userNumberInput){
