@@ -50,7 +50,7 @@ public class Validate {
         }
     }
 
-    public static int isOneOrTwo(String str) throws IllegalArgumentException {
+    public static int readOneOrTwo(String str) throws IllegalArgumentException {
         if (str.length() != 1) {
             throw new IllegalArgumentException();
         }

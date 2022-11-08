@@ -27,13 +27,13 @@ public class BaseballGame {
         Print.printGettingStart();
     }
 
-    private void input() throws IllegalArgumentException {
-        Print.printInputNumbers();
+    private void readNumbers() throws IllegalArgumentException {
+        Print.printReadNumbers();
         user = new User();
     }
 
     private void roundWithComputer() throws IllegalArgumentException {
-        input();
+        readNumbers();
 
         Compare c = new Compare();
         if (!c.isStrikeOut(computer, user)) {
@@ -43,6 +43,6 @@ public class BaseballGame {
 
     private boolean again() throws IllegalArgumentException {
         Print.printGameOverAndAfterRound();
-        return Validate.isOneOrTwo(Console.readLine()) == 1;
+        return Validate.readOneOrTwo(Console.readLine()) == 1;
     }
 }

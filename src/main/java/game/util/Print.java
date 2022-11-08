@@ -10,7 +10,7 @@ public class Print {
         System.out.println(GETTING_START);
     }
 
-    public static void printInputNumbers() {
+    public static void printReadNumbers() {
         System.out.println(INPUT_NUMBERS);
     }
 
