@@ -40,12 +40,6 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        try {
-            Application.main(new String[]{});
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
-        return;
-        //Application.main(new String[]{});
+        Application.main(new String[]{});
     }
 }
