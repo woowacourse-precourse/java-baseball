@@ -9,9 +9,9 @@ public class RandNumVO {
     private final List<Integer> randNum;
 
     public RandNumVO() throws IllegalArgumentException{
-        this.randNum = List.of(Randoms.pickNumberInRange(0, 9)
-                , Randoms.pickNumberInRange(0, 9)
-                , Randoms.pickNumberInRange(0, 9));
+        this.randNum = List.of(Randoms.pickNumberInRange(1, 9)
+                , Randoms.pickNumberInRange(1, 9)
+                , Randoms.pickNumberInRange(1, 9));
     }
 
     public List<Integer> getRandNum(){
