@@ -77,9 +77,18 @@ public class Application {
             default: throw new IllegalArgumentException();
         }
     }
-    
+
+    public static void getArgsForTest(String[] args){
+        if(args.length != 0) {
+            for (String s : args) {
+                System.out.println(s);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        getArgsForTest(args);
         do {
             computer = chooseNumByComputer();
             do {
