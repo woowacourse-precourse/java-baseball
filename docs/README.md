@@ -90,7 +90,7 @@ public static int getBallCount(List<Integer> computerInput, List<Integer> player
 * */
 public static String getResult(int ballCount, int strikeCount)
 
-
+ 
 /*
 *   computerInput을 기준으로 게임을 시작한다.
 *   (어떻게 설명해야할지를 모르겠습니다. 하나하나 적자니 너무 난잡하고 너무 간단하게 적자니 모호한거같습니다.)
