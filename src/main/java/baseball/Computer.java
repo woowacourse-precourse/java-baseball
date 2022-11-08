@@ -17,32 +17,28 @@ public class Computer {
     private int strikeCount;
     private int nothingCount;
 
-    public List<Integer> createRandomNumber() {
+    public void createRandomNumber() {
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
         }
-        return computerNumbers;
     }
 
-    public void createCompareResult() {
+    public void numberCompare() {
+        createRandomNumber();
+        System.out.println(computerNumbers);
         User user = new User();
-        compareResult = new String[3];
-        List<Integer> computerNumbers = createRandomNumber();
         List<Integer> userNumbers = user.createUserNumber();
-        inputCompareResult(computerNumbers, userNumbers);
-    }
-
-    public void inputCompareResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        compareResult = new String[3];
         for (int i = 0; i < computerNumbers.size(); i++) {
             int userNumber = userNumbers.get(i);
-            if (isSameIndexOfSameNumber(computerNumbers, userNumbers, userNumber)) {
+            if (isStrike(userNumbers, userNumber)) {
                 compareResult[i] = STRIKE;
                 continue;
             }
-            if (isContainsNumber(computerNumbers, userNumber)) {
+            if (isBall(userNumber)) {
                 compareResult[i] = BALL;
                 continue;
             }
@@ -50,17 +46,17 @@ public class Computer {
         }
     }
 
-    public boolean isContainsNumber(List<Integer> computerNumbers, int number) {
-        if (computerNumbers.contains(number)) {
+    public boolean isBall(int userNumber) {
+        if (computerNumbers.contains(userNumber)) {
             return true;
         }
         return false;
     }
 
-    public boolean isSameIndexOfSameNumber(List<Integer> computerNumbers, List<Integer> userNumbers, int number) {
-        if (isContainsNumber(computerNumbers, number)) {
-            int computerNumberIndex = computerNumbers.indexOf(number);
-            int userNumberIndex = userNumbers.indexOf(number);
+    public boolean isStrike(List<Integer> userNumbers, int userNumber) {
+        if (isBall(userNumber)) {
+            int computerNumberIndex = computerNumbers.indexOf(userNumber);
+            int userNumberIndex = userNumbers.indexOf(userNumber);
             if (computerNumberIndex == userNumberIndex) {
                 return true;
             }
@@ -68,40 +64,33 @@ public class Computer {
         return false;
     }
 
-    public void compareGameScore() {
-        createCompareResult();
-        for (int i = 0; i < compareResult.length; i++) {
-            if (compareResult[i] == STRIKE) {
+    public void numberCompareResult() {
+        numberCompare();
+        int listSize = compareResult.length;
+        for (int i = 0; i < listSize; i++) {
+            String result = compareResult[i];
+            if (result == STRIKE) {
                 strikeCount++;
             }
-            if (compareResult[i] == BALL) {
+            if (result == BALL) {
                 ballCount++;
             }
-            if (compareResult[i] == NOTHING) {
+            if (result == NOTHING) {
                 nothingCount++;
             }
         }
     }
 
-    public void countInitialization() {
-        strikeCount = 0;
-        ballCount = 0;
-        nothingCount = 0;
-    }
-
     public void gameStart() {
         while (true) {
-            compareGameScore();
+            numberCompareResult();
             if (strikeCount == 3) {
                 printStrike();
                 printGameOver();
-                computerNumbers.clear();
                 restartGame();
                 break;
             }
-            if (ballCount > 0 && strikeCount > 0) {
-                System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
-            }
+            printStrikeAndBall();
             printStrike();
             printBall();
             printNothing();
@@ -109,14 +98,30 @@ public class Computer {
         }
     }
 
-    public void printGameOver() {
-        System.out.println(GAME_OVER);
-        System.out.println(GAME_RESTART_OR_STOP);
-    }
-
     public void printStrike() {
         if (ballCount == 0 && strikeCount > 0) {
             System.out.println(strikeCount + STRIKE);
+        }
+    }
+
+    public void printGameOver() {
+        System.out.println(GAME_OVER);
+        System.out.println(GAME_RESTART_OR_STOP);
+        computerNumbers.clear();
+        countInitialization();
+    }
+
+    public void restartGame() {
+        User user = new User();
+        int number = user.inputRestartNumber();
+        if (number == 1) {
+            gameStart();
+        }
+    }
+
+    public void printStrikeAndBall() {
+        if (ballCount > 0 && strikeCount > 0) {
+            System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
         }
     }
 
@@ -132,11 +137,9 @@ public class Computer {
         }
     }
 
-    public void restartGame() {
-        User user = new User();
-        int number = user.inputRestartNumber();
-        if (number == 1) {
-            gameStart();
-        }
+    public void countInitialization() {
+        strikeCount = 0;
+        ballCount = 0;
+        nothingCount = 0;
     }
 }
