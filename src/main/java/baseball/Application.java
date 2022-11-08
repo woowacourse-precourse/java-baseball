@@ -6,10 +6,10 @@ public class Application {
 
     public final static int CONTINUE = 1;
     public final static int EXIT = 2;
-    private final static int DIGIT = 3;
+    public final static int DIGIT = 3;
 
     public static void main(String[] args) throws IllegalArgumentException {
-        View view = View.getInstance();
+        View view = View.getInstance(DIGIT);
         Judge judge = Judge.getInstance();
         DigitNumber digitNumber = DigitNumber.getInstance(DIGIT);
         int command = CONTINUE;
