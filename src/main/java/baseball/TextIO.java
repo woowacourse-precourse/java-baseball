@@ -12,5 +12,11 @@ public class TextIO {
         else
             throw new IllegalArgumentException("invalid input");
     }
+    public static void Out(String text){
+        System.out.print(text);
+    }
 
+    public static void Outln(String text){
+        System.out.println(text);
+    }
 }
