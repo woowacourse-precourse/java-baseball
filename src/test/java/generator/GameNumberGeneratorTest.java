@@ -1,10 +1,11 @@
 package generator;
 
-import java.util.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+import java.util.ArrayList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameNumberGeneratorTest {
     @Test
@@ -34,7 +35,7 @@ public class GameNumberGeneratorTest {
         assertThat(number)
                 .hasSize(3)
                 .containsOnlyDigits();
-        for(char c : numberChars) {
+        for (char c : numberChars) {
             assertThat(numberChars)
                     .containsOnlyOnce(c);
         }

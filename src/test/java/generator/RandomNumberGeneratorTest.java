@@ -1,8 +1,8 @@
 package generator;
 
-import org.junit.jupiter.api.*;
-
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.*;
 
 public class RandomNumberGeneratorTest {
     @RepeatedTest(10)

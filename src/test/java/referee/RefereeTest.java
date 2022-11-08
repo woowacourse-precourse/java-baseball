@@ -1,9 +1,9 @@
 package referee;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class RefereeTest {
     @Test
@@ -38,19 +38,19 @@ public class RefereeTest {
         Referee referee = new Referee();
 
         referee.decision(input1, answer);
-        assertThat(referee.buildDecisionString())
+        assertThat(referee.getDecisionResultString())
                 .isEqualTo("1스트라이크");
         referee.decision(input2, answer);
-        assertThat(referee.buildDecisionString())
+        assertThat(referee.getDecisionResultString())
                 .isEqualTo("1볼 ");
         referee.decision(input3, answer);
-        assertThat(referee.buildDecisionString())
+        assertThat(referee.getDecisionResultString())
                 .isEqualTo("낫싱");
         referee.decision(input4, answer);
-        assertThat(referee.buildDecisionString())
+        assertThat(referee.getDecisionResultString())
                 .isEqualTo("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         referee.decision(input5, answer);
-        assertThat(referee.buildDecisionString())
+        assertThat(referee.getDecisionResultString())
                 .isEqualTo("2볼 1스트라이크");
     }
 }
