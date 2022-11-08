@@ -25,7 +25,7 @@ public class BaseBall {
         }
     }
     
-    private static boolean isBaseBallGameRestart(final int selectedNumberForRestart) {
+    private boolean isBaseBallGameRestart(final int selectedNumberForRestart) {
         return selectedNumberForRestart == RESTART_NUMBER;
     }
     
