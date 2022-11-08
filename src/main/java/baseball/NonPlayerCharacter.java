@@ -28,20 +28,23 @@ public class NonPlayerCharacter {
     }
 
     public String makeResultString() {
-        if (numberOfBallAndStrike[BALL] == 0 && numberOfBallAndStrike[STRIKE] == 0) {
+        int ballCnt = numberOfBallAndStrike[BALL];
+        int strikeCnt = numberOfBallAndStrike[STRIKE];
+
+        if (ballCnt == 0 && strikeCnt == 0) {
             return "낫싱";
         }
-        if (numberOfBallAndStrike[BALL] == 0) {
-            return "3스트라이크";
+        if (ballCnt == 0) {
+            return strikeCnt + "스트라이크";
         }
-        if (numberOfBallAndStrike[STRIKE] == 0) {
-            return "3볼";
+        if (strikeCnt == 0) {
+            return ballCnt + "볼";
         }
-        return numberOfBallAndStrike[BALL] + "볼 " + numberOfBallAndStrike[STRIKE] + "스트라이크";
+        return ballCnt + "볼 " + strikeCnt + "스트라이크";
     }
 
     public void countNumberOfBallAndStrike(int input) {
-        numberOfBallAndStrike = new int[3];
+        numberOfBallAndStrike = new int[2];
         String inputString = String.valueOf(input);
 
         for (int index = 0; index < DIGITS_OF_RANDOM_NUMBER; index++) {
@@ -67,11 +70,11 @@ public class NonPlayerCharacter {
     }
 
     public boolean isStrike(char input, int index) {
-        return randomNumber.toString().charAt(index) == input;
+        return String.valueOf(randomNumber.fullNumber).charAt(index) == input;
     }
 
     public boolean isBall(char input) {
-        return randomNumber.toString().contains(Character.toString(input));
+        return String.valueOf(randomNumber.fullNumber).contains(Character.toString(input));
     }
 
 }
