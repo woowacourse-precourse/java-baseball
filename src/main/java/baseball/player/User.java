@@ -6,4 +6,8 @@ public class User extends Player {
     public void selectBalls() {
 
     }
+
+    private boolean isSelectRightNumber(String userInput) {
+        return userInput.length() == 3;
+    }
 }
