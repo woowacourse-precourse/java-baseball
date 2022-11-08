@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    static List<Integer> input(){
-        List<Integer> player = new ArrayList<>();
-        return player;
+
+    static int input(){
+        System.out.println("숫자를 입력해주세요 : ");
+        int input = Integer.parseInt(Console.readLine());
+        System.out.println(input);
+        return input;
     }
+
 
     static List<Integer> random(){
         List<Integer> computer = new ArrayList<>();
@@ -26,19 +30,18 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
         List<Integer> player = new ArrayList<>();
         computer = random();
-        player = input();
-
+        int inputInt = input();
     }
+
     static boolean finish(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        try {
-            int restart = Integer.parseInt(Console.readLine());
-            if(restart == 1) return false;
-            else if(restart == 2) return true;
-        }catch(Exception e) {}
-        return true;
+        int restart = Integer.parseInt(Console.readLine());
+        if(restart == 1) return false;
+        else if(restart == 2) return true;
+        else throw new IllegalArgumentException();
     }
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         do{
             game();
