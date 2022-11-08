@@ -15,10 +15,6 @@ public class PlayNumberBaseballGame {
     List<Integer> playerInputNumbers = new ArrayList<>();
     private boolean isCorrect=false;
 
-    PlayNumberBaseballGame(){
-        playNumberBaseballOneGame();
-    }
-
     public void playNumberBaseballOneGame(){
         isCorrect=false;
         computerRandomNumbers=createRandomNumberOfComputer();
@@ -127,7 +123,7 @@ public class PlayNumberBaseballGame {
         return result;
     }
 
-    private boolean isRetry(){
+    public boolean isRetry(){
         String inputLine = Console.readLine();
         InputException.inputNotOneOrTwoException(inputLine);
 
