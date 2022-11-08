@@ -169,7 +169,7 @@ public class Application {
         String playerReply = Console.readLine();
         checkValidPlayerReply(playerReply);
 
-        if("1".equals(playerReply.charAt(0)))
+        if(playerReply.charAt(0) == '1')
             return true;
         else
             return false;
