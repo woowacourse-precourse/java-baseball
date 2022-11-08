@@ -48,6 +48,9 @@ public class BaseballGameController {
             } else if (userInput.equals("2")) {
                 System.out.println("게임을 종료합니다.");
             }
+            else{
+                throw new IllegalArgumentException("1 또는 2를 입력하셔야 합니다.");
+            }
         }
         return correctiveStatus;
     }
