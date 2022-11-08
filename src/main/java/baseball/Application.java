@@ -10,8 +10,19 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        numberBaseballGameProgram();
+    }
+
+    // 숫자 야구 프로그램을 실행하는 기능
+    public static void numberBaseballGameProgram() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        String programFinishNumber;
+        do {
+            numberBaseballGame();
+            programFinishNumber = Console.readLine();
+        } while (checkProgramFinished(programFinishNumber));
     }
 
     // 숫자 야구 게임을 실행하는 기능
