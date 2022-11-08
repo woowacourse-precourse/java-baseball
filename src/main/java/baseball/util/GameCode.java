@@ -2,7 +2,7 @@ package baseball.util;
 
 public enum GameCode {
 
-    MAX_NUMBER_LENGTH(3),
+    VALID_NUMBER_LENGTH(3),
     STRIKE_COUNT_FOR_END(3),
     RESTART_GAME(1),
     END_GAME(2);

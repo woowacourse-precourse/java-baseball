@@ -29,7 +29,7 @@ public class NumberValidation {
     }
 
     public void validateLength(String input) {
-        if (input.length() != MAX_NUMBER_LENGTH.getCode()) {
+        if (input.length() != VALID_NUMBER_LENGTH.getCode()) {
             throw new IllegalArgumentException("number length must be 3");
         }
     }
