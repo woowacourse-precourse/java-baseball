@@ -8,13 +8,14 @@ public class Application {
     static class BaseBall {
 
         private static final int NUM_DIGIT = 3;
+        private static final int NUM_BOUNDARY = 10;
 
         private int[] goalArr;
         private int[] usageArr;
 
         public BaseBall() {
             goalArr = new int[NUM_DIGIT];
-            usageArr = new int[NUM_DIGIT];
+            usageArr = new int[NUM_BOUNDARY];
         }
 
         public void game() {
@@ -38,8 +39,12 @@ public class Application {
             for (int idx = 0; idx < NUM_DIGIT; idx++) {
                 int randomNum = makeNumber();
                 makeNumberOrder(randomNum, idx);
-//                makeNumberUsage(randomNum);
+                makeNumberUsage(randomNum);
             }
+        }
+
+        private void makeNumberUsage(int randomNum) {
+            this.usageArr[randomNum] += 1;
         }
 
         private void makeNumberOrder(int randomNum, int idx) {
