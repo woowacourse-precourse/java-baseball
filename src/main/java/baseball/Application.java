@@ -52,6 +52,16 @@ public class Application {
         return userNumber;
     }
 
+    public static int numsOfEqualNumber(List<Integer> computerNumber, List<Integer> userNumber) { // not countBall, not countStrike
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computerNumber.contains(userNumber.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
