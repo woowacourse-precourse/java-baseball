@@ -1,5 +1,7 @@
 package baseball.utility;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Utility {
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
@@ -9,5 +11,6 @@ public class Utility {
     public static final String INPUT_MENT = "숫자를 입력해주세요 : ";
     public static final String CONTINUE_MENT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-
+    public static int ANSWER_LENGTH = 3;
+    
 }
