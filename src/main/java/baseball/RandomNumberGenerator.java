@@ -14,21 +14,17 @@ import java.util.List;
 public class RandomNumberGenerator {
     private static final int START_RANGE = 1;
     private static final int END_RANGE = 9;
-    public static List<Integer> randomNumberList;
-
-    static {
-        randomNumberList = new ArrayList<>();
-    }
+    public List<Integer> randomNumberList;
 
     static int getRandomNumber() {
         return Randoms.pickNumberInRange(START_RANGE, END_RANGE);
     }
 
-    static boolean IsInList(int number) {
+    private boolean IsInList(int number) {
         return randomNumberList.contains(number);
     }
 
-    static void addToRandomNumberList() {
+    private void addToRandomNumberList() {
         while (true) {
             int number = getRandomNumber();
             if (!IsInList(number)) {
@@ -38,9 +34,14 @@ public class RandomNumberGenerator {
         }
     }
 
-    public static void generate() {
+    public void generate() {
+        randomNumberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             addToRandomNumberList();
         }
+    }
+
+    public int getRandomNumberAt(int index) {
+        return randomNumberList.get(index);
     }
 }
