@@ -16,6 +16,7 @@ public class GameManager {
     }
 
     public void play() {
+        computer.TargetNumberGenerator();
         while (true) {
             referee.setBallAndStrike(computer.getTargetNumber(), InputView.getUserInput());
             System.out.println(referee.resultMessage());
