@@ -12,6 +12,7 @@ public class Number {
     public Number(String numberInput) {
         try {
             int convertedNumber = Integer.parseInt(numberInput);
+
             if (numberRangeValidationTest(convertedNumber)) {
                 this.number = convertedNumber;
             }

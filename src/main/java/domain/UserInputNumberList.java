@@ -20,6 +20,7 @@ public class UserInputNumberList {
                 .map(Number::new)
                 .collect(Collectors.toList());
         List<Number> nonRedundantInputList = inputList.stream().distinct().collect(Collectors.toList());
+
         if (inputList.size() != nonRedundantInputList.size()) {
             throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.");
         } else if (nonRedundantInputList.size() != 3) {
