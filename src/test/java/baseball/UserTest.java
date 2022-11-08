@@ -22,7 +22,7 @@ class UserTest {
     }
 
     @Test
-    void test() {
+    void 유저_숫자_입력_검사() {
         String input = "123";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
