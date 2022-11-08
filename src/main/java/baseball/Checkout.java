@@ -16,4 +16,23 @@ public class Checkout {
         this.ball = ball;
     }
 
+    public static Checkout checkBalls(Com gameBalls, Com userBalls) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            Ball thisBall = gameBalls.get(i);
+
+            if (thisBall.equals(userBalls.get(i))) {
+                strike++;
+                continue;
+            }
+            if (userBalls.contains(thisBall)) {
+                ball++;
+            }
+        }
+
+        return new Checkout(strike, ball);
+    }
+
 }
