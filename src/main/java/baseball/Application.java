@@ -39,10 +39,19 @@ public class Application {
 
     public static int howManySame(List<Integer> computerNum, List<Integer> playerNum){
         int result = 0;
-        for(int i = 0; i< playerNum.size(); i++){
+        for(int i = 0; i < playerNum.size(); i++){
             if(computerNum.contains(playerNum.get(i)))
-                result+=1;
+                result += 1;
         }
         return result;
+    }
+
+    public static int howManyStrike(List<Integer>computerNum, List<Integer> playerNum){
+        int strike = 0;
+        for(int i = 0; i < playerNum.size(); i++){
+            if(computerNum.get(i) == playerNum.get(i))
+                strike += 1;
+        }
+        return strike;
     }
 }
