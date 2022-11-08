@@ -178,13 +178,7 @@ public class Application {
         // 3. 3개인지
         // 4. 모두 다른 숫자인지
 
-        // userInput이 null 이라면 -> 예외발생
-        if (userInput == null) {
-            throw new IllegalArgumentException();
-        }
-
-        // 3자리 입력값이 아니라면 -> 예외발생
-        if (userInput.length() != 3) {
+        if(!isCorrectUserNumber(userInput)){
             throw new IllegalArgumentException();
         }
 
@@ -206,6 +200,20 @@ public class Application {
 
         // 반환
         return userNumber;
+    }
+
+    static boolean isCorrectUserNumber(String userInput){
+        // userInput이 null 이라면 -> 예외발생
+        if (userInput == null) {
+            return false;
+        }
+
+        // 3자리 입력값이 아니라면 -> 예외발생
+        if (userInput.length() != 3) {
+            return false;
+        }
+
+        return true;
     }
 
     /*
