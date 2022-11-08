@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.BufferedWriter;
@@ -45,5 +46,17 @@ public class Application {
         }
         
         return result;
+    }
+    
+    static Integer getIntegerInput() throws IllegalArgumentException {
+        
+        try {
+            String userInput = Console.readLine();
+            Integer result = Integer.parseInt(userInput);
+            return result;
+        } catch(NumberFormatException error) {
+            throw new IllegalArgumentException();
+        }
+        
     }
 }
