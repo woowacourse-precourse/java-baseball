@@ -16,7 +16,9 @@ public class User {
     private Integer ball;
     private boolean end;
 
-    public User() {}
+    public User() {
+        this.end = false;
+    }
 
     public List<Integer> getNumbers() {
         return numbers;
@@ -46,7 +48,6 @@ public class User {
         this.numbers = listConverter(inputNumber);
         this.strike = 0;
         this.ball = 0;
-        this.end = false;
     }
 
     //== 비즈니스 로직 ==//
