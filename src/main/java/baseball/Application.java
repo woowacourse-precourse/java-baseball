@@ -113,6 +113,28 @@ public class Application {
 		System.out.println("게임을 종료합니다!");
 	}
 	
+	public static void gameProcess() {
+		gameStart();
+		boolean end=true;
+		List<Integer> computer = computerNumber();
+		while(end) {
+			String input=inputNumber();
+			List<Integer> user = userNumber(input);
+			int strike=strikeCheck(computer, user);
+			int ball=ballCheck(computer, user);
+			String result=gameResult(strike, ball);
+			if(strike != 3) {
+				System.out.println(result);
+				end=true;
+			}else {
+				System.out.println(result);
+				end=false;
+			}
+		}
+		if(gameRestart()) gameProcess();
+		else endGame();
+	}
+	
     public static void main(String[] args) {
     	
     }
