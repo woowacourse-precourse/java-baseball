@@ -8,22 +8,22 @@ import java.util.Map;
 import baseball.constants.Message;
 import baseball.controller.Controller;
 import baseball.exception.IllegalException;
+import baseball.service.vo.ServiceVO;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Service {
-
+	static ServiceVO vo = new ServiceVO();
 	static IllegalException exception = new IllegalException();
-	static Message message = new Message();
-	public static boolean gameSet = true;
+	static Message message = new Message();	
 	static Controller controller = new Controller();
-
+	
 	public static void gameStart(List<Integer> comNumber) {
 
 		System.out.println(message.getGameStart());
-		Map<String, Integer> userScore = new HashMap<>();
+		Map<String, Integer> userScore = new HashMap<>(); // ?
 
-		while (gameSet) {
+		while (vo.isGameSet()) {
 			userScore = controller.getGameScore(comNumber);
 			controller.getScoreProcess(userScore);
 		}
@@ -39,15 +39,16 @@ public class Service {
 				computerNumbers.add(randomComputerNumber);
 			}
 		}		
+		vo.setComputerNumbers(computerNumbers);
 		System.out.println("초보자용 컴퓨터 번호: " + computerNumbers);
-		return computerNumbers;
+		return vo.getComputerNumbers();
 	}
 
 	public static List<Integer> setUserNumbers() {
-
-		System.out.print(message.getInputNumbers());
-		String userAnotherNumbers = Console.readLine();		
-		List<Integer> userNumbersList = exception.userNumbersException(userAnotherNumbers);
+		
+		System.out.print(message.getInputNumbers());			
+		vo.setUserAnotherNumbers(Console.readLine());
+		List<Integer> userNumbersList = exception.userNumbersException(vo.getUserAnotherNumbers());
 
 		return userNumbersList;
 	}
@@ -55,23 +56,24 @@ public class Service {
 	public static Map<String, Integer> setGameScore(List<Integer> comNumber) {
 
 		Map<String, Integer> userScore = new HashMap<>();
-		List<Integer> userNumber = setUserNumbers();
-
-		for (int i = 0; i < userNumber.size(); i++) {
-			if (userNumber.get(i) == comNumber.get(i)) {
+		vo.setUserNumber(setUserNumbers());
+		for (int i = 0; i < vo.getUserNumber().size(); i++) {
+			if (vo.getUserNumber().get(i) == comNumber.get(i)) {
 				userScore.put(message.getStrike(), userScore.getOrDefault(message.getStrike(), 0) + 1);
-			} else if (comNumber.contains(userNumber.get(i))) {
+			} else if (comNumber.contains(vo.getUserNumber().get(i))) {
 				userScore.put(message.getBall(), userScore.getOrDefault(message.getBall(), 0) + 1);
 			}
 		}
+		vo.setUserScore(userScore);
 		return userScore;
 	}
 
 	public static void scoreProcess(Map<String, Integer> userScore) {
 
-		Integer strike = userScore.get(message.getStrike());
-		Integer ball = userScore.get(message.getBall());
-
+		vo.setStrike(userScore.get(message.getStrike()));
+		vo.setBall(userScore.get(message.getBall()));
+		Integer strike = vo.getStrike();
+		Integer ball = vo.getBall();
 		if (strike == null && ball == null) {
 			System.out.println(message.getNothing());
 		} else if (strike != null && ball != null) {
@@ -89,7 +91,7 @@ public class Service {
 	public static void gameContinued() {
 
 		System.out.println(message.getGameOver());
-		String continued = Console.readLine();
-		exception.continuedExceptionProcess(continued);
+		vo.setContinued(Console.readLine());
+		exception.continuedExceptionProcess(vo.getContinued());
 	}
 }
