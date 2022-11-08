@@ -28,9 +28,17 @@ public class Computer {
         }
     }
 
-    private void init() {
+    public void init() {
         strikeCnt = 0;
         ballCnt = 0;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(List<Integer> setNum) {
+        numbers = setNum;
     }
 
     // 같은 수가 같은 자리에 있으면 "스트라이크"
@@ -54,9 +62,16 @@ public class Computer {
     public int getStrike() {
         return strikeCnt;
     }
+    public void setStrike(int s) {
+        strikeCnt = s;
+    }
 
     public int getBall() {
         return ballCnt;
+    }
+
+    public void setBall(int b) {
+        ballCnt = b;
     }
 
     // 같은 수가 전혀 없으면 "낫싱"
@@ -74,11 +89,12 @@ public class Computer {
             return;
         }
 
-        if (ballCnt != 0) {
-            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
-            return;
+        if (getBall() != 0 && getStrike() != 0) {
+            System.out.println(getBall() + "볼 " + getStrike() + "스트라이크");
+        } else if (getStrike() != 0) {
+            System.out.println(getStrike() + "스트라이크");
         } else {
-            System.out.println(strikeCnt + "스트라이크");
+            System.out.println(getBall() + "볼");
         }
     }
 
