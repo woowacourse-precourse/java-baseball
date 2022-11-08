@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             System.out.print("숫자를 입력해주세요 : ");
-            int userNumber = Integer.parseInt(Console.readLine());
+            List<Integer> userNumber = splitNumber(Integer.parseInt(Console.readLine()));
             if (!checkException(userNumber)) {
                 throw new IllegalArgumentException();
             }
@@ -37,6 +38,15 @@ public class Application {
             }
         }
         return computerNumber;
+    }
+    public static List<Integer> splitNumber(int number) {
+        List<Integer> userNumber = new ArrayList<>();
+        while (number > 0) {
+            userNumber.add(number%10);
+            number /= 10;
+        }
+        Collections.reverse(userNumber);
+        return userNumber;
     }
 
     public static boolean checkException(int num) {
