@@ -10,7 +10,6 @@ public class Round {
     UserInput userInput = new UserInput();
 
     public void run(List<Integer> computerNumberList) {
-        boolean isCorrect;
         Result result = new Result();
 
         do {
@@ -18,8 +17,7 @@ public class Round {
             List<Integer> userNumberList = userInput.getNumberList();
             result.updateResult(userNumberList, computerNumberList);
             result.printResult();
-            isCorrect = result.getIsCorrect();
-        } while (!isCorrect);
+        } while (!result.getCorrect());
 
         Guide.printEndingGuide();
     }

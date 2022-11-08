@@ -10,24 +10,24 @@ import java.util.Map;
 public class Result {
     private final StringBuilder sb = new StringBuilder();
     private String result;
-    private boolean isCorrect;
+    private boolean correct;
 
     public Result(){
         this.result = "";
-        this.isCorrect = false;
+        this.correct = false;
     }
 
     public void updateResult(List<Integer> userNumberList, List<Integer> computerNumberList){
         this.result =  getResult(userNumberList, computerNumberList);
-        this.isCorrect = (result.equals(ALL_STRIKE_RESULT));
+        this.correct = (result.equals(ALL_STRIKE_RESULT));
     }
 
     public void printResult() {
         System.out.println(result);
     }
 
-    public boolean getIsCorrect() {
-        return isCorrect;
+    public boolean getCorrect() {
+        return correct;
     }
 
     public String getResult(){
