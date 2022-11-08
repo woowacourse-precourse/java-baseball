@@ -13,23 +13,22 @@ public class Game {
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> numComputer = NumComputerPicker.pickNumComputer();
+        do {
+            List<Integer> numComputer = NumComputerPicker.pickNumComputer();
+            int strikeCount;
+            do {
+                System.out.print("숫자를 입력해주세요 : ");
+                String str = Console.readLine();
+                List<Integer> numInput = new ArrayList<>();
+                getNumInput(numInput, str);
 
-        List<Integer> numInput = new ArrayList<>();
-        while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String str = Console.readLine();
-            getNumInput(numInput, str);
+                List<Integer> score = ScoreCalculator.calScore(numComputer, numInput);
 
-            List<Integer> score = ScoreCalculator.calScore(numComputer, numInput);
+                printScore(score);
 
-            printScore(score);
-
-            int strikeCount = score.get(1);
-            if (strikeCount == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            }
-        }
+                strikeCount = score.get(1);
+            } while (!gameEnd(strikeCount));
+        } while (restart());
     }
 
     public void getNumInput(List<Integer> result, String str) {
@@ -86,6 +85,36 @@ public class Game {
 
         System.out.println();
         return;
+    }
+
+    private boolean gameEnd(int strikeCount) {
+        if (strikeCount < 3) {
+            return false;
+        }
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+        return true;
+    }
+
+    private boolean restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int operation;
+        try {
+            operation = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException();
+        }
+
+        if (operation == 1) {
+            return true;
+        }
+        if (operation == 2) {
+            return false;
+        }
+
+        throw new IllegalArgumentException();
     }
 
 }
