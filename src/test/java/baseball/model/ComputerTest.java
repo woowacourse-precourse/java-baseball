@@ -17,7 +17,10 @@ class ComputerTest extends NsTest {
     public void 서로다른_3자리의_숫자() {
         computer.generateNumber();
         List<Integer> numberList = computer.getNumberList();
-        long distinctNumberCount = numberList.stream().distinct().count();
+        long distinctNumberCount = numberList
+                                    .stream()
+                                    .distinct()
+                                    .count();
 
         Assertions.assertEquals(distinctNumberCount, 3);
     }
