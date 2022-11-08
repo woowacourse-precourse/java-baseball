@@ -31,9 +31,9 @@ public class GameResultCalculator {
         Digit secondInput = playerInput.second;
         Digit thirdInput = playerInput.third;
 
-        boolean isFirstBall = firstInput.equals(randomNumber.first) && randomNumber.contains(firstInput),
-                isSecondBall = secondInput.equals(randomNumber.second) && randomNumber.contains(secondInput),
-                isThirdBall = thirdInput.equals(randomNumber.third) && randomNumber.contains(thirdInput);
+        boolean isFirstBall = !firstInput.equals(randomNumber.first) && randomNumber.contains(firstInput),
+                isSecondBall = !secondInput.equals(randomNumber.second) && randomNumber.contains(secondInput),
+                isThirdBall = !thirdInput.equals(randomNumber.third) && randomNumber.contains(thirdInput);
 
         if (isFirstBall) {
             ballCount++;
