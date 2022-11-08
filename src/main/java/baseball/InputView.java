@@ -9,7 +9,7 @@ public class InputView {
 
     public static List<Integer> getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(INPUT_NUMBER_MESSAGE);
+        System.out.printf(INPUT_NUMBER_MESSAGE);
         String userInput = scanner.nextLine();
         userInputValidationCheck(userInput);
         return stringToList(userInput);
@@ -31,7 +31,7 @@ public class InputView {
     }
 
     public static void userInputValidationCheck(String userInput) {
-        if (overThreeLength(userInput) && isNumber(userInput) && haveNotZero(userInput) && notDuplicatedNumber(userInput)) {
+        if (isThreeLength(userInput) && isNumber(userInput) && haveNotZero(userInput) && notDuplicatedNumber(userInput)) {
             return;
         }
         throw new IllegalArgumentException();
@@ -46,8 +46,8 @@ public class InputView {
         return false;
     }
 
-    private static boolean overThreeLength(String userInput) { // 세자리 수가 넘는 경우
-        if (userInput.length() > 3) {
+    private static boolean isThreeLength(String userInput) { // 세자리 수가 넘는 경우
+        if (userInput.length() != NUMBER_LENGTH) {
             return false;
         }
         return true;
