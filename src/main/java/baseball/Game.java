@@ -16,6 +16,7 @@ public class Game {
 
     public void startGame() {
         answer = Computer.createAnswer();
+        Message.printStartMessage();
 
         while (!finish) {
             initResult();
