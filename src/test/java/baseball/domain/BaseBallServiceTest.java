@@ -2,6 +2,7 @@ package baseball.domain;
 
 import org.junit.jupiter.api.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,12 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class BaseBallServiceTest {
 
-    BaseBallService baseBallService;
-
-    @BeforeAll
-    public void setUp(){
-        baseBallService = new BaseBallServiceImpl();
-    }
+    BaseBallService baseBallService = new BaseBallServiceImpl();
 
     @Nested
     class RandomNumberTest {
@@ -42,20 +38,16 @@ class BaseBallServiceTest {
             }
         }
     }
+    @Test
+    void 볼_스트라이크_카운트_확인(){
 
-    @Nested
-    class verifyingTest{
+        List<Integer> originNumbers = Arrays.asList(5,7,8);
+        List<Integer> userNumbers = Arrays.asList(5,1,7);
 
-        @Test
-        void 입력받은_문자_검증_예외처리_테스트(){
-            assertThrows(IllegalArgumentException.class,()->{
+        baseBallService.saveRandomNumbers(originNumbers);
+        GameResult gameResult = baseBallService.compareNumbers(userNumbers);
 
-            });
-        }
+        assertEquals(gameResult.getStrikeCount(),1);
+        assertEquals(gameResult.getBallCount(),1);
     }
-
-//
-//    List<Integer> stringToStringList(String str);
-//    void compareNumbers(List<Integer> numbers);
-//    int inputQuestionRestart();
 }

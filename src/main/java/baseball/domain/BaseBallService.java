@@ -9,6 +9,6 @@ public interface BaseBallService {
     String inputString();
     void verify(String input);
     List<Integer> stringToIntegerList(String str);
-    void compareNumbers(List<Integer> numbers);
+    GameResult compareNumbers(List<Integer> numbers);
     int inputQuestionRestart();
 }

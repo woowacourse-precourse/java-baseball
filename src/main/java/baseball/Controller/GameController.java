@@ -2,6 +2,7 @@ package baseball.Controller;
 
 import baseball.config.Assembler;
 import baseball.domain.BaseBallService;
+import baseball.domain.GameResult;
 import baseball.view.MessagePrinter;
 
 import java.util.List;
@@ -20,14 +21,23 @@ public class GameController {
         messagePrinter.printGameStart();
         List<Integer> selectedNumber = baseBallService.selectRandomNumbers();
         baseBallService.saveRandomNumbers(selectedNumber);
-        List<Integer> UserInputNumbers = inputNumber();
+        gaming();
     }
 
-    public List<Integer> inputNumber(){
+    public void gaming(){
+        List<Integer> userInputNumbers = inputNumber();
+        GameResult gameResult = baseBallService.compareNumbers(userInputNumbers);
+        String message = gameResult.getResultMessage();
+        messagePrinter.printGameResult(message);
+    }
+
+
+    public List<Integer> inputNumber() {
         messagePrinter.printReqGameNumbersInput();
         String input = baseBallService.inputString();
         baseBallService.verify(input);
 
         return baseBallService.stringToIntegerList(input);
     }
+
 }

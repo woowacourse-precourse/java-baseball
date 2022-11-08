@@ -8,13 +8,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class BaseBallServiceImpl implements BaseBallService{
-
-    private final int startRange = 1;
-    private final int endRange = 9;
-    private final int count = 3;
 
     private final NumberRepository numberRepository;
     private final Verification verification;
@@ -31,8 +28,11 @@ public class BaseBallServiceImpl implements BaseBallService{
         int count = 0;
         List<Integer> uniqueNumbers = new ArrayList<>();
 
-        while(count < this.count){
-            int randomNumber = Randoms.pickNumberInRange(startRange,endRange);
+        int count1 = 3;
+        while(count < count1){
+            int startRange = 1;
+            int endRange = 9;
+            int randomNumber = Randoms.pickNumberInRange(startRange, endRange);
 
             if(!uniqueNumbers.contains(randomNumber)){
                 uniqueNumbers.add(randomNumber);
@@ -62,16 +62,49 @@ public class BaseBallServiceImpl implements BaseBallService{
     public List<Integer> stringToIntegerList(String input) {
 
         return Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toCollection(ArrayList::new));
-
     }
 
     @Override
-    public void compareNumbers(List<Integer> numbers) {
+    public GameResult compareNumbers(List<Integer> userSelectNumbers) {
+        List<Integer> selectedNumbers = getSelectedNumbers();
 
+        GameResult gameResult = new GameResult();
+        searchingNumbers(selectedNumbers,0,0,userSelectNumbers,0,gameResult);
+
+        return gameResult;
+    }
+    private void searchingNumbers(List<Integer> selectedNumbers,int selectedNumbersIdx,int userSelectNumbersIdx,List<Integer> userSelectNumbers,int depth,GameResult gameResult){
+
+        if(depth == 3)
+            return;
+
+        if (userSelectNumbersIdx == 3) {
+            searchingNumbers(selectedNumbers, selectedNumbersIdx + 1, 0, userSelectNumbers, depth + 1, gameResult);
+            return;
+        }
+
+        if(Objects.equals(selectedNumbers.get(selectedNumbersIdx), userSelectNumbers.get(userSelectNumbersIdx))){
+            if(selectedNumbersIdx == userSelectNumbersIdx){
+                gameResult.increaseStrikeCount();
+            }
+            else {
+                gameResult.increaseBallCount();
+            }
+
+            searchingNumbers(selectedNumbers,selectedNumbersIdx+1,0,userSelectNumbers,depth+1,gameResult);
+            return;
+        }
+
+        searchingNumbers(selectedNumbers,selectedNumbersIdx,userSelectNumbersIdx+1,userSelectNumbers,depth,gameResult);
+    }
+    private List<Integer> getSelectedNumbers(){
+
+        return numberRepository.getNumbers();
     }
 
     @Override
     public int inputQuestionRestart() {
         return 0;
     }
+
 }

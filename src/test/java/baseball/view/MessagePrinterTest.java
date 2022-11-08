@@ -48,4 +48,16 @@ class MessagePrinterTest {
         //then
         assertEquals(expectOutput,outputStreamCaptor.toString().replaceAll("(\r\n|\r|\n|\n\r)", ""));
     }
+
+    @Test
+    void printGameResult(){
+        //given
+        String expectOutput = "2볼 1스트라이크";
+
+        //when
+        messagePrinter.printGameResult(expectOutput);
+
+        //then
+        assertEquals(expectOutput,outputStreamCaptor.toString().replaceAll("(\r\n|\r|\n|\n\r)", ""));
+    }
 }
