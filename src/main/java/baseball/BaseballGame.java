@@ -6,24 +6,18 @@ import baseball.validation.AskValidation;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
+    User user;
+
+    public BaseballGame() {
+        this.user = new User();
+    }
 
     public boolean askNewGame() {
-        AskValidation askValidation = new AskValidation();
-
-        System.out.println(GameMessage.ASK_RESTART_GAME);
-        String newGameResult = Console.readLine();
-
-        if (askValidation.isCheckRestartInput(newGameResult)) {
-            if (newGameResult.equals(AskRestartValue.RESTART_GAME)) {
-                return true;
-            }
-
-            if (newGameResult.equals(AskRestartValue.END_GAME)) {
-                return false;
-            }
+        if (user.inputRestartNumber() && user.getRestartStatus()) {
+            return true;
         }
 
-        throw new IllegalArgumentException();
+        return false;
     }
 
     public void playGame() {
