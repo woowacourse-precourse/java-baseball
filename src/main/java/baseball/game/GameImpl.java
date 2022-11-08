@@ -51,4 +51,10 @@ public class GameImpl implements Game{
     }
     this.flag = false;
   }
+
+  @Override
+  public boolean GameFlag(){
+    return this.flag;
+  }
+
 }
