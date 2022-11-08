@@ -23,9 +23,9 @@ public class Application {
 
         while (!baseballReferee.isThreeStrike()) {
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> user = new Users(readLine()).getInputList();
+            List<Integer> userValue = new Users(readLine()).getInputList();
 
-            baseballReferee = new BaseballReferee(computer, user);
+            baseballReferee = new BaseballReferee(computer, userValue);
         }
     }
 
