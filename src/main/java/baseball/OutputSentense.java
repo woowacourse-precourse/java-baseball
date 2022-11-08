@@ -34,4 +34,11 @@ public class OutputSentense {
         System.out.println(str);
     }
 
+    public List<Integer> InputNumberList(String InputNumbers) {
+        List<String> InputList = new ArrayList(Arrays.asList(InputNumbers.split("")));
+        List<Integer> myList = new ArrayList<>();
+        for (String s : InputList) myList.add(Integer.valueOf(s));
+        return myList;
+    }
+
 }
