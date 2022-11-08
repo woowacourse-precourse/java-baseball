@@ -1,17 +1,13 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Randoms;
+
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -19,15 +15,11 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.MockedStatic;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mockStatic;
 
-public class ImplementTest extends NsTest{
+public class ImplementTest extends NsTest {
 
     final ByteArrayOutputStream captor = new ByteArrayOutputStream();
     final PrintStream out = System.out;
@@ -46,7 +38,7 @@ public class ImplementTest extends NsTest{
     void 정답_생성_테스트() {
         List<Integer> answer = GameManager.createAnswer();
         assertThat(answer.size()).isEqualTo(3);
-        for(int element : answer) {
+        for (int element : answer) {
             assertThat(element)
                 .isGreaterThan(0)
                 .isLessThan(10);
@@ -59,7 +51,7 @@ public class ImplementTest extends NsTest{
         int strike = 3;
         int ball = 1;
         assertThat(GameManager.isFinish(strike)).isEqualTo(true);
-        assertThat(GameManager.isFinish(strike-ball)).isEqualTo(false);
+        assertThat(GameManager.isFinish(strike - ball)).isEqualTo(false);
     }
 
     @Tag("isAgain test")
@@ -91,13 +83,13 @@ public class ImplementTest extends NsTest{
         System.setIn(in);
         assertThatThrownBy(() -> GameManager.isAgain(true))
             .isInstanceOf(IllegalArgumentException.class
-        );
+            );
     }
 
     @Test
     @DisplayName("게임중 유저입력 read 테스트")
     void whileRunning_test() {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(1,3,5));
+        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 3, 5));
         String userInputString = "135";
         InputStream in = new ByteArrayInputStream(userInputString.getBytes());
         System.setIn(in);
@@ -147,7 +139,7 @@ public class ImplementTest extends NsTest{
 
     @ParameterizedTest
     @CsvSource(value = {"1:2:3:1:2:3,0/3", "1:2:3:1:2:4,0/2", "1:2:3:1:4:5,0/1", "1:2:3:4:5:6,0/0",
-    "1:2:3:2:4:5,1/0", "1:2:3:2:3:4,2/0", "1:2:3:2:3:1,3/0", "1:2:3:1:3:4,1/1"})
+        "1:2:3:2:4:5,1/0", "1:2:3:2:3:4,2/0", "1:2:3:2:3:1,3/0", "1:2:3:1:3:4,1/1"})
     void judge_test(final String input, final String expected) {
         int ball = 0;
         int strike = 1;
@@ -156,10 +148,10 @@ public class ImplementTest extends NsTest{
         int[] expectedsInInteger = new int[2];
         List<Integer> userInput = new ArrayList<>();
         List<Integer> answer = new ArrayList<>();
-        for(int inputsindex = 0; inputsindex < 3; inputsindex++) {
+        for (int inputsindex = 0; inputsindex < 3; inputsindex++) {
             userInput.add(Integer.parseInt(inputs[inputsindex]));
         }
-        for(int answerindex = 3; answerindex < 6; answerindex++) {
+        for (int answerindex = 3; answerindex < 6; answerindex++) {
             answer.add(Integer.parseInt(inputs[answerindex]));
         }
         expectedsInInteger[ball] = Integer.parseInt(expectedsInString[ball]);
@@ -171,17 +163,17 @@ public class ImplementTest extends NsTest{
     @Tag("유저 인풋 예외 테스트")
     @Test
     @DisplayName("게임중 시도 인풋 테스트")
-    void checkGuessingInput_test () {
+    void checkGuessingInput_test() {
         List<List<Integer>> exceptionCases = new ArrayList<>();
         List<Integer> smallerSize = new ArrayList<>(Arrays.asList(1));
-        List<Integer> biggerSize = new ArrayList<>(Arrays.asList(1,2,3,4));
-        List<Integer> wrongInput = new ArrayList<>(Arrays.asList(0,3,2));
-        List<Integer> duplicatedInput = new ArrayList<>(Arrays.asList(1,1,2));
+        List<Integer> biggerSize = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+        List<Integer> wrongInput = new ArrayList<>(Arrays.asList(0, 3, 2));
+        List<Integer> duplicatedInput = new ArrayList<>(Arrays.asList(1, 1, 2));
         exceptionCases.add(smallerSize);
         exceptionCases.add(biggerSize);
         exceptionCases.add(wrongInput);
         exceptionCases.add(duplicatedInput);
-        for(List<Integer> exceptions : exceptionCases) {
+        for (List<Integer> exceptions : exceptionCases) {
             assertThatThrownBy(() -> ExceptionChecker.checkGuessingInput(exceptions))
                 .isInstanceOf(IllegalArgumentException.class);
         }
