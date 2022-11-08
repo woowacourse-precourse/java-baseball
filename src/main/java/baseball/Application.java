@@ -50,15 +50,19 @@ public class Application {
 
 
     //2. 플레이어 수 입력받기
-    public static List<Integer> getPlayerNumber() throws IllegalArgumentException {
+    public static List<Integer> getUserInput () throws IllegalArgumentException {
         String input = Console.readLine().trim();
         if (!isNumber(input)) {
-            return input.chars()
-                    .map(i-> i-'0')
-                    .boxed()
-                    .collect(Collectors.toList());
+            throw new IllegalArgumentException();
         }
-        throw new IllegalArgumentException();
+        return createPlayerNumberList(input);
+    }
+    //리스트로 바꾸기
+    public static List<Integer> createPlayerNumberList(String input) {
+        return input.chars()
+                .map(i -> i - '0')
+                .boxed()
+                .collect(Collectors.toList());
     }
 
 
