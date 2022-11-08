@@ -4,6 +4,6 @@
 
 `gameHandler` 클래스 : 게임 전반의 흐름 관리
   1. `init` 메서드 : 게임 시작에 앞서 필요한 변수 등을 초기화
-  2. `numberSelector` 메서드 : 게임마다 한 번씩 컴퓨터의 숫자 선택
-  3. `numberCompare` 메서드 : 스트라이크 및 볼 여부 확인
+  2. `selectNumber` 메서드 : 게임마다 한 번씩 컴퓨터의 숫자 선택
+  3. `compareNumber` 메서드 : 스트라이크 및 볼 여부 확인
   4. `getResult` 메서드 : 숫자 비교 후 결과를 출력
