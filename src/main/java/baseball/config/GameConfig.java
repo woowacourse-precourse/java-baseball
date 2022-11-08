@@ -1,4 +1,4 @@
-package baseball;
+package baseball.config;
 
 import java.util.Map;
 

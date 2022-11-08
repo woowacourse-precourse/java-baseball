@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.config.GameConfig;
+
 public class AnswerCompareManager {
     private int ballNum = 0, strikeNum = 0;
 

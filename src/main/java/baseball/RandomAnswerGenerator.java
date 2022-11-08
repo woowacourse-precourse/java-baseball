@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.config.GameConfig;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
