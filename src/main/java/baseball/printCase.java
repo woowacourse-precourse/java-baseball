@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class printCase {
-    public static boolean makePrintCase(List<Integer> answerNumber, List<Integer> inputNumber) {
+    public static boolean makePrintCase(List<Integer> answerNumber, List<Integer> inputNumber) throws IllegalArgumentException {
 
         int strikeNum = 0;
         int ballNum = 0;
