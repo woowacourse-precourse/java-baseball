@@ -25,6 +25,15 @@ public class BaseballGame {
         return ANSWER_THREE_STRIKE.equals(ballCount);
     }
 
+    public static boolean askRestartGame() throws IllegalArgumentException {
+        System.out.print(RESTART_GAME_ALERT);
+        String yesOrNo = camp.nextstep.edu.missionutils.Console.readLine();
+        if (!yesOrNo.equals(DO_RESTART_GAME) && !yesOrNo.equals(DONT_RESTART_GAME)) {
+            throw new IllegalArgumentException();
+        }
+        return chooseYesOrNo(yesOrNo);
+    }
+
     public static boolean chooseYesOrNo(String yesOrNo) {
         return yesOrNo.equals(DO_RESTART_GAME);
     }
