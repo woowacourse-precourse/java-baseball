@@ -50,7 +50,7 @@ public class Application {
             String[] splitAnswer = myAnswer.split("");
             ArrayList<String> answerList = new ArrayList<>(Arrays.asList(splitAnswer));
 
-            if (answerList.size() > 3){
+            if (!(answerList.size() == 3)){
                 throw new IllegalArgumentException();
             }
             else {
