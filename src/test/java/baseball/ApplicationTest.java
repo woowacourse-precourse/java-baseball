@@ -136,6 +136,59 @@ class ApplicationTest extends NsTest {
         assertThat(msg.trim()).isEqualTo(out.toString().trim());
 
     }
+
+    @Test
+    void 게임오버_테스트_1(){
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        assertThat(isGameOver()).isEqualTo(1);
+
+        String msg = "3개의 숫자를 모두 맞히셨습니다! 게임 종료" + System.lineSeparator();
+        msg += "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+        assertThat(out.toString().trim()).isEqualTo(msg.trim());
+
+    }
+
+    @Test
+    void 게임오버_테스트_2(){
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        assertThat(isGameOver()).isEqualTo(2);
+
+        String msg = "3개의 숫자를 모두 맞히셨습니다! 게임 종료" + System.lineSeparator();
+        msg += "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+        assertThat(out.toString().trim()).isEqualTo(msg.trim());
+
+    }
+
+    @Test
+    void 게임오버_테스트_3(){
+        String input = "abc";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        Throwable thrown = catchThrowable(() -> isGameOver());
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+
+        String msg = "3개의 숫자를 모두 맞히셨습니다! 게임 종료" + System.lineSeparator();
+        msg += "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+        assertThat(out.toString().trim()).isEqualTo(msg.trim());
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
