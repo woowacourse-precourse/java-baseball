@@ -2,7 +2,6 @@ package baseball;
 
 
 import static baseball.Constant.MAX_INDEX;
-import static baseball.Key.getKey;
 
 import java.util.Map;
 
@@ -26,12 +25,11 @@ public class Hint {
     public static void loopHint(Map<Integer, Integer> userNumber, Map<Integer, Integer> computerNumber) {
         for (int key = 0; key < MAX_INDEX; key++) {
 
-            int userValue = userNumber.get(key);
-            int userKey = getKey(userNumber, userValue);
-            int computerValue = computerNumber.get(key);
-            int computerKey = getKey(computerNumber, computerValue);
 
-            countStrike(userValue, userKey, computerValue, computerKey);
+            int userValue = userNumber.get(key);
+            int computerValue = computerNumber.get(key);
+
+            countStrike(userValue, computerValue);
             countBall(computerNumber, userValue);
         }
 
@@ -44,9 +42,9 @@ public class Hint {
         return ball;
     }
 
-    public static int countStrike(Integer userValue, Integer userKey, Integer computerValue, Integer computerKey) {
+    public static int countStrike(Integer userValue, Integer computerValue) {
 
-        if (userValue == computerValue && userKey == computerKey) {
+        if (userValue.equals(computerValue)) {
             strike++;
         }
         return strike;

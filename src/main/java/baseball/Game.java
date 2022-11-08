@@ -1,7 +1,7 @@
 package baseball;
 
 
-import static baseball.Application.end;
+import static baseball.Constant.GAME_END;
 import static baseball.Constant.GAME_OVER;
 import static baseball.Constant.GAME_START;
 import static baseball.Constant.STRIKE;
@@ -14,31 +14,30 @@ import java.util.Map;
 
 public class Game {
 
-    public static Map<Integer, Integer> computer = createComputerNumber();
-
-
+    public static Map<Integer, Integer>  computer = createComputerNumber();
 
 
     // 게임 반복 기능
     public static void playGame() {
         createComputerNumber();
-        do {
+
+        while ( !recursionGame() ) {
             recursionGame();
+
+            String result = Print.printResult().toString();
+
+            System.out.println(result);
+
+            if (recursionGame()) {
+                victory();
+
+                System.out.println(GAME_OVER);
+            }
+            break;
         }
-        while ( !recursionGame() );
 
-        String result = Print.printResult().toString();
-
-        System.out.println(result);
-
-        if (recursionGame()){
-            victory();
-
-            System.out.println(GAME_OVER);
-
-        }
-        return;
     }
+
 
     public static boolean recursionGame() {
 
@@ -48,7 +47,10 @@ public class Game {
             createComputerNumber();
             Game.playGame();
         }
-        if (parseInt(readLine) == 2) { end(); }
+        if (parseInt(readLine) == 2) {
+            System.out.println(GAME_END);
+            return recursionGame() == true;
+        }
 
         Map<Integer, Integer> user = Input.inputUserNumber(readLine);
         Hint.loopHint( user,  computer);
@@ -68,7 +70,7 @@ public class Game {
             playGame();
         }
         if (Integer.valueOf(Console.readLine()).equals(2)) {
-            end();
+            return;
         }
 
         return;

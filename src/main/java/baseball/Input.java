@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class Input {
 
-
     // 입력 기능
     public static Map<Integer, Integer> inputUserNumber(String userLine) {
         Map<Integer, Integer> userRepository = new HashMap<>();

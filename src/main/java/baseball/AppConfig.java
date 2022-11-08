@@ -7,12 +7,13 @@ import java.util.Map;
 public class AppConfig{
 
 
-    public Player createComputerNumber() {
-        return new Player();
+    public Map<Integer, Integer> createComputerNumber() {
+
+        return new Player().createComputerNumber();
     }
 
-    public Map<Integer, Integer> inputUserNumber(String readLine) {
-        return Input.inputUserNumber(Console.readLine());
+    public Map<Integer, Integer> inputUserNumber() {
+        return new Input().inputUserNumber(Console.readLine());
     }
 
     public Hint loopHint() {
@@ -24,7 +25,7 @@ public class AppConfig{
         return new Print();
     }
 
-    public Game playGame() {
+    public static Game game() {
         return new Game();
     }
 
