@@ -43,8 +43,22 @@ public class Application {
             printNumberStatus(inputNums, computer);
         }
     }
-    private static void printNumberStatus(int[] inputList, List<Integer> computer){
+    private static void printNumberStatus(int[] inputNums, List<Integer> computer){
+        GameStatus gameStatus = new GameStatus();
 
+        for(int i =0 ; i<inputNums.length; i++){
+            if(!computer.contains(inputNums[i])){
+                gameStatus.nothing = true;
+            }
+            else{ // 스트라이크 or 볼인 경우
+                if(i == computer.indexOf(inputNums[i])){
+                    gameStatus.strike++;
+                }
+                else {
+                    gameStatus.ball++;
+                }
+            }
+        }
     }
 
     public static class GameStatus{
