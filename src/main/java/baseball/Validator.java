@@ -1,10 +1,10 @@
 package baseball;
 
+import static baseball.NumericalCondition.*;
+
 import java.util.HashSet;
 
 public class Validator {
-	public static final int PROPER_LENGTH = 3;
-
 	public static void validateBallsInput(String source) {
 		validateOnlyNumeric(source);
 		validateProperLength(source);

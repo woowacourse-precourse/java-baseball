@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.NumericalCondition.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -50,7 +52,7 @@ public class Balls {
 
 	static ArrayList<Integer> getRandomNumbers() {
 		ArrayList<Integer> randomNumbers = new ArrayList<>();
-		while (randomNumbers.size() < 3) {
+		while (randomNumbers.size() < PROPER_LENGTH) {
 			int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
 			if (!randomNumbers.contains(randomNumber)) {
 				randomNumbers.add(randomNumber);
