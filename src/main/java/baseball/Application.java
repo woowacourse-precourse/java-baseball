@@ -90,4 +90,16 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    public static boolean isInvalidValue(String userInputNum){
+        List<Character> parsing = new ArrayList<>();
+        for(char c : userInputNum.toCharArray()){
+            if(!('1'<=c && '9'>=c)) return false; // 숫자가 아닌 경우
+            int tmp = Integer.valueOf(c);
+            if(parsing.contains(c)) return false; // 중복 숫자 있는 경우
+            if(tmp<1 && tmp>9) return false; // 1~9 범위 안의 수가 아닌경우
+        }
+        if(parsing.size()>3) return false; // 세 자리 수가 아닌 경우
+        return true;
+    }
 }
