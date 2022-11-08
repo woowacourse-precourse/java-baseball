@@ -6,12 +6,12 @@ public class Application {
     public static final int GAME_SIZE = 3;
 
     public static void main(String[] args) {
-        int flag = 1;
+        int resetInput = 1;
 
-        while (flag == 1) {
+        while (resetInput == 1) {
             doGame();
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            flag = continueOrEnd();
+            resetInput = continueOrEnd();
         }
     }
 
