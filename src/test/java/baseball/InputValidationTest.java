@@ -61,7 +61,8 @@ public class InputValidationTest {
   void 유저가_재시작_혹은_종료를_선택할떄_1_또는_2_외의_값을_입력한_경우_예외를_던지는가() {
     try {
       InputValidator validator = new ReplayOrEndInputValidator();
-      String randomNumber = Integer.toString(Randoms.pickNumberInRange(3, 10));
+      String randomNumber = Integer.toString(Randoms.pickNumberInRange(3, 9));
+      System.out.println(randomNumber);
       validator.validate(randomNumber);
     } catch (IllegalArgumentException e) {
       assertEquals(ExceptionMessages.INPUT_IS_NOT_1_OR_2.getExceptionMessage(), e.getMessage());
