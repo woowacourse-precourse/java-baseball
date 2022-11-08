@@ -43,7 +43,7 @@ public class Game {
         playAgainOrEnd(Console.readLine());
     }
 
-    private boolean checkThreeStrike(String result) {
+    public boolean checkThreeStrike(String result) {
         return result.equals(THREE_STRIKE);
     }
 
