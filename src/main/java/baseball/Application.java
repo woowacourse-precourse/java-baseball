@@ -31,7 +31,7 @@ public class Application {
             throw new IllegalArgumentException();
     }
 
-    public static void validateInput(String input) {
+    public static void validateBaseBallInput(String input) {
         if (input.length() != 3)
             throw new IllegalArgumentException();
         if (!isNumeric(input))
@@ -119,7 +119,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String input = getInput();
 
-            validateInput(input);
+            validateBaseBallInput(input);
             List<Integer> baseBallInput = convertInputToBaseBallInput(input);
 
             currentBaseBallResult = calculateBaseBallResult(randomNumber, baseBallInput);
