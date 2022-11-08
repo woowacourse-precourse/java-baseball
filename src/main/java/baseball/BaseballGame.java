@@ -12,7 +12,7 @@ public class BaseballGame {
     int strike = 0;
     int out = 0;
 
-    public static List createRandomNumber() {  // 리스트 형태로 수 생성
+    public List createRandomNumber() {  // 리스트 형태로 수 생성
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -20,7 +20,7 @@ public class BaseballGame {
                 computer.add(randomNumber);
             }
         }
-//        System.out.println("랜덤 수 생성"+computer);
+        System.out.println("랜덤 수 생성"+computer);
         return computer;
     }
 
@@ -33,13 +33,10 @@ public class BaseballGame {
             inputNumber /= 10;
         }
         Collections.reverse(inputNumberList);
-//        System.out.println(inputNumberList);
         return inputNumberList;
     }
 
-    public void strikeBallOut(List<Integer> inputNumber){
-//        int strike = 0;
-        List<Integer> computerNumber = createRandomNumber();
+    public void strikeBallOut(List<Integer> inputNumber, List<Integer> computerNumber){
 
         for (int i = 0; i < 3; i++){
             if (inputNumber.get(i) == computerNumber.get(i)){
@@ -72,9 +69,11 @@ public class BaseballGame {
         }
         System.out.println();
 
+        this.strike = 0;
+        this.ball = 0;
+        this.out = 0;
+
         return result;
     }
-
-
 
 }
