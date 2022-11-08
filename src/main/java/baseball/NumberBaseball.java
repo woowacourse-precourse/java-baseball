@@ -65,6 +65,25 @@ public class NumberBaseball {
         return true;
     }
 
+    public boolean judgeBall(int[] MyAnswer){
+        int StrikeCount = countStrike(MyAnswer);
+        int BallCount = countBall(MyAnswer);
+        // exclude double count
+        BallCount -= StrikeCount;
+        if(StrikeCount == 3){
+            System.out.println("3스트라이크");
+            return true;
+        }
+        else if(StrikeCount == 0 && BallCount == 0){
+            System.out.println("낫싱");
+            return false;
+        }
+        else{
+            System.out.println(BallCount+"볼 "+StrikeCount+"스트라이크");
+            return false;
+        }
+    }
+
     public int countStrike(int[] MyAnswer){
         int result = 0;
         for(int i = 0; i < 3; i++){
@@ -84,5 +103,4 @@ public class NumberBaseball {
         }
         return result;
     }
-
 }

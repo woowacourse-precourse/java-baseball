@@ -52,4 +52,18 @@ class NumberBaseballTest {
         assertThat(test6.countBall(testanswer)).isEqualTo(3);
     }
 
+    @Test
+    public void testJudgeBall(){
+        NumberBaseball test7 = new NumberBaseball();
+        test7.setAnswer(4,5,6);
+        int[] testanswer = {4,5,6};
+        assertThat(test7.judgeBall(testanswer)).isEqualTo(true);
+    }
+    @Test
+    public void testJudgeBall2(){
+        NumberBaseball test8 = new NumberBaseball();
+        test8.setAnswer(4,5,6);
+        int[] testanswer = {6,4,5};
+        assertThat(test8.judgeBall(testanswer)).isEqualTo(false);
+    }
 }
