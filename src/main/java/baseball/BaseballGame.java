@@ -1,10 +1,6 @@
 package baseball;
 
 import baseball.domain.BaseballResult;
-import baseball.resource.AskRestartValue;
-import baseball.resource.GameMessage;
-import baseball.validation.AskValidation;
-import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     User user;
