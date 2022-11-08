@@ -56,6 +56,13 @@ public class Rule {
 
     public static boolean isStrikeOut(List<Integer> result) {
 
+        int nBalls = result.get(0);
+        int nStrikes = result.get(1);
+
+        printResult(nBalls,nStrikes);
+        if (nStrikes == Constants.NUMBER_LENGTH){
+            return true;
+        }
         return false;
     }
 }
