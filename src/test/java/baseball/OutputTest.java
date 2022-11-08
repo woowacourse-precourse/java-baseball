@@ -24,7 +24,7 @@ public class OutputTest {
     @BeforeEach
     void createBaseBallGame() {
         computerNumberList = new ComputerNumberList();
-        computerNumberList.generateNewComputerRandomNumber();
+        computerNumberList.generateNewRandomNumber();
         List<Number> computerNumber = computerNumberList.getComputerNumber();
         userInputNumberList = new UserInputNumberList();
         compareNumber = new CompareNumber(computerNumber);
@@ -83,7 +83,7 @@ public class OutputTest {
     }
 
     @Test
-    void 볼과_스트라이크가_각각_1개씩_발생시_출력_검증(){
+    void 볼과_스트라이크가_각각_1개씩_발생시_출력_검증() {
         //given
         String computerInput;
         String userInput;
@@ -109,7 +109,7 @@ public class OutputTest {
     }
 
     @Test
-    void 아무것도_일치하지_않을떄_낫씽_출력(){
+    void 아무것도_일치하지_않을떄_낫씽_출력() {
         //given
         String computerInput;
         String userInput;
@@ -133,8 +133,9 @@ public class OutputTest {
         //then
         Assertions.assertThat(expectMsg).isEqualTo(out.toString().trim());
     }
+
     @Test
-    void 모두_일치할때_정답_여부_출력(){
+    void 모두_일치할때_정답_여부_출력() {
         //given
         String computerInput;
         String userInput;

@@ -31,7 +31,7 @@ public class NumberTest {
     @Test
     void 컴퓨터_숫자가_3자리인지_검증() {
         //given
-        computerNumberList.generateNewComputerRandomNumber();
+        computerNumberList.generateNewRandomNumber();
         List<Number> computerNumber = computerNumberList.getComputerNumber();
         //when
         int computerNumberSize = computerNumber.size();
@@ -42,7 +42,7 @@ public class NumberTest {
     @Test
     void 컴퓨터의_숫자중_중복이_있는지_검증() {
         //given
-        computerNumberList.generateNewComputerRandomNumber();
+        computerNumberList.generateNewRandomNumber();
         List<Number> computerNumber = computerNumberList.getComputerNumber();
         int computerNumberSize = computerNumber.size();
         //when

@@ -13,10 +13,10 @@ public class ComputerNumberList {
     private List<Number> computerNumber;
 
     public ComputerNumberList() {
-        generateNewComputerRandomNumber();
+        generateNewRandomNumber();
     }
 
-    private List<Number> newComputerRandomNumber() {
+    private List<Number> newRandomNumber() {
         List<Number> computerNumberList = new ArrayList<>();
 
         while (computerNumberList.size() < NUMBER_SIZE) {
@@ -28,8 +28,8 @@ public class ComputerNumberList {
         return computerNumberList;
     }
 
-    public void generateNewComputerRandomNumber() {
-        this.computerNumber = newComputerRandomNumber();
+    public void generateNewRandomNumber() {
+        this.computerNumber = newRandomNumber();
     }
 
     public List<Number> getComputerNumber() {

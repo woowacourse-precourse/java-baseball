@@ -46,7 +46,7 @@ public class BaseballGameController {
             userInput = Console.readLine();
             if (userInput.equals(RESTART)) {
                 correctiveStatus = false;
-                computerNumberList.generateNewComputerRandomNumber();
+                computerNumberList.generateNewRandomNumber();
                 compareNumber.setComputerNumber(computerNumberList.getComputerNumber());
             } else if (userInput.equals(QUIT)) {
                 System.out.println("게임을 종료합니다.");
