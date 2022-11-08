@@ -40,6 +40,7 @@ public class Game {
         View.printInputRequest();
         Numbers player = new Numbers(getPlayerInput());
         compare(computer, player);
+        View.printResult(RESULT.toString());
     }
 
     private static List<Number> getPlayerInput() {
