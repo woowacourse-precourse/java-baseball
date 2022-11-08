@@ -48,25 +48,25 @@ public class Application {
         return playerNumbers;
     }
 
-    private static void validateEmpty(String numbers) {
+    public static void validateEmpty(String numbers) {
         if (numbers.isEmpty()) {
             throw new IllegalArgumentException("아무것도 입력하지 않았습니다.");
         }
     }
 
-    private static void validateSize(String numbers) {
+    public static void validateSize(String numbers) {
         if (numbers.length() != 3) {
             throw new IllegalArgumentException("3자리의 숫자를 입력하십시오");
         }
     }
 
-    private static void validateNumber(String numbers) {
+    public static void validateNumber(String numbers) {
         if (!numbers.matches("^[1-9]+$")) {
             throw new IllegalArgumentException("1~9의 숫자만 입력하실수 있습니다.");
         }
     }
 
-    private static void validateOverlap(String numbers) {
+    public static void validateOverlap(String numbers) {
         Set<Character> overlapInspector = new HashSet<>();
         for (char numChar : numbers.toCharArray()) {
             overlapInspector.add(numChar);
