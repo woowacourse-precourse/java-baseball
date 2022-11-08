@@ -65,6 +65,12 @@ public class Application {
             throw new IllegalArgumentException("1에서 9까지 서로 다른 임의의 수 3개를 선택해야 합니다. ex) 671");
         }
 
+        for ( int i = 0 ; i < 3 ; i++) {
+            if ( !Character.isDigit(input.charAt(i))) {
+                throw new IllegalArgumentException("1에서 9까지 서로 다른 임의의 수 3개를 선택해야 합니다. ex) 671");
+            }
+        }
+
         if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
             throw new IllegalArgumentException("1에서 9까지 서로 다른 임의의 수 3개를 선택해야 합니다. ex) 671");
         }
