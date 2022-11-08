@@ -5,15 +5,15 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static final String CONTINUE = "1";
     public static final String EXIT = "2";
-    private static String status = CONTINUE;
+    private static String status;
 
     public static void main(String[] args) {
         Game game = new Game();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (status.equals(CONTINUE)) {
+        do {
             game.play();
             updateStatusAsInput();
-        }
+        } while (status.equals(CONTINUE));
     }
 
     private static void updateStatusAsInput() {
