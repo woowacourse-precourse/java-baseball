@@ -23,7 +23,7 @@ public class AnswerNumber {
             String num = String.valueOf(pickNumberInRange(1,9));
             numbers.add(num);
             if(restartNumberValidator()){
-                answerNumberList = new ArrayList<>(numbers);
+                numbers.clear();
             }
         }
     }
