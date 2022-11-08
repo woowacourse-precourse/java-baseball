@@ -34,8 +34,6 @@ public final class BaseballGamePolicy {
     private int balls(String guess) {
         int count = 0;
 
-        System.out.println("guess:" + guess);
-
         if (guess.charAt(0) == this.answer.charAt(1)) {
             count++;
         }
