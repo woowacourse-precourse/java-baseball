@@ -1,11 +1,11 @@
 package baseball;
 
-import baseball.resource.AskRestartGame;
+import baseball.resource.AskRestartValue;
 
 public final class AskValidation {
     public boolean isCheckRestartInput(String userInput) {
-        if (userInput.equals(AskRestartGame.RESTART_GAME)
-                || userInput.equals(AskRestartGame.END_GAME)) {
+        if (userInput.equals(AskRestartValue.RESTART_GAME)
+                || userInput.equals(AskRestartValue.END_GAME)) {
             return true;
         }
 
