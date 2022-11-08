@@ -2,6 +2,7 @@ package service;
 
 import model.ComputerThreeNumber;
 import model.ThreeNumber;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 
@@ -27,16 +28,33 @@ public class ThreeNumberService {
         computer.setMyList();
 
         reset();
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
-        System.out.print("숫자를 입력해주세요 : ");
     }
 
-    /**
-     * true: strike
-     * false: ball
-     * */
+    public void playGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        inputData();
+
+        judgeResult(user.getMyList());
+
+        printResult();
+    }
+
+    public void inputData() {
+        System.out.print("숫자를 입력해주세요 : ");
+
+        setUserData(Console.readLine());
+    }
+
+    public void setUserData(String line) {
+        int data = Integer.parseInt(line);
+        for(int i = 100; i >= 1; i /= 10) {
+            user.addToMyList(data / i);
+
+            data = data % i;
+        }
+    }
+
     public void setStrike(int num, int index) {
         if(computer.isSameIndex(num, index)) {
             strike += 1;
@@ -55,7 +73,7 @@ public class ThreeNumberService {
 
     public void judgeResult(ArrayList<Integer> user) {
         for(int i = 0; i < 3; i++) {
-            calculateStrikeOrBall(user.get(i), i);
+            calculateScore(user.get(i), i);
         }
 
         if(strike != 0 || ball != 0) {
@@ -70,13 +88,9 @@ public class ThreeNumberService {
     /**
      * 사용자 숫자가 있는지 확인 함수
      * */
-    public int IsIn(int num) {
+    public void calculateScore(int num, int index) {
         if(computer.contains(num)) {
-            return 1;
-        }
-        else
-        {
-            return 0;
+            calculateStrikeOrBall(num, index);
         }
     }
 
@@ -103,7 +117,8 @@ public class ThreeNumberService {
         }
         else
         {
-
+            printBall();
+            printStrike();
         }
     }
 }

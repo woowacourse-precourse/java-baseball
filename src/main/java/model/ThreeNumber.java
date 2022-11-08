@@ -20,4 +20,12 @@ public class ThreeNumber {
             throw new IllegalArgumentException();
         }
     }
+
+    public int getListLength() {
+        return myList.size();
+    }
+
+    public ArrayList<Integer> getMyList() {
+        return myList;
+    }
 }
