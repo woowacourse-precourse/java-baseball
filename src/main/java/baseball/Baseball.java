@@ -19,6 +19,8 @@ public class Baseball {
 
         if(user_answer==2)
             run = false;
+        if(user_answer!=1 && user_answer!=2)
+            throw new IllegalArgumentException("1 또는 2만 입력해주세요");
     }
 
     public boolean isNum(String response){
