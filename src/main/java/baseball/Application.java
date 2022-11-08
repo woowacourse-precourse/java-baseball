@@ -23,7 +23,6 @@ public class Application {
             if (!checkException(userNumber)) {
                 throw new IllegalArgumentException();
             }
-            boolean nothingResult = nothing(userNumber, computerNumber);
             score = countBallAndStrike(userNumber, computerNumber);
             printResult(score);
         } while (!score.get("strike").equals(3));
@@ -72,19 +71,6 @@ public class Application {
         }
         return true;
     }
-    public static boolean nothing(List<Integer> userNumber, List<Integer> computerNumber) {
-        int count = 0;
-        for (int i = 0; i < userNumber.size(); i++) {
-            if (!computerNumber.contains(userNumber.get(i))) {
-                count++;
-            }
-        }
-        if (count == 3){
-            System.out.println("낫싱");
-            return true;
-        }
-        return false;
-    }
     public static HashMap<String, Integer> countBallAndStrike(List<Integer> userNumber, List<Integer> computerNumber) {
         HashMap<String, Integer> score = new HashMap<>();
         score.put("ball", 0);
@@ -113,6 +99,9 @@ public class Application {
         }
         if (score.get("strike") > 0 && score.get("ball") > 0){
             System.out.printf("%d%s %d%s%n",score.get("ball"),"볼",score.get("strike"),"스트라이크");
+        }
+        if (score.get("strike").equals(0) && score.get("ball").equals(0)) {
+            System.out.println("낫싱");
         }
     }
 }
