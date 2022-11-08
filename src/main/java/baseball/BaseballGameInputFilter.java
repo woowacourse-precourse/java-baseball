@@ -1,23 +1,25 @@
 package baseball;
 
-import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 
 public class BaseballGameInputFilter {
 
+    private static BaseballGameInputFilter baseballGameInputFilter = new BaseballGameInputFilter();
+    private static int numberLength = 3;
 
-    private int numberLength = 3;
 
-    public boolean isValidLength(String input) {
-        return input.length() == this.numberLength;
+    private BaseballGameInputFilter() {}
+
+    protected static boolean isValidLength(String input) {
+        return input.length() == numberLength;
     }
 
-    public boolean isNumeric(String input) {
+    protected static boolean isNumeric(String input) {
         return input.matches("[1-9]+");
     }
 
-    public boolean isNotDuplicated(String input) {
+    protected static boolean isNotDuplicated(String input) {
         boolean[] isNumberOfIndex = new boolean[10];
 
         for (char ch : input.toCharArray()){
@@ -27,18 +29,18 @@ public class BaseballGameInputFilter {
         return true;
     }
 
-    public String readNumbers(){
+    public static String readNumbers(){
         System.out.print("숫자를 입력해주세요 : ");
 
         String input = Console.readLine();
 
-        if (!this.isValidLength(input)) {
+        if (!isValidLength(input)) {
             throw new IllegalArgumentException();
         }
-        if (!this.isNumeric(input)) {
+        if (!isNumeric(input)) {
             throw new IllegalArgumentException();
         }
-        if (!this.isNotDuplicated(input)) {
+        if (!isNotDuplicated(input)) {
             throw new IllegalArgumentException();
         }
 
@@ -54,6 +56,10 @@ public class BaseballGameInputFilter {
         else if (flag == "2") return false;
 
         throw new IllegalArgumentException();
+    }
+
+    public static BaseballGameInputFilter getInstance() {
+        return baseballGameInputFilter;
     }
 
 }
