@@ -14,5 +14,6 @@ public class Application {
                 break;
             }
         }
+        System.out.println("게임 종료");
     }
 }
