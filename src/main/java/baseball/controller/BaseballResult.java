@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public class BaseballResult {
     private static final int ANSWER_COUNT = 3;
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
+    private static final String STRIKE = "strike";
+    private static final String BALL = "ball";
     private static final String NOTHING = "낫싱";
 
     private HashMap<String, Integer> result;

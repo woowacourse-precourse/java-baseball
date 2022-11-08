@@ -15,7 +15,7 @@ public class Computer {
     public List<Integer> getRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
         while(randomNumber.size() < 3) {
-            int number = Randoms.pickNumberInRange(1, 9);
+            int number = Randoms.pickNumberInRange(Baseball.MIN_NUM, Baseball.MAX_NUM);
             if(!randomNumber.contains(number)) {
                 randomNumber.add(number);
             }

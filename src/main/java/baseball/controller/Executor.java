@@ -14,8 +14,8 @@ public class Executor {
     private final Checker checker = new Checker();
     private boolean flag = true;
     public void startGame() {
-        Baseball computerRandomBaseball = createRandomBaseball();
         Printer.gameStart();
+        Baseball computerRandomBaseball = createComputerRandomNumber();
         while(flag) {
             Printer.inputNumber();
             Baseball userInputNumber = inputUserBaseball();
@@ -33,7 +33,7 @@ public class Executor {
         }
 
     }
-    private Baseball createRandomBaseball() {
+    private Baseball createComputerRandomNumber() {
         return new Computer().createRandomBaseball();
     }
     public Baseball inputUserBaseball() {
