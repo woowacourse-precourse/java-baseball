@@ -15,6 +15,11 @@ public class Game {
         this.answer_number = makeRandomNumber();
     }
 
+    // Only For Test
+    public Game(List<Integer> answer) {
+        this.answer_number = answer;
+    }
+
     private List<Integer> makeRandomNumber() {
         List<Integer> number = new ArrayList<>();
 
@@ -29,14 +34,18 @@ public class Game {
     public boolean validateAnswer_number() {
         return answer_number.stream()
                 .allMatch(num -> num > ZERO)
-            && answer_number.stream()
+                && answer_number.stream()
                 .distinct()
                 .count() == NUMBER_LENGTH;
     }
 
     public int getCountOfStrike(List<Integer> predict_number) {
         return (int) IntStream.range(ZERO, NUMBER_LENGTH)
-                .mapToObj(index -> List.of(answer_number.get(index), predict_number.get(index)))
+                .mapToObj(index ->
+                        List.of(
+                                answer_number.get(index), predict_number.get(index)
+                        )
+                )
                 .filter(this::checkAnswerAndPredictOnebyOne)
                 .count();
     }
@@ -50,4 +59,5 @@ public class Game {
                 .filter(answer_number::contains)
                 .count() - strike;
     }
+
 }

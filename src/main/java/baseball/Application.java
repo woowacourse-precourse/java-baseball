@@ -17,7 +17,7 @@ public class Application {
                     ConsoleInput.inputWithMessage(REPLAY_QUESTION)
             );
 
-            if(checkReplay(replay)){
+            if (checkReplay(replay)) {
                 return;
             }
         }
