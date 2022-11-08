@@ -44,25 +44,25 @@ public class Turn {
     }
 
     void compareWithTarget(List<Integer> numberOfList) {
-        countBalls(numberOfList);
-        countStrikes(numberOfList);
+        recordBalls(numberOfList);
+        recordStrikes(numberOfList);
     }
 
-    void countBalls(List<Integer> numberOfList) {
+    void recordBalls(List<Integer> numberOfList) {
         List<Integer> targetNumberList = target.get();
-        int countSameValueInSameIndex = countSameValueInSameIndex(targetNumberList, numberOfList);
-        int countValueContainTogether = countValueContainTogether(targetNumberList, numberOfList);
+        int countSameValueInSameIndex = countIsSameValueIfSameIndex(targetNumberList, numberOfList);
+        int countValueContainTogether = countValueIfContainTogetherForTwoList(targetNumberList, numberOfList);
         int balls = countValueContainTogether - countSameValueInSameIndex;
         this.turnScore.setBalls(balls);
     }
 
-    void countStrikes(List<Integer> numberOfList) {
+    void recordStrikes(List<Integer> numberOfList) {
         List<Integer> targetNumberList = target.get();
-        int strikes = countSameValueInSameIndex(targetNumberList, numberOfList);
+        int strikes = countIsSameValueIfSameIndex(targetNumberList, numberOfList);
         this.turnScore.setStrikes(strikes);
     }
 
-    int countSameValueInSameIndex(List<Integer> targetNumberList, List<Integer> compareNumberList) {
+    int countIsSameValueIfSameIndex(List<Integer> targetNumberList, List<Integer> compareNumberList) {
         int count = 0;
         for (int indexOfList = 0; indexOfList < compareNumberList.size(); indexOfList++) {
             int targetNumber = targetNumberList.get(indexOfList);
@@ -79,7 +79,7 @@ public class Turn {
         return 0;
     }
 
-    int countValueContainTogether(List<Integer> targetNumberList, List<Integer> compareNumberList) {
+    int countValueIfContainTogetherForTwoList(List<Integer> targetNumberList, List<Integer> compareNumberList) {
         int count = 0;
         for (int indexOfList = 0; indexOfList < compareNumberList.size(); indexOfList++) {
             int compareNumber = compareNumberList.get(indexOfList);

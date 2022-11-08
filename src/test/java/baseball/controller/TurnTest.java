@@ -38,19 +38,19 @@ public class TurnTest {
 
     @Test
     @DisplayName("타겟과 입력 숫자의 같은 자리 수 중, 일치하는 개수 세기")
-    void countSameValueInSameIndex() {
+    void countIsSameValueIfSameIndex() {
         Turn turn = new Turn(testTarget);
         List<Integer> testUserNumberOfList = new ArrayList<>(Arrays.asList(1, 2, 4));
-        int result = turn.countSameValueInSameIndex(testTargetNumberList, testUserNumberOfList);
+        int result = turn.countIsSameValueIfSameIndex(testTargetNumberList, testUserNumberOfList);
         assertThat(result).isEqualTo(2);
     }
 
     @Test
     @DisplayName("입력 숫자 중, 타겟에도 포함되는 숫자의 개수 세기")
-    void countValueContainTogether() {
+    void countValueIfContainTogetherForTwoList() {
         Turn turn = new Turn(testTarget);
         List<Integer> testUserNumberOfList = new ArrayList<>(Arrays.asList(3, 2, 5));
-        int result = turn.countValueContainTogether(testTargetNumberList, testUserNumberOfList);
+        int result = turn.countValueIfContainTogetherForTwoList(testTargetNumberList, testUserNumberOfList);
         assertThat(result).isEqualTo(2);
     }
 
