@@ -26,17 +26,17 @@ public class InputService {
     }
   }
 
-  private boolean isInValidLength(String input) {
+  boolean isInValidLength(String input) {
     return input.length() != RANDOM_NUMBER_SIZE;
   }
 
-  private boolean hasDuplicateNumbers(String input) {
+  boolean hasDuplicateNumbers(String input) {
     List<Integer> numberList = convertStringToIntegerList(input);
     Set<Integer> numberSet = new HashSet<>(numberList);
     return numberList.size() != numberSet.size();
   }
 
-  private boolean hasInvalidRange(String input) {
+  boolean hasInvalidRange(String input) {
     return input.chars()
         .map(Character::getNumericValue)
         .anyMatch(this::isInValidateRange);
@@ -59,7 +59,7 @@ public class InputService {
     return playerInput.equals(GameStatus.RESTART.getStatus());
   }
 
-  private void checkGameStatus(String playerInput) {
+  void checkGameStatus(String playerInput) {
     if (isNotRestart(playerInput) && isNotEnd(playerInput)) {
       throw new IllegalArgumentException();
     }
