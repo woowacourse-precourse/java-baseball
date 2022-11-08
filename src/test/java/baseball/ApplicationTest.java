@@ -147,6 +147,25 @@ class ApplicationTest extends NsTest {
         assertThat(invoke).isEqualTo(expected);
     }
 
+    @Test
+    public void getStrikeNumber_스트라이크_개수에_대한_테스트() throws Exception {
+        //reflection
+        Method method = Application.class.getDeclaredMethod("getStrikeNumber", List.class, String.class);
+        method.setAccessible(true);
+
+        //given
+        List<Integer> givenComputerNumbers = List.of(9, 5, 3);
+        String givenUserNumbers = "593";
+        int expected = 1;
+
+        //when
+        int invoke = (int)method.invoke(new Application(), givenComputerNumbers, givenUserNumbers);
+
+        //then
+        assertThat(invoke).isEqualTo(expected);
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
