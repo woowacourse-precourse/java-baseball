@@ -1,5 +1,6 @@
 package baseball.domain.number;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -11,13 +12,18 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class BaseballNumberTest {
 
+  private static Integer number;
+
+  @BeforeAll()
+  static void number_test_init() {
+    Number numberInstance = new Number();
+    number = numberInstance.getNumber();
+  }
+
   @Test
   @DisplayName("컴퓨터가 생성하는 각 자리 숫자는 1에서 9사이의 숫자입니다.")
   @Tag("number")
   void number_between_1_and_9() {
-    Number numberInstance = new Number();
-    Integer number = numberInstance.getNumber();
-
     assertTrue(1 <= number && number <= 9, () -> NUMBER_ERROR_MESSAGE);
   }
 
