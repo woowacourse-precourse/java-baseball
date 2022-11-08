@@ -12,6 +12,6 @@ public class Application {
         Input input = new ConsoleInput();
         Output output = new ConsoleOutput();
         Game game = new Game(BALL_MAX_COUNT);
-        game.run(input, output);
+        game.execute(input, output);
     }
 }

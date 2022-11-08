@@ -9,8 +9,8 @@ import ui.Output;
 public class Game {
 
     private final int MAX_LEN;
-    private static final int REPLAY_GAME = 1;
-    private static final int GUESSING_NUMBER = 2;
+    private static final String REPLAY_GAME = "1";
+    private static final String GUESSING_NUMBER = "2";
     private final RandomBallsGenerator generator;
     private final GameResultJudgement judge;
 
@@ -20,14 +20,14 @@ public class Game {
         judge = new GameResultJudgement(MAX_LEN);
     }
 
-    public void run(Input input, Output output) {
+    public void execute(Input input, Output output) {
         String toBeContinued;
         output.printOut(Messages.START_GAME.message());
         do {
             play(input, output);
             output.printOut(Messages.REQUEST_RESTART_GAME_INPUT.message());
             toBeContinued = input.scan(REPLAY_GAME, MAX_LEN);
-        } while (Objects.equals(toBeContinued, "1"));
+        } while (Objects.equals(toBeContinued, REPLAY_GAME));
     }
 
     public void play(Input input, Output output) {
@@ -38,11 +38,10 @@ public class Game {
         do {
             output.printOut(Messages.REQUEST_NUMBER_INPUT.message());
             String userInputNumber = input.scan(GUESSING_NUMBER, MAX_LEN);
-            List<Integer> judgement = judge.judgeStrikeBallNothing(computerNumber, userInputNumber);
-            output.printOutAfterConversion(judgement);
+            output.printOutAfterConversion(judge.judgeStrikeBallNothing(computerNumber, userInputNumber));
             retry = isMatch(computerNumber, userInputNumber);
             if (isMatch(computerNumber, userInputNumber)) {
-                output.printOut(Messages.END_GAME.message());
+                    output.printOut(Messages.END_GAME.message());
             }
         } while (!retry);
     }
