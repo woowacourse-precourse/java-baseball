@@ -7,7 +7,11 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
+
+    private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
+
     public static void main(String[] args) {
+        System.out.println(GAME_START);
         Game answer = new Game();
         Game.init(answer);
     }
