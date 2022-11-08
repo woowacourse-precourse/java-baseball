@@ -1,6 +1,6 @@
 package baseball.number;
 
-import baseball.exception.UserNumberValidator;
+import baseball.validator.UserNumberValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.validator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.validator;
 
 import static baseball.constant.GameConstant.RESTART;
 import static baseball.constant.GameConstant.END_GAME;
