@@ -77,6 +77,16 @@ public class Application {
 
     public static List<Integer> checkBallCount(List<Integer> answerNumber, List<Integer> guessNumber) {
         List<Integer> ballCount = new ArrayList<>();
+        ballCount.add(0);
+        ballCount.add(0);
+
+        for (int i = 0; i < 3; i++) {
+            if (checkStrike(i, answerNumber, guessNumber)) {
+                ballCount.set(1, ballCount.get(1) + 1);
+            } else if (checkBall(answerNumber.get(i), answerNumber)) {
+                ballCount.set(0, ballCount.get(0) + 1);
+            }
+        }
 
         return ballCount;
     }
