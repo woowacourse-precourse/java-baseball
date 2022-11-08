@@ -9,6 +9,10 @@ class BullsAndCows {
     private List<Integer> computerNumber;
     private BullsAndCowsResult bullsAndCowsResult;
 
+    public BullsAndCowsResult getBullsAndCowsResult() {
+        return bullsAndCowsResult;
+    }
+
     public List<Integer> creatRandomNumber() {
         List<Integer> computer = new ArrayList<>();
 
