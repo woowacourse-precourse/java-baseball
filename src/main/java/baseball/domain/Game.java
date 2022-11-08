@@ -10,9 +10,14 @@ public class Game {
     final ChangeToChar changeToChar = new ChangeToChar();
     private char[] number;
     private Player player;
-    public Game(int minNum,int maxNum){
+    public Game getInstance(int minNum,int maxNum){
+        if (player==null){
+            player = new Player();
+        } else{
+            player.init();
+        }
         number = changeToChar.changetoChar(randNumGenerate(minNum, maxNum));
-        player = new Player();
+        return this;
     }
     public int randNumGenerate(int minNum, int maxNum) {
         int number = 0;
@@ -30,8 +35,29 @@ public class Game {
         } while(digit != 0);
         return number;
     }
-    public char[] getNumber() {
-        return number;
+    public void check(int cur) {
+        for(int i = 0; i < 3; ++i) {
+            if (number[i] == player.getInput()[cur] && i==cur) {
+                player.plusStrike();
+                return;
+            } else if(number[i] == player.getInput()[cur]){
+                player.plusBall();
+                return;
+            }
+        }
+    }
+    public void printBaseBallCount() {
+        if (player.getStrike() == 3) {
+            System.out.println("3스트라이크");
+        } else if (player.getStrike() == 0 && player.getBall() == 0) {
+            System.out.println("낫싱");
+        } else if (player.getStrike() != 0 && player.getBall() != 0) {
+            System.out.println(player.getBall() + "볼 " + player.getStrike() + "스트라이크");
+        } else if (player.getStrike() != 0 && player.getBall() == 0) {
+            System.out.println(player.getStrike() + "스트라이크");
+        } else if (player.getStrike() == 0 && player.getBall() != 0) {
+            System.out.println(player.getBall() + "볼");
+        }
     }
     public Player getPlayer(){
         return player;
