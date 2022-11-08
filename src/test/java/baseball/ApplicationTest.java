@@ -21,6 +21,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 컴퓨터_사용자입력_값비교_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "456", "789", "987", "879", "459", "469", "2");
+                    assertThat(output()).contains("낫싱", "1볼 1스트라이크","1스트라이크", "1볼",
+                            "1스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                4,6,9
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
