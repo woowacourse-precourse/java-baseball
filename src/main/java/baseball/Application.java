@@ -91,12 +91,23 @@ public class Application {
 
     private static List<Integer> getUserAnswerBallAndStrike(List<Integer> computer, List<Integer> userAnswer) {
         List<Integer> ballAndStrike = Arrays.asList(0, 0, 0);
-        for(int i = 0; i < userAnswer.size(); i++) {
+        for (int i = 0; i < userAnswer.size(); i++) {
             int ballOrStrike = getElementBallOrStrike(computer, i, userAnswer.get(i));
             ballAndStrike.set(ballOrStrike, ballAndStrike.get(i) + 1);
         }
 
         return ballAndStrike;
+    }
+
+    private Integer getResult(List<Integer> ballAndStrike) {
+        //정답인 경우 1, n 볼 m 스트라이크의 경우 2, 낫싱인 경우 0을 반환
+        if (ballAndStrike.get(1) == 3) {
+            return 1;
+        } else if (ballAndStrike.get(0) == 3) {
+            return 0;
+        }
+        
+        return 2;
     }
 
 }
