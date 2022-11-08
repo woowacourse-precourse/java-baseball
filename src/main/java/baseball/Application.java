@@ -9,8 +9,21 @@ import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
+        // TODO : 재시작 또는 완전 종료 함수화
         List<Integer> computer = Game.makeRandomNumberList();
         Game.repeatGame(computer);
+        boolean flag = true;
+        while (flag){
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartOrEnd = Console.readLine();
+            if (Objects.equals(restartOrEnd, "1")){
+                List<Integer> computerturn = Game.makeRandomNumberList();
+                Game.repeatGame(computerturn);
+            }
+            else {
+                flag = false;
+            }
+        }
     }
 
     public static class Game {
