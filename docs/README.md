@@ -34,3 +34,4 @@
 * 중복숫자 허용 x
 
 # changelog.md에 영어만 반영되는지 테스트
+# git message template test
