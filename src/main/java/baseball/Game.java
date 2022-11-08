@@ -28,6 +28,9 @@ public class Game {
     }
 
     public void playGame(){
+        System.out.println("게임을 시작합니다.");
+        answerNumber.RandomNumber();
+        answerNumberList = answerNumber.getAnswerNumberList();
         do{
             inputNumberList = inputNumber.userInputNumber();
             strike = 0;
