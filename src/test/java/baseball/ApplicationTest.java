@@ -28,6 +28,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 정답_체크() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "456", "789", "139", "392", "923", "2");
+                    assertThat(output()).contains("2스트라이크", "낫싱", "1볼", "2볼", "3볼", "3스트라이크", "게임 종료");
+                },
+                9, 2, 3
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
