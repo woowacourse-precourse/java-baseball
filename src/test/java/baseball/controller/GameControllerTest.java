@@ -1,11 +1,13 @@
 package baseball.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.InstanceOfAssertFactories.LIST;
 
 import baseball.computer.Computer;
 import baseball.game.Game;
 import baseball.player.Player;
+import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -27,7 +29,7 @@ public class GameControllerTest {
 
     @Test
     public void check_Game_Condition_Ongoing_Test(){
-        
+
         final int NOT_Found=-1;
         final int END_CONDITION=3;
 
@@ -72,5 +74,30 @@ public class GameControllerTest {
             }
         }
         assertThat(strikeCount).isEqualTo(END_CONDITION);
+    }
+    @Test
+    public void restart_OR_END_GAME_TEST(){
+        int userChoice;
+        String userInput="1";
+        int restart=1;
+        InputStream inPlayer = generateUserInput(userInput);
+        System.setIn(inPlayer);
+        userChoice= Integer.parseInt(Console.readLine());
+        assertThat(userChoice).isEqualTo(restart);
+    }
+    public static void isWrongInput(int state){
+        if(state<1 || state>2){
+            throw new IllegalArgumentException();
+        }
+    }
+    @Test
+    public void restart_OR_END_GAME_Fail_TEST(){
+        int userChoice;
+        String userInput="3";
+        int restart=1;
+        InputStream inPlayer = generateUserInput(userInput);
+        System.setIn(inPlayer);
+        userChoice= Integer.parseInt(Console.readLine());
+        assertThatThrownBy(()->isWrongInput(userChoice)).isInstanceOf(IllegalArgumentException.class);
     }
 }
