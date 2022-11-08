@@ -10,14 +10,19 @@ public class Referee {
     private static final String RESULT_STRIKE = "스트라이크";
     private static final String RESULT_BALL = "볼";
 
-    public void setBallandStrike(List<Integer> targetNum, List<Integer> userInput) {
+    public void setBallAndStrike(List<Integer> targetNum, List<Integer> userInput) {
         initBallAndStrike();
-        for (int i = 0; i < targetNum.size(); i++) {
-            if (targetNum.get(i).equals(userInput.get(i))) {
-                strike++;
-            } else {
-                ball++;
-            }
+        for (int userIdx = 0; userIdx < userInput.size(); userIdx++) {
+            int findIdx = targetNum.indexOf(userInput.get(userIdx));
+            countBallAndStrike(userIdx, findIdx);
+        }
+    }
+
+    private void countBallAndStrike(int userIdx, int findIdx) {
+        if (findIdx == userIdx) {
+            strike++;
+        } else if (findIdx > -1) {
+            ball++;
         }
     }
 
