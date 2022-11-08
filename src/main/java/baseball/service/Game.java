@@ -45,7 +45,7 @@ public class Game {
         return false;
     }
 
-    private int countBall(String number, String answer) {
+    public static int countBall(String number, String answer) {
         HashSet<Character> set = new HashSet<>();
         for (char c : answer.toCharArray()) {
             set.add(c);
@@ -59,7 +59,7 @@ public class Game {
         return ballCount;
     }
 
-    private int countStrike(String number, String answer) {
+    public static int countStrike(String number, String answer) {
         if (number.equals(answer)) {
             return 3;
         }
