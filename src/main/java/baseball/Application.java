@@ -17,6 +17,7 @@ public class Application {
                 System.out.print("숫자를 입력해주세요 : ");
                 String inputNumber = Console.readLine();
                 checkInputCondition(inputNumber);
+                System.out.println("randomNumber = " + randomNumber);
 
                 List<Integer> listedInputNumber = convertIntegerIntoList(inputNumber);
 
@@ -54,7 +55,7 @@ public class Application {
     }
 
     static void checkExitCode(int exitCode) {
-        if (exitCode != 1 || exitCode != 2) {
+        if (exitCode != 1 && exitCode != 2) {
             throw new IllegalArgumentException();
         }
     }
