@@ -1,12 +1,16 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import baseball.util.ComputerUtil;
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -31,5 +35,46 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    // ----- ComputerUtilTest -----
+
+    @Test
+    void computerNumbers_가_서로_다른_수로_구성() {
+        List<Integer> computerNumbers = ComputerUtil.getComputerNumbers();
+
+        assertThat(computerNumbers).doesNotHaveDuplicates();
+    }
+
+    @RepeatedTest(100)
+    void pickNumberInRange_메서드로_1과9_사이_값을_반환() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+        assertThat(randomNumber).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
+    }
+
+    @Test
+    void compueterNumbers_가_3자리로_구성() {
+        List<Integer> computerNumbers = ComputerUtil.getComputerNumbers();
+
+        assertThat(computerNumbers.size()).isEqualTo(3);
+    }
+
+    // ----- UserUtilTest -----
+
+    @Test
+    void 정수가_아닌_입력_주어지면_예외발생() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void zero_를_포함하는_입력_주어지면_예외발생() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("101"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 }
