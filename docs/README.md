@@ -97,7 +97,8 @@
 |-----------------|-----------------------|---------------------------|
 | public          | InputMapping          | 콘솔을 통한 입력을 변환하기 위한 클래스    |
 | public          | getGameNumberList     | 입력된 int 형 범위값을 list형태로 변환 |
-| public          | getConsoleInt         | 입렵된 것이 정수이며 int형 범위값인지 검사 |
+| public          | getRestartFlag        | 다시 시작하는물음에 답을 유효성 검사하여 저장 |
+| private         | getConsoleInt         | 입렵된 것이 정수이며 int형 범위값인지 검사 |
 | private         | nonValidateGameNumber | 게임의 형식에 맞는지 검사            |
 
 <details>
@@ -110,6 +111,18 @@
 * result
     * List/<Integer> getInputNumberList
       * 숫자의 각자리가 list로 저장
+
+</details>
+
+<details>
+<summary> getRestartFlag </summary>
+
+다시 시작할것인지 flag로 저장하기위해 유효성 검사를 포함하여 구현 
+1혹은 2가 아니라면 IllegalArgumentException
+* parameter
+
+* result
+  * int gameNumber
 
 </details>
 
