@@ -1,4 +1,4 @@
-package baseball.myTest;
+package myTest;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;

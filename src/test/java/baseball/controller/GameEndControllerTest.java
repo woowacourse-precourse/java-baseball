@@ -15,17 +15,15 @@ class GameEndControllerTest {
 
 	@Test
 	void isAnswer() {
-
 		UserBall userBall1 = UserBall.createUserBall();
 		userBall1.updateStrikeCount(3);
 		userBall1.updateStatus();
-		Assertions.assertTrue(gameEndController.isAnswer(userBall1));
 
 		UserBall userBall2 = UserBall.createUserBall();
 		userBall2.updateStrikeCount(2);
 		userBall2.updateStatus();
 
+		Assertions.assertTrue(gameEndController.isAnswer(userBall1));
 		Assertions.assertFalse(gameEndController.isAnswer(userBall2));
-
 	}
 }
