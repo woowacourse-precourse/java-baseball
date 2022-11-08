@@ -1,4 +1,4 @@
-package baseball;
+package baseball.reloader;
 
 import baseball.config.AppConfig;
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -11,16 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BaseballGameControllerTest extends NsTest {
 
-    private ReloaderTest reloaderTest;
+    private Reloader reloader;
 
     @BeforeEach
     void setUp() {
-        reloaderTest = AppConfig.reloaderTest();
+        baseballGameController = AppConfig.baseballGameController();
     }
 
-    @DisplayName("2를 입력하면 게임을 종료한다")
+    @DisplayName("2를 입력하여 게임을 종료한다")
     @Test
-    void 승리_후_숫자_2_입력() {
+    void 2를_입력해_게임종료() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("123", "456", "2");
@@ -30,9 +30,9 @@ class BaseballGameControllerTest extends NsTest {
         );
     }
 
-    @DisplayName("1을 입력하면 게임을 재시작한다")
+    @DisplayName("1을 입력하여 게임을 재시작한다")
     @Test
-    void 승리_후_1_입력() {
+    void 1을_입력해_게임재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("123", "456", "1", "213", "123", "2");
