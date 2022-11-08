@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -198,5 +201,23 @@ public class GameTest {
             checkUserInputMethod.setAccessible(true);
             checkUserInputMethod.invoke(game, "129");
         }
+    }
+
+    @Nested
+    class 랜덤넘버생성_테스트 {
+        @Test
+        void 랜덤넘버생성_테스트1_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method createSecretNumberMethod = Game.class.getDeclaredMethod("createSecretNumber");
+            createSecretNumberMethod.setAccessible(true);
+            Method checkUserInputMethod = Game.class.getDeclaredMethod("checkUserInput", String.class);
+            checkUserInputMethod.setAccessible(true);
+            for (int i = 0; i < 100; i++) {
+                List<Integer> secretNumber = (List<Integer>) createSecretNumberMethod.invoke(game);
+                String secretString = secretNumber.stream().map(String::valueOf)
+                        .collect(Collectors.joining());
+                checkUserInputMethod.invoke(game, secretString);
+            }
+        }
+
     }
 }
