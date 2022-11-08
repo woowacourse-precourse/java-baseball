@@ -20,6 +20,9 @@ class ComputerTest {
     @Test
     @DisplayName("난수 값의 생성이 제대로 되는지 테스트")
     void computer_난수값_생성이_제대로_되는지_테스트() {
+        // given
+        computer.generateNumbers();
+
         // when
         List<Integer> numbers = computer.getNumbers();
 
@@ -37,7 +40,7 @@ class ComputerTest {
         Referee referee = new Referee();
 
         // when
-        computer.giveNumbersToReferee(referee);
+        referee.receiveComputerNumbers(computer.getNumbers());
 
         // then
         List<Integer> computerNumbers = computer.getNumbers();

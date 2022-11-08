@@ -1,17 +1,18 @@
 package baseball.objects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
 
     private List<Integer> numbers;
 
-    public void sayNumbers(List<Integer> numbers) {
-        this.numbers = numbers;
+    public Player() {
+        this.numbers = new ArrayList<>();
     }
 
-    public void giveNumbersToReferee(Referee referee) {
-        referee.receivePlayerNumbers(this.numbers);
+    public void sayNumbers(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 
     public List<Integer> getNumbers() {

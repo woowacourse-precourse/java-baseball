@@ -8,16 +8,8 @@ public class Computer {
     private final NumberGenerator numberGenerator = new NumberGenerator();
     private final List<Integer> numbers = new ArrayList<>();
 
-    public Computer() {
-        generateNumbers();
-    }
-
-    private void generateNumbers() {
+    public void generateNumbers() {
         numberGenerator.generate(numbers);
-    }
-
-    public void giveNumbersToReferee(Referee referee) {
-        referee.receiveComputerNumbers(numbers);
     }
 
     public List<Integer> getNumbers() {

@@ -29,16 +29,15 @@ class PlayerTest {
     void giveNumbersToReferee() {
         // given
         Referee referee = new Referee();
-
         Player player = new Player();
         player.sayNumbers(List.of(1, 2, 3));
 
+        List<Integer> playerNumbers = player.getNumbers();
+
         // when
-        player.giveNumbersToReferee(referee);
+        referee.receivePlayerNumbers(playerNumbers);
 
         // then
-        List<Integer> refereePlayerNumbers = referee.getPlayerNumbers();
-        List<Integer> playerNumbers = player.getNumbers();
-        assertThat(refereePlayerNumbers).isEqualTo(playerNumbers);
+        assertThat(referee.getPlayerNumbers()).isEqualTo(playerNumbers);
     }
 }

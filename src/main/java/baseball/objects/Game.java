@@ -17,7 +17,8 @@ public class Game {
 
 
     public boolean start() {
-        computer.giveNumbersToReferee(referee);
+        computer.generateNumbers();
+        referee.receiveComputerNumbers(computer.getNumbers());
 
         boolean isFinished = false;
         while (!isFinished) {
@@ -35,7 +36,7 @@ public class Game {
     private void savePlayerNumberToReferee(Player player, Referee referee) {
         String pushNumber = pushBaseballNumber();
         player.sayNumbers(stringNumberToList(pushNumber));
-        toReferee(player, referee);
+        referee.receivePlayerNumbers(player.getNumbers());
     }
 
     private String pushBaseballNumber() {
@@ -52,10 +53,6 @@ public class Game {
 
     private List<Integer> stringNumberToList(String number) {
         return Arrays.stream(number.split("")).map(Integer::valueOf).collect(Collectors.toList());
-    }
-
-    private void toReferee(Player player, Referee referee) {
-        player.giveNumbersToReferee(referee);
     }
 
     private String pushNumber() {
