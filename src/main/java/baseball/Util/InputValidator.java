@@ -1,5 +1,6 @@
 package baseball.Util;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class InputValidator {
@@ -19,42 +20,53 @@ public class InputValidator {
     }
 
     public static boolean validate(String numbers) {
-        try{
+        try {
             int userInput = Integer.parseInt(numbers);
             validateSize(userInput);
             validateSize(numbers);
-        }
-        catch (Exception e){
+            validateDuplicate(userInput);
+        } catch (Exception e) {
             throw new IllegalArgumentException();
         }
         return true;
     }
 
-    private static void validateSize(String number){
-        if (number.length() != EXACT_LENGTH){
+    private static void validateSize(String number) {
+        if (number.length() != EXACT_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
     private static void validateSize(int number) {
-        if(number < NINIMUM_NUMBER || number > MAXIMUM_NUMBER){
+        if (number < NINIMUM_NUMBER || number > MAXIMUM_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validateisOneOrTwo(int number){
-        if(!(number == 1 || number == 2)) {
+    private static void validateDuplicate(int number) {
+        HashSet<Integer> numberContainer = new HashSet<>();
+        boolean hasNumber = true;
+        while (number > 0) {
+            hasNumber = numberContainer.add(number % 10);
+            number /= 10;
+            if (!hasNumber) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private static void validateisOneOrTwo(int number) {
+        if (!(number == 1 || number == 2)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static int validateRedo(String number){
-        try{
+    public static int validateRedo(String number) {
+        try {
             int redo = Integer.parseInt(number);
             validateisOneOrTwo(redo);
             return redo;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException();
         }
     }

@@ -9,4 +9,5 @@ public class UserInputTest {
     void 인풋테스트(){
         assertThat(InputHandler.getUserInput()).isEqualTo("r");
     }
+
 }
