@@ -10,4 +10,9 @@ public class Validator {
         }
     }
 
+    public static void validRestartInput(String text) {
+        if (!text.matches("^[1-2]+$")) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
