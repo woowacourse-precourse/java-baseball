@@ -22,13 +22,16 @@ public class Application {
         return answerList;
     }
 
-    static void checkValidInput(String input){
+    static void checkInputLength(String input){
         int len = input.length();
         if (len != 3){
             throw new IllegalArgumentException("Invalid input");
         }
+    }
 
+    static void checkInputRange(String input){
         char check;
+        int len = input.length();
         for (int i = 0; i < len; i++) {
             check = input.charAt(i);
             if (check < '1' || check > '9') {
@@ -37,7 +40,27 @@ public class Application {
         }
     }
 
+    static void checkRedundancy(String input){
+        char first = input.charAt(0);
+        char second = input.charAt(1);
+        char third = input.charAt(2);
+        if (first == second) {
+            throw new IllegalArgumentException("Same number cannot be input");
+        } else if (first == third) {
+            throw new IllegalArgumentException("Same number cannot be input");
+        } else if (second == third) {
+            throw new IllegalArgumentException("Same number cannot be input");
+        }
+    }
+
+    static void checkValidInput(String input){
+        checkValidInput(input);
+        checkInputRange(input);
+        checkRedundancy(input);
+    }
+
     static String inputAnswer(){
+        System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
 
         try {
@@ -61,12 +84,12 @@ public class Application {
     public static void main(String[] args) {
 
         String inputString = inputAnswer();
-        List<Integer> isStrike = castToInteger(inputString);
+        List<Integer> thrownBalls = castToInteger(inputString);
         List<Integer> Answer = createAnswer();
 
         //for debugging
         System.out.print("Input: ");
-        for (Integer i : isStrike) {
+        for (Integer i : thrownBalls) {
             System.out.print(i);
         }
         System.out.println();
@@ -76,5 +99,9 @@ public class Application {
         }
         System.out.println();
         //
+
+        while (true){
+            break;
+        }
     }
 }
