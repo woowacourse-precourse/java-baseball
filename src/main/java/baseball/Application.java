@@ -29,6 +29,21 @@ public class Application {
         return numbers;
     }
 
+    public static void CheckExceptionInputNumber(String numbers) {
+        if (numbers.length() != 3) {
+            throw new IllegalArgumentException("[Invalid] size of the number");
+        }
+
+        for(int i = 0; i < (numbers.length() -1); ++i) {
+            if ( -1 != numbers.indexOf(numbers.charAt(i), i+1) ) {
+                throw new IllegalArgumentException("[Invalid] the same value");
+            }
+            if ( Integer.valueOf(numbers.charAt(i)) == '0' ) {
+                throw new IllegalArgumentException("[Invalid] the zero value");
+            }
+        }
+    }
+
     public static void BaseballGame() {
         int gameStatus = GAME_PROGRESS;
 
