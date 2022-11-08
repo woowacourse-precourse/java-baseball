@@ -18,12 +18,14 @@ public class Application {
 
     public static List<Integer> randomNumberCreate(){
         List<Integer> computerNumbers = new ArrayList<>();
+
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
         }
+
         return computerNumbers;
     }
 
@@ -41,7 +43,6 @@ public class Application {
         String regularExpression = "^[1-9]{3}$";
         boolean result = Pattern.matches(regularExpression,word);
 
-
         if(!result){
             System.out.println("error");
             throw new IllegalArgumentException("유효하지 않는 값입니다");
@@ -50,37 +51,44 @@ public class Application {
 
     public static String inputAvailableUserNumberService(){
         String userNumbers = "";
+
         userNumberMessagePrint();
         userNumbers = userNumberInput();
         availableUserNumberIsChecked(userNumbers);
+
         return userNumbers;
     }
 
     public static List<Integer> stringToListCreate(String word){
         String[] stringToArray = word.split("");
         List<Integer> arrayToList = new ArrayList<>();
+
         for(String arrayElementIndex : stringToArray){
             if(arrayToList.contains(Integer.parseInt(arrayElementIndex))){
                 throw new IllegalArgumentException("유효하지 않은 값입니다.");
             }
             arrayToList.add(Integer.parseInt(arrayElementIndex));
         }
+
         return arrayToList;
     }
 
     public static int checkStrikeNumbers(List<Integer> computerNumbers,
                                          List<Integer> userNumbers){
         int checkedStrikeNumbers = 0;
+
         for(int listElements = 0; listElements < computerNumbers.size(); listElements++){
             if(computerNumbers.get(listElements).equals(userNumbers.get(listElements))){
                 checkedStrikeNumbers++;
             }
         }
+
         return checkedStrikeNumbers;
     }
 
     public static int checkedBallNumbers(List computerNumbers,List userNumbers){
         int checkedBallNumbers = 0;
+
         for(int listElements = 0; listElements < userNumbers.size(); listElements++){
             if(computerNumbers.contains(userNumbers.get(listElements))){
                 checkedBallNumbers++;
@@ -117,6 +125,7 @@ public class Application {
         String userAnswer = word;
         String regularExpression = "^[1-2]{1}$";
         boolean result = Pattern.matches(regularExpression,userAnswer);
+
         if(!result){
             throw new IllegalArgumentException("유효하지 않는 값입니다.");
         }
@@ -146,12 +155,16 @@ public class Application {
     public static void inputUserNumberService(List<Integer> computerNumbersList){
         String stringBuilderUserNumber = "";
         boolean checkedAnswer = false;
+        int strikeNumber = 0;
+        int ballNumber = 0;
+
         stringBuilderUserNumber = inputAvailableUserNumberService();
         List<Integer> userNumbersList = stringToListCreate(stringBuilderUserNumber);
-        int strikeNumber = checkStrikeNumbers(computerNumbersList,userNumbersList);
-        int ballNumber = checkedBallNumbers(computerNumbersList,userNumbersList);
+        strikeNumber = checkStrikeNumbers(computerNumbersList,userNumbersList);
+        ballNumber = checkedBallNumbers(computerNumbersList,userNumbersList);
         Map<String,Integer> baseballResult = calculatedStrikeBallNumber(strikeNumber,ballNumber);
         checkedAnswer = printBaseballOfResult(baseballResult);
+
         if(!checkedAnswer){
             inputUserNumberService(computerNumbersList);
         }
@@ -163,14 +176,17 @@ public class Application {
         printToRestartingGameMessage();
         userAnswer = inputUserAnswer();
         availableUserAnswerIsChecked(userAnswer);
+
         return userAnswer;
     }
 
     public static void baseballGameService(){
         String checkedBaseballGaemOfUserAnswer = "";
         List<Integer> computerNumbersList = randomNumberCreate();
+
         inputUserNumberService(computerNumbersList);
         checkedBaseballGaemOfUserAnswer = inputAvailableUserAnswerService();
+
         if(checkedBaseballGaemOfUserAnswer.equals(String.valueOf(1))){
             baseballGameService();
         }
