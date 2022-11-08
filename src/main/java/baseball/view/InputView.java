@@ -14,12 +14,20 @@ public class InputView {
     }
     
     public static UserNumbersDTO inputUserBalls() {
-        System.out.print(NUMBER_INPUT_PROMPT_MESSAGE);
+        printNumberInputPromptMessage();
         return new UserNumbersDTO(Console.readLine());
     }
     
+    private static void printNumberInputPromptMessage() {
+        System.out.print(NUMBER_INPUT_PROMPT_MESSAGE);
+    }
+    
     public static SelectedNumberForRestartDTO inputNumberForRestart() {
-        System.out.println(RESTART_SELECT_INPUT_MESSAGE);
+        printRestartSelectInputMessage();
         return new SelectedNumberForRestartDTO(Console.readLine());
+    }
+    
+    private static void printRestartSelectInputMessage() {
+        System.out.println(RESTART_SELECT_INPUT_MESSAGE);
     }
 }
