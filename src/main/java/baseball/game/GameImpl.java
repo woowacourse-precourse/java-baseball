@@ -41,4 +41,14 @@ public class GameImpl implements Game{
     Result result = new Result(score.getStrikeCount(), score.getBallCount());
     System.out.println(result.getResults());
   }
+
+  @Override
+  public void GameContinuity(){
+    GameContinuity continuity = new GameContinuity();
+    if(continuity.getContinuity()) {
+      GameReady();
+      return;
+    }
+    this.flag = false;
+  }
 }
