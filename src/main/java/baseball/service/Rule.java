@@ -8,9 +8,10 @@ import java.util.List;
 public class Rule {
     private static final String STRIKE = "STRIKE";
     private static final String BALL = "BALL";
+    private static final int SIZE = 3;
 
-    private Player player;
-    private Computer computer;
+    private final Player player;
+    private final Computer computer;
 
     public Rule() {
         this.player = new Player();
@@ -23,26 +24,39 @@ public class Rule {
 
     public List<Integer> decideStrikeOrBall() {
         List<Integer> result = new ArrayList<>();
-        result.add(countStrike(result));
-        result.add(countBall(result));
+        int ball = countBall();
+        int strike = countStrike();
+        ball = ball - strike;
+        result.add(strike);
+        result.add(ball);
+
         return result;
     }
 
-    private int countStrike(List<Integer> result) {
-        return 0;
+    private int countStrike() {
+        int strike = 0;
+        for (int position = 0; position < SIZE; position++) {
+            if(computer.getNumber(position) == player.getNumber(position)) {
+                strike++;
+            }
+        }
+        return strike;
     }
 
-    private int countBall(List<Integer> result) {
-        return 0;
+    private int countBall() {
+        int ball = 0;
+        for (int position = 0; position < SIZE; position++) {
+            if(computer.getThreeNumber().contains(player.getNumber(position))) {
+                ball++;
+            }
+        }
+        return ball;
     }
 
     public void getNumberByPlayer() {
         String input = InputView.read();
-        if(isValid(input)) {
+        if(Validation.isValidNumber(input)) {
             player.setNumber(input);
         }
-    }
-
-    public boolean isValid(String input) {
     }
 }
