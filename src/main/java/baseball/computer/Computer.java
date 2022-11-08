@@ -9,7 +9,7 @@ public class Computer {
     private List<Integer> computerNum = new ArrayList<>();;
     private static final int RANDOM_MIN = 1;
     private static final int RANDOM_MAX = 9;
-    private static final int RANDOM_NUM_LENGTH = 9;
+    private static final int RANDOM_NUM_LENGTH = 3;
 
     public Computer(){
         createRandomNum();
