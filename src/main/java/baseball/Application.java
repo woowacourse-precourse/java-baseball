@@ -11,6 +11,7 @@ public class Application {
 
         List<Integer> resultNumber = makeRandomNumber();
 
+
     }
 
     public static List<Integer> makeRandomNumber() {
