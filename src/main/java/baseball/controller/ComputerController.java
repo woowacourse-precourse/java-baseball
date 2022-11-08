@@ -44,7 +44,8 @@ public class ComputerController {
     }
 
     private void countBall(int[] computerNumbers, int playerNumber, int numberIndex) {
-        if ((computerNumbers[numberIndex] != playerNumber) && Arrays.stream(computerNumbers).anyMatch(number -> number == playerNumber)) {
+        if ((computerNumbers[numberIndex] != playerNumber)
+                && Arrays.stream(computerNumbers).anyMatch(number -> number == playerNumber)) {
             ballCount++;
         }
     }

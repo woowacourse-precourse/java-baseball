@@ -19,7 +19,8 @@ public class RandomUtility {
 
     private int generateRandomNumber(int[] randomNumbers) {
         while (true) {
-            int randomNumber = Randoms.pickNumberInRange(BASEBALL_GAME_RANDOM_RANGE_START, BASEBALL_GAME_RANDOM_RANGE_END);
+            int randomNumber = Randoms.pickNumberInRange(BASEBALL_GAME_RANDOM_RANGE_START,
+                    BASEBALL_GAME_RANDOM_RANGE_END);
 
             if (isDifferentNumber(randomNumbers, randomNumber)) {
                 return randomNumber;
