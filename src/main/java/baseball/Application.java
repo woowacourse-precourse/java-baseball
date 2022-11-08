@@ -1,36 +1,30 @@
 package baseball;
 
-import baseball.utils.ConsoleUtil;
-import baseball.utils.GameUtil;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import baseball.controller.GameController;
 
 public class Application {
     private static final int PICK_NUMBER_LENGTH = 3;
 
     public static void main(String[] args) {
-        Queue<Integer> computeNumbers = new LinkedList<>(List.of(135, 589));
-        boolean isExecute = true;
+        boolean isPlayAgain = true;
+        GameController controller = new GameController();
 
-        ConsoleUtil.printIntro();
-        ConsoleUtil.printHowToPlay();
+        controller.showTutorial();
 
-        while (isExecute) {
-            computeNumbers.add(GameUtil.pickNumber(PICK_NUMBER_LENGTH));
-            isExecute = executeGame(computeNumbers.poll());
+        while(isPlayAgain) {
+            executeGame(controller);
+
+            String response = controller.showSelectPlayGameAgain();
+            isPlayAgain = controller.getPlayGameAgainResult(response);
         }
-
-        ConsoleUtil.printQuit();
     }
 
-    private static boolean executeGame(int computerNumber) {
-        Game game = new Game(computerNumber);
-        game.run(PICK_NUMBER_LENGTH);
+    private static void executeGame(GameController controller) {
+        boolean gameResult = false;
 
-        ConsoleUtil.printFinish(PICK_NUMBER_LENGTH);
-
-        String newGameFlag = ConsoleUtil.printGameRestartQuestion();
-        return GameUtil.parseInt(newGameFlag) == 1;
+        while (!gameResult) {
+            String gameNumber = controller.showPickThreeDigitNumbers();
+            gameResult = controller.showSelectNumberResult(gameNumber);
+        }
     }
 }
