@@ -1,6 +1,6 @@
 package baseball.game;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,10 +11,9 @@ public class Service {
     public Service() {}
 
     public List<Integer> calculateHint(List<Integer> userNumber, List<Integer> computerNumber) {
-        List<Integer> hint = new ArrayList<>();
-        hint.add(calculateBall(userNumber, computerNumber));
-        hint.add(calculateStrike(userNumber, computerNumber));
-        return hint;
+        return Arrays.asList(
+                calculateBall(userNumber, computerNumber),
+                calculateStrike(userNumber, computerNumber));
     }
 
     public int calculateBall(List<Integer> userNumber, List<Integer> computerNumber) {
