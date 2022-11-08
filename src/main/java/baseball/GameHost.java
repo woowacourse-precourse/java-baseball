@@ -1,5 +1,7 @@
 package baseball;
 
+import utils.InputUtils;
+
 import java.util.*;
 
 public class GameHost extends BaseballNumber {
@@ -81,9 +83,8 @@ public class GameHost extends BaseballNumber {
     public void setBaseballNumber() {
         Set<Integer> checkValidNumber = new HashSet<>();
         Random random = new Random();
-        final int BASEBALL_LENGTH = 3;
 
-        while (checkValidNumber.size() != BASEBALL_LENGTH) {
+        while (checkValidNumber.size() != InputUtils.BASEBALL_NUMBER_LENGTH) {
             int randomNum = random.nextInt(9) + 1;
             checkValidNumber.add(randomNum);
         }
