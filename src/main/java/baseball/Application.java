@@ -73,8 +73,33 @@ public class Application {
         }
         return ball;
     }
+
     // 5. 매회 player 가 input을 넣을때마다 출력해야 할 것들 만들어줄 함수 (input int strikenum, int ballnum, output String)
-    // 6. main 함수 꾸미기
+    public static String answerPrinter(int strikeNumber, int ballNumber){
+        if (strikeNumber == 3){
+            isPlaying = false;
+            return "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        }
+        else if(strikeNumber == 0 && ballNumber == 0){
+            return "낫싱";
+        }
+        else if (strikeNumber != 0 && ballNumber != 0) {
+            return ballNumber + "볼 " + strikeNumber + "스트라이크";
+        }
+        else if (ballNumber != 0) {
+            return  ballNumber + "볼";
+        }
+        else
+            return strikeNumber + "스트라이크";
+    }
+
+    // +new 6. 정답을 맞추었을때 다시 isPlaying을 1로 만들어 주는 함수.
+    public static void reStarter(int playerChoice){
+        if(playerChoice == 1)
+            isPlaying = true;
+    }
+
+    // 7. main 함수 꾸미기
     public static void main(String[] args) {
     }
 }
