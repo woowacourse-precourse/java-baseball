@@ -54,7 +54,7 @@ public class Application {
     }
 
     static void checkValidInput(String input){
-        checkValidInput(input);
+        checkInputLength(input);
         checkInputRange(input);
         checkRedundancy(input);
     }
