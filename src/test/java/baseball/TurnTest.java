@@ -13,7 +13,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 
 public class TurnTest extends NsTest {
     @Test
-    @DisplayName("턴 시작 테스트")
+    @DisplayName("새로운 턴 시작 테스트")
     void start_test(){
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
 
