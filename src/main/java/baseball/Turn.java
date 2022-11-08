@@ -14,6 +14,9 @@ public class Turn {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String ASK_FOR_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String SIZE_NOT_THREE_EXCEPTION_MESSAGE = "3개의 숫자를 입력해주세요.";
+    private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "1에서 9까지의 숫자를 입력해 주세요.";
+    private static final String DUPLICATE_NUMBERS_EXCEPTION_MESSAGE = "서로 다른 숫자를 입력해주세요.";
     private static final int STRIKE_OUT_NUMBER = 3;
 
     private List<Integer> playerNumberList;
@@ -47,16 +50,16 @@ public class Turn {
 
     public void validatePlayerNumberList(List<Integer> playerNumberList) {
         if (playerNumberList.size() != NUMBER_OF_INPUT_DIGITS) {
-            throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(SIZE_NOT_THREE_EXCEPTION_MESSAGE);
         }
         for (int number : playerNumberList) {
             if (number < 1 || number > 9) {
-                throw new IllegalArgumentException("1에서 9까지의 숫자를 입력해 주세요.");
+                throw new IllegalArgumentException(OUT_OF_RANGE_EXCEPTION_MESSAGE);
             }
         }
         Set<Integer> numberSet = new HashSet<>(playerNumberList);
         if (numberSet.size() < playerNumberList.size()) {
-            throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(DUPLICATE_NUMBERS_EXCEPTION_MESSAGE);
         }
     }
 
