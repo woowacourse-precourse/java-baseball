@@ -14,20 +14,20 @@ public class BaseballController {
 
     public static void gameStart(){
         boolean gameOn = true;
+        int gameCount = 0;
         messageService.startGameMessage();
-        initGame();
         while (gameOn) {
+            if (gameOn && gameCount == 0) {
+                initGame();
+            }
             playerService.setPlayerNumber(playerService.inputPlayerNumber());
             messageService.ballCountMessage(playerService.checkBallCount(computerService.getComputerNumber()));
+            gameCount += 1;
             if (playerService.checkBallCount(computerService.getComputerNumber()).get(1) == 3) {
                 messageService.endGameMessage();
                 messageService.restartGameMessage();
                 gameOn = playerService.inputRestartAnswer();
-                if (gameOn){
-                    initGame();
-                }else {
-                    break;
-                }
+                gameCount = 0;
             }
         }
 
