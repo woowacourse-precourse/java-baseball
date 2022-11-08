@@ -87,7 +87,7 @@ public class RoundTest {
     @DisplayName("점수 테스트")
     @ParameterizedTest
     @MethodSource("createNumbers")
-    void roundStrikeTest(String input, int count, Hint hint) throws Exception {
+    void roundScoreTest(String input, int count, Hint hint) throws Exception {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
@@ -98,6 +98,32 @@ public class RoundTest {
         Hints hints = (Hints) field.get(round);
 
         assertThat(hints.findHintCount(hint)).isEqualTo(count);
+    }
+
+    @DisplayName("점수 출력 테스트")
+    @ParameterizedTest
+    @MethodSource("createNumbers")
+    void roundPrintTest(String input, int count, Hint hint) throws Exception {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        round.startNewRound(computer);
+
+        Field field = Round.class.getDeclaredField("hints");
+        field.setAccessible(true);
+        Hints hints = (Hints) field.get(round);
+
+        if (hint == Hint.NOTHING) {
+            assertThat(out.toString().trim())
+                    .isEqualTo(("숫자를 입력해주세요 : " + hint.getValue()).trim());
+        }
+        if (hint != Hint.NOTHING) {
+            assertThat(out.toString().trim())
+                    .isEqualTo(("숫자를 입력해주세요 : " + count + hint.getValue()).trim());
+        }
     }
 
     private static Stream<Arguments> createNumbers() {
