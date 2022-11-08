@@ -5,11 +5,16 @@ package baseball;
 import camp.nextstep.edu.missionutils.*;
 
 
-public class Application {
+public class Application{
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(runGame());
-
+        try {
+            while (runGame()) ;
+        }
+        catch (IllegalArgumentException e){
+            System.out.println("error : " + e.getMessage());
+        }
     }
 
     public static boolean runGame(){
@@ -18,12 +23,7 @@ public class Application {
         String inputString;
         while(true) {
             System.out.println("숫자를 입력해주세요 : ");
-            try {
-                inputString = readNumber();
-            } catch (IllegalArgumentException e) {
-                System.out.println("error : " + e.getMessage());
-                return false;
-            }
+            inputString = readNumber();
             MatchResult matchResult = baseballNumber.match(inputString);
             matchResult.print();
             if(matchResult.isCorrect()){
@@ -36,13 +36,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String gameStatus;
-        try {
-             gameStatus = readGameStatus();
-        }
-        catch (IllegalArgumentException e){
-            System.out.println("error : " + e.getMessage());
-            return false;
-        }
+        gameStatus = readGameStatus();
 
         if(gameStatus.equals("1")){
             return true;
