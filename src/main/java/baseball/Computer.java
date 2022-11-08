@@ -10,17 +10,18 @@ public class Computer {
     private final int STARTRANGE = 1;
     private final int FINISHRANGE = 9;
     private List<Integer> computer;
+    private int randomNum;
 
     public List<Integer> randomNumbers() {
         computer = new ArrayList<>();
         while (computer.size() < LENGTH) {
-            int randomNum = Randoms.pickNumberInRange(STARTRANGE, FINISHRANGE);
-            computer = isContainNumber(computer, randomNum);
+            randomNum = Randoms.pickNumberInRange(STARTRANGE, FINISHRANGE);
+            computer = isContainNumber();
         }
         return computer;
     }
 
-    public List<Integer> isContainNumber(List<Integer> computer, int randomNum) {
+    public List<Integer> isContainNumber() {
         if (!computer.contains(randomNum)) {
             computer.add(randomNum);
         }
