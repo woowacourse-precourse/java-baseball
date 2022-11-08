@@ -24,12 +24,12 @@ public class InputView {
         return null;
     }
 
-    public String questionInput(){
+    public Boolean questionInput(){
         String userInput = Console.readLine();
         if(validateUserInputIsStartOrEnd(userInput)){
-            return userInput;
+            return checkAgainGame(userInput);
         }
-        return "";
+        return null;
     }
 
     private boolean validateUserInputIsNumber(String userInput){
@@ -58,5 +58,12 @@ public class InputView {
         return Stream.of(userInput.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    private boolean checkAgainGame(String userInput){
+        if (userInput.equals("1")){
+            return true;
+        }
+        return false;
     }
 }
