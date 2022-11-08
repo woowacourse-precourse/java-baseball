@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -9,8 +10,7 @@ import java.util.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
 
@@ -27,7 +27,6 @@ class ApplicationTest extends NsTest {
     static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     static final String GAME_RESTART_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     static final String GAME_CORRECT_ANSWER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    static final String NOTHING = "낫싱";
     static final String BALL = "볼";
     static final String STRIKE = "스트라이크";
 
@@ -43,8 +42,9 @@ class ApplicationTest extends NsTest {
         return result;
     }
 
+    @DisplayName("Basic: 게임 진행, 재시작, 종료")
     @Test
-    void 게임종료_후_재시작() {
+    void basic() {
         String[] inputs = {"987", ANSWER1, RESTART_GAME, "485", ANSWER2, END_GAME};
         assertRandomNumberInRangeTest(
                 () -> {
@@ -55,124 +55,117 @@ class ApplicationTest extends NsTest {
                 );
     }
 
+    @DisplayName("Exception: inGame에서 숫자 네 개 입력")
     @Test
-    void inGameTest_예외_네_개의_숫자_입력() {
+    void exception4number() {
+        String notValidInput = "1234";
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
+                assertThatThrownBy(() -> runException(notValidInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @DisplayName("Exception: inGame에서 숫자가 아닌 입력")
+    @Test
+    void exceptionNotNumberInGame() {
+        String notValidInput = "num";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(notValidInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @DisplayName("Exception: inGame에서 0이 포함된 입력")
+    @Test
+    void exceptionContainsZero() {
+        String notValidInput = "103";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(notValidInput))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
+    @DisplayName("Exception: inGame에서 중복된 숫자 입력")
     @Test
-    void inGameTest_예외_숫자가_아닌_입력() {
+    void exceptionRepetition() {
+        String notValidInput = "113";
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("num"))
+                assertThatThrownBy(() -> runException(notValidInput))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
+    @DisplayName("Exception: endGame에서 1이나 2가 아닌 숫자")
     @Test
-    void inGameTest_예외_0이_포함된_입력() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("103"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void inGameTest_예외_중복된_숫자_입력() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("113"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void endGameTest_예외_1이나_2가_아닌_숫자() {
+    void exceptionNot1or2() {
         String notValidInput = "3";
         assertSimpleTest(() ->
                 assertThatThrownBy(() ->
                         assertRandomNumberInRangeTest(
-                                () -> {
-                                    run(ANSWER1, notValidInput);
-                                },
+                                () -> run(ANSWER1, notValidInput),
                                 ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
                         ))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
+    @DisplayName("Exception: endGame에서 숫자가 아닌 입력")
     @Test
-    void endGameTest_예외_숫자가_아닌_입력() {
+    void exceptionNotNumberEndGame() {
         String notValidInput = "X";
         assertSimpleTest(() ->
                 assertThatThrownBy(() ->
                         assertRandomNumberInRangeTest(
-                                () -> {
-                                    run(ANSWER1, notValidInput);
-                                },
+                                () -> run(ANSWER1, notValidInput),
                                 ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
                         ))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
+    @DisplayName("Basic: 볼 갯수 세기")
     @Test
-    void inGameTest_볼_갯수_세기() {
+    void inGameCountBall() {
         String[] inputs = {"312", "234", "345", ANSWER1, END_GAME};
         assertRandomNumberInRangeTest(
-                () -> {
-                    run(inputs);
-                },
+                () -> run(inputs),
                 ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
         );
         assertThat(onlyResult(output())).containsExactly("3볼", "2볼", "1볼", "3스트라이크");
     }
-
+    @DisplayName("Basic: 스트라이크 갯수 세기")
     @Test
-    void inGameTest_스트라이크_갯수_세기() {
+    void inGameCountStrike() {
         String[] inputs = {"145", "124", "123", END_GAME};
         assertRandomNumberInRangeTest(
-                () -> {
-                    run(inputs);
-                },
+                () -> run(inputs),
                 ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
         );
         assertThat(onlyResult(output())).containsExactly("1스트라이크", "2스트라이크", "3스트라이크");
     }
 
-
+    @DisplayName("Basic: 매치되지 않음 -> 낫싱")
     @Test
-    void inGameTest_매치되지_않음() {
+    void inGameNothing() {
         String[] inputs = {"456", ANSWER1, END_GAME};
         assertRandomNumberInRangeTest(
-                () -> {
-                    run(inputs);
-                },
+                () -> run(inputs),
                 ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
         );
         assertThat(onlyResult(output())).containsExactly("낫싱", "3스트라이크");
     }
-
+    @DisplayName("Basic: 정답을 맞췄을 때")
     @Test
-    void inGameTest_정답_입력() {
+    void inGameRightAnswer() {
         String[] inputs = {ANSWER1, END_GAME};
         assertRandomNumberInRangeTest(
-                () -> {
-                    run(inputs);
-                },
+                () -> run(inputs),
                 ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
         );
         assertThat(onlyResult(output())).containsExactly("3스트라이크");
     }
-
+    @DisplayName("Print: 기본 게임 진행 문구 출력")
     @Test
-    void printTest_기본_게임_진행_문구() {
+    void printProgressStatements() {
         String[] inputs = {ANSWER1, END_GAME};
         assertRandomNumberInRangeTest(
-                () -> {
-                    run(inputs);
-                },
+                () -> run(inputs),
                 ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
         );
         assertThat(output()).contains(
@@ -181,9 +174,9 @@ class ApplicationTest extends NsTest {
                 GAME_CORRECT_ANSWER,
                 GAME_RESTART_OR_END);
     }
-
+    @DisplayName("Utils: string으로 들어온 값을 character list/set으로 바꾸기")
     @Test
-    void UtilsTest_CharConvert() {
+    void charConvert() {
         String input = TEST_STRING;
         List<Character> list = Utils.StringToCharList(input);
         HashSet<Character> set = Utils.StringToCharSet(input);
@@ -193,27 +186,26 @@ class ApplicationTest extends NsTest {
         assertThat(list).isEqualTo(answerList);
         assertThat(set).isEqualTo(answerSet);
     }
-
+    @DisplayName("Utils: map에 key로 들어온 값 하나 추가하기")
     @Test
-    void UtilsTest_addOneToMap() {
+    void addOneToMap() {
         HashMap<String, Integer> map = new HashMap<>();
         map.put(TEST_STRING, 1);
-        HashMap<String, Integer> answerMap = map;
-        answerMap.put(TEST_STRING, 2);
+        map.put(TEST_STRING, 2);
         Utils.addOneToMap(map, TEST_STRING);
-        assertThat(map).isEqualTo(answerMap);
+        assertThat(map).isEqualTo(map);
     }
-
+    @DisplayName("Input: inGame에서 string input을 받아 character list로 잘 쪼개는지 확인")
     @Test
-    void InputTest_InGame() {
+    void inputInGame() {
         byte[] buf = "123".getBytes();
         System.setIn(new ByteArrayInputStream(buf));
         List<Character> input = Input.getInputInGame();
         assertThat(input).isEqualTo(List.of('1', '2', '3'));
     }
-
+    @DisplayName("Input: endGame에서 string input을 받아 character로 반환하는지 확인(1이나 2의 경우만 테스트)")
     @Test
-    void InputTest_EndGame() {
+    void inputEndGame() {
         byte[] bufRestart = RESTART_GAME.getBytes();
         System.setIn(new ByteArrayInputStream(bufRestart));
         char inputRestart = Input.getInputEndGame();
@@ -225,27 +217,26 @@ class ApplicationTest extends NsTest {
         assertThat(inputRestart).isEqualTo('1');
         assertThat(inputEnd).isEqualTo('2');
     }
-
+    @DisplayName("Compare: 정답과 비교해서 Ball, Strike를 잘 계산하는지 확인")
     @Test
-    void CompareTest_compareWithAnswer() {
+    void compareWithAnswer() {
         List<Character> answerList = List.of('1', '2', '3');
         List<Character> userInputList = List.of('1', '2', '4');
         HashMap<String, Integer> map = Compare.compareWithAnswer(answerList,userInputList);
         HashMap<String, Integer> answerMap=new HashMap<>();
         answerMap.put(BALL, 0);
         answerMap.put(STRIKE, 2);
-        answerMap.put(NOTHING, 0);
         assertThat(map).isEqualTo(answerMap);
     }
-
+    @DisplayName("Game: answer 만들 때 중복 값이 없는지 확인")
     @Test
-    void GameTest_AnswerNoDuplication() {
+    void answerNoDuplication() {
         List<Character> numList=Game.generateAnswer();
-        assertTrue(numList.size() == numList.stream().distinct().count());
+        assertEquals(numList.size(), numList.stream().distinct().count());
     }
-
+    @DisplayName("Game: 사용자 입력값에 따라 재시작인지, 종료인지 확인")
     @Test
-    void GameTest_restartOrEndGame(){
+    void restartOrEndGame(){
         byte[] bufRestart = RESTART_GAME.getBytes();
         System.setIn(new ByteArrayInputStream(bufRestart));
         assertTrue(Game.restartOrEndGame());
