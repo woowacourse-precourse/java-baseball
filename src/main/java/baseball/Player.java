@@ -1,0 +1,30 @@
+package baseball;
+
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Player {
+    List<Integer> myInputNumber = new ArrayList<>();
+
+    public void inputNumber() throws IllegalArgumentException {
+        myInputNumber.clear();
+
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputNum = Console.readLine();
+        System.out.println(inputNum);
+
+        // 3자리 숫자가 아닌경우 예외
+        if (inputNum.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+
+        for (int i = 0; i < 3; i++) {
+            int num = Character.getNumericValue(inputNum.charAt(i));
+            myInputNumber.add(num);
+        }
+    }
+
+}
