@@ -1,9 +1,21 @@
 package baseball.entity;
 
-public class Computer {
-    // 컴퓨터의 세 자리 숫자를 저장하는 List<Integer>
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
-    // makeRandomNumber(): 랜덤 세 자리 숫자 생성
-    // countBall(input): 정답과 input을 비교하여 볼 개수 카운트
-    // countStrike(input): 정답과 input을 비교하여 스트라이크 개수 카운트
+public class Computer {
+
+    private static List<Integer> computerNumbers;
+
+    public static void createRandomNumber() {
+        computerNumbers = new ArrayList<>();
+
+        while(computerNumbers.size()<3) {
+            int number = Randoms.pickNumberInRange(1, 9);
+            if (computerNumbers.contains(number)) continue;
+            computerNumbers.add(number);
+        }
+    }
+    // countBallAndStrike(input): 정답과 input을 비교하여 볼, 스트라이크 개수 카운트
 }
