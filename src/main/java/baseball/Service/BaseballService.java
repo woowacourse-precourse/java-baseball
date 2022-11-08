@@ -20,7 +20,6 @@ public class BaseballService {
         while (!resultOfGuess(computer, user)) {
             user = guessThreeNumbers();
         }
-
     }
 
     public List<Integer> pickThreeNumbers() {
@@ -86,6 +85,45 @@ public class BaseballService {
         return false;
     }
 
+    private void checkBallAndStrike(List<Integer> computer, List<Integer> user) {
+        int strike = 0;
+        int ball = 0;
+
+        // 스트라이크 계산
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i) == user.get(i)) {
+                strike++;
+            }
+        }
+
+        // 볼 계산
+        if (user.get(0) == computer.get(1) || user.get(0) == computer.get(2)) {
+            ball++;
+        }
+        if (user.get(1) == computer.get(0) || user.get(1) == computer.get(2)) {
+            ball++;
+        }
+        if (user.get(2) == computer.get(0) || user.get(2) == computer.get(1)) {
+            ball++;
+        }
+        System.out.println("ball : " + ball);
+
+        if (strike != 0 && ball != 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+
+        if (strike != 0 && ball == 0) {
+            System.out.println(strike + "스트라이크");
+        }
+
+        if (strike == 0 && ball != 0) {
+            System.out.println(ball + "볼");
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+    }
 
 
     public boolean validateInput(String input) {
