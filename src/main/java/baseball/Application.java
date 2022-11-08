@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
@@ -43,5 +44,16 @@ public class Application {
         }
 
         return user;
+    }
+
+    static int strike(List<Integer> computer, List<Integer> user) {
+        int strike = 0;
+
+        for (int i = 0; i < user.size(); i++) {
+            if (Objects.equals(computer.get(i),user.get(i))){
+                strike += 1;
+            }
+        }
+        return strike;
     }
 }
