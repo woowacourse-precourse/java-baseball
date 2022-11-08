@@ -24,6 +24,7 @@ public class Application {
 
 
                 matchLists(userNumberList, computerNumberList, scoreTable);
+                printResult(scoreTable);
 
                 if (scoreTable.get("스트라이크") == 3) {
                     break;
@@ -35,6 +36,21 @@ public class Application {
             validateRestartNumber(restartNumber);
         } while (restartNumber.equals("1"));
     }
+
+    private static void printResult(Map<String, Integer> scoreTable) {
+        if (scoreTable.get("스트라이크") == 0 && scoreTable.get("볼") == 0) {
+            System.out.print("낫싱");
+        }
+        if (scoreTable.get("볼") != 0) {
+            System.out.print(scoreTable.get("볼") + "볼 ");
+        }
+        if (scoreTable.get("스트라이크") != 0) {
+            System.out.print(scoreTable.get("스트라이크") + "스트라이크");
+        }
+        System.out.println();
+
+    }
+
 
     private static void matchLists(List<Integer> userNumberList, List<Integer> computerNumberList, Map<String, Integer> scoreTable) {
         for (Integer userNumber : userNumberList) {
