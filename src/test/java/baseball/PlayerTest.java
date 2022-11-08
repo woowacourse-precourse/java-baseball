@@ -25,9 +25,7 @@ public class PlayerTest {
     @DisplayName("잘못된 입력이 들어왔을 때 IllegalArgumentException 예외 테스트")
     @ValueSource(strings = {"abc", "122", "a12", "133", "1224", "a1"})
     void testWithValueSource(String stringArg) {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            player.decideNumbers(stringArg);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> player.decideNumbers(stringArg));
     }
 
     @Test
@@ -52,8 +50,6 @@ public class PlayerTest {
     @DisplayName("플레이어가 게임 지속 여부에 대한 IllegalArgumentException 예외 테스트")
     @ValueSource(strings = {"12", "a", "b", "!", "#", "3"})
     void testWithGameStatusData(String stringArg) {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            check.validateGameStatusData(stringArg);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> check.validateGameStatusData(stringArg));
     }
 }
