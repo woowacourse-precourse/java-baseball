@@ -9,11 +9,16 @@ public class Controller {
         this.user = user;
     }
 
-    public void setComputerNumber(int number){
+    public void setComputerNumber(String number){
         computer.setNumber(number);
     }
 
-    public void setUserNumber(int number){
+    public void setUserNumber(String number){
         user.setNumber(number);
+    }
+
+    public String[] splitNumber(String number){
+        String[] numbers = number.split("");
+        return numbers;
     }
 }
