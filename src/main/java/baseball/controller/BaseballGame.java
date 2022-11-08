@@ -21,8 +21,8 @@ public class BaseballGame {
 
   public void gameStart() {
     computerNumber.setComputerNumber();
-    View.printInputMyNumber();
     do {
+      View.printInputMyNumber();
       String inputMyNumbers = Console.readLine();
       if (exception.isValidMyInput(inputMyNumbers)) {
         myNumber.setMyNumber(inputMyNumbers);
