@@ -15,9 +15,6 @@ public class User {
         for (char c : input.toCharArray()) {
             inputList.add(c - '0');
         }
-        guess = new Numbers(inputList);
-        if (!guess.validation()) {
-            throw new IllegalArgumentException("잘못된 입력입니다");
-        }
+        guess = Numbers.of(inputList);
     }
 }
