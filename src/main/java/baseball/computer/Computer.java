@@ -31,10 +31,10 @@ public class Computer {
     }
 
     public void replyBallAndStrike(){
-        BallAndStrikeChecker baseballchecker = new BallAndStrikeChecker();
+        BallAndStrikeChecker ballAndStrikeChecker = new BallAndStrikeChecker();
         int ball = ballAndStrikeCounter.getBall();
         int strike = ballAndStrikeCounter.getStrike();
-        baseballchecker.reply(ball, strike);
+        ballAndStrikeChecker.reply(ball, strike);
     }
 
     public boolean isCollect() {
