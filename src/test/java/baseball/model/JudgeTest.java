@@ -7,28 +7,35 @@ import java.util.Arrays;
 
 class JudgeTest {
 
-    private Judge judge = new Judge();
+    private Computer computer = new Computer();
+    private Player player = new Player();
 
     @Test
     void isGameSuccess_게임_성공() {
-        judge.setAnswer(Arrays.asList(1,2,3));
-        judge.setPlayerNumbers(Arrays.asList(1,2,3));
+        computer.setAnswer(Arrays.asList(1,2,3));
+        player.setPlayerNumbers("123");
+
+        Judge judge = new Judge(computer, player);
 
         Assertions.assertTrue(judge.isGameSuccess());
     }
 
     @Test
     void isGameSuccess_게임_실패() {
-        judge.setAnswer(Arrays.asList(1,2,3));
-        judge.setPlayerNumbers(Arrays.asList(1,2,4));
+        computer.setAnswer(Arrays.asList(1,2,3));
+        player.setPlayerNumbers("124");
+
+        Judge judge = new Judge(computer, player);
 
         Assertions.assertFalse(judge.isGameSuccess());
     }
 
     @Test
     void countAllScoreOfStrikeAndBall_총_점수_계산() {
-        judge.setAnswer(Arrays.asList(1,2,3));
-        judge.setPlayerNumbers(Arrays.asList(1,3,9));
+        computer.setAnswer(Arrays.asList(1,2,3));
+        player.setPlayerNumbers("139");
+
+        Judge judge = new Judge(computer, player);
 
         judge.countAllScoreOfStrikeAndBall();
         Assertions.assertEquals(judge.getStrike(), 1);
