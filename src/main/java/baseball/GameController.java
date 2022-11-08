@@ -29,7 +29,7 @@ public class GameController {
     static void playGame() {
         do {
             throwBall();
-            ballCount();
+            player.ballCount(goal.getGoalNumber());
             message.ballCountMessage(player.getBall(), player.getStrike());
         } while (!strikeOut());
         message.endGameMessage();
@@ -41,19 +41,6 @@ public class GameController {
 
         player = new Player();
         player.setPlayerNumber(inputNumber);
-    }
-
-    static void ballCount() {
-        List<Integer> goalNumber = goal.getGoalNumber();
-        List<Integer> playerNumber = player.getPlayerNumber();
-
-        for (Integer playerNumberUnit : playerNumber) {
-            if (goalNumber.indexOf(playerNumberUnit) == playerNumber.indexOf(playerNumberUnit)) {
-                player.countStrike();
-            } else if (goalNumber.contains(playerNumberUnit)) {
-                player.countBall();
-            }
-        }
     }
 
     static boolean strikeOut() {

@@ -50,6 +50,16 @@ public class Player {
         throw new IllegalArgumentException();
     }
 
+    public void ballCount(List<Integer> goalNumber) {
+        for (Integer playerNumberUnit : playerNumber) {
+            if (goalNumber.indexOf(playerNumberUnit) == playerNumber.indexOf(playerNumberUnit)) {
+                countStrike();
+            } else if (goalNumber.contains(playerNumberUnit)) {
+                countBall();
+            }
+        }
+    }
+
     public Integer getStrike() {
         return this.strike;
     }
