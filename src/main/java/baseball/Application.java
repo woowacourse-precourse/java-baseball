@@ -32,6 +32,7 @@ class Game {
 
         while (true) {
             // result 초기화
+            resetResult();
 
             // 사용자로부터 숫자 입력받기
             player.inputNumber();
@@ -46,6 +47,11 @@ class Game {
 
             // 출력 결과값이 다 맞췄다면 break;
         }
+    }
+
+    public void resetResult() {
+        result.replace("strike", 0);
+        result.replace("ball", 0);
     }
 
     public void compareNumbers(List<Integer> comNum, List<Integer> userNum) {
