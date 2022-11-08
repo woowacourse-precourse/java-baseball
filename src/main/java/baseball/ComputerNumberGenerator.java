@@ -12,9 +12,10 @@ public class ComputerNumberGenerator {
 
     public List<Integer> generateComputerNumber() {
         List<Integer> computerNumbers = new ArrayList<>();
-        while(computerNumbers.size() < NUMBER_SIZE) {
+        while (computerNumbers.size() < NUMBER_SIZE) {
+
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if(!computerNumbers.contains(randomNumber)) {
+            if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
         }
