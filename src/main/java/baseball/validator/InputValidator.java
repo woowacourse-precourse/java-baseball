@@ -11,13 +11,13 @@ public class InputValidator {
 
     // 게임 중 - 서로 다른 3자리 수
     public static void validateInPlaying(List<Integer> input) {
-        invalidCharacterInPlaying(input);
+        validateCharacterInPlaying(input);
         long deduplicatedSize = input.stream().distinct().count();
         if (deduplicatedSize != 3) throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
     }
 
     // 1 ~ 9 외의 문자 입력 ( base )
-    public static void invalidCharacterInPlaying(List<Integer> input) {
+    public static void validateCharacterInPlaying(List<Integer> input) {
         if (!input.stream().allMatch(n -> n > 0 && n < 10)) throw new IllegalArgumentException("1 ~ 9 사이 숫자를 입력하세요.");
     }
 }
