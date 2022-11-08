@@ -12,7 +12,7 @@ public class Game {
         while (!isGameEnd) {
             initGame();
             while (strike != MAX_STRIKE) {
-                // 플레이어가 수 입력
+                player.initNumbers();
                 // 컴퓨터와 플레이어 수 비교
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
