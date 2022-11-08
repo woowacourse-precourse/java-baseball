@@ -2,7 +2,7 @@ package baseball.service;
 
 import baseball.dao.ComputerNumber;
 import baseball.dto.Number;
-import baseball.vo.Scoreboard;
+import baseball.vo.*;
 
 public class GameService {
     public Boolean addComputerNumber(int number) {
@@ -12,6 +12,10 @@ public class GameService {
     }
 
     public Scoreboard compareComputerNumberWith(int number) {
-        return new Scoreboard();
+        Number dto = Number.getInstance();
+        ComputerNumber computerNumber = dto.latest();
+        TwoNumbers numbers = new TwoNumbers(computerNumber.getNumber(), number);
+
+        return numbers.compare();
     }
 }
