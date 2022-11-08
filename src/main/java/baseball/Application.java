@@ -97,7 +97,7 @@ public class Application {
    private static void inputException(String number) {
         if(number != null && !number.matches("-?\\d+"))
             throw new IllegalArgumentException("숫자 입력 오류");
-        if(number.length() != 3)
+        else if(number.length() != 3)
             throw new IllegalArgumentException("숫자 입력 오류");
     }
     private static void makeAnswer() {
@@ -107,9 +107,9 @@ public class Application {
             if(!computer.contains(randomNumber))
                 computer.add(randomNumber);
         }
-        /*for(int i = 0 ; i < computer.size(); i++) {
-            System.out.print(computer.get(i) + " ");
+        for(int i = 0 ; i < computer.size(); i++) {
+            //System.out.print(computer.get(i) + " ");
             answer[i] = computer.get(i);
-        }*/
+        }
     }
 }
