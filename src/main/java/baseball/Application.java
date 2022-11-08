@@ -34,13 +34,22 @@ public class Application {
         }
 
         private boolean gamePlay() {
-            String ball = Ready();
+            Ready();
 //            play();
 //            return nextAction();
             return false;
         }
 
-        private String Ready() {
+        private boolean Ready() {
+            String player = inputPlayer();
+            if (verifyPlayer(player)) {
+                makePlayer();
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        private String inputPlayer() {
             printSetBallStatus();
             String ball = setBall();
 //            return trimBall(ball);
