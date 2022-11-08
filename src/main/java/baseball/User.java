@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,6 +32,10 @@ public class User implements Number {
             // Game 클래스에서 오류 호출
         }
 
+        if (!isNumberValidUnique(number)) {
+            // Game 클래스에서 오류 호출
+        }
+
         if (!isNumberValidRange(number)) {
             // Game 클래스에서 오류 호출
         }
@@ -38,6 +43,13 @@ public class User implements Number {
 
     public static boolean isNumberValidMaxSize(String inputNumber) {
         return inputNumber.length() == MAX_SIZE;
+    }
+
+    public static boolean isNumberValidUnique(String inputNumber) {
+        long distinctSize = Arrays.stream(inputNumber.split(""))
+                .distinct()
+                .count();
+        return inputNumber.length() == distinctSize;
     }
 
     public static boolean isNumberValidRange(String inputNumber) {
@@ -48,6 +60,5 @@ public class User implements Number {
         } catch (NumberFormatException error) {
             return false;
         }
-
     }
 }

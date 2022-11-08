@@ -11,9 +11,6 @@ public class Application {
 
         - Answer 클래스
             - Number 인터페이스 상속
-            - compare 메서드
-            - isStrike 메서드
-            - isBall 메서드
 
         v User 클래스
             v Number 인터페이스 상속
@@ -21,7 +18,13 @@ public class Application {
             v isNumberValidMaxSize 메서드
             v isNumberValidRange 메서드
             v convertInputAsNumber
+            v isNumberValidUnique 메서드
 
+        - Comparison 클래스
+            v countBallNumbers
+            v countStrikeNumbers
+            v isBall
+            v isStrike
 
         - Game 클래스
             - printStart 메서드
