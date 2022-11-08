@@ -33,7 +33,7 @@ public class Number {
         return first.equals(digit) || second.equals(digit) || third.equals(digit);
     }
 
-    protected List<Integer> separateToDigits(int num) {
+    private List<Integer> separateToDigits(int num) {
         Integer firstDigit = num / 100;
         Integer secondDigit = (num % 100) / 10;
         Integer thirdDigit = num % 10;
