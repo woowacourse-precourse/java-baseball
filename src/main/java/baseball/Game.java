@@ -22,11 +22,7 @@ public class Game {
         strike = strikeBall.get(0);
         ball = strikeBall.get(1);
         printGameResult(strike, ball);
-        if (strike == 3) {
-            return strike;
-        }
         return strike;
-
     }
 
 
