@@ -29,6 +29,20 @@ public class GameController {
         computer=new Computer();
 
     }
+    private void chooseGameState(){
+        int userChoice;
+        inputView.requestMoreGame();
+        userChoice= Integer.parseInt(Console.readLine());
+        if(userChoice==END){
+            gameState=false;
+        }
+        else if(userChoice==RESTART){
+            gameState=true;
+        }else{
+            throw new IllegalArgumentException(ENTERING_WRONG_NUMBER_MESSAGE);
+        }
+
+    }
     private void setGameState(){
         gameState=true;
     }
