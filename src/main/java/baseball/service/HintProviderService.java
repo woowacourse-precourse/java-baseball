@@ -1,7 +1,6 @@
 package baseball.service;
 
 import baseball.model.HintReq;
-
 import java.util.List;
 
 import static baseball.controller.BaseballController.NUM_LENGTH;
