@@ -32,6 +32,30 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_숫자가_중복된_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_숫자_0이_포함된_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("450"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_숫자가_아닌_문자가_포함된_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1e3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void isValid_유효한_문자열이_입력() {
         String input = "792";
         boolean result = Application.isValid(input);
