@@ -1,0 +1,35 @@
+# 기능 목록
+
+- generateRandomNumber()
+  - 정답 숫자 생성
+  - 출력: List<Integer> 랜덤으로 생성한 세 자리 숫자
+- validateNumber()
+  - 생성한 랜덤 넘버 유효성 체크(3자리 숫자인지, 중복은 없는지)
+  - 입력: List<Integer>
+  - 유요하지 않을 경우 Exception발생
+- isNumber(String input)
+  - 입력한 값이 숫자인지 확인, 아니면 예외 발생
+  - 입력 값을 List로 변경하기 전에 거치는 단계
+- convertStringToList(String input)
+  - 입력받은 String을 List로 변환
+  - 출력 : List<Integer> 입력값 리스트로 변환
+- examineGuess(List<Integer> guess, List<Integer> answer)
+  - Player가 제출한 guess를 평가하는 기능
+  - 입력: guess와 answer
+  - 출력: 길이가 2인 int 배열
+      - 첫번째 value: 볼 수
+      - 두번째 value: 스트라이크 수
+- printExamineResult(int[] result)
+  - 평가한 결과를 출력
+  - 입력 값이 올바르지 않으면 예외 발생
+  - 입력: 길이가 2인 int 배열
+    - 첫번째 value: 볼 수
+    - 두번째 value: 스트라이크 수
+  - 출력: boolean으로 3Strike면 true, 아니면 false리턴
+- restartOrEndGame()
+  - 정답을 맞췄을 때, player로부터 재시작할지 종료할지 여부 판단
+  - 입력: boolean 정답을 맞췄는지 여부
+  - 출력: 재시작이면 true, 종료면 false
+  - 예외: 입력값이 "1" 또는 "2"가 아니면 예외 발생
+- gameManger.gameStart()
+  - 게임 진행 순서를 총괄하는 역할
