@@ -58,7 +58,7 @@ public class BaseBallGame {
     public int strikeCount(List<Integer> user, List<Integer> computer){
         int strike = 0;
         for(int i = 0; i < user.size(); i++){
-            if(computer.get(i) == user.get(i)){
+            if(computer.get(i).equals(user.get(i))){
                 strike++;
             }
         }
