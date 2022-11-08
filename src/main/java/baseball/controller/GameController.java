@@ -1,8 +1,9 @@
 package baseball.controller;
 
+import baseball.domain.Computer;
+import baseball.domain.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.List;
 
 public class GameController {
 	private static final int STRIKE_OUT = 3;
@@ -17,17 +18,17 @@ public class GameController {
 
 	private static void start() {
 		inputView.printGameStart();
-		RandomNumber randomNumber = new RandomNumber();
-		playGame(randomNumber);
+		Computer computer = new Computer();
+		playGame(computer);
 	}
 
-	private static void playGame(RandomNumber randomNumber) {
+	private static void playGame(Computer computer) {
 		boolean progress = true;
 
 		while (progress) {
-			List<Integer> playerNumbers = Input.getPlayerNumbers();
-			GameResult gameResult = new GameResult(playerNumbers, randomNumber.getNumbers());
-			Judge.getGameResult(gameResult);
+			Player player = new Player(Input.getPlayerNumber());
+			GameResult gameResult = new GameResult(player.getNumbers(), computer.getNumbers());
+			Referee.getGameResult(gameResult);
 
 			if (isStrikeOut(gameResult)) {
 				progress = false;
