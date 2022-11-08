@@ -11,7 +11,7 @@ public class Player {
 
     public void initNumbers() {
         numbers.clear();
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String playerNumberStr = Console.readLine();
         // 올바르게 입력했는지 체크하기
         playerNumberStr.chars()
