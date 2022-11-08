@@ -28,7 +28,7 @@ public class Application {
             }
         }
         return user;
-    }//public static void userNumber
+    }//public static List<Integer> userNumber
 
     public static String exceptReadingLine(String readLine) {
         if (readLine == null && readLine.isBlank()) {
@@ -58,7 +58,7 @@ public class Application {
             }
         }
         return enemy;
-    }//public static void enemyNumber
+    }//public static List<Integer> enemyNumber
 
     public static int countStrikeAndBall(List<Integer> user, List<Integer> enemy) {
         Map<String, Integer> result = new HashMap<>();
@@ -75,7 +75,7 @@ public class Application {
         result.put("strike", strike);
         result.put("ball", ball);
         return compareUserWithEnemy(result);
-    }//public static void countStrikeAndBall
+    }//public static int countStrikeAndBall
 
     public static int compareUserWithEnemy(Map<String, Integer> result) {
         if (result.get("ball") != 0) {
