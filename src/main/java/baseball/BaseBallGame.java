@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 
 
 class BaseBallGame {
-    private static BaseBallGame gameProgram = new BaseBallGame();
+    private static BaseBallGame device = new BaseBallGame();
 
     private static int GOAL = 3;
     private static int ZERO = 0;
@@ -41,12 +41,12 @@ class BaseBallGame {
     private BaseBallGame() {
     }
 
-    public static BaseBallGame getGame() {
-        return gameProgram;
+    public static BaseBallGame getDevice() {
+        return device;
     }
 
     public void gameStart() {
-        GameDisplay.gameStart();
+        Display.gameStart();
     }
 
     public void gamePlaying() throws IllegalArgumentException {
@@ -64,18 +64,18 @@ class BaseBallGame {
     }
 
     public boolean reStartGame() {
-        GameDisplay.QUESTIONS_ABOUT_RESTART();
+        Display.QUESTIONS_ABOUT_RESTART();
         String answerToReplay = Console.readLine();
 
         if (!answerToReplay.equals(RESTART) && !answerToReplay.equals(EXIT)) {
-            throw new IllegalArgumentException(GameDisplay.getInputErrorAboutRestart());
+            throw new IllegalArgumentException(Display.getInputErrorAboutRestart());
         }
 
         if (answerToReplay.equals(RESTART)) {
             return true;
         }
 
-        GameDisplay.gameFinish();
+        Display.gameFinish();
         return false;
     }
 
@@ -94,21 +94,21 @@ class BaseBallGame {
 
     public boolean getSolveResult(int strike, int ball) {
         if (strike == GOAL) {
-            GameDisplay.strike(GOAL);
-            GameDisplay.answerCorrect();
+            Display.strike(GOAL);
+            Display.answerCorrect();
 
             return true;
         }
 
         if (ball == ZERO && strike == ZERO) {
-            GameDisplay.nothing();
+            Display.nothing();
         } else {
             if (ball == ZERO) {
-                GameDisplay.strike(strike);
+                Display.strike(strike);
             } else if (strike == ZERO) {
-                GameDisplay.ball(ball);
+                Display.ball(ball);
             } else {
-                GameDisplay.ballAndStrike(ball, strike);
+                Display.ballAndStrike(ball, strike);
             }
         }
 
@@ -117,7 +117,7 @@ class BaseBallGame {
 
 
     public String inputNumber() throws IllegalArgumentException {
-        GameDisplay.inputYourNumber();
+        Display.inputYourNumber();
         String inputStr = Console.readLine();
         inputValidation(inputStr);
 
@@ -126,7 +126,7 @@ class BaseBallGame {
 
     public void inputValidation(String inputStr) {
         if (!is3DigitNumber(inputStr) || !isDiffDigitNumber(inputStr)) {
-            throw new IllegalArgumentException(GameDisplay.getInputErrorAboutUserNumber());
+            throw new IllegalArgumentException(Display.getInputErrorAboutUserNumber());
         }
     }
 

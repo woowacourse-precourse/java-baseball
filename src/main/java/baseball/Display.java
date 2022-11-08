@@ -1,6 +1,6 @@
 package baseball;
 
-public class GameDisplay {
+public class Display {
     private static String GAME_START = "숫자 야구 게임을 시작합니다.";
     private static String QUESTIONS_ABOUT_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static String GAME_FINISH = "게임 종료";
@@ -13,46 +13,46 @@ public class GameDisplay {
     private static String INPUT_YOUR_NUMBER = "숫자를 입력해주세요 : ";
 
     public static void gameStart() {
-        System.out.println(GameDisplay.GAME_START);
+        System.out.println(Display.GAME_START);
     }
 
     public static void QUESTIONS_ABOUT_RESTART() {
-        System.out.println(GameDisplay.QUESTIONS_ABOUT_RESTART);
+        System.out.println(Display.QUESTIONS_ABOUT_RESTART);
     }
 
     public static String getInputErrorAboutRestart() {
-        return GameDisplay.INPUT_ERROR_ABOUT_RESTART;
+        return Display.INPUT_ERROR_ABOUT_RESTART;
     }
 
     public static String getInputErrorAboutUserNumber() {
-        return GameDisplay.INPUT_ERROR_ABOUT_USER_NUMBER;
+        return Display.INPUT_ERROR_ABOUT_USER_NUMBER;
     }
 
     public static void gameFinish() {
-        System.out.println(GameDisplay.GAME_FINISH);
+        System.out.println(Display.GAME_FINISH);
     }
 
     public static void answerCorrect() {
-        System.out.println(GameDisplay.CORRECT);
+        System.out.println(Display.CORRECT);
     }
 
     public static void inputYourNumber() {
-        System.out.println(GameDisplay.INPUT_YOUR_NUMBER);
+        System.out.println(Display.INPUT_YOUR_NUMBER);
     }
 
     public static void nothing() {
-        System.out.println(GameDisplay.NOTHING);
+        System.out.println(Display.NOTHING);
     }
 
     public static void ball(int ball) {
-        System.out.println(ball + GameDisplay.BALL);
+        System.out.println(ball + Display.BALL);
     }
 
     public static void strike(int strike) {
-        System.out.println(strike + GameDisplay.STRIKE);
+        System.out.println(strike + Display.STRIKE);
     }
 
     public static void ballAndStrike(int ball, int strike) {
-        System.out.println(ball + GameDisplay.BALL + " " + strike + GameDisplay.STRIKE);
+        System.out.println(ball + Display.BALL + " " + strike + Display.STRIKE);
     }
 }
