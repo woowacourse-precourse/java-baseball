@@ -11,24 +11,15 @@ import java.util.Set;
  */
 public class StringParser {
 
-    public List<Integer> parsePlayerNumber(String playerNumberString) {
+    public List<Integer> parsePlayerNumber(String numberString) {
         List<Integer> parsedNumbers;
         int tempNumbers;
-        checkPlayerStringException(playerNumberString); // 문자열 예외 검사
-        tempNumbers = Integer.parseInt(playerNumberString);
+        checkPlayerStringException(numberString); // 문자열 예외 검사
+        tempNumbers = Integer.parseInt(numberString);
         parsedNumbers = divideNumbers(tempNumbers);
         checkPlayerIntegerExceptions(parsedNumbers); // 정수 예외 검사
 
         return parsedNumbers;
-    }
-
-    public void checkPlayerIntegerExceptions(List<Integer> parsedNumbers)
-        throws IllegalArgumentException {
-
-        Set<Integer> playerNumbersHashSet = new HashSet<>(parsedNumbers);
-        if (playerNumbersHashSet.size() != parsedNumbers.size()) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        }
     }
 
     public List<Integer> divideNumbers(int dividend) {
@@ -44,8 +35,24 @@ public class StringParser {
         return tempNumbers;
     }
 
+    public boolean checkPlayerRestartString(String restartString) {
+        if (restartString.equals(GameData.RESTART)) {
+            return true;
+        }
+        return false;
+    }
+
+    public void checkPlayerIntegerExceptions(List<Integer> parsedNumbers)
+        throws IllegalArgumentException {
+
+        Set<Integer> playerNumbersHashSet = new HashSet<>(parsedNumbers);
+        if (playerNumbersHashSet.size() != parsedNumbers.size()) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
+    }
+
     public void checkPlayerStringException(String playerNumberString) {
-        checkIsDigitPlayerNumberString(playerNumberString);
+        checkDigitExceptionNumberString(playerNumberString);
         if (playerNumberString.length() > GameData.GAME_SIZE) {
             throw new IllegalArgumentException("너무 많은 글자를 입력했습니다.");
         } else if (playerNumberString.length() < GameData.GAME_SIZE) {
@@ -53,29 +60,23 @@ public class StringParser {
         }
     }
 
-    public void checkIsDigitPlayerNumberString(String playerNumberString) {
+
+    public void checkDigitExceptionNumberString(String numberString) {
         char oneCharacter;
-        for (int index = 0; index < playerNumberString.length(); index++) {
-            oneCharacter = playerNumberString.charAt(index);
+        for (int index = 0; index < numberString.length(); index++) {
+            oneCharacter = numberString.charAt(index);
             if (!Character.isDigit(oneCharacter)) {
                 throw new IllegalArgumentException("숫자만 입력해주세요.");
             }
         }
     }
 
-    public void checkExceptionsPlayerRestartString(String playerRestartString) {
-        if (playerRestartString.length() != GameData.RESTART_SIZE) {
+    public void checkExceptionsPlayerRestartString(String restartString) {
+        if (restartString.length() != GameData.RESTART_SIZE) {
             throw new IllegalArgumentException("한 글자만 입력해주세요.");
-        } else if (!(playerRestartString.equals(GameData.RESTART)) &&
-            !(playerRestartString.equals(GameData.GAME_OVER))) {
+        } else if (!(restartString.equals(GameData.RESTART)) &&
+            !(restartString.equals(GameData.GAME_OVER))) {
             throw new IllegalArgumentException("1과 2의 입력만 허용 됩니다.");
         }
-    }
-
-    public boolean checkPlayerRestartString(String playerRestartString) {
-        if (playerRestartString.equals(GameData.RESTART)) {
-            return true;
-        }
-        return false;
     }
 }
