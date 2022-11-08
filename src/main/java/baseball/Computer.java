@@ -43,8 +43,8 @@ public class Computer {
             throw new IllegalArgumentException();
 
         List<Integer> result = new ArrayList<>();
-        result.add(getStrikeCnt(numbers));
         result.add(getBallCnt(numbers));
+        result.add(getStrikeCnt(numbers));
         return result;
     }
 
