@@ -37,4 +37,17 @@ public class GameReferee {
         return count;
     }
 
+    public int Strike(List<Integer> myList, List<Integer> computerList) {
+        int countStrike = 0;
+        for (int i = 0; i < myList.size(); i++) {
+            boolean ischeckNothing = checkNothing(myList, computerList, i);
+            boolean ischeckStrike = checkStrike(myList, computerList, i);
+
+            countStrike += countStrike(ischeckNothing, ischeckStrike);
+
+
+        }
+        return countStrike;
+    }
+
 }
