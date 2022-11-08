@@ -41,11 +41,41 @@ public class Application {
         return computer;
     }
 
+    static int getBallScore(List<Integer> computer, List<Integer> player){
+        int ballScore = 0;
+        for(int i=0; i<player.size(); i++){
+            int playerNum = player.get(i);
+            int computerNum = computer.get(i);
+            if(playerNum != computerNum && computer.contains(playerNum)) ballScore +=1;
+        }
+        return ballScore;
+    }
+
+    static int getStrikeScore(List<Integer> computer, List<Integer> player){
+        int strikeScore = 0;
+        for(int i=0; i<player.size(); i++){
+            int playerNum = player.get(i);
+            int computerNum = computer.get(i);
+            if(playerNum == computerNum) strikeScore +=1;
+        }
+        return strikeScore;
+    }
+
+    static boolean compare(List<Integer> computer, List<Integer> player){
+        int ball = getBallScore(computer,player);
+        int strike = getStrikeScore(computer,player);
+        if(strike == 3) return true;
+        else return false;
+    }
+
     static void game(){
         List<Integer> computer  = random();
-        int inputInt = input();
-        List<Integer> player = separate(inputInt);
-        verifyPlayer(player);
+        List<Integer> player = new ArrayList<>();
+        do{
+            int inputInt = input();
+            player = separate(inputInt);
+            verifyPlayer(player);
+        }while(!compare(computer,player));
     }
 
     static boolean finish(){
