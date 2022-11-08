@@ -59,6 +59,7 @@ public class GameSystem {
         if(gameProgress == GameProgress.CONTINUE) {
             return true;
         } else if(gameProgress == GameProgress.STOP) {
+            System.out.println("게임종료");
             return false;
         }
         return false;
