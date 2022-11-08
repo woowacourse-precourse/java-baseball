@@ -15,7 +15,7 @@ class BaseballPlayTest {
     @Description("컴퓨터가 생성한 숫자를 사용자의 입력값으로 넣었을 때 스트라이크 3이 나오면 성공이다.")
     void 사용자의_스윙_결과를_확인한다() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, NoSuchFieldException {
         // given
-        BaseballPlay baseballPlay = new BaseballPlay();
+        BaseballGame baseballPlay = new BaseballGame();
 
         Field field = baseballPlay.getClass().getDeclaredField("swingResult");
         field.setAccessible(true);
