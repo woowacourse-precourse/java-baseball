@@ -7,10 +7,13 @@ public class Input {
     private int range;
     private Pattern pattern;
     private Matcher matcher;
-    public Input(int range){
-        String regex="^[1-9]+$";
-        pattern = Pattern.compile(regex);
-        this.range=range;
+    public Input(int min ,int max ,int range){
+        if(minInputCheck(min,max,range)){
+            String regex="^["+min+"-"+max+"]+$";
+            pattern = Pattern.compile(regex);
+            this.range=range;
+        }
+        else throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
     }
     public String playInput(){
         String input = Console.readLine();
@@ -32,4 +35,5 @@ public class Input {
     }
     private boolean playInputCheck(String input){return input.length() == range;}
     private boolean endInputCheck(String input){return input.equals("1") || input.equals("2");}
+    private boolean minInputCheck(int min, int max,int range){return (max-min+1)>=range;}
 }

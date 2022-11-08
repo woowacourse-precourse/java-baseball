@@ -5,10 +5,10 @@ public class BaseBall {
     private Input input;
     private Random random;
     private int range;
-    public BaseBall(int mix,int max,int range){
+    public BaseBall(int min,int max,int range){
         this.range=range;
-        random =new Random(mix,max,range);
-        input =new Input(range);
+        random =new Random(min,max,range);
+        input =new Input(min,max,range);
         play();
     }
     private void start() {answer=random.pick();}
