@@ -12,8 +12,10 @@ public class BaseballController {
     public void Start() {
         baseballService.gameStart();
         baseballService.generateComputerNumber();
-        baseballService.inputPlayerNumber();
-        baseballService.comparator();
-        baseballService.outputHint();
+        while (baseballService.checkGameStatus()) {
+            baseballService.inputPlayerNumber();
+            baseballService.comparator();
+            baseballService.outputHint();
+        }
     }
 }
