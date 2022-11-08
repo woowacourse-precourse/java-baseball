@@ -7,12 +7,12 @@ import java.util.regex.Pattern;
 
 class Play {
     private static final int COUNT;
-    private static final Pattern NUMBER;
+    private static final Pattern PATTERN;
 
     static {
         COUNT = 3;
         String regex = String.format("^(?:([1-9])(?!.*\\1)){%d}$", COUNT);
-        NUMBER = Pattern.compile(regex);
+        PATTERN = Pattern.compile(regex);
     }
 
     /**
@@ -38,7 +38,7 @@ class Play {
     }
 
     static List<Integer> getNumberFrom(String input) {
-        if (input == null || !NUMBER.matcher(input).matches()) {
+        if (input == null || !PATTERN.matcher(input).matches()) {
             throw new IllegalArgumentException();
         }
         List<Integer> givenNumber = new ArrayList<>();
