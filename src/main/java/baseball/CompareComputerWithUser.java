@@ -35,16 +35,16 @@ public class CompareComputerWithUser {
         return ballCount;
     }
     public int nothing(List<Integer> computerNumber, List<Integer> userNumber) {
-        int nothing = 0;
+        int nothingCount = 0;
         for (int position = 0; position < 3; position++) {
             if (!computerNumber.contains(userNumber.get(position))) {
 
-                nothing ++;
+                nothingCount++;
 
 
             }
         }
-        return nothing;
+        return nothingCount;
     }
 
 }
