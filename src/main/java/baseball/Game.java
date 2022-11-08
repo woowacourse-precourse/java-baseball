@@ -16,10 +16,18 @@ public class Game {
 
     public void run() {
         System.out.println(Texts.GAME_BEGIN);
-        do {
+        while (true) {
             play();
             System.out.println(Texts.GAME_RESTART);
-        } while (Console.readLine().equals("1"));
+            String inputCase = Console.readLine();
+            if (inputCase.equals("1")) {
+                continue;
+            } else if (inputCase.equals("2")) {
+                break;
+            } else {
+                throw new IllegalArgumentException(Texts.USER_INPUT_ILLEGAL_NOT_1_OR_2 + Texts.USER_INPUT_ILLEGAL + Texts.GAME_END);
+            }
+        }
         System.out.println(Texts.GAME_END);
     }
 
@@ -33,7 +41,7 @@ public class Game {
             Checker checker = new Checker();
             List<Integer> userNumbers = user.getNumber();
             result = checker.checkByDigit(userNumbers, computerNumbers);
-            String score=checker.checkResult(result);
+            String score = checker.checkResult(result);
             System.out.println(score);
         } while (result.get(0) < 3);
         System.out.println(Texts.GAME_PLAY_WIN);
