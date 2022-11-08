@@ -9,6 +9,7 @@ public class BallCountRule implements Rule {
 
     private static final Rule instance = new BallCountRule();
     private static final GuessTarget guessTarget = GuessTarget.BALL;
+    private static final Integer NOT_FOUND_INDEX = -1;
 
     private BallCountRule() {
     }
@@ -30,7 +31,7 @@ public class BallCountRule implements Rule {
 
         for (int index = 0; index < NUMBER_SIZE; index++) {
             Integer findIndex = findCharFromString(answerString, guessString.charAt(index));
-            if (findIndex != -1 && index != findIndex) {
+            if (findIndex != NOT_FOUND_INDEX && index != findIndex) {
                 count++;
             }
         }
