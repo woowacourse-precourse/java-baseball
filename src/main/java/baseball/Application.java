@@ -37,7 +37,6 @@ public class Application {
             }
         }
 
-        System.out.println("target " + target);
         String stringOfTargetNum = "";
         for (int n : target) {
             stringOfTargetNum += n;
@@ -116,6 +115,7 @@ public class Application {
     public static void printStrikeAndBall(Node node) {
 
         if (node.strike == 3) {
+            System.out.printf("%d스트라이크%n", node.strike);
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
             String exitYn = Console.readLine();
             restartOrExit(exitYn);
@@ -126,13 +126,13 @@ public class Application {
         } else {
 
             if (node.ball == 0) {
-                System.out.printf("%d스트라이크 %n", node.strike);
+                System.out.printf("%d스트라이크%n", node.strike);
 
             } else if (node.strike == 0) {
-                System.out.printf("%d볼 %n", node.ball, node.strike);
+                System.out.printf("%d볼%n", node.ball, node.strike);
 
             } else {
-                System.out.printf("%d볼 %d스트라이크 %n", node.ball, node.strike);
+                System.out.printf("%d볼 %d스트라이크%n", node.ball, node.strike);
 
             }
 
@@ -144,13 +144,10 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        // 1
-        String target = makeTargetNum();
 
-        // 2
+        String target = makeTargetNum();
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // 3
         while (true) {
 
             System.out.println("숫자를 입력해주세요 : ");
@@ -163,7 +160,7 @@ public class Application {
                 break;
             }
             if (restartGameYn) {
-                restartGameYn = false;  //  초기화
+                restartGameYn = false;
                 target = makeTargetNum();
             }
 
