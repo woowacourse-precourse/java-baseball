@@ -21,7 +21,6 @@ public class GamePlayTest {
     final PrintStream standardOut = System.out;
     final GamePlay gamePlay = new GamePlay();
     final ComputerNumber computerNumber = new ComputerNumber();
-    final UserNumber userNumber = new UserNumber();
     final InputException numberException = new InputException();
 
     @BeforeEach
@@ -38,10 +37,8 @@ public class GamePlayTest {
         // given
         List<Integer> computerNumber = new ArrayList<>(Arrays.asList(1,7,4));
         List<Integer> userNumber = new ArrayList<>(Arrays.asList(1,7,8));
-
         // when
         gamePlay.getResult(userNumber,computerNumber);
-
         // then
         Assertions.assertEquals("2스트라이크",outputStreamCaptor.toString().trim());
     }
@@ -51,10 +48,8 @@ public class GamePlayTest {
         // given
         List<Integer> computerNumber = new ArrayList<>(Arrays.asList(2,5,9));
         List<Integer> userNumber = new ArrayList<>(Arrays.asList(5,9,2));
-
         // when
         gamePlay.getResult(userNumber,computerNumber);
-
         // then
         Assertions.assertEquals("3볼",outputStreamCaptor.toString().trim());
 
@@ -64,10 +59,8 @@ public class GamePlayTest {
         // given
         List<Integer> computerNumber = new ArrayList<>(Arrays.asList(3,6,8));
         List<Integer> userNumber = new ArrayList<>(Arrays.asList(3,8,9));
-
         // when
         gamePlay.getResult(userNumber,computerNumber);
-
         // then
         Assertions.assertEquals("1볼 1스트라이크",outputStreamCaptor.toString().trim());
 
@@ -77,10 +70,8 @@ public class GamePlayTest {
         // given
         List<Integer> computerNumber = new ArrayList<>(Arrays.asList(3,5,7));
         List<Integer> userNumber = new ArrayList<>(Arrays.asList(3,5,7));
-
         // when
         boolean result = gamePlay.getResult(userNumber,computerNumber);
-
         // then
         Assertions.assertEquals(false,result);
     }
@@ -89,10 +80,8 @@ public class GamePlayTest {
         // given
         List<Integer> computerNumber = new ArrayList<>(Arrays.asList(1,5,9));
         List<Integer> userNumber = new ArrayList<>(Arrays.asList(2,4,8));
-
         // when
         gamePlay.getResult(userNumber,computerNumber);
-
         // then
         Assertions.assertEquals("낫싱",outputStreamCaptor.toString().trim());
     }
@@ -118,9 +107,9 @@ public class GamePlayTest {
         List<Integer> computerNumberList = computerNumber.generateNumber();
         // when
         for(int i=0; i<computerNumberList.size(); i++) {
+            // then
             assertThat(computerNumberList.get(i)).isBetween(1,9);
         }
-        //then
     }
     @Test
     void 사용자의_숫자가_3자리(){
