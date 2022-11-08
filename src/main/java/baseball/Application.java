@@ -29,4 +29,36 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         return computer.stream().mapToInt(i -> i).toArray();
     }
+
+    // 숫자 3개 입력 받기
+    public static int[] getUserNumbers() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String userInput = new java.util.Scanner(System.in).nextLine();
+
+        // 숫자인지 확인
+        if (userInput.matches("^[1-9]*$")) {
+            System.out.println("숫자가 아닙니다.");
+            return getUserNumbers();
+        }
+
+        // 숫자가 3개인지 확인
+        if (userInput.length() != 3) {
+            System.out.println("3자리 숫자가 아닙니다.");
+            return getUserNumbers();
+        }
+
+        // 숫자 input 을 int[] 로 변환
+        int[] userNumbers = new int[3];
+        for (int i = 0; i < userInput.length(); i++) {
+            userNumbers[i] = userInput.charAt(i) - '0';
+        }
+
+        // 숫자가 중복된 건 없는지 확인
+        if (userNumbers[0] == userNumbers[1] || userNumbers[0] == userNumbers[2] || userNumbers[1] == userNumbers[2]) {
+            System.out.println("중복된 숫자가 있습니다.");
+            return getUserNumbers();
+        }
+
+        return userNumbers;
+    }
 }
