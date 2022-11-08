@@ -26,9 +26,10 @@ public class BaseballGameService {
         computer = new Computer(START_INCLUSIVE, END_INCLUSIVE, RESULT_COUNT);
     }
 
-    private void setPlayer() {
-        String playerInput = Console.readLine();
-        player = new Player(parser.parsePlayerNumbers(playerInput));
+    public boolean isRestart() {
+        System.out.println(GAME_RESTART_END.getMessage());
+        int input = parser.parseInt(Console.readLine());
+        return input == RESTART_NUMBER;
     }
 
     public void playBaseballGame() {
@@ -38,6 +39,11 @@ public class BaseballGameService {
             play();
             isEnd = isSuccess();
         }
+    }
+
+    private void setPlayer() {
+        String playerInput = Console.readLine();
+        player = new Player(parser.parsePlayerNumbers(playerInput));
     }
 
     private boolean isSuccess() {
@@ -53,12 +59,6 @@ public class BaseballGameService {
         System.out.print(REQUEST_INPUT.getMessage());
         setPlayer();
         computeScore(computer.getResult(), player.getPlayerNumbers());
-    }
-
-    public boolean isRestart() {
-        System.out.println(GAME_RESTART_END.getMessage());
-        int input = parser.parseInt(Console.readLine());
-        return input == RESTART_NUMBER;
     }
 
     private void computeScore(List<Integer> result, List<Integer> playerNumbers) {
