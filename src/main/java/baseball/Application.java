@@ -32,11 +32,34 @@ public class Application {
         return gameInfo;
     }
 
+    // 입력받은 값이 유효한지 확인
+    private static boolean isValid(String num) {
+        // 3개의 숫자를 입력했는지 확인
+        if (num.length() != 3)
+            return false;
+
+        // 숫자를 입력했는지 확인
+        for (int i = 0; i < 3; i++) {
+            if (num.charAt(i) < '0' || num.charAt(i) > '9')
+                return false;
+        }
+
+        // 중복되지 않은 값을 입력했는지 확인
+        for (int i = 0; i < 3; i++) {
+            if (num.length() - num.replace(num.valueOf(i), "").length() != 2)
+                return false;
+        }
+
+        return true;
+    }
+
     private static void playGame() {
         List<Integer> computer = getComputerNumber();
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String num = Console.readLine();
+            if (!isValid(num))
+                throw new IllegalArgumentException();
 
             GameInfo gameInfo = getGameInfo(computer, num);
             String result = gameInfo.getResult();
