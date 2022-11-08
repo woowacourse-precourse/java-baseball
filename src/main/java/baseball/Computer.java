@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
+import static baseball.Constants.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class Computer {
     }
     public void selectNumbers(){
         selectedNum.clear();
-        while(selectedNum.size()<3){
+        while(selectedNum.size()<INPUT_SIZE){
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if(!selectedNum.contains(randomNumber)){
                 selectedNum.add(randomNumber);

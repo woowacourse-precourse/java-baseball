@@ -4,6 +4,8 @@ import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.List;
 
+import static baseball.Constants.*;
+
 public class Game {
     private Computer computer;
     private Player player;
@@ -28,7 +30,7 @@ public class Game {
         do{
             player.selectNumber();
             playerNumber = player.getSelectedNumber();
-            Validate.validateInputNumber();
+            Validate.validateInputNumber(playerNumber);
         }
         while(judge(userNumber));
     }
@@ -36,7 +38,7 @@ public class Game {
     public boolean judge(String num){
         int cntBall=0;
         int cntStrike = 0;
-        for(int i=0;i<3;i++){
+        for(int i=0;i<INPUT_SIZE;i++){
             int cur = num.charAt(i)-'0';
             if(cur == computerNumbers.get(i)){
                 cntStrike++;
