@@ -28,6 +28,40 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_중복된숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_0을포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_게임종료() {
+        assertThatThrownBy(() -> new RestartGameOrNot("3"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 스트라이크_개수() {
+        Pitches input = new Pitches("123");
+        assertThat(input.numOfStrike(new Pitches("124"))).isEqualTo(2);
+    }
+
+    @Test
+    void 볼_개수() {
+        Pitches input = new Pitches("123");
+        assertThat(input.numOfBall(new Pitches("231"))).isEqualTo(3);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
