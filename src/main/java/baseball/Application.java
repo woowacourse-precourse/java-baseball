@@ -10,6 +10,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        boolean gameRestart = true;
+
+        while (gameRestart) {
+            playGame();
+            gameRestart = playRestart();
+        }
+
+        System.out.println("게임 종료");
     }
 
     public static boolean checkPickNumbInMakingNum(List<Integer> nowMakingNumber, int pickRandomNum) {
