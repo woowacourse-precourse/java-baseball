@@ -13,14 +13,14 @@ class CountResultTest {
         CountResult countResult = new CountResult(0, 3);
         assertThat(countResult.withThreeStrike()).isTrue();
     }
-    
+
     @DisplayName("strike가 3개가 아니면 isThreeStrike는 false를 반환한다")
     @Test
     void strikeTest2() {
         CountResult countResult = new CountResult(0, 2);
         assertThat(countResult.withThreeStrike()).isFalse();
     }
-    
+
     @DisplayName("strike와 ball이 모두 0이면 낫싱을 반환한다")
     @Test
     void nothingTest() {
@@ -28,7 +28,7 @@ class CountResultTest {
         assertThat(countResult.stringFormatOfCountResult())
                 .isEqualTo("낫싱");
     }
-    
+
     @DisplayName("ball이 모두 3이면 3볼을 반환한다")
     @Test
     void ThreeBallTest() {
