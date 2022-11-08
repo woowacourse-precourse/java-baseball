@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.vo.ValidationMsg.NUMBER_RANGE_EXCEPTION;
+import static baseball.vo.ValidationMsg.*;
 
 public class Player {
     private static final int MIN_NUMBER = 1;
@@ -14,11 +14,26 @@ public class Player {
     private final List<Integer> playerNumbers;
 
     public Player(List<Integer> playerNumbers) {
+        validate(playerNumbers);
         this.playerNumbers = playerNumbers;
     }
 
     public List<Integer> getPlayerNumbers() {
         return playerNumbers;
+    }
+
+    private void validate(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            validateNumberRange(number);
+        }
+
+        if (validateNumbersSize(numbers)) {
+            throw new IllegalArgumentException(NUMBERS_SIZE_EXCEPTION.getMessage());
+        }
+
+        if (validateDuplicateNumber(numbers)) {
+            throw new IllegalArgumentException(NUMBER_DUPLICATE_EXCEPTION.getMessage());
+        }
     }
 
     private boolean validateDuplicateNumber(List<Integer> numbers) {
