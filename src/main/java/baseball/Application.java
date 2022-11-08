@@ -16,6 +16,7 @@ public class Application {
     public static void playGame() {
         List<Integer> computerNumber = makeRandom();
         System.out.println("숫자 야구 게임을 시작합니다.");
+        HashMap<String, Integer> score;
         do {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userNumber = splitNumber(Integer.parseInt(Console.readLine()));
@@ -23,11 +24,10 @@ public class Application {
                 throw new IllegalArgumentException();
             }
             boolean nothingResult = nothing(userNumber, computerNumber);
-            HashMap<String, Integer> score = countBallAndStrike(userNumber, computerNumber);
-        }
-        while () {
-            //게임 종료
-        }
+            score = countBallAndStrike(userNumber, computerNumber);
+            printResult(score);
+        } while (!score.get("strike").equals(3));
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     public static List<Integer> makeRandom() {
         List<Integer> computerNumber = new ArrayList<>();
@@ -99,5 +99,20 @@ public class Application {
             }
         }
         return score;
+    }
+
+    public static void printResult(HashMap<String, Integer> score){
+        if (score.get("strike").equals(3)){
+            System.out.printf("%d%s%n",score.get("strike"),"스트라이크");
+        }
+        if (score.get("strike") > 0 && score.get("strike") < 3 && score.get("ball").equals(0)){
+            System.out.printf("%d%s%n",score.get("strike"),"스트라이크");
+        }
+        if (score.get("ball") > 0 && score.get("strike").equals(0)){
+            System.out.printf("%d%s%n",score.get("ball"),"볼");
+        }
+        if (score.get("strike") > 0 && score.get("ball") > 0){
+            System.out.printf("%d%s %d%s%n",score.get("ball"),"볼",score.get("strike"),"스트라이크");
+        }
     }
 }
