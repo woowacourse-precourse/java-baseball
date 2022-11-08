@@ -4,12 +4,12 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-//        Game g = new Game();
+//        새 게임 생성: Game game = new Game();
 
-//        print(숫자 야구 게임을 시작합니다.)
+//        초기 문구 출력
 
-//        g.init();
-//        g.start();
+//        game.init();
+//        game.start();
 
     }
 }
