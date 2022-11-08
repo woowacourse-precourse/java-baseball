@@ -4,14 +4,14 @@
 * 값을 벗어나면 IllegalArgumentException을 발생시킨다.
 
 [2단계] 
-3개의 값을 갖는 Balls 클래스를 작성한다. 일급콜렉션으로 만들어 예외처리와 결과를 판정하는 메서드를 작성한다.
+3개의 Ball을 갖는 Balls 클래스를 작성한다. 일급콜렉션으로 만들어 예외처리와 결과를 판정하는 메서드를 작성한다.
 * 예외처리
   * 3개의 값이 들어오는지 확인한다.
   * 3개의 값이 모두 다른지 확인한다.
 * hasSameValue()
   * Balls 클래스 balls이 Ball 클래스 ball을 입력받아 balls에 ball과 같은 값이 있는지 확인한다.
 * inSamePosition()
-  * Balls 클래스 balls이 Ball 클래스 ball과 index를 받았을 때, 위치가 같은지 확인한다.
+  * Balls 클래스 balls이 position과 Ball 클래스 ball을 받았을 때, 위치가 같은지 확인한다.
 
 [3단계]
 판정 STRIKE, BALL을 갖는 enum 클래스인 Judgement를 작성한다.

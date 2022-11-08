@@ -1,11 +1,10 @@
 package baseball.domain;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class BallTest {
     @DisplayName("예외처리 테스트")

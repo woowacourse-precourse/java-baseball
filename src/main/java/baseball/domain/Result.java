@@ -1,20 +1,18 @@
 package baseball.domain;
 
-import org.junit.jupiter.params.ParameterizedTest;
-
 import java.util.Objects;
 import java.util.Optional;
 
 public class Result {
     private int ball = 0;
     private int strike = 0;
-    public Result(int ball, int strike) {
-        this.ball = ball;
-        this.strike = strike;
-    }
 
     public Result() {
 
+    }
+    public Result(int ball, int strike) {
+        this.ball = ball;
+        this.strike = strike;
     }
 
     public Optional<String> countBall() {
@@ -23,13 +21,13 @@ public class Result {
         }
         return Optional.of(ball + "볼");
     }
+
     public Optional<String> countStrike() {
         if (strike == 0) {
             return Optional.empty();
         }
         return Optional.of(strike+"스트라이크");
     }
-
 
     public String toString() {
         String out = String.join(" ",countBall().orElse(""),countStrike().orElse(""));

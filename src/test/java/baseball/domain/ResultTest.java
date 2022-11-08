@@ -1,16 +1,15 @@
 package baseball.domain;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResultTest {
 
@@ -29,22 +28,24 @@ public class ResultTest {
         result.report(Judgement.STRIKE);
         assertThat(result).isEqualTo(new Result(0,1));
     }
+
     @Test
     public void resultTest2() {
         result.report(Judgement.BALL);
         assertThat(result).isEqualTo(new Result(1,0));
     }
+
     @Test
     public void resultTest3() {
         result.report(Judgement.NOTHING);
         assertThat(result).isEqualTo(new Result(0,0));
     }
+
     @ParameterizedTest
     @CsvSource({"0,0,낫싱","1,1,1볼 1스트라이크","3,0,3볼","0,3,3스트라이크"})
     public void printTest(int ball, int strike, String out) {
         System.out.print(new Result(ball, strike));
         assertEquals(out, outContent.toString());
-
     }
 
     @AfterEach
