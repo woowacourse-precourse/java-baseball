@@ -42,7 +42,7 @@ class HintTest {
         //given
         List<Integer> userNumber = List.of(1, 3, 5);
         //when
-        hint.giveHint(computerNumber, userNumber);
+        hint.score(computerNumber, userNumber);
         //then
         assertThat(hint.getStrikeCount()).isEqualTo(3);
     }
@@ -52,7 +52,7 @@ class HintTest {
         //given
         List<Integer> userNumber = List.of(3, 5, 1);
         //when
-        hint.giveHint(computerNumber, userNumber);
+        hint.score(computerNumber, userNumber);
         //then
         assertThat(hint.getBallCount()).isEqualTo(3);
     }
@@ -62,7 +62,7 @@ class HintTest {
         //given
         List<Integer> userNumber = List.of(1, 5, 8);
         //when
-        hint.giveHint(computerNumber, userNumber);
+        hint.score(computerNumber, userNumber);
         //then
         assertThat(hint.getBallCount()).isEqualTo(1);
         assertThat(hint.getStrikeCount()).isEqualTo(1);
@@ -73,7 +73,7 @@ class HintTest {
         //given
         List<Integer> userNumber = List.of(2, 4, 8);
         //when
-        hint.giveHint(computerNumber, userNumber);
+        hint.score(computerNumber, userNumber);
         //then
         assertThat(hint.getBallCount()).isEqualTo(0);
         assertThat(hint.getStrikeCount()).isEqualTo(0);
@@ -85,12 +85,12 @@ class HintTest {
         List<Integer> userNumber_true = List.of(1, 3, 5);
         List<Integer> userNumber_false = List.of(1, 3, 5);
         //when
-        hint.giveHint(computerNumber, userNumber_true);
+        hint.score(computerNumber, userNumber_true);
         boolean threeStrike_true = hint.isAllStrike();
 
-        hint.initHint();
+        hint.init();
 
-        hint.giveHint(computerNumber, userNumber_false);
+        hint.score(computerNumber, userNumber_false);
         boolean threeStrike_false = hint.isAllStrike();
         //then
         assertThat(threeStrike_true).isTrue();
@@ -102,9 +102,9 @@ class HintTest {
     public void 출력_확인_1볼_1스트라이크_일때() throws Exception {
         //given
         List<Integer> userNumber = List.of(1, 5, 8);
-        hint.giveHint(computerNumber, userNumber);
+        hint.score(computerNumber, userNumber);
         //when
-        String printHint = hint.printHint();
+        String printHint = hint.toString();
         //then
         assertThat(printHint).isEqualTo("1볼 1스트라이크");
     }
@@ -113,9 +113,9 @@ class HintTest {
     public void 출력_확인_낫싱_일때() throws Exception {
         //given
         List<Integer> userNumber = List.of(2, 4, 6);
-        hint.giveHint(computerNumber, userNumber);
+        hint.score(computerNumber, userNumber);
         //when
-        String printHint = hint.printHint();
+        String printHint = hint.toString();
         //then
         assertThat(printHint).isEqualTo("낫싱");
     }
