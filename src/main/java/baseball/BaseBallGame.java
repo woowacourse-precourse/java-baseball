@@ -3,12 +3,20 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
+  private Computer computer;
+
   public void start() {
+    gameInit();
     System.out.println(GameMessage.GAME_START_MESSAGE.toString());
-    String inputData = getUserNumberInput();
-    BaseBallGameNumber gameNumber = createBaseBallGameNumber(inputData);
-    if(gameNumber == null) return;
-    gameNumber.printNumbers();
+    String inputData;
+    BaseBallGameNumber gameNumber;
+    inputData = getUserNumberInput();
+    gameNumber = createBaseBallGameNumber(inputData);
+  }
+
+  private void gameInit() {
+    computer = new Computer();
+    computer.setAnswerNumber();
   }
 
   private String getUserNumberInput() {
