@@ -43,7 +43,7 @@ class ApplicationTest extends NsTest {
         }
         @Test
         void 게임시작하면_성공여부가_초기화되는지_확인() {
-            assertThat(testGame.success).isEqualTo(false);
+            assertThat(testGame.success).isFalse();
         }
         @Test
         void 게임시작하면_설정되는_수가_3개인지_확인() {
