@@ -1,7 +1,144 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.*;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: í”„ë¡œê·¸ëž¨ êµ¬í˜„
+
+        int userEndingResponse = 1;
+        int userAnswer;
+        int countStrike = 0;
+        int countBall;
+        List<Integer> computerAnswerList;
+        List<Integer> notStrikeZone;
+        List<Integer> userAnswerList;
+
+        while (userEndingResponse == 1){
+
+            printStartMessage();
+            computerAnswerList = createComputerLength3IntegerAnswerToList();
+            /* ¿¹½Ã
+            computerAnswerList.add(7);
+            computerAnswerList.add(1);
+            computerAnswerList.add(3);
+            */
+
+            while (countStrike!=3){
+
+                printGetInputMessage();
+                userAnswer = getUserNumberToInteger();
+                checkIllegalInputForBaseballGame(userAnswer);
+                userAnswerList = convertIntegerToList(userAnswer);
+
+                notStrikeZone = checkWhereIsNotStrike(computerAnswerList, userAnswerList);
+                countStrike = countStrike(notStrikeZone);
+                countBall = countBall(computerAnswerList, userAnswerList, notStrikeZone);
+                printUserScore(countStrike, countBall);
+            }
+
+            printEndingMessage();
+            userEndingResponse = getUserNumberToInteger();
+            countStrike = 0;
+        }
+        // TODO: ÇÁ·Î±×·¥ ±¸Çö
+    }
+
+    public static List<Integer> createComputerLength3IntegerAnswerToList(){
+        List<Integer> computerAnswer = new ArrayList<>();
+        while (computerAnswer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerAnswer.contains(randomNumber)) {
+                computerAnswer.add(randomNumber);
+            }
+        }
+        return computerAnswer;
+    }
+
+    public static void printStartMessage(){
+        System.out.println("¼ýÀÚ ¾ß±¸ °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+    }
+    public static void printGetInputMessage(){
+        System.out.print("¼ýÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä : ");
+    }
+    public static int getUserNumberToInteger() {
+        String userAnswer = Console.readLine();
+        return Integer.parseInt(userAnswer);
+    }
+    public static List<Integer> convertIntegerToList(int num){
+        List<Integer> numList = new ArrayList<>();
+
+        String numStr = String.valueOf(num);
+        for (String tmpStr : numStr.split("")){
+            numList.add(Integer.valueOf(tmpStr));
+        }
+
+        return numList;
+    }
+    public static void checkIllegalInputForBaseballGame(int input){
+
+        // 1. 3ÀÚ¸®°¡ ¾Æ´Ò °æ¿ì
+        String inputStr = String.valueOf(input);
+        int lengthOfInput = inputStr.length();
+        if (lengthOfInput != 3)
+            throw new IllegalArgumentException("¼ýÀÚÀÇ ¾î´À ÀÚ¸®¿¡µµ 0ÀÌ Æ÷ÇÔµÇÁö ¾Ê´Â 3ÀÚ¸®ÀÇ ¼ýÀÚ¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À.");
+
+        List<Character> appearedNumList = new ArrayList<>();
+        for (int inputStringIndex = 0; inputStringIndex < lengthOfInput; inputStringIndex++){
+
+            // 2. °ª¿¡ 1-9 ÀÌ¿ÜÀÇ °ªÀÌ Æ÷ÇÔµÇ¾îÀÖÀ» ¶§
+            char tmpInputStr = inputStr.charAt(inputStringIndex);
+            if (tmpInputStr < 49 || tmpInputStr > 58)
+                // 1: 49, 9: 57
+                throw new IllegalArgumentException("1~9 »çÀÌÀÇ ¼ýÀÚ¸¸ °¡´ÉÇÕ´Ï´Ù.");
+
+            // 3. 3ÀÚ¸® ¼ö Áß Áßº¹ÀÌ ÀÖÀ» ¶§
+            if (appearedNumList.contains(tmpInputStr))
+                throw new IllegalArgumentException("3ÀÚ¸®ÀÇ ¼ýÀÚ Áß Áßº¹µÇ´Â °ªÀÌ Á¸ÀçÇØ¼­´Â ¾ÈµË´Ï´Ù.");
+            else
+                appearedNumList.add(tmpInputStr);
+        }
+    }
+
+    public static List<Integer> checkWhereIsNotStrike(List<Integer> computerAnswer,
+                                                   List<Integer> userAnswer){
+        List<Integer> notStrikeZone = new ArrayList<>();
+        for (int digit=0; digit<3; digit++){
+            if (!computerAnswer.get(digit).equals(userAnswer.get(digit)))
+                notStrikeZone.add(digit);
+        }
+        return notStrikeZone;
+    }
+    public static int countStrike(List<Integer> notStrikeList){
+        return 3 - notStrikeList.size();
+    }
+    public static void printEndingMessage(){
+        System.out.println("3°³ÀÇ ¼ýÀÚ¸¦ ¸ðµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓ Á¾·á\n" +
+                            "°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+    }
+    public static int countBall(List<Integer> computerAnswer,
+                                 List<Integer> userAnswer,
+                                 List<Integer> notStrikeList){
+        int countBall = 0;
+        for (int digit : notStrikeList){
+            if (computerAnswer.contains(userAnswer.get(digit)))
+                countBall++;
+        }
+        return countBall;
+    }
+    public static void printUserScore(int countStrike, int countBall){
+        if (countStrike!=0) {
+            if (countStrike == 3 || countBall == 0)
+                System.out.println(countStrike + "½ºÆ®¶óÀÌÅ©");
+            else
+                System.out.println(countBall+"º¼ "+countStrike+"½ºÆ®¶óÀÌÅ©");
+        } else {
+            if (countBall != 0)
+                System.out.println(countBall+"º¼");
+            else
+                System.out.println("³´½Ì");
+        }
     }
 }
