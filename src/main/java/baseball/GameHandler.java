@@ -14,11 +14,14 @@ public class GameHandler {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
 
+    public static boolean isGameEnd;
+
     public static List<Integer> computerNumber;
     public static List<Integer> inputNumber;
     public static List<Integer> compareResult;
 
     public void init() {
+        isGameEnd = false;
         computerNumber = new ArrayList<>();
         inputNumber = new ArrayList<>(3);
         compareResult = new ArrayList<>(2);
@@ -71,6 +74,7 @@ public class GameHandler {
         }
         if(strike == 3) {
             sb.append(String.format("\n%s\n%s\n", GAME_END, GAME_RESTART));
+            isGameEnd = true;
         }
         return sb.toString();
     }
