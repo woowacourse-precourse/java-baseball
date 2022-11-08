@@ -142,4 +142,8 @@ public class ThreeNumberService {
     public void computerReset() {
         computer.reset();
     }
+
+    public static final int getStrike() {
+        return ThreeNumberService.strike;
+    }
 }

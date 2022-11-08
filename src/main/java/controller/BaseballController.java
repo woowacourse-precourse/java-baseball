@@ -42,7 +42,7 @@ public class BaseballController {
     }
 
     public boolean isEnd() {
-        if(service.playGame()) {
+        if(ThreeNumberService.getStrike() == 3) {
             return true;
         }
         else
