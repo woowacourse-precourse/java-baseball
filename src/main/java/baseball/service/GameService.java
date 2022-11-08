@@ -14,7 +14,7 @@ public class GameService {
         return dto.insert(new ComputerNumber(number));
     }
 
-    public Boolean deleteComputerNumber(int number) {
+    public boolean deleteComputerNumber(int number) {
         Number dto = Number.getInstance();
         List<ComputerNumber> computerNumbers = dto.findByNumber(number);
 
