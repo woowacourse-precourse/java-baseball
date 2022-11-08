@@ -29,4 +29,12 @@ public class OpponentTest {
         int length = list.size();
         assertThat(length).isEqualTo(3);
     }
+
+    @Test
+    void getNumber_메서드로_정답수_한개씩_반환(){
+        List<Integer> list =  List.of(1,2,3);
+        int index = 1;
+        int result = getNumber(list, index);
+        assertThat(result).isEqualTo(2);
+    }
 }
