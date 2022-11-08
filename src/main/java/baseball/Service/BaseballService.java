@@ -24,7 +24,7 @@ public class BaseballService {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String choiceInput = Console.readLine();
 
-        if (validateChioceInput(choiceInput)) {
+        if (!validateChioceInput(choiceInput)) {
             throw new IllegalArgumentException();
         }
 
@@ -36,15 +36,14 @@ public class BaseballService {
     }
 
     public boolean validateChioceInput(String choiceInput) {
-        if(isOneLength(choiceInput) && isNumberOneOrTwo(choiceInput)){
+        if (isOneLength(choiceInput) && isNumberOneOrTwo(choiceInput)) {
             return true;
         }
         return false;
     }
 
-    public boolean isOneLength(String choiceInput){
-        // 입력받은 값의 길이가 2 이상일때
-        if (choiceInput.length() >= 2) {
+    public boolean isOneLength(String choiceInput) {
+        if (choiceInput.length() == 1) {
             return true;
         }
         return false;
