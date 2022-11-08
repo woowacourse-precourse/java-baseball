@@ -11,6 +11,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     private static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final int GAME_RESTART_STATUS = 1;
     private static final int MAX_BALLS_SIZE = 3;
     private static final int MIN_BALL_NUMBER = 1;
@@ -30,6 +31,7 @@ public class Game {
         GameStatus gameStatus = new GameStatus(GAME_RESTART_STATUS);
 
         while (true) {
+            Output.print(INPUT_NUMBER_MESSAGE);
             Balls playerBalls = player.generatePlayerBalls(Input.inputValue());
             Result result = computerBalls.generateResult(playerBalls);
             Output.printResult(result);
