@@ -2,6 +2,8 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.input.InputController;
+import baseball.input.InputControllerImp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

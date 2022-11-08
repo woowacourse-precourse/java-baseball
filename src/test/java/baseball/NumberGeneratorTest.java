@@ -5,6 +5,8 @@ import static baseball.constant.Rules.NUMBER_LENGTH;
 import static baseball.constant.Rules.START_INCLUSIVE;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.number.NumberGenerator;
+import baseball.number.RandomNumberGenerator;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;

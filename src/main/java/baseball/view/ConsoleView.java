@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 import static baseball.constant.Finish.getFinishByCode;
 import static baseball.constant.Hint.BALL;
@@ -7,6 +7,8 @@ import static baseball.constant.Hint.STRIKE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.constant.Finish;
+import baseball.hint.Hint;
+import baseball.input.InputController;
 import java.util.List;
 
 public class ConsoleView implements View {

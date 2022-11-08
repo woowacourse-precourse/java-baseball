@@ -6,6 +6,10 @@ import static baseball.constant.Finish.getFinishByCode;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.hint.Hint;
+import baseball.input.InputControllerImp;
+import baseball.view.ConsoleView;
+import baseball.view.View;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.junit.jupiter.api.BeforeEach;

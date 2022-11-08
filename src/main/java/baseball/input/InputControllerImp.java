@@ -1,4 +1,4 @@
-package baseball;
+package baseball.input;
 
 import static baseball.constant.Rules.END_INCLUSIVE;
 import static baseball.constant.Rules.NUMBER_LENGTH;

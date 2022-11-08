@@ -5,6 +5,9 @@ import static baseball.constant.Rules.NUMBER_LENGTH;
 import static baseball.constant.Rules.START_INCLUSIVE;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.hint.Hint;
+import baseball.hint.HintCalculator;
+import baseball.hint.HintCalculatorImp;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

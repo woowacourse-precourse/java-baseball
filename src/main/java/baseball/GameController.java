@@ -6,6 +6,10 @@ import static baseball.constant.Message.RESTART_GAME;
 import static baseball.constant.Message.START_GAME;
 
 import baseball.constant.Finish;
+import baseball.hint.Hint;
+import baseball.hint.HintCalculator;
+import baseball.number.NumberGenerator;
+import baseball.view.View;
 import java.util.List;
 
 public class GameController {
