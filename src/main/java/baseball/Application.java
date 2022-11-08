@@ -18,7 +18,6 @@ public class Application {
             executionGame();
         }
     }
-
     public static void executionGame(){
         List<Integer> computerOutput = decideComputerNumber();
 
@@ -45,7 +44,6 @@ public class Application {
         }
         return computer;
     }
-
     public static List<Integer> checkAndConvertUserInput(String input){
         if (input.length() != 3)  throw new IllegalArgumentException();
         Set<Integer> result = input.chars()
@@ -57,5 +55,13 @@ public class Application {
                 .map(c -> c - '0')
                 .boxed()
                 .collect(toList());
+    }
+    public static Integer calculationBall(List<Integer> computer, List<Integer> user) {
+        Integer ball = 0;
+        for(int i = 0; i < computer.size(); i++){
+            if(user.contains(computer.get(i)) && !computer.get(i).equals(user.get(i)))
+                ball +=1;
+        }
+        return ball;
     }
 }
