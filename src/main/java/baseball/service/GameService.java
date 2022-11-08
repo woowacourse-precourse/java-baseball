@@ -1,6 +1,9 @@
 package baseball.service;
 
+import java.util.List;
+
 import baseball.vo.Master;
+
 import baseball.vo.User;
 import baseball.view.RequestMessage;
 import baseball.utils.NumberGenerator;
@@ -24,6 +27,22 @@ public class GameService {
         requestMessage.requestInputNumbers();
         String userInput = Console.readLine();
         user = new User(validator.validateUserInput(userInput));
+    }
+
+    public void countStrikeAndBall() {
+        List<Integer> gameNumbers = master.getGameNumbers();
+        List<Integer> userNumbers = user.getUserNumbers();
+
+        for (int i = 0; i < gameNumbers.size(); i++) {
+            Integer gameNumber = gameNumbers.get(i);
+            Integer userNumber = userNumbers.get(i);
+
+            if (gameNumber == userNumber) {
+                master.strike();
+            } else if (gameNumbers.contains(userNumber)) {
+                master.ball();
+            }
+        }
     }
 
 }
