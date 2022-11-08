@@ -1,18 +1,11 @@
 package baseball.player;
-import baseball.computer.Computer;
-import baseball.exception.InputException;
-import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.w3c.dom.ls.LSInput;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
+
+import java.io.*;
+
 import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -33,7 +26,7 @@ public class PlayerTest {
         assertThat(playerNumber).isEqualTo(result);
     }
     @Test
-    public void get_Index_From_Integer_List_Test(){
+    public void get_Index_From_Integer_List_Test() throws IOException {
         Player player = new Player();
         List<Integer> playerNumbers;
         int firstElement;
@@ -42,15 +35,16 @@ public class PlayerTest {
         String userInput="456";
         InputStream in = generateUserInput(userInput);
         System.setIn(in);
-        player.createNumbers();
-        playerNumbers=player.getDigits();
-        firstElement=playerNumbers.get(firstIndex);
-        returnIndex=playerNumbers.indexOf(firstElement);
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String userNumbers = bf.readLine();
+        List<Integer> transformedUserNumbers =player.transform(Arrays.asList(userNumbers.split("")), Integer::parseInt);
+        firstElement=transformedUserNumbers.get(firstIndex);
+        returnIndex=transformedUserNumbers.indexOf(firstElement);
 
         assertThat(returnIndex).isEqualTo(firstIndex);
     }
     @Test
-    public void get_Index_From_Integer_List_Not_Exist_Element_Test(){
+    public void get_Index_From_Integer_List_Not_Exist_Element_Test() throws IOException {
         Player player = new Player();
         List<Integer> playerNumbers;
         int notExistsElement=0;
@@ -59,9 +53,13 @@ public class PlayerTest {
         String userInput="456";
         InputStream in = generateUserInput(userInput);
         System.setIn(in);
-        player.createNumbers();
-        playerNumbers=player.getDigits();
-        returnIndex=playerNumbers.indexOf(notExistsElement);
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        //파일에서 입력받을 경우에는 new BufferedReader(new FileReader("ex.java"));
+
+        //라인단위로 입력받기(Enter를 경계로)
+        String userNumbers = bf.readLine();
+        List<Integer> transformedUserNumbers =player.transform(Arrays.asList(userNumbers.split("")), Integer::parseInt);
+        returnIndex=transformedUserNumbers.indexOf(notExistsElement);
 
         assertThat(returnIndex).isEqualTo(notExistsElementIndex);
     }

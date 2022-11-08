@@ -4,25 +4,26 @@ import baseball.computer.Computer;
 import baseball.player.Player;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class GameTest {
-    static Computer computer = new Computer();
     static Player player = new Player();
-    static Player opponent = new Player();
     public static InputStream generateUserInput(String userInput){
         return new ByteArrayInputStream(userInput.getBytes());
     }
-    public static void preparePlayer(Player player, String numbers){
+    public static List<Integer> preparePlayer(String numbers) throws IOException {
         InputStream inPlayer = generateUserInput(numbers);
         System.setIn(inPlayer);
-        player.createNumbers();
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String userNumbers = bf.readLine();
+        List<Integer> transformedUserNumbers =player.transform(Arrays.asList(userNumbers.split("")), Integer::parseInt);
+        return transformedUserNumbers;
     }
 
 

@@ -10,7 +10,7 @@ public class Computer {
     private static final int NUMBER_OF_TRIAL=3;
     private static final int RANGE_START_NUMBER=1;
     private static final int RANGE_END_NUMBER=9;
-    public List<Integer> digits = new ArrayList<>();
+    private List<Integer> digits = new ArrayList<>();
     public int getNumberPosition(int number){
         return digits.indexOf(number);
     }

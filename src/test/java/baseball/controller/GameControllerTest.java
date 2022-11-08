@@ -2,33 +2,31 @@ package baseball.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.InstanceOfAssertFactories.LIST;
 
-import baseball.computer.Computer;
 import baseball.game.Game;
 import baseball.player.Player;
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameControllerTest {
+    static Player player = new Player();
+    Player opponent = new Player();
     public static InputStream generateUserInput(String userInput){
         return new ByteArrayInputStream(userInput.getBytes());
     }
-    public static void preparePlayer(Player player, String numbers){
+    public static List<Integer> preparePlayer(String numbers) throws IOException {
         InputStream inPlayer = generateUserInput(numbers);
         System.setIn(inPlayer);
-        player.createNumbers();
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String userNumbers = bf.readLine();
+        return player.transform(Arrays.asList(userNumbers.split("")), Integer::parseInt);
     }
-    Game game = new Game();
-    Player player = new Player();
-    Player opponent = new Player();
-
     @Test
-    public void check_Game_Condition_Ongoing_Test(){
+    public void check_Game_Condition_Ongoing_Test() throws IOException {
 
         final int NOT_Found=-1;
         final int END_CONDITION=3;
@@ -37,23 +35,23 @@ public class GameControllerTest {
         int ballCount=0;
 
         String answer="678";
-        String guess="687";
+        String guess="678";
 
-        preparePlayer(opponent, answer);
-        List<Integer> computerNumbers=opponent.getDigits();
-        preparePlayer(player, guess);
-        for(int computerNumber:computerNumbers){
-            if(player.getNumberPosition(computerNumber)!=opponent.getNumberPosition(computerNumber)&&player.getNumberPosition(computerNumber)!=NOT_Found){
+        List<Integer> opponentNumbers=preparePlayer(answer);
+        List<Integer> playerNumbers=preparePlayer(guess);
+
+        for(int computerNumber:opponentNumbers){
+            if(playerNumbers.indexOf(computerNumber)!=opponentNumbers.indexOf(computerNumber)&&playerNumbers.indexOf(computerNumber)!=NOT_Found){
                 ballCount+=1;
             }
-            if(player.getNumberPosition(computerNumber)==opponent.getNumberPosition(computerNumber)){
+            if(playerNumbers.indexOf(computerNumber)==opponentNumbers.indexOf(computerNumber)){
                 strikeCount+=1;
             }
         }
-        assertThat(strikeCount).isNotEqualTo(END_CONDITION);
+        assertThat(strikeCount).isEqualTo(END_CONDITION);
     }
     @Test
-    public void check_Game_End_Test(){
+    public void check_Game_End_Test() throws IOException {
         final int NOT_Found=-1;
         final int END_CONDITION=3;
         int strikeCount=0;
@@ -62,21 +60,20 @@ public class GameControllerTest {
         String answer="678";
         String guess="678";
 
-        preparePlayer(opponent, answer);
-        List<Integer> computerNumbers=opponent.getDigits();
-        preparePlayer(player, guess);
-        for(int computerNumber:computerNumbers){
-            if(player.getNumberPosition(computerNumber)!=opponent.getNumberPosition(computerNumber)&&player.getNumberPosition(computerNumber)!=NOT_Found){
+        List<Integer> opponentNumbers=preparePlayer(answer);
+        List<Integer> playerNumbers=preparePlayer(guess);
+        for(int computerNumber:opponentNumbers){
+            if(playerNumbers.indexOf(computerNumber)!=opponentNumbers.indexOf(computerNumber)&&playerNumbers.indexOf(computerNumber)!=NOT_Found){
                 ballCount+=1;
             }
-            if(player.getNumberPosition(computerNumber)==opponent.getNumberPosition(computerNumber)){
+            if(playerNumbers.indexOf(computerNumber)==opponentNumbers.indexOf(computerNumber)){
                 strikeCount+=1;
             }
         }
         assertThat(strikeCount).isEqualTo(END_CONDITION);
     }
     @Test
-    public void restart_OR_END_GAME_TEST(){
+    public void restart_OR_END_GAME_TEST()throws IOException{
         int userChoice;
         String userInput="1";
         int restart=1;
@@ -91,13 +88,14 @@ public class GameControllerTest {
         }
     }
     @Test
-    public void restart_OR_END_GAME_Fail_TEST(){
+    public void restart_OR_END_GAME_Fail_TEST() throws IOException {
         int userChoice;
         String userInput="3";
-        int restart=1;
         InputStream inPlayer = generateUserInput(userInput);
         System.setIn(inPlayer);
-        userChoice= Integer.parseInt(Console.readLine());
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        userChoice= Integer.parseInt(bf.readLine());
         assertThatThrownBy(()->isWrongInput(userChoice)).isInstanceOf(IllegalArgumentException.class);
     }
 }
