@@ -68,6 +68,9 @@ public class Application {
         return true;
     }
 
+    // 6. Get score of the current turn
+
+
     // 7. Judge strike
     public static int judgeStrike(String currentNumberOfInput, String numberOfTheAnswerInSameIndex, String answer) {
         if (answer.contains(currentNumberOfInput) && numberOfTheAnswerInSameIndex.equals(currentNumberOfInput)) {
@@ -85,17 +88,26 @@ public class Application {
     }
 
     // 9. Get result of the current turn
-    public static String getScoreOfTheCurrentTurn(String input, String answer) {
-        int ball = 0;
-        int strike = 0;
-        for (int i = 0; i < 3; i++) {
-            String currentNumberOfInput = String.valueOf(input.charAt(i));
-            String numberOfTheAnswerInTheSameIndex = String.valueOf(answer.charAt(i));
-            strike += judgeStrike(currentNumberOfInput, numberOfTheAnswerInTheSameIndex, answer);
-            ball += judgeBall(currentNumberOfInput, numberOfTheAnswerInTheSameIndex, answer);
+    public static String getResultOfTheCurrentTurn(String currentResult) {
+        StringTokenizer sb = new StringTokenizer(currentResult, " ");
+        String ball = sb.nextToken();
+        String strike = sb.nextToken();
+
+        String message = "";
+
+        if (ball.equals("0") && strike.equals("0")) {
+            message = "낫싱";
+        } else if (strike.equals("3")) {
+            message = "3스트라이크";
+        } else if (ball.equals("0")) {
+            message = strike + "스트라이크";
+        } else if (strike.equals("0")) {
+            message = ball + "볼";
+        } else {
+            message = ball + "볼 " + strike + "스트라이크";
         }
 
-        return Integer.toString(ball) + " " + Integer.toString(strike);
+        return message;
     }
 
 }
