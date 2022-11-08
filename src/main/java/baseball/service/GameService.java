@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class GameService {
     public Boolean addComputerNumber() {
-        return addComputerNumber();
+        return addComputerNumber(pickNumber(3));
     }
     public Boolean addComputerNumber(int number) {
         Number dto = Number.getInstance();
