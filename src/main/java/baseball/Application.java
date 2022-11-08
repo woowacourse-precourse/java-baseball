@@ -77,18 +77,16 @@ public class Application {
         }
     }
 
-    private static List<Integer> getElementBallAndStrike(List<Integer> computer, Integer index, Integer element) {
-        List<Integer> ballAndStrike = Arrays.asList(0, 0);
-
+    private static Integer getElementBallAndStrike(List<Integer> computer, Integer index, Integer element) {
+        //볼인 경우 1, 스트라이크인 경우 2, 아무것도 아닌 경우 0을 반환
         for (int i = 0; i < computer.size(); i++) {
             if (i != index && element == computer.get(i)) {
-                ballAndStrike.set(0, ballAndStrike.get(0) + 1);
+                return 1;
             } else if (i == index && element == computer.get(i)) {
-                ballAndStrike.set(1, ballAndStrike.get(1) + 1);
+                return 2;
             }
         }
-
-        return ballAndStrike;
+        return 0;
     }
 
 }
