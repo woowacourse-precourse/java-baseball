@@ -1,8 +1,10 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumber;
+import baseball.model.Constant.Score;
 import baseball.model.UserNumber;
 import baseball.view.UserView;
+
 
 public class BaseballGame {
     private static final int CNT_NUMBER = 3;
@@ -34,5 +36,6 @@ public class BaseballGame {
         }
 
     }
+
 
 }
