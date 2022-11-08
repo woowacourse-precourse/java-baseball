@@ -2,6 +2,9 @@ package baseball.printer;
 
 import baseball.data.GameData;
 
+/**
+ * 출력에 관한 고정된 문자열을 담아둔 열거형 클래스
+ */
 public enum PrintData {
     GAME_START("숫자 야구 게임을 시작합니다."),
     BALL("볼"),

@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 1. 입력받은 문자열에서 입력 오류가 있는지 검사.
- * 2. 오류가 없으면 정수형으로 변환 후 리스트에 옮긴다.
+ * 입력받은 문자열에서 입력 오류가 있는지 검사.
+ * 오류가 없으면 정수로 변환해서 돌려줌.
  */
 public class StringParser {
 

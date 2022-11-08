@@ -1,5 +1,8 @@
 package baseball.data;
 
+/**
+ * 게임 내 상수값들을 모아둔 클래스
+ */
 public class GameData {
     //게임 시작 설정
     public static final int GAME_SIZE = 3;
