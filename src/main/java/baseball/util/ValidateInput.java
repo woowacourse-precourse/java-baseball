@@ -6,12 +6,18 @@ import java.util.List;
 public class ValidateInput {
 
     public List<Integer> validateInput(String input) {
-
+        isValidateNumber(input);
         List<Integer> inputList = inputToList(input);
         return inputList;
     }
 
-
+    public void isValidateNumber(String input) {
+        try {
+            Double.parseDouble(input);
+        } catch (IllegalStateException e) {
+            throw new IllegalStateException("숫자가 아닌 값이 포함되어 있습니다");
+        }
+    }
 
     public List<Integer> inputToList(String input) {
 

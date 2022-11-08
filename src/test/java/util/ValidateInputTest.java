@@ -26,4 +26,13 @@ public class ValidateInputTest {
 
     }
 
+    @Test
+    void validate_숫자로_이루어져_있는지_확인() {
+        String input = "123";
+        Double number = (double) 123;
+        Double result = Double.parseDouble(input);
+        assertThat(result).isEqualTo(number);
+
+    }
+
 }
