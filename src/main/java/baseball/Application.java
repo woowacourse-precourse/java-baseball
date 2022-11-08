@@ -9,6 +9,7 @@ public class Application {
 
         private static final int NUM_DIGIT = 3;
         private static final int NUM_BOUNDARY = 10;
+        private static final boolean PLAYING = true;
 
         private int[] goalArr;
         private int[] usageArr;
@@ -21,6 +22,22 @@ public class Application {
         public void game() {
             gameInit();
             gamePrepare();
+            gamePlayLoop();
+        }
+
+        private void gamePlayLoop() {
+            while (PLAYING) {
+                if (gamePlay()) {
+                    break;
+                }
+            }
+        }
+
+        private boolean gamePlay() {
+//            Ready();
+//            play();
+//            return nextAction();
+            return false;
         }
 
         private void gameInit() {
