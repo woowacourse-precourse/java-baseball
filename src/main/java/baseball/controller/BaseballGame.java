@@ -43,11 +43,21 @@ public class BaseballGame {
                  System.out.println(this);
                  if(strike == CNT_NUMBER){
                      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                     ReStartGame(computerNumber);
                  }
              }
 
         }
 
+    }
+
+    private void ReStartGame(ComputerNumber computerNumber){
+        String input = userView.RestartAnswer();
+        if(input.equals("2")){
+            restart = true;
+        }else{
+            computerNumber.setRandom();
+        }
     }
 
     @Override
