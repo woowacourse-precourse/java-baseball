@@ -13,18 +13,15 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println(GAME_START);
 
-        Game game = new Game();
-        game.playGame();
-
+        Game.playGame();
 
     }
 
     public static void end() {
 
-        System.out.println(GAME_END);
-        AppConfig baseBall = new AppConfig();
+//        System.out.println(GAME_END);
 
-        baseBall.end();
+        throw new RuntimeException(GAME_END);
 
 
     }

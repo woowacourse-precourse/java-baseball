@@ -17,10 +17,12 @@ public class Print{
         if (countStrike > 0) {
             result = String.format("%d스트라이크", countStrike);
         }
+        if (0 < countBall && countBall < 3) {
+            result = String.format("%d볼", countBall);
+        }
         if (countStrike == 0 && countBall == 0) {
             result = "낫싱";
         }
-
 
         return result;
     }

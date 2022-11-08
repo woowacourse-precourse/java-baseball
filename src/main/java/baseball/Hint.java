@@ -8,9 +8,9 @@ import java.util.Map;
 
 public class Hint {
 
-
     public static int strike;
     public static int ball;
+
 
 
     public static int getStrike() {
@@ -20,9 +20,6 @@ public class Hint {
     public static int getBall() {
         return ball;
     }
-
-
-
 
 
     // 힌트 기능 동작
@@ -35,10 +32,16 @@ public class Hint {
             int computerKey = getKey(computerNumber, computerValue);
 
             countStrike(userValue, userKey, computerValue, computerKey);
-            countBall(userValue, userKey, computerValue, computerKey);
-
-
+            countBall(computerNumber, userValue);
         }
+
+    }
+
+    private static int countBall(Map<Integer, Integer> computerNumber, int userValue) {
+        if (computerNumber.containsValue(userValue)) {
+            ball++;
+        }
+        return ball;
     }
 
     public static int countStrike(Integer userValue, Integer userKey, Integer computerValue, Integer computerKey) {
@@ -48,20 +51,4 @@ public class Hint {
         }
         return strike;
     }
-
-    // 볼 (같은 수 == 같은 수 && 같은 자리 != 같은 자리)
-    public static int countBall(Integer userValue, Integer userKey, Integer computerValue, Integer computerKey) {
-
-        if ( userKey != computerKey && userValue == computerValue ) {
-            ball++;
-        }
-
-        return ball;
-
-
-    }
-
-
-
-
 }
