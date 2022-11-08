@@ -21,7 +21,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 컴퓨터_사용자입력_값비교_테스트(){
+    void 컴퓨터_사용자입력_값비교_테스트1(){
         assertRandomNumberInRangeTest(
                 () -> {
                     run("123", "456", "789", "987", "879", "459", "469", "2");
@@ -29,6 +29,17 @@ class ApplicationTest extends NsTest {
                             "1스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
                 },
                 4,6,9
+        );
+    }
+    @Test
+    void 컴퓨터_사용자입력_값비교_테스트2(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "456", "124", "351", "135", "1", "123", "456","789" , "321","821","831","2");
+                    assertThat(output()).contains("1볼 1스트라이크", "1볼","1스트라이크", "3볼","3스트라이크",
+                            "2볼", "낫싱", "1볼", "1볼 1스트라이크","2스트라이크" ,"3스트라이크","게임 종료");
+                },
+                1,3,5,8,3,1
         );
     }
 
