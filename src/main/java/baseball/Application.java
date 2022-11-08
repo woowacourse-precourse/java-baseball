@@ -19,6 +19,12 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        while(true) {
+            if (playGame(generateRandomNum()).equals("2")) {
+                break;
+            }
+
+        }
     }
     public static List<Integer> generateRandomNum() {
         List<Integer> computer = new ArrayList<>();
@@ -32,7 +38,7 @@ public class Application {
         return computer;
     }
 
-    public static void playGame(List<Integer> computer){
+    public static String playGame(List<Integer> computer){
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
             System.out.println("숫자를 입력해주세요 : ");
@@ -43,7 +49,7 @@ public class Application {
             printNumberStatus(inputNums, computer);
         }
     }
-    private static void printNumberStatus(int[] inputNums, List<Integer> computer){
+    private static void saveNumberStatus(int[] inputNums, List<Integer> computer){
         GameStatus gameStatus = new GameStatus();
 
         for(int i =0 ; i<inputNums.length; i++){
