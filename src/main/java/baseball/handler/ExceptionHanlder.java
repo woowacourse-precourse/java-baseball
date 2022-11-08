@@ -45,7 +45,7 @@ public class ExceptionHanlder {
         }
     }
 
-    public void CatchNonZero(String inputBalls) {
+    public void catchNonZero(String inputBalls) {
 
         List<Integer> checkNonZero = new ArrayList<>();
         String[] inputBallArr = inputBalls.split("");

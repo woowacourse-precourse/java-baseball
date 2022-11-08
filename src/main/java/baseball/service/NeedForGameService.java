@@ -16,7 +16,6 @@ public class NeedForGameService {
     public static void initData() {
         strike = 0;
         ball = 0;
-        errorCheck = 0;
     }
 
     public static List<Integer> stringToList(String inputBalls) {
@@ -38,7 +37,7 @@ public class NeedForGameService {
         exceptionHanlder.checkInputBallSize(inputBall);
         exceptionHanlder.checkNumber(inputBall);
         exceptionHanlder.checkSameInput(inputBall);
-        exceptionHanlder.CatchNonZero(inputBall);
+        exceptionHanlder.catchNonZero(inputBall);
     }
 
     public static void checkStrike(){
@@ -55,7 +54,7 @@ public class NeedForGameService {
 
     public static void countBalls(int index) {
         for(int i = 0; i < BALLCOUNTS; i++){
-            if(i != index && RANDOMBALL.get(i) == userBall.get(index)) ball++;
+            if(i != index && RANDOMBALL.get(index) == userBall.get(i)) ball++;
         }
     }
 
