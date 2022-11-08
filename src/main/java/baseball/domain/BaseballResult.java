@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.resource.GameMessage;
+import baseball.resource.GameValue;
 
 public class BaseballResult {
     private int strike;
@@ -31,20 +32,20 @@ public class BaseballResult {
     }
 
     public boolean isThreeStrike() {
-        return getStrike() == 3;
+        return getStrike() == GameValue.THREE_STRIKE;
     }
 
     @Override
     public String toString() {
-        if (getStrike() > 0 && getBall() > 0) {
+        if (getStrike() > GameValue.ZERO && getBall() > GameValue.ZERO) {
             return getBallMessage() + " " + getStrikeMessage();
         }
 
-        if (getStrike() > 0 && getBall() == 0) {
+        if (getStrike() > GameValue.ZERO && getBall() == GameValue.ZERO) {
             return getStrikeMessage();
         }
 
-        if (getStrike() == 0 && getBall() > 0) {
+        if (getStrike() == GameValue.ZERO && getBall() > GameValue.ZERO) {
             return getBallMessage();
         }
 
