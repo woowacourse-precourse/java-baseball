@@ -60,7 +60,7 @@ public class Game {
     static void restartGame() {
         int temp = Integer.parseInt(Console.readLine());
         if (temp == 2)
-            System.exit(0);
+            return;
         initializeGame();
     }
 
