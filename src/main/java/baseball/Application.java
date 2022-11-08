@@ -15,17 +15,18 @@ public class Application {
         } while (reGame == 1);
     }
 
-    private static List<Integer> getRandomNumberList() {
+    public static List<Integer> getRandomNumberList() {
         List computer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        System.out.println(computer);
         return computer;
     }
 
-    private static String getUserInput() {
+    public static String getUserInput() {
         String userInput = Console.readLine();
         return userInput;
     }
 
-    private static List<Integer> convertStringToIntegerList(String userInput) {
+    public static List<Integer> convertStringToIntegerList(String userInput) {
         List<String> userInputStringList = Arrays.asList(userInput.split(""));
         List<Integer> userAnswer = new ArrayList<>();
 
@@ -37,7 +38,7 @@ public class Application {
         return userAnswer;
     }
 
-    private static boolean isUserInputLengthConstant(int minLength, int maxLength, String userInput) {
+    public static boolean isUserInputLengthConstant(int minLength, int maxLength, String userInput) {
         if (userInput.length() < minLength && userInput.length() > maxLength) {
             return false;
         }
@@ -45,7 +46,7 @@ public class Application {
         return true;
     }
 
-    private static boolean isUserInputNumeric(String userInput) {
+    public static boolean isUserInputNumeric(String userInput) {
         for (int i = 0; i < userInput.length(); i++) {
             char eachChar = userInput.charAt(i);
             if (!Character.isDigit(eachChar)) {
@@ -56,7 +57,7 @@ public class Application {
         return true;
     }
 
-    private static boolean isUserInputNotDuplicated(String userInput) {
+    public static boolean isUserInputNotDuplicated(String userInput) {
         Set<String> tokenizedStringSet = new HashSet<>();
         for (int i = 0; i < userInput.length(); i++) {
             tokenizedStringSet.add(userInput.substring(i, i + 1));
@@ -69,7 +70,7 @@ public class Application {
         return true;
     }
 
-    private static void validate(String userInput) {
+    public static void validate(String userInput) {
         if (!isUserInputLengthConstant(3, 3, userInput)) {
             throw new IllegalArgumentException("값이 허용 범위를 벗어났습니다.");
         } else if (!isUserInputNumeric(userInput)) {
@@ -79,7 +80,7 @@ public class Application {
         }
     }
 
-    private static Integer getElementBallOrStrike(List<Integer> computer, Integer index, Integer element) {
+    public static Integer getElementBallOrStrike(List<Integer> computer, Integer index, Integer element) {
         //볼인 경우 1, 스트라이크인 경우 2, 아무것도 아닌 경우 0을 반환
         for (int i = 0; i < computer.size(); i++) {
             if (i != index && element == computer.get(i)) {
@@ -91,7 +92,7 @@ public class Application {
         return 0;
     }
 
-    private static List<Integer> getUserAnswerBallAndStrike(List<Integer> computer, List<Integer> userAnswer) {
+    public static List<Integer> getUserAnswerBallAndStrike(List<Integer> computer, List<Integer> userAnswer) {
         List<Integer> ballAndStrike = Arrays.asList(0, 0, 0);
         for (int i = 0; i < userAnswer.size(); i++) {
             int ballOrStrike = getElementBallOrStrike(computer, i, userAnswer.get(i));
@@ -101,7 +102,7 @@ public class Application {
         return ballAndStrike;
     }
 
-    private static Integer getResult(List<Integer> ballAndStrike) {
+    public static Integer getResult(List<Integer> ballAndStrike) {
         //정답인 경우 1, n 볼 m 스트라이크의 경우 2, 낫싱인 경우 0을 반환
         if (ballAndStrike.get(1) == 3) {
             return 1;
@@ -112,7 +113,7 @@ public class Application {
         return 2;
     }
 
-    private static void playGame() {
+    public static void playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = getRandomNumberList();
         int result = 0;
@@ -131,7 +132,7 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
 
-    private static String parseResult(List<Integer> ballAndStrike) {
+    public static String parseResult(List<Integer> ballAndStrike) {
         if(ballAndStrike.get(0) == 3) {
             return "낫싱";
         }
@@ -149,14 +150,14 @@ public class Application {
         return parsedResult;
     }
 
-    private static Integer getReGame() {
+    public static Integer getReGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String choice = Console.readLine();
         validateReGame(choice);
         return Integer.parseInt(choice);
     }
 
-    private static void validateReGame(String choice) {
+    public static void validateReGame(String choice) {
         if (choice.equals("1") || choice.equals("2")) {
             throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
         }
