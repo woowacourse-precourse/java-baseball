@@ -2,7 +2,7 @@ package baseball.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.type.ResultTurn;
+import baseball.constant.ResultTurn;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ public class TurnScoreTest {
     @DisplayName("볼 수 반환")
     @Test
     void getBalls() {
-        TurnScore turnScore = new TurnScore(2, 1, ResultTurn.StrikesAndBalls);
+        TurnScore turnScore = new TurnScore(2, 1, ResultTurn.STRIKES_AND_BALLS);
         int result = turnScore.getBalls();
         assertThat(result).isEqualTo(2);
     }
@@ -19,7 +19,7 @@ public class TurnScoreTest {
     @DisplayName("스트라이크 수 반환")
     @Test
     void getStrikes() {
-        TurnScore turnScore = new TurnScore(2, 1, ResultTurn.StrikesAndBalls);
+        TurnScore turnScore = new TurnScore(2, 1, ResultTurn.STRIKES_AND_BALLS);
         int result = turnScore.getStrikes();
         assertThat(result).isEqualTo(1);
     }
@@ -45,9 +45,9 @@ public class TurnScoreTest {
     @DisplayName("턴 결과 반환")
     @Test
     void getResultTurn() {
-        TurnScore turnScore = new TurnScore(2, 1, ResultTurn.StrikesAndBalls);
+        TurnScore turnScore = new TurnScore(2, 1, ResultTurn.STRIKES_AND_BALLS);
         ResultTurn result = turnScore.getResultTurn();
-        assertThat(result).isEqualTo(ResultTurn.StrikesAndBalls);
+        assertThat(result).isEqualTo(ResultTurn.STRIKES_AND_BALLS);
     }
 
     @DisplayName("턴 결과 저장")
@@ -58,7 +58,7 @@ public class TurnScoreTest {
         turnScore.setStrikes(1);
         turnScore.setResultTurn();
         ResultTurn result = turnScore.getResultTurn();
-        assertThat(result).isEqualTo(ResultTurn.StrikesAndBalls);
+        assertThat(result).isEqualTo(ResultTurn.STRIKES_AND_BALLS);
     }
 
     @DisplayName("아웃 여부 확인")
