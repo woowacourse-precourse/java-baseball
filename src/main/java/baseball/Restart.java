@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-class Restart {
+public class Restart {
     private final static String YES = "1";
     private final static String NO = "2";
     private final String reply;

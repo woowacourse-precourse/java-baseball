@@ -1,12 +1,12 @@
 package baseball;
 
 
-class PlayBaseball {
+public class PlayBaseball {
     private final String computerNumber;
     private final String playerNumber;
     private final static int LENGTH = 3;
-    private int strike = 0;
-    private int ball = 0;
+    int strike = 0;
+    int ball = 0;
 
     PlayBaseball(String computerNumber, String playerNumber) {
         this.computerNumber = computerNumber;

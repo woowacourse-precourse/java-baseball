@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-class Input {
+public class Input {
     private final static int LENGTH = 3;
     private final static int INT_CHAR_1 = 49;
     private final static int INT_CHAR_9 = 57;
