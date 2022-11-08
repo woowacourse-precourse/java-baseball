@@ -10,6 +10,9 @@ public class Answer {
 
     private final List<BaseballNumber> answer;
 
+    /**
+     * 해당 인스턴스는 생성 시 랜덤 숫자(난수)로 구성됩니다.
+     */
     public Answer() {
         this.answer = baseballNumberListOfRandomNumbers();
     }

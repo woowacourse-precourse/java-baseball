@@ -5,11 +5,11 @@ import java.util.Objects;
 
 public final class BaseballNumber {
 
-    private final int position;
-    private final int number;
-
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 9;
+
+    private final int position;
+    private final int number;
 
     BaseballNumber(int position, int number) {
         validateNumberRange(number);

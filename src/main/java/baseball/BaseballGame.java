@@ -6,7 +6,7 @@ import baseball.domain.game_number.Answer;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 
-public class BaseballGame {
+public final class BaseballGame {
 
     private final NumberScanner numberScanner;
     private final MessagePrinter messagePrinter;
@@ -22,7 +22,7 @@ public class BaseballGame {
 
         messagePrinter.printStartMessage();
 
-        while (oneOrTwoForRestartGame != 2) {
+        while (oneOrTwoForRestartGame != 2) {  // 0은 게임 진행 중, 1은 게임 재시작, 2는 게임 끝... 의미 전달을 잘 할순 없을까?
             messagePrinter.printEnterNumberMessage();
 
             String inputNumber = numberScanner.inputNumber();
