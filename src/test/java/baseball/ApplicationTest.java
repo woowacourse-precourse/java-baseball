@@ -26,22 +26,13 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("랜덤숫자가 서로다른 숫자를 가지고 있는지 확인")
     void createRandomTargetNum() throws Exception{
-        Application app= new Application();
-        Method createRandomTargetNum = app.getClass().getDeclaredMethod("createRandomTargetNum");
-        createRandomTargetNum.setAccessible(true);
-        createRandomTargetNum.invoke(app);
-
-        Field targetField = app.getClass().getDeclaredField("targetNum");
-        targetField.setAccessible(true);
-        List<Integer> targetNum = (List<Integer>) targetField.get(app);
+        List<Integer> targetNum = getTargetNum();
         Set<Integer> set = new HashSet<>(targetNum);
 
         Assertions.assertThat(set.size()).isEqualTo(targetNum.size());
     }
 
-    @Test
-    @DisplayName("랜덤숫자가 3개 선택되었는지 확인")
-    void RandomNumSize() throws Exception {
+    private List<Integer> getTargetNum() throws  Exception {
         Application app= new Application();
         Method createRandomTargetNum = app.getClass().getDeclaredMethod("createRandomTargetNum");
         createRandomTargetNum.setAccessible(true);
@@ -50,6 +41,13 @@ class ApplicationTest extends NsTest {
         Field targetField = app.getClass().getDeclaredField("targetNum");
         targetField.setAccessible(true);
         List<Integer> targetNum = (List<Integer>) targetField.get(app);
+        return targetNum;
+    }
+
+    @Test
+    @DisplayName("랜덤숫자가 3개 선택되었는지 확인")
+    void RandomNumSize() throws Exception {
+        List<Integer> targetNum = getTargetNum();
         Assertions.assertThat(targetNum.size()).isEqualTo(3);
     }
 
