@@ -30,27 +30,32 @@ public class Count {
         return BALL == 0 && STRIKE == 0;
     }
 
-
     public boolean isCorrect() {
         return STRIKE == Common.FULL_STRIKE;
     }
 
+    public String getBallCount() {
+        if (BALL != Common.NOTHING) {
+            return BALL + "볼 ";
+        }
+        return "";
+    }
+
+    public String getStrikeCount() {
+        if (STRIKE != Common.NOTHING) {
+            return STRIKE + "스트라이크";
+        }
+        return "";
+    }
+
     @Override
     public String toString() {
+        if (isNothing()) { return "낫싱"; }
+
         String hint = "";
 
-        if (isNothing()) {
-            hint += "낫싱";
-            return hint;
-        }
-
-        if (BALL != Common.NOTHING) {
-            hint += BALL + "볼 ";
-        }
-
-        if (STRIKE != Common.NOTHING) {
-            hint += STRIKE + "스트라이크";
-        }
+        hint += getBallCount();
+        hint += getStrikeCount();
 
         return hint;
     }
