@@ -8,13 +8,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.vo.GameInterfaceMsg.GAME_START;
-import static baseball.vo.GameInterfaceMsg.REQUEST_INPUT;
+import static baseball.vo.GameInterfaceMsg.*;
 
 public class BaseballGameService {
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
     private static final int RESULT_COUNT = 3;
+    private static final int RESTART_NUMBER = 1;
 
     Computer computer;
     Player player;
@@ -35,6 +35,12 @@ public class BaseballGameService {
         System.out.print(REQUEST_INPUT.getMessage());
         setPlayer();
         computeScore(computer.getResult(), player.getPlayerNumbers());
+    }
+
+    public boolean isRestart() {
+        System.out.println(GAME_RESTART_END.getMessage());
+        int input = parser.parseInt(Console.readLine());
+        return input == RESTART_NUMBER;
     }
 
     private void computeScore(List<Integer> result, List<Integer> playerNumbers) {
