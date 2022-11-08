@@ -23,6 +23,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
             boolean nothingResult = nothing(userNumber, computerNumber);
+            HashMap<String, Integer> score = countBallAndStrike(userNumber, computerNumber);
         }
         while () {
             //게임 종료
@@ -83,5 +84,20 @@ public class Application {
             return true;
         }
         return false;
+    }
+    public static HashMap<String, Integer> countBallAndStrike(List<Integer> userNumber, List<Integer> computerNumber) {
+        HashMap<String, Integer> score = new HashMap<>();
+        score.put("ball", 0);
+        score.put("strike", 0);
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (computerNumber.contains(userNumber.get(i))) {
+                score.put("ball", score.get("ball") + 1);
+            }
+            if (userNumber.get(i).equals(computerNumber.get(i))) {
+                score.put("strike", score.get("strike") + 1);
+                score.put("ball", score.get("ball") - 1);
+            }
+        }
+        return score;
     }
 }
