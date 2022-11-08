@@ -1,14 +1,14 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -118,7 +118,7 @@ class ApplicationTest extends NsTest {
 
         @Test
         @DisplayName("1, 2가 아닌 수")
-       void 재시작_예외_테스트3() {
+        void 재시작_예외_테스트3() {
             assertRandomNumberInRangeTest(
                     () -> {
                         assertThatThrownBy(() -> runException("789", "3"))
