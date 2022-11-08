@@ -1,44 +1,38 @@
-package baseball.utils;
+package baseball.user;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import baseball.user.UserInput;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class UserInputTest {
 
-    private static class InputBox {
-        String testInput;
-    }
-
-    private InputBox inputBox = new InputBox();
-    private UserInput userInput = new UserInput(() -> {
-        return inputBox.testInput;
-    });
+    private String testInput;
+    private final UserInput userInput = new UserInput(() -> testInput);
 
     @Test
     @DisplayName("올바른 게임 인풋")
     void validInput() {
         Integer[] expected = new Integer[]{1, 2, 3};
-        inputBox.testInput = "123";
-        assertArrayEquals(expected, userInput.getGameInput());
+        testInput = "123";
+        assertArrayEquals(expected, userInput.pitching());
     }
 
     @Test
     @DisplayName("올바른 옵션 인풋")
     void validOptionInput() {
-        inputBox.testInput = "1";
-        assertEquals(userInput.isContinue(), true);
+        testInput = "1";
+        assertTrue(userInput.isContinue());
     }
 
     @Test
     @DisplayName("올바르지 않는 옵션 인풋")
     void invalidOptionInput() {
-        inputBox.testInput = "3";
-        assertThatThrownBy(() -> userInput.isContinue())
-            .isInstanceOf(IllegalArgumentException.class);
+        testInput = "3";
+        assertThatThrownBy(userInput::isContinue).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -72,9 +66,8 @@ public class UserInputTest {
     }
 
     private void testGameInputException(String input) {
-        inputBox.testInput = input;
-        assertThatThrownBy(() -> userInput.getGameInput())
-            .isInstanceOf(IllegalArgumentException.class);
+        testInput = input;
+        assertThatThrownBy(userInput::pitching).isInstanceOf(IllegalArgumentException.class);
     }
 
 }

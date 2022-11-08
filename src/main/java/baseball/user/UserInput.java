@@ -1,10 +1,12 @@
-package baseball;
+package baseball.user;
 
 import static baseball.BaseBallGame.GAME_EXIT;
 import static baseball.BaseBallGame.GAME_NUMBER_LENGTH;
 import static baseball.BaseBallGame.GAME_RESTART;
 
-import baseball.utils.InputReader;
+import baseball.user.pitcher.Pitcher;
+import baseball.user.util.InputReader;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -53,7 +55,6 @@ public class UserInput implements Pitcher, OptionSelector {
         }
     }
 
-    // 3 길이체크
     private void checkLengthThree(Integer input) {
         if (INPUT_LOWER_BOUND <= input && input <= INPUT_UPPER_BOUND) {
             return;
@@ -73,13 +74,20 @@ public class UserInput implements Pitcher, OptionSelector {
     }
 
     private void checkDigitValidation(final Integer[] inputArray) {
-        Set<Integer> uniqueDigits = new HashSet<>();
-        for (Integer input : inputArray) {
-            checkIfZero(input);
-            uniqueDigits.add(input);
-        }
+        checkUniqueDigitRule(inputArray);
+        checkNonZeroDigitRule(inputArray);
+    }
+
+    private void checkUniqueDigitRule(final Integer[] inputArray) {
+        Set<Integer> uniqueDigits = new HashSet<>(Arrays.asList(inputArray));
         if (uniqueDigits.size() < GAME_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkNonZeroDigitRule(final Integer[] inputArray) {
+        for (Integer input : inputArray) {
+            checkIfZero(input);
         }
     }
 

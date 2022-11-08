@@ -1,4 +1,4 @@
-package baseball;
+package baseball.user;
 
 public interface OptionSelector {
 

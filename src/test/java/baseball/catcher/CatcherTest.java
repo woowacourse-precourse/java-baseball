@@ -1,13 +1,10 @@
-package baseball;
+package baseball.catcher;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import baseball.utils.NumberGeneratorImpl;
+import baseball.GameResult;
+import baseball.catcher.Catcher;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,24 +18,31 @@ public class CatcherTest {
 
     @Test
     @DisplayName("볼 카운팅")
-    void catchBallTest() {
+    void countingBallTest() {
         catcher = new Catcher(() -> Arrays.asList(3, 2, 1));
+        catcher.initRandomNumbers();
         GameResult gameResult = catcher.catching(new Integer[]{1, 2, 3});
-        assertEquals(gameResult.getBallCount(), 2);
+        assertEquals(2, gameResult.getBallCount());
     }
 
     @Test
     @DisplayName("스트라이크 카운팅")
-    void catchCountTest() {
+    void countingStrikeTest() {
         catcher = new Catcher(() -> Arrays.asList(3, 2, 1));
+        catcher.initRandomNumbers();
         GameResult gameResult = catcher.catching(new Integer[]{1, 2, 3});
-        assertEquals(gameResult.getStrikeCount(), 1);
+        assertEquals(1, gameResult.getStrikeCount());
     }
 
+    /**
+     * 정보 은닉을 위해 catcher.getAnswer() 메서드 삭제
+     */
+    /*
     @Test
     @DisplayName("올바른 정답 생성")
     void validAnswer() {
         catcher = new Catcher(new NumberGeneratorImpl());
+        catcher.initRandomNumbers();
         assertTrue(check(catcher.getAnswer()));
     }
 
@@ -47,12 +51,21 @@ public class CatcherTest {
     }
 
     private boolean checkRange(final List<Integer> answer) {
+        int invalidDigitCount = 0;
         for (Integer digit : answer) {
-            if (DIGIT_LOWER_BOUND > digit || digit > DIGIT_UPPER_BOUND) {
-                return false;
-            }
+            invalidDigitCount += isInInValidRange(digit);
+        }
+        if (invalidDigitCount > 0) {
+            return false;
         }
         return true;
+    }
+
+    private int isInInValidRange(Integer digit) {
+        if (DIGIT_LOWER_BOUND <= digit && digit <= DIGIT_UPPER_BOUND) {
+            return 0;
+        }
+        return 1;
     }
 
     private boolean checkDupDigit(final List<Integer> answer) {
@@ -63,5 +76,5 @@ public class CatcherTest {
     private boolean checkLength(final List<Integer> answer) {
         return ANS_SIZE.equals(answer.size());
     }
-
+    */
 }

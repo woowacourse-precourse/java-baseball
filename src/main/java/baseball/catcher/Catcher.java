@@ -1,8 +1,9 @@
-package baseball;
+package baseball.catcher;
 
 import static baseball.BaseBallGame.GAME_NUMBER_LENGTH;
 
-import baseball.utils.NumberGenerator;
+import baseball.GameResult;
+import baseball.catcher.util.NumberGenerator;
 import java.util.List;
 
 public class Catcher {
@@ -17,10 +18,6 @@ public class Catcher {
 
     public void initRandomNumbers() {
         answer = numberGenerator.generateNumber();
-    }
-
-    public List<Integer> getAnswer() {
-        return this.answer;
     }
 
     public GameResult catching(Integer[] pitch) {

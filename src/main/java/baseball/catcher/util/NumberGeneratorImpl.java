@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball.catcher.util;
 
 import static baseball.BaseBallGame.GAME_NUMBER_LENGTH;
 
@@ -15,11 +15,15 @@ public class NumberGeneratorImpl implements NumberGenerator {
     public List<Integer> generateNumber() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < GAME_NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(DIGIT_LOWER_BOUND, DIGIT_UPPER_BOUND);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
+            setUniqueNumber(numbers);
         }
         return numbers;
+    }
+
+    private void setUniqueNumber(List<Integer> numbers) {
+        int randomNumber = Randoms.pickNumberInRange(DIGIT_LOWER_BOUND, DIGIT_UPPER_BOUND);
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber);
+        }
     }
 }
