@@ -59,7 +59,7 @@ class ApplicationTest extends NsTest {
 
 
         //when
-        int result = Application.compareComputerWithUser(test, user);
+        int result = Application.compareNumberComputerWithUser(test, user);
 
         //given
         assertThat(result).isEqualTo(2);

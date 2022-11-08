@@ -60,7 +60,7 @@ public class Application {
         return user;
     }
 
-    public static int compareComputerWithUser(List<Integer> computer, List<Integer> user) {
+    public static int compareNumberComputerWithUser(List<Integer> computer, List<Integer> user) {
         int count = 0;
         for (int i = 0; i < computer.size(); i++) {
             if (computer.contains(user.get(i))) {
@@ -82,7 +82,7 @@ public class Application {
     }
 
     public static String resultJudgement(List<Integer> computer, List<Integer> user) {
-        int sameNumberCount = compareComputerWithUser(computer, user);
+        int sameNumberCount = compareNumberComputerWithUser(computer, user);
         int strikeCount = strikeCount(computer, user);
         int ballCount = sameNumberCount - strikeCount;
 
