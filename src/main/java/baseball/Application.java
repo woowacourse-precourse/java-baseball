@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -117,6 +118,22 @@ public class Application {
 
     public static List<Integer> userInput() {
         List<Integer> userGuess = new ArrayList<>();
+
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+
+        try {
+            boolean error = gameInputException(input);
+
+            if (error) {
+                throw new IllegalArgumentException();
+            } else {
+                userGuess = guessStringToList(input);
+            }
+
+        } catch (IllegalArgumentException e) {
+
+        }
 
         return userGuess;
     }
