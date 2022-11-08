@@ -51,6 +51,19 @@ public class ExecuteGame extends IllegalArgumentException {
         }
     }
 
+    public void play() {
+        String computer = RandomNumberMaker.computer();
+        System.out.println(computer);
+        BaseBallGame baseBallGame = new BaseBallGame(computer);
+        do {
+            String userInput = getUserValidInput();
+            baseBallGame.playBaseBall(userInput);
+            Map<String, Integer> result = baseBallGame.calculateScores(userInput);
+            boolean isCorrect = baseBallGame.isRightAnswer(result);
+            if (isCorrect) {
+                break;
+            }
+        } while (true);
     }
 
 
