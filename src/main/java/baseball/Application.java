@@ -24,6 +24,7 @@ public class Application {
                 check_message(ball, strike);
             }
             end_message();
+            game = end_game();
         }
     }
     public static void start(){
@@ -79,10 +80,10 @@ public class Application {
             System.out.println("낫싱");
         }
         else if(ball != 0 && strike == 0){
-            System.out.println(strike + "볼");
+            System.out.println(ball + "볼");
         }
         else if(ball == 0 && strike != 0){
-            System.out.println(ball + "스트라이크");
+            System.out.println(strike + "스트라이크");
         }
         else{
             System.out.println(ball+"볼 " + strike + "스트라이크");
