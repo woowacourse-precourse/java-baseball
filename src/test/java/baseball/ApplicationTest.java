@@ -76,6 +76,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예측값입력_범위_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("94"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
