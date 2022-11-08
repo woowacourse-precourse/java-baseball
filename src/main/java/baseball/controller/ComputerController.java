@@ -16,6 +16,7 @@ public class ComputerController {
     private static final String NOTHING_MESSAGE = "낫싱";
     private int strikeCount;
     private int ballCount;
+    OutputView outputView = new OutputView();
 
     public void startGame(GameNumber gameNumber) {
         gameNumber.setComputerNumbers();
@@ -51,19 +52,35 @@ public class ComputerController {
     public void provideHint() {
         String hintMessage = "";
 
+        hintMessage += getBallHintMessage();
+        hintMessage += getStrikeHintMessage();
+        hintMessage += getNotingHintMessage();
+
+        outputView.printBaseballHint(hintMessage);
+    }
+
+    private String getBallHintMessage() {
         if (ballCount > 0) {
-            hintMessage = hintMessage + ballCount + BALL_MESSAGE + ' ';
+            return ballCount + BALL_MESSAGE + " ";
         }
 
+        return "";
+    }
+
+    private String getStrikeHintMessage() {
         if (strikeCount > 0) {
-            hintMessage = hintMessage + strikeCount + STRIKE_MESSAGE + ' ';
+            return strikeCount + STRIKE_MESSAGE + " ";
         }
 
+        return "";
+    }
+
+    private String getNotingHintMessage() {
         if (ballCount == 0 && strikeCount == 0) {
-            hintMessage += NOTHING_MESSAGE;
+            return NOTHING_MESSAGE;
         }
 
-        System.out.println(hintMessage);
+        return "";
     }
 
     public boolean isThreeStrike() {
