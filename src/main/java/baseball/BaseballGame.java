@@ -9,7 +9,7 @@ public class BaseballGame {
     private int strikeNumber = 0;
     private int ballNumber = 0;
 
-    public void SetStrikeNumber(BaseballNumber oppositeNumber, BaseballNumber myNumber) {
+    public void setStrikeNumber(BaseballNumber oppositeNumber, BaseballNumber myNumber) {
         ArrayList<Integer> oppositeList = oppositeNumber.getNumbers();
         ArrayList<Integer> myList = myNumber.getNumbers();
 
@@ -20,7 +20,7 @@ public class BaseballGame {
         }
     }
 
-    public void SetBallNumber(BaseballNumber oppositeNumber, BaseballNumber myNumber) {
+    public void setBallNumber(BaseballNumber oppositeNumber, BaseballNumber myNumber) {
         ArrayList<Integer> oppositeList = oppositeNumber.getNumbers();
         ArrayList<Integer> myList = myNumber.getNumbers();
         int currentOppositeNumber;
@@ -51,7 +51,7 @@ public class BaseballGame {
         ballNumber -= strikeNumber;
     }
 
-    public void PrintResult() {
+    public void printResult() {
         if (strikeNumber == 0 && ballNumber == 0)
             System.out.println("낫싱");
         if (strikeNumber == 0 && ballNumber > 0)
@@ -76,7 +76,7 @@ public class BaseballGame {
         return false;
     }
 
-    public void StartGame() {
+    public void startGame() {
         BaseballNumber OppositeNumber = new BaseballNumber();
         BaseballNumber MyNumber = new BaseballNumber();
 
@@ -85,9 +85,9 @@ public class BaseballGame {
 
         while (true) {
             MyNumber.setNumbers();
-            SetStrikeNumber(OppositeNumber, MyNumber);
-            SetBallNumber(OppositeNumber, MyNumber);
-            PrintResult();
+            setStrikeNumber(OppositeNumber, MyNumber);
+            setBallNumber(OppositeNumber, MyNumber);
+            printResult();
 
             if (strikeNumber == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");

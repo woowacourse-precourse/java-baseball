@@ -5,7 +5,7 @@ public class Application {
         BaseballGame baseballGame = new BaseballGame();
 
         while (true) {
-            baseballGame.StartGame();
+            baseballGame.startGame();
 
             if (!baseballGame.isRestart())
                 break;
