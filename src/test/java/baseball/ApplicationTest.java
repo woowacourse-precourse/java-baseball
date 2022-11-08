@@ -31,7 +31,7 @@ class ApplicationTest extends NsTest {
     @Test
     void exception_test_not_number() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() ->runException("abc"))
+                assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -39,7 +39,15 @@ class ApplicationTest extends NsTest {
     @Test
     void exception_same_number() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() ->runException("112"))
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void exception_input_null() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
