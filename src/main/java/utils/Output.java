@@ -12,7 +12,7 @@ public class Output {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void getResult(int ballCount, int strikeCount) {
+    public static void result(int ballCount, int strikeCount) {
         String result = "";
         result += getBallResult(ballCount);
         result += getStrikeResult(strikeCount);
