@@ -8,7 +8,10 @@ public class Number {
     public static int rangeCheck() {
         String beforeCheck = Console.readLine();
         if(beforeCheck.length()>3){
-            throw new IllegalArgumentException("입력값은 3자리 숫자여야 합니다.");
+            throw new IllegalArgumentException("입력값 초과, 입력값은 3자리 숫자여야 합니다.");
+        }
+        if(beforeCheck.length()<3){
+            throw new IllegalArgumentException("입력값 미달, 입력값은 3자리 숫자여야 합니다.");
         }
 
         try{
