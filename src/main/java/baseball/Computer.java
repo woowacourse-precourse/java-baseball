@@ -20,7 +20,7 @@ public class Computer {
     }
 
     public Balls createComputerBalls() {
-        while (!computerBalls.validateBallsSize()) {
+        while (!computerBalls.equalBallsSize()) {
             Ball candidateBall = createComputerBall();
             if (!computerBalls.hasBall(candidateBall)) {
                 computerBalls.addBall(candidateBall);
