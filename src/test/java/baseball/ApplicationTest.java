@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
+import java.util.HashSet;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -26,6 +28,54 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 기능1_랜덤넘버_테스트 () {
+        HashSet<Character> checkDuplicate = new HashSet<>();
+        String computerNumber = Application.getRandomNumbers();
+        computerNumber.chars().forEach(item -> checkDuplicate.add((char) item));
+        assertThat(checkDuplicate.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 기능3_사용자넘버_테스트 () {
+        assertThatThrownBy(() -> Application.checkUserNumbersValidation("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 기능4_StrikeBall_테스트 () {
+        assertThat(Application.countStrikeBall("123", "312")).isEqualTo("03");
+        assertThat(Application.countStrikeBall("123", "412")).isEqualTo("02");
+        assertThat(Application.countStrikeBall("123", "123")).isEqualTo("30");
+    }
+
+    @Test
+    void 기능4_결과문출력_테스트 () {
+        assertThat(Application.getMatchOutputStatement("123", "312")).isEqualTo("3볼");
+        assertThat(Application.getMatchOutputStatement("123", "412")).isEqualTo("2볼");
+        assertThat(Application.getMatchOutputStatement("123", "134")).isEqualTo("1볼 1스트라이크");
+        assertThat(Application.getMatchOutputStatement("123", "123")).isEqualTo("3스트라이크");
+        assertThat(Application.getMatchOutputStatement("123", "465")).isEqualTo("낫싱");
+    }
+
+
+    @Test
+    void 기능5_게임_한싸이클_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    runBaseballTest("246", "597", "539", "135");
+                    assertThat(output()).contains("낫싱", "1볼", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+
+
+    private void runBaseballTest(final String... args) {
+        System.setIn(new ByteArrayInputStream(String.join("\n", args).getBytes()));
+        Application.runBaseball();
     }
 
     @Override
