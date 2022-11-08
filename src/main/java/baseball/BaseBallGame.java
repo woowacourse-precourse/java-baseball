@@ -62,45 +62,6 @@ public class BaseBallGame {
         return Integer.parseInt(num);
     }
 
-
-    public List<Integer> findNumber(List<Integer> computer, List<Integer> user) {
-        int strike = 0;
-        int ball = 0;
-
-        for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i) == user.get(i)) {
-                strike++;
-            } else if (computer.contains(user.get(i))) {
-                ball++;
-            }
-        }
-
-        List<Integer> strikeAndBall = new ArrayList<>();
-        strikeAndBall.add(strike);
-        strikeAndBall.add(ball);
-        return strikeAndBall;
-    }
-
-
-    public String numberToString(List<Integer> strikeAndBall) {
-        int strike = strikeAndBall.get(0);
-        int ball = strikeAndBall.get(1);
-
-        if (strike == 3) {
-            System.out.printf("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return "게임 종료";
-        } else if (strike != 0 && ball != 0) {
-            answer = ball + "볼 " + strike + "스트라이크";
-        } else if (strike != 0) {
-            answer = strike + "스트라이크";
-        } else if (ball != 0) {
-            answer = ball + "볼";
-        } else {
-            answer = "낫싱";
-        }
-        return answer;
-    }
-
     public void reStart(String userNum) {
         if (userNum.equals("1")) run();
         else if (userNum.equals("2")) return;
@@ -111,13 +72,14 @@ public class BaseBallGame {
         List<Integer> computerNumber = randomNumbers();
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        Game game = new Game(computerNumber);
         while (true) {
             System.out.printf("숫자를 입력해주세요 : ");
             String userNum = Console.readLine();
             List<Integer> userNumber = inputNumbers(userNum);
-            List<Integer> strikeAndBall = findNumber(computerNumber, userNumber);
 
-            String answer = numberToString(strikeAndBall);
+            String answer = game.gameRun(userNumber);
+
             if (answer.equals("게임 종료")) break;
             else System.out.println(answer);
         }
