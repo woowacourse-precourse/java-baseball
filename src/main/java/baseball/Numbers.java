@@ -50,7 +50,7 @@ public class Numbers {
     }
 
     private void addNumber(int numberInt) {
-        Number number = new Number(numberInt);
+        Number number = Number.createNumber(numberInt);
         numbers.add(number);
     }
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Computer {
 
+
     private static Computer instance;
 
     private final List<Number> computerNumbers = new ArrayList<>();
@@ -30,7 +31,7 @@ public class Computer {
     private Number pickNewRandomNumber() {
         Number newRandomNumber;
         do {
-            newRandomNumber = new Number(Randoms.pickNumberInRange(1, 9));
+            newRandomNumber = Number.createRandomNumber();
         } while (computerNumbers.contains(newRandomNumber));
         return newRandomNumber;
     }
