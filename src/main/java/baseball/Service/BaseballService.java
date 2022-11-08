@@ -21,14 +21,33 @@ public class BaseballService {
             user = guessThreeNumbers();
         }
 
-        // 1or 2 입력 받기
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int choiceInput = Integer.parseInt(Console.readLine());
+        String choiceInput = Console.readLine();
 
-        // 잘못된 값 입력하면 예외 던지기
+        if (validateChioceInput(choiceInput)) {
+            throw new IllegalArgumentException();
+        }
 
-        return choiceInput;
+        char choiceInputChar = choiceInput.charAt(0);
+        int choiceInputNumber = choiceInputChar - '0';
 
+        return choiceInputNumber;
+
+    }
+
+    public boolean validateChioceInput(String choiceInput) {
+        if(isOneLength(choiceInput) && isNumberOneOrTwo(choiceInput)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isOneLength(String choiceInput){
+        // 입력받은 값의 길이가 2 이상일때
+        if (choiceInput.length() >= 2) {
+            return true;
+        }
+        return false;
     }
 
     public List<Integer> pickThreeNumbers() {
