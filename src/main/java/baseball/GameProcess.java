@@ -57,7 +57,19 @@ public class GameProcess {
             String inputOverYn = Console.readLine();
 
             // 입력값 검증
-            Vailidator.checkInputOverYn(inputOverYn);
+            int overYnNum = Integer.parseInt(inputOverYn);
+            Vailidator.checkInputOverYn(overYnNum);
+
+            // 종료 여부 확인
+            isOver(overYnNum);
         }
     }
+
+    private static void isOver(int overYnNum) {
+        if (overYnNum == 1) {
+            start();
+        }
+    }
+
+
 }

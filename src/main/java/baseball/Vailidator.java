@@ -54,8 +54,7 @@ public class Vailidator {
     }
 
     // 사용자 입력값 검증 - 종료여부 구분값
-    public static void checkInputOverYn(String inputOverYn) {
-        int overYnNum = Integer.parseInt(inputOverYn);
+    public static void checkInputOverYn(int overYnNum) {
         if (!(overYnNum == 1 || overYnNum == 2)) {
             throw new IllegalArgumentException("입력값이 1 또는 2가 아닙니다.");
         }
