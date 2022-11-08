@@ -26,6 +26,7 @@ public class Application {
                 PrintLine.resultPrint(scoreTable);
 
                 if (scoreTable.get("스트라이크") == 3) {
+                    PrintLine.afterAnswerPrint();
                     break;
                 }
             }
