@@ -17,8 +17,7 @@ public class HomeRunStrategy implements BallNumbersCreateStrategy {
         List<Integer> result = new ArrayList<>();
 
         while (result.size() < MAX) {
-            int random = Randoms.pickNumberInRange(RANGE_MIN, RANGE_MAX);
-            addRandom(result, random);
+            addRandom(result, Randoms.pickNumberInRange(RANGE_MIN, RANGE_MAX));
         }
 
         return createChars(result);
