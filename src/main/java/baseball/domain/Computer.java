@@ -23,6 +23,9 @@ public class Computer {
             }
         }
     }
+    List<Integer> getBallCounts(){
+        return this.ballCounts;
+    }
     // Computer 랜덤 넘버가 준비되었는지 확인하는 메소드
     boolean isReady() {
         if (this.ballCounts.size() < 3)
