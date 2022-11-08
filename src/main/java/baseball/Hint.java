@@ -47,4 +47,11 @@ public class Hint {
         return false;
     }
 
+    public boolean isNothing() {
+        if (strikeCount == 0 && ballCount == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
