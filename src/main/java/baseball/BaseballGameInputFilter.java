@@ -18,10 +18,12 @@ public class BaseballGameInputFilter {
     }
 
     public boolean isNotDuplicated(String input) {
-        return input.length() == List.of(input.split(""))
-                .stream()
-                .distinct()
-                .count();
+        boolean[] isNumberOfIndex = new boolean[10];
+        for (char ch : input.toCharArray()){
+            if (isNumberOfIndex[Character.getNumericValue(ch)]) return false;
+            isNumberOfIndex[Character.getNumericValue(ch)] = true;
+        }
+        return true;
     }
 
     public String readNumbers(){
