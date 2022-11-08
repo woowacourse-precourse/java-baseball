@@ -48,9 +48,9 @@ public class GameResultCalculator {
         return ballCount;
     }
 
-    public List<Integer> getResult(Number answerNumber, Number playerInputNumber) {
+    public GameResult makeGameResult(Number answerNumber, Number playerInputNumber) {
         int ballCount = countBall(answerNumber, playerInputNumber);
         int strikeCount = countStrike(answerNumber, playerInputNumber);
-        return List.of(ballCount, strikeCount);
+        return new GameResult(ballCount, strikeCount);
     }
 }

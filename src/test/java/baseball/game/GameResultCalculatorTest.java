@@ -26,9 +26,9 @@ class GameResultCalculatorTest {
             Number mockRandomNumber = new Number(425);
             Number mockPlayerInput = new Number(123);
 
-            List<Integer> result = gameResultCalculator.getResult(mockRandomNumber, mockPlayerInput);
+            GameResult result = gameResultCalculator.makeGameResult(mockRandomNumber, mockPlayerInput);
 
-            assertThat(result).isEqualTo(List.of(0, 1));
+            assertThat(result).isEqualTo(new GameResult(0, 1));
         }
 
         @Test
@@ -36,9 +36,9 @@ class GameResultCalculatorTest {
             Number mockRandomNumber = new Number(425);
             Number mockPlayerInput = new Number(456);
 
-            List<Integer> result = gameResultCalculator.getResult(mockRandomNumber, mockPlayerInput);
+            GameResult result = gameResultCalculator.makeGameResult(mockRandomNumber, mockPlayerInput);
 
-            assertThat(result).isEqualTo(List.of(1, 1));
+            assertThat(result).isEqualTo(new GameResult(1, 1));
         }
 
         @Test
@@ -46,9 +46,9 @@ class GameResultCalculatorTest {
             Number mockRandomNumber = new Number(425);
             Number mockPlayerInput = new Number(789);
 
-            List<Integer> result = gameResultCalculator.getResult(mockRandomNumber, mockPlayerInput);
+            GameResult result = gameResultCalculator.makeGameResult(mockRandomNumber, mockPlayerInput);
 
-            assertThat(result).isEqualTo(List.of(0, 0));
+            assertThat(result).isEqualTo(new GameResult(0, 0));
         }
     }
 

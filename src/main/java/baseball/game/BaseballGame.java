@@ -31,7 +31,7 @@ public class BaseballGame {
         do {
             printer.printInputPrompt();
             playerInputNumber = scanner.readPlayerNumber();
-            List<Integer> result = calculator.getResult(answerNumber, playerInputNumber);
+            GameResult result = calculator.makeGameResult(answerNumber, playerInputNumber);
             printer.printResult(result);
         } while (!calculator.isThreeStrike(answerNumber, playerInputNumber));
     }
