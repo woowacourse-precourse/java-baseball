@@ -42,7 +42,7 @@ public class RandomNumberGenerator {
             numberCase++;
         }
 
-        GenerationValidate.validate(numberCase);
+        GeneratorValidate.validate(numberCase);
 
         return randomNumber;
     }
