@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import java.util.Objects;
+
 import baseball.util.ViewConst;
 
 public class UserBall {
@@ -51,5 +53,21 @@ public class UserBall {
 		if (this.strike != 0 && this.ball != 0) {
 			this.status = this.ball + ViewConst.BALL + " " + this.strike + ViewConst.STRIKE;
 		}
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		UserBall userBall = (UserBall)o;
+		return Objects.equals(ball, userBall.ball) && Objects.equals(strike, userBall.strike)
+			&& Objects.equals(status, userBall.status);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(ball, strike, status);
 	}
 }
