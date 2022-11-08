@@ -116,8 +116,7 @@ public class Application {
         return printList;
     }
 
-    public static int printBallStrike(List<Integer> printList) {
-        int endValue = 0;
+    public static boolean printBallStrike(List<Integer> printList) {
 
         if (printList.get(1) == 0 && printList.get(0) == 0) {
             System.out.println("낫싱");
@@ -125,14 +124,14 @@ public class Application {
             System.out.println(printList.get(0) + "볼");
         } else if (printList.get(0) == 0 && printList.get(1) == 3) {
             System.out.println(printList.get(1) + "스트라이크");
-            endValue = 1;
+            return false;
         } else if (printList.get(0) == 0) {
             System.out.println(printList.get(1) + "스트라이크");
         } else {
             System.out.println(printList.get(0) + "볼 " + printList.get(1) + "스트라이크");
         }
 
-        return endValue;
+        return true;
     }
 
     public static void playGame() {
