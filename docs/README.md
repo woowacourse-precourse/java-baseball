@@ -4,7 +4,7 @@
     - BaseBallGame 객체 생성
     - logic 실행 (예외 발생 시 catch)
 
-## 2. BaseBallGame
+## 2. BaseBallGame ✅
 ### logic / getResult / printResult
     - Computer, User 객체 생성 후 게임 시작
     - user로부터 입력 받기 (예외 발생 시 catch)

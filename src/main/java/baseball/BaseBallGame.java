@@ -1,11 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.HashMap;
 import java.util.List;
 
 public class BaseBallGame {
     public static final String GAME_START_MENT = "숫자 야구 게임을 시작합니다";
-
+    public static final String RIGHT_ANS_MENT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public BaseBallGame() {
     }
 
@@ -16,14 +18,25 @@ public class BaseBallGame {
         System.out.println(GAME_START_MENT);
         computer.createNumList();
 
-        try {
-            user.createNumList();
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
-        }
+        while(true) {
+            try {
+                user.createNumList();
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException();
+            }
 
-        HashMap<String, Integer> result = getResult(computer.getNumList(), user.getNumList());
-        printResult(result);
+            HashMap<String, Integer> result = getResult(computer.getNumList(), user.getNumList());
+            printResult(result);
+
+            if (result.get("strike")==3) {
+                System.out.print(RIGHT_ANS_MENT);
+                int choice = Integer.parseInt(Console.readLine());
+                if (choice == 2) {
+                    break;
+                }
+                computer.createNumList();
+            }
+        }
     }
 
     private static HashMap<String, Integer> getResult(List<Integer> computerNumList, List<Integer> inputNumList) {
