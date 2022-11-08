@@ -19,6 +19,15 @@ public class Game {
         String cvtResult = new String();
 
         start();
+
+        while(!cvtResult.equals(END_CONDITION)) {
+            System.out.print(USER_NUMBER_INPUT_MESSAGE);
+            input = user.getInputNumbers();
+            result = computer.compareWithAnswer(input);
+            cvtResult = getResultCvtToStr(result);
+            System.out.println(cvtResult);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void start() {
@@ -26,6 +35,11 @@ public class Game {
         user = new User();
         computer = new Computer();
         computer.generateNewRandomAnswer();
+    }
+
+    public String getResultCvtToStr(List<Integer> result) {
+        String cvtResult = new String("");
+        return cvtResult;
     }
 
 }
