@@ -84,4 +84,18 @@ public class Application {
         return 0;
     }
 
+    // 9. Get result of the current turn
+    public static String getScoreOfTheCurrentTurn(String input, String answer) {
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            String currentNumberOfInput = String.valueOf(input.charAt(i));
+            String numberOfTheAnswerInTheSameIndex = String.valueOf(answer.charAt(i));
+            strike += judgeStrike(currentNumberOfInput, numberOfTheAnswerInTheSameIndex, answer);
+            ball += judgeBall(currentNumberOfInput, numberOfTheAnswerInTheSameIndex, answer);
+        }
+
+        return Integer.toString(ball) + " " + Integer.toString(strike);
+    }
+
 }
