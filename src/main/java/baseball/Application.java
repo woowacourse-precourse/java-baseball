@@ -31,7 +31,7 @@ public class Application {
 
     public static List<Integer> validateUserNumber(String userNumbers) {
         List<String> numberList = stringToStringList(userNumbers);
-        validateDigit(numberList);
+        validateDigit(userNumbers);
         validateZero(numberList);
         validateSize(numberList, 3);
         validateDuplication(numberList);
@@ -45,15 +45,15 @@ public class Application {
         }
     }
 
-    private static void validateDigit(List<String> numberList) {
-        for (String number : numberList) {
+    private static void validateDigit(String numbers) {
+        for (char number : numbers.toCharArray()) {
             checkDigit(number);
         }
     }
 
-    private static void checkDigit(String number) {
-        if (!Character.isDigit(number.charAt(0))) {
-            throw new IllegalArgumentException("UserNumber must be digit");
+    private static void checkDigit(char number) {
+        if (!Character.isDigit(number)) {
+            throw new IllegalArgumentException("Number must be digit");
         }
     }
 
