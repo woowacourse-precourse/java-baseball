@@ -6,9 +6,11 @@ import java.util.List;
 
 public class Game {
     private Computer computer;
+    private Player player;
     private List<Integer> computerNumbers;
     public Game(){
         computer = new Computer();
+        player = new Player();
     }
     public void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -22,10 +24,10 @@ public class Game {
     }
 
     public void guessNumbers(){
-        String userNumber;
+        String playerNumber;
         do{
             player.selectNumber();
-            userNumber = player.getSelectedNumber();
+            playerNumber = player.getSelectedNumber();
             Validate.validateInputNumber();
         }
         while(judge(userNumber));
