@@ -28,14 +28,18 @@ public class BaseBallGame {
     public void runGame() {
         printGameStart();
         do {
-            this.success = false;
-            setComputerNumbers();
+            prepareGame();
             guessComputerNumbersUntilSuccess();
         } while (askStopOrRegame() == REGAME);
     }
 
     public void printGameStart() {
         this.gameMessageDisplay.printGameStartMessage();
+    }
+
+    public void prepareGame() {
+        this.success = false;
+        setComputerNumbers();
     }
 
     public void setComputerNumbers() {
