@@ -1,11 +1,10 @@
-package baseball.service;
+package baseball.serviceImpl;
 
-import baseball.util.Digits;
+import baseball.service.DigitGenerator;
 import baseball.util.GameMessage;
 import baseball.util.GameStatus;
 import baseball.domain.StrikeAndBallDomain;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ public class GameService {
 
         GameStatus restartOrEnd = GameStatus.START;
         while (restartOrEnd != GameStatus.END) {
-            List<Integer> computer = randomThreeDigit();
+            List<Integer> computer = randomThreeDigit(new ComputerDigitGeneratorService());
             figureOutComputerDigits(computer);
             restartOrEnd = getRestartOrEndGame();
         }
@@ -92,19 +91,7 @@ public class GameService {
         throw new IllegalArgumentException();
     }
 
-    private void addNumber(List<Integer> digits, int number) {
-        if (!digits.contains(number)) {
-            digits.add(number);
-        }
-    }
-
-    private List<Integer> randomThreeDigit() {
-        List<Integer> digits = new ArrayList<>();
-        while (digits.size() < Digits.SIZE.getDigit()) {
-            int randomNumber = Randoms.pickNumberInRange(Digits.FIRST.getDigit(),
-                    Digits.LAST.getDigit());
-            addNumber(digits, randomNumber);
-        }
-        return digits;
+    public List<Integer> randomThreeDigit(DigitGenerator generator) {
+        return generator.generator();
     }
 }
