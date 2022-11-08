@@ -3,6 +3,7 @@ package baseball;
 import baseball.util.Util;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
 
@@ -23,6 +24,7 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             input = Console.readLine();
+            validInput(input);
 
             List<Integer> inputNumbers = Util.toIntegerArray(input);
             String comment = takeTurn(computer, inputNumbers);
@@ -30,6 +32,21 @@ public class Application {
             if (isEnd(comment)) {
                 break;
             }
+        }
+    }
+
+    private static void validInput(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("input cannot be empty.");
+        }
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("input length must be three.");
+        }
+        if (!validRange(input)) {
+            throw new IllegalArgumentException("input must be in 1to9.");
+        }
+        if (isOverlap(input)) {
+            throw new IllegalArgumentException("input cannot be overlap.");
         }
     }
 
