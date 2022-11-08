@@ -8,7 +8,7 @@ public class InputValidator {
     }
 
     private static void validateLength(String userInput, int MAX_LENGTH) {
-        if (userInput.length() > MAX_LENGTH) {
+        if (userInput.length() != MAX_LENGTH) {
             throw new IllegalArgumentException("You must enter only 3 numbers");
         }
     }
