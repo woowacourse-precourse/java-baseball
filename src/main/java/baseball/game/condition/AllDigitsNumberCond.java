@@ -15,7 +15,7 @@ public class AllDigitsNumberCond implements Condition {
     }
 
     @Override
-    public Boolean isTrue(Integer guess) {
-        return Integer.toString(guess).matches(NUMBER_FIND_REGEX);
+    public Boolean isTrue(String guess) {
+        return guess.matches(NUMBER_FIND_REGEX);
     }
 }

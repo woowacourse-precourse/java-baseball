@@ -16,7 +16,7 @@ public class LengthMatchCond implements Condition {
     }
 
     @Override
-    public Boolean isTrue(Integer guess) {
-        return Integer.toString(guess).length() == NUMBER_SIZE;
+    public Boolean isTrue(String guess) {
+        return guess.length() == NUMBER_SIZE;
     }
 }

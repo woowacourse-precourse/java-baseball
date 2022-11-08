@@ -24,13 +24,11 @@ public class BallCountRule implements Rule {
     }
 
     @Override
-    public Integer check(Integer answer, Integer guess) {
-        String answerString = Integer.toString(answer);
-        String guessString = Integer.toString(guess);
+    public Integer check(String answer, String guess) {
         int count = 0;
 
         for (int index = 0; index < NUMBER_SIZE; index++) {
-            Integer findIndex = findCharFromString(answerString, guessString.charAt(index));
+            Integer findIndex = findCharFromString(answer, guess.charAt(index));
             if (findIndex != NOT_FOUND_INDEX && index != findIndex) {
                 count++;
             }

@@ -19,14 +19,13 @@ public class AllDigitsUniqueCond implements Condition {
     }
 
     @Override
-    public Boolean isTrue(Integer guess) {
-        String guessString = Integer.toString(guess);
+    public Boolean isTrue(String guess) {
         Set<Character> numbers = new HashSet<>();
 
         for (int index = 0; index < NUMBER_SIZE; index++) {
-            numbers.add(guessString.charAt(index));
+            numbers.add(guess.charAt(index));
         }
 
-        return numbers.size() == guessString.length();
+        return numbers.size() == guess.length();
     }
 }

@@ -6,5 +6,5 @@ public interface Rule {
 
     GuessTarget getResult();
 
-    Integer check(Integer answer, Integer guess);
+    Integer check(String answer, String guess);
 }

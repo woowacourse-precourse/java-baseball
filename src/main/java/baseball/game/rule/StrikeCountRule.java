@@ -22,13 +22,11 @@ public class StrikeCountRule implements Rule {
     }
 
     @Override
-    public Integer check(Integer answer, Integer guess) {
-        String answerString = Integer.toString(answer);
-        String guessString = Integer.toString(guess);
+    public Integer check(String answer, String guess) {
         int count = 0;
 
         for (int index = 0; index < NUMBER_SIZE; index++) {
-            if (answerString.charAt(index) == guessString.charAt(index)) {
+            if (answer.charAt(index) == guess.charAt(index)) {
                 count++;
             }
         }

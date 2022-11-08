@@ -13,7 +13,7 @@ public class Validator {
         return instance;
     }
 
-    public Boolean isAnyConditionsFalse(Integer input, List<Condition> conditions) {
+    public Boolean isAnyConditionsFalse(String input, List<Condition> conditions) {
         for (Condition condition : conditions) {
             if (!condition.isTrue(input)) {
                 return true;

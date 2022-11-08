@@ -25,10 +25,10 @@ public class Game {
     }
 
     public static void start() {
-        Integer answer = gameUtil.getRandomNumber();
+        String answer = gameUtil.getRandomNumber();
 
         while (true) {
-            Integer guess = gameUtil.getUserInput();
+            String guess = gameUtil.getUserInput();
 
             Map<GuessTarget, Integer> guessResult = validateGuess(answer, guess);
             printResult(guessResult);
@@ -63,18 +63,18 @@ public class Game {
 
         Set<Map.Entry<GuessTarget, Integer>> entries = guessResult.entrySet();
         for (Map.Entry<GuessTarget, Integer> entry : entries) {
-            GuessTarget key = entry.getKey();
-            Integer value = entry.getValue();
+            GuessTarget target = entry.getKey();
+            Integer count = entry.getValue();
 
-            if (value != 0) {
-                results.add(value + key.getValue());
+            if (count != 0) {
+                results.add(count + target.getValue());
             }
         }
 
         return String.join(" ", results);
     }
 
-    private static Map<GuessTarget, Integer> validateGuess(Integer answer, Integer guess) {
+    private static Map<GuessTarget, Integer> validateGuess(String answer, String guess) {
         // should keep this list element order for correct console output
         List<Rule> scoreRules = List.of(
                 BallCountRule.getInstance(),

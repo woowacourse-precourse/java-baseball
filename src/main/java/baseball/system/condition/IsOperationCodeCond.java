@@ -17,7 +17,7 @@ public class IsOperationCodeCond implements Condition {
     }
 
     @Override
-    public Boolean isTrue(Integer input) {
-        return OPERATION_CODE.contains(Integer.toString(input));
+    public Boolean isTrue(String input) {
+        return OPERATION_CODE.contains(input);
     }
 }

@@ -32,7 +32,7 @@ public class SystemUtil implements Interactive {
 
     @Override
     public UserAction getUserInput() {
-        Integer input = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
 
         List<Condition> conditions = List.of(
                 IsOperationCodeCond.getInstance()

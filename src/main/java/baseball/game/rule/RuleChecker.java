@@ -11,7 +11,7 @@ public class RuleChecker {
     private RuleChecker() {
     }
 
-    public static Map<GuessTarget, Integer> check(List<Rule> rules, Integer answer, Integer guess) {
+    public static Map<GuessTarget, Integer> check(List<Rule> rules, String answer, String guess) {
         Map<GuessTarget, Integer> guessResult = new LinkedHashMap<>();
 
         for (Rule rule : rules) {

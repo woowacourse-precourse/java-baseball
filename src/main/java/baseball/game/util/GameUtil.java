@@ -11,7 +11,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GameUtil implements Interactive {
 
@@ -30,23 +29,23 @@ public class GameUtil implements Interactive {
     }
 
 
-    public Integer getRandomNumber() {
-        List<Integer> numbers = new ArrayList<>();
+    public String getRandomNumber() {
+        List<String> numbers = new ArrayList<>();
 
         while (numbers.size() < NUMBER_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(RANDOM_RANGE_MIN, RANDOM_RANGE_MAX);
+            String randomNumber = Integer.toString(Randoms.pickNumberInRange(RANDOM_RANGE_MIN, RANDOM_RANGE_MAX));
 
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
         }
 
-        return Integer.parseInt(numbers.stream().map((Integer number) -> Integer.toString(number)).collect(Collectors.joining("")));
+        return String.join("", numbers);
     }
 
     @Override
-    public Integer getUserInput() {
-        Integer guess = Integer.parseInt(Console.readLine());
+    public String getUserInput() {
+        String guess = Console.readLine();
 
         List<Condition> conditions = List.of(
                 LengthMatchCond.getInstance(),

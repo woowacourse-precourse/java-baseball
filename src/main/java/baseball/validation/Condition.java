@@ -1,5 +1,5 @@
 package baseball.validation;
 
 public interface Condition {
-    Boolean isTrue(Integer guess);
+    Boolean isTrue(String guess);
 }
