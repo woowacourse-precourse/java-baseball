@@ -30,9 +30,7 @@ public class Round {
         String retry = Console.readLine();
         if (retry.equals("1")) {
             play(view);
-        } else if (retry.equals("2")) {
-
-        } else {
+        } else if (!retry.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
