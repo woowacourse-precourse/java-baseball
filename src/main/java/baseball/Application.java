@@ -1,5 +1,6 @@
 package baseball;
 
+import java.net.Socket;
 import java.util.ArrayList;
 
 public class Application {
@@ -26,8 +27,8 @@ public class Application {
     private static int start(int randomNumber, int inputNumber) {
         int strike = 0;
         while (strike != 3){
-            ArrayList<Integer> result = Game.getScore(randomNumber, inputNumber);
-            getScoreMessage(result);
+            ArrayList<Integer> result = Score.check(randomNumber, inputNumber);
+            Score.getMessage(result);
             strike = result.get(1);
             if(strike==3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -44,20 +45,7 @@ public class Application {
         return inputNumber;
     }
 
-    private static void getScoreMessage(ArrayList<Integer> result) {
-        if(result.get(0)!=0 && result.get(1)==0){
-            System.out.println(result.get(0) + "볼");
-        }
-        if(result.get(0)!=0 && result.get(1)!=0){
-            System.out.println(result.get(0) + "볼 "+result.get(1)+"스트라이크");
-        }
-        if(result.get(0)==0 && result.get(1)!=0){
-            System.out.println(result.get(1) + "스트라이크");
-        }
-        if(result.get(0)==0 && result.get(1)==0){
-            System.out.println("낫싱");
-        }
-    }
+
 
     private static int ready() {
         int randomNumber = GameSetting.getRandomNumber();
