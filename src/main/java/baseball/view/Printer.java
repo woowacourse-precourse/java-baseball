@@ -1,4 +1,7 @@
 package baseball.view;
+
+import baseball.domain.Baseball;
+
 public class Printer {
     private static final String messageStartGame = "숫자 야구 게임을 시작합니다.";
     private static final String requestInput = "숫자를 입력해주세요 : ";
@@ -28,4 +31,21 @@ public class Printer {
     public static void showGameEnd() {
         System.out.println(messageGameEnd);
     }
+
+    // 결과 출력
+    public static String printRoundResult(Baseball game) {
+        StringBuilder sb = new StringBuilder();
+        if (game.getBall()!=0) {
+            sb.append(game.getBall()+ Printer.messageBall);
+        }
+        if (game.getStrike()!=0) {
+            sb.append(game.getStrike() + Printer.messageStrike);
+        }
+        if (game.getStrike()==0 && game.getBall()==0) {
+            sb.append(Printer.messageNothing);
+        }
+        return sb.toString().trim();
+    }
+
+
 }
