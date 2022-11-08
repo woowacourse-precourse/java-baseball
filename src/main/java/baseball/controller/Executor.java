@@ -6,17 +6,16 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashMap;
 public class Executor {
-    private static Checker checker = new Checker();
 
     private static  final int RESTART = 1;
     private static final int EXIT = 2;
 
-    private static BaseballResult  result;
-    private static boolean flag = true;
-    public static void startGame() {
+    private BaseballResult  result;
+    private final Checker checker = new Checker();
+    private boolean flag = true;
+    public void startGame() {
         Baseball computerRandomBaseball = new Computer().createRandomBaseball();
         Printer.gameStart();
-        flag = true;
         while(flag) {
             Printer.inputNumber();
             result = guessNumber(computerRandomBaseball);
@@ -29,21 +28,20 @@ public class Executor {
         }
 
     }
-    public static BaseballResult guessNumber(Baseball computerRandomBaseball) {
+    public BaseballResult guessNumber(Baseball computerRandomBaseball) {
         Baseball userBaseball = inputUserBaseball();
         HashMap<String, Integer> check_result = checker.start(computerRandomBaseball, userBaseball);
-        BaseballResult baseballResult = new BaseballResult(check_result);
-        return baseballResult;
+        return new BaseballResult(check_result);
     }
-    public static Baseball inputUserBaseball() {
+    public Baseball inputUserBaseball() {
         User user = new User();
         Baseball userBaseball = user.getInput();
         return userBaseball;
     }
-    public static void askRestart() {
+    public void askRestart() {
         Printer.askRestart();
         String s = Console.readLine();
-        int reStart = Integer.valueOf(s);
+        int reStart = Integer.parseInt(s);
         if(reStart == RESTART) {
             startGame();
         }else if(reStart != EXIT) {

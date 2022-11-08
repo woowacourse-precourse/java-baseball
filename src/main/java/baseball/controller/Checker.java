@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Checker {
-    private static final String STRIKE = "스트라이크";
-    private static final String BALL = "r볼";
+    private static final String STRIKE = "strike";
+    private static final String BALL = "ball";
     private HashMap<String, Integer> result;
     private Baseball computer;
 
