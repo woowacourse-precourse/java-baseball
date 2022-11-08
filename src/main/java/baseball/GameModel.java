@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.GameRule.DIGITS;
+import static baseball.GameRule.RANDOM_MIN;
+import static baseball.GameRule.RANDOM_MAX;
+
 public class GameModel {
-    private static final int DIGITS = GameRule.DIGITS.getValue();
-    private static final int RANDOM_MIN = GameRule.RANDOM_MIN.getValue();
-    private static final int RANDOM_MAX = GameRule.RANDOM_MAX.getValue();
     public static List<Integer> createComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < DIGITS) {
@@ -18,12 +19,11 @@ public class GameModel {
                 computerNumber.add(randomNumber);
             }
         }
-
         return computerNumber;
     }
 
-    public static List<Integer> createPlayerNumber(){
-        String userInput = View.getUserInput(); // 숫자인지 확인
+    public static List<Integer> createPlayerNumber() throws IllegalArgumentException {
+        String userInput = View.getUserInput(); // 숫자가 아니면 예외 발생
         List<Integer> playerNumber = stringToList(userInput);
         if(!Validator.isValidNumber(playerNumber)){
             throw new IllegalArgumentException();
