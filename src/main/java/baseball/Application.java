@@ -103,6 +103,41 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
+    /**
+     * 숫자야구 게임 시뮬레이션
+     */
+    private static void simulateGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        try {
+            // 게임 1회마다 한 번씩
+            while (true) {
+                String userInput = "";
+                String targetNumber = "";
+                targetNumber = generateGoalNumber();
+
+                // 숫자를 맞추도록 시도한다.
+                while (true) {
+                    System.out.println("숫자를 입력해주세요 : ");
+                    userInput = getUserNumber();
+                    if (!isValidInput(targetNumber)) {
+                        throw new IllegalArgumentException();
+                    }
+                    List<Integer> compared = compareTwoNumbers(targetNumber, userInput);
+                    printTrialResult(compared);
+                    if (isThreeStrikes(compared)) {
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                        break;
+                    }
+                }
+                if (!isContinue()) {
+                    break;
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
