@@ -43,6 +43,13 @@ public class Application {
             throw new IllegalArgumentException("입력숫자의 중복을 확인하세요");
         }
     }
+    public static void nullCheck(String num){
+        for(int i=0;i<num.length();i++){
+            if(num.substring(i,i+1).equals(" ")){
+                throw new IllegalArgumentException("입력숫자의 공백을 확인하세요");
+            }
+        }
+    }
     public static int Check(String num, List<Integer> answer){
         int strike=0;
         int ball=0;
@@ -78,6 +85,7 @@ public class Application {
                 throw new IllegalArgumentException("입력숫자 길이를 확인하세요");
             }
             duplicateCheck2(number);
+            nullCheck(number);
             checkstrike = Check(number, answer);
             if (checkstrike == 3) {
                 gostop = readLine();
