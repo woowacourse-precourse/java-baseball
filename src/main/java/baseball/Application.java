@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 
 public class Application {
     public static class IllegalArgumentException extends RuntimeException {
@@ -23,6 +24,31 @@ public class Application {
         }
     }
 
-    public static void playGame() {
+    private static void playGame() {
+        ArrayList<Integer> targetNumbers = pickRandomNumbers();
+        while (true) {
+            ArrayList<Integer> playerNumbers = getPlayerNumbers();
+            ArrayList<Integer> results = calculateResults(targetNumbers, playerNumbers);
+            printResults(results.get(0), results.get(1));
+            if (results.get(1) == 3) {
+                break;
+            }
+        }
+    }
+
+    private static ArrayList<Integer> pickRandomNumbers() {
+        return null;
+    }
+
+    private static ArrayList<Integer> getPlayerNumbers() {
+        return null;
+    }
+
+    private static ArrayList<Integer> calculateResults(
+            ArrayList<Integer> targetNumbers, ArrayList<Integer> playerNumbers) {
+        return null;
+    }
+
+    private static void printResults(Integer numberOfBalls, Integer numberOfStrikes) {
     }
 }
