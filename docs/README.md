@@ -8,7 +8,6 @@
   - `userRandNumber`와 `correctRandNumber` 비교
   - index 값이 정확히 일치한다면 `strikeCount` ++
 - 3. 볼 카운트 계산
-  - `userRandNumber` 및 `correctRandNumber` 내 `strikeCount` 제외
   - `userRandNumber`와 `correctRandNumber` 비교
   - `correctRandNumber`의 value가 `userRandNumber`에 포함되어 있는 경우 `ballCount` ++
 - 4. 연산 결과 출력
