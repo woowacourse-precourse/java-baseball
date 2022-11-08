@@ -38,7 +38,7 @@ public class NumberBaseballGame {
     private void endGame() {
         GameEndInput gameEndInput = new GameEndInput(UserInput.get());
         if (gameEndInput.continueGame()) {
-            scoreBoard = new ScoreBoard(NumberBall.systemNumberBalls());
+            scoreBoard = new ScoreBoard(NumberBall.makeSystemNumberBalls());
             return;
         }
         isPlaying = false;

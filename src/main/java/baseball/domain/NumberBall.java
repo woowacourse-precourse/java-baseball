@@ -29,7 +29,7 @@ public class NumberBall {
         return number;
     }
 
-    public static List<NumberBall> systemNumberBalls() {
+    public static List<NumberBall> makeSystemNumberBalls() {
         List<NumberBall> numberBalls = new ArrayList<>();
         while (numberBalls.size() < NumberBallsInput.BALL_COUNT) {
             NumberBall ball = new NumberBall(Randoms.pickNumberInRange(MIN_BALL_NUMBER, MAX_BALL_NUMBER));
