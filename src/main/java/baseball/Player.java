@@ -19,6 +19,22 @@ public class Player {
                 .forEach(numbers::add);
     }
 
+    private void checkPlayerNumberStr(String playerStr) {
+        if (playerStr.length() != INIT_LIST_SIZE) {
+            throw new IllegalArgumentException();
+        }
+        long count = playerStr.chars()
+                .filter(this::isNumber)
+                .count();
+        if (count != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isNumber(int c) {
+        return '0' <= c && c <= '9';
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
