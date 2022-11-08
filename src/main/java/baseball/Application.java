@@ -48,13 +48,13 @@ public class Application {
 		System.out.print("숫자를 입력해주세요 :");
 		int playerInput = Integer.parseInt(Console.readLine());
 		if (playerInput < 0 || playerInput > 999) {
-			// 에러 발생
+			error();
 		}
 		int numOne = (int) (playerInput / 100) % 10;
 		int numTwo = (int) (playerInput / 10) % 10;
 		int numThree = playerInput % 10;
 		if (numOne == numTwo || numTwo == numOne || numThree == numOne || numOne == 0 || numTwo == 0 || numThree == 0) {
-			// 에러발생
+			error();
 		}
 		System.out.println(numOne);
 		System.out.println(numTwo);
