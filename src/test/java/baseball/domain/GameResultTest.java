@@ -42,12 +42,14 @@ class GameResultTest {
         result.addStrike();
         assertThat(result.getState()).isEqualTo(GameState.GOOD);
     }
+
     @Test
     void stateGoodBall() {
         GameResult result = new GameResult();
         result.addBall();
         assertThat(result.getState()).isEqualTo(GameState.GOOD);
     }
+
     @Test
     void stateGoodStrikeBall() {
         GameResult result = new GameResult();
@@ -55,6 +57,7 @@ class GameResultTest {
         result.addStrike();
         assertThat(result.getState()).isEqualTo(GameState.GOOD);
     }
+
     @Test
     void stateCorrect() {
         GameResult result = new GameResult();

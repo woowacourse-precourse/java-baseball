@@ -20,7 +20,7 @@ class ComputerTest {
         List<Integer> list = computer.getVictoryNumbers().getList();
         Set<Integer> set = new HashSet<Integer>();
 
-        for(int n : list) {
+        for (int n : list) {
             set.add(n);
         }
         int result = set.size();

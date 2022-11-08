@@ -19,6 +19,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+
     @Test
     void 게임종료_후_재시작2() {
         assertRandomNumberInRangeTest(
@@ -26,9 +27,10 @@ class ApplicationTest extends NsTest {
                     run("123", "2");
                     assertThat(output()).contains("3스트라이크", "게임 종료");
                 },
-                1,2,3,2
+                1, 2, 3, 2
         );
     }
+
     @Test
     void 구분자입력() {
         assertRandomNumberInRangeTest(
@@ -39,6 +41,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+
     @Test
     void 구분자입력2() {
         assertRandomNumberInRangeTest(
@@ -49,6 +52,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->

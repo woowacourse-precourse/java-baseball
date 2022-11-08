@@ -66,6 +66,7 @@ class PlayerTest {
         String s = "12345";
         player.numberValid(s);
     }
+
     @Test
     void numberValid2() {
         boolean flag = false;
@@ -78,6 +79,7 @@ class PlayerTest {
         }
         assertTrue(flag);
     }
+
     @Test
     void numberValid3() {
         boolean flag = false;
@@ -90,6 +92,7 @@ class PlayerTest {
         }
         assertTrue(flag);
     }
+
     @Test
     void numberValid4() {
         boolean flag = false;
@@ -126,10 +129,12 @@ class PlayerTest {
     void progressVaild1() {
         player.progressValid(1);
     }
+
     @Test
     void progressVaild2() {
         player.progressValid(2);
     }
+
     @Test
     void progressVaild3() {
         boolean flag = false;

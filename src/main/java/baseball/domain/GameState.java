@@ -10,6 +10,7 @@ public enum GameState {
     GameState(int state) {
         this.state = state;
     }
+
     public int getState() {
         return state;
     }

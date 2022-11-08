@@ -8,17 +8,21 @@ public class BaseballNumberBundle {
 
     public BaseballNumberBundle() {
     }
+
     public BaseballNumberBundle(int number1, int number2, int number3) {
         addNumber(number1);
         addNumber(number2);
         addNumber(number3);
     }
+
     public BaseballNumberBundle(List<Integer> list) {
         this.list.addAll(list);
     }
+
     public List<Integer> getList() {
         return list;
     }
+
     public List<Integer> getReverseList() {
         List<Integer> reverseList = new ArrayList<Integer>();
         for (int i = list.size() - 1; i >= 0; i--) {
@@ -26,6 +30,7 @@ public class BaseballNumberBundle {
         }
         return reverseList;
     }
+
     public void addNumber(Integer number) {
         list.add(number);
     }

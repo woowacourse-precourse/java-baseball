@@ -9,13 +9,14 @@ import java.util.List;
 
 public class Player {
     private static final String SEPARATOR_PATTERN = "[\n]*[\t]*[ ]*[.]*[,]*[/]*";
+
     public BaseballNumberBundle inputBaseballNumbers() {
         List<Integer> list = new ArrayList<Integer>();
 
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();  // 사용자로부터 3개의 숫자값을 입력받음
         input = removeSeparator(input);
-        for(String s : input.split("")) {
+        for (String s : input.split("")) {
             numberValid(s);
             int number = Integer.parseInt(s);
             list.add(number);
@@ -24,6 +25,7 @@ public class Player {
 
         return new BaseballNumberBundle(list);
     }
+
     public GameProgress inputGameProgress() {
         String input = Console.readLine();  // 사용자로부터 1개의 숫자값을 입력받음
         input = removeSeparator(input);
@@ -38,18 +40,21 @@ public class Player {
     public String removeSeparator(String input) {
         return input.replaceAll(SEPARATOR_PATTERN, "");
     }
+
     public void numberValid(String input) {
-        if(!input.matches("[1-9]+")) {
+        if (!input.matches("[1-9]+")) {
             throw new IllegalArgumentException();
         }
     }
-    public void baseballValid(List<Integer> list){
-        if(list.size() > 3) {
+
+    public void baseballValid(List<Integer> list) {
+        if (list.size() > 3) {
             throw new IllegalArgumentException();
         }
     }
+
     public void progressValid(int number) {
-        if(number != GameProgress.CONTINUE.getProgress() && number != GameProgress.STOP.getProgress()) {
+        if (number != GameProgress.CONTINUE.getProgress() && number != GameProgress.STOP.getProgress()) {
             throw new IllegalArgumentException();
         }
     }

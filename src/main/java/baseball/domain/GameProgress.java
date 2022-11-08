@@ -5,9 +5,11 @@ public enum GameProgress {
     STOP(2);
 
     private int progress;
+
     GameProgress(int progress) {
         this.progress = progress;
     }
+
     public int getProgress() {
         return progress;
     }

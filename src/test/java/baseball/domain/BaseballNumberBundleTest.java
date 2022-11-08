@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ class BaseballNumberBundleTest {
 
     @Test
     void getList() {
-        BaseballNumberBundle numbers = new BaseballNumberBundle(1,2,3);
+        BaseballNumberBundle numbers = new BaseballNumberBundle(1, 2, 3);
 
         List<Integer> target = new ArrayList<Integer>();
         target.add(1);
@@ -21,7 +22,7 @@ class BaseballNumberBundleTest {
 
     @Test
     void getReverseList() {
-        BaseballNumberBundle numbers = new BaseballNumberBundle(1,2,3);
+        BaseballNumberBundle numbers = new BaseballNumberBundle(1, 2, 3);
 
         List<Integer> target = new ArrayList<Integer>();
         target.add(3);
