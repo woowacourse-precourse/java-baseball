@@ -7,39 +7,40 @@ import java.util.List;
 
 public class BaseballGame {
 
+	BaseballGame() {
 
-    BaseballGame(){
+	}
 
-    }
+	public void start() {
 
-    public void start(){
+	}
 
-    }
+	void finishOneGame() {
 
-    void finishOneGame(){
+	}
 
-    }
+	boolean continueGame() {
+		return false;
+	}
 
-    boolean continueGame(){
-        return false;
-    }
+	void finishEntireGame() {
 
-    void finishEntireGame(){
+	}
 
-    }
-
+	class Computer {
 
 		List<Integer> suggestion = new ArrayList<>();
-        List<Integer> setRandomNumber(){
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
-            return computer;
-        }
+
+		List<Integer> setRandomNumber() {
+			List<Integer> computer = new ArrayList<>();
+			while (computer.size() < 3) {
+				int randomNumber = Randoms.pickNumberInRange(1, 9);
+				if (!computer.contains(randomNumber)) {
+					computer.add(randomNumber);
+				}
+			}
+			return computer;
+		}
 
 		void setSuggestion(List<Integer> suggestion) {
 			for (int i = 0; i < this.suggestion.size(); i++) {
@@ -47,49 +48,48 @@ public class BaseballGame {
 			}
 		}
 
-        void giveResult(){
+		void giveResult() {
 
-        }
+		}
 
-        boolean isAnswer(){
-            return false;
-        }
+		boolean isAnswer() {
+			return false;
+		}
 
-        int checkBall(){
-            return 0;
-        }
+		int checkBall() {
+			return 0;
+		}
 
-        int checkStrike(){
-            return 0;
-        }
+		int checkStrike() {
+			return 0;
+		}
 
-        boolean isGameEnd(){
-            return false;
-        }
-    }
+		boolean isGameEnd() {
+			return false;
+		}
+	}
 
-    class Player{
-        String input(){
-            return "";
-        }
+	class Player {
+		String input() {
+			return "";
+		}
 
-        List<Integer> suggest(){
-            List<Integer> suggestion = new ArrayList<>();
-            return suggestion;
-        }
+		List<Integer> suggest() {
+			List<Integer> suggestion = new ArrayList<>();
+			return suggestion;
+		}
 
-        boolean validSuggestion(){
-            return false;
-        }
+		boolean validSuggestion() {
+			return false;
+		}
 
-        boolean continueGame(){
-            return false;
-        }
+		boolean continueGame() {
+			return false;
+		}
 
-        boolean validContinueGame(){
-            return false;
-        }
+		boolean validContinueGame() {
+			return false;
+		}
 
-    }
+	}
 }
-
