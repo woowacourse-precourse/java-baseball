@@ -1,10 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +16,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mockStatic;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 
@@ -81,6 +85,16 @@ class ApplicationTest extends NsTest {
         assertThat(Application.evaluateGuess(guess1, answer1)).isEqualTo(evaluation1);
         assertThat(Application.evaluateGuess(guess2, answer2)).isEqualTo(evaluation2);
         assertThat(Application.evaluateGuess(guess3, answer3)).isEqualTo(evaluation3);
+    }
+
+    @Test
+    void 잘못된_게임_진행_옵션_입력에_대한_예외_테스트() {
+        assertThatThrownBy(() -> {
+            final MockedStatic<Randoms> mock = mockStatic(Randoms.class);
+            mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+                    .thenReturn(1, 3, 5);
+            run("135", "3");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
