@@ -56,8 +56,15 @@ public class GameService {
                 break;
             }
         }
-        addScore();
+        addScore(index, temp);
     }
 
-    private void addScore(){}
+    private void addScore(int index, int temp) {
+        if (temp != index && temp != -1) {
+            game.addBallScore();
+        }
+        if (temp == index) {
+            game.addStrikeScore();
+        }
+    }
 }
