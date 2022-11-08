@@ -17,6 +17,31 @@ public class Application {
         }
         return computer;
     }
+    public static List<Integer> getRtn(List<Integer> computer, String tmp){
+        int strike = 0;
+        int ball = 0;
+
+
+        if(tmp.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        for(int i = 0; i < tmp.length(); i++){
+            int cur = (int)(tmp.charAt(i) - '0');
+            if(computer.get(i) == cur){
+                strike++;
+                continue;
+            }else if(computer.contains(cur)){
+                ball++;
+                continue;
+            }
+        }
+        List<Integer> res = new ArrayList<>();
+        res.add(strike);
+        res.add(ball);
+        return res;
+    }
+
     public static void main(String[] args) throws Exception {
 
     }
