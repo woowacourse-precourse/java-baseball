@@ -50,4 +50,10 @@ class Game {
             }
         }
     }
+
+    Game(String str) {
+        for (int i = 0; i < 3; i++) {
+            number[i] = Integer.parseInt(str.charAt(i) + "");
+        }
+    }
 }
