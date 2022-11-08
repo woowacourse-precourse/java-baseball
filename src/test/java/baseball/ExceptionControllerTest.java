@@ -69,7 +69,7 @@ class ExceptionControllerTest {
 
     @Nested
     @DisplayName("종료코드 입력값이 유효하지 않을 때 예외발생 테스트")
-    class InvalidFinishCode {
+    class InvalidFinishCodeTest {
         @Test
         void 유효하지_않은_숫자가_입력된_경우_1() {
             String input = "3";
