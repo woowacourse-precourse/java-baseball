@@ -10,15 +10,16 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        try {
             Operator op = new Operator();
             op.playGameReady();
             op.playGame();
             op.playGameEnd();
             if(op.getRestart()) main(new String[0]);
-        } catch (IllegalArgumentException e) {
-            // throw new IllegalArgumentException();
-        }
+//        try {
+//
+//        } catch (IllegalArgumentException e) {
+//            // throw new IllegalArgumentException();
+//        }
 
     }
 }
