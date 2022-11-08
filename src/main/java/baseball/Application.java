@@ -19,9 +19,7 @@ public class Application {
         }
         input = getNumber();
         List<Integer> answer = compareNumber(input, computer);
-        for (int i : answer) {
-            System.out.println(i);
-        }
+        printResult(answer.get(1), answer.get(0));
     }
 
     public static List<Integer> makeRandomNumber() {
@@ -61,5 +59,22 @@ public class Application {
             }
         }
         return List.of(strikeCnt, ballCnt);
+    }
+
+    public static void printResult(int ball, int strike) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+
+        else {
+            if (ball > 0) {
+                System.out.print(ball + "볼 ");
+            }
+
+            if (strike > 0) {
+                System.out.print(strike + "스트라이크");
+            }
+            System.out.println();
+        }
     }
 }
