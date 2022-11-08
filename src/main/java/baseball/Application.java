@@ -20,6 +20,8 @@ public class Application {
     private static final int DIGITS = 3;
     private static final int RANDOM_MIN = 1;
     private static final int RANDOM_MAX = 9;
+    private static boolean isPlaying = true;
+    private static List<Integer> computerNumber;
 
     public static List<Integer> createComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
@@ -128,6 +130,19 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    // 7. 게임 진행 여부 묻기
+    public static void askKeepPlaying() throws IllegalArgumentException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine().trim();
+        if(!isOneOrTwo(input)) throw new IllegalArgumentException() ;
+        if (input.trim().equals("1")) {
+            computerNumber = createComputerNumber();
+        }
+        if (input.trim().equals("2")) {
+            isPlaying = false;
+        }
     }
 
 }
