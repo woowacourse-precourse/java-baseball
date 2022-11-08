@@ -3,6 +3,16 @@ package baseball.util;
 public class UserNumberParser {
     public int[] parseUserNumber(String input, int size) throws IllegalArgumentException {
         checkSize(input, size);
+        return parseNumber(input, size);
+    }
+
+    private void checkSize(String input, int size) throws IllegalArgumentException {
+        if (input.length() != size) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private int[] parseNumber(String input, int size) {
         int[] numbers = new int[size];
 
         for (int i = 0; i < size; i++) {
@@ -12,12 +22,6 @@ public class UserNumberParser {
             numbers[i] = toInt(input, i);
         }
         return numbers;
-    }
-
-    private void checkSize(String input, int size) throws IllegalArgumentException {
-        if (input.length() != size) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private Boolean checkRange(String input, int index) {
