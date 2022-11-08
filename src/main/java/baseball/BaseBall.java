@@ -3,16 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseBall {
-	private static final int NUM_DIGIT = 3;
-	private static final int NUM_BOUNDARY = 10;
-	private static final boolean PLAYING = true;
-	private static final boolean NOT_VERIFY = false;
-	private static final boolean VERIFY = true;
-	private static final boolean GAME_END = true;
-	private static final boolean GAME_CONTINUE = false;
-	private static final boolean GAME_START = false;
-	private static final boolean GAME_EXIT = true;
-
 	private int[] goalArr;
 	private int[] goalUsageArr;
 	private int[] ballArr;
@@ -24,9 +14,9 @@ public class BaseBall {
 	private StringBuilder sb;
 
 	public BaseBall() {
-		goalArr = new int[NUM_DIGIT];
-		goalUsageArr = new int[NUM_BOUNDARY];
-		ballArr = new int[NUM_DIGIT];
+		goalArr = new int[Constants.NUM_DIGIT];
+		goalUsageArr = new int[Constants.NUM_BOUNDARY];
+		ballArr = new int[Constants.NUM_DIGIT];
 	}
 
 	public void game() {
@@ -35,7 +25,7 @@ public class BaseBall {
 	}
 
 	private void gameRunLoop() {
-		while (PLAYING) {
+		while (Constants.PLAYING) {
 			if (gameRun()) {
 				break;
 			}
@@ -55,18 +45,18 @@ public class BaseBall {
 			throw new IllegalArgumentException();
 		}
 
-		if (order.equals("1")) {
-			return GAME_START;
+		if (order.equals(Constants.ORDER_NEW_GAME)) {
+			return Constants.GAME_START;
 		} else{
-			return GAME_EXIT;
+			return Constants.GAME_EXIT;
 		}
 	}
 
 	private boolean verifyOrder(String order) {
-		if (order.equals("1") || order.equals("2")) {
-			return VERIFY;
+		if (order.equals(Constants.ORDER_NEW_GAME) || order.equals(Constants.ORDER_GAME_EXIT)) {
+			return Constants.VERIFY;
 		} else {
-			return NOT_VERIFY;
+			return Constants.NOT_VERIFY;
 		}
 	}
 
@@ -76,11 +66,11 @@ public class BaseBall {
 	}
 
 	private void printNewGameStatus() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		System.out.println(Constants.NEW_GAME_MESSAGE);
 	}
 
 	private void gamePlayLoop() {
-		while (PLAYING) {
+		while (Constants.PLAYING) {
 			if (gamePlay()) {
 				break;
 			}
@@ -96,21 +86,21 @@ public class BaseBall {
 	private boolean nextAction() {
 		if (isCompleteGoal()) {
 			printCelebrateStatus();
-			return GAME_END;
+			return Constants.GAME_END;
 		} else {
-			return GAME_CONTINUE;
+			return Constants.GAME_CONTINUE;
 		}
 	}
 
 	private void printCelebrateStatus() {
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println(Constants.CELEBREATE_MESSAGE);
 	}
 
 	private boolean isCompleteGoal() {
-		if (numStrike == NUM_DIGIT) {
-			return GAME_END;
+		if (numStrike == Constants.NUM_DIGIT) {
+			return Constants.GAME_END;
 		} else {
-			return GAME_CONTINUE;
+			return Constants.GAME_CONTINUE;
 		}
 	}
 
@@ -123,16 +113,16 @@ public class BaseBall {
 	private void printPlayStatus() {
 		sb = new StringBuilder();
 		if (numBall > 0) {
-			sb.append(numBall).append("볼");
+			sb.append(numBall).append(Constants.BALL);
 		}
 		if (sb.length() > 0) {
-			sb.append(" ");
+			sb.append(Constants.SPACE);
 		}
 		if (numStrike > 0) {
-			sb.append(numStrike).append("스트라이크");
+			sb.append(numStrike).append(Constants.STRIKE);
 		}
 		if (sb.length() == 0) {
-			sb.append("낫싱");
+			sb.append(Constants.NOTHING);
 		}
 
 		System.out.println(sb.toString());
@@ -141,7 +131,7 @@ public class BaseBall {
 	private void checkBall() {
 		numBall = 0;
 
-		for (int idx = 0; idx < NUM_DIGIT; idx++) {
+		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
 			if (isStrike[idx]) {
 				continue;
 			}
@@ -153,10 +143,10 @@ public class BaseBall {
 	}
 
 	private void checkStrike() {
-		isStrike = new boolean[NUM_DIGIT];
+		isStrike = new boolean[Constants.NUM_DIGIT];
 		numStrike = 0;
 
-		for (int idx = 0; idx < NUM_DIGIT; idx++) {
+		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
 			if (goalArr[idx] == ballArr[idx]) {
 				isStrike[idx] = true;
 				numStrike += 1;
@@ -191,45 +181,45 @@ public class BaseBall {
 
 	private boolean verifyBall(String ball) {
 		if (!verifyLength(ball) || !verifyIsNumber(ball) || !verifyDupNumber(ball)) {
-			return NOT_VERIFY;
+			return Constants.NOT_VERIFY;
 		} else {
-			return VERIFY;
+			return Constants.VERIFY;
 		}
 	}
 
 	private boolean verifyDupNumber(String ball) {
 		int ballNumber = Integer.parseInt(ball);
-		int[] verifyDup = new int[NUM_BOUNDARY];
+		int[] verifyDup = new int[Constants.NUM_BOUNDARY];
 
 		int pow = 0;
 		while (ballNumber >= Math.pow(10, pow)) {
 			int digit = digitNumber(ballNumber, pow);
 
 			if (verifyDup[digit] != 0) {
-				return NOT_VERIFY;
+				return Constants.NOT_VERIFY;
 			}
 
 			verifyDup[digit] += 1;
 			pow += 1;
 		}
 
-		return VERIFY;
+		return Constants.VERIFY;
 	}
 
 	private boolean verifyIsNumber(String ball) {
 		try {
 			int number = Integer.parseInt(ball);
-			return VERIFY;
+			return Constants.VERIFY;
 		} catch (NumberFormatException e) {
-			return NOT_VERIFY;
+			return Constants.NOT_VERIFY;
 		}
 	}
 
 	private boolean verifyLength(String ball) {
-		if (ball.length() > NUM_DIGIT) {
-			return NOT_VERIFY;
+		if (ball.length() > Constants.NUM_DIGIT) {
+			return Constants.NOT_VERIFY;
 		} else {
-			return VERIFY;
+			return Constants.VERIFY;
 		}
 	}
 
@@ -247,7 +237,7 @@ public class BaseBall {
 	}
 
 	private void printSetBallStatus() {
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.print(Constants.SET_BALL_STATUS);
 	}
 
 	private void gameInit() {
@@ -255,7 +245,7 @@ public class BaseBall {
 	}
 
 	private void printOpeningStatus() {
-		System.out.println("숫자 야구 게임을 시작합니다.");
+		System.out.println(Constants.OPENING_STATUS);
 	}
 
 	private void gamePrepare() {
@@ -263,7 +253,7 @@ public class BaseBall {
 	}
 
 	private void makeGoal() {
-		for (int idx = 0; idx < NUM_DIGIT; idx++) {
+		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
 			int randomNum = makeNumber();
 			makeNumberOrder(this.goalArr, randomNum, idx);
 			makeNumberUsage(this.goalUsageArr, randomNum);
