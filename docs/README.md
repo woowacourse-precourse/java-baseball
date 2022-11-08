@@ -100,3 +100,4 @@ class Application {
 * Player라는 클래스가 하는 일만 메서드로 등록하기 -> 하나의 클래스에서의 기능이 너무 많으면 유지보수가 
 힘들다는 것을 이해했다.
 * CheckException 클래스를 통해서 예외 사항을 체크하는 메서드를 Player에서 분리하여 추가
+* GameStatus Enum Class에서 Magic Number 관리하도록 리패토링
