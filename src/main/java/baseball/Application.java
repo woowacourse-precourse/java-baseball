@@ -1,7 +1,17 @@
 package baseball;
-
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        PlayBaseBallGame playBaseBall = new PlayBaseBallGame();
+        InputNumber number = new InputNumber();
+
+        while (true) {
+            playBaseBall.playGame();
+            number.inputReStartNumber();
+            if (number.reStartNumber.equals("2")) {
+                break;
+            }
+        }
+
     }
+
 }
