@@ -3,9 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -46,7 +43,6 @@ public class GameController {
 
     public void playGame(List<Integer> answer) {
         boolean isAnswer = false;
-        System.out.println(answer);
         do {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
