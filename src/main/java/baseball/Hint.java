@@ -13,12 +13,12 @@ public class Hint {
     private int strikeCount;
     private int ballCount;
 
-    public void initHint() {
+    public void init() {
         strikeCount = 0;
         ballCount = 0;
     }
 
-    public void giveHint(List<Integer> computerNumber, List<Integer> userNumber) {
+    public void score(List<Integer> computerNumber, List<Integer> userNumber) {
         for (int i = 0; i < LENGTH_OF_NUMBER; i++) {
             if (isStrike(computerNumber, userNumber.get(i), i)) {
                 strikeCount++;
@@ -48,7 +48,8 @@ public class Hint {
         return (strikeCount == 0 && ballCount == 0);
     }
 
-    public String printHint() {
+    @Override
+    public String toString() {
         String resultString = "";
 
         if (isNothing()) {
