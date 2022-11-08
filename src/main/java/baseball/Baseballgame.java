@@ -1,12 +1,7 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-import static camp.nextstep.edu.missionutils.Console.*;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Baseballgame {
 
@@ -15,6 +10,7 @@ public class Baseballgame {
 
     public Baseballgame() {
     }
+
     public void play() {
         do {
             game();
@@ -38,19 +34,21 @@ public class Baseballgame {
 
     private Boolean reGame() {
         String input = "";
+        printCheckRestartMessage();
+        input = getUserInput();
 
         while (invalidInput(input)) {
+            printCheckRestartExceptionMessage();
             printCheckRestartMessage();
             input = getUserInput();
         }
-        printCheckRestartExceptionMessage();
+
         return input.equals(CONTINUE);
     }
 
     private boolean invalidInput(String input) {
         return !input.equals(CONTINUE) && !input.equals(QUIT);
     }
-
 
 
     private Com makeUserBalls() {
@@ -71,14 +69,11 @@ public class Baseballgame {
     }
 
     private void validateUserInput(String userInput) {
-        if (checkUserInputLength(userInput)) {
+        if (userInput.length() != Com.BALLS_COUNT) {
             throw new IllegalArgumentException("입력값의 길이가 잘못 되었습니다.");
         }
     }
 
-    private Boolean checkUserInputLength(String str) {
-        return str.length() != 3;
-    }
 
     private String getUserInput() {
         return readLine();
@@ -86,7 +81,7 @@ public class Baseballgame {
 
 
     private void printUserInputMessage() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print("put integer : ");
     }
 
     private void printResult(Checkout result) {
@@ -105,10 +100,6 @@ public class Baseballgame {
     private void printCheckRestartMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
-
-
-
-
 
 
 }

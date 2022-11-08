@@ -20,7 +20,7 @@ public class Checkout {
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BALLS_COUNT; i++) {
             Ball thisBall = gameBalls.get(i);
 
             if (thisBall.equals(userBalls.get(i))) {
@@ -60,28 +60,16 @@ public class Checkout {
         return strike == 0 && 0 < ball;
     }
 
-    private boolean isStrikeAndBall() {
-        return 0 < strike && 0 < ball;
-    }
-
-    private boolean isAllStrike() {
-        return strike == 3;
-    }
-
     private void printEndMessage() {
-        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", 3);
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", BALLS_COUNT);
     }
 
     public boolean isAllStrikes() {
-        if (strike == 3) {
+        if (strike == BALLS_COUNT) {
             printEndMessage();
             return true;
         }
         return false;
-    }
-
-    private boolean compareStrikeAndBall(Checkout result) {
-        return this.strike.equals(result.strike) && this.ball.equals(result.ball);
     }
 
 

@@ -21,6 +21,22 @@ public class Ball {
         }
     }
 
+    public boolean equals(Object obj) {
+        Ball ball = (Ball)obj;
+        return this.number.equals(ball.number);
+    }
+
+    public int hashCode() {
+        if (number == null) {
+            return 0;
+        }
+        return number.hashCode();
+    }
+
+    public String toString() {
+        return this.number.toString();
+    }
+
 
 
 }
