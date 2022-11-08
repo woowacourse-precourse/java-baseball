@@ -36,6 +36,18 @@ public class Application {
         return result;
     }
 
+    /**
+     * 사용자로부터 받은 입력이 주어진 규칙에 맞는지 확인
+     * @param input
+     * @return
+     */
+    private static Boolean isValidInput (String input) {
+        if (input.length() != 3) return false;
+        if (!input.matches("[0-9]+")) return false;
+        if (input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2) || input.charAt(0) == input.charAt(2)) return false;
+        return true;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
