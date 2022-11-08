@@ -7,6 +7,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -50,6 +51,15 @@ class ApplicationTest extends NsTest {
         assertThat(computer.countStrike("425")).isEqualTo(1);
         assertThat(computer.countStrike("143")).isEqualTo(2);
         assertThat(computer.countStrike("123")).isEqualTo(3);
+    }
+
+    @Test
+    void 게임결과확인() {
+        Computer computer = new Computer("123");
+        assertThat(computer.getResult("425")).isEqualTo("1 스트라이크");
+        assertThat(computer.getResult("123")).isEqualTo("3 스트라이크");
+        assertThat(computer.getResult("321")).isEqualTo("2 볼 1 스트라이크");
+        assertThat(computer.getResult("312")).isEqualTo("3 볼");
     }
 
     @Override
