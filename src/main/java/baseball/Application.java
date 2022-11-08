@@ -45,5 +45,31 @@ public class Application {
 
         }while(!threeStrike);
     }
-    
+
+    public static List<Integer> userChoiceNumbers(){
+        List<Integer> user = new ArrayList<>();
+        String userNumbers;
+        user.add(0,0);
+        user.add(1,0);
+        user.add(2,0);
+
+        System.out.print("숫자를 입력해주세요 : ");
+        userNumbers = getUserNum();
+        for(int order =2; order >=0; order--) {
+            user.set(order,Character.getNumericValue(userNumbers.charAt(2-order)));
+        }
+        return user;
+    }
+
+    public static String getUserNum() {
+        String userNumbers = readLine();
+
+        if(userNumbers.length() != 3) throw new IllegalArgumentException(); // 길이가 3인지 검사
+        for(int i=0;i<userNumbers.length();i++){
+            if( userNumbers.charAt(i) <48 || userNumbers.charAt(i) > 58) throw new IllegalArgumentException(); // 0~9의 숫자인지 아닌지 검사
+        }
+
+        return userNumbers;
+    }
+
 }
