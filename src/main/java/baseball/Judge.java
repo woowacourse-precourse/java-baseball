@@ -12,9 +12,12 @@ public class Judge {
     this.computer = new Computer();
   }
 
-  public Result compareBalls(){
+  public ArrayList<Integer> getPlayerNumbers(){
     this.player.decideNumbers(this.player.inputNumbers());
-    ArrayList<Integer> playerNumbers = this.player.getNumbers();
+    return this.player.getNumbers();
+  }
+
+  public Result compareBalls(ArrayList<Integer> playerNumbers){
     ArrayList<Integer> computerNumbers = this.computer.getNumbers();
     int strike = 0;
     int ball = 0;
