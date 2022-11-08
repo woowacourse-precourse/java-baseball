@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -12,12 +13,22 @@ public class User implements Number {
 
     @Override
     public void create() {
+        Game.printInputMessage();
         number = convertInputAsNumber(Console.readLine());
     }
 
     @Override
     public List<Integer> get() {
         return number;
+    }
+
+    public void createRepeatInput() {
+        Game.printRepeatMessage();
+        String flag = Console.readLine();
+        if (isInValidFlag(flag)) {
+            Information.throwError(Information.Error.FLAG);
+        }
+        Game.checkRestart(flag);
     }
 
     public static List<Integer> convertInputAsNumber(String inputNumber) {
@@ -29,16 +40,21 @@ public class User implements Number {
 
     public static void validateNumber (String number) {
         if (!isNumberValidMaxSize(number)) {
-            // Game 클래스에서 오류 호출
+            Information.throwError(Information.Error.SIZE);
         }
 
         if (!isNumberValidUnique(number)) {
-            // Game 클래스에서 오류 호출
+            Information.throwError(Information.Error.UNIQUE);
         }
 
         if (!isNumberValidRange(number)) {
-            // Game 클래스에서 오류 호출
+            Information.throwError(Information.Error.RANGE);
         }
+    }
+
+    public static boolean isInValidFlag(String flag) {
+        return !List.of(Game.RESTART_GAME_FLAG, Game.END_GAME_FLAG)
+                .contains(flag);
     }
 
     public static boolean isNumberValidMaxSize(String inputNumber) {
