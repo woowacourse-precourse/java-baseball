@@ -24,6 +24,12 @@ class GameTest {
 
     @Test
     void inputNum() {
+        String input = "123";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertEquals(input, game.inputNum());
     }
 
     @Test
