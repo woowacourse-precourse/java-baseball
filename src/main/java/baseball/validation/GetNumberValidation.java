@@ -1,11 +1,11 @@
-package baseball;
+package baseball.validation;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 
-public class Validation {
+public class GetNumberValidation {
     boolean getNumberValidate(String numberString) {
         if (getNumberOnlyNumber(numberString) && getNumberLengthThree(numberString)) {
             if (getNumberDuplicateCheck(numberString)) {
