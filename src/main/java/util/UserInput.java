@@ -50,4 +50,8 @@ public class UserInput {
 
         return true;
     }
+
+    public static boolean isValidGameStateInput(String restartInput) {
+        return false;
+    }
 }
