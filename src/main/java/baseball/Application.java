@@ -10,6 +10,7 @@ public class Application {
         LinkedHashMap<Integer, Integer> computersNumbers;
         LinkedHashMap<Integer, Integer> playersNumbers;
         LinkedHashMap<String, Integer> scoreSheet;
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         computersNumbers = randomNumbers();
         int playStatus = 0;
@@ -43,11 +44,9 @@ public class Application {
         if ((input1 != input2) && (input2 != input3) && (input1 != input3)) {
             if ((input1 < 10) && (input2 < 10) && (input3 < 10)
                     && (input1 > 0) && (input2 > 0) && (input3 > 0)) {
-
                 return true;
             }
         }
-
         return false;
     }
 
@@ -59,6 +58,7 @@ public class Application {
         int inputNumber1 = Integer.parseInt(input);
         int inputNumber2;
         int inputNumber3;
+
         if (inputNumber1 > 99 && inputNumber1 < 1000) { //세 숫자가 한번에 붙어 입력될 경우
 
             inputNumber2 = inputNumber1 % 100 / 10;
@@ -84,7 +84,6 @@ public class Application {
         } else {
             throw new IllegalArgumentException();
         }
-
         return usersNumbers;
     }
 
@@ -138,6 +137,7 @@ public class Application {
     public static int restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         String input = Console.readLine();
+
         int answer = Integer.parseInt(input);
         if (answer == 1) {
             return 0;
