@@ -60,5 +60,4 @@ public class ExceptionTest {
         assertThat(e.getMessage()).isEqualTo("잘못된 숫자 입력입니다.");
     }
 
-
 }

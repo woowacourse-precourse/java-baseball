@@ -13,7 +13,6 @@ public class CalculateNumTest {
         calculator = new Calculator();
     }
 
-
     @Test
     void 볼_스트라이크_계산(){
         calculator.calculateNum("123","234");
