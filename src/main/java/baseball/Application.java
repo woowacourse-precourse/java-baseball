@@ -16,6 +16,7 @@ public class Application {
         int condition = 1;
         while (condition == 1) {
             System.out.println("숫자 야구 게임을 시작합니다.");
+
             baseBallStart();
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -52,17 +53,19 @@ public class Application {
 
     public static List<Character> tokenizeString(String input) {
         List<Character> tokenizedResult = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
+
+        for (int i = 0; i < input.length(); i++)
             tokenizedResult.add(input.charAt(i));
-        }
+
+
         return tokenizedResult;
     }
 
     public static List<Integer> convertCharListToIntList(List<Character> charList) {
         List<Integer> parseIntResultList = new ArrayList<>();
-        for (Character ch : charList) {
+
+        for (Character ch : charList)
             parseIntResultList.add(Character.getNumericValue(ch));
-        }
 
         return parseIntResultList;
     }
@@ -73,11 +76,13 @@ public class Application {
 
     public static List<Integer> generateRandomNumber(int digitSize) {
         List<Integer> generatedRandomNumber = new ArrayList<>();
+
         while (generatedRandomNumber.size() < digitSize) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!generatedRandomNumber.contains(randomNumber)) {
+
+            if (!generatedRandomNumber.contains(randomNumber))
                 generatedRandomNumber.add(randomNumber);
-            }
+
         }
         return generatedRandomNumber;
     }
@@ -105,9 +110,9 @@ public class Application {
 
         if (strikeCount == 0 && ballCount == 0)
             return "낫싱";
-        else if (strikeCount == 0) {
+        else if (strikeCount == 0)
             return ballCount + "볼";
-        } else if (ballCount == 0)
+        else if (ballCount == 0)
             return strikeCount + "스트라이크";
         else
             return ballCount + "볼" + " " + strikeCount + "스트라이크";
@@ -119,9 +124,11 @@ public class Application {
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
+
             String input = getInput();
 
             validateBaseBallInput(input);
+
             List<Integer> baseBallInput = convertInputToBaseBallInput(input);
 
             currentBaseBallResult = calculateBaseBallResult(randomNumber, baseBallInput);
