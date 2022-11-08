@@ -20,7 +20,7 @@ class Game {
         }
     }
 
-    public int play() {
+    private int play() {
         answerList = initAnswerList();
         System.out.println(START.message());
 
@@ -61,7 +61,7 @@ class Game {
         return answerList;
     }
 
-    public List<Integer> getUserGuess() {
+    private List<Integer> getUserGuess() {
         String input = Console.readLine();
         List<Integer> guess = formatInputToGuess(input);
 
@@ -79,7 +79,7 @@ class Game {
                     .map(Integer::valueOf)
                     .collect(Collectors.toList());
         } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_RANGE.message());
+            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_NUMBER_FORMAT.message());
         }
         return guess;
     }
