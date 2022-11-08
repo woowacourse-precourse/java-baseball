@@ -1,5 +1,13 @@
 package baseball.game;
 
+import baseball.game.number.Score;
+
+import java.util.List;
+
+import static baseball.game.number.Calculator.scoreCalculator;
+import static baseball.game.number.RandomNumbers.createThreeRandomNumbers;
+import static baseball.userInterface.Input.getUserInput;
+
 public class BaseballGame {
 
     public void start() {
@@ -7,5 +15,15 @@ public class BaseballGame {
             play();
             askPlayAgain();
         } while (isPlayAgain);
+    }
+
+    private void play() {
+        List<Integer> answer = createThreeRandomNumbers();
+        Score userScore;
+        do {
+            List<Integer> userInput = getUserInput();
+            userScore = scoreCalculator(answer, userInput);
+            printScore(userScore);
+        } while(!isWin(userScore));
     }
 }
