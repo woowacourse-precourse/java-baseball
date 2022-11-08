@@ -15,6 +15,12 @@ public class Application {
     final static int GAME_RESTART = 1;
     final static int GAME_END = 2;
 
+    final static int STRIKE_MAX = 3;
+
+    final static String STRING_STRIKE = "스트라이크";
+    final static String STRING_BALL = "볼";
+    final static String STRING_NOTHING = "낫싱";
+
     public static ArrayList<Integer> SelectNumbers() {
         ArrayList<Integer> numbers = new ArrayList<>();  // numbers chosen by computer
 
@@ -56,6 +62,23 @@ public class Application {
         }
 
         return numbers;
+    }
+
+    public static HashMap<String, Integer> JudgeNumber(ArrayList<Integer> computerNumbers
+            , ArrayList<Integer> inputNumbers) {
+        HashMap<String, Integer> resultMap = new HashMap<>();  // Map included the information about strike, ball, out
+
+        for(int i = 0; i < inputNumbers.size(); ++i) {
+            int indexComputerNumber = computerNumbers.indexOf( inputNumbers.get(i) );
+            if ( i == indexComputerNumber ) {
+                resultMap.put(STRING_STRIKE, resultMap.getOrDefault(STRING_STRIKE, 0) + 1);
+            }
+            else if ( -1 != indexComputerNumber ) {
+                resultMap.put(STRING_BALL, resultMap.getOrDefault(STRING_BALL, 0) + 1);
+            }
+        }
+
+        return resultMap;
     }
 
     public static void BaseballGame() {
