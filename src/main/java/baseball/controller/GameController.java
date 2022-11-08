@@ -6,11 +6,7 @@ import baseball.domain.game.Result;
 import baseball.domain.computer.generator.NumberGenerator;
 import baseball.domain.computer.generator.RandomNumberGenerator;
 import baseball.domain.player.Player;
-import baseball.utils.Validator;
 import baseball.view.GameView;
-import camp.nextstep.edu.missionutils.Console;
-
-import static baseball.utils.Constants.*;
 
 public class GameController {
     private GameView gameView;
@@ -28,7 +24,7 @@ public class GameController {
         gameView.startGame();
         do {
             play();
-        } while (isRestart());
+        } while (gameView.isRestart());
     }
 
     private void play() {
@@ -42,12 +38,5 @@ public class GameController {
         } while (!result.isThreeStrike());
 
         gameView.printSuccessAndRestart();
-    }
-
-    private boolean isRestart() {
-        String input = Console.readLine();
-        Validator.validateRestartInput(input);
-
-        return input.equals(GAME_RESTART);
     }
 }
