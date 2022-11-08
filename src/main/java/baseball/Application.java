@@ -9,16 +9,14 @@ public class Application {
         int command = 1;
 
         while (command == 1) {
-            Game game = new Game(printWindow, computer());
+            Game game = new Game(printWindow, computer);
             game.gamePlay();
             command = Integer.parseInt(Console.readLine());
             Validator.isRestartGame(command);
         }
     }
 
-    private static Computer computer() {
-        return computer();
-    }
+
 
 
 }

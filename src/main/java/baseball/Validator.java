@@ -8,7 +8,7 @@ import java.util.Set;
 public final class Validator {
 
     public static void isValidNumber(String userNumber) throws  IllegalArgumentException{
-        if (Integer.parseInt(userNumber)<100 || Integer.parseInt(userNumber) > 999){
+        if (Integer.parseInt(userNumber)<=99 || Integer.parseInt(userNumber) >= 1000){
             throw new IllegalArgumentException();
         }
         if (userNumber.contains("0")){
