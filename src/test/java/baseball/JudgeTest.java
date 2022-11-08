@@ -25,7 +25,7 @@ class JudgeTest {
     void Ball개수_확인() {
         int ballCount = judge.countBall(hitterNumber, pitcherNumber);
 
-        assertThat(ballCount).isEqualTo(2);
+        assertThat(ballCount).isEqualTo(0);
     }
 
     @Test
