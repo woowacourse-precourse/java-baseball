@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -64,6 +67,22 @@ class ApplicationTest extends NsTest {
         String input = "363";
         boolean result = Application.isValid(input);
         assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void calculateResults_볼과_스트라이크() {
+        ArrayList<Integer> targetNumbers = new ArrayList<>(Arrays.asList(3, 6, 9));
+        ArrayList<Integer> playerNumbers = new ArrayList<>(Arrays.asList(9, 6, 3));
+        ArrayList<Integer> result = Application.calculateResults(targetNumbers, playerNumbers);
+        assertThat(result).containsExactly(2, 1);
+    }
+
+    @Test
+    void calculateResults_일치하는_숫자_없음() {
+        ArrayList<Integer> targetNumbers = new ArrayList<>(Arrays.asList(4, 6, 8));
+        ArrayList<Integer> playerNumbers = new ArrayList<>(Arrays.asList(3, 5, 7));
+        ArrayList<Integer> result = Application.calculateResults(targetNumbers, playerNumbers);
+        assertThat(result).containsExactly(0, 0);
     }
 
     @Override
