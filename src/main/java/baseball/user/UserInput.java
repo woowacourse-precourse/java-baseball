@@ -1,14 +1,13 @@
-package baseball;
+package baseball.user;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Const.INPUT_MESSAGE;
-import static baseball.Const.NUMBER_LENGTH;
-import static baseball.Const.RESTART_MESSAGE;
-
+import static baseball.util.Const.INPUT_MESSAGE;
+import static baseball.util.Const.NUMBER_LENGTH;
+import static baseball.util.Const.RESTART_MESSAGE;
 
 public class UserInput {
 

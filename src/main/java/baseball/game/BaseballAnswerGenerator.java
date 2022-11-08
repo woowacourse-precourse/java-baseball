@@ -1,13 +1,13 @@
-package baseball;
+package baseball.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Const.NUMBER_LENGTH;
+import static baseball.util.Const.NUMBER_LENGTH;
 
-public class AnswerGenerator {
+public class BaseballAnswerGenerator {
 
     public List<Integer> generateAnswer() {
         List<Integer> randomNumbers = new ArrayList<>();

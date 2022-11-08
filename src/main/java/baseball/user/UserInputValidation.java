@@ -1,14 +1,14 @@
-package baseball;
+package baseball.user;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static baseball.Const.ERROR_MESSAGE_NOT_DUPLICATION;
-import static baseball.Const.ERROR_MESSAGE_NOT_ZERO;
-import static baseball.Const.ERROR_MESSAGE_ONLY_DIGIT;
-import static baseball.Const.ERROR_MESSAGE_ONLY_THREE_LENGTH;
-import static baseball.Const.ERROR_MESSAGE_RESTART_INPUT;
-import static baseball.Const.NUMBER_LENGTH;
+import static baseball.util.Const.ERROR_MESSAGE_NOT_DUPLICATION;
+import static baseball.util.Const.ERROR_MESSAGE_NOT_ZERO;
+import static baseball.util.Const.ERROR_MESSAGE_ONLY_DIGIT;
+import static baseball.util.Const.ERROR_MESSAGE_ONLY_THREE_LENGTH;
+import static baseball.util.Const.ERROR_MESSAGE_RESTART_INPUT;
+import static baseball.util.Const.NUMBER_LENGTH;
 
 public class UserInputValidation {
 

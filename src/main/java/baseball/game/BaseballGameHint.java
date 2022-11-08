@@ -1,12 +1,12 @@
-package baseball;
+package baseball.game;
 
 import java.util.List;
 
-import static baseball.Const.ANSWER_MESSAGE;
-import static baseball.Const.BALL_MESSAGE;
-import static baseball.Const.NOTHING_MESSAGE;
-import static baseball.Const.NUMBER_LENGTH;
-import static baseball.Const.STRIKE_MESSAGE;
+import static baseball.util.Const.ANSWER_MESSAGE;
+import static baseball.util.Const.BALL_MESSAGE;
+import static baseball.util.Const.NOTHING_MESSAGE;
+import static baseball.util.Const.NUMBER_LENGTH;
+import static baseball.util.Const.STRIKE_MESSAGE;
 
 public class BaseballGameHint {
 
