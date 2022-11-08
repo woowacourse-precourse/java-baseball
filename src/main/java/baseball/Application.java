@@ -38,7 +38,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println("컴퓨터가 생성한 값 : " + computer);
+//        System.out.println("컴퓨터가 생성한 값 : " + computer);
     }
 
     static void playGame() {
