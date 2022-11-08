@@ -28,6 +28,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 입력값이_숫자인지_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("12a"))
+                .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
