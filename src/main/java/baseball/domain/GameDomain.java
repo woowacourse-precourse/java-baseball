@@ -9,6 +9,10 @@ public class GameDomain {
         gameNumbers = numbers;
     }
 
+    public int[] gameNumbers() {
+        return gameNumbers;
+    }
+
     public void initScore() {
         strike = 0;
         ball = 0;
