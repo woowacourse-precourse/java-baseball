@@ -13,12 +13,12 @@ import static baseball.game.GameMessage.END_GAME;
 import static baseball.game.GameMessage.START_GAME;
 import static utils.ConvertUtil.convertDigit;
 
-public class Game {
+public class GameManager {
 
     private Computer computer;
     private Score score;
 
-    public Game() {
+    public GameManager() {
         this.computer = new Computer();
         this.score = new Score();
     }
