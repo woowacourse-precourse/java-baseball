@@ -153,3 +153,15 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+
+## 기능목록
+1. 숫자를 입력받는 기능(readLine() 사용)
+2. 랜덤숫자 생성해주는 메서드 생성 (pickNumberInRanger() 사용)
+3. 입력받은 숫자가 4자릿수를 넘지않도록 확인하는 기능
+4. 입력받은 숫자를 파싱하여 List안에 넣어주는 기능
+5. 랜덤숫자를 파싱하여 List안에 넣어주는 기능
+6. 스트라이크 카운팅해주는 메소드
+7. 볼 카운팅해주는 메소드
+8. 낫싱 카운팅해주는 메소드
