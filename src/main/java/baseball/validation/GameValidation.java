@@ -53,7 +53,7 @@ public final class GameValidation {
     private boolean isNotDuplicateNumber() {
         Set<Character> userInputSet = new HashSet<>(userInputList);
 
-        if (userInputSet.size() == 3) {
+        if (userInputSet.size() == GameValue.CORRECT_LENGTH) {
             return true;
         }
 
