@@ -41,4 +41,32 @@ class FunctionTest{
             );
         }
     }
+
+    @Nested
+    class CheckInputTest {
+
+        private Application functionTest = new Application();
+
+        @Test
+        void case1() {
+            String number = "123";
+            boolean result = true;
+            assertThat(functionTest.CheckInput(number)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            String number = "999";
+            boolean result = true;
+            assertThat(functionTest.CheckInput(number)).isEqualTo(result);
+        }
+
+        @Test
+        void 예외_테스트1() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> functionTest.CheckInput("helloworld"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+    }
 }

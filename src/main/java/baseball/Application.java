@@ -7,14 +7,26 @@ public class Application {
 
     public boolean isEnd(String number){
 
-        int temp_num = Integer.parseInt(number);
+        int tempNum = Integer.parseInt(number);
 
-        if (temp_num == 1){
+        if (tempNum == 1){
             return true;
-        } else if (temp_num == 2) {
+        } else if (tempNum == 2) {
             return false;
         }
 
         throw new IllegalArgumentException();
     }
+
+    public boolean CheckInput(String number){
+
+        int tempNum = Integer.parseInt(number);
+
+        if (100 <= tempNum && tempNum < 1000){
+            return true;
+        }
+        throw new IllegalArgumentException();
+    }
+
+
 }
