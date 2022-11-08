@@ -18,6 +18,8 @@ public class Game {
                 computer.add(randomNumber);
             }
         }
+
+        this.computer = computer;
     }
 
     public PlayResult playGame(String[] input) throws IllegalAccessException {
