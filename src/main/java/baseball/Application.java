@@ -1,23 +1,59 @@
 package baseball;
-import java.util.*;
-public class Application {
-    public static String getResult(int[] cNum, int pNum){
-        return "";
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
+class Array {
+    static boolean checkArrayContains(final int[] arr, final int number) {
+        for (int value : arr) {
+            if (value == number) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("Let's");
-        Scanner sc=new Scanner(System.in);
-        while(true){
-            int[] comNum=new int[3];
-            for(int i=0;i<comNum.length;i++){
-                comNum[i]=(int)(Math.random()*9)+1;
-            }
-            System.out.print("숫자를 입력해주세요 : ");
-            int playerNum=sc.nextInt();
-            System.out.println(getResult(comNum,playerNum));
 
+}
+
+
+class Game {
+    private static final int START = 1;
+    private static final int END = 9;
+    static final int NUMBER_COUNT = 3;
+    private static final int NEW = 1;
+    private static final int QUIT= 2;
+
+    int[] number = new int[NUMBER_COUNT];
+
+    Game() {//컴퓨터가 1~9까지 서로 다른 임의의 수 3개 선택
+        int nowRandomNum;
+        int nowNumberIndex = 0;
+
+        while (nowNumberIndex < NUMBER_COUNT) {
+            nowRandomNum = this.getRandomNumber();
+
+            if (!Array.checkArrayContains(number, nowRandomNum)) {
+                number[nowNumberIndex++] = nowRandomNum;
+            }
         }
+    }
+
+    Game(String str) {
+        for (int i = 0; i < Game.NUMBER_COUNT; i++) {
+            number[i] = Integer.parseInt(str.charAt(i) + "");
+        }
+    }
+
+    private int getRandomNumber() {//1~9까지 임의의 수
+        return pickNumberInRange(Game.START, Game.END);
+    }
+
+
+}
+public class Application {
+    public static void main(String[] args) {
+        Game game = new Game();
+
     }
 }
