@@ -13,7 +13,7 @@ public abstract class Player {
         return new ArrayList<>(selectBalls);
     }
 
-    public void clearSelectBalls() {
+    void clearSelectBalls() {
         selectBalls.clear();
     }
 
