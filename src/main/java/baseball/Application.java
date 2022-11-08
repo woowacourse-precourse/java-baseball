@@ -10,23 +10,9 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String menu = "";
-        String input = "";
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> computer = makeRandomNumber();
-        for (int i : computer) {
-            System.out.print(i);
-        }
-
-        while (true) {
-            input = getNumber();
-            List<Integer> answer = compareNumber(input, computer);
-            printResult(answer.get(1), answer.get(0));
-
-            if (quit(answer.get(0))) {
-                break;
-            }
-        }
+        gameStart();
     }
 
     public static List<Integer> makeRandomNumber() {
@@ -90,6 +76,21 @@ public class Application {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static void gameStart() {
+        List<Integer> computer = makeRandomNumber();
+
+        while (true) {
+            String input = getNumber();
+            List<Integer> cnt = compareNumber(input, computer);
+
+            printResult(cnt.get(1), cnt.get(0));
+            if (quit(cnt.get(0))) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 }
