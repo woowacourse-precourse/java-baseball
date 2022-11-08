@@ -21,11 +21,15 @@ public class User {
 
         madeNumber(input);
         checkNumberDigit();
+
+        this.input = input;
     }
 
     public void inputGameState() {
         String input = readLine();
-        if (input.equals("2")) {
+        if (input.equals("1")) {
+            this.game_state = 1;
+        } else if (input.equals("2")) {
             this.game_state = 2;
         } else if (!input.equals("1") || !input.equals("2")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
