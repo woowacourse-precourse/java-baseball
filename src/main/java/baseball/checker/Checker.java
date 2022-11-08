@@ -24,4 +24,11 @@ public class Checker {
         return set.size() == 3;
     }
 
+    public static boolean IsInvalidChoice(String user){
+        if(user.length() != 1) {
+            return true;
+        }
+        
+        return user.charAt(0) == '1' || user.charAt(0) == '2';
+    }
 }
