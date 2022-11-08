@@ -104,6 +104,7 @@ public class Application {
     static void resetOfExit(String s) {
         if (s.equals("1")) {
             startGame();
+            return;
         }
         if (s.equals("2")) {
             return;
