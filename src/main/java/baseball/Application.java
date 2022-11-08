@@ -5,16 +5,15 @@ import baseball.game.NumberParser;
 import baseball.game.NumberReferee;
 import baseball.game.ComputerInput;
 import baseball.game.PlayerNumberInput;
-import baseball.printer.GamePrint;
+import baseball.printer.ResultPrint;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     private static final PlayerNumberInput playerNumberInput = new PlayerNumberInput();
     private static final ComputerInput computerInput = new ComputerInput();
     private static final NumberReferee numberReferee = new NumberReferee();
     private static final NumberParser numberParser = new NumberParser();
-    private static final GamePrint gamePrint = new GamePrint();
+    private static final ResultPrint resultPrint = new ResultPrint();
 
     public static void main(String[] args) {
         startNumberBaseballGame();
@@ -37,7 +36,7 @@ public class Application {
             player = numberParser.parsePlayerNumber(input);
             strike = numberReferee.checkStrike(player, computer);
             ball = numberReferee.checkBall(player, computer);
-            gamePrint.printGuessResult(strike, ball);
+            resultPrint.printGuessResult(strike, ball);
         }
     }
 
@@ -49,6 +48,4 @@ public class Application {
         }
         return false;
     }
-
-
 }
