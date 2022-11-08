@@ -65,7 +65,7 @@ public class Application {
         List<Integer> user = new ArrayList<>();
         while(true){
             makeGame(computer);
-            playgame(computer,user);
+            playGame(computer,user);
             wouldYouExitGame();
             if(game_over) break;
         }
