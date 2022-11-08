@@ -1,10 +1,16 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 import util.Util;
 
 public class BaseBallGame {
+    private List<Integer> computer;
+
+    public BaseBallGame() {
+        this.computer = new ArrayList<>();
+    }
 
     public void run() {
         System.out.println(MessageList.GAME_START);
@@ -17,7 +23,7 @@ public class BaseBallGame {
     }
 
     private void startGame() {
-        List<Integer> computer = Util.makeRandomNumbers();
+        computer = Util.makeRandomNumbers();
         String input;
 
         while (true) {
