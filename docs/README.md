@@ -60,6 +60,9 @@
 
 ## MVC 정리 및 기능 목록
 
+### 그림 도식화
+<img width="" src="https://user-images.githubusercontent.com/106813090/200565570-0889119c-1166-4f48-be31-a105207b178a.png"/>
+
 ### Model
 1. 난수 생성 기능
     - 메소드 호출 시 난수를 생성하는 기능<br></br>
