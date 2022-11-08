@@ -18,9 +18,8 @@ public class Application {
 
     public static int calculationNumber(List<Integer> resultNumber ,String inputStringNumber){
         List<Integer> inputNumber = makeStringNumberToList(inputStringNumber);
-        int strike = calculationStrike();
-        int ball = calculationStrike();
-        printResult(strike, ball);
+        int strike = countStrike(resultNumber, inputNumber);
+
         return strike;
     }
 
@@ -37,8 +36,14 @@ public class Application {
 
     }
 
-    private static int calculationStrike() {
-        return 0;
+    private static int countStrike(List<Integer> resultNumber, List<Integer> inputNumber) {
+        int countStrike = 0;
+        for (int i = 0; i < 3; i++) {
+            if(resultNumber.get(i) == inputNumber.get(i)){
+                countStrike++;
+            }
+        }
+        return countStrike;
     }
 
     public static List<Integer> makeRandomNumber() {
