@@ -1,0 +1,28 @@
+### 기능 목록
+- playBaseball method
+  - 숫자 야구 게임 한 단위를 실행한다.
+  - 랜덤 숫자를 생성한다.
+  - getUserInput method, returnAnswer method, checkBall/checkStrike method, endGame method를 포함한다.
+- makeAnswer method
+  - 사용자가 맞춰야 하는 정답 숫자를 생성한다.
+- getUserInput method 
+  - "숫자를 입력해주세요 : " 문구를 출력한다.
+  - 사용자로부터 숫자를 입력받는다.
+- returnAnswer method
+  - 사용자부터 입력받은 숫자에 대하여 몇 스트라이크 몇 볼인지 판단한다.
+  - checkBall method와 checkStrike method를 포함한다.
+- checkBall method
+  - 사용자가 입력한 숫자가 정답에 존재하는지 확인한다.
+- checkStrike method
+  - Ball을 충족하는 것으로 확인된 숫자가 자리까지 일치하는지 확인한다.
+- endGame method
+  - "3개의 숫자를 모두 맞히셨습니다! 게임종료"문구를 출력한다.
+  - 사용자로부터 게임을 지속할지 의사를 확인하는 숫자를 입력받는다.
+- checkInputLength method
+  - 사용자가 올바른 개수를 입력했는지 여부를 판단한다.
+- checkInputValue method
+  - 사용자가 올바른 값을 입력했는지 여부를 판단한다.
+- checkEndGameInput method
+  - 게임이 끝나고 재시작 여부를 확인할때 1,2가 아닌 다른 값이 들어오지 않는지 판단한다.
+- printStrikeAndBall method
+  - 스트라이크와 볼 정보를 입력받아 알맞은 양식으로 출력한다.
