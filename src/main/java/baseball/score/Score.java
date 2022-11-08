@@ -15,8 +15,17 @@ public class Score {
         this.strike = 0;
     }
 
+    public Score(Integer ball, Integer strike) {
+        this.ball = ball;
+        this.strike = strike;
+    }
+
     public Integer getStrike() {
         return strike;
+    }
+
+    public Integer getBall() {
+        return ball;
     }
 
     public void clear() {
@@ -66,4 +75,5 @@ public class Score {
     public void printScore(){
         System.out.println(printMessage());
     }
+
 }
