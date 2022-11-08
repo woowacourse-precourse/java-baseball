@@ -25,6 +25,7 @@ public class Guess {
 
     static void checkValidityOfGuess(String input) throws IllegalArgumentException {
         Integer guessIntFormat = Integer.parseInt(input);
+
         ArrayList<Integer> guessParsed = parseStringIntoInteger(input);
         Set<Integer> uniqueElementOnly;
 
