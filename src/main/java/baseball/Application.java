@@ -22,7 +22,7 @@ public class Application {
         return computer;
     }
 
-    public static String UserInput(){
+    public static String UserInput() {
         String userInputString = Console.readLine();
         return userInputString;
     }
@@ -61,12 +61,12 @@ public class Application {
         int ball_cnt = 0;
         int strike_cnt = 0;
         int game_set = Integer.MAX_VALUE;
-        for(int i = 0; i < user.size(); i++) {
-            for(int j = 0; j < answer.size(); j++) {
-                if(user.get(i) == answer.get(j) && i ==j) {
-                    strike_cnt ++;
+        for (int i = 0; i < user.size(); i++) {
+            for (int j = 0; j < answer.size(); j++) {
+                if (user.get(i) == answer.get(j) && i == j) {
+                    strike_cnt++;
                 } else if (user.get(i) == answer.get(j) && i != j) {
-                    ball_cnt ++;
+                    ball_cnt++;
                 }
             }
         }
@@ -78,17 +78,17 @@ public class Application {
 
     // ball strike 수 출력
     public static void Print_BallStrike(List<Integer> ballstrike) {
-        if(ballstrike.get(0) == 0 && ballstrike.get(1) == 0){
+        if (ballstrike.get(0) == 0 && ballstrike.get(1) == 0) {
             System.out.println("낫싱");
         } else if (ballstrike.get(1) == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        }else if(ballstrike.get(0) == 0 && ballstrike.get(1) > 0){
+        } else if (ballstrike.get(0) == 0 && ballstrike.get(1) > 0) {
             System.out.println(ballstrike.get(1) + "스트라이크");
-        }else if (ballstrike.get(0) > 0 && ballstrike.get(1) == 0){
+        } else if (ballstrike.get(0) > 0 && ballstrike.get(1) == 0) {
             System.out.println(ballstrike.get(0) + "볼");
-        }else {
+        } else {
             System.out.println(ballstrike.get(0) + "볼 " + ballstrike.get(1) + "스트라이크");
         }
     }
@@ -108,41 +108,52 @@ public class Application {
             }
         }
     }
+
+    public static int Game(List<Integer> answer) {  //  return 값이 0이면 프로그램 종료, 1이면 재시작, 2면 입력값 계속 받기
+        List<Integer> user = new ArrayList<>();
+        List<Integer> ballstrike = Arrays.asList(0, 0);
+        boolean check_gameover = true;
+
+        System.out.print("숫자 입력 : ");
+        try {
+            user = UserInput_list(UserInput());
+        } catch (IllegalArgumentException e) {
+            System.out.println("error");
+            return 0;
+        }
+
+        ballstrike = BallStrike(answer, user);
+        Print_BallStrike(ballstrike);
+
+        if (ballstrike.get(1) == 3) {
+            check_gameover = Check_GameOver();
+        }
+        if (ballstrike.get(1) == 3 && check_gameover) {
+            return 1;
+        } else if (ballstrike.get(1) == 3 && !check_gameover) {
+            return 0;
+        }
+        user.clear();
+        return 2;
+    }
+
+
+
     public static void main(String[] args) {
         List<Integer> answer = new ArrayList<>();
         List<Integer> user = new ArrayList<>();
         List<Integer> ballstrike = Arrays.asList(0,0);
         int user_input = Integer.MAX_VALUE;
         int game_set = Integer.MAX_VALUE;
-        boolean check_gameover = true;
+        int check_gameover = 2;
 
-        game :while(true) {
+        game :while(check_gameover != 0) {
             answer = Answer();
+            check_gameover = 2;
             System.out.println(answer);
-            input: while(true){
-                System.out.print("숫자 입력 : ");
-                try {
-                    user = UserInput_list(UserInput());
-                } catch (IllegalArgumentException e) {
-                    System.out.println("error");
-                    break game;
-                }
-
-                ballstrike = BallStrike(answer, user);
-                Print_BallStrike(ballstrike);
-
-                if(ballstrike.get(1) == 3) {
-                    check_gameover = Check_GameOver();
-                }
-                if(ballstrike.get(1) ==3 && check_gameover == true) {
-                    continue game;
-                }else if (ballstrike.get(1) ==3 && check_gameover == false) {
-                    break game;
-                }
-                user.clear();
+            input: while(check_gameover == 2){
+                check_gameover = Game(answer);
             }
-
-
         }
 
 
