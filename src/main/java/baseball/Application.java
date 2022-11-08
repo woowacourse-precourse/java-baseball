@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
@@ -185,9 +186,30 @@ class BallCount {
 
 class Validator {
     private static final Pattern pattern = Pattern.compile("^[1-9]{3}");
+    private static List<Character> inputs = new ArrayList<>();
 
     public boolean isRightFormat(String inputString) {
+        if (isThree(inputString) && isDuplicate(inputString)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isThree(String inputString) {
         return pattern.matcher(inputString).matches();
+    }
+
+    public boolean isDuplicate(String inputString) {
+        char[] input = inputString.toCharArray();
+        for (char number : input) {
+            if (inputs.contains(number)) {
+                inputs.clear();
+                return false;
+            }
+            inputs.add(number);
+        }
+        inputs.clear();
+        return true;
     }
 }
 
