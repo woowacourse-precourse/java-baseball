@@ -31,6 +31,23 @@ class GameBoardTest extends NsTest {
         }, 1, 2, 3);
     }
 
+    @Test
+    void case3_기록_없는_경우_RECORDS_명령어_출력_확인() {
+        assertRandomNumberInRangeTest(() -> {
+            run("records","123","2");
+            assertThat(output()).contains("입력된 정보가 없습니다.", "3스트라이크", "게임 종료");
+        }, 1, 2, 3);
+    }
+
+    @Test
+    void case4_기록_있는_경우_RECORDS_명령어_출력_확인() {
+        assertRandomNumberInRangeTest(() -> {
+            run("213", "records", "123", "2");
+            assertThat(output()).contains("2볼 1스트라이크","현재 입력한 결과입니다.\r\n213 : 2볼 1스트라이크",
+                    "3스트라이크", "게임 종료");
+        }, 1, 2, 3);
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
