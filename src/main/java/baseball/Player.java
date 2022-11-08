@@ -15,6 +15,7 @@ public class Player {
 
     public void setNumber(String input) {
         if (!Validator.isValid(input)) {
+            GameMessagePrinter.printInvalidInput();
             throw new IllegalArgumentException();
         }
 

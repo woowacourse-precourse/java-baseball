@@ -17,6 +17,7 @@ public class Application {
             return true;
         }
 
+        GameMessagePrinter.printInvalidInput();
         throw new IllegalArgumentException();
     }
 

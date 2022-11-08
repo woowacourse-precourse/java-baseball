@@ -34,4 +34,8 @@ public class GameMessagePrinter {
         System.out.println("숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+    public static void printInvalidInput() {
+        System.out.println("올바르지 않은 입력입니다!!!");
+    }
 }
