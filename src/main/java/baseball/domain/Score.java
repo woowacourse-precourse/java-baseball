@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Score {
-    private final int strike;
     private final int ball;
+    private final int strike;
 
-    public Score(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
+    public Score(int ball, int strike) {
+        this.strike = ball;
+        this.ball = strike;
     }
 
     public CountStatus getCountStatus() {

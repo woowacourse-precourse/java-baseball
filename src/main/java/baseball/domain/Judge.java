@@ -39,7 +39,7 @@ public class Judge {
     }
 
     public Score getUserInputScore(List<Integer> userInput) {
-        return new Score(getStrikeCount(userInput), getBallCount(userInput));
+        return new Score(getBallCount(userInput), getStrikeCount(userInput));
     }
 }
 
