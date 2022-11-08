@@ -5,7 +5,7 @@ public class Application {
         BaseballOutput.printGameStart();
         do {
             Baseball baseball = new Baseball();
-            baseball.play();
+            baseball.playGame();
         } while (does_user_want_play_again());
     }
 
