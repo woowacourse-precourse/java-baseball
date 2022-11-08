@@ -20,10 +20,30 @@ public class Pitch {
     }
 
     public Pitch update(String s) {
+        validateInputString(s);
         this.pitches = Arrays.asList(s.split(""))
                 .stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         return this;
     }
+
+    private void validateInputString(String s) {
+        if (s.length() != 3 | containsDuplicateCharacters(s) | !s.matches("[1-9]+")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean containsDuplicateCharacters(String s) {
+        List<Character> existingChars = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (existingChars.contains(s.charAt(i))) {
+                return true;
+            } else {
+                existingChars.add(s.charAt(i));
+            }
+        }
+        return false;
+    }
+
 }
