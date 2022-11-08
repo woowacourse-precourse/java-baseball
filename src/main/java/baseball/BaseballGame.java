@@ -20,18 +20,24 @@ public class BaseballGame {
             BaseBallDto result = baseballService.getResult(baseballNumberList);
             view.printBaseBallResult(result);
             //3스트라이크 체크 후 다음 동작
-            if (result.isStrikeOut()) {
-                GameOption gameOption = createGameOption();
-                if (gameOption.equals(GameOption.EXIT)) {
-                    break;
-                }
-                baseballService.resetNumberList();
+            if (isFinished(result)) {
+                break;
             }
+            baseballService.resetNumberList();
         }
+
     }
 
-    private GameOption createGameOption() {
-        String input = view.inputExitOrRestart();
+    private boolean isFinished(BaseBallDto result) {
+        if (result.isStrikeOut()) {
+            String input = view.inputExitOrRestart();
+            GameOption gameOption = createGameOption(input);
+            return gameOption.equals(GameOption.EXIT);
+        }
+        return false;
+    }
+
+    private GameOption createGameOption(String input) {
         BaseballValidator.validDateSelectOption(input);
         return GameOption.of(input);
     }
