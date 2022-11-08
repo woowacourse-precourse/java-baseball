@@ -7,7 +7,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -88,6 +90,15 @@ public class Application {
     static void validate(Integer number) throws IllegalArgumentException {
         
         if (number < 123 || 987 < number) {
+            throw new IllegalArgumentException();
+        }
+        
+        Set<Integer> duplicateCheckSet = new HashSet<Integer>();
+        duplicateCheckSet.add(number % 10);
+        duplicateCheckSet.add((number / 10) % 10);
+        duplicateCheckSet.add((number / 100) % 10);
+        
+        if (duplicateCheckSet.size() != 3 || duplicateCheckSet.contains(0)) {
             throw new IllegalArgumentException();
         }
         
