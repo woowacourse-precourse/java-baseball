@@ -18,4 +18,8 @@ public class Player {
                 .mapToObj(c -> c - '0')
                 .forEach(numbers::add);
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
