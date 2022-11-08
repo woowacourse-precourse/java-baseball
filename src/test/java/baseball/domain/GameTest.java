@@ -37,31 +37,6 @@ public class GameTest {
     }
 
     @Test
-    void changeUserInputToArray_메서드_실행시_문자열이_포함된_입력값에_대한_예외_발생() {
-        //given
-        Game testGame = new Game();
-        String typeErrorMessage = "숫자만 입력 가능합니다.";
-
-        //when,then
-        assertThatThrownBy(() -> UserInputAdapter.changeStrToIntegerArray("안123"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(typeErrorMessage);
-    }
-
-    @Test
-    void changeUserInputToArray_메서드_실행시_배열_반환() {
-        //given
-        Game testGame = new Game();
-        String testString = "123";
-
-        //when
-        List<Integer> testArray = UserInputAdapter.changeStrToIntegerArray(testString);
-
-        //when,then
-        Assertions.assertThat(testArray).isEqualTo(List.of(1, 2, 3));
-    }
-
-    @Test
     void getUserInput_메서드_실행시_유효하지_않은_입력값에_대한_예외_발생() {
         //given
         Game testGame = new Game();
