@@ -64,8 +64,23 @@ public class Application {
         }
         return arr;
     }
-    static int[] initRandomValue(){
+
+    static int[] initRandomValue() {
         int randomValue = getRandomValue();
         return getIntToArr(randomValue);
+    }
+
+    static int[] compareToNum(int input, int[] randomArr) {
+        int[] result = new int[2];
+        for (int i = 0; i < 3; i++) {
+            int num = input % 10;
+            input /= 10;
+            if (randomArr[num] == i + 1) {
+                result[1] ++;
+            } else if (randomArr[num] > 0) {
+                result[0] ++;
+            }
+        }
+        return result;
     }
 }
