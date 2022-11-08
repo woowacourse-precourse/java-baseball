@@ -77,7 +77,56 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    class ReGameInputException {
+        @Test
+        void 숫자_범위_이탈() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        assertThatThrownBy(() -> runException("123", "3"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                                .hasMessageContaining("1,2 만 입력 가능합니다");
+                    },
+                    1, 2, 3
+            );
+        }
 
+        @Test
+        void 숫자_범위_이탈2() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        assertThatThrownBy(() -> runException("123", "abc"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                                .hasMessageContaining("1,2 만 입력 가능합니다");
+                    },
+                    1, 2, 3
+            );
+        }
+
+        @Test
+        void 숫자_범위_이탈3() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        assertThatThrownBy(() -> runException("123", "1 "))
+                                .isInstanceOf(IllegalArgumentException.class)
+                                .hasMessageContaining("1,2 만 입력 가능합니다");
+                    },
+                    1, 2, 3
+            );
+        }
+
+        @Test
+        void 숫자_범위_이탈4() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        assertThatThrownBy(() -> runException("123", "우테코"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                                .hasMessageContaining("1,2 만 입력 가능합니다");
+                    },
+                    1, 2, 3
+            );
+        }
+
+    }
 
     @Test
     void 게임종료_후_재시작() {
