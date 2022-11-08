@@ -14,13 +14,13 @@ public class UserOutput {
     }
 
     public static void RefereeMessage(int ballCount, int strikeCount) {
-        if(ballCount>0)
+        if (ballCount > 0)
             System.out.printf("%d볼 ", ballCount);
 
-        if (strikeCount>0)
+        if (strikeCount > 0)
             System.out.printf("%d스트라이크", strikeCount);
 
-        if(ballCount==0 && strikeCount==0)
+        if (ballCount == 0 && strikeCount == 0)
             System.out.printf("낫싱");
         System.out.println();
     }
