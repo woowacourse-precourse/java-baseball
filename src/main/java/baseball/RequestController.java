@@ -10,30 +10,24 @@ import java.util.stream.Collectors;
 
 public class RequestController {
 
-    private List<Integer> request;
-
-    RequestController(String request) {
-        this.request = request.chars().mapToObj(i -> i - '0')
+    public static List<Integer> validateAndGetIntList(String requestStr) {
+        List<Integer> request = requestStr.chars().mapToObj(i -> i - '0')
                 .collect(Collectors.toList());
-    }
-
-    public List<Integer> validateAndGetIntList() {
-        final String errorMsg = "잘못된 입력값 입니다. 중복되지 않는 3자리의 정수를 입력해주세요";
 
         if (request.size() != MAX_SIZE_OF_LIST
-                | isOverlapping()
-                | isInvalidRange()) {
-            throw new IllegalArgumentException(errorMsg);
+                | isOverlapping(request)
+                | isInvalidRange(request)) {
+            throw new IllegalArgumentException(ResponseMsg.NUMBER_INPUT_ERROR_MSG.getMsg());
         }
 
         return request;
     }
 
-    private boolean isOverlapping() {
+    private static boolean isOverlapping(List<Integer> request) {
         return request.stream().distinct().count() != request.size();
     }
 
-    private boolean isInvalidRange() {
+    private static boolean isInvalidRange(List<Integer> request) {
         return request.stream().anyMatch(i -> END < i | i < START);
     }
 }

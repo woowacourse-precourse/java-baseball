@@ -18,10 +18,10 @@ class RequestControllerTest {
         List<Integer> inputList = inputString.chars().mapToObj(i -> i - '0').collect(Collectors.toList());
 
         // when
-        RequestController requestController = new RequestController(inputString);
+        List<Integer> result = RequestController.validateAndGetIntList(inputString);
 
         // then
-        assertThat(requestController.validateAndGetIntList()).isEqualTo(inputList);
+        assertThat(result).isEqualTo(inputList);
     }
 
     @Test
@@ -31,11 +31,8 @@ class RequestControllerTest {
         String[] invalidCases = new String[]{"abc", "133", "1234", "12", "8", "!)*", "012"};
 
         for (String invalidCase : invalidCases) {
-            // when
-            RequestController invalidController = new RequestController(invalidCase);
-
             // then
-            assertThatThrownBy(invalidController::validateAndGetIntList)
+            assertThatThrownBy(() -> RequestController.validateAndGetIntList(invalidCase))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("잘못된 입력값 입니다. 중복되지 않는 3자리의 정수를 입력해주세요");
         }
