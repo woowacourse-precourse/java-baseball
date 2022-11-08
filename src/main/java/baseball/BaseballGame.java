@@ -13,6 +13,17 @@ public class BaseballGame {
         System.out.println(START_GAME_ALERT);
         GameBoard gameBoard = new GameBoard();
 
+        putNumberOrCommand(gameBoard);
+    }
+
+    public static void putNumberOrCommand(GameBoard gameBoard) {
+        while (true) {
+            String readline = inputNumber();
+            if (correctInputNumber(gameBoard.processReadline(readline))) {
+                validateCorrectInputNumber();
+                return;
+            }
+        }
     }
 
     public static String inputNumber() {
