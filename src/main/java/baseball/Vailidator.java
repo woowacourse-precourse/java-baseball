@@ -39,7 +39,7 @@ public class Vailidator {
             }
         }
     }
-    
+
     // 각자리수는 중복되지 않는다
     public static void checkDuplicatedNum(String inputNumStr) {
         List<Integer> numList = new ArrayList<>();

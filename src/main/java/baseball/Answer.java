@@ -44,7 +44,7 @@ public class Answer {
         int strikeCnt = 0;
 
         for (int i = 0; i < randomNumList.size(); i++) {
-            if(randomNumList.get(i) == inputNumList.get(i)) {
+            if (randomNumList.get(i) == inputNumList.get(i)) {
                 strikeCnt++;
             }
         }

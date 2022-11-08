@@ -16,15 +16,16 @@ public class RandomNum {
         // 3자리 자연수
         while (numList.size() < 3) {
             // 1부터 9로만 구성
-            int newNum = Randoms.pickNumberInRange(1,9);
+            int newNum = Randoms.pickNumberInRange(1, 9);
 
             // 중복되지 않는 수
-            if(!hasNum[newNum - 1]) {
+            if (!hasNum[newNum - 1]) {
                 numList.add(newNum);
                 hasNum[newNum - 1] = true;
+                //System.out.println(newNum); //테스트 위한 정답 확인 코드 - 삭제 예정
             }
         }
-        
+
         return numList;
     }
 }

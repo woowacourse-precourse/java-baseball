@@ -40,7 +40,7 @@ public class GameProcess {
     public static void checkAnswer(List<Integer> randomNumList, String inputNum, boolean answer) {
         List<Integer> inputNumList = new ArrayList<>();
         String[] inputNumArr = inputNum.split("");
-        for(String s : inputNumArr) {
+        for (String s : inputNumArr) {
             inputNumList.add(Integer.parseInt(s));
         }
 
@@ -52,7 +52,7 @@ public class GameProcess {
         }
 
         // 정답인 경우, 종료 구분값 받기
-        if(answer) {
+        if (answer) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String inputOverYn = Console.readLine();
 
