@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Information {
     enum Result {
         STRIKE("스트라이크"), BALL("볼"), NOTHING("낫싱");
@@ -25,6 +28,17 @@ public class Information {
     }
 
     public static String createComparisonMessage(int ballCount, int strikeCount) {
+        if (Comparison.isNothing(ballCount, strikeCount)) {
+            return Result.NOTHING.message;
+        }
 
+        List<String> messages = new ArrayList<>();
+        if (ballCount > 0) {
+            messages.add(ballCount + Result.BALL.message);
+        }
+        if (strikeCount > 0) {
+            messages.add(strikeCount + Result.STRIKE.message);
+        }
+        return String.join(" ", messages);
     }
 }
