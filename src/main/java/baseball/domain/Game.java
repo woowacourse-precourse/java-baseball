@@ -7,6 +7,9 @@ public class Game {
     private static Computer computer;
     private static User user;
 
+    public Game() { // 테스트용 기본 생성자
+    }
+
     public Game(Computer computer, User user) {
         this.computer = computer;
         this.user = user;
