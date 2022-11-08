@@ -5,6 +5,10 @@ import org.assertj.core.api.NumberAssert;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -96,8 +100,22 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
+    // 컴퓨터 숫자 갯수 테스트
     @Test
     void 컴퓨터_숫자_갯수_테스트() {
         assertThat(Application.comNumber().size()==3);
+    }
+
+    // 컴퓨터 숫자 중복 테스트
+    @Test
+    void 컴퓨터_숫자_중복_테스트() {
+        List comList = Application.comNumber();
+        Set set = new HashSet<>();
+
+        for(int i=0; i<comList.size(); i++) {
+            set.add(comList.get(i));
+        }
+
+        assertThat(set.size()==3);
     }
 }
