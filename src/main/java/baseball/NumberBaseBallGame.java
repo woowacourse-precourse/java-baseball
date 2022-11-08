@@ -3,6 +3,7 @@ package baseball;
 import baseball.player.Computer;
 import baseball.player.User;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class NumberBaseBallGame {
 
@@ -70,5 +71,10 @@ public class NumberBaseBallGame {
 
     private boolean isEverythingRight(int strike) {
         return strike == 3;
+    }
+
+    private boolean isNotRestartNumber(String restartFlag) {
+        Pattern notRestartNumberPattern = Valid.NOT_RESTART_NUMBER.getPattern();
+        return notRestartNumberPattern.matcher(restartFlag).find();
     }
 }
