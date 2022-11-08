@@ -11,17 +11,26 @@ public class Application {
         int[] comparison;
         String result;
         while (cont) {
+            comparison = new int[2];
             computer = generateRandomNumbers();
-            guess = inputGuess();
-            comparison = compareGuessToComputer(guess, computer);
-            result = gameResults(comparison);
-            if (comparison[1] == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                cont = inputReplay();
-                break;
+            printComputer(computer);
+            while (comparison[1] < 3) {
+                guess = inputGuess();
+                comparison = compareGuessToComputer(guess, computer);
+                result = gameResults(comparison);
+                System.out.println(result);
             }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            cont = inputReplay();
+
         }
 
+    }
+    static void printComputer(List<Integer> computer) {
+        for (int i = 0; i < computer.size(); i ++) {
+            System.out.print(computer.get(i));
+        }
+        System.out.println();
     }
     static List<Integer> generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
@@ -37,7 +46,7 @@ public class Application {
     static void validateOnlyNumbers(String guess) {
         try {
             int numbers = Integer.parseInt(guess);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력이 가능합니다. 프로그램을 종료합니다");
         }
     }
@@ -51,11 +60,11 @@ public class Application {
         int num;
         for (int order = 0; order < guess.size(); order ++) {
             num = guess.get(order);
-            if (computer.contains(num) && (order == guess.indexOf(num))) {
-                comparison[1]++;
-            }
-            else if (computer.contains(num) && (order != guess.indexOf(num))) {
+            if (computer.contains(num) && (order != computer.indexOf(num))) {
                 comparison[0]++;
+            }
+            else if (computer.contains(num) && (order == computer.indexOf(num))) {
+                comparison[1]++;
             }
         }
         return comparison;
@@ -66,17 +75,17 @@ public class Application {
             result = "낫싱";
             return result;
         }
-        else if (!(comparison[0]==0)) {
+        if (!(comparison[0]==0)) {
             result += comparison[0]+"볼 ";
         }
-        else if (!(comparison[1]==0)) {
+        if (!(comparison[1]==0)) {
             result += comparison[1]+"스트라이크";
         }
         return result;
     }
     static List<Integer> inputGuess() {
         List<Integer> guess = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
         String guessString = Console.readLine();
         validateOnlyNumbers(guessString);
         validateNumberOfValues(guessString, 3);
