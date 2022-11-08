@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.model.strikeandball.StrikeAndBall;
 import baseball.service.GameService;
+import baseball.utills.constants.Constants;
 import baseball.view.Input;
 import baseball.view.Output;
 import baseball.model.numbergenerator.NumberGenerator;
@@ -35,5 +36,14 @@ public class Game {
             output.printStrikeandBall(result);
 
         } while (!result.isThreeStrike());
+
+        this.playNewGameOrQuit();
+    }
+
+    public void playNewGameOrQuit() {
+        int userInput = input.getOneOrTwo();
+        if (userInput == Constants.RESTART) {
+            this.play();
+        }
     }
 }
