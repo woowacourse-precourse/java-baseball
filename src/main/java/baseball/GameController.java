@@ -14,15 +14,14 @@ public class GameController {
 
 
     public static void main(String[] args) {
-        String result = Console.readLine();
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        String comRandomNumber = GetRandomNumber.GetRandomNumber();
         do {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            String comRandomNumber = GetRandomNumber.GetRandomNumber();
+            String result = Console.readLine();
 
 
-            }
-        } while ();
+        } while (RESTART == 1);
 
     }
 }
