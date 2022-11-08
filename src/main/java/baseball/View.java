@@ -44,6 +44,31 @@ public class View {
         System.out.println(msg);
     }
 
+    public void printResultMsg(Score score) {
+        StringBuilder sb = new StringBuilder();
+
+        if (score.isNothing()) {
+            sb.append("낫싱");
+            System.out.println(sb.toString());
+            return;
+        }
+
+        int ball = score.getBall();
+        int strike = score.getStrike();
+
+        if (ball > 0) {
+            sb.append(Integer.toString(ball) + "볼");
+        }
+
+        if (strike > 0) {
+            boolean isEmptyString = sb.toString().compareTo("") == 0;
+            if (!isEmptyString) sb.append(" ");
+            sb.append(Integer.toString(strike) + "스트라이크");
+        }
+
+        System.out.println(sb.toString());
+    }
+
     private boolean validateUserResponse(String number) {
         if (number == null) {
             return false;
