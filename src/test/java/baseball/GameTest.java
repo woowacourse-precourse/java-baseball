@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -71,19 +72,19 @@ public class GameTest {
         }
 
         @Test
-        void 숫자변환_테스트2_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        void 숫자변환_테스트2_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
             Method checkUserInputNumberMethod = Game.class.getDeclaredMethod("checkUserInputNumber", String.class);
             checkUserInputNumberMethod.setAccessible(true);
             boolean isNumber = (boolean) checkUserInputNumberMethod.invoke(game, "012");
-            assertThat(isNumber).isEqualTo(true);
+            assertThat(isNumber).isEqualTo(false);
         }
 
         @Test
-        void 숫자변환_테스트3_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        void 숫자변환_테스트3_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
             Method checkUserInputNumberMethod = Game.class.getDeclaredMethod("checkUserInputNumber", String.class);
             checkUserInputNumberMethod.setAccessible(true);
             boolean isNumber = (boolean) checkUserInputNumberMethod.invoke(game, "2");
-            assertThat(isNumber).isEqualTo(true);
+            assertThat(isNumber).isEqualTo(false);
         }
 
         @Test
@@ -213,6 +214,5 @@ public class GameTest {
                 checkUserInputMethod.invoke(game, secretString);
             }
         }
-    }
     }
 }
