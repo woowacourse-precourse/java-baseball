@@ -1,6 +1,7 @@
 package baseball.view;
 
 public class TutorialView extends View {
+    @Override
     public void show() {
         this.introDescription();
         this.howToPlayDescription();
