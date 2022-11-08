@@ -1,6 +1,13 @@
 package baseball;
 
 public class Game {
+    private Computer computer;
+    private Player player;
+
+    public Game(){
+        computer = new Computer();
+        player = new Player();
+    }
     public void play() {
         Computer computer = new Computer();
         Player player = new Player();
