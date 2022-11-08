@@ -27,4 +27,18 @@ class Game {
 
         return cnt;
     }
+
+    int ball() {
+        int cnt = 0;
+
+        if(computerNumber.get(0).equals(userNumber.get(1)) || computerNumber.get(0).equals(userNumber.get(2))) {
+            cnt++;
+        } else if(computerNumber.get(1).equals(userNumber.get(0)) || computerNumber.get(1).equals(userNumber.get(2))) {
+            cnt++;
+        } else if(computerNumber.get(2).equals(userNumber.get(0)) || computerNumber.get(2).equals(userNumber.get(1))) {
+            cnt++;
+        }
+
+        return cnt;
+    }
 }
