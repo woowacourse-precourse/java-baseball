@@ -17,7 +17,7 @@ public class RandNumVO {
             nums[1] = Randoms.pickNumberInRange(1, 9);
         }
         nums[2] = Randoms.pickNumberInRange(1, 9);
-        while(nums[2] == nums[1] && nums[2] == nums[0]) {
+        while(nums[2] == nums[1] || nums[2] == nums[0]) {
             nums[2] = Randoms.pickNumberInRange(1, 9);
         }
         this.randNum = List.of(nums[0], nums[1], nums[2]);
