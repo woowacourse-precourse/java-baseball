@@ -46,8 +46,7 @@ public class Baseball {
 
     private void printHintMessage() {
         hint.setCount(computer.getNumbers(), player.getNumbers());
-        String hintMessage = hint.getMessage();
-        OutputView.printHintMessage(hintMessage);
+        OutputView.printHintMessage(hint.getMessage());
     }
 
     private boolean isShutdown() {
