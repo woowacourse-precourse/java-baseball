@@ -32,6 +32,7 @@ public class User {
 
     void checkUserInput(List<Integer> userNum) {
         checkInputLength();
+        checkRightType();
         checkBeforeAdd(userNum);
         Comparison comparison = new Comparison(computerNum, userNum);
     }
@@ -39,6 +40,13 @@ public class User {
     void checkInputLength() {
         if (userInput.length() != 3)
             throw new IllegalArgumentException();
+    }
+
+    void checkRightType(){
+        char[] inputChar = userInput.toCharArray();
+        for(Character c : inputChar){
+            if(!Character.isDigit(c)) throw new IllegalArgumentException();
+        }
     }
 
     void checkBeforeAdd(List<Integer> userNum) {
