@@ -1,21 +1,22 @@
 package baseball.view;
 
 public class OutputView {
-    private static final String INIT_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String NOTTING_MESSAGE = "낫싱";
-    private static final String STRIKE_MESSAGE = "스트라이크";
-    private static final String BALL_MESSAGE = "볼";
-    private static final String WIN_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final String INIT_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    public static final String NOTTING_MESSAGE = "낫싱";
+    public static final String STRIKE_MESSAGE = "스트라이크";
+    public static final String BALL_MESSAGE = "볼";
+    public static final String WIN_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static void printInitGameMessage() {
         System.out.println(INIT_MESSAGE);
     }
 
-    public void printNothing() {
+    public String printNothing() {
         System.out.println(NOTTING_MESSAGE);
+        return NOTTING_MESSAGE;
     }
 
-    public void printResult(int strike, int ball) {
+    public String printResult(int strike, int ball) {
         String result = "";
         if (ball > 0) {
             result += ball + BALL_MESSAGE + " ";
@@ -24,6 +25,8 @@ public class OutputView {
             result += strike + STRIKE_MESSAGE;
         }
         System.out.println(result);
+
+        return result;
     }
 
     public void printWinGame(int strike) {
