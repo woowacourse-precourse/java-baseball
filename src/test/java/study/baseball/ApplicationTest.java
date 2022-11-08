@@ -1,5 +1,5 @@
-package study.baseball;
-import baseball.Application;
+package baseball;
+
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
