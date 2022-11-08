@@ -10,14 +10,14 @@ import org.junit.jupiter.api.RepeatedTest;
 class RandomNumberGeneratorTest {
 
     @DisplayName("정해진 개수의 숫자가 생성된다")
-    @RepeatedTest(3)
+    @RepeatedTest(value = 3, name = "{displayName} {currentRepetition} / {totalRepetitions}")
     void test1() {
         List<Integer> baseballNumbers = randomNumbers();
         assertThat(baseballNumbers.size()).isEqualTo(3);
     }
 
     @DisplayName("추출한 숫자는 서로 다르다")
-    @RepeatedTest(3)
+    @RepeatedTest(value = 3, name = "{displayName} {currentRepetition} / {totalRepetitions}")
     void test2() {
         List<Integer> baseballNumbers = randomNumbers();
         long count = baseballNumbers.stream()
