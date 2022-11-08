@@ -17,9 +17,7 @@ public class SelectNumberResult extends View {
         Scoreboard scoreboard = service.compareComputerNumberWith(this.number);
 
         if (scoreboard.getStrikePoint() == 3 && scoreboard.getBallPoint() == 0) {
-            service.deleteComputerNumber(number);
-
-            this.response = true;
+            this.response = service.deleteComputerNumber(number);
         }
 
         printLine(scoreboard.toString());
