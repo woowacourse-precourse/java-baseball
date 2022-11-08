@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputNumberValidator {
     /*
     - 사용자 입력 숫자사이에 , 가 들어가는 경우
@@ -23,6 +26,14 @@ public class InputNumberValidator {
                 .filter(number -> 1 <= number && number <= 9)
                 .count() == 3;
     }
+
+    public static boolean repeatNumberCheck(String inputNumber){
+        List<String> inputNumbers = new ArrayList<>();
+        inputNumbers.add(inputNumber);
+        return inputNumbers.stream()
+                .distinct()
+                .count() == 3;
+
 
 
 }
