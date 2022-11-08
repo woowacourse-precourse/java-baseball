@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumber {
+
     private List<Integer> computerNum = new ArrayList<>();
 
     public void setComputerNum() {

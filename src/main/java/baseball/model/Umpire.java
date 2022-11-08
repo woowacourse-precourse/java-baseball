@@ -5,7 +5,6 @@ import java.util.List;
 public class Umpire {
 
     private int strike = 0;
-
     private int ball = 0;
 
     public String gameResult(List<Integer> computerNum, List<Integer> playerNum) {
