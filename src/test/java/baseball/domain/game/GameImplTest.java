@@ -15,8 +15,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class GameImplTest {
   private static GameImpl baseballGame;
   private static final String INIT_MESSAGE = "숫자 야구 게임을 시작합니다.";
-  private final Integer RESTART = 1;
-  private final Integer CLOSE = 2;
 
   @BeforeAll
   static void test_init() {
