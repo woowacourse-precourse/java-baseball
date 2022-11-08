@@ -22,7 +22,6 @@ public class Computer {
         String randomNumberString = this.randomNumbers.stream()
                 .map(number -> number.toString())
                 .collect(Collectors.joining());
-
         return randomNumberString;
     }
 
@@ -32,7 +31,6 @@ public class Computer {
         }
         return false;
     }
-
     private static Integer pickRandomNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
