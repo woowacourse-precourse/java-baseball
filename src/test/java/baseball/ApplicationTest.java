@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -55,5 +57,15 @@ class ApplicationTest extends NsTest {
         String string2 = "987";
         boolean result2 = false;
         assertThat(isDuplicate(string2)).isEqualTo(result2);
+    }
+
+    @Test
+    void compareTest(){
+        String[] computer = {"987", "123"};
+        String[] user = {"987", "321"};
+        int[][] results = {{3, 0}, {1, 2}};
+        for(int iter = 0; iter < 2; iter++){
+            assertThat(compare(computer[iter], user[iter]).equals(results[iter]));
+        }
     }
 }
