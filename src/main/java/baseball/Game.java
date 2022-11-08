@@ -93,9 +93,7 @@ public class Game {
     }
 
     public static void validateNewGameInput(List<Integer> input) {
-        if (input.size() != 1)
-            throw new IllegalArgumentException();
-        if (!input.contains(1) && !input.contains(2))
+        if (!input.equals(1) && !input.equals(2))
             throw new IllegalArgumentException();
     }
 
