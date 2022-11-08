@@ -10,7 +10,7 @@ public class Game {
         user.register(computer);
         printMessage(Message.NUMBER_BASEBALL_GAME_START);
         while (true) {
-            computer.makeRandomNumber();
+            computer.genRandomNumber();
 
             startGameToUserForComputer();
 
@@ -29,7 +29,8 @@ public class Game {
         while (true) {
             printMessage(Message.INPUT_NUMBER);
 
-            user.printUserInput();
+            user.mappingUserInputToBaseBallNumber();
+            print(user.baseBallNumberString());
 
             HintReader hintReader = new HintReader(user.compareToComputer());
 

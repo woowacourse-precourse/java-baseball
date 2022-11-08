@@ -30,7 +30,7 @@ public enum GameRestartStatus {
     }
 
     public static GameRestartStatus genGameStatus(String input) {
-        if (input.equals("1")) {
+        if (input.equals(Y.status)) {
             return GameRestartStatus.Y;
         }
         return GameRestartStatus.N;

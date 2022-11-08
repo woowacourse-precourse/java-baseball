@@ -31,14 +31,14 @@ public class UserTest {
     public void 사용자입력_실패_케이스2() {
         User user = new User();
         System.setIn(new ByteArrayInputStream("133".getBytes(StandardCharsets.UTF_8)));
-        assertThatThrownBy(() -> user.makeBaseBallNumber()).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> user.mappingUserInputToBaseBallNumber()).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void 사용자입력_실패_케이스3() {
         User user = new User();
         System.setIn(new ByteArrayInputStream("1234".getBytes(StandardCharsets.UTF_8)));
-        assertThatThrownBy(() -> user.makeBaseBallNumber()).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> user.mappingUserInputToBaseBallNumber()).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class UserTest {
         User user = new User();
         System.setIn(new ByteArrayInputStream("123".getBytes(StandardCharsets.UTF_8)));
         user.register(genMockObserver(List.of(1, 2, 3)));
-        user.makeBaseBallNumber();
+        user.mappingUserInputToBaseBallNumber();
 
         List<Hint> hintList = user.compareToComputer();
         List<Hint> result = List.of(Hint.STRIKE, Hint.STRIKE, Hint.STRIKE);
@@ -59,7 +59,7 @@ public class UserTest {
         User user = new User();
         System.setIn(new ByteArrayInputStream("231".getBytes(StandardCharsets.UTF_8)));
         user.register(genMockObserver(List.of(1, 2, 3)));
-        user.makeBaseBallNumber();
+        user.mappingUserInputToBaseBallNumber();
 
         List<Hint> hintList = user.compareToComputer();
         List<Hint> result = List.of(Hint.BALL, Hint.BALL, Hint.BALL);
@@ -72,7 +72,7 @@ public class UserTest {
         User user = new User();
         System.setIn(new ByteArrayInputStream("456".getBytes(StandardCharsets.UTF_8)));
         user.register(genMockObserver(List.of(1, 2, 3)));
-        user.makeBaseBallNumber();
+        user.mappingUserInputToBaseBallNumber();
 
         List<Hint> hintList = user.compareToComputer();
         List<Hint> result = List.of(Hint.NOTHING, Hint.NOTHING, Hint.NOTHING);
@@ -85,7 +85,7 @@ public class UserTest {
         User user = new User();
         System.setIn(new ByteArrayInputStream("235".getBytes(StandardCharsets.UTF_8)));
         user.register(genMockObserver(List.of(1, 2, 3)));
-        user.makeBaseBallNumber();
+        user.mappingUserInputToBaseBallNumber();
 
         List<Hint> hintList = user.compareToComputer();
         List<Hint> result = List.of(Hint.BALL, Hint.BALL, Hint.NOTHING);

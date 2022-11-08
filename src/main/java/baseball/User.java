@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -21,18 +20,17 @@ public class User {
         return observer.compare(number.getNumber());
     }
 
-    public void printUserInput() {
-        makeBaseBallNumber();
-        printBaseBallNumber();
-    }
-
-    public void makeBaseBallNumber() {
+    public void mappingUserInputToBaseBallNumber() {
         String consoleInput = getConsoleInput();
-        List<Integer> integerList = toIntegerList(consoleInput);
+        List<Integer> integerList = convertUserInputToIntegerList(consoleInput);
         number = BaseBallNumber.of(integerList);
     }
 
-    private List<Integer> toIntegerList(String consoleInput) {
+    public String baseBallNumberString() {
+        return String.join("", convertUserInputToIntegerList())+"\n";
+    }
+
+    private List<Integer> convertUserInputToIntegerList(String consoleInput) {
         return Arrays.stream(splitChar(consoleInput)).map(Integer::parseInt).collect(Collectors.toList());
     }
 
@@ -40,8 +38,8 @@ public class User {
         return consoleInput.split("");
     }
 
-    public void printBaseBallNumber() {
-        System.out.println(String.join("", number.getNumber().stream().map(String::valueOf).collect(Collectors.toList())));
+    private List<String> convertUserInputToIntegerList() {
+        return number.getNumber().stream().map(String::valueOf).collect(Collectors.toList());
     }
 
     public String getConsoleInput() {

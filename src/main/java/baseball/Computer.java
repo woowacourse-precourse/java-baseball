@@ -10,9 +10,9 @@ public class Computer implements Observer {
 
     private BaseBallNumber number;
 
-    public void makeRandomNumber() {
+    public void genRandomNumber() {
         while (true) {
-            List<Integer> numberList = randomNumberGenerate();
+            List<Integer> numberList = getRandomNumberList();
             Optional<BaseBallNumber> baseBallNumberOptional = genBaseBallNumber(numberList);
             if (baseBallNumberOptional.isPresent()) {
                 number = baseBallNumberOptional.get();
@@ -21,15 +21,7 @@ public class Computer implements Observer {
         }
     }
 
-    private Optional<BaseBallNumber> genBaseBallNumber(List<Integer> numberList) {
-        try {
-            return Optional.of(BaseBallNumber.of(numberList));
-        } catch (IllegalArgumentException e) {
-            return Optional.empty();
-        }
-    }
-
-    private List<Integer> randomNumberGenerate() {
+    private List<Integer> getRandomNumberList() {
         List<Integer> numberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             numberList.add(Randoms.pickNumberInRange(1, 9));
@@ -45,6 +37,14 @@ public class Computer implements Observer {
             hintList.add(genHint(list, number, i, 0));
         }
         return hintList;
+    }
+
+    private Optional<BaseBallNumber> genBaseBallNumber(List<Integer> numberList) {
+        try {
+            return Optional.of(BaseBallNumber.of(numberList));
+        } catch (IllegalArgumentException e) {
+            return Optional.empty();
+        }
     }
 
     private Hint genHint(List<Integer> input, List<Integer> number, int inputIndex, int numberIndex) {
