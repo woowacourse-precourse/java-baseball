@@ -114,41 +114,19 @@ class ApplicationTest extends NsTest {
 
     @Test
     void userInput이_숫자가_아닐경우() {
-        //given
-        String userInput = "12가";
-
-        //when
-        boolean check = Application.isNumber(userInput);
-
-        //then
-        assertThat(check).isEqualTo(false);
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("가나다라"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Test
     void userInput이_중복일_경우() {
-        //given
-        String userInput = "112";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
 
-        //then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Application.createUserNumberList(userInput);
-        });
-
-    }
-
-    @Test
-    void 리스트_size_크기가_3이_아닐경우() {
-        //given
-        List<Integer> test = new ArrayList<>();
-        test.add(1);
-        test.add(2);
-        test.add(3);
-        test.add(4);
-
-        //then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Application.checkSize(test);
-        });
     }
 
     @Override
