@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class Application {
     static int[] input = new int[3];
     static int[] answer = new int[3];
@@ -92,7 +93,7 @@ public class Application {
             ball++;
     }
 
-    private static int inputException(String number) {
+   private static int inputException(String number) {
         if(number != null && !number.matches("-?\\d+"))
             throw new IllegalArgumentException("숫자 입력 오류");
         if(number.length() != 3)
@@ -106,5 +107,9 @@ public class Application {
             if(!computer.contains(randomNumber))
                 computer.add(randomNumber);
         }
+        /*for(int i = 0 ; i < computer.size(); i++) {
+            System.out.print(computer.get(i) + " ");
+            answer[i] = computer.get(i);
+        }*/
     }
 }
