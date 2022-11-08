@@ -1,4 +1,4 @@
-package baseball.UI;
+package baseball.ui;
 import baseball.model.Input;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;

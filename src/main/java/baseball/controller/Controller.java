@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.UI.HintView;
-import baseball.UI.InputView;
-import baseball.UI.ResultView;
+import baseball.ui.HintView;
+import baseball.ui.InputView;
+import baseball.ui.ResultView;
 import baseball.model.Result;
 import baseball.model.State;
 import baseball.service.Service;

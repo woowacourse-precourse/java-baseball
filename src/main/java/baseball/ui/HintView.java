@@ -1,4 +1,4 @@
-package baseball.UI;
+package baseball.ui;
 
 import baseball.model.Hint;
 
