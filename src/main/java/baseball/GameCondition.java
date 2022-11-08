@@ -14,10 +14,16 @@ public class GameCondition {
     }
 
     void bringCondition() {
+        checkCondition();
         if (condition.equals("1"))
             restart();
         else
             exit();
+    }
+
+    void checkCondition() {
+        if (!condition.equals("1") && !condition.equals("2"))
+            throw new IllegalArgumentException();
     }
 
     void restart() {
