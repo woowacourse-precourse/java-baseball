@@ -7,6 +7,8 @@ import java.util.Objects;
 import static baseball.ConstValue.*;
 
 public class Score {
+    public static final int NO_COUNT = 0;
+    public static final int THREE_STRIKE_OUT = 3;
     private static final HashMap<String, Integer> totalScore = new HashMap<>();
     private static List<Integer> computerNumbers;
     private static List<Integer> userNumbers;

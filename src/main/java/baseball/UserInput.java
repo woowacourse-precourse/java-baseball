@@ -13,7 +13,11 @@ import java.util.stream.Stream;
 import static baseball.ConstValue.*;
 
 public class UserInput {
-    private final Set<String> valid_range = valid_range_number();
+    public static final String OUT_OF_RANGE_NUMBER = "0";
+    public static final String QUIT_GAME_INPUT = "2";
+    public static final String RE_START_INPUT = "1";
+
+    private final Set<String> validRange = validRangeNumber();
     private String input;
     private List<Integer> numbers;
     private String reStartOrQuitInput;
@@ -92,7 +96,7 @@ public class UserInput {
 
     private boolean isValidGuessNumber() {
         Set<String> inputSet = inputToSet();
-        inputSet.retainAll(valid_range);
+        inputSet.retainAll(validRange);
         return inputSet.size() == NUMBERS_LENGTH;
     }
 
@@ -102,7 +106,7 @@ public class UserInput {
                 .collect(Collectors.toSet());
     }
 
-    private Set<String> valid_range_number() {
+    private Set<String> validRangeNumber() {
         return IntStream.rangeClosed(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER)
                 .boxed()
                 .map(String::valueOf)
