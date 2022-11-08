@@ -48,6 +48,20 @@ class ApplicationTest extends NsTest {
         assertThat(baseball.getNumber().get(1)).isNotEqualTo(baseball.getNumber().get(2));
     }
 
+    @Test
+    void check_user_input() {
+        UserInput userInput = new UserInput();
+        String input1 = "123";
+        String input2 = "1234";
+        String input3 = "112";
+        String input4 = "a12";
+
+        assertThat(userInput.check_input(input1)).isEqualTo(true);
+        assertThat(userInput.check_input(input2)).isEqualTo(false);
+        assertThat(userInput.check_input(input3)).isEqualTo(false);
+        assertThat(userInput.check_input(input4)).isEqualTo(false);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
