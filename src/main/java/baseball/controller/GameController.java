@@ -36,13 +36,12 @@ public class GameController {
             String input = gameService.validateUserInput(Console.readLine());
             GameResult gameResult = gameService.makeGameResult(input, answerNumbers);
 
+            GameOutput.gameResultOutput(gameResult);
             if (gameResult.isClear()) {
                 GameOutput.gameClearMessageOutput();
                 GameOutput.restartQuestionMessageOutput();
                 flag = gameService.isRetryGame(Console.readLine());
                 break;
-            } else {
-                GameOutput.gameResultOutput(gameResult);
             }
         }
     }
