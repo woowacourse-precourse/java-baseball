@@ -25,12 +25,9 @@ public class PlayBall {
         String userNumber = playBallUI.takeUserInput();
         exceptionHandler = new ExceptionHandler();
         //todo Referee
-        try {
-            exceptionHandler.checkIsDigit(userNumber);
-            exceptionHandler.checkIsValidLength(userNumber);
 
-        }catch(Exception e){
-            //do nothing -> system 종료
-        }
+        exceptionHandler.checkIsDigit(userNumber);
+        exceptionHandler.checkIsValidLength(userNumber);
+
     }
 }

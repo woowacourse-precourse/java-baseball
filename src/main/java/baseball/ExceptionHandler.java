@@ -13,7 +13,7 @@ public class ExceptionHandler {
 
     public void checkIsValidLength(String userNumber){
 
-        if (userNumber.length() != 4){
+        if (userNumber.length() != 3){
             throw new IllegalArgumentException("입력한 값이 세자리 숫자가 아닙니다.");
         }
 
