@@ -14,7 +14,6 @@ public class BaseBall {
     public void init() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean flag;
-        System.out.println(computer.getNumber());
         do {
             player.input();
             flag = computer.printResult(player.getNumber());

@@ -8,10 +8,6 @@ import java.util.List;
 public class Computer {
     private List<Integer> number;
 
-    public List<Integer> getNumber() {
-        return number;
-    }
-
     public static final int NUMBER_LENGTH = 3;
 
 
