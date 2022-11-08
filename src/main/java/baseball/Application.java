@@ -84,4 +84,12 @@ public class Application {
         }
         
     }
+    
+    static void validate(Integer number) throws IllegalArgumentException {
+        
+        if (number < 123 || 987 < number) {
+            throw new IllegalArgumentException();
+        }
+        
+    }
 }
