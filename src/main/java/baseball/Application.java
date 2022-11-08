@@ -80,6 +80,26 @@ public class Application {
     }
 
     /**
+     * 결과에 맞는 텍스트 출력
+     *
+     * @param input
+     */
+    private static void printTrialResult(List<Integer> input) {
+        if (input.get(0) == 0 && input.get(1) == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (input.get(0) == 0) {
+            System.out.println(input.get(1) + "볼");
+        }
+        if (input.get(1) == 0) {
+            System.out.println(input.get(0) + "스트라이크");
+        }
+        System.out.println(input.get(1) + "볼 " + input.get(0) + "스트라이크");
+        return;
+    }
+
+    /**
      * 3스트라이크 여부를 확인
      *
      * @param strikes
