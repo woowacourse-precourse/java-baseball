@@ -13,10 +13,11 @@ public class Application {
     private static String inputStr = null;
 
     public static void main(String[] args) {
-        System.out.println("숫자야구를 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while("start".equals(status)){
             gameStartFunc();
         }
+        resetGameSetting();
     }
 
     public static void gameStartFunc() {
@@ -26,12 +27,12 @@ public class Application {
                 System.out.println("숫자를 입력해주세요 : ");
                 input();
                 compareNumber();
-                System.out.println(sb.toString());
+                System.out.println(sb);
                 sb.setLength(0);
             }
             gameEndFunc();
         } catch (Exception e) {
-            throw new IllegalArgumentException(inputStr);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -44,6 +45,14 @@ public class Application {
                 status = "start";
             }
         }
+    }
+
+    public static void resetGameSetting(){
+        targetNumber = null;
+        sb.setLength(0);
+        inputNumber = null;
+        inputStr = null;
+        status = "start";
     }
 
     private static void setTargetNumber() {
