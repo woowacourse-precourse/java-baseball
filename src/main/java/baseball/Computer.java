@@ -2,7 +2,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-public class computer {
+public class Computer {
     public static List<Integer> computerNumber(){
         List<Integer> computerBaseballNumber = new ArrayList<>();
         while (computerBaseballNumber.size() < 3) {
