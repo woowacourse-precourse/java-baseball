@@ -12,16 +12,16 @@ public class ComputerHintGeneratorImple implements ComputerHintGenerator {
     private int ball_count = 0;
 
     @Override
-    public String generateHintForInput(List<Integer> inputNumbers, List<Integer> gameComputerNumbers) {
-        countStrikeAndBall(inputNumbers, gameComputerNumbers);
+    public String generateHintForInput(List<Integer> userInputNumbers, List<Integer> gameComputerNumbers) {
+        countStrikeAndBall(userInputNumbers, gameComputerNumbers);
         return printHintMessage();
     }
 
-    private void countStrikeAndBall(List<Integer> inputNumbers, List<Integer> gameComputerNumbers) {
+    private void countStrikeAndBall(List<Integer> userInputNumbers, List<Integer> gameComputerNumbers) {
         clearBeforeCountingData();
         for (int idx = 0; idx < NUMBERS_MAX_LENGTH; idx++) {
-            countStrike(inputNumbers.get(idx), gameComputerNumbers.get(idx));
-            countBall(inputNumbers.get(idx), gameComputerNumbers.get(idx), gameComputerNumbers);
+            countStrike(userInputNumbers.get(idx), gameComputerNumbers.get(idx));
+            countBall(userInputNumbers.get(idx), gameComputerNumbers.get(idx), gameComputerNumbers);
         }
     }
 
@@ -30,15 +30,15 @@ public class ComputerHintGeneratorImple implements ComputerHintGenerator {
         ball_count = 0;
     }
 
-    private void countStrike(Integer e, Integer e2) {
-        if (e.equals(e2)) {
+    private void countStrike(Integer userInputNumbersElement, Integer gameComputerNumbersElement) {
+        if (userInputNumbersElement.equals(gameComputerNumbersElement)) {
             strike_count++;
         }
     }
 
-    private void countBall(Integer e, Integer e2, List<Integer> gameComputerNumbers) {
-        if (!e.equals(e2)) {
-            if (gameComputerNumbers.contains(e)) {
+    private void countBall(Integer userInputNumbersElement, Integer gameComputerNumbersElement, List<Integer> gameComputerNumbers) {
+        if (!userInputNumbersElement.equals(gameComputerNumbersElement)) {
+            if (gameComputerNumbers.contains(userInputNumbersElement)) {
                 ball_count++;
             }
         }
