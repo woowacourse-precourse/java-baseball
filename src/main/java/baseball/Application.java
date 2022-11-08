@@ -68,4 +68,19 @@ public class Application {
         }
         return ball;
     }
+
+    static String hint(int strike, int ball){
+        String hint;
+
+        if (strike == 0 && ball == 0){
+            hint = "낫싱";
+        }else if (strike > 0 && ball == 0){
+            hint = strike + "스트라이크";
+        }else if (strike == 0 && ball > 0){
+            hint = ball + "볼";
+        }else {
+            hint = ball + "볼" + strike + "스트라이크";
+        }
+        return hint;
+    }
 }
