@@ -20,4 +20,11 @@ class ParserTest {
         assertThat(parser.parsePlayerNumbers(input)).isEqualTo(result);
     }
 
+    @Test
+    void parseIntTest() {
+        String input = "1";
+        Integer result = 1;
+        assertThat(parser.parseInt(input)).isInstanceOf(Integer.class);
+        assertThat(parser.parseInt(input)).isEqualTo(result);
+    }
 }
