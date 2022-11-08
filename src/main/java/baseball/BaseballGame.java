@@ -46,10 +46,12 @@ public class BaseballGame {
     public void compareWithTargetNum(String input) {
         int strikeCount=0;
         int ballCount=0;
+        // System.out.println(targetNumber);
+
 
         for(int order=0; order<3; order++){
             int targetDigit = targetNumber.get(order);
-            int inputDigit = Integer.valueOf(input.charAt(order));
+            int inputDigit = input.charAt(order)-'0';
 
             if (targetDigit == inputDigit) {
                 strikeCount++;
