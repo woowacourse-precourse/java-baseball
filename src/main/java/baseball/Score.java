@@ -7,7 +7,7 @@ public class Score {
 
     enum matchingTypes {FAIL, STRIKE, BALL}
 
-    private int maxScore;
+    private final int maxScore;
     private int strike;
     private int ball;
     private int fail;
@@ -18,6 +18,14 @@ public class Score {
         this.fail = 0;
         this.maxScore = maxScore;
     }
+
+    public Score(int maxScore, int strike, int ball, int fail) {
+        this.strike = strike;
+        this.ball = ball;
+        this.fail = fail;
+        this.maxScore = maxScore;
+    }
+
 
     private matchingTypes decideMatchingTypeBetween(int idxInUser, int idxInComputer) {
         if (idxInComputer == -1) {
@@ -57,8 +65,10 @@ public class Score {
             System.out.printf("%d스트라이크\n", strike);
         } else if (isAllFail()) {
             System.out.println("낫싱");
-        } else {
+        } else if (this.ball != 0 || this.strike != 0) {
             System.out.printf("%d볼 %d스트라이크\n", this.ball, this.strike);
+        } else {
+            throw new IllegalArgumentException("wrong input");
         }
     }
 
@@ -79,7 +89,7 @@ public class Score {
     }
 
 
-    private void increase(matchingTypes type) {
+    public void increase(matchingTypes type) {
         if (type == matchingTypes.FAIL) {
             increaseFail();
         } else if (type == matchingTypes.BALL) {
@@ -99,6 +109,18 @@ public class Score {
 
     private void increaseFail() {
         this.fail++;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getFail() {
+        return fail;
     }
 
 
