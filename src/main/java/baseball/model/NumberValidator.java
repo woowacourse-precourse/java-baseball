@@ -14,7 +14,7 @@ public class NumberValidator {
     public static List<Integer> convertStringToList(String startInput) {
         return startInput
                 .chars()
-                .map(i -> Integer.parseInt(String.valueOf(i)))
+                .map(Character::getNumericValue)
                 .boxed()
                 .collect(Collectors.toList());
     }

@@ -14,7 +14,8 @@ public class ComputerNumberGenerator {
         List<Integer> numbers;
         do {
             numbers = generateNumbers();
-        } while (NumberValidator.checkIfIsNotDuplicatedNum(numbers));
+            System.out.println(numbers);
+        } while (!NumberValidator.checkIfIsNotDuplicatedNum(numbers));
         VALIDATED_NUM = numbers;
     }
 

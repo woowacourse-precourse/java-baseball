@@ -15,6 +15,7 @@ public class UserNumberGenerator {
     private static List<Integer> generateUserNum() throws IllegalArgumentException {
         String startInput = InputView.gameStartInput();
         List<Integer> numbers = NumberValidator.convertStringToList(startInput);
+        System.out.println("numbers = " + numbers);
         if (isValid(numbers))
             return numbers;
         throw new IllegalArgumentException();

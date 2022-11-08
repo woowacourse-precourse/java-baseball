@@ -11,6 +11,7 @@ import static baseball.model.StatusCode.*;
 public class BaseballGameBoard {
 
     public void playTheGame() {
+        OutputView.printGameStart();
         do {
             startGame();
         } while (!exit());
@@ -19,11 +20,12 @@ public class BaseballGameBoard {
     private static void startGame() {
         List<Integer> numberGeneratedByComputer = new ComputerNumberGenerator().VALIDATED_NUM;
         List<Integer> numberGeneratedByUser;
+        BaseballGame game;
         boolean matchedAllNumber;
         do {
-            OutputView.printGameStart();
             numberGeneratedByUser = new UserNumberGenerator().VALIDATED_NUM;
-            BaseballGame game = new BaseballGame(numberGeneratedByUser, numberGeneratedByComputer);
+            System.out.println(numberGeneratedByComputer);
+            game = new BaseballGame(numberGeneratedByUser, numberGeneratedByComputer);
             new OutputView(game).printGameResult();
             matchedAllNumber = game.matchedAllNumber();
         } while (!matchedAllNumber);
