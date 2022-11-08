@@ -12,19 +12,19 @@ public class Validator {
 
     public static boolean validateNumberInput(String input) {
         if (!isNumeric(input)) {
-            throw new IllegalArgumentException(ErrorCode.NOT_NUMERIC_ONLY.getContent());
+            throw new IllegalArgumentException(ErrorCode.NOT_NUMERIC_ONLY.getMessage());
         }
 
         if (!isUniqueDigit(input)) {
-            throw new IllegalArgumentException(ErrorCode.NOT_NUMERIC_ONLY.getContent());
+            throw new IllegalArgumentException(ErrorCode.NOT_NUMERIC_ONLY.getMessage());
         }
 
         if (isInvalidLength(input)) {
-            throw new IllegalArgumentException(ErrorCode.INVALID_LENGTH.getContent());
+            throw new IllegalArgumentException(ErrorCode.INVALID_LENGTH.getMessage());
         }
 
         if (isInvalidRange(input)) {
-            throw new IllegalArgumentException(ErrorCode.DUPLICATE_NUMBER.getContent());
+            throw new IllegalArgumentException(ErrorCode.DUPLICATE_NUMBER.getMessage());
         }
 
         return true;
@@ -35,7 +35,7 @@ public class Validator {
             return true;
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(ErrorCode.INVALID_RESTART_INPUT.getMessage());
     }
 
     private static boolean isNumeric(String input) {
