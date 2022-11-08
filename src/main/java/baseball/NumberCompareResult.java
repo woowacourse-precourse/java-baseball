@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * MultiDigitNumber 간의 비교 비교 결과를 담는 컨테이너 클래스
+ * ThreeDigitNumber 간의 비교 비교 결과를 담는 컨테이너 클래스
  */
 public class NumberCompareResult {
 

@@ -13,7 +13,7 @@ public class IOManager {
      * @return 입력으로 주어진 숫자를 반환
      * @throws IllegalArgumentException 숫자가 아닌 입력이 들어오는 경우 예외 발생
      */
-    public static Integer getNextInt() throws IllegalArgumentException {
+    public static Integer getNextInt() throws IllegalArgumentException{
         try {
             return Integer.parseInt(Console.readLine());
         } catch (Exception e) {

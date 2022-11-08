@@ -9,18 +9,19 @@ public class NumberBaseballGame {
      * 게임을 실행하는 메서드
      */
     void run() {
-        MultiDigitNumber randomMultiDigitNumber = new MultiDigitNumber(
+        ThreeDigitNumber randomThreeDigitNumber = new ThreeDigitNumber(
             RandomManager.getDistinctIntegersInRange(1, 9, 3));
+
         while (true) {
             IOManager.print("숫자를 입력해주세요 : ");
 
-            MultiDigitNumber userMultiDigitNumber = new MultiDigitNumber(
+            ThreeDigitNumber userThreeDigitNumber = new ThreeDigitNumber(
                 IOManager.splitIntegerIntoIntegerArray(IOManager.getNextInt()));
 
             IOManager.println(
-                randomMultiDigitNumber.getCompareResult(userMultiDigitNumber).toString());
+                randomThreeDigitNumber.getCompareResult(userThreeDigitNumber).toString());
 
-            if (userMultiDigitNumber.equals(randomMultiDigitNumber)) {
+            if (userThreeDigitNumber.equals(randomThreeDigitNumber)) {
                 break;
             }
         }

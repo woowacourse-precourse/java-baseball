@@ -20,7 +20,7 @@ public enum IntentionOfContinuingGame {
      * @return 1을 입력한 경우 CONTINUE, 2를 입력한 경우 STOP enum 객체를 반환
      * @throws IllegalArgumentException 유효하지 않은 값이 입력되는 경우 반환
      */
-    public static IntentionOfContinuingGame getMatchIntention(int userIntention) {
+    public static IntentionOfContinuingGame getMatchIntention(int userIntention) throws IllegalArgumentException{
         try {
             return Arrays.stream(IntentionOfContinuingGame.values())
                 .filter((intention) -> (intention.intention == userIntention)).findAny().get();
