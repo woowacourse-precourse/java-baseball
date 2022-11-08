@@ -4,6 +4,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class Comparison {
+    public static boolean isAnswered(List<Integer> userNumber, List<Integer> answerNumber) {
+        int ballCount = countBallNumbers(userNumber, answerNumber);
+        int strikeCount = countStrikeNumbers(userNumber, answerNumber);
+        String message = Information.createComparisonMessage(ballCount, strikeCount);
+        System.out.println(message);
+
+        return strikeCount == Number.MAX_SIZE;
+    }
+
     public static int countBallNumbers(List<Integer> userNumber, List<Integer> answerNumber) {
         int ballTotalCount = 0;
         for (int index = 0; index < userNumber.size(); index++) {
@@ -22,6 +31,10 @@ public class Comparison {
             }
         }
         return strikeTotalCount;
+    }
+
+    public static boolean isNothing(int ballCount, int strikeCount) {
+        return ballCount == 0 && strikeCount == 0;
     }
 
     public static boolean isBall(List<Integer> answerNumber, int number, int index) {
