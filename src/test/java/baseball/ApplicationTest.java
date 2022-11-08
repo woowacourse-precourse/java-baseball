@@ -9,23 +9,27 @@ import java.util.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplicationTest extends NsTest {
 
-    static String ANSWER1 = "123";
-    static String ANSWER2 = "456";
+    static String ANSWER1 = "135";
+    static String ANSWER2 = "397";
     static int[] ANSWER1_ARR = Arrays.stream(ANSWER1.split("")).mapToInt(Integer::parseInt).toArray();
     static int[] ANSWER2_ARR = Arrays.stream(ANSWER2.split("")).mapToInt(Integer::parseInt).toArray();
 
-    static String START_GAME = "1";
+    static String RESTART_GAME = "1";
     static String END_GAME = "2";
     static String TEST_STRING = "test";
-    static List<Character> TEST_STRING_TO_CHAR_LIST = List.of('t','e','s','t');
-
+    static List<Character> TEST_STRING_TO_CHAR_LIST = List.of('t', 'e', 's', 't');
     static final String GAME_GET_NUMBER = "숫자를 입력해주세요 : ";
     static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     static final String GAME_RESTART_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     static final String GAME_CORRECT_ANSWER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String NOTHING = "낫싱";
+    static final String BALL = "볼";
+    static final String STRIKE = "스트라이크";
 
     List<String> onlyResult(String input) {
         input = input.replace("\r", "");
@@ -204,58 +208,51 @@ class ApplicationTest extends NsTest {
         byte[] buf = "123".getBytes();
         System.setIn(new ByteArrayInputStream(buf));
         List<Character> input = Input.getInputInGame();
-        assertThat(input).isEqualTo(List.of('1','2','3'));
+        assertThat(input).isEqualTo(List.of('1', '2', '3'));
     }
 
     @Test
-    void InputTest_EndGame(){
-        byte[] bufRestart = "1".getBytes();
+    void InputTest_EndGame() {
+        byte[] bufRestart = RESTART_GAME.getBytes();
         System.setIn(new ByteArrayInputStream(bufRestart));
         char inputRestart = Input.getInputEndGame();
 
-        byte[] bufEnd = "2".getBytes();
+        byte[] bufEnd = END_GAME.getBytes();
         System.setIn(new ByteArrayInputStream(bufEnd));
         char inputEnd = Input.getInputEndGame();
 
         assertThat(inputRestart).isEqualTo('1');
         assertThat(inputEnd).isEqualTo('2');
     }
-    /*   @Test
-       void
-
-       @Test
-       void
-
-       @Test
-       void
-
-
-       @Test*/
-    void GameTest_생성된_숫자가_중복되지_않는_세자리_숫자() {
-
-    }
-
 
     @Test
-    void printTest_볼_only_문구() {
-
+    void CompareTest_compareWithAnswer() {
+        List<Character> answerList = List.of('1', '2', '3');
+        List<Character> userInputList = List.of('1', '2', '4');
+        HashMap<String, Integer> map = Compare.compareWithAnswer(answerList,userInputList);
+        HashMap<String, Integer> answerMap=new HashMap<>();
+        answerMap.put(BALL, 1);
+        answerMap.put(STRIKE, 2);
+        answerMap.put(NOTHING, 0);
+        assertThat(map).isEqualTo(answerMap);
     }
 
     @Test
-    void printTest_스트라이크_only_문구() {
-
+    void GameTest_AnswerNoDuplication() {
+        List<Character> numList=Game.generateAnswer();
+        assertTrue(numList.size() == numList.stream().distinct().count());
     }
 
     @Test
-    void printTest_볼_and_스트라이크_문구() {
+    void GameTest_restartOrEndGame(){
+        byte[] bufRestart = RESTART_GAME.getBytes();
+        System.setIn(new ByteArrayInputStream(bufRestart));
+        assertTrue(Game.restartOrEndGame());
 
+        byte[] bufEnd = END_GAME.getBytes();
+        System.setIn(new ByteArrayInputStream(bufEnd));
+        assertFalse(Game.restartOrEndGame());
     }
-
-    @Test
-    void printTest_낫싱_문구() {
-
-    }
-
 
     @Override
     public void runMain() {
