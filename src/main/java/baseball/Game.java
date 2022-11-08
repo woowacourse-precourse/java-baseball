@@ -43,16 +43,21 @@ public class Game {
                     + "를 입력하세요.");
 
             String restartInput = Console.readLine();
-            if (!restartInput.equals(Constants.GAME_RESTART_NUMBER) && !restartInput.equals(
-                    Constants.GAME_END_NUMBER)) {
-                throw new IllegalArgumentException("올바르지 않은 입력입니다.");
-            }
-            if (restartInput.equals(Constants.GAME_RESTART_NUMBER)) {
-                hitter.makeNumber();
-            }
-            if (restartInput.equals(Constants.GAME_END_NUMBER)) {
-                stopFlag = true;
-            }
+            stopFlag = askGameStop(stopFlag, restartInput);
+        }
+        return stopFlag;
+    }
+
+    private boolean askGameStop(boolean stopFlag, String restartInput) {
+        if (!restartInput.equals(Constants.GAME_RESTART_NUMBER) && !restartInput.equals(
+                Constants.GAME_END_NUMBER)) {
+            throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+        }
+        if (restartInput.equals(Constants.GAME_RESTART_NUMBER)) {
+            hitter.makeNumber();
+        }
+        if (restartInput.equals(Constants.GAME_END_NUMBER)) {
+            stopFlag = true;
         }
         return stopFlag;
     }
