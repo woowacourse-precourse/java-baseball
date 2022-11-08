@@ -48,7 +48,7 @@
 - [x] getter 구현
   - ball getter
   - strike getter
-- [ ] toString() 구현
+- [x] toString() 구현
   - 점수 표기 형식으로 출력할 수 있도록
   - ex) "낫싱" or "n볼 m스트라이크" 등 출력 요구사항 참고
 
