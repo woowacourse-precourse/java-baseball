@@ -27,6 +27,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void 사용자_긴_숫자_테스트() {
         assertSimpleTest(() ->
@@ -34,6 +35,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void 사용자_짧은_숫자_테스트() {
         assertSimpleTest(() ->
@@ -41,6 +43,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void 사용자_동일한_숫자_테스트() {
         assertSimpleTest(() ->
@@ -50,12 +53,63 @@ class ApplicationTest extends NsTest {
     }
 
 
-
     @Test
     void 사용자_0_이_포함된_숫자_검증() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("102"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_숫자_이외의_값_검증() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_null_값_검증() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(null))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임종료_후_올바르지_않은_숫자입력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> {
+                        run("135", "5");
+                    }).isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 게임종료_후_숫자가_아닌_값_입력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> {
+                        run("135", "a");
+                    }).isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 게임종료_후_null_값입력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> {
+                        run("135", null);
+                    }).isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
         );
     }
 
