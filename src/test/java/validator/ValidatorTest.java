@@ -18,15 +18,15 @@ public class ValidatorTest {
     @DisplayName("입력한 수의 길이가 3임을 정확히 검증하는 가?")
     void validate_length_test() {
         int unitSize = 3;
-        String input1 = "123";
-        String input2 = "1234";
-        String input3 = "12";
+        String validLengthCase = "123";
+        String longLengthCase = "1234";
+        String shortLengthCase = "12";
 
-        assertThat(Validator.validateLength(input1, unitSize)).isTrue();
-        assertThatThrownBy(() -> Validator.validateLength(input2, unitSize))
+        assertThat(Validator.validateLength(validLengthCase, unitSize)).isTrue();
+        assertThatThrownBy(() -> Validator.validateLength(longLengthCase, unitSize))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(LENGTH_VALIDATION_FAILED);
-        assertThatThrownBy(() -> Validator.validateLength(input3, unitSize))
+        assertThatThrownBy(() -> Validator.validateLength(shortLengthCase, unitSize))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(LENGTH_VALIDATION_FAILED);
     }
@@ -34,28 +34,28 @@ public class ValidatorTest {
     @Test
     @DisplayName("입력 내용이 모두 숫자로 구성되어 있는 지 확인")
     void validate_each_digit_test() {
-        String input1 = "123";
-        String input2 = "12a";
-        String input3 = "12 ";
-        String input4 = "12$";
-        String input5 = "12_";
-        String input6 = "120";
+        String validCase = "123";
+        String includeAlphabetCase = "12a";
+        String includeSpaceCase = "12 ";
+        String includeCharacterCase = "12$";
+        String includeUnderBarCase = "12_";
+        String includeZeroCase = "120";
 
-        assertThat(Validator.validateEachCharIsNumberAndNotZero(input1))
+        assertThat(Validator.validateEachCharIsNumberAndNotZero(validCase))
                 .isTrue();
-        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(input2))
+        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(includeAlphabetCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
-        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(input3))
+        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(includeSpaceCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
-        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(input4))
+        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(includeCharacterCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
-        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(input5))
+        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(includeUnderBarCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
-        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(input6))
+        assertThatThrownBy(() -> Validator.validateEachCharIsNumberAndNotZero(includeZeroCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
     }
@@ -63,16 +63,16 @@ public class ValidatorTest {
     @Test
     @DisplayName("입력된 내용이 서로 다른 숫자로 구성되어 있는 지 확인")
     void validate_no_duplication_test() {
-        String input1 = "123";
-        String input2 = "122";
-        String input3 = "333";
+        String validCase = "123";
+        String dupleTwoCase = "122";
+        String dupleThreeCase = "333";
 
-        assertThat(Validator.validateEachCharIsUnique(input1))
+        assertThat(Validator.validateEachCharIsUnique(validCase))
                 .isTrue();
-        assertThatThrownBy(() -> Validator.validateEachCharIsUnique(input2))
+        assertThatThrownBy(() -> Validator.validateEachCharIsUnique(dupleTwoCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATION_VALIDATION_FAILED);
-        assertThatThrownBy(() -> Validator.validateEachCharIsUnique(input3))
+        assertThatThrownBy(() -> Validator.validateEachCharIsUnique(dupleThreeCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATION_VALIDATION_FAILED);
     }
@@ -80,23 +80,23 @@ public class ValidatorTest {
     @Test
     @DisplayName("게임에서 사용할 수 있는 값인 가에 대한 종합적인 평가를 잘 하는 지 확인")
     void validate_test() {
-        String input1 = "123";
-        String input2 = "1234";
-        String input3 = "12a";
-        String input4 = "122";
-        String input5 = "120";
+        String validCase = "123";
+        String longLength = "1234";
+        String includeCharacterCase = "12a";
+        String dupleTwoCase = "122";
+        String includeZeroCase = "120";
 
-        assertThat(Validator.validate(input1)).isTrue();
-        assertThatThrownBy(() -> Validator.validate(input2))
+        assertThat(Validator.validate(validCase)).isTrue();
+        assertThatThrownBy(() -> Validator.validate(longLength))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(LENGTH_VALIDATION_FAILED);
-        assertThatThrownBy(() -> Validator.validate(input3))
+        assertThatThrownBy(() -> Validator.validate(includeCharacterCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
-        assertThatThrownBy(() -> Validator.validate(input4))
+        assertThatThrownBy(() -> Validator.validate(dupleTwoCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATION_VALIDATION_FAILED);
-        assertThatThrownBy(() -> Validator.validate(input5))
+        assertThatThrownBy(() -> Validator.validate(includeZeroCase))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
     }
