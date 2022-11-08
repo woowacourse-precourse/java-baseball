@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -12,6 +13,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @BeforeEach
+    void start() {
+        Application.setIsContinue("1");
+    }
+
+    @Test
+    void 입력값이_유효한지_확인() {
+        assertThat(Application.isValid("1234")).isEqualTo(false);
+        assertThat(Application.isValid("12a")).isEqualTo(false);
+        assertThat(Application.isValid("123")).isEqualTo(true);
+    }
 
     @Test
     void 재시작_선택시_isContinue는_true() {

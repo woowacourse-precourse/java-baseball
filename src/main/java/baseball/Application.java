@@ -36,15 +36,41 @@ public class Application {
         setIsContinue(Console.readLine());
     }
 
-    public static void setIsContinue(String selectedNum) {
-        if (!selectedNum.equals("1")) {
-            isContinue = false;
+    public static List<Integer> pickThreeNumbers() {
+        List<Integer> result = new ArrayList<>();
+        while (result.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!result.contains(randomNumber)) {
+                result.add(randomNumber);
+            }
         }
+        return result;
     }
 
-    private static void printGameOver() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public static List<Integer> stringConvertToIntegerList(String str) {
+        return Arrays.stream(str.split(""))
+                .map(el -> Integer.parseInt(el))
+                .collect(Collectors.toList());
+    }
+
+    private static String getUserAnswer() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String result = Console.readLine();
+        if (!isValid(result)) {
+            throw new IllegalArgumentException();
+        }
+
+        return result;
+    }
+
+    public static boolean isValid(String str) {
+        if (str.length() != 3) return false;
+        for (int i = 0; i < str.length(); i++) {
+            if (!('0' <= str.charAt(i) && str.charAt(i) <= '9')) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static Score checkAnswer(List<Integer> answer, List<Integer> userAnswer) {
@@ -65,25 +91,17 @@ public class Application {
         return score;
     }
 
-    private static String getUserAnswer() {
-        System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
+    private static void printGameOver() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static List<Integer> stringConvertToIntegerList(String str) {
-        return Arrays.stream(str.split(""))
-                .map(el -> Integer.parseInt(el))
-                .collect(Collectors.toList());
-    }
-
-    public static List<Integer> pickThreeNumbers() {
-        List<Integer> result = new ArrayList<>();
-        while (result.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!result.contains(randomNumber)) {
-                result.add(randomNumber);
-            }
+    public static void setIsContinue(String selectedNum) {
+        if (selectedNum.equals("1")) {
+            isContinue = true;
+        } else {
+            isContinue = false;
         }
-        return result;
     }
+
 }
