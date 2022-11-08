@@ -3,6 +3,9 @@ package baseball;
 public class Model {
     private String number;
 
+    public Model() {
+    }
+
     public Model(String number) {
         this.number = number;
     }
