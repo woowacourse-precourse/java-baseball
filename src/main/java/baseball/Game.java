@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import static baseball.GameMessage.*;
 
 class Game {
-    public static final int MAX_ANSWER_SIZE = 3;
+    public static final int ANSWER_SIZE = 3;
     public static final int MIN_ANSWER_NUMBER = 1;
     public static final int MAX_ANSWER_NUMBER = 9;
     public static final int REPLAY = 1;
@@ -57,7 +57,7 @@ class Game {
 
     private List<Integer> initAnswerList() {
         List<Integer> answerList = new ArrayList<>();
-        while (answerList.size() < MAX_ANSWER_SIZE) {
+        while (answerList.size() < ANSWER_SIZE) {
             int randomNum = Randoms.pickNumberInRange(MIN_ANSWER_NUMBER,
                     MAX_ANSWER_NUMBER);
             if (!answerList.contains(randomNum)) {
@@ -75,14 +75,18 @@ class Game {
             guess = Arrays.stream(input.split(""))
                     .map(Integer::valueOf)
                     .collect(Collectors.toList());
-        } catch (NumberFormatException nfe) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS.message());
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_RANGE.message());
         }
+
+        if(guess.size() != ANSWER_SIZE)
+            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_SIZE.message());
 
         for (int g : guess) {
             if (!(MIN_ANSWER_NUMBER <= g && g <= MAX_ANSWER_NUMBER))
-                throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS.message());
+                throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_RANGE.message());
         }
+
         return guess;
     }
 
