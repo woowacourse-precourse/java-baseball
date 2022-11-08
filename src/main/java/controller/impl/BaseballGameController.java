@@ -36,6 +36,7 @@ public class BaseballGameController implements GameController {
 
     private void playGame() throws IllegalArgumentException{
         while(flag){
+            System.out.print("숫자를 입력해주세요 : ");
             input = inputer.getInput();
             sig = comparator.doIntCompare(randnumVO.getRandNum(), input);
             printGame();
