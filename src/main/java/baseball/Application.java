@@ -16,8 +16,9 @@ public class Application {
 	static boolean exceptionCheck = false;
 	static int ball=0;
 	static int strike=0;
-    public static void main(String[] args) {
-
+	
+    public static void main(String[] args){
+    	String coin = "";
 		gameStart();
 		
     	while(start==1) {
@@ -25,13 +26,28 @@ public class Application {
     		computer = makeComputer();
     		
     		game();
+    		
     		strike=0;
     		ball=0;
+    		
+    		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    		
+    		coin = Console.readLine();
+    		
+    		if(coin.equals("1")) {
+    			start = 1;
+    		}else if(coin.equals("2")) {
+    			start = 2;
+    		}else {
+    			throw new IllegalArgumentException("error");
+    		}
     	}
+    	
     }
     
     public static void gameStart() {
     	System.out.println(startMessage);
+    	start=1;
     }
  
     public static List<Integer> makeComputer() {
@@ -49,40 +65,38 @@ public class Application {
     	return list;
     }
     
-    public static void game() {
+    public static void game(){
     	
     	while(strike!=3) {
     		ball=0;
     		strike=0;
     		
     		inputNumber = inputNumber();
-    		
-    		exceptionCheck = checkException();
-    		
-    		if(exceptionCheck) {
-    			compare(computer,inputNumber);
-    			resultPrint(ball, strike);
-    		}
-    		else {
-    			throw new IllegalArgumentException();
-    		}
+    		compare(computer,inputNumber);
+        	resultPrint(ball, strike);
     	}
     }
     
     public static String inputNumber() {
     	
     	System.out.print(inputMessage);
-    	
     	String s = Console.readLine();
-    	
-    	return s;
+    	if(checkException(s))
+    		return s;
+    	else
+    		throw new IllegalArgumentException();
     }
     
-    public static boolean checkException() {
-    	if(inputNumber.length()==3&&checkType(inputNumber)&&checkDiff(inputNumber)) {
-    		return true;
-    	}else
-    		return false;
+    public static boolean checkException(String s){
+    	if(s.length()!=3) throw new IllegalArgumentException();
+    	
+    	if(!checkType(s)) throw new IllegalArgumentException();
+    	
+    	if(!checkDiff(s)) throw new IllegalArgumentException();
+    	
+    	if(s.length()==3&&checkType(s)&&checkDiff(s)) return true;
+    	
+    	return false;
     }
     
     public static boolean checkType(String inputNumber) {
@@ -103,7 +117,7 @@ public class Application {
     		return false;
     }
 
-    public static boolean checkDiff(String inputNumber) {
+    public static boolean checkDiff(String inputNumber){
     	char[] arr = inputNumber.toCharArray();
     	Set<Character> set = new HashSet<>();
     	
@@ -112,7 +126,7 @@ public class Application {
     	}
     	
     	if(set.size()==3)return true;
-    	else return false; 
+    	else return false;
     }
 
     public static void compare(List<Integer> computer, String inputNumber) {
@@ -137,26 +151,16 @@ public class Application {
     		System.out.println(ball + "볼");
     	}
     	else if(strike==3) {
-    		start = successMessage();
+    		successMessage();
     	}
     	else {
     		System.out.println(ball+"볼"+" "+strike + "스트라이크");
     	}
     }
     
-    public static int successMessage() {
-    	String coin = "";
+    public static void successMessage(){
     	System.out.println(strike+"스트라이크");
 		System.out.println(strike+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		coin = Console.readLine();
-		if(coin.equals("1")) {
-			return 1;
-		}else if(coin.equals("2")) {
-			return 2;
-		}else {
-			throw new IllegalArgumentException();
-		}
     }
     
 }

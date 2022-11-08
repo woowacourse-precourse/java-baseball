@@ -44,15 +44,6 @@ class FunctionTest extends NsTest {
     	assertThat(map.size()).isEqualTo(3);
     }
     
-    
-    @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
