@@ -2,6 +2,8 @@ package baseball;
 
 import static baseball.Constant.ERR_MSG;
 import static baseball.Constant.LENGTH_OF_NUMBER;
+import static baseball.Constant.NUM_MAX_RANGE;
+import static baseball.Constant.NUM_MIN_RANGE;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,5 +22,13 @@ public class Validation {
             throw new IllegalArgumentException(ERR_MSG);
         }
     }
-    
+
+    public void validateBetweenOneAndNine(List<Integer> number) {
+        for (Integer subNumber : number) {
+            if (subNumber < NUM_MIN_RANGE || NUM_MAX_RANGE < subNumber) {
+                throw new IllegalArgumentException(ERR_MSG);
+            }
+        }
+    }
+
 }
