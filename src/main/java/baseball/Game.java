@@ -55,6 +55,7 @@ public class Game {
     private void output(int ballCount, int strikeCount) {
         String result = "";
         if (ballCount != 0) result += ballCount + BALL;
+        if (ballCount != 0 && strikeCount != 0) result += " ";
         if (strikeCount != 0) result += strikeCount + STRIKE;
         if (result.equals("")) result = OUT;
         System.out.println(result);
