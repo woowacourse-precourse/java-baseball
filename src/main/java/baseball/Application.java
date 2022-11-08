@@ -20,40 +20,16 @@ public class Application {
     public void initGame() {
         GameStatus status = GameStatus.CONTINUE;
         do {
-            if (isStopStatus(status)) {
+            if (GameStatusUtil.isStopStatus(status)) {
                 break;
             }
-            if (isExceptionStatus(status)) {
-                throw new IllegalArgumentException();
-            }
+            GameStatusUtil.validateExceptionStatus(status);
             GameFormatter.gameStartMessage();
             String answer = initComputerAnswer();
             processComparing(answer);
             GameFormatter.gameEndMessage();
-            status = setGameStatus(Console.readLine());
+            status = GameStatusUtil.setGameStatus(Console.readLine());
         } while (true);
-    }
-
-    /**
-     * 게임 진행 상황을 제어하는 함수
-     *
-     * @param input
-     * @return GameStatus
-     */
-    GameStatus setGameStatus(String input) {
-        GameStatus status;
-        switch (input) {
-            case "1":
-                status = GameStatus.CONTINUE;
-                break;
-            case "2":
-                status = GameStatus.STOP;
-                break;
-            default:
-                status = GameStatus.EXCEPTION;
-                break;
-        }
-        return status;
     }
 
     /**
@@ -149,14 +125,6 @@ public class Application {
             }
         }
         return result;
-    }
-
-    boolean isStopStatus(GameStatus status) {
-        return status.equals(GameStatus.STOP);
-    }
-
-    boolean isExceptionStatus(GameStatus status) {
-        return status.equals(GameStatus.EXCEPTION);
     }
 
     void validateLength(String input) {
