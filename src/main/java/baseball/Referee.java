@@ -38,4 +38,21 @@ public class Referee {
         }
         return count;
     }
+
+    public boolean isStrike(int index) {
+        if (computerNumbers.get(index).equals((userNumbers).get(index))) {
+            return true;
+        }
+        return false;
+    }
+
+    public int countStrike() {
+        int count = 0;
+        for (int index = 0; index < MAX_SIZE; index++) {
+            if (isStrike(index)) {
+                count += 1;
+            }
+        }
+        return count;
+    }
 }
