@@ -126,6 +126,9 @@ public class Application {
         if(input.contentEquals("1")) {
             answer = true;
             reStart = true;
+            return;
+        } else if (!input.contentEquals("2")) {
+            throw new IllegalArgumentException("1과 2만 입력 해주세요");
         }
     }
 }
