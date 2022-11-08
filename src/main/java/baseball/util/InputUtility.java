@@ -22,5 +22,8 @@ public class InputUtility {
         return input.matches("[1-9]+");
     }
 
+    private static boolean isOutOfIndex(String input) {
+        return input.length() != 3;
+    }
 
 }
