@@ -13,13 +13,20 @@ public class Validator {
         return instance;
     }
 
-    public Boolean isAnyConditionsFalse(String input, List<Condition> conditions) {
-        for (Condition condition : conditions) {
+    /**
+     * @param input:      user Input
+     * @param conditions: conditions for validating input
+     * @return if (all conditions are true: -1) else (index of condition which is false)
+     */
+    public Integer getNotPassConditionIndex(String input, List<Condition> conditions) {
+        for (int index = 0; index < conditions.size(); index++) {
+            Condition condition = conditions.get(index);
+
             if (!condition.isTrue(input)) {
-                return true;
+                return index;
             }
         }
 
-        return false;
+        return -1;
     }
 }
