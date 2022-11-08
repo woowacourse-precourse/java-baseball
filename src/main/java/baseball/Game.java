@@ -13,7 +13,6 @@ class Game {
     public static final int MIN_ANSWER_NUMBER = 1;
     public static final int MAX_ANSWER_NUMBER = 9;
 
-//    private final static Opponent opponent = new Opponent();
     private List<Integer> answerList;
 
     public void start() {
@@ -25,18 +24,27 @@ class Game {
     }
 
     public int play() {
-        initAnswerList();
+        answerList = initAnswerList();
         System.out.println(GameMessage.START.message());
 
-        guessWithHint();
-        System.out.println(GameMessage.CORRECT.message());
+        Hint hint = new Hint(answerList);
+        while (true) {
+            System.out.println(GameMessage.TYPE_USER_GUESS.message());
 
+            List<Integer> guess = getUserGuess();
+            if (isCorrect(guess))
+                break;
+
+            System.out.println(hint.retrieve(guess));
+        }
+
+        System.out.println(GameMessage.CORRECT.message());
         System.out.println(GameMessage.REPLAY_OR_END.message());
         return Integer.parseInt(Console.readLine());
     }
 
-    private void initAnswerList() {
-        answerList = new ArrayList<>();
+    private List<Integer> initAnswerList() {
+        List<Integer> answerList = new ArrayList<>();
         while (answerList.size() < MAX_ANSWER_SIZE) {
             int randomNum = Randoms.pickNumberInRange(MIN_ANSWER_NUMBER,
                     MAX_ANSWER_NUMBER);
@@ -46,22 +54,14 @@ class Game {
         }
 
         System.out.println("randomNumberList = " + answerList);
+        return answerList;
     }
 
-    public void guessWithHint() {
-        Hint hint = new Hint(answerList);
-        while (true) {
-            System.out.print(GameMessage.TYPE_USER_GUESS.message());
-            String input = Console.readLine();
-            List<Integer> guess = Arrays.stream(input.split(""))
-                    .map(Integer::valueOf)
-                    .collect(Collectors.toList());
-
-            if (isCorrect(guess))
-                return;
-
-            System.out.println(hint.retrieve(guess));
-        }
+    public List<Integer> getUserGuess() {
+        String input = Console.readLine();
+        return Arrays.stream(input.split(""))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
     }
 
     private boolean isCorrect(List<Integer> guess) {
