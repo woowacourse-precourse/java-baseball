@@ -2,9 +2,11 @@ package baseball.domain.user;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.controller.Rule.*;
+import static baseball.controller.Rule.END_NUMBER;
+import static baseball.controller.Rule.START_NUMBER;
 
 public class Opponent {
     private final List<Integer> goal;
@@ -18,10 +20,14 @@ public class Opponent {
     }
 
     public List<Integer> initRandomGoal() {
-        return Randoms.pickUniqueNumbersInRange(
-                START_NUMBER.getValue(),
-                END_NUMBER.getValue(),
-                LENGTH.getValue());
+        List<Integer> goal = new ArrayList<>();
+        while (goal.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(START_NUMBER.getValue(), END_NUMBER.getValue());
+            if (!goal.contains(randomNumber)) {
+                goal.add(randomNumber);
+            }
+        }
+        return goal;
     }
 
     public List<Integer> getGoal() {
