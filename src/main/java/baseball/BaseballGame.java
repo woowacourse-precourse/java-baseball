@@ -16,6 +16,8 @@ public class BaseballGame {
 
         while (gameContinue) {
 
+            boolean gameRestart = false;
+
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
 
@@ -26,8 +28,14 @@ public class BaseballGame {
             int ball = countBall(computerNumber, userNumber);
 
             gameContinue = checkResult(strike, ball);
-        }
 
+            if (!gameContinue) gameRestart = checkRestart();
+
+            if (gameRestart) {
+                gameContinue = true;
+                computerNumber = makeRandomNum();
+            }
+        }
     }
 
     // 랜덤 숫자 만들기
@@ -169,4 +177,17 @@ public class BaseballGame {
         return true;
     }
 
+    public boolean checkRestart() {
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+
+        if (input.length() != 1 || (input.charAt(0) != '1' && input.charAt(0) != '2'))
+            throw new IllegalArgumentException("1과 2를 제외한 값을 입력하였습니다.");
+
+        if (input.charAt(0) == '1') return true;
+        else if (input.charAt(0) == '2') System.out.println("게임을 완전히 종료합니다.");
+
+        return false;
+    }
 }
