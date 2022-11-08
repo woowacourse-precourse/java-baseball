@@ -39,6 +39,23 @@ public class Application {
                 }
             }
         }
+        outputResult();
+    }
+
+    private static void outputResult() {
+        if(strick == 0 && ball == 0){
+            System.out.println("낫싱");
+        }else if(strick == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            result = true;
+        }else if(ball != 0 && strick != 0){
+            System.out.println(ball+"볼 "+strick+"스트라이크");
+        }else if(ball == 0 && strick != 0){
+            System.out.println(strick+"스트라이크");
+        }else if(ball != 0 && strick == 0){
+            System.out.println(ball+"볼");
+        }
     }
 
     private static void inputNumber(BufferedReader br) throws IOException {
