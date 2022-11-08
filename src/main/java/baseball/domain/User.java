@@ -7,14 +7,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class User {
-    private static User user = new User();
 
     User() {
 
-    }
-
-    public static User getInstance() {
-        return user;
     }
 
     public List<Integer> inputUserAnswer() {
