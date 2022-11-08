@@ -29,5 +29,18 @@ public class Player {
             throw new IllegalArgumentException(Constants.ERROR_DUPLICATE_NUM);
         }
     }
+    public boolean wantRestart() {
+        System.out.println(Constants.ENTER_RESTART_FLAG);
+        int restartFlag = Integer.parseInt(Console.readLine());
+        validateRestartFlag(restartFlag);
+        return restartFlag == Constants.RESTART;
+    }
+
+    private void validateRestartFlag(int restartFlag) {
+        if (restartFlag != Constants.RESTART && restartFlag != Constants.END_GAME) {
+            throw new IllegalArgumentException(Constants.ERROR_RESTART_FLAG);
+        }
+    }
+
 
 }
