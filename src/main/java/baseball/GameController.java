@@ -12,10 +12,10 @@ public class GameController {
 
     private final NumberGenerator numberGenerator;
     private final HintCalculator hintCalculator;
-    private final ConsoleView view;
+    private final View view;
 
     public GameController(NumberGenerator numberGenerator, HintCalculator hintCalculator,
-            ConsoleView view) {
+            View view) {
         this.numberGenerator = numberGenerator;
         this.hintCalculator = hintCalculator;
         this.view = view;
