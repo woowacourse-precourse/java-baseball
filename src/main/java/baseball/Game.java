@@ -10,7 +10,7 @@ public class Game {
 
     private final int END_STRIKE_COUNT = 3;
 
-    public void gameStart(){
+    public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
@@ -18,7 +18,7 @@ public class Game {
         List<Integer> answer = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            int addNumber = getRandomIntegerExcludeInList(answer);
+            int addNumber = ListUtil.getRandomIntegerExcludeInList(answer);
             answer.add(addNumber);
         }
 
@@ -33,7 +33,7 @@ public class Game {
             throw new IllegalArgumentException("잘못된 선택입니다.");
         }
 
-        if(choice.equals("1")){
+        if (choice.equals("1")) {
             return true;
         }
         System.out.println("게임 종료");
@@ -70,13 +70,5 @@ public class Game {
         return false;
     }
 
-    private int getRandomIntegerExcludeInList(List<Integer> answer) {
-        int number;
 
-        do {
-            number = Randoms.pickNumberInRange(1, 9);
-        } while (answer.contains(number));
-
-        return number;
-    }
 }

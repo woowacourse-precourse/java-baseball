@@ -4,54 +4,12 @@ import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class GameTest {
-
-
-    @Nested
-    @DisplayName("중복이 아닌 숫자를 찾는 메소드")
-    class GetRandomIntegerExcludeInList {
-
-
-        @RepeatedTest(1000)
-        @DisplayName("빈 리스트가 들어갔을 때")
-        void listIsEmpty() throws Exception {
-            //Given
-            Game game = new Game();
-            Method getRandomIntegerExcludeInList = Game.class.getDeclaredMethod("getRandomIntegerExcludeInList", List.class);
-            getRandomIntegerExcludeInList.setAccessible(true);
-            List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-            //When
-            List<Integer> answer = List.of();
-            int number = (int) getRandomIntegerExcludeInList.invoke(game, answer);
-
-            //Then
-            assertThat(numbers.contains(number)).isEqualTo(true);
-        }
-
-        @DisplayName("리스트가 1개 일떄")
-        @RepeatedTest(1000)
-        void listHasOneElement() throws Exception {
-            //Given
-            Game game = new Game();
-            Method getRandomIntegerExcludeInList = Game.class.getDeclaredMethod("getRandomIntegerExcludeInList", List.class);
-            getRandomIntegerExcludeInList.setAccessible(true);
-
-            //When
-            List<Integer> answer = List.of(1);
-            int number = (int) getRandomIntegerExcludeInList.invoke(game, answer);
-
-            //Then
-            assertThat(number).isNotEqualTo(1);
-        }
-    }
 
     @Nested
     @DisplayName("예측한 답에 대한 결과 출력")
@@ -91,7 +49,7 @@ class GameTest {
             boolean gameResultOfJudge = game.getGameResultOfJudge(judge);
 
             //Then
-            assertThat(outputStreamCaptor.toString().trim()).isEqualTo("3스트라이크");
+            assertThat(outputStreamCaptor.toString().trim()).isEqualTo("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             assertThat(gameResultOfJudge).isTrue();
         }
 
