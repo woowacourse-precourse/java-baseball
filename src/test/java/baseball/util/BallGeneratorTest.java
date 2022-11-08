@@ -35,6 +35,14 @@ public class BallGeneratorTest {
     }
 
     @Test
+    void 컴퓨터_공은_중복이_없어야_합니다() {
+        List<Integer> computerBalls = ballGenerator.createComputerBalls();
+
+        assertThat(computerBalls)
+                .doesNotHaveDuplicates();
+    }
+
+    @Test
     void 사용자_공이_3개가_아니라면_예외가_발생합니다() {
         String input = "1234";
         InputStream in = new ByteArrayInputStream(input.getBytes());
