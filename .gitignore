@@ -30,3 +30,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### class ###
+# 프리코스 1주차 웹 백엔드 피드백 반영
+*.class
