@@ -17,7 +17,7 @@ public final class Computer {
         this.balls = new Balls(createRandomNumber());
     }
 
-    public List<Integer> createRandomNumber() {
+    private List<Integer> createRandomNumber() {
         Set<Integer> answer = new HashSet<>();
         while (answer.size() < BALL_SIZE) {
             int num = Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
