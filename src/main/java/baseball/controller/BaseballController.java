@@ -13,5 +13,6 @@ public class BaseballController {
         baseballService.gameStart();
         baseballService.generateComputerNumber();
         baseballService.inputPlayerNumber();
+        baseballService.comparator();
     }
 }

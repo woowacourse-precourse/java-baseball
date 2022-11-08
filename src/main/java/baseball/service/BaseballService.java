@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 public class BaseballService {
     private ArrayList<Integer> computerNumbers;
     private ArrayList<Integer> playerNumbers;
+    private int ball;
+    private int strike;
     private final Validator validator;
 
     public BaseballService() {
@@ -42,5 +44,29 @@ public class BaseballService {
                 .collect(Collectors.toList());
         ArrayList<Integer> userNumber = new ArrayList<>(numberList);
         playerNumbers = new ArrayList<>(userNumber);
+    }
+
+    public void comparator() {
+        ball = 0;
+        strike = 0;
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            int computerNumber = playerNumbers.get(i);
+            int playerNumber = playerNumbers.get(i);
+            isBall(computerNumbers, computerNumber);
+            isStrike(computerNumbers.get(i), playerNumber);
+        }
+        ball -= strike;
+    }
+
+    public void isBall(ArrayList<Integer> computerNumbers, int playerNumber) {
+        if (computerNumbers.contains(playerNumber)) {
+            ball += 1;
+        }
+    }
+
+    public void isStrike(int computerNumber, int playerNumber) {
+        if (computerNumber == playerNumber) {
+            strike += 1;
+        }
     }
 }
