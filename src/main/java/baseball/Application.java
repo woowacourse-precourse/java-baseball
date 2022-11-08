@@ -30,6 +30,8 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             String input = readLine();
 
+            validateThreeDifferentDigits(input);
+
             HashMap<String, Integer> ballStrikeNum = initializeBallStrikePoint();
 
             findPoint(randomValue, input, ballStrikeNum);
@@ -37,15 +39,35 @@ public class Application {
             success = printPoint(ballStrikeNum);
         }
     }
+
     private static boolean continueOrEnd() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int newGame = Integer.parseInt(readLine());
-
+        validateContinueEnd(newGame);
         if (newGame == 2) {
             System.out.println("게임 종료");
             return false;
         }
         return true;
+    }
+
+    private static void validateThreeDifferentDigits(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        if (input.charAt(0) == input.charAt(1)) {
+            throw new IllegalArgumentException();
+        } else if (input.charAt(0) == input.charAt(2)) {
+            throw new IllegalArgumentException();
+        } else if (input.charAt(1) == input.charAt(2)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateContinueEnd(int newGame) {
+        if (newGame !=1 && newGame !=2){
+            throw new IllegalArgumentException();
+        }
     }
 
     private static boolean printPoint(HashMap<String, Integer> ballStrikeNum) {
@@ -79,14 +101,12 @@ public class Application {
         }
     }
 
-
     private static HashMap<String, Integer> initializeBallStrikePoint() {
         HashMap<String, Integer> ballStrikeNum = new HashMap<>();
         ballStrikeNum.put("ballNum", 0);
         ballStrikeNum.put("strikeNum", 0);
         return ballStrikeNum;
     }
-
 
     private static List<Integer> getRandomValue() {
         List<Integer> computer = new ArrayList<>();
