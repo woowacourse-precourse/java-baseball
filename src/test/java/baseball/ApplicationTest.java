@@ -32,7 +32,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_4자리문자() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("abcd"))
+                assertThatThrownBy(() -> runException("a cd"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("3자리가 아닙니다.")
         );
@@ -71,7 +71,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("112"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("3자리가 아닙니다.")
+                        .hasMessageContaining("숫자를 중복하여 입력하셨습니다.")
         );
     }
 
