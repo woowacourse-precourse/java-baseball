@@ -19,10 +19,17 @@ public class Game {
     public void play() {
         List<Integer> randomNumbers = computer.getRandomNumbers();
 
+        for (int i = 0; i < randomNumbers.size(); i++) {
+            System.out.println(randomNumbers.get(i));
+        }
+
         GameJudgement gameJudgement = new GameJudgement();
 
-        List<Integer> playerInputNumbers = player.getInputNumberAsList();
+        boolean gameEnd;
+        do {
+            List<Integer> playerInputNumbers = player.getInputNumberAsList();
 
-        boolean gameEnd = gameJudgement.judge(randomNumbers, playerInputNumbers);
+            gameEnd = gameJudgement.judge(randomNumbers, playerInputNumbers);
+        } while (!gameEnd);
     }
 }
