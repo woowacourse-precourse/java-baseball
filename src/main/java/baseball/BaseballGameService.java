@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.List;
 
+import static baseball.Message.*;
+
 public class BaseballGameService {
 
     private final static int MAX_SIZE = 3;
@@ -20,14 +22,17 @@ public class BaseballGameService {
     }
 
     public String getResultMessage(User user) {
-        if (isStrikeZero(user.getStrike()) && isBallZero(user.getBall())) {
-            return "낫싱";
-        } else if (isStrikeZero(user.getStrike())) {
-            return user.getBall() + "볼";
-        } else if (isBallZero(user.getBall())) {
-            return user.getStrike() + "스트라이크";
+        int ball = user.getBall();
+        int strike = user.getStrike();
+
+        if (isStrikeZero(strike) && isBallZero(ball)) {
+            return NOT_THING;
+        } else if (isStrikeZero(strike)) {
+            return ballMessage(ball);
+        } else if (isBallZero(ball)) {
+            return strikeMessage(strike);
         } else {
-            return user.getBall() + "볼 " + user.getStrike() + "스트라이크";
+            return ballAndStrikeMessage(ball, strike);
         }
     }
 
