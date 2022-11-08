@@ -45,7 +45,24 @@ public class Application {
             }
         }
 
+        for (int i = 0; i < 9; i++) {
+            if (countChar(input, (char)(49 + i)) != 0) {
+                throw new IllegalArgumentException();
+            }
+        }
+
         return input;
+    }
+
+    public static int countChar(String input, char ch) {
+        int cnt = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == ch) {
+                cnt++;
+            }
+        }
+
+        return cnt;
     }
 
     public static List<Integer> compareNumber(String input, List<Integer> computer) {
