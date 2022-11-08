@@ -51,7 +51,7 @@ public class BaseballService {
 
 
     public boolean validateInput(String input) {
-        if (areThreeLength(input)) {
+        if (areThreeLength(input) && areNumbersFromOneToNine(input)) {
             return true;
         }
 
@@ -64,5 +64,19 @@ public class BaseballService {
         }
 
         return false;
+    }
+
+    public boolean areNumbersFromOneToNine(String input) {
+        char[] inputs = input.toCharArray();
+
+        for (char inputChar : inputs) {
+            int number = inputChar - '0';
+
+            if (number < 1 || number > 9) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
