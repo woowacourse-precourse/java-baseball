@@ -26,13 +26,13 @@ public class User {
 
 	private void validateNumberLength(String number) {
 		if(number.trim().length() != Game.DIGIT_NUMBER) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(Message.INVALID_ARGUMENT_EXCEPTION_MESSAGE);
 		}
 	}
 
 	private void validateNumberList(List<String> numberList) {
 		if(numberList.get(0).equals("0")) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(Message.INVALID_ARGUMENT_EXCEPTION_MESSAGE);
 		}
 	}
 

@@ -8,20 +8,15 @@ public class Game {
 	private boolean isContinue;
 
 	public void play() {
-		isContinue = true;
 		Computer computer = new Computer();
+		isContinue = true;
 
-		try {
-			do {
-				System.out.print(Message.INPUT_NUMBER_MESSAGE);
-				User user = new User(Console.readLine());
-				user.calculateBallAndStrike(computer.getRandomNumberList());
-				checkGameResult(user);
-			} while(isContinue);
-		} catch (Exception e){
-			System.out.println(Message.INVALID_ARGUMENT_EXCEPTION_MESSAGE);
-			throw e;
-		}
+		do {
+			System.out.print(Message.INPUT_NUMBER_MESSAGE);
+			User user = new User(Console.readLine());
+			user.calculateBallAndStrike(computer.getRandomNumberList());
+			checkGameResult(user);
+		} while(isContinue);
 	}
 
 	private void checkGameResult(User user) {
@@ -53,19 +48,14 @@ public class Game {
 		}
 	}
 
-	private void doNextStep(String input) {
-		try {
-			switch (NextStepInput.fromInputCode(input)) {
-				case RESTART:
-					play();
-					isContinue = true;
-				case END:
-					System.out.print(Message.END_MESSAGE);
-					isContinue = false;
-			}
-		} catch (IllegalArgumentException e) {
-			System.out.println(Message.INVALID_ARGUMENT_EXCEPTION_MESSAGE);
-			throw e;
+	private void doNextStep(String input){
+		switch (NextStepInput.fromInputCode(input)) {
+			case RESTART:
+				play();
+				isContinue = true;
+			case END:
+				System.out.print(Message.END_MESSAGE);
+				isContinue = false;
 		}
 	}
 }

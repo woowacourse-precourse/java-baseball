@@ -12,10 +12,10 @@ public enum NextStepInput {
 		this.inputCode = inputCode;
 	}
 
-	public static NextStepInput fromInputCode(String inputCode) {
+	public static NextStepInput fromInputCode(String input) {
 		return Arrays.stream(values())
-				.filter(x->x.inputCode.equals(inputCode))
+				.filter(x->(x.inputCode).equals(input))
 				.findFirst()
-				.orElseThrow(IllegalArgumentException::new);
+				.orElseThrow(() -> new IllegalArgumentException(Message.INVALID_ARGUMENT_EXCEPTION_MESSAGE));
 	}
 }
