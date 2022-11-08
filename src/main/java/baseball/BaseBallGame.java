@@ -11,6 +11,8 @@ public class BaseBallGame {
     private static List<Integer> userNumber;
     private static boolean isPlay = true;
 
+    private static Hint hint;
+
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (isPlay) {
@@ -22,6 +24,8 @@ public class BaseBallGame {
         computerNumber = makeNumber();
         while (true) {
             userNumber = getUserNumber();
+
+            getHint();
         }
     }
 
@@ -54,5 +58,39 @@ public class BaseBallGame {
 
     private static int charToNumber(char c) {
         return c - '0';
+    }
+
+    private static void getHint() {
+        hint = new Hint();
+
+        for (int i = 0; i < computerNumber.size(); i++) {
+            for (int j = 0; j < userNumber.size(); j++) {
+                int computer = computerNumber.get(i);
+                int user = userNumber.get(j);
+                if (computer != user) {
+                    continue;
+                }
+                if (isStrike(computer, user)) {
+                    hint.addStrikeCount();
+                }
+                if (isBall(computer, user)) {
+                    hint.addBallCount();
+                }
+            }
+        }
+        if (hint.isNothing()) {
+            System.out.println("낫싱");
+            return;
+        }
+        String hintStr = hint.toStringBallCount() + " " + hint.toStringStrikeCount();
+        System.out.println(hintStr.trim());
+    }
+
+    private static boolean isBall(int computer, int user) {
+        return computerNumber.indexOf(computer) != userNumber.indexOf(user);
+    }
+
+    private static boolean isStrike(int computer, int user) {
+        return computerNumber.indexOf(computer) == userNumber.indexOf(user);
     }
 }
