@@ -120,4 +120,12 @@ public class NumberBaseballGame {
         Matcher m = pattern.matcher(input);
         return !m.matches();
     }
+
+    public boolean judgeRestart(int inputNumber) {
+        if (inputNumber == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
