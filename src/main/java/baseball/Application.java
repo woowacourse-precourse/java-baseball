@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -86,6 +87,14 @@ public class Application {
         while (!isRightAnswer) {
             System.out.print("숫자를 입력해주세요 : ");
             String user_input = readLine();
+            String pattern = "\\d{3}";
+
+            if(user_input.length()!=3){
+                throw new IllegalArgumentException();
+            } else if (!user_input.matches(pattern)) {
+                throw new IllegalArgumentException();
+            }
+
             String[] user_input_list = user_input.split("");
             List<Integer> user = new ArrayList<>();
 
@@ -109,7 +118,7 @@ public class Application {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 replay_or_not = readLine();
                 if (!replay_or_not.equals("1") && !replay_or_not.equals("2")) {
-                    // TODO: 예외 처리
+                    throw new IllegalArgumentException();
                 }
             }
         }
