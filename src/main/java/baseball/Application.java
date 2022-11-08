@@ -1,23 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
+
 
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class Application {
-    public static List<Integer> generateThreeDifferentNum() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
-
     /**
      * 플레이어의 입력값이 1~9사이 서로다른 3가지 숫자인지 확인
      *
@@ -105,6 +94,7 @@ public class Application {
      */
     public static boolean isValidGameModeInput(String gameModeInput) {
         if (gameModeInput.equals("1")) {
+            Computer.generateThreeDifferentNum();
             return true;
         } else if (gameModeInput.equals("2")) {
             return false;
@@ -116,18 +106,17 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean gameMode = true;
-        List<Integer> computer = generateThreeDifferentNum();
+        Computer.generateThreeDifferentNum();
         List<Integer> score;
         while (gameMode) {
             System.out.print("숫자를 입력해주세요 : ");
             String playerInput = Console.readLine();
             isDifferentThreeNum(playerInput);
-            score = processScore(computer, playerInput);
+            score = processScore(Computer.computer, playerInput);
             printScore(score);
             if (isPlayerWon(score)) {
                 String gameModeInput = Console.readLine();
                 gameMode = isValidGameModeInput(gameModeInput);
-                computer = generateThreeDifferentNum();
             }
         }
     }
