@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.result.ResultPrinter;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;

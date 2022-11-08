@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.input.InputNum;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

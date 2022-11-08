@@ -1,4 +1,4 @@
-package baseball;
+package baseball.input;
 
 public interface Input {
     String input(int size);
