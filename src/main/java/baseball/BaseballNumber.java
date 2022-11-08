@@ -19,22 +19,36 @@ public class BaseballNumber {
     public static final String DUPLICATE_NUMBER_EXCEPTION_MESSAGE = "중복된 숫자가 있습니다";
     public static final String NOT_PROPER_SIZE_EXCEPTION_MESSAGE = "올바른 숫자 개수가 아닙니다";
     public static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "범위를 벗어난 숫자입니다";
+    public static final String NOT_A_NUMBER_EXCEPTION_MESSAGE = "숫자만 입력 가능합니다";
 
     public BaseballNumber(List<Integer> numbers) throws IllegalArgumentException {
-        this.numbers = numbers;
-        this.numbersSet = new HashSet<>(numbers);
+        Set<Integer> numbersSet = new HashSet<>(numbers);
 
         are_all_constrains_met(numbers, numbersSet);
+
+        this.numbers = numbers;
+        this.numbersSet = numbersSet;
     }
 
     public BaseballNumber(String numbersString) throws IllegalArgumentException {
-        this(Arrays.stream(numbersString.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList()));
+        try {
+            List<Integer> numbers = Arrays.stream(numbersString.split(""))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+            Set<Integer> numbersSet = new HashSet<>(numbers);
 
+            are_all_constrains_met(numbers, numbersSet);
+
+            this.numbers = numbers;
+            this.numbersSet = numbersSet;
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NOT_A_NUMBER_EXCEPTION_MESSAGE);
+        }
     }
 
-    private void are_all_constrains_met(List<Integer> numbers, Set<Integer> numbersSet) throws IllegalArgumentException {
+    private void are_all_constrains_met(List<Integer> numbers, Set<Integer> numbersSet)
+            throws IllegalArgumentException {
         if (is_not_proper_size(numbers)) {
             throw new IllegalArgumentException(NOT_PROPER_SIZE_EXCEPTION_MESSAGE);
         }
