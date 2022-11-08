@@ -166,6 +166,26 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    public void printBallStrikeResult_볼_스트라이크_낫싱_출력_테스트() throws Exception {
+        //reflection
+        Method method = Application.class.getDeclaredMethod("printBallStrikeResult", Integer.TYPE, Integer.TYPE);
+        method.setAccessible(true);
+
+        //given
+        int givenBallNumber = 1;
+        int givenStrikeNumber = 2;
+
+        //when
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        boolean invoke = (boolean)method.invoke(new Application(), givenBallNumber, givenStrikeNumber);
+
+        //then
+        assertThat(out.toString()).isEqualTo("1볼 2스트라이크\n");
+        assertThat(invoke).isEqualTo(true);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
