@@ -32,4 +32,8 @@ public class User {
         setNumbers();
         return numbers;
     }
+
+    public void clearNumbers(){
+        numbers = new ArrayList<>();
+    }
 }
