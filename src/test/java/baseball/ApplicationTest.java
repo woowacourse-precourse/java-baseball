@@ -29,14 +29,14 @@ class ApplicationTest extends NsTest {
 
     // 갯수
     @Test
-    void 사용자_숫자_갯수_테스트1() {
+    void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-    @Test
+    /*@Test
     void 사용자_숫자_갯수_테스트2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1"))
@@ -94,14 +94,14 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("120"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
-    }
+    }*/
 
     @Override
     public void runMain() {
         Application.main(new String[]{});
     }
 
-    // 컴퓨터 숫자 갯수 테스트
+    /*// 컴퓨터 숫자 갯수 테스트
     @Test
     void 컴퓨터_숫자_갯수_테스트() {
         assertThat(Application.comNumber().size()==3);
@@ -138,7 +138,7 @@ class ApplicationTest extends NsTest {
 
         assertThat(output()).contains("3볼");
     }
-    
+
     // 스트라이크 테스트
     @Test
     void 스트라이크_테스트() {
@@ -157,7 +157,7 @@ class ApplicationTest extends NsTest {
 
         assertThat(output()).contains("2스트라이크");
     }
-    
+
     // 낫싱 테스트
     @Test
     void 낫싱_테스트() {
@@ -175,5 +175,5 @@ class ApplicationTest extends NsTest {
         Application.score(comList, userList);
 
         assertThat(output()).contains("낫싱");
-    }
+    }*/
 }
