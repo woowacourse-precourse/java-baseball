@@ -63,7 +63,6 @@ public class RuleTest {
         rule.showResult();
 
         // then
-        assertThat(out.toString()).contains(output);
-        assertThat(out.toString()).contains(gameClear);
+        assertThat(out.toString()).contains(output, gameClear);
     }
 }
