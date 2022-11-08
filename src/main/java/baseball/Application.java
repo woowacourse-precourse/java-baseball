@@ -81,14 +81,17 @@ public class Application {
 
         Node node = new Node(num, 0, 0);
 
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-                if (i == j && target.charAt(i) == num.charAt(j)) {
-                    ++node.strike;
-                } else if (target.charAt(i) == num.charAt(j)) {
-                    ++node.ball;
-                }
+        for (int i = 0; i < 9; ++i) {
+
+            int x = i / 3;
+            int y = i % 3;
+
+            if (x == y && target.charAt(x) == num.charAt(y)) {
+                ++node.strike;
+            } else if (target.charAt(x) == num.charAt(y)) {
+                ++node.ball;
             }
+
         }
 
         return node;
@@ -143,7 +146,6 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
 
         String target = makeTargetNum();
         System.out.println("숫자 야구 게임을 시작합니다.");
