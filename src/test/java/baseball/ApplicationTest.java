@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static baseball.Application.*;
@@ -95,13 +96,21 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 목표와_입력이_같으면_스트라이크다 () {
+    void 목표와_입력이_같으면_스트라이크다() {
         String targetNumber = "369";
         String userInput = "369";
 
         List<Integer> result = compareTwoNumbers(targetNumber, userInput);
         Assertions.assertThat(result.get(0).equals(3));
         Assertions.assertThat(result.get(1).equals(0));
+    }
+
+    @Test
+    void 쓰리스트라이크가_아니면_false다() {
+        List<Integer> result = Arrays.asList(1, 2);
+        Boolean isThreeSrikes = isThreeStrikes(result);
+
+        Assertions.assertThat(isThreeSrikes).isEqualTo(false);
     }
 
     @Override
