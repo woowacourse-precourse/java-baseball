@@ -32,8 +32,25 @@ public class Application {
 
         public void game() {
             gameInit();
+            gameRunLoop();
+        }
+
+        private void gameRunLoop() {
+            while (PLAYING) {
+                if (gameRun()) {
+                    break;
+                }
+            }
+        }
+
+        private boolean gameRun() {
             gamePrepare();
-            gamePlayLoop();
+            gamePlay();
+            return newGameCheck();
+        }
+
+        private boolean newGameCheck() {
+
         }
 
         private void gamePlayLoop() {
@@ -57,6 +74,10 @@ public class Application {
             } else {
                 return GAME_CONTINUE;
             }
+        }
+
+        private void printCelebrateStatus() {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
 
         private boolean isCompleteGoal() {
