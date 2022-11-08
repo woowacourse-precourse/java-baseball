@@ -47,4 +47,15 @@ public class Application {
 
         return parseIntResultList;
     }
+
+    public static List<Integer> generateRandomNumber(int digitSize) {
+        List<Integer> generatedRandomNumber = new ArrayList<>();
+        while (generatedRandomNumber.size() < digitSize) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!generatedRandomNumber.contains(randomNumber)) {
+                generatedRandomNumber.add(randomNumber);
+            }
+        }
+        return generatedRandomNumber;
+    }
 }

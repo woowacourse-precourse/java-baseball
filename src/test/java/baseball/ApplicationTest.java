@@ -4,12 +4,15 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest extends NsTest {
 //    @Test
@@ -101,6 +104,29 @@ class ApplicationTest extends NsTest {
             List<Integer> result = List.of(1,2,3);
 
             assertThat(Application.convertCharListToIntList(input)).isEqualTo(result);
+        }
+
+        @Test
+        void 생성된_random_숫자_자리수가_올바른지() {
+            int digitSize1 = 3;
+
+            assertThat(Application.generateRandomNumber(digitSize1).size()).isEqualTo(digitSize1);
+        }
+
+        @Test
+        void 생성된_random_숫자는_다른_숫자들로_구성되어야함() {
+            int digitSize1 = 3;
+
+            List<Integer> generatedRandomNumber = Application.generateRandomNumber(digitSize1);
+
+            assertAll(
+                    ()-> assertEquals(
+                            Collections.frequency(generatedRandomNumber, generatedRandomNumber.get(0)),1),
+                    ()-> assertEquals(
+                            Collections.frequency(generatedRandomNumber, generatedRandomNumber.get(1)),1),
+                    ()-> assertEquals(
+                            Collections.frequency(generatedRandomNumber, generatedRandomNumber.get(2)),1)
+            );
         }
     }
 }
