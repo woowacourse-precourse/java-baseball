@@ -127,5 +127,16 @@ public class Application {
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    // 11. Choose to end game or continue
+    public static void chooseToEndGameOrContinue() {
+        String choiceToPlayOrEndTheGame = Console.readLine();
+        if (choiceToPlayOrEndTheGame.equals("1")) {
+            playTheGame();
+        } else if (choiceToPlayOrEndTheGame.equals("2")) {
+            System.out.println("게임 종료");
+        }
+    }
+
+
 
 }
