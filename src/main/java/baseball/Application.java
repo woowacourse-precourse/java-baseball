@@ -14,7 +14,6 @@ public class Application {
         while (restartOrNot() == 1)
             gameStart();
     }
-
     private static void printProgramStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -119,8 +118,9 @@ public class Application {
     }
 
     private static boolean isTrialCorrect(int ballCnt, int strikeCnt) {
-
-        if (strikeCnt == 3) {
+        if (strikeCnt + ballCnt > 3)
+            throw new IllegalArgumentException("잘못된 스트라이크/볼 카운트가 입력되었습니다.");
+        else if (strikeCnt == 3) {
             System.out.println("3스트라이크");
             printGameEnd();
             return true;
