@@ -20,20 +20,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
-    public static void playGame(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        while(true){
-            System.out.println("숫자를 입력해주세요 : ");
-            String input = Console.readLine();
-            String[] inputList = input.split("");
-            int[] inputNums = Arrays.stream(inputList).mapToInt(Integer::valueOf).toArray();
-
-        }
-    }
-    private static void printNumberStatus(Integer[] inputList, List<Integer> computer){
-
-    }
-
     public static List<Integer> generateRandomNum() {
         List<Integer> computer = new ArrayList<>();
         while(computer.size() < 3){
@@ -45,6 +31,29 @@ public class Application {
         }
         return computer;
     }
+
+    public static void playGame(List<Integer> computer){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while(true){
+            System.out.println("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            String[] inputList = input.split("");
+            int[] inputNums = Arrays.stream(inputList).mapToInt(Integer::valueOf).toArray();
+
+            printNumberStatus(inputNums, computer);
+        }
+    }
+    private static void printNumberStatus(int[] inputList, List<Integer> computer){
+
+    }
+
+    public static class GameStatus{
+        Boolean nothing = false;
+        Integer strike = 0;
+        Integer ball = 0;
+    }
+
+
 
 
 
