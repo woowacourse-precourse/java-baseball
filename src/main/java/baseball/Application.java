@@ -14,12 +14,14 @@ public class Application {
             int strike = 0;
 
             while(strike != 3){
-            List<Integer> player = input_number();
-            wrong_number(player);
+                List<Integer> player = input_number();
+                wrong_number(player);
 
-            strike = check_strike(computer,player);
-            int same = same(computer, player);
-            int ball = check_ball(strike, same);
+                strike = check_strike(computer,player);
+                int same = same(computer, player);
+                int ball = check_ball(strike, same);
+
+                check_message(ball, strike);
 
             }
         }
@@ -72,7 +74,19 @@ public class Application {
         int ball = same - strike;
         return ball;
     }
-    public static void check_message(){
+    public static void check_message(int ball, int strike){
+        if (ball == 0 && strike == 0){
+            System.out.println("낫싱");
+        }
+        else if(ball != 0 && strike == 0){
+            System.out.println(strike + "볼");
+        }
+        else if(ball == 0 && strike != 0){
+            System.out.println(ball + "스트라이크");
+        }
+        else{
+            System.out.println(ball+"볼 " + strike + "스트라이크");
+        }
 
     }
     public static void end_message(){
