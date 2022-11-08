@@ -1,6 +1,8 @@
 package baseball.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static baseball.vo.ValidationMsg.NUMBER_RANGE_EXCEPTION;
 
@@ -17,6 +19,11 @@ public class Player {
 
     public List<Integer> getPlayerNumbers() {
         return playerNumbers;
+    }
+
+    private boolean validateDuplicateNumber(List<Integer> numbers) {
+        Set<Integer> numbersSet = new HashSet<>(numbers);
+        return numbers.size() != numbersSet.size();
     }
 
     private boolean validateNumbersSize(List<Integer> numbers) {
