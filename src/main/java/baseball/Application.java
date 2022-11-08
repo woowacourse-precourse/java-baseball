@@ -3,6 +3,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -35,7 +37,9 @@ class Array {
 }
 
 class Game {
-    
+
+    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해 주세요 : ";
+
     int[] number = new int[3];
 
     Game() {
@@ -55,5 +59,12 @@ class Game {
         for (int i = 0; i < 3; i++) {
             number[i] = Integer.parseInt(str.charAt(i) + "");
         }
+    }
+
+    static Game userAnswer() {
+        System.out.print(INPUT_NUMBER_MESSAGE);
+        String userInput = readLine();
+
+        return new Game(userInput);
     }
 }
