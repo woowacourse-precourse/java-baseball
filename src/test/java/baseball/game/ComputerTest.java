@@ -1,14 +1,13 @@
 package baseball.game;
 
-import static baseball.constant.SystemMessage.BALL;
-import static baseball.constant.SystemMessage.NOTHING;
-import static baseball.constant.SystemMessage.STRIKE;
+import static baseball.constant.HintType.BALL;
+import static baseball.constant.HintType.NOTHING;
+import static baseball.constant.HintType.STRIKE;
 import static baseball.constant.SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER;
 import static baseball.constant.SystemValue.BALL_COUNT;
 import static baseball.constant.SystemValue.STRIKE_COUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.constant.SystemMessage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,7 +52,7 @@ public class ComputerTest {
         String resultMessage = computer.getResultMessage(strikeCount, ballCount);
 
         assertThat(resultMessage)
-                .isEqualTo(strikeCount + STRIKE);
+                .isEqualTo(strikeCount + STRIKE.getHint());
     }
 
     @Test
@@ -63,7 +62,7 @@ public class ComputerTest {
         String resultMessage = computer.getResultMessage(strikeCount, ballCount);
 
         assertThat(resultMessage)
-                .isEqualTo(ballCount + BALL);
+                .isEqualTo(ballCount + BALL.getHint());
     }
 
     @Test
@@ -73,7 +72,7 @@ public class ComputerTest {
         String resultMessage = computer.getResultMessage(strikeCount, ballCount);
 
         assertThat(resultMessage)
-                .isEqualTo(ballCount + BALL + " " + strikeCount + STRIKE);
+                .isEqualTo(ballCount + BALL.getHint() + " " + strikeCount + STRIKE.getHint());
     }
 
     @Test
@@ -93,6 +92,6 @@ public class ComputerTest {
         String resultMessage = computer.getResultMessage(strikeCount, ballCount);
 
         assertThat(resultMessage)
-                .isEqualTo(NOTHING);
+                .isEqualTo(NOTHING.getHint());
     }
 }

@@ -1,10 +1,10 @@
 package baseball.game;
 
+import static baseball.constant.SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER;
 import static baseball.constant.SystemValue.BALL_COUNT;
 import static baseball.constant.SystemValue.CONTINUE_GAME;
 import static baseball.constant.SystemValue.STRIKE_COUNT;
 
-import baseball.constant.SystemMessage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,7 +46,7 @@ public class Game {
     }
 
     private boolean isGameOver(String resultMessage) {
-        return resultMessage.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER);
+        return resultMessage.equals(THREE_NUMBERS_RIGHT_GAME_OVER);
     }
 
     private void initializeStrikeAndBallResults(List<Integer> strikeAndBallResults) {

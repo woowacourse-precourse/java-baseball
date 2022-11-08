@@ -1,11 +1,14 @@
 package baseball.game;
 
 
+import static baseball.constant.HintType.BALL;
+import static baseball.constant.HintType.NOTHING;
+import static baseball.constant.HintType.STRIKE;
+import static baseball.constant.SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER;
 import static baseball.constant.SystemValue.BALL_COUNT;
 import static baseball.constant.SystemValue.COMPUTER_BALLS_SIZE;
 import static baseball.constant.SystemValue.STRIKE_COUNT;
 
-import baseball.constant.SystemMessage;
 import baseball.util.BallGenerator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -49,18 +52,18 @@ public class Computer {
 
     public String getResultMessage(int strikeCount, int ballCount) {
         if (strikeCount == COMPUTER_BALLS_SIZE) {
-            return SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER;
+            return THREE_NUMBERS_RIGHT_GAME_OVER;
         }
         if (strikeCount > 0 && ballCount > 0) {
-            return ballCount + SystemMessage.BALL + " " + strikeCount + SystemMessage.STRIKE;
+            return ballCount + BALL.getHint() + " " + strikeCount + STRIKE.getHint();
         }
         if (strikeCount == 0 && ballCount > 0) {
-            return ballCount + SystemMessage.BALL;
+            return ballCount + BALL.getHint();
         }
         if (strikeCount > 0 && ballCount == 0) {
-            return strikeCount + SystemMessage.STRIKE;
+            return strikeCount + STRIKE.getHint();
         }
-        return SystemMessage.NOTHING;
+        return NOTHING.getHint();
     }
 
     public void printResultMessage(String resultMessage) {

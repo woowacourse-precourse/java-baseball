@@ -1,19 +1,21 @@
 package baseball.game;
 
-import baseball.constant.SystemMessage;
+import static baseball.constant.SystemMessage.ENTER_NUMBER;
+import static baseball.constant.SystemMessage.RESTART_GAME_OR_END;
+import static baseball.constant.SystemMessage.START_NUMBER_BASEBALL_GAME;
 
 public class Output {
 
     public void printWelcomeMessage() {
-        System.out.println(SystemMessage.START_NUMBER_BASEBALL_GAME);
+        System.out.println(START_NUMBER_BASEBALL_GAME);
     }
 
     public void printRestartMessage() {
-        System.out.println(SystemMessage.RESTART_GAME_OR_END);
+        System.out.println(RESTART_GAME_OR_END);
     }
 
     public void printEnterNumberMessage() {
-        System.out.print(SystemMessage.ENTER_NUMBER);
+        System.out.print(ENTER_NUMBER);
     }
 
     public void printMessage(String message) {
