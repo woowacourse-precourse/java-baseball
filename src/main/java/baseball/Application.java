@@ -12,8 +12,9 @@ public class Application {
     private static boolean checkRepeate(){
         boolean isRepeate = true;
 
+        System.out.println("Repeat game:1, End game:2 ");
+
         String input = readLine();
-        System.out.println(input);
 
         if(input.equals("1")){
             isRepeate = true;
@@ -85,7 +86,22 @@ public class Application {
     }
 
     private static void printResult(int strike, int ball){
+        ball = ball - strike;
+        String result = "";
 
+        if (strike+ball == 0){
+            result = "nothing";
+        }
+        else {
+            if(ball>0){
+                result += ball + "ball ";
+            }
+            if(strike>0){
+                result += strike + "strike ";
+            }
+        }
+
+        System.out.println(result);
     }
 
 
@@ -103,9 +119,10 @@ public class Application {
             strike = calStrike(answer, input);
             ball = calBall(answer, input);
 
-
             printResult(strike, ball);
         }
+
+        System.out.println("You correct 3 numbers! ");
     }
 
 
@@ -123,6 +140,6 @@ public class Application {
         } catch(IllegalArgumentException e){
             System.out.println(e);
         }
-        System.out.println("Game end");
+        System.out.println("게임 종료");
     }
 }
