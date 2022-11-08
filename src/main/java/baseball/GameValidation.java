@@ -33,7 +33,7 @@ public final class GameValidation {
     }
 
     public boolean isCheckLength() {
-        if (userInput.length() == 3) {
+        if (userInput.length() == GameValue.CORRECT_LENGTH) {
             return true;
         }
 
