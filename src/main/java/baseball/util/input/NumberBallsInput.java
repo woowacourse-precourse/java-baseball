@@ -32,7 +32,9 @@ public class NumberBallsInput {
     }
 
     private boolean includesDuplicateNumber(String numberBallsInput) {
-        String exceptDuplicateUserInput = Stream.of(numberBallsInput.split("")).distinct().collect(Collectors.joining());
+        String exceptDuplicateUserInput = Stream.of(numberBallsInput.split(""))
+                .distinct()
+                .collect(Collectors.joining());
         return !supportsNumberBallsInputLength(exceptDuplicateUserInput);
     }
 
