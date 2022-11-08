@@ -1,5 +1,6 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
@@ -33,6 +34,21 @@ class Game {
     public static List<Integer> getGameAnswer() {
         return gameAnswer;
     }
+
+    private void requestAnswer() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String userInput = readLine();
+        // userInput을 확인한다
+        Game.validInputValue(userInput);
+
+        // userInput을 List<Int> 형태로 type-casting한다.
+        List<Integer> userInputList = parseIntList(userInput);
+
+        // guessNumber에 할당한다.
+        guessNumber = userInputList;
+    }
+
+
 
 
     public static String validInputValue(String userInput) {
