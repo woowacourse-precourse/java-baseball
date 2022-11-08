@@ -6,6 +6,7 @@ import baseball.game.NumberReferee;
 import baseball.game.ComputerInput;
 import baseball.game.PlayerNumberInput;
 import baseball.printer.ResultPrint;
+import baseball.printer.PrintData;
 import java.util.List;
 
 public class Application {
@@ -16,6 +17,8 @@ public class Application {
     private static final ResultPrint resultPrint = new ResultPrint();
 
     public static void main(String[] args) {
+        PrintData.printData("GAME_START");
+        PrintData.printLine();
         startNumberBaseballGame();
     }
 
@@ -36,6 +39,7 @@ public class Application {
             player = numberParser.parsePlayerNumber(input);
             strike = numberReferee.checkStrike(player, computer);
             ball = numberReferee.checkBall(player, computer);
+            ResultPrint.printPlayerNumber(input);
             resultPrint.printGuessResult(strike, ball);
         }
     }
