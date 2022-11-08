@@ -19,9 +19,9 @@ public class Revert {
         return asciiArray;
     }
 
-    public static List<Integer> revertStringToList(String inputString){
+    public static List<Integer> revertStringToList(String inputString) {
         List<Integer> inputList = new ArrayList<Integer>();
-        for(String number: inputString.split("")){
+        for (String number : inputString.split("")) {
             inputList.add(Integer.parseInt(number));
         }
 

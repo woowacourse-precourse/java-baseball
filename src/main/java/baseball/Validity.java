@@ -5,23 +5,25 @@ import java.util.List;
 public class Validity {
 
 
-    public void isNumberValid(String input){
+    public void isNumberValid(String input) {
         char[] charArray = Revert.revertStringToCharArray(input);
         isInputNumberLength3(charArray);
         isInputNumberIs1To9(charArray);
         isNumberOverlaped(input);
     }
+
     private void isInputNumberLength3(char[] InputCharArray) {
         int[] inputAsciiArray = Revert.revertCharArrayToAsciiArray(InputCharArray);
 
-        if (!isLength3(inputAsciiArray) ) {
+        if (!isLength3(inputAsciiArray)) {
             throw new IllegalArgumentException();
         }
     }
+
     private void isInputNumberIs1To9(char[] InputCharArray) {
         int[] inputAsciiArray = Revert.revertCharArrayToAsciiArray(InputCharArray);
 
-        if (!isAsciiArrayValid(inputAsciiArray) ) {
+        if (!isAsciiArrayValid(inputAsciiArray)) {
             throw new IllegalArgumentException();
         }
     }
@@ -41,7 +43,7 @@ public class Validity {
         return (array.length == 3);
     }
 
-    public static boolean checkEndInput(String inputString){
+    public static boolean checkEndInput(String inputString) {
 
         if ((Integer.parseInt(inputString) == 1)) {
             return true;
@@ -52,16 +54,16 @@ public class Validity {
         }
     }
 
-    private void isNumberOverlaped(String inputString){
-        List<Integer> inputList= Revert.revertStringToList(inputString);
-        int count=0;
-        for(int i=0; i<inputList.size()-1; i++){
-            if(inputList.get(i).equals(inputList.get(i+1))){
+    private void isNumberOverlaped(String inputString) {
+        List<Integer> inputList = Revert.revertStringToList(inputString);
+        int count = 0;
+        for (int i = 0; i < inputList.size() - 1; i++) {
+            if (inputList.get(i).equals(inputList.get(i + 1))) {
                 count++;
             }
         }
-        if(!(count ==0)){
-             throw new IllegalArgumentException();
+        if (!(count == 0)) {
+            throw new IllegalArgumentException();
         }
     }
 
