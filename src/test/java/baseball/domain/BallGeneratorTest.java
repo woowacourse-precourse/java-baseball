@@ -1,8 +1,6 @@
-package baseball;
+package baseball.domain;
 
-import baseball.domain.Ball;
-import baseball.domain.BallGenerator;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -14,26 +12,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 class BallGeneratorTest {
 
     private static Collection<Arguments> param1() {
-        Collection<Arguments> param = new ArrayList<>();
-        param.add(
-            Arguments.of("4글자 입력은 에러 출력", "1234")
-        );
-        param.add(
-            Arguments.of("2글자 입력은 에러 출력", "12")
-        );
-        param.add(
-            Arguments.of("숫자가 아닌 입력은 에러 출력", "ㄱㄴㄷ")
-        );
-        param.add(
-            Arguments.of("숫자가 아닌 입력은 에러 출력", "가나다")
-        );
-        param.add(
-            Arguments.of("숫자가 아닌 입력은 에러 출력", "가23")
-        );
-        param.add(
+        return Arrays.asList(
+            Arguments.of("4글자 입력은 에러 출력", "1234"),
+            Arguments.of("2글자 입력은 에러 출력", "12"),
+            Arguments.of("숫자가 아닌 입력은 에러 출력", "ㄱㄴㄷ"),
+            Arguments.of("숫자가 아닌 입력은 에러 출력", "가나다"),
+            Arguments.of("숫자가 아닌 입력은 에러 출력", "가23"),
             Arguments.of("숫자가 아닌 입력은 에러 출력", "#23")
         );
-        return param;
     }
 
     @ParameterizedTest(name = "{index}: {0}")
@@ -43,14 +29,10 @@ class BallGeneratorTest {
     }
 
     private static Collection<Arguments> param2() {
-        Collection<Arguments> param = new ArrayList<>();
-        param.add(
-            Arguments.of("{123} -> 123", "123", List.of(1, 2, 3))
-        );
-        param.add(
+        return Arrays.asList(
+            Arguments.of("{123} -> 123", "123", List.of(1, 2, 3)),
             Arguments.of("{523} -> 523", "523", List.of(5, 2, 3))
         );
-        return param;
     }
 
     @ParameterizedTest(name = "{index}: {0}")
