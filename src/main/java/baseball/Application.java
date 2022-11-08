@@ -16,6 +16,7 @@ public class Application {
     	List<Integer> computerPickNums = computerPick();
     	List<Integer> playerPickNums = playerPick();
     	int strike = findStrike(computerPickNums, playerPickNums);
+    	int ball = findball(computerPickNums, playerPickNums);
     	
     }
     
@@ -61,6 +62,19 @@ public class Application {
     		}
     	}
     	return strike;
+    }
+    public static int findball(List<Integer> computerPickNums, List<Integer> playerPickNums) {
+    	int ball=0;
+    	if(playerPickNums.get(0)==playerPickNums.get(1)||playerPickNums.get(0)==playerPickNums.get(2)) {
+    		ball++;
+    	}
+    	if(playerPickNums.get(1)==playerPickNums.get(2)||playerPickNums.get(1)==playerPickNums.get(0)) {
+    		ball++;
+    	}
+    	if(playerPickNums.get(2)==playerPickNums.get(0)||playerPickNums.get(2)==playerPickNums.get(1)) {
+    		ball++;
+    	}
+    	return ball;
     }
     
 }
