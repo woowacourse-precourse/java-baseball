@@ -17,12 +17,8 @@ public class ComputerTest {
     @Test
     void isNothing_낫싱인지_판별(){
         Computer computer = new Computer();
-        List<Integer> list_1 = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        List<Integer> list_2 = List.of(0, 0, 0);
-        boolean result_1 = computer.isNothing(list_1);
-        boolean result_2 = computer.isNothing(list_2);
-        assertThat(result_1).isEqualTo(false);
-        assertThat(result_2).isEqualTo(true);
+        boolean result = computer.isNothing(0);
+        assertThat(result).isEqualTo(true);
     }
 
     @Test

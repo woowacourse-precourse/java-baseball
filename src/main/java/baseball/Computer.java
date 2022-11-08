@@ -6,11 +6,15 @@ import static baseball.Function.*;
 public class Computer {
     protected static List<Integer> Answer;
     protected static String result;
+    protected static HashMap<String, Integer> HintMap;
 
     public Computer() {
         this.Answer = makeAnswer();
     }
 
+    public static void resetHintMap(){
+        HintMap = new HashMap<>();
+    }
     public static List<Integer> makeAnswer(){
         List<Integer> Answer = new ArrayList<>();
         while(Answer.size() < 3){
@@ -19,12 +23,18 @@ public class Computer {
         return Answer;
     }
 
-    public static boolean isNothing(List<Integer> list) {
-        List<Boolean> checkList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            checkList.add(Answer.contains(list.get(i)));
+//    public static boolean isNothing(List<Integer> list) {
+//        List<Boolean> checkList = new ArrayList<>();
+//        for (int i = 0; i < list.size(); i++) {
+//            checkList.add(Answer.contains(list.get(i)));
+//        }
+//        return !checkTrue(checkList);
+//    }
+    public static boolean isNothing(int num){
+        if (!Answer.contains(num)) {
+            return true;
         }
-        return !checkTrue(checkList);
+        return false;
     }
 
     public static HashMap<String, Integer> isStrikeOrBall(List<Integer> list){
@@ -49,5 +59,15 @@ public class Computer {
             result = StrikeOrBall.get("스트라이크") + "스트라이크";
         }
     }
+
+//    public static void giveResult(List<Integer> list){
+//        if(isNothing(list)){
+//            result = "낫싱";
+//        }
+//        else{
+//            giveStrikeOrBall(list);
+//        }
+//        System.out.println(result);
+//    }
 }
 
