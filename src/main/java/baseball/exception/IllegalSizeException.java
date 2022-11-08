@@ -1,6 +1,6 @@
 package baseball.exception;
 
-public class IllegalSizeException extends IllegalStateException{
+public class IllegalSizeException extends IllegalArgumentException{
 
     public final static IllegalSizeException EXCEPTION = new IllegalSizeException();
 

@@ -1,6 +1,6 @@
 package baseball.exception;
 
-public class OutOfRangeException extends RuntimeException {
+public class OutOfRangeException extends IllegalArgumentException {
     public static final OutOfRangeException EXCEPTION = new OutOfRangeException();
 
     private OutOfRangeException() {
