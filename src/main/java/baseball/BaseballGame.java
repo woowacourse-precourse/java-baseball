@@ -7,7 +7,10 @@ import java.util.stream.Collectors;
 
 public class BaseballGame {
 
-    private Computer computer;
+    private static final String COMMAND_CONTINUE = "1";
+    private static final String COMMAND_END = "2";
+
+    private final Computer computer;
 
     public BaseballGame() {
         this.computer = new Computer();
@@ -27,11 +30,11 @@ public class BaseballGame {
             if (result.isAnswer()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
-                int command = inputCommand();
+                String command = inputCommand();
 
-                if (command == 1) {
+                if (command.equals(COMMAND_CONTINUE)) {
                     computer.reset();
-                } else if (command == 2) {
+                } else if (command.equals(COMMAND_END)) {
                     break;
                 }
             }
@@ -49,12 +52,12 @@ public class BaseballGame {
             .collect(Collectors.toList());
     }
 
-    public int inputCommand() {
+    public String inputCommand() {
         String line = Console.readLine();
 
         validateCommand(line);
 
-        return Integer.parseInt(line);
+        return line;
     }
 
     private void validateAnswer(String answer) {
@@ -70,7 +73,7 @@ public class BaseballGame {
     }
 
     private void validateCommand(String command) {
-        if (!command.equals("1") && !command.equals("2")) {
+        if (command.equals(COMMAND_CONTINUE) || command.equals(COMMAND_END)) {
             throw new IllegalArgumentException("명령은 1 또는 2만 입력 가능합니다.");
         }
     }
