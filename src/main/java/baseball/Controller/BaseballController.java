@@ -36,11 +36,13 @@ public class BaseballController {
     public String countStrikeOrBall(List<String> randomNumber, List<String> inputNumber) {
         int strike=0;
         int ball=0;
-        String outputMessage="낫싱";
+        String outputMessage;
+
         for(String number: inputNumber) {
             strike = countStrike(randomNumber, inputNumber, number, strike);
             ball = countBall(randomNumber, inputNumber, number, ball);
         }
+        outputMessage = result(strike, ball);
 
         return outputMessage;
     }
@@ -69,10 +71,19 @@ public class BaseballController {
         return StrikeOrBall+1 ;
     }
 
-    //낫싱인지 판정
-
-
     //스트라이크 볼 출력
+    public String result(int strike, int ball) {
+        String outputMessage="";
+        if (strike==3) {
+            outputMessage = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            //게임이 종료되었다는 문구+게임 이대로 종료할지 재시작할지 입력받기
+        } else if (strike==0 && ball==0) {
+            outputMessage = "낫싱";
+        } else {
+            outputMessage = ball+"볼 "+strike+"스트라이크";
+        }
 
+        return outputMessage;
+    }
 
 }
