@@ -3,7 +3,9 @@ package baseball.vo;
 public enum ValidationMsg {
     NUMBER_RANGE_EXCEPTION("입력 가능한 숫자의 범위는 1 ~ 9사이 입니다."),
     NUMBERS_SIZE_EXCEPTION("입력 가능한 숫자의 개수는 3개 입니다."),
-    NUMBER_DUPLICATE_EXCEPTION("중복된 숫자는 입력이 불가능 합니다.");
+    NUMBER_DUPLICATE_EXCEPTION("중복된 숫자는 입력이 불가능 합니다."),
+    NOT_FORMATTING_EXCEPTION("숫자만 입력 가능합니다."),
+    NOT_EXIST_NUMBER_RANGE_EXCEPTION("숫자 1 또는 2만 입력 가능합니다.");
 
     private final String message;
 
