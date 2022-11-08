@@ -6,12 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
+    public static final int NUMBER_LENGTH = 3;
+    public static final int START_RANGE = 1;
+    public static final int END_RANGE = 9;
     public static List<Integer> compareWithInput(String input, List<Integer> computerValue) {
         List<Integer> result = new ArrayList<>();
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             int cur = input.charAt(i) - '0';
             if (cur == computerValue.get(i)) {
                 strike++;
@@ -43,8 +46,8 @@ public class Computer {
 
     public static List<Integer> createNewValue() {
         List<Integer> newValue = new ArrayList<>();
-        while (newValue.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (newValue.size() < NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
             if (!newValue.contains(randomNumber)) {
                 newValue.add(randomNumber);
             }

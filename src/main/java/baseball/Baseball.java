@@ -33,12 +33,14 @@ public class Baseball {
     public void afterRound() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if (input.equals("1")) {
-            running();
+        switch (input) {
+            case "1":
+                running();
+                break;
+            case "2":
+                break;
+            default:
+                throw new IllegalArgumentException();
         }
-        if (input.equals("2")) {
-            return;
-        }
-        // 입력 예외처리
     }
 }
