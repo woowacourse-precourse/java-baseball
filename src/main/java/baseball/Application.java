@@ -29,6 +29,17 @@ public class Application {
 
 class Game {
 
+    ArrayList<Integer> randomNum;
+    int strikeCount = 0;
+
+    public void gameInit(ArrayList<Integer> randomNum){
+        while(keepGoing()){
+            randomNum = makingRandomNum();
+            if(!comparingNum(randomNum, strikeCount)){
+                break;
+            }
+        }
+    }
 
     // 1. 난수 발생 메서드 구현
     public ArrayList<Integer> makingRandomNum() {
