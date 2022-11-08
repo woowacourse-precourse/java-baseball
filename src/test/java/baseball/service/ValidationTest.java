@@ -35,4 +35,13 @@ class ValidationTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @Test
+    void 유효한_재입력_숫자가_들어왔을_때_true_리턴() {
+        String[] inputs = {"1", "2"};
+
+        for (String input : inputs) {
+            assertThat(isValidReStart(input)).isTrue();
+        }
+    }
 }
