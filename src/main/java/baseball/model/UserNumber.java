@@ -8,4 +8,8 @@ public class UserNumber {
     public void addStrike() {
         strike++;
     }
+
+    public void addBall() {
+        ball++;
+    }
 }
