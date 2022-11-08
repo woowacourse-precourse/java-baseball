@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 public class BaseballNumberTest {
@@ -28,7 +29,21 @@ public class BaseballNumberTest {
             numbers.add(BaseballNumber.MIN_NUMBER + count - 1);
         }
 
-        assertDoesNotThrow(() -> new BaseballNumber(numbers));
+        String numbersString = numbers.stream().map(x -> Integer.toString(x)).collect(Collectors.joining(""));
+        assertDoesNotThrow(() -> new BaseballNumber(numbersString));
+    }
+
+    @Test
+    void 숫자가_아닌_글자가_포함되면_예외_발생() {
+        List<String> numbers = new ArrayList<>();
+
+        for (int count = 1; count <= BaseballNumber.NUMBER_COUNT; count++) {
+            numbers.add(String.valueOf((char) ('a' + count - 1)));
+        }
+
+        assertThatThrownBy(() -> new BaseballNumber(String.join("", numbers)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(BaseballNumber.NOT_A_NUMBER_EXCEPTION_MESSAGE);
     }
 
     @Test
