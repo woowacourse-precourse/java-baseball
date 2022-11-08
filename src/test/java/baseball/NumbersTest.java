@@ -1,29 +1,29 @@
 package baseball;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class NumbersTest {
 
     @Test
     void validation_숫자_개수_확인() {
-        Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
+        Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> Numbers.of(1, 2, 3, 4));
         assertThat(exception != null).isTrue();
     }
 
     @Test
     void validation_숫자_범위_확인() {
-        Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
+        Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> Numbers.of(1, 0, 9));
         assertThat(exception != null).isTrue();
     }
 
     @Test
     void validation_숫자_중복_확인() {
-        Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
+        Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> Numbers.of(1, 2, 2));
         assertThat(exception != null).isTrue();
     }
