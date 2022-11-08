@@ -10,15 +10,20 @@ public class Ball {
     LinkedHashMap<String, Integer> ballMap = new LinkedHashMap<>();
     String[] ballArr = {Constant.HINT_BALL, Constant.HINT_STRIKE, Constant.HINT_NOTHING};
 
+
     public String ballHintResult(String userInput, String computerInput) {
+        setBallMap();
         ballHintPush(userInput, computerInput);
         return returnHint();
     }
 
-    public void ballHintPush(String userInput, String computerInput) {
+    public void setBallMap() {
         for (String ball : ballArr) {
             ballMap.put(ball, 0);
         }
+    }
+
+    public void ballHintPush(String userInput, String computerInput) {
         for (int i = 0; i < Constant.MAX_LENGTH; i++) {
             int condition = computerInput.indexOf(userInput.charAt(i));
             if (condition == i) {
