@@ -98,7 +98,7 @@ public class ComputerController {
         return NULL_MESSAGE;
     }
 
-    private boolean isThreeStrike() {
+    public boolean isThreeStrike() {
         return strikeCount == BASEBALL_SUCCESS_STRIKE_COUNT;
     }
 }
