@@ -74,48 +74,4 @@ public class Application {
         System.out.println();
     }
 
-    public static int CheckStrike(List<Integer> computer, List<Integer> player) {
-        int strike = 0;
-        for (int index = 0; index < computer.size(); index++) {
-            if (computer.get(index) == player.get(index)) {
-                strike++;
-            }
-        }
-        return strike;
-    }
-
-
-    public static int CheckBall(List<Integer> computer, List<Integer> player) {
-        int ball = 0;
-        for (int index = 0; index < computer.size(); index++) {
-            if (computer.contains(player.get(index))) {
-                ball++;
-            }
-        }
-        return ball;
-    }
-/*
-    public static List<Integer> GeneratePlayerNumbers(){
-        List<Integer> player = new ArrayList<>();
-        String input = Console.readLine();
-        int tempNumbers = Integer.parseInt(input);
-        int digitDivider = BaseballData.DIVIDEND;
-        while(digitDivider > BaseballData.TARGET_SIZE){
-            player.add(tempNumbers / digitDivider);
-            tempNumbers = tempNumbers - (player.get(player.size() - 1)) * digitDivider;
-            digitDivider /= BaseballData.DIVIDER;
-        }
-        CheckPlayerNumbersException(player);
-        return player;
-    }
-
-    public static void CheckPlayerNumbersException(List<Integer> player){
-        HashSet<Integer> checkSet = new HashSet<>(player);
-        if(checkSet.size() != player.size()){
-            throw new IllegalArgumentException("중복된 숫자가 감지되었습니다.");
-        } if(player.size() != BaseballData.SIZE){
-            throw new IllegalArgumentException("숫자를 3개만 입력해주세요.");
-        }
-    }
-*/
 }
