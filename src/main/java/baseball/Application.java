@@ -14,9 +14,17 @@ public class Application {
         // TODO: 프로그램 구현
         List<Integer> computerNumberList = createComputerNumberList();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
-        String userNumber = Console.readLine();
-        List<Integer> userNumberList = validateUserNumber(userNumber);
+
+        String restartNumber;
+
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userNumber = Console.readLine();
+            List<Integer> userNumberList = validateUserNumber(userNumber);
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            restartNumber = Console.readLine();
+        } while (restartNumber.equals("1"));
 
 
     }
