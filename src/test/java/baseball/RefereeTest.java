@@ -36,8 +36,11 @@ class RefereeTest {
 
     @Test
     void Nothing여부_확인() {
-        boolean nothing = referee.isNoting(hitterNumber, pitcherNumber);
+        int ballCount = 0;
+        int strikeCount = 0;
 
-        assertThat(nothing).isFalse();
+        boolean nothing = referee.isNothing(ballCount, strikeCount);
+
+        assertThat(nothing).isTrue();
     }
 }

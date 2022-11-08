@@ -39,8 +39,8 @@ public class Referee {
         return count;
     }
 
-    public boolean isNoting(List<Integer> hitterNumber, List<Integer> pitcherNumber) {
-        return countBall(hitterNumber, pitcherNumber) == 0;
+    public boolean isNothing(int ballCount, int strikeCount) {
+        return strikeCount == 0 && ballCount == 0;
     }
 
 }
