@@ -31,5 +31,11 @@ public class Constant {
 
     public static final int THREE_STRIKE_NUMBER = 3;
 
+    public static final String INPUT_USER_NUMBER_MESSAGE = "숫자를 입력해 주세요 : ";
+
+    public static final String GAME_OPTION_MESSAGE = "게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+    public static final String START_NUMBER_BASEBALL_MESSAGE = "숫자 야구 게임을 시작합니다.";
+
 
 }
