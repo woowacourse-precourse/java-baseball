@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 import static baseball.ConstValue.*;
 
 public class UserInput {
-    private final Set<Integer> valid_range = valid_range_number();
+    private final Set<String> valid_range = valid_range_number();
     private String input;
     private List<Integer> numbers;
     private String reStartOrQuitInput;
@@ -60,10 +60,10 @@ public class UserInput {
             throw new IllegalArgumentException("3자리의 수를 입력하셔야 합니다.");
         }
         if (!isValidRangeNumber()) {
-            throw new IllegalArgumentException("1부터 9까지의 수를 입력하셔야 합니다.");
+            throw new IllegalArgumentException("1부터 9까지의 자연수를 입력하셔야 합니다.");
         }
         if (!isValidGuessNumber()) {
-            throw new IllegalArgumentException("서로 다른 수를 입력하셔야 합니다.");
+            throw new IllegalArgumentException("중복되지 않은 1부터 9까지의 자연수를 입력하셔야 합니다.");
         }
 
     }
@@ -91,21 +91,21 @@ public class UserInput {
     }
 
     private boolean isValidGuessNumber() {
-        Set<Integer> inputSet = inputToSet();
+        Set<String> inputSet = inputToSet();
         inputSet.retainAll(valid_range);
         return inputSet.size() == NUMBERS_LENGTH;
     }
 
-    private Set<Integer> inputToSet() {
+    private Set<String> inputToSet() {
         return Pattern.compile("")
                 .splitAsStream(input)
-                .map(Integer::parseInt)
                 .collect(Collectors.toSet());
     }
 
-    private Set<Integer> valid_range_number() {
+    private Set<String> valid_range_number() {
         return IntStream.rangeClosed(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER)
                 .boxed()
+                .map(String::valueOf)
                 .collect(Collectors.toSet());
     }
 }
