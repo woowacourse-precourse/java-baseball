@@ -9,7 +9,12 @@ import java.util.List;
 import java.util.Set;
 
 public class Input {
-    public static final int NUMBER_SIZE = 3;
+    private static final int NUMBER_SIZE = 3;
+    private static final String RESTART = "1";
+    private static final String EXIT = "2";
+    private static final String ERROR_MESSAGE = "잘못된 값을 입력했습니다. 게임을 종료합니다.";
+    private static final Character MIN_NUMBER = '1';
+    private static final Character MAX_NUMBER = '9';
 
     public String inputUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -34,7 +39,7 @@ public class Input {
 
     public boolean isNumberRangeValid(String userNumber) {
         for(int index = 0; index < userNumber.length(); index++) {
-            if(userNumber.charAt(index) < '1' || userNumber.charAt(index) > '9') {
+            if(userNumber.charAt(index) < MIN_NUMBER || userNumber.charAt(index) > MAX_NUMBER) {
                 return false;
             }
         }
@@ -58,7 +63,7 @@ public class Input {
                 return;
             }
         }
-        throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 종료합니다.");
+        throw new IllegalArgumentException(ERROR_MESSAGE);
     }
 
     public String inputNumberGameRestartOrExit() {
@@ -69,8 +74,8 @@ public class Input {
     }
 
     public void inputRestartOrExitNumberValid(String inputNumber) {
-        if(!inputNumber.equals("1") && !inputNumber.equals("2")) {
-            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 종료합니다.");
+        if(!inputNumber.equals(RESTART) && !inputNumber.equals(EXIT)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
