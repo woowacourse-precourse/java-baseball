@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Collections;
 public class Application {
@@ -64,4 +65,13 @@ public class Application {
 
         return listByInputNumber;
     }
+
+    static HashMap getNumberAndIndexByList(List<Integer> answerList){
+        HashMap<Integer,Integer> indexAndNumber = new HashMap<>();
+        for(int answer=0;answer<answerList.size();answer++){
+            indexAndNumber.put(answerList.get(answer), answer);
+        }
+        return indexAndNumber;
+    }
+
 }
