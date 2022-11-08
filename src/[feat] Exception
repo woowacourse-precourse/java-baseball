@@ -1,0 +1,49 @@
+package baseball;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Exception {
+  
+    public static boolean exception(String userNumber){
+        if (checkLength(userNumber) && checkDigit(userNumber) && doubleCheck(userNumber)){
+            return true;
+        }
+        return false;
+    }
+
+   
+    public static boolean checkLength(String userNumber){
+        if (userNumber.length() != 3)
+            return false;
+        return true;
+    }
+
+  
+    public static boolean checkDigit(String userNumber){
+        for (int i = 0; i < userNumber.length(); i++){
+            checkIndexDigit(userNumber, i);
+        }
+        return true;
+    }
+
+    public static boolean checkIndexDigit(String userNumber, int index){
+        if (!Character.isDigit(userNumber.charAt(index))){
+            return false;
+        }
+        return true;
+    }
+
+  
+    public static boolean doubleCheck(String userNumber){
+        Set<Character> number = new HashSet<>();
+
+        for (int i = 0; i < userNumber.length(); i++){
+            number.add(userNumber.charAt(i));
+        }
+        if (number.size() != 3) {
+            return false;
+        }
+        return true;
+    }
+}
