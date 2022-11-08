@@ -12,20 +12,27 @@ public class Application {
     static int ballCount = 0;
 
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            while (strikeCount != 3) {//strickCount!=3
+            reset();
+            while (strikeCount != 3) {
                 System.out.println("숫자를 입력해주세요 : ");
-                reset();
                 List<Integer> input = valueToList(Integer.parseInt(Console.readLine()));
+                checkValid(input);
                 strikeCount = strike(computer, input);
                 ballCount = ball(computer, input);
                 System.out.println(printCount());
             }
-            //end game
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         } while (replay(Console.readLine()));
         System.out.println("게임 종료");
+    }
+
+    private static void checkValid(List<Integer> input) {
+        if (input.size() != 3){
+            throw new IllegalArgumentException("not valid data");
+        }
     }
 
     private static boolean replay(String readLine) {
