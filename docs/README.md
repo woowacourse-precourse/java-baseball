@@ -25,5 +25,6 @@
     - nothing,ball,strike 를 구분하는 기능
     - 결과별로 counting을 하는 기능
     - counting된 개수에 따라 출력의 종류를 정하는 기능
+    - 
 
 
