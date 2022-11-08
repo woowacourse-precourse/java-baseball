@@ -42,8 +42,12 @@ public class Game {
     }
 
     private boolean restart(int input) {
-        if (input == RESTART) return true;
-        if (input == EXIT) return false;
+        if (input == RESTART) {
+            return true;
+        }
+        if (input == EXIT) {
+            return false;
+        }
         throw new IllegalArgumentException("잘못된 입력입니다");
     }
 }
