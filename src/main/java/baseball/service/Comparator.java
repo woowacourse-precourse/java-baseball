@@ -17,4 +17,15 @@ public class Comparator {
         return strikeCount;
     }
 
+    public static int checkBall(Computer computer, User user) {
+        int ballCount = 0;
+        for (int i = 0; i < user.getNumbers().size(); i++) {
+            Integer userNumber = user.getNumbers().get(i);
+            if (computer.getNumbers().contains(userNumber)) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
 }
