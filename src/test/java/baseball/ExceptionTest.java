@@ -52,6 +52,18 @@ class ExceptionTest extends NsTest {
                 .hasMessageContaining("중복된 값을 입력하였습니다. 게임을 종료합니다.");
     }
 
+    @Test
+    void RestartOrExitTest() {
+        // given
+        int userInput = 3;
+        HandleException handleException = new HandleException();
+
+        // when, then
+        assertThatThrownBy(() -> handleException.handleRestartOrExitNumberException(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 값을 입력하였습니다. 게임을 종료합니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
