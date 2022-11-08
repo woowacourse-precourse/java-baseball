@@ -23,7 +23,6 @@ public class GameController {
             startGameProcess();
             gameProcess();
         } while (flag);
-        GameOutput.finishMessageOutput();
     }
 
     private void startGameProcess() {
