@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 enum BaseballResult {
@@ -22,6 +23,96 @@ enum BaseballResult {
         return korName;
     }
 }
+
+class BaseballNumber {
+    private List<DecimalNumber> numbers;
+
+    public static final int MAX_DIGIT_CRITERIA = 3;
+
+    public BaseballNumber(String strBaseballNumber) {
+        validateBaseballNumbersLength(strBaseballNumber.length());
+        List<DecimalNumber> numbers = splitStrNumberToList(strBaseballNumber);
+        validateBaseballNumbers(numbers);
+        this.numbers = numbers;
+    }
+
+    private BaseballNumber() { }
+
+    public static BaseballNumber makeRandomBaseballNumber() {
+        BaseballNumber baseballNumber = new BaseballNumber();
+
+        baseballNumber.numbers = new ArrayList<>();
+        while (baseballNumber.numbers.size() < 3) {
+            DecimalNumber randomNumber = new DecimalNumber(Randoms.pickNumberInRange(1, 9));
+            validateListHasDuplicateBaseballNumber(baseballNumber.numbers, randomNumber);
+            baseballNumber.numbers.add(randomNumber);
+        }
+
+        return baseballNumber;
+    }
+
+    private void validateBaseballNumbers(List<DecimalNumber> baseballNumbers) throws IllegalArgumentException {
+        validateBaseballNumbersLength(baseballNumbers.size());
+        validateDuplicateBaseballNumber(baseballNumbers);
+    }
+
+    private void validateBaseballNumbersLength(int length) {
+        if (length != 3) {
+            throw new IllegalArgumentException("올바른 3자리의 수를 입력해주세요.");
+        }
+    }
+
+    private void validateDuplicateBaseballNumber(List<DecimalNumber> baseballNumbers) throws IllegalArgumentException {
+        List<DecimalNumber> duplicateDecimals = new ArrayList<>();
+        for (int i = 0; i < MAX_DIGIT_CRITERIA; i++) {
+            DecimalNumber number = baseballNumbers.get(i);
+            validateListHasDuplicateBaseballNumber(duplicateDecimals, number);
+        }
+    }
+
+    private static void validateListHasDuplicateBaseballNumber(List<DecimalNumber> numbers, DecimalNumber number) throws IllegalArgumentException {
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException("중복되지 않은 3자리의 수를 입력해주세요.");
+        }
+    }
+
+    private static List<DecimalNumber> splitStrNumberToList(String strBaseballNumber) {
+        return IntStream.range(0, MAX_DIGIT_CRITERIA)
+                .mapToObj(i -> new DecimalNumber(Character.getNumericValue(strBaseballNumber.charAt(i))))
+                .collect(Collectors.toList());
+    }
+
+    public DecimalNumber indexOf(int index) {
+        if (index >= MAX_DIGIT_CRITERIA) {
+            throw new IllegalArgumentException("최대 인덱스는 2입니다.");
+        }
+        return numbers.get(index);
+    }
+
+    public boolean contains(DecimalNumber number) {
+        return numbers.contains(number);
+    }
+
+    public BaseballResult getIndexOfGameResult(int index, BaseballNumber computerNumber) {
+        DecimalNumber comparingDecimal = this.indexOf(index);
+
+        if (comparingDecimal.equals(computerNumber.indexOf(index))) {
+            return BaseballResult.STRIKE;
+        }
+
+        if (computerNumber.contains(comparingDecimal)) {
+            return BaseballResult.BALL;
+        }
+
+        return BaseballResult.NOTHING;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseballNumber" + numbers;
+    }
+}
+
 
 class DecimalNumber {
     int value;
