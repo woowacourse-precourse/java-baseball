@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Player {
-    private final int NUMBER_LENGTH = 3;
     private List<Integer> number;
+    public List<Integer> getNumber() {
+        return number;
+    }
 
     public Player() {
 
@@ -36,14 +38,14 @@ public class Player {
         throw new IllegalArgumentException();
     }
     private boolean checkSize(List<Integer> number){
-        return number.size() == NUMBER_LENGTH;
+        return number.size() == Computer.NUMBER_LENGTH;
     }
 
     private boolean checkDuplicate(List<Integer> number){
         long count = number.stream()
                 .distinct()
                 .count();
-        return count == NUMBER_LENGTH;
+        return count == Computer.NUMBER_LENGTH;
     }
 
 
