@@ -51,10 +51,19 @@ public class Application {
         }
 
         private boolean verifyBall(String ball) {
-            if (!verifyLength(ball) || !verifyTrim(ball) || !verifyIsNumber(ball) || !verifyInBoundary()) {
+            if (!verifyLength(ball) || !verifyIsNumber(ball) || !verifyInBoundary()) {
                 return NOT_VERIFY;
             } else {
                 return VERIFY;
+            }
+        }
+
+        private boolean verifyIsNumber(String ball) {
+            try {
+                int number = Integer.parseInt(ball);
+                return VERIFY;
+            } catch (NumberFormatException e) {
+                return NOT_VERIFY;
             }
         }
 
