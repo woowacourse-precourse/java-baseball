@@ -36,6 +36,14 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(num.length()).isEqualTo(3);
     }
 
+    @Test
+    void 목표_숫자가_서로_다른_숫자로_이루어졌는지_확인한다() {
+        String num = generateGoalNumber();
+        Assertions.assertThat(num.charAt(0)).isNotEqualTo(num.charAt(1));
+        Assertions.assertThat(num.charAt(0)).isNotEqualTo(num.charAt(2));
+        Assertions.assertThat(num.charAt(1)).isNotEqualTo(num.charAt(2));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
