@@ -10,4 +10,7 @@ public class Output {
         System.out.println(strike + " 스트라이크" + ball + " 볼");
     }
 
+    public static void printStrike(int strike) {
+        System.out.println(strike + " 스트라이크");
+    }
 }
