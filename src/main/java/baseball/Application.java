@@ -21,6 +21,12 @@ public class Application {
 		return computer;
 	}
 	
+	public static String inputNumber() {
+		System.out.println("숫자를 입력해주세요 : ");
+		String input=Console.readLine();
+		return input;
+	}
+	
     public static void main(String[] args) {
     	
     }
