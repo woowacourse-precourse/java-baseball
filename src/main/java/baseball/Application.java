@@ -27,6 +27,24 @@ public class Application {
 		return input;
 	}
 	
+	public static boolean userNumberValidation(String input) {
+		boolean valid=true;
+		
+		if(input.length() > 3 || input.length() <= 0) {
+			valid=false;
+		}
+		for(int i=0;i<3;i++) {
+			if(input.charAt(i) > '9' || input.charAt(i) < '1') {
+				valid=false;
+			}
+		}
+		if(input.charAt(0)==input.charAt(1) || input.charAt(0)==input.charAt(2) 
+				|| input.charAt(1)==input.charAt(2)) {
+			valid=false;
+		}
+		return valid;
+	}
+	
     public static void main(String[] args) {
     	
     }
