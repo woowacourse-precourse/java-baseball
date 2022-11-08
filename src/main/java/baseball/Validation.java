@@ -7,7 +7,7 @@ public class Validation {
         return userInput.size() == length;
     }
 
-    public static boolean isExistOnlyNumber(List<String> userInput) {
+    public static boolean hasOnlyNumber(List<String> userInput) {
         boolean isOnlyNumber = true;
 
         for (String element : userInput) {

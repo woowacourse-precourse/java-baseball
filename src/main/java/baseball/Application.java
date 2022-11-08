@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 import static baseball.Game.play;
-import static baseball.Validation.isExistOnlyNumber;
+import static baseball.Validation.hasOnlyNumber;
 import static baseball.Validation.isValidLength;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -44,7 +44,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         List<String> userInput = new ArrayList<>(Arrays.asList(readLine().split("")));
-        if (!isValidLength(userInput, 1) || !isExistOnlyNumber(userInput)) {
+        if (!isValidLength(userInput, 1) || !hasOnlyNumber(userInput)) {
             throw new IllegalArgumentException();
         }
 

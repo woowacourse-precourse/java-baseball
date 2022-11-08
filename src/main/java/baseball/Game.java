@@ -6,7 +6,7 @@ import static baseball.Application.NUMBER_OF_DIGIT;
 import static baseball.CompareNumber.compare;
 import static baseball.Score.BALL;
 import static baseball.Score.STRIKE;
-import static baseball.Validation.isExistOnlyNumber;
+import static baseball.Validation.hasOnlyNumber;
 import static baseball.Validation.isValidLength;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -19,12 +19,12 @@ public class Game {
 
         while (!isFinished) {
             score = new HashMap<>(NUMBER_OF_SCORE);
-            initializeScore(score);
+            initScore(score);
 
             System.out.print("숫자를 입력해주세요 : ");
 
             List<String> userInput = new ArrayList<>(Arrays.asList(readLine().split("")));
-            if (!isValidLength(userInput, NUMBER_OF_DIGIT) || !isExistOnlyNumber(userInput)) {
+            if (!isValidLength(userInput, NUMBER_OF_DIGIT) || !hasOnlyNumber(userInput)) {
                 throw new IllegalArgumentException();
             }
 
@@ -37,7 +37,7 @@ public class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private static void initializeScore(Map<Score, Integer> score) {
+    private static void initScore(Map<Score, Integer> score) {
         for (Score name : Score.values()) {
             score.put(name, 0);
         }

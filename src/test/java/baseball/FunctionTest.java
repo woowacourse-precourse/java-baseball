@@ -7,7 +7,7 @@ import java.util.*;
 
 import static baseball.CompareNumber.compare;
 import static baseball.Score.*;
-import static baseball.Validation.isExistOnlyNumber;
+import static baseball.Validation.hasOnlyNumber;
 import static baseball.Validation.isValidLength;
 import static java.util.Arrays.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -68,7 +68,7 @@ public class FunctionTest {
             List<String> userInput = new ArrayList<>(asList("1", "2", "3"));
 
             //when
-            boolean existOnlyNumber = isExistOnlyNumber(userInput);
+            boolean existOnlyNumber = hasOnlyNumber(userInput);
 
             //then
             assertThat(existOnlyNumber).isEqualTo(true);
@@ -80,7 +80,7 @@ public class FunctionTest {
             List<String> userInput = new ArrayList<>(asList("1", "2", "a"));
 
             //when
-            boolean existOnlyNumber = isExistOnlyNumber(userInput);
+            boolean existOnlyNumber = hasOnlyNumber(userInput);
 
             //then
             assertThat(existOnlyNumber).isEqualTo(false);
