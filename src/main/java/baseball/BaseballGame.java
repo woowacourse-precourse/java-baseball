@@ -48,7 +48,7 @@ public class BaseballGame {
         System.out.print(RESTART_GAME_ALERT);
         String yesOrNo = camp.nextstep.edu.missionutils.Console.readLine();
         if (!yesOrNo.equals(DO_RESTART_GAME) && !yesOrNo.equals(DONT_RESTART_GAME)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("This request does not exist. Please input 1 or 2.");
         }
         return chooseYesOrNo(yesOrNo);
     }

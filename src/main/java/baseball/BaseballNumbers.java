@@ -28,7 +28,7 @@ public class BaseballNumbers {
 
     public boolean checkReadline(String readline) throws IllegalArgumentException {
         if (!validateReadline(readline)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("This string does not match either numbers or commands.");
         }
         return isNumericReadline(readline);
     }
@@ -40,12 +40,12 @@ public class BaseballNumbers {
             checkUniqueSet.add(baseballNumbers.get(index).getBaseballNumber(index));
         }
         if (checkUniqueSet.size() != baseballNumbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Some numbers have a duplication.");
         }
         return CREATE_BASEBALL_NUMBERS;
     }
 
-    public void putBaseballNumbers(String[] baseballNumberList) throws IllegalArgumentException {
+    public void putBaseballNumbers(String[] baseballNumberList) {
         baseballNumbers = new ArrayList<>();
         for (int index = BaseballConstants.FIRST_INDEX_OF_BASEBALL_NUMBER; index < BaseballConstants.LAST_INDEX_OF_BASEBALL_NUMBER; index++) {
             BaseballNumber baseballNumber = new BaseballNumber(baseballNumberList[index], index);

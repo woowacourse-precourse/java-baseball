@@ -11,7 +11,7 @@ public class BaseballNumber {
 
     public int getBaseballNumber(int index) throws IllegalArgumentException {
         if (!checkBaseballNumberIndex(++index)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("This index does not match the request object.");
         }
         return baseballNumber;
     }
