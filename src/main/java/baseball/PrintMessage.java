@@ -16,4 +16,10 @@ public class PrintMessage {
         }
     }
 
+    public static void printHintStrike(int numberOfStrike) {
+        if (numberOfStrike != 0) {
+            System.out.printf("%d스트라이크 ", numberOfStrike);
+        }
+    }
+
 }
