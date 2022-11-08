@@ -1,4 +1,4 @@
-package baseball.InputView;
+package baseball.view.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

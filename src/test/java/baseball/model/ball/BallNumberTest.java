@@ -1,11 +1,10 @@
-package baseball.baseballgame.ball;
+package baseball.model.ball;
 
 import static baseball.model.ball.BallNumber.BALL_NUMBER_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.model.ball.BallNumber;
 import org.junit.jupiter.api.Test;
 
 public class BallNumberTest {

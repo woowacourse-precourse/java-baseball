@@ -1,4 +1,4 @@
-package baseball.baseballgame.balls;
+package baseball.model.balls;
 
 import static baseball.model.balls.Balls.BALLS_RANGE_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -6,9 +6,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.model.ball.Ball;
 import baseball.model.ball.BallNumber;
-import baseball.model.balls.BallReport;
-import baseball.model.balls.Balls;
-import baseball.model.balls.JudgementType;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 

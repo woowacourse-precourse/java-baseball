@@ -1,9 +1,7 @@
-package baseball.baseballgame.balls;
+package baseball.model.balls;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.model.balls.BallReport;
-import baseball.model.balls.JudgementType;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
