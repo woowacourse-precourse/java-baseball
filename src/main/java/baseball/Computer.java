@@ -17,13 +17,14 @@ public class Computer {
     private int strikeCount;
     private int nothingCount;
 
-    public void createRandomNumber() {
+    public List<Integer> createRandomNumber() {
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
         }
+        return computerNumbers;
     }
 
     public void numberCompare() {
