@@ -11,9 +11,15 @@ public class GameService {
         return dto.insert(new ComputerNumber(number));
     }
 
+    public Boolean deleteComputerNumber(ComputerNumber computerNumber) {
+        Number dto = Number.getInstance();
+
+        return dto.delete(computerNumber);
+    }
+
     public Scoreboard compareComputerNumberWith(int number) {
         Number dto = Number.getInstance();
-        ComputerNumber computerNumber = dto.latest();
+        ComputerNumber computerNumber = dto.first();
         TwoNumbers numbers = new TwoNumbers(computerNumber.getNumber(), number);
 
         return numbers.compare();
