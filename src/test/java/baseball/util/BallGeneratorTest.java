@@ -20,32 +20,26 @@ public class BallGeneratorTest {
 
     @Test
     void 컴퓨터_공은_3개여야_합니다() {
-        // when
         List<Integer> computerBalls = ballGenerator.createComputerBalls();
 
-        // then
         assertThat(computerBalls.size())
                 .isEqualTo(3);
     }
 
     @Test
     void 컴퓨터_공은_1부터_9까지_범위여야_합니다() {
-        // when
         List<Integer> computerBalls = ballGenerator.createComputerBalls();
 
-        // then
         assertThat(computerBalls.stream().allMatch(ball -> ball >= 1 && ball <= 9))
                 .isTrue();
     }
 
     @Test
     void 사용자_공이_3개가_아니라면_예외가_발생합니다() {
-        // given
         String input = "1234";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        // when, then
         assertThatThrownBy(() -> {
             ballGenerator.createPlayerBalls();
         }).isInstanceOf(IllegalArgumentException.class);
@@ -53,12 +47,10 @@ public class BallGeneratorTest {
 
     @Test
     void 사용자_공에_1부터_9까지가_아닌_수가_포함되면_예외가_발생합니다() {
-        // given
         String input = "120";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        // when, then
         assertThatThrownBy(() -> {
             ballGenerator.createPlayerBalls();
         }).isInstanceOf(IllegalArgumentException.class);
@@ -66,12 +58,10 @@ public class BallGeneratorTest {
 
     @Test
     void 사용자_공에_중복이_포함되면_예외가_발생합니다() {
-        // given
         String input = "122";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        // when, then
         assertThatThrownBy(() -> {
             ballGenerator.createPlayerBalls();
         }).isInstanceOf(IllegalArgumentException.class);

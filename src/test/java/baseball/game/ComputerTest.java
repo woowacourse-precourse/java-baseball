@@ -27,20 +27,16 @@ public class ComputerTest {
 
     @Test
     void 스트라이크의_수를_카운트합니다() {
-        // when
         computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
 
-        // then
         assertThat(strikeAndBallCounts.get(STRIKE_COUNT))
                 .isEqualTo(1);
     }
 
     @Test
     void 볼의_수를_카운트합니다() {
-        // when
         computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
 
-        // then
         assertThat(strikeAndBallCounts.get(BALL_COUNT))
                 .isEqualTo(2);
     }
