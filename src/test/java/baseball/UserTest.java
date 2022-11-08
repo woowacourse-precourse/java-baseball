@@ -34,6 +34,5 @@ class UserTest {
         User user = new User();
         List<Integer> integerList = Arrays.asList(1,2,3);
         Assertions.assertThat(user.getUserIntegerList("123")).isEqualTo(integerList);
-
     }
 }
