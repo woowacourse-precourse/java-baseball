@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.model.ComputerNumber;
 import baseball.model.PlayerNumber;
+import baseball.model.RetryNumber;
 import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -85,6 +86,14 @@ class ApplicationTest extends NsTest {
         int[] resultCount = validator.getNumberCompare(ComputerNumber,PlayerNumber);
         assertThat(resultCount[0]).isEqualTo(1);
         assertThat(resultCount[1]).isEqualTo(1);
+    }
+
+    @Test
+    void 재시작_입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> RetryNumber.isCorrectRetryNumber("3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Test
