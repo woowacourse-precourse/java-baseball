@@ -3,27 +3,24 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 
-
-
 public class Generator {
 
-    private static HashMap<Character,Boolean> overlapCheck;
-    private static String computer;
+    public HashMap<Character,Integer> computer;
     private static StringBuilder sb;
 
-    public String Generator(){
+    public HashMap<Character,Integer> Generator(){
 
-        overlapCheck = new HashMap<>();
+        computer = new HashMap<>();
         sb = new StringBuilder();
-        computer=RandomGenerator(sb);
+        RandomGenerator(sb);
 
         return computer;
     }
 
-    public static String RandomGenerator(StringBuilder sb){
+    public static void RandomGenerator(StringBuilder sb){
          while(sb.length()<3) {
              char randomNumber = (char)(Randoms.pickNumberInRange(1, 9)+'0');
-             if(IsException(randomNumber)){
+             if(IsException(randomNumber,sb.length())){
                  continue;
              }
              else{
@@ -31,12 +28,11 @@ public class Generator {
              }
 
          }
-         return computer;
     }
 
-    public static boolean IsException(char number){
-        if(overlapCheck.containsKey(number))return true;
-        else overlapCheck.put(number,true);
+    public boolean IsException(char number,int index){
+        if(computer.containsKey(number))return true;
+        else computer.put(number,index);
         return false;
     }
 }
