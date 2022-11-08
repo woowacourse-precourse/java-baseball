@@ -14,24 +14,24 @@ public class PlayBaseballGame {
      List<Integer> RandomNum;
      List<Integer> UserNum;
 
+     public PlayBaseballGame(){
+         this.RandomNum=getRandomNum();
+     }
+
+
     public void playGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         checkUserInput(userInput);
-        this.RandomNum = getRandomNum();
         this.UserNum = getUserNum(userInput);
         countStrike();
         countTotal();
         countBall();
-        compareNumber();
-        endGame(strike);
+        System.out.println(compareNumber());
     }
     public static List<Integer> getRandomNum(){
         List<Integer> RandomNum = new ArrayList<>();
-//        RandomNum.add(4);
-//        RandomNum.add(5);
-//        RandomNum.add(6);
         while(RandomNum.size() < 3){
             int num = Randoms.pickNumberInRange(1,9);
             if (!RandomNum.contains(num)){
@@ -104,22 +104,25 @@ public class PlayBaseballGame {
 
     }
 
-    public void endGame(Integer strike){
+    public boolean endGame(){
 
-        if (strike == 3){
+        if (strike != null && strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String answer = Console.readLine();
 
-            if (answer.equals("1")){
-                playGame();
+            if (answer.equals("1")) {
+                this.RandomNum=getRandomNum();
+                return true;
             }
-            if (answer.equals("2")){
-                System.out.println("게임 종료");
-
+            if (answer.equals("2")) {
+                return false;
             }
             throw new IllegalArgumentException("올바른 숫자가 아닙니다. 1 또는 2를 입력하세요.");
-
         }
+
+        return true;
+
+
     }
 }
