@@ -91,7 +91,7 @@ public class BaseBall extends RandomMaker {
     }
 
     private static int increaseIfBall(int ball, int inputIndex, Integer currentNumber, int answerIndex) {
-        if (inputIndex == answerIndex) {
+        if (isSameIndex(inputIndex, answerIndex)) {
             return ball;
         }
 
@@ -99,6 +99,11 @@ public class BaseBall extends RandomMaker {
         if (currentNumber.equals(currentAnswer)) {
             ball++;
         }
+
         return ball;
+    }
+
+    private static boolean isSameIndex(int inputIndex, int answerIndex) {
+        return inputIndex == answerIndex;
     }
 }
