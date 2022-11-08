@@ -18,7 +18,7 @@ public class GameService {
         Number dto = Number.getInstance();
         List<ComputerNumber> computerNumbers = dto.findByNumber(number);
 
-        return dto.deleteAll(computerNumbers);
+        return dto.delete(computerNumbers.get(0));
     }
 
     public Scoreboard compareComputerNumberWith(int number) {
