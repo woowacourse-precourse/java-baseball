@@ -12,6 +12,12 @@ public class BaseballGame {
     public static void startGame() {
         System.out.println(START_GAME_ALERT);
         GameBoard gameBoard = new GameBoard();
+
+    }
+
+    public static String inputNumber() {
+        System.out.print(INPUT_NUMBER_ALERT);
+        return camp.nextstep.edu.missionutils.Console.readLine();
     }
 
 }
