@@ -11,7 +11,24 @@ import static baseball.View.*;
 public class Application {
     public static void main(String[] args) {
         printStartMsg();
-        playGame();
+        do {
+            playGame();
+            printRestartOrEndMsg();
+        } while(restart());
+    }
+
+    private static boolean restart() {
+        String userInput = Console.readLine();
+        validateRestartOrEnd(userInput);
+        if (userInput.equals("1")){
+            return true;
+        }
+        return false;
+    }
+
+    private static void validateRestartOrEnd(String userInput) throws IllegalArgumentException {
+        if(!userInput.matches("[1-2]"))
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요");
     }
 
     private static String getRandomNumber(){
