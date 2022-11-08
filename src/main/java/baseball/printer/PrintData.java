@@ -16,7 +16,7 @@ public enum PrintData {
     private final String printResult;
 
     PrintData(String result){
-        this.printResult= result;
+        this.printResult = result;
     }
 
     public static final void printData(String label){

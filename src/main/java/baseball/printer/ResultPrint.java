@@ -1,8 +1,6 @@
 package baseball.printer;
 
 public class ResultPrint {
-
-
     public static void printGuessResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             PrintData.printData("NOTHING");
@@ -23,9 +21,5 @@ public class ResultPrint {
             }
         }
         PrintData.printLine();
-    }
-
-    public static void printPlayerNumber(String numbers){
-        System.out.println(numbers);
     }
 }
