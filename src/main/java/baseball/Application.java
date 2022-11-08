@@ -27,7 +27,12 @@ enum Baseball {
 }
 
 public class Application {
+    private static final int LENGTH_OF_NUMBERS = 3;
+    private static final String CONTINUE = "1";
     private static final String EXIT = "2";
+    private static final int MIN_DIGIT = 1;
+    private static final int MAX_DIGIT = 9;
+    private static final String NOTHING = "낫싱";
     private static Baseball ball = Baseball.BALL;
     private static Baseball strike = Baseball.STRIKE;
 
@@ -37,7 +42,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while ( isUserPlayingGame ) {
             play369Game();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 " + CONTINUE + ", 종료하려면 " + EXIT + "를 입력하세요.");
             option = Console.readLine();
             if ( !isValidOption(option) ) {
                 throw new IllegalArgumentException("잘못된 옵션을 입력하셨습니다.");
@@ -61,20 +66,20 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if ( !isValidNumbersForGame(input) ) {
-                throw new IllegalArgumentException("잘못된 형식의 숫자를 입력하셨습니다.\n1부터 9사이의 서로 다른 세자리 숫자를 입력해주시기 바랍니다.");
+                throw new IllegalArgumentException("잘못된 형식의 숫자를 입력하셨습니다.\n" + MIN_DIGIT + "부터 " + MAX_DIGIT + "사이의 서로 다른 " + LENGTH_OF_NUMBERS + "자리 숫자를 입력해주시기 바랍니다.");
             }
             List<Integer> guess = stringToNumberList(input);
             List<Integer> evaluation = evaluateGuess(guess, answer);
             System.out.println(evaluationToString(evaluation));
             if ( isEqualToAnswer(evaluation) ) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(LENGTH_OF_NUMBERS + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 isGuessCorrect = true;
             }
         }
     }
 
     public static boolean isEqualToAnswer (List<Integer> evaluation) {
-        return evaluation.get(STRIKE) == 3;
+        return evaluation.get(strike.getIndex()) == LENGTH_OF_NUMBERS;
     }
 
     public static String evaluationToString (List<Integer> evaluation) {
@@ -92,7 +97,7 @@ public class Application {
         }
 
         if ( sb.length() == 0 ) {
-            sb.append("낫싱");
+            sb.append(NOTHING);
         }
         return sb.toString();
     }
@@ -135,7 +140,7 @@ public class Application {
     }
 
     public static int countNumbersInSamePosition (List<Integer> guess, List<Integer> answer) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(0, LENGTH_OF_NUMBERS)
                 .filter(i -> Objects.equals(guess.get(i), answer.get(i)))
                 .count();
     }
@@ -143,7 +148,7 @@ public class Application {
     public static List<Integer> stringToNumberList (String numbersInString) {
         List<Integer> numberList = new ArrayList<>();
         int number;
-        for ( int i = 0; i < 3; i++) {
+        for ( int i = 0; i < LENGTH_OF_NUMBERS; i++ ) {
             number = numbersInString.charAt(i) - '0';
             numberList.add(number);
         }
@@ -175,7 +180,7 @@ public class Application {
     }
 
     public static boolean hasCorrectSize (String input) {
-        return input.length() == 3;
+        return input.length() == LENGTH_OF_NUMBERS;
     }
 
     public static boolean isAllUnique (String input) {
@@ -183,7 +188,7 @@ public class Application {
         for (Character number : input.toCharArray()) {
             uniqueNumbers.add(number);
         }
-        return uniqueNumbers.size() == 3;
+        return uniqueNumbers.size() == LENGTH_OF_NUMBERS;
     }
 
     public static boolean hasZero (String input) {
@@ -193,8 +198,8 @@ public class Application {
     public static List<Integer> makeAnswer() {
         List<Integer> answer = new ArrayList<>();
         int randomNumber;
-        while ( answer.size() < 3 ) {
-            randomNumber = Randoms.pickNumberInRange(1, 9);
+        while ( answer.size() < LENGTH_OF_NUMBERS ) {
+            randomNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
             if (answer.contains(randomNumber)) {
                 continue;
             }
