@@ -29,13 +29,12 @@ public class Application {
             System.out.print(INPUT_USER_BALL_MESSAGE);
             List<Integer> userBall = getStringToIntList(Console.readLine());
             String result = compareBall(computerBall, userBall);
+            System.out.println(result);
 
             if (!result.equals(THREE_STRIKE)) {
-                System.out.println(result);
                 continue;
             }
 
-            System.out.println(result);
             System.out.println(SUCCESS_GAME_MESSAGE);
             System.out.println(RESTART_OR_EXIT_MESSAGE);
             String restart = Console.readLine();
