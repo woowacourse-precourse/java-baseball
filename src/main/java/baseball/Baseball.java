@@ -7,13 +7,16 @@ import camp.nextstep.edu.missionutils.*;
 public class Baseball {
     static final int LEN = 3;
     private final List<Integer> computer;
-    private final GameInfo gameInfo;
+    private GameInfo gameInfo;
     private String user;
+
+    private boolean isEnd;
 
     public Baseball() {
         computer = new ArrayList<>();
         gameInfo = new GameInfo();
         user = "";
+        isEnd = gameInfo.isEnd();
     }
 
     private void printInit() {
@@ -52,20 +55,38 @@ public class Baseball {
             if (loc == i) {
                 gameInfo.addStrike();
             }
-            else if (loc > 0) {
+            else if (loc >= 0) {
                 gameInfo.addBall();
             }
         }
     }
 
+    private void printResult() {
+        String result = gameInfo.getResultString();
+        System.out.println(result);
+    }
+
+    private void printEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     public void gameStart() {
         printInit();
         getRandomNumbers();
-        readNumbers();
-        if (!isValidNumber()) {
-            throw new IllegalArgumentException("");
+
+        while (!isEnd) {
+            gameInfo = new GameInfo();
+            readNumbers();
+            if (!isValidNumber()) {
+                throw new IllegalArgumentException("");
+            }
+            compareNumber();
+            printResult();
+            isEnd = gameInfo.isEnd();
+            if (isEnd) {
+                printEnd();
+            }
         }
-        compareNumber();
     }
 
 
