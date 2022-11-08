@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
-
     @Test
     void split_메서드로_주어진_값을_구분() {
         String input = "1,2";
@@ -27,6 +26,7 @@ public class StringTest {
     void substring_메서드로_특정_구간_값을_반환() {
         String input = "(1,2)";
         String result = input.substring(1, 4);
+        System.out.print(result);
 
         assertThat(result).isEqualTo("1,2");
     }
