@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.exception.InputDuplicationNumberException;
-import baseball.exception.InputNotDigitException;
+import baseball.exception.InputNotDigitOrZeroException;
 import baseball.exception.InputNotOneOrTwoException;
 import baseball.exception.InputNotThreeDigitException;
 import camp.nextstep.edu.missionutils.Console;
@@ -97,8 +97,8 @@ public class User {
     }
 
     private void checkDigit(char word) {
-        if (!Character.isDigit(word)) {
-            throw new InputNotDigitException();
+        if (!Character.isDigit(word) || word == '0') {
+            throw new InputNotDigitOrZeroException();
         }
     }
 }
