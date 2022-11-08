@@ -26,7 +26,6 @@ public class GameController {
   public void run(){
     OutputView.printMessage(START_GAME.getMessage());
     playGame();
-    OutputView.printMessage(ASK_RESTART_GAME.getMessage());
     while(InputView.inputMenu()== RESTART_GAME.getMenuNumber()){
       playGame();
     }
@@ -35,7 +34,7 @@ public class GameController {
   public void playGame(){
     Balls computerBalls = computer.generateBalls();
     while(true){
-      OutputView.printMessage(INPUT_PLAYER_BALLS.getMessage());
+      OutputView.printInputMessage(INPUT_PLAYER_BALLS.getMessage());
       Balls userBalls = user.generateBalls();
       Hint judgement = judge(userBalls, computerBalls);
       OutputView.printMessage(judgement.toString());
@@ -44,6 +43,7 @@ public class GameController {
         break;
       }
     }
+    OutputView.printMessage(ASK_RESTART_GAME.getMessage());
   }
 
   public Hint judge(Balls userBalls, Balls computerBalls){
