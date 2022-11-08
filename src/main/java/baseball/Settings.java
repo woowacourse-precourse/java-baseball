@@ -28,6 +28,19 @@ public class Settings {
         return Integer.parseInt(input);
     }
 
+    public static ArrayList<Integer> userNumber(){
+        int user = inputUser();
+
+        ArrayList<Integer> userInput = new ArrayList<>();
+        while(user != 0){
+            userInput.add(user%10);
+            user /= 10;
+        }
+        Collections.reverse(userInput);
+
+        return userInput;
+    }
+
     public static void inputException(String input){
         if(input.length() !=3){
             throw new IllegalArgumentException("3자리 숫자를 입력하세요");
