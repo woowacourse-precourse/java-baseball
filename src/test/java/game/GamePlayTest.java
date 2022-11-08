@@ -21,16 +21,6 @@ class GamePlayTest {
     }
 
     @Test
-    void judgeBallOrStrike_ball과Strike_올바른지_검증() {
-
-
-    }
-
-    @Test
-    void printHintMessage() {
-    }
-
-    @Test
     void provideHintMessage_힌트메시지_출력과_정답여부반환_검증() {
         List<Integer> temporaryAnswer1 = List.of(8, 7, 4);
         List<Integer> temporaryUserAnswer1 = List.of(1, 2, 3);
