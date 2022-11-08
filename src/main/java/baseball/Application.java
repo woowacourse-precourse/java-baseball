@@ -77,9 +77,24 @@ public class Application {
             return false;
     }
 
-    public static boolean checkValidPlayerNum(List<Integer> player){
-        if(!isValidLength(player.size()))
-            throw new IllegalArgumentException("사용자가 잘못된 값을 입력하였습니다.");
+    public static boolean isNumber(String inputPlayerNum){
+        if(inputPlayerNum.isEmpty() || inputPlayerNum == null)
+            return false;
+
+        for (int digit = 0; digit < inputPlayerNum.length(); digit++) {
+            int digitNum = inputPlayerNum.charAt(digit) - '0';
+            if(digit == 0 && digitNum == 0)
+                return false;
+
+            if(0 > digitNum || digitNum > 9)
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean checkValidPlayerNum(String inputPlayerNum){
+        if(!isValidLength(inputPlayerNum.length()))
+            throw new IllegalArgumentException("사용자가 잘못된 길이의 값을 입력하였습니다.");
 
         if(isExistDuplicate(player))
             throw new IllegalArgumentException("사용자가 중복된 숫자를 입력하였습니다.");
