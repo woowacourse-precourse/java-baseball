@@ -21,8 +21,8 @@ public class GameChecker {
             this.restartGame =false;
         }
         else if(!userInput.equals("1")){
-            IllegalArgumentException e=new IllegalArgumentException("재시작 입력 오류");
-            throw e;
+            IllegalArgumentException exception=new IllegalArgumentException("재시작 입력 오류");
+            throw exception;
         }
     }
 }

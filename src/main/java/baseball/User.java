@@ -46,8 +46,8 @@ public class User {
 
     void checkInputException(){
         if(value.length()!=3|| checkRange()|| checkOverlap()){
-            IllegalArgumentException e=new IllegalArgumentException("입력 오류");
-            throw e;
+            IllegalArgumentException exception=new IllegalArgumentException("입력 오류");
+            throw exception;
         }
     }
 }
