@@ -29,6 +29,11 @@ public class InputNumber {
         userNumber = inputNumberCheck();
     }
 
+    public void userChoiceRestartOrEnd(){
+        userInputNumber();
+        userNumber = restartOrEndNumberCheck();
+    }
+
 
 
     public void userInputNumber(){
