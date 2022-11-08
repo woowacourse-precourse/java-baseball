@@ -28,11 +28,11 @@ public class Application {
 
         // 입력한 문자열이 세자리 수가 아닐 경우
         if (inputNumber.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(inputNumber);
         } else {
             for (int i = 0; i < 3; ++i) {
                 if (inputNumber.charAt(i) < '1' || inputNumber.charAt(i) > '9') {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException(inputNumber);
                 }
             }
         }
