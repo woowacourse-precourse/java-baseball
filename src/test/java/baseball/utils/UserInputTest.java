@@ -44,8 +44,8 @@ class UserInputTest {
 
     @Test
     void 사용자_입력값에_중복이_있는지_여부_판단() {
-        String input = "122";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
+        String userInput = "122";
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
 
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -53,5 +53,18 @@ class UserInputTest {
         });
 
         assertEquals("중복되지 않는 3자리 숫자를 입력해주세요.", exception.getMessage());
+    }
+
+    @Test
+    void 게임_재시작_여부_입력값이_1_또는_2인지_판단() {
+        String userInput = "3";
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            UserInput.getNewGameStatusInput();
+        });
+
+        assertEquals("1 또는 2중에서 입력해주세요.", exception.getMessage());
     }
 }
