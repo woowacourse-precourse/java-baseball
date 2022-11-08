@@ -12,13 +12,13 @@ public class Application {
 
         List<Integer> resultNumber = makeRandomNumber();
         String inputStringNumber = Console.readLine();
-        calculationNumber(resultNumber, inputStringNumber);
+        List<Integer> inputNumber = makeStringNumberToList(inputStringNumber);
+        calculationNumber(resultNumber, inputNumber);
 
 
     }
 
-    public static boolean calculationNumber(List<Integer> resultNumber ,String inputStringNumber){
-        List<Integer> inputNumber = makeStringNumberToList(inputStringNumber);
+    public static boolean calculationNumber(List<Integer> resultNumber ,List<Integer> inputNumber) {
         int strike = countStrike(resultNumber, inputNumber);
         int ball = countBall(resultNumber, inputNumber);
         printResult(strike, ball);
