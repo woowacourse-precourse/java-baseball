@@ -21,10 +21,9 @@ public enum Message {
         System.out.print(this.message);
     }
 
-    public static void printGameResult(HashMap<Message, Integer> gameResults) {
+    public static void printGameResult(int strike, int ball) {
         StringBuilder gameResultMessage = new StringBuilder();
 
-        int ball = gameResults.get(Message.BALL);
         if (ball > 0) {
             gameResultMessage
                 .append(ball)
@@ -32,7 +31,6 @@ public enum Message {
                 .append(' ');
         }
 
-        int strike = gameResults.get(Message.STRIKE);
         if (strike > 0) {
             gameResultMessage
                 .append(strike)
