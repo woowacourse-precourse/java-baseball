@@ -39,11 +39,11 @@ public class Application {
     }
 
     public static String isValidFlag(String readLine) {
-        boolean isOneOrTwo = (Character.getNumericValue(readLine.charAt(0)) == CONTINUE_GAME
+        boolean isFlagValue = (Character.getNumericValue(readLine.charAt(0)) == CONTINUE_GAME
                 || Character.getNumericValue(readLine.charAt(0)) == EXIT_GAME);
-        boolean isOnce = (readLine.length() == FLAG_SIZE);
+        boolean isFlagSize = (readLine.length() == FLAG_SIZE);
 
-        if (isOneOrTwo && isOnce) {
+        if (isFlagValue && isFlagSize) {
             return readLine;
         }
         throw new IllegalArgumentException();
@@ -51,12 +51,12 @@ public class Application {
 
     public static String isValidUserInput(String readLine) {
         boolean isNumeric = Pattern.matches("^[0-9]*$", readLine);
-        boolean isTriple = (readLine.length() == INPUT_SIZE);
+        boolean isInputSize = (readLine.length() == INPUT_SIZE);
         boolean isDifferentEach = ((readLine.charAt(0) != readLine.charAt(1))
                 && (readLine.charAt(1) != readLine.charAt(2))
                 && (readLine.charAt(2) != readLine.charAt(0)));
 
-        if (isNumeric && isTriple && isDifferentEach) {
+        if (isNumeric && isInputSize && isDifferentEach) {
             return readLine;
         }
         throw new IllegalArgumentException();
