@@ -4,6 +4,8 @@ import java.util.List;
 
 public class ApplicationManager {
 
+    private static final String RESTART = "1";
+
     public void play() {
         Output.printStartMessage();
         boolean isRestart = true;
@@ -12,16 +14,16 @@ public class ApplicationManager {
             List<Integer> computerNumbers = ComputerRandomNumbersFactory.createComputerRandomNumber();
             while (again) {
                 UserNumber userNumber = new UserNumber(Input.inputUserNumber());
-                int total = Comparison.compare(userNumber, computerNumbers);
-                int strike = Comparison.findStrike(userNumber, computerNumbers);
+                int total = MatchCounter.countAllMatched(userNumber, computerNumbers);
+                int strike = MatchCounter.countStrike(userNumber, computerNumbers);
                 int ball = total - strike;
-                again = findResults(total, strike, ball);
+                again = isResult(total, strike, ball);
             }
             isRestart = isPlayAgain();
         }
     }
 
-    private boolean findResults(int total, int strike, int ball) {
+    private boolean isResult(int total, int strike, int ball) {
         if (Results.isThreeStrike(strike)) {
             Output.printStrike(strike);
             Output.printEndMessage();
@@ -43,7 +45,7 @@ public class ApplicationManager {
     }
 
     private boolean isPlayAgain() {
-        return Input.inputRestartNumber().equals("1");
+        return Input.inputRestartNumber().equals(RESTART);
     }
 
 }
