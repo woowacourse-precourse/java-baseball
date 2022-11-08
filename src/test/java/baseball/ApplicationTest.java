@@ -52,6 +52,31 @@ class ApplicationTest extends NsTest {
             5, 1, 3
         );
     }
+
+    @Test
+    void customTestExceptionCase1(){
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException(""))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void customTestExceptionCase2(){
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("2z5"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void customTestExceptionCase3(){
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("5728110"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
