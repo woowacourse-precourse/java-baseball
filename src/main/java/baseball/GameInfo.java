@@ -26,12 +26,11 @@ public class GameInfo {
         if (ball > 0) {
             result.append(ball).append("볼");
         }
+        if (result.length() > 0) {
+            result.append(" ");
+        }
         if (strike > 0) {
-            if (result.length() > 0) {
-                result.append(" ");
-            }
             result.append(strike).append("스트라이크");
-
         }
         return result.toString();
     }
