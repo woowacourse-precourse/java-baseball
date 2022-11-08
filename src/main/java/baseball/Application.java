@@ -19,9 +19,25 @@ public class Application {
 
             // 게임 실행
             if (gaming(computer)) {
-
+                isGameOver = !wantReGame();
             }
         }
+    }
+    // 재시작 메서드
+    public static boolean wantReGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        while(true) {
+            String reGameInput = Console.readLine();
+            if( reGameInput.equals("1")){
+                return true;
+            }
+            else if(reGameInput.equals("2")){
+                return false;
+            }else {
+                throw new IllegalArgumentException();
+            }
+        }
+
     }
     // 게임 시작
     public static boolean gaming(List<Integer> computer) {
