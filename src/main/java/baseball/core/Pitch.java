@@ -13,4 +13,9 @@ public class Pitch {
     public Pitch() {
         this.pitches = List.of(1, 2, 3);
     }
+
+    public Pitch random() {
+        this.pitches = generateIntegers(3);
+        return this;
+    }
 }
