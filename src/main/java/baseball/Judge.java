@@ -27,11 +27,13 @@ public class Judge {
     public static void checkStrikeBallOut(int number, int number_index, List<Integer> computerNumber, int[] result) {
         if (computerNumber.get(number_index) == number) {
             result[0]++;
-        } else if (computerNumber.contains(number)) {
-            result[1]++;
-        } else {
-            result[2]++;
+            return;
         }
+        if (computerNumber.contains(number)) {
+            result[1]++;
+            return;
+        }
+        result[2]++;
     }
 
     public static boolean printResult(int[] result) {
