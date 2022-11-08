@@ -7,8 +7,9 @@ import static baseball.ComputerRandomNumbersFactory.*;
 public class UserNumber {
 
     private static final int NUMBER_LENGTH_CRITERIA_ZERO = 0;
-    private static final int NUMBER_DIVIDE_CRITERIA_TEN = 10;
+    private static final int NUMBER_STARTING_POINT = 0;
     private static final String USER_NUMBER_SPACE = " ";
+    private static final Character CHAR_CRITERIA = '0';
 
     private final List<Integer> userNumbers;
 
@@ -20,7 +21,7 @@ public class UserNumber {
         validateEmpty(userNumbers);
         validateBlank(userNumbers);
         validateNumberCount(userNumbers);
-        Integer newTypeUserNumbers = validateNumber(userNumbers);
+        List<Integer> newTypeUserNumbers = validateNumber(userNumbers);
         return validateOverlap(newTypeUserNumbers);
     }
 
@@ -42,15 +43,19 @@ public class UserNumber {
         }
     }
 
-    private Integer validateNumber(String newUserNumber) {
-        try {
-            return Integer.parseInt(newUserNumber);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("숫자가 아닙니다.");
+    private List<Integer> validateNumber(String newUserNumber) {
+        List<Integer> newTypeUserNumbers = new ArrayList<>();
+        for (int i = newUserNumber.length() - 1; i >= 0; i--) {
+            int number = (int) newUserNumber.charAt(i) - CHAR_CRITERIA;
+            if (number > MAX_NUMBER || number < NUMBER_STARTING_POINT) { //
+                throw new IllegalArgumentException("숫자가 아닙니다.");
+            }
+            newTypeUserNumbers.add(number);
         }
+        return newTypeUserNumbers;
     }
 
-    private List<Integer> validateOverlap(Integer newTypeUserNumbers) {
+    private List<Integer> validateOverlap(List<Integer> newTypeUserNumbers) {
         Set<Integer> deduplication = separate(newTypeUserNumbers);
         if (deduplication.size() != NUMBER_MAX_LENGTH) {
             throw new IllegalArgumentException("중복된 값이 있습니다.");
@@ -60,13 +65,11 @@ public class UserNumber {
         return numbers;
     }
 
-    private Set<Integer> separate(Integer newTypeUserNumbers) {
+    private Set<Integer> separate(List<Integer> newTypeUserNumbers) {
         Set<Integer> deduplication = new LinkedHashSet<>();
-        while (newTypeUserNumbers > NUMBER_LENGTH_CRITERIA_ZERO) {
-            int newTypeUserNumber = newTypeUserNumbers % NUMBER_DIVIDE_CRITERIA_TEN;
-            validateNumberRange(newTypeUserNumber);
-            deduplication.add(newTypeUserNumber);
-            newTypeUserNumbers /= NUMBER_DIVIDE_CRITERIA_TEN;
+        for (Integer userNumber : newTypeUserNumbers) {
+            validateNumberRange(userNumber);
+            deduplication.add(userNumber);
         }
         return deduplication;
     }
