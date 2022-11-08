@@ -26,7 +26,7 @@ public class GameControllerTest {
     }
 
     @Test
-    void restartGame_메소드로_게임_재시작()
+    void restartGame_메소드로_1_입력_시_게임_재시작()
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         GameController gameController = new GameController();
 
@@ -39,13 +39,21 @@ public class GameControllerTest {
 
         boolean result = (boolean) method.invoke(gameController);
         Assertions.assertThat(result).isTrue();
+    }
 
-        String input2 = "2";
-        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
-        System.setIn(in2);
+    @Test
+    void restartGame_메소드로_2_입력_시_종료()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        GameController gameController = new GameController();
 
-        boolean result2 = (boolean) method.invoke(gameController);
-        Assertions.assertThat(result2).isFalse();
+        Method method = gameController.getClass().getDeclaredMethod("restartGame");
+        method.setAccessible(true);
 
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        boolean result = (boolean) method.invoke(gameController);
+        Assertions.assertThat(result).isFalse();
     }
 }
