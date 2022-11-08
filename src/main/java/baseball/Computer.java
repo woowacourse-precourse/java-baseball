@@ -19,7 +19,6 @@ public class Computer {
                 randomNumberList.add(randomNumber);
             }
         }
-        System.out.println(randomNumberList);
     }
 
     public String randomNumberListToString() {
