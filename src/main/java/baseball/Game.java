@@ -11,6 +11,13 @@ public class Game {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
 
+    public static void startOfGame() {
+        PrintLine.startGamePrint();
+    }
+
+    public static void endOfGame() {
+        PrintLine.endGame();
+    }
 
     public static List<Integer> createComputerNumberList() {
         List<Integer> computerNumberList = new ArrayList<>();
