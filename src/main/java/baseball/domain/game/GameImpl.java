@@ -33,7 +33,7 @@ public class GameImpl implements Game{
   @Override
   public void GameScore() {
     score = new Score();
-    score.compareTwoNumber(computerPlayer.getComputerNumberList(), userPlayer.getUserNumberList());
+    score.compareTwoNumber(computerPlayer.getNumberList(), userPlayer.getUserNumberList());
   }
 
   @Override
