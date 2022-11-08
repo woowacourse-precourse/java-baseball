@@ -32,14 +32,19 @@ public class GamePlayer {
     }
 
     private static void playOneTurn(Game game, List<Integer> player_number) {
+        final int STRIKE_OUT = 3;
+        final int NOTHING = 0;
         final int strike = game.getCountOfStrike(player_number);
         final int ball = game.getCountOfBall(player_number, strike);
 
-        System.out.println(strike + "스트라이크 , " + ball + "볼");
-
-        if(strike == 3){
+        if (strike == STRIKE_OUT) {
             throw new EndOfGameException();
+        } else if (strike == NOTHING && ball == NOTHING) {
+            System.out.println("NOTHING");
+        } else {
+            System.out.println(strike + "스트라이크 , " + ball + "볼");
         }
+
     }
 
     private static void validatePlayer_number(List<Integer> player_number) {

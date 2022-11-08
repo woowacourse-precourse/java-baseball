@@ -28,10 +28,10 @@ public class Game {
 
     public boolean validateAnswer_number() {
         return answer_number.stream()
-                .allMatch(num -> num > 0 && num < 10)
-                && answer_number.stream()
+                .allMatch(num -> num > ZERO)
+            && answer_number.stream()
                 .distinct()
-                .count() == 3;
+                .count() == NUMBER_LENGTH;
     }
 
     public int getCountOfStrike(List<Integer> predict_number) {
