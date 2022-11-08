@@ -24,9 +24,9 @@ public class InputNumberExceptionChecker {
 
     // 숫자에 0이 들어갔는지 확인하는 메서드
     public static boolean hasZero(String number) {
-        if (number.charAt(0) == 0
-                || number.charAt(1) == 0
-                || number.charAt(2) == 0) {
+        if (number.charAt(0) == '0'
+                || number.charAt(1) == '0'
+                || number.charAt(2) == '0') {
             return false;
         } else {
             return true;
@@ -35,7 +35,7 @@ public class InputNumberExceptionChecker {
 
     // 재시작 여부를 물었을 때, 1과 2가 아닌 다른 숫자를 입력했을 때
     public static boolean isValidRestartNumber(int restartNumber) {
-        if (restartNumber != 1 || restartNumber != 2) {
+        if (restartNumber != 1 && restartNumber != 2) {
             return false;
         } else {
             return true;
@@ -51,7 +51,7 @@ public class InputNumberExceptionChecker {
         }
     }
 
-    // int type을 parameter로 받아서 판단 (오버로딩)
+    // int type을 parameter로 받아서 판단 // 오버로딩
     public static boolean hasException(int restartNumber) {
         if (isValidRestartNumber(restartNumber)) {
             return true;
