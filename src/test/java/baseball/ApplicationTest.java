@@ -36,6 +36,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 범위에_속하지_않은_수를_포함하는_수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("605"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
