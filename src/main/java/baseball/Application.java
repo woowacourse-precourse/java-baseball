@@ -60,8 +60,9 @@ public class Application {
     public static int createOnesDifferentFrom(int hundreds, int tens) {
         while (true) {
             int ones = Randoms.pickNumberInRange(1, 9);
-            if (hundreds != ones && tens != ones)
+            if (hundreds != ones && tens != ones) {
                 return ones;
+            }
         }
     }
 
