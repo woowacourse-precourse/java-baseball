@@ -40,10 +40,10 @@
     - InputException, Player, Game, view 클래스들을 활용하여 숫자 야구 게임 시물레이션을 담당
   
 - Inputview 클래스
-  - 콘솔 내 입력을 담당
+  - 슷지 야구 게임 내 입력을 담당
 
 - outputview 클래스
-  - 콘솔 내 출력을 담당
+  - 숫지 야구 게임 내 출력을 담당
 
 ## 1️⃣  InputException 클래스
 - 함수 구성
@@ -99,17 +99,26 @@
 ## 5️⃣  InputView 클래스
 - 함수 구성
   - noticeGameStart
+    - 게임 시작 메시지를 출력
   - requestEnteringNumbers
+    - 게임 시작 후 사용자에게 숫자 입력 메세지 출력
   - requestMoreGame
+    - 게임 재시작 또는 종료 선택 메세지 출력
 
 ## 6️⃣  OutputView 클래스
 - 함수 구성
   - showMessage
+    - 사용자의 숫자 리스트에 대한 상태를 출력
   - showSuccessMessage
+    - 성공 메시지 출력
 
 ## 7️⃣  GameController 클래스
 - 함수 구성
   - setGameState
+    - 게임 상태 초기화
   - startGame
+    - 게임 진행
   - chooseGameState
- 
+    - 게임 재시작 또는 종료 여부 선택
+  - working
+    - 게임 구동
