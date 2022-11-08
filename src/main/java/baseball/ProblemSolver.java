@@ -23,8 +23,13 @@ public class ProblemSolver extends Player{
 
     }
 
-    public int chooseToRestart(){
-        int answer = 0;
-        return answer;
+    public int chooseToRestart() throws IllegalArgumentException{
+        String answer = Console.readLine();
+
+        if(!answer.matches("^[1-2]$")){
+            throw new IllegalArgumentException();
+        }
+
+        return Integer.parseInt(answer);
     }
 }
