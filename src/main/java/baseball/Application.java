@@ -9,7 +9,7 @@ public class Application {
         Game game = new Game();
         User user = new User();
 
-        game.getStart();
+        game.gameStart();
 
         while(doGame(game, user));
     }
