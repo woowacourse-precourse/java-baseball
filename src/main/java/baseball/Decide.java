@@ -5,7 +5,7 @@ import java.util.List;
 public class Decide {
     Baseball baseball = new Baseball();
 
-    public String finalanswer(List<Integer> computer, List<Integer> player) {
+    public String finalAnswer(List<Integer> computer, List<Integer> player) {
         int total = baseball.compare(computer, player);
         int strike = baseball.countStrike(computer, player);
         int ball = total - strike;
