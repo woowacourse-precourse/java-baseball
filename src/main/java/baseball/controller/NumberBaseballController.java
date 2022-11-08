@@ -31,13 +31,13 @@ public class NumberBaseballController {
         printGameResult(resultList);
     }
 
-    private void printGameResult(List<Integer> resultList) {
+    public void printGameResult(List<Integer> resultList) {
         GameResult gameResult = new GameResult(resultList);
         GuessResultStatus resultType = numberBaseballView.printResult(gameResult);
-        determineNextMove(resultType);
+        determineNextMoveForUserAnswer(resultType);
     }
 
-    public void determineNextMove(GuessResultStatus resultType) {
+    public void determineNextMoveForUserAnswer(GuessResultStatus resultType) {
         if (resultType == GuessResultStatus.WIN) {
             requestNewGameAnswer();
         }
@@ -49,6 +49,10 @@ public class NumberBaseballController {
     public void requestNewGameAnswer() {
         String userAnswer = numberBaseballView.inputNewGameAnswer();
         userAnswerValidator.validateNewGameAnswer(userAnswer);
+        determineNextMoveForNewGameAnswer(userAnswer);
+    }
+
+    public void determineNextMoveForNewGameAnswer(String userAnswer) {
         if (userAnswer.equals(RESTART)) {
             restartGame();
         }
