@@ -6,7 +6,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,8 +48,10 @@ class GameServiceTest {
     @Test
     void 예외_테스트() {
         String three = "3";
+        InputStream in = new ByteArrayInputStream(three.getBytes());
+        System.setIn(in);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> gameService.isNotRestartedAndQuitedGame(three));
+                () -> gameService.inputOneOrTwo());
         String message = exception.getMessage();
         assertEquals("1 또는 2를 입력해주세요", message);
     }
