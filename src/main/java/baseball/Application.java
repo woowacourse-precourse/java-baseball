@@ -19,6 +19,7 @@ public class Application {
     }
 
     public static int askNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         String userNumberString = readLine();
         return Integer.parseInt(userNumberString);
     }
@@ -71,16 +72,45 @@ public class Application {
         return new ArrayList<>(List.of(strike, ball));
     }
 
+    public static String printResult(List<Integer> strikeBall) {
+        String result = "";
+        int strike = strikeBall.get(0);
+        int ball = strikeBall.get(1);
+
+        if (strike == 0 && ball == 0) {
+            result = "낫싱";
+        }
+        if (ball > 0) {
+            result += (ball + "볼 ");
+        }
+        if (strike > 0) {
+            result += (strike + "스트라이크");
+        }
+        if (strike == 3) {
+            result += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomNumberList = makeRandomNumber();
-        int userNumber = askNumber();
-        boolean lengthViolationFlag = checkNumberLength(userNumber);
-        boolean duplicationFlag = checkDuplication(userNumber);
-        if (lengthViolationFlag || duplicationFlag) {
-            throw new IllegalArgumentException();
+        String result;
+        while (true) {
+            int userNumber = askNumber();
+            boolean lengthViolationFlag = checkNumberLength(userNumber);
+            boolean duplicationFlag = checkDuplication(userNumber);
+            if (lengthViolationFlag || duplicationFlag) {
+                throw new IllegalArgumentException();
+            }
+            List<Integer> userNumberList = splitIntToList(userNumber);
+            List<Integer> strikeBall = callReferee(randomNumberList, userNumberList);
+            result = printResult(strikeBall);
+            if (result.equals("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료")) {
+                System.out.println(result);
+                break;
+            }
+            System.out.println(result);
         }
-        List<Integer> userNumberList = splitIntToList(userNumber);
-        List<Integer> strikeBall = callReferee(randomNumberList, userNumberList);
     }
 }
