@@ -1,3 +1,9 @@
+## 📊 최종 리팩터링 코드 UML Class Diagram
+
+![image](../docs/img/baseball_game_Class_Diagram.drawio.png)
+
+---
+
 # 📃 구현할 기능 목록
 
 ## Computer 클래스
