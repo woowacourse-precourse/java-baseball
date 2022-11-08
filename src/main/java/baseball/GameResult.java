@@ -15,7 +15,7 @@ public class GameResult {
     calculateStrike(answerNumberList, gameNumberList);
   }
 
-  public boolean printResult() {
+  public void printResult() {
     if (ballCount != 0) {
       System.out.print(ballCount + "볼 ");
     }
@@ -26,6 +26,9 @@ public class GameResult {
       System.out.print("낫싱");
     }
     System.out.println();
+  }
+
+  public boolean isAnswer() {
     return strikeCount == 3;
   }
 
