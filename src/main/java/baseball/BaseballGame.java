@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BaseballGame {
 
@@ -90,8 +92,11 @@ class Player {
         return Console.readLine();
     }
 
-    List<Integer> suggest() {
-        List<Integer> suggestion = new ArrayList<>();
+    public List<Integer> suggest() {
+        String input = input();
+        if (!validSuggestion()) throw new IllegalArgumentException();
+        List<Integer> suggestion;
+        suggestion = Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
         return suggestion;
     }
 
