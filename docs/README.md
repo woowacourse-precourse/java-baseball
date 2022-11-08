@@ -9,8 +9,8 @@
    - inputNotOneOrTwoException() : 입력값이 1이나 2가 아닐 때 발생
    
 3. PlayNumberBaseballGame.java : 숫자야구놀이 전체 기능
-   - playNumberBaseballOneGame : 숫자야구 게임 한번 진행 
-   - createRandomNumberOfComputer() : 컴퓨터의 수 (랜덤)
+   - playNumberBaseballOneGame() : 숫자야구 게임 한번 진행 
+   - setRandomNumberOfComputer() : 컴퓨터의 수 (랜덤)
    - getInputNumbersOfPlayer() : 플레이어의 답변 입력 받음 
    - compareNumbersBetweenComputerAndPlayer() : 컴퓨터와 플레이어의 숫자 비교 
      - isThreeStrike() : 3스트라이크인가요? (boolean)

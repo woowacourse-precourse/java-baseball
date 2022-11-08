@@ -17,7 +17,7 @@ public class PlayNumberBaseballGame {
 
     public void playNumberBaseballOneGame(){
         isAnswer=false;
-        computerRandomNumbers=createRandomNumberOfComputer();
+        computerRandomNumbers=setRandomNumberOfComputer();
 
         while (!isAnswer) {
             System.out.println(GameProgressLine.PLAYER_INPUT_LINE.getLine());
@@ -35,7 +35,7 @@ public class PlayNumberBaseballGame {
         }
     }
 
-    public List<Integer> createRandomNumberOfComputer() {
+    public List<Integer> setRandomNumberOfComputer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
