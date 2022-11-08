@@ -98,11 +98,30 @@ public class Application {
         }
 
         private boolean verifyBall(String ball) {
-            if (!verifyLength(ball) || !verifyIsNumber(ball)) {
+            if (!verifyLength(ball) || !verifyIsNumber(ball) || !verifyDupNumber(ball)) {
                 return NOT_VERIFY;
             } else {
                 return VERIFY;
             }
+        }
+
+        private boolean verifyDupNumber(String ball) {
+            int ballNumber = Integer.parseInt(ball);
+            int[] verifyDup = new int[NUM_BOUNDARY];
+
+            int pow = 0;
+            while (ballNumber >= Math.pow(10, pow)) {
+                int digit = digitNumber(ballNumber, pow);
+
+                if (verifyDup[digit] != 0) {
+                    return NOT_VERIFY;
+                }
+
+                verifyDup[digit] += 1;
+                pow += 1;
+            }
+
+            return VERIFY;
         }
 
         private boolean verifyIsNumber(String ball) {
