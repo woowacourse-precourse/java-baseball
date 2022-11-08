@@ -1,8 +1,6 @@
 package baseball;
 
-import baseball.game.AfterPlayer;
 import baseball.game.Player;
-import camp.nextstep.edu.missionutils.Console;
 
 public class AfterGame {
     private static final boolean RESTART = true;
@@ -20,7 +18,8 @@ public class AfterGame {
 
     public boolean play() {
         outputQuest();
-        AfterPlayer afterPlayer = new AfterPlayer();
-        return isRestartOrFinish(afterPlayer.getCONTINUE_NUMBER());
+        Player player = new Player();
+        player.setInputNumber();
+        return isRestartOrFinish(player.getInputNumber());
     }
 }

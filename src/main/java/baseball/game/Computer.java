@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final String ANSWER;
+    private String answer;
 
     public Computer() {
-        ANSWER = drawNumber();
+        answer = drawNumber();
     }
 
     private String drawNumber() {
@@ -23,7 +23,7 @@ public class Computer {
         String randomNumber = String.join("", randomNumbers);
         return randomNumber;
     }
-    public String getANSWER(){
-        return ANSWER;
+    public String getAnswer(){
+        return answer;
     }
 }

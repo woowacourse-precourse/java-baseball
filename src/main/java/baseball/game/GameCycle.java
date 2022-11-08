@@ -36,12 +36,12 @@ public class GameCycle {
     public String playerInputNumber() {
         outputWriteNumber();
         Player player = new Player();
-        String playerNumber = player.getINPUT_NUMBER();
-        if (numberIsDigit(playerNumber)) ;
-        if (numberLengthIsThree(playerNumber)) ;
-        if (numberIsNotDuplicate(playerNumber)) ;
-        if (numberIsNotZero(playerNumber)) ;
-        return playerNumber;
+        player.setInputNumber();
+        if (numberIsDigit(player.getInputNumber()));
+        if (numberLengthIsThree(player.getInputNumber()));
+        if (numberIsNotDuplicate(player.getInputNumber()));
+        if (numberIsNotZero(player.getInputNumber()));
+        return player.getInputNumber();
     }
 
     public int countStrike(String answer, String input) {
@@ -91,7 +91,7 @@ public class GameCycle {
 
     public void play() {
         Computer computer = new Computer();
-        String answer = computer.getANSWER();
+        String answer = computer.getAnswer();
         while (CONTINUE) {
             String playerNumber = playerInputNumber();
             String countStatus = countResponse(answer, playerNumber);

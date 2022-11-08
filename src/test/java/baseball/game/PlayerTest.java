@@ -17,7 +17,8 @@ class PlayerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         Player player = new Player();
-        String playerNumber = player.getINPUT_NUMBER();
+        player.setInputNumber();
+        String playerNumber = player.getInputNumber();
 
         //then
         assertEquals(playerNumber, "123");

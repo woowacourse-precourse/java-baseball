@@ -10,7 +10,7 @@ class ComputerTest {
         //given
         Computer computer = new Computer();
         //expect
-        System.out.println(computer.getANSWER());
+        System.out.println(computer.getAnswer());
 
     }
 
