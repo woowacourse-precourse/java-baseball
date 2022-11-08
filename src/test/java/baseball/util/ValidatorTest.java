@@ -13,8 +13,9 @@ class ValidatorTest {
 		String input = "3";
 
 		//when, then
-		assertThatThrownBy(() -> Validator.validateRestartOrNotInput(input)).isInstanceOf(
-			IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validateRestartOrNotInput(input))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("올바른 입력이 아닙니다. 게임을 종료합니다.");
 	}
 
 	@Test
@@ -23,7 +24,9 @@ class ValidatorTest {
 		String input = "1243";
 
 		//when, then
-		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validateNumberInput(input))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("올바른 입력이 아닙니다. 게임을 종료합니다.");
 	}
 
 	@Test
@@ -32,7 +35,9 @@ class ValidatorTest {
 		String input = "2a3";
 
 		//when, then
-		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validateNumberInput(input))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("올바른 입력이 아닙니다. 게임을 종료합니다.");
 	}
 
 	@Test
@@ -41,6 +46,9 @@ class ValidatorTest {
 		String input = "233";
 
 		//when, then
-		assertThatThrownBy(() -> Validator.validateNumberInput(input)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validateNumberInput(input))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("올바른 입력이 아닙니다. 게임을 종료합니다.");
+		;
 	}
 }
