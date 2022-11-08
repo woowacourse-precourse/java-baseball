@@ -5,6 +5,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,8 +68,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("입력한 값이 리스트로 반환되는지 확인")
     void getUserInput() {
-        ArrayList<Integer> userInput = new ArrayList<>();
+        String input = "123";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        List<Integer> userInput = Application.getUserInput();
+
+        assertThat(userInput).contains(1,2,3);
 
     }
 
