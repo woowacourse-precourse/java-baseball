@@ -30,7 +30,7 @@ public class Application{
         		keepGoing = Console.readLine();
         	}
         	
-        	if(keepGoing!="1"&&keepGoing!="2")
+        	if(!(keepGoing.equals("1")||keepGoing.equals("2")))
         		throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
     	}
  
