@@ -11,7 +11,7 @@ public class RandomNumber {
 
     private static List<Integer> randomNumber;
     private static String regex = "^[1-9]{3}$";
-    private static int NUMBERSIZE = 3;
+    private static final int NUMBERSIZE = 3;
 
     public RandomNumber() {
     }
@@ -22,7 +22,7 @@ public class RandomNumber {
 
     public void createRandomNumber() {
         Set<Integer> randomNumberSet = new LinkedHashSet<>();
-        while (randomNumberSet.size() < 3) {
+        while (randomNumberSet.size() < NUMBERSIZE) {
             int pickNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumberSet.contains(pickNumber)) {
                 randomNumberSet.add(pickNumber);
@@ -37,7 +37,7 @@ public class RandomNumber {
         }
         String inputNum = Console.readLine();
         //1. 3자리 아님
-        if (inputNum.length() != 3) {
+        if (inputNum.length() != NUMBERSIZE) {
             throw new IllegalArgumentException("숫자의 어느 자리에도 0이 포함되지 않는 3자리의 숫자를 입력하십시오.");
         }
         //2. 1-9 이외 값이 포함(1: 49, 9: 57)
@@ -54,7 +54,7 @@ public class RandomNumber {
 //            }
 //        }
         randomNumber = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBERSIZE; i++) {
             randomNumber.add(inputNum.charAt(i) - '0');
         }
     }
