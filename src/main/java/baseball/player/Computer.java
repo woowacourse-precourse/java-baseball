@@ -9,9 +9,15 @@ public class Computer {
 	Computer() {
 		number = getRandomNumber();
 	}
+	private Computer(String number){
+		this.number=number;
+	}
 
 	public String getNumber() {
 		return number;
+	}
+	public static Computer createComputerForTest(String number){
+		return new Computer(number);
 	}
 
 	private String getRandomNumber() {
