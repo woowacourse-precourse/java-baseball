@@ -23,8 +23,12 @@ public class UserNumberGenerator {
     }
 
     private static boolean isValid(List<Integer> numbers) {
-        return numbers.size() == ValidateNumber.NUMBER_LENGTH.getNumber()
+        return isValidLength(numbers)
                 && NumberValidator.isValidRange(numbers)
                 && NumberValidator.checkIfIsNotDuplicatedNum(numbers);
+    }
+
+    private static boolean isValidLength(List<Integer> numbers) {
+        return numbers.size() == ValidateNumber.NUMBER_LENGTH.getNumber();
     }
 }
