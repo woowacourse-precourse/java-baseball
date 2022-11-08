@@ -51,4 +51,11 @@ public class Application {
         }
         return true;
     }
+
+    static boolean checkInputLength(String Input) {
+        if (Input.length() != 3) {
+            return false;
+        }
+        return true;
+    }
 }
