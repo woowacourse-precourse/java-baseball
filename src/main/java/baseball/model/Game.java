@@ -30,5 +30,13 @@ public class Game {
         return readLine(GameCode.ATTACK.getValue());
     }
 
+    public void play() {
+
+        attack();
+
+        String gameResult = judge.judge();
+        System.out.println(gameResult);
+
+    }
 
 }
