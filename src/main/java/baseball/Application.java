@@ -1,8 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+
 /*
 1. 게임을 시작한다. -> 게임 시작 메소드 필요
 2. 서로 다른 세 자리의 숫자를 생성한다(pickNumberInRange() 이용). -> 난수 발생 메소드 필요
@@ -25,14 +27,29 @@ public class Application {
     }
 }
 
-class Game{
+class Game {
 
     // 1. 난수 발생 메서드 구현
-    public ArrayList<Integer> makingRandomNum(){
+    public ArrayList<Integer> makingRandomNum() {
         ArrayList<Integer> randomNum = new ArrayList<>();
-        for(int i = 0; i < 3; i ++){
-            randomNum.add(Randoms.pickNumberInRange(1,9));
+        for (int i = 0; i < 3; i++) {
+            randomNum.add(Randoms.pickNumberInRange(1, 9));
         }
         return randomNum;
     }
+
+    // 2. 참여자 입력 숫자 점검
+    public boolean checkingInputNum(String inputNum) {
+        try {
+            Integer.parseInt(inputNum);
+        } catch (Exception e) {
+            try {
+                throw new IllegalArgumentException("각 자릿수가 1~9 사이의 정수로 이루어진 세 자리 숫자를 입력해주세요");
+            } catch (Exception exception) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
