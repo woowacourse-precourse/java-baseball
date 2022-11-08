@@ -1,10 +1,15 @@
 package baseball;
 
-import baseball.domain.Player;
-import baseball.repository.PlayerRepository;
+import baseball.controller.BaseballController;
 
 public class Application {
 
+
     public static void main(String[] args) {
+        BaseballController baseballController =  new BaseballController();
+        baseballController.gameStart();
     }
+
+
+
 }
