@@ -52,3 +52,24 @@
 7. 게임이 끝났을 때 입력이 1, 2가 아니라면 오류를 발생시킨다.
 8. 입력이 1이면 2번으로 돌아가서 새로운 게임을 시작한다.
 9. 입력이 2이면 프로그램을 종료한다.
+
+---
+
+# 구현할 메소드
+1. 게임 시작 관련 메세지 출력 `gameStart`
+2. 컴퓨터의 숫자를 랜덤으로 선택하는 메소드 `setComputersRandomAnswer`
+    - 리스트 안에 들어있는 숫자를 제외한 숫자 중에서 랜덤으로 숫자를 리턴하는 메소드 `getRandomIntegerExcludeInList`
+3. 게임에서 사용자의 입력을 받는 메소드 `getUserPredictedAnswer`
+    - 입력받은 문자열을 각 자리수로 쪼갠 숫자 리스트로 반환하는 메소드 `stringToSeparatedIntergerList`
+    - 입력 받고 에러처리 까지 해준다.
+4. 숫자를 비교해서 결과를 반환하는 메소드 `judgeUserGuess`
+    - 볼의 개수를 세는 메소드 `countBall`
+    - 스트라이크의 개수를 세는 메소드 `countStrike`
+5. 받은 결과를 판별하는 메소드 낫싱, 볼, 스트라이크, 게임 종료 `getGameResult`
+6. 게임이 끝난 후 게임을 다시 시작할 지 물어보는 메소드 `isPlayingNewGame`
+
+# 오류
+- 숫자가 아니고 다른 입력이 들어온 경우 `isContainLetter`
+- 들어온 숫자가 n자리가 아닌 경우 `isInputLength`
+- 같은 숫자가 2개 이상 들어온 경우 `hasSameNumberInList`
+- 숫자 1,2 이외에 다른 숫자가 들어온 경우 `isIllegalChoice`
