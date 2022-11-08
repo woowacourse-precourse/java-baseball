@@ -23,9 +23,9 @@ class PlayBaseball {
 
     void countBalls () {
         for (int i = 0; i < LENGTH; i++) {
-            String temp = String.valueOf(playerNumber.charAt(i));
+            String str = String.valueOf(playerNumber.charAt(i));
 
-            if (computerNumber.contains(temp)) {
+            if (computerNumber.contains(str)) {
                 ball += 1;
             }
             if (playerNumber.charAt(i) == computerNumber.charAt(i)) {

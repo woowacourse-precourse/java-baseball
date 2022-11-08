@@ -3,9 +3,11 @@ package baseball;
 public class Application {
     public static void main(String[] args) {
         boolean agreeRestart;
+
         do {
             String computerNumber = Input.computer();
             boolean has3Strikes;
+
             do {
                 String playerNumber = Input.player();
                 Input.checkError(playerNumber);
@@ -15,7 +17,9 @@ public class Application {
                 game.printBallCounts();
                 has3Strikes = game.check3Strikes();
             } while (!has3Strikes);
+
             boolean isValidReply;
+
             do {
                 Restart reply = new Restart();
                 agreeRestart = reply.decideRestart();
