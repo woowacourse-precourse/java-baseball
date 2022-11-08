@@ -40,11 +40,10 @@ public class BallCountTest {
 
     @Test
     void case4_모든_인풋값_출력_확인() {
-        GameBoard gameBoard = new GameBoard();
+        randomNumbers.createBaseballNumbers("123");
         inputNumbers.createBaseballNumbers("134");
-        inputNumbers2.createBaseballNumbers("345");
-
-        String input = "현재 입력한 결과입니다.\r\n" + "134 : " + gameBoard.showBallCount(inputNumbers) + "\r\n345 : " + gameBoard.showBallCount(inputNumbers2) + "\r\n";
-        assertThat(gameBoard.showRecords()).isEqualTo(input);
+        String input = "134 : 1볼 1스트라이크";
+        ballCount.validateBallCount(randomNumbers, inputNumbers);
+        assertThat(ballCount.toStringRecords()).isEqualTo(input);
     }
 }
