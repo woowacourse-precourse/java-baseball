@@ -24,7 +24,7 @@ public class InputView {
     }
 
     private static void validate(int command) {
-        if(!isValidCommand(command)){
+        if (!isValidCommand(command)) {
             throw new IllegalArgumentException("1과 2 중에서 선택해주세요.");
         }
     }
