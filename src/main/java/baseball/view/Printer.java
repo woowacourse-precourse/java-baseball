@@ -8,4 +8,24 @@ public class Printer {
     private static final String messageClear = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String messageGameEnd = "게임 종료";
     private static final String messageShutDownCheck = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+    public static void showRequestInput() {
+        System.out.print(requestInput);
+    }
+
+    public static void showMessageStartGame() {
+        System.out.println(messageStartGame);
+    }
+
+    public static void showClear() {
+        System.out.println(messageClear);
+    }
+
+    public static void showShutDownCheck() {
+        System.out.println(messageShutDownCheck);
+    }
+
+    public static void showGameEnd() {
+        System.out.println(messageGameEnd);
+    }
 }
