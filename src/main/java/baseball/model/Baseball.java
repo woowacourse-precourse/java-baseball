@@ -28,5 +28,8 @@ public class Baseball {
         return baseballs.stream().anyMatch(this::baseballEqual);
     }
 
-
+    @Override
+    public String toString() {
+        return ""+baseball;
+    }
 }
