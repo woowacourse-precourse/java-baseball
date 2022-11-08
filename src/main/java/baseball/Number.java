@@ -50,7 +50,7 @@ public class Number {
 	}
 	
 	public void getAnswer() {
-		System.out.println(INPUT_MESSAGE);
+		System.out.print(INPUT_MESSAGE);
 		String input = Console.readLine();
 		setNumber(input);
 	}
