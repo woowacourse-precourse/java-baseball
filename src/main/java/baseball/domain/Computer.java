@@ -9,7 +9,7 @@ public class Computer {
     }
 
     public List<Integer> selectNumbers() {
-        ArrayList<Integer> selectNumberList = new ArrayList<>();
+        List<Integer> selectNumberList = new ArrayList<>();
         Ball ball = new Ball();
 
         while (selectNumberList.size() < 3) {
