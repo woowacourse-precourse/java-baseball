@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static baseball.Application.generateGoalNumber;
-import static baseball.Application.isValidInput;
+import java.util.List;
+
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -61,6 +62,16 @@ class ApplicationTest extends NsTest {
     void 사용자_입력은_서로_다른_숫자이다() {
         String num = "112";
         Assertions.assertThat(isValidInput(num).equals(false));
+    }
+
+    @Test
+    void 모든_숫자가_일치하지_않으면_낫싱이다() {
+        String targetNumber = "123";
+        String userInput = "456";
+
+        List<Integer> result = compareTwoNumbers(targetNumber, userInput);
+        Assertions.assertThat(result.get(0).equals(0));
+        Assertions.assertThat(result.get(1).equals(0));
     }
 
     @Override
