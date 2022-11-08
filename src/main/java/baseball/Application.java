@@ -10,6 +10,7 @@ import java.util.Set;
 
 public class Application {
     static List<Integer> computerRandomNumber;
+    static List<Integer> playerInputNumber;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -21,17 +22,75 @@ public class Application {
         System.out.println(computerRandomNumber);
 
         boolean isNumberAvailable = playerInputCheck();
-        System.out.println("playerInputNumber 의 isNumberAvailable : " + isNumberAvailable);
+//        System.out.println("playerInputNumber 의 isNumberAvailable : " + isNumberAvailable);
         // 입력한 값이 잘못된 값이면 종료함
         if (!isNumberAvailable) {
             return;
         }
 
         // 결과값을 출력
-        System.out.println("결과값 출력 예정");
-
+        resultOutput();
 
         // 1이면 다시 시작, 2이면 종료료
+    }
+
+    private static void resultOutput() {
+        int strikeCount = 0;
+        int ballCount = 0;
+        int nothingCount = 0;
+
+        nothingCount = nothingOutput();
+
+        if (nothingCount == 3) {
+            System.out.println("낫싱");
+        }
+
+        if (nothingCount != 3) {
+            strikeCount = strikeOutPut();
+            ballCount = ballOutput(strikeCount);
+        }
+
+        if (strikeCount == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    private static int nothingOutput() {
+        int nothingCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (!computerRandomNumber.contains(playerInputNumber.get(i))) {
+                nothingCount += 1;
+            }
+        }
+        System.out.println("nothingCount : " + nothingCount);
+        return nothingCount;
+    }
+
+    private static int strikeOutPut() {
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computerRandomNumber.get(i).equals(playerInputNumber.get(i))) {
+                strikeCount += 1;
+            }
+        }
+        System.out.println("strikeCount : " + strikeCount);
+        return strikeCount;
+    }
+
+    private static int ballOutput(int strikeCount) {
+        int ballCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computerRandomNumber.contains(playerInputNumber.get(i))) {
+                ballCount += 1;
+            }
+        }
+        ballCount = ballCount - strikeCount;
+        System.out.println("ballCount : " + ballCount);
+        return ballCount;
     }
 
     private static List<Integer> computerGetRandomNumber() {
@@ -46,14 +105,15 @@ public class Application {
     }
 
     private static boolean playerInputCheck() {
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         boolean checkInput = false;
 
         if (isInteger(input)) {
             checkInput = isLengthThree(input);
-            System.out.println("isLengthThree 의 checkInput : " + checkInput);
+//            System.out.println("isLengthThree 의 checkInput : " + checkInput);
             checkInput = isNumberDifferent(checkInput, input);
-            System.out.println("isNumberDifferent 의 checkInput : " + checkInput);
+//            System.out.println("isNumberDifferent 의 checkInput : " + checkInput);
         }
         return checkInput;
     }
@@ -84,18 +144,19 @@ public class Application {
     }
 
     private static boolean isNumberDifferent(boolean middleCheck, String input) {
-        Set<Character> set = new LinkedHashSet<>();
+        Set<Integer> set = new LinkedHashSet<>();
         for (int i = 0; i < input.length(); i++) {
-            set.add(input.charAt(i));
+            set.add(Integer.parseInt(String.valueOf(input.charAt(i))));
         }
 
         if (middleCheck) {
             middleCheck = isRepeat(set);
         }
+        playerInputNumber = new ArrayList<>(set);
         return middleCheck;
     }
 
-    private static boolean isRepeat(Set<Character> set) {
+    private static boolean isRepeat(Set<Integer> set) {
         boolean checkRepeat = true;
         try {
             if (set.size() != 3) {
