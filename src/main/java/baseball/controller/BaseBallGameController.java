@@ -37,7 +37,7 @@ public class BaseBallGameController {
 
     // 게임 종료 여부 판단
     public boolean isFinish(List<Integer> answer, List<Integer> userAnswer) {
-        return !answer.equals(userAnswer);
+        return answer.equals(userAnswer);
     }
 
     // 게임 재시작 여부 판단

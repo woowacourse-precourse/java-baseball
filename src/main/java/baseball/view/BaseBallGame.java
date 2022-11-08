@@ -29,7 +29,7 @@ public class BaseBallGame {
     private void playGame() {
         List<Integer> answer = Answer.create();
         List<Integer> userAnswer = List.of(0, 0, 0);
-        while(baseBallGameController.isFinish(answer,userAnswer)){
+        while(!baseBallGameController.isFinish(answer,userAnswer)){
             System.out.print(Constant.INPUT_MESSAGE);
             userAnswer = baseBallGameController.inputUserAnswer();
             System.out.println(baseBallGameController.calcBallCount(answer, userAnswer));
