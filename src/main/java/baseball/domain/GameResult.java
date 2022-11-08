@@ -40,4 +40,9 @@ public class GameResult {
 
         return sb.toString().trim();
     }
+
+    public boolean isGameEnd(){
+
+        return strikeCount == 3;
+    }
 }

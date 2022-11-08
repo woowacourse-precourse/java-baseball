@@ -18,11 +18,11 @@ public class MessagePrinterImpl implements MessagePrinter{
 
     @Override
     public void printGameEnd() {
-
+        System.out.println(MessagesForPrint.GAME_END.getMessage());
     }
 
     @Override
     public void printQuestionGameRestart() {
-
+        System.out.println(MessagesForPrint.RESTART_GAME.getMessage());
     }
 }

@@ -60,4 +60,27 @@ class MessagePrinterTest {
         //then
         assertEquals(expectOutput,outputStreamCaptor.toString().replaceAll("(\r\n|\r|\n|\n\r)", ""));
     }
+
+    @Test
+    void printGameEnd(){
+        //given
+        String expectOutput = MessagesForPrint.GAME_END.getMessage();
+
+        //when
+        messagePrinter.printGameEnd();
+
+        //then
+        assertEquals(expectOutput,outputStreamCaptor.toString().replaceAll("(\r\n|\r|\n|\n\r)", ""));
+    }
+    @Test
+    void printQuestionGameRestart(){
+        //given
+        String expectOutput = MessagesForPrint.RESTART_GAME.getMessage();
+
+        //when
+        messagePrinter.printQuestionGameRestart();
+
+        //then
+        assertEquals(expectOutput,outputStreamCaptor.toString().replaceAll("(\r\n|\r|\n|\n\r)", ""));
+    }
 }

@@ -19,8 +19,7 @@ public class GameController {
 
     public void run(){
         messagePrinter.printGameStart();
-        List<Integer> selectedNumber = baseBallService.selectRandomNumbers();
-        baseBallService.saveRandomNumbers(selectedNumber);
+        selectRandomNumber();
         gaming();
     }
 
@@ -29,8 +28,31 @@ public class GameController {
         GameResult gameResult = baseBallService.compareNumbers(userInputNumbers);
         String message = gameResult.getResultMessage();
         messagePrinter.printGameResult(message);
+        if(gameResult.isGameEnd()){
+            gameEnd();
+            return;
+        }
+        gaming();
     }
 
+    private void selectRandomNumber(){
+        List<Integer> selectedNumber = baseBallService.selectRandomNumbers();
+        baseBallService.saveRandomNumbers(selectedNumber);
+    }
+
+    private void gameEnd(){
+        messagePrinter.printGameEnd();
+        messagePrinter.printQuestionGameRestart();
+        requestInputRestartNumber();
+    }
+
+    public void requestInputRestartNumber(){
+        String input = baseBallService.inputString();
+        if(input.equals("1")) {
+            selectRandomNumber();
+            gaming();
+        }
+    }
 
     public List<Integer> inputNumber() {
         messagePrinter.printReqGameNumbersInput();
