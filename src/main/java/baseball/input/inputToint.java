@@ -1,18 +1,10 @@
-package baseball;
-
-import camp.nextstep.edu.missionutils.Console;
+package baseball.input;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static baseball.exceptions.exception;
+public class inputToint {
 
-public class inputString {
-
-    public static void input(){
-        String inputNumber_s = Console.readLine();
-    }
 
     public static List<Integer> toInt(String inputString){
         int intNumber = Integer.parseInt(inputString);
