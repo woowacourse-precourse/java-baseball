@@ -26,6 +26,7 @@ public class Application {
         System.out.println("IllegalArgumentException 발생!");
         System.out.println("어플리케이션을 종료합니다.");
     }
+
     static boolean checkLength(String str, int num) throws IllegalArgumentException {
         boolean result = true;
         try {
@@ -50,8 +51,20 @@ public class Application {
             errorMessage();
         }
         return result;
+    }
 
-
+    static boolean checkDupllication(String strNumber) {
+        boolean result = true;
+        try {
+            if (strNumber.charAt(0) == strNumber.charAt(1) || strNumber.charAt(0) == strNumber.charAt(2)
+                    || strNumber.charAt(1) == strNumber.charAt(2)) {
+                result = false;
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            errorMessage();
+        }
+        return result;
     }
 
     static boolean getUserNumber() {
@@ -66,9 +79,11 @@ public class Application {
                 return false;
             }
         }
+        if (!checkDupllication(strNumber)) {
+            return false;
+        }
         return true;
     }
-
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -77,4 +92,4 @@ public class Application {
         if (!getUserNumber()) {
             return;
         }
-}
+    }
