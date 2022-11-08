@@ -6,9 +6,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-class ComputerNumberTest {
+class ComputerServiceTest {
 
-    ComputerNumber computer = new ComputerNumber();
+    ComputerService computer = new ComputerService();
 
     @Test
     void 랜덤_숫자_자리수_테스트() {
