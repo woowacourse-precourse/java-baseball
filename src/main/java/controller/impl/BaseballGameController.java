@@ -48,6 +48,13 @@ public class BaseballGameController implements GameController {
         }
     }
 
+    private void checkGameOver() {
+        if(input.get(1) == 3) {
+            flag = false;
+        }
+    }
+
+
     private void initGame(){
         this.flag = true;
         this.randnumVO = new RandNumVO();
