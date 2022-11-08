@@ -43,7 +43,7 @@ public class HintService {
   }
 
   public boolean isContinue(Hint hint) {
-    return hint.getStrikeCount() != 3;
+    return hint.getStrikeCount() != RANDOM_NUMBER_SIZE;
   }
 
   public void printHint(Hint hint) {
