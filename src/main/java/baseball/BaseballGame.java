@@ -3,7 +3,6 @@ package baseball;
 import baseball.resource.AskRestartValue;
 import baseball.resource.GameMessage;
 import baseball.validation.AskValidation;
-import baseball.validation.GameValidation;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
@@ -28,12 +27,8 @@ public class BaseballGame {
     }
 
     public void playGame() {
-        GameValidation gameValidation = new GameValidation();
+        User user = new User();
 
-        System.out.print(GameMessage.INPUT_NUMBER_MESSAGE);
-        String userInput = Console.readLine();
-
-        gameValidation.setUserInput(userInput);
-        gameValidation.isAllCheck();
+        user.inputUserBaseballNumber();
     }
 }
