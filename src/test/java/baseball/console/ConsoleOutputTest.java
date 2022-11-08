@@ -73,7 +73,7 @@ class ConsoleOutputTest {
             String expected = "낫싱\n";
 
             //when
-            messagePrinter.printResultMessage(dto);
+            messagePrinter.printResultMessage(dto.toString());
 
             //then
             assertThat(outContent.toString()).isEqualTo(expected);
@@ -87,7 +87,7 @@ class ConsoleOutputTest {
             String expected = "1볼\n";
 
             //when
-            messagePrinter.printResultMessage(dto);
+            messagePrinter.printResultMessage(dto.toString());
 
             //then
             assertThat(outContent.toString()).isEqualTo(expected);
@@ -101,7 +101,7 @@ class ConsoleOutputTest {
             String expected = "1스트라이크\n";
 
             //when
-            messagePrinter.printResultMessage(dto);
+            messagePrinter.printResultMessage(dto.toString());
 
             //then
             assertThat(outContent.toString()).isEqualTo(expected);
@@ -115,7 +115,7 @@ class ConsoleOutputTest {
             String expected = "1볼 1스트라이크\n";
 
             //when
-            messagePrinter.printResultMessage(dto);
+            messagePrinter.printResultMessage(dto.toString());
 
             //then
             assertThat(outContent.toString()).isEqualTo(expected);
@@ -129,7 +129,7 @@ class ConsoleOutputTest {
             String expected = "2볼 1스트라이크\n";
 
             //when
-            messagePrinter.printResultMessage(dto);
+            messagePrinter.printResultMessage(dto.toString());
 
             //then
             assertThat(outContent.toString()).isEqualTo(expected);
@@ -143,7 +143,7 @@ class ConsoleOutputTest {
             String expected = "3스트라이크\n";
 
             //when
-            messagePrinter.printResultMessage(dto);
+            messagePrinter.printResultMessage(dto.toString());
 
             //then
             assertThat(outContent.toString()).isEqualTo(expected);

@@ -33,7 +33,7 @@ public class BaseballGame {
             List<Integer> threeNumbers = player.inputThreeNumbers(Console.readLine());
 
             answer = computer.answer(threeNumbers);
-            console.printResultMessage(answer);
+            console.printResultMessage(answer.toString());
 
         } while (isWrongAnswer(answer));
         console.printFinishMessage();
