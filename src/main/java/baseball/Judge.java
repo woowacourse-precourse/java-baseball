@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Judge {
 
@@ -29,9 +28,41 @@ public class Judge {
 		return new Judge(strikeCount, ballCount);
 	}
 
-	public static ArrayList<String> makeNumberList(String number){
-		String[] numberArr = number.split("");
-		return new ArrayList<>(Arrays.asList(numberArr));
+	public String printHint(){
+		if (isNothing()){
+			return Message.NOTHING.getMsg();
+		}
+		if (isOnlyStrike()){
+			return strike + Message.STRIKE.getMsg();
+		}
+		if (isOnlyBall()){
+			return ball + Message.BALL.getMsg();
+		}
+		return ball + Message.BALL.getMsg() + " " + strike + Message.STRIKE.getMsg();
+	}
+
+	public boolean isThreeStrike(){
+		if (strike == Constant.NUMBER_LENGTH.getNumber()){
+			endGameMessage();
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isNothing(){
+		return strike == 0 && ball == 0;
+	}
+
+	private boolean isOnlyStrike(){
+		return strike > 0 && ball == 0;
+	}
+
+	private boolean isOnlyBall(){
+		return strike == 0 && ball > 0;
+	}
+
+	public void endGameMessage(){
+		System.out.println(Message.END_GAME.getMsg());
 	}
 
 	// 테스트용 getter
