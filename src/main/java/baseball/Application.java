@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    private static String mode = "1";
+    private static String mode;
 
     private static void readMode() {
         mode = Console.readLine();
@@ -30,8 +30,13 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    private static void modeInit() {
+        mode = "1";
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        modeInit();
         printInit();
         playBaseball();
     }
