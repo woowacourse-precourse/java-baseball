@@ -2,8 +2,6 @@ package domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import domain.Game;
-import domain.ValidityChecker;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
