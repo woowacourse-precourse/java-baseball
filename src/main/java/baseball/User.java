@@ -9,7 +9,7 @@ public class User {
     protected String input;
     protected int number;
 
-    protected int game_state;
+    protected boolean game_state = true;
 
     ArrayList<Character> user = new ArrayList<>();
 
@@ -25,10 +25,8 @@ public class User {
 
     public void inputGameState() {
         String input = readLine();
-        if (input.equals("1")) {
-            this.game_state = 1;
-        } else if (input.equals("2")) {
-            this.game_state = 2;
+        if (input.equals("2")) {
+            this.game_state = false;
         } else if (!input.equals("1") || !input.equals("2")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
