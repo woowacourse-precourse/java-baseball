@@ -50,7 +50,21 @@ public class Application {
     }
 
     static List<Integer> createAnswer(){
-        List<Integer> answerList = new ArrayList<>();
+        List<Integer> answerList = new ArrayList<>(3); //allocate exact capacity to list
+        int randomNum = 0;
+        while (answerList.size() < 3){
+            randomNum = Randoms.pickNumberInRange(1, 9);
+            if (!answerList.contains(randomNum)) {
+                answerList.add(randomNum);
+            }
+        }
+
+        //for debugging
+        for (Integer i : answerList) {
+            System.out.print(i);
+        }
+        System.out.println();
+        //
 
         return answerList;
     }
@@ -80,6 +94,7 @@ public class Application {
     public static void main(String[] args) {
 
         List<Integer> isStrike = inputAnswer();
+        List<Integer> Answer = createAnswer();
 
         //for debugging
         for (Integer i : isStrike) {
