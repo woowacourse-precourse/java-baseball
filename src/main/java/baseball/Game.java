@@ -6,6 +6,7 @@ import baseball.domain.Hint;
 import baseball.domain.Rule;
 
 import static baseball.constant.Constant.*;
+import static baseball.domain.Computer.*;
 import static baseball.view.View.*;
 
 public class Game {
@@ -14,7 +15,7 @@ public class Game {
     }
 
     public void play() {
-        Computer computer = new Computer();
+        Computer computer = createRandomNumbers();
         Gamer gamer = new Gamer();
         Rule rule = new Rule();
         Hint.init();

@@ -12,15 +12,19 @@ import static baseball.constant.Constant.*;
 public class Computer {
     private final List<Integer> randomNumbers;
 
-    public Computer() {
-        this.randomNumbers = this.generateNumbers();
+    public static Computer createRandomNumbers() {
+        return new Computer(generateNumbers());
+    }
+
+    private Computer(List<Integer> randomNumbers) {
+        this.randomNumbers = randomNumbers;
     }
 
     public List<Integer> getRandomNumbers() {
         return this.randomNumbers;
     }
 
-    private List<Integer> generateNumbers() {
+    private static List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() != RANDOM_NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER);
@@ -31,7 +35,7 @@ public class Computer {
         return numbers;
     }
 
-    private boolean isDuplicateNumber(int randomNumber, List<Integer> numbers) {
+    private static boolean isDuplicateNumber(int randomNumber, List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number == randomNumber) {
                 return true;

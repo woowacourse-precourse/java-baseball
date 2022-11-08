@@ -1,8 +1,12 @@
 package baseball;
 
 import baseball.exception.InputException;
+import baseball.util.Util;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -32,6 +36,18 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    /*
+    형 변환 테스트코드
+     */
+
+    @Test
+    public void 문자를_숫자_리스트로_변경() {
+        String inputNumbers = "123";
+        List<Integer> result = Arrays.asList(1, 2, 3);
+
+        assertThat(result).isEqualTo(Util.toList(inputNumbers));
     }
 
     /*
