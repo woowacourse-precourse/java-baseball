@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,11 +9,11 @@ public class UserInput {
 
     private List<Integer> number = new ArrayList<Integer>();
 
-    public void input(Scanner sc) {
+    public void input() {
         System.out.print("숫자를 입력해주세요 : ");
 
         //Scanner sc = new Scanner(System.in);
-        String inputString = sc.nextLine();
+        String inputString = Console.readLine();
 
         if (check_input(inputString) == false) {
             throw new IllegalArgumentException();

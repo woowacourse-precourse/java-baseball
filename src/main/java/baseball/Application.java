@@ -1,13 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-
-        Scanner sc = new Scanner(System.in);
 
         boolean reset = true;
         while (reset) {
@@ -20,7 +19,7 @@ public class Application {
             while (!tryAgain) {
                 // 유저 입력
                 UserInput userInput = new UserInput();
-                userInput.input(sc);
+                userInput.input();
                 //System.out.println(userInput.getNumber());
 
                 // 결과
@@ -31,7 +30,7 @@ public class Application {
             // 게임 재시작/종료
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            String re = sc.nextLine();
+            String re = Console.readLine();
 
             if (re == "1") {
                 reset = true;
