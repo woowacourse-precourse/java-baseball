@@ -9,15 +9,19 @@ import static camp.nextstep.edu.missionutils.Console.*;
 
 
 public class Application {
-    static final int gameRestart = 1;
-    static final int gameEnd = 2;
+    static final int GAME_RESTART = 1;
+    static final int GAME_END = 2;
     static final int COUNT_INITALIZE = 0;
     static final int GAME_END_STRIKE_COUNT = 3;
+    static final int MAX_NUMBER_COUNT = 3;
+    static final int RANDOM_NUMBER_RANGE_START = 1;
+    static final int RANDOM_NUMBER_RANGE_END = 9;
+
 
     public static List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < MAX_NUMBER_COUNT) {
+            int randomNumber = Randoms.pickNumberInRange(RANDOM_NUMBER_RANGE_START, RANDOM_NUMBER_RANGE_END);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
@@ -28,7 +32,7 @@ public class Application {
     public static List<Integer> inputUserNumber() throws IllegalArgumentException{
         List<Integer> userInputNumber = new ArrayList<>();
         String inputNumber = readLine();
-        if(inputNumber.length() != 3) {
+        if(inputNumber.length() != MAX_NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
 
@@ -83,8 +87,8 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int gameContinue = gameRestart;
-        while(gameContinue != gameEnd) {
+        int gameContinue = GAME_RESTART;
+        while(gameContinue != GAME_END) {
             List<Integer> computerCreateNumber = createRandomNumber();
             List<Integer> userInputNumber = new ArrayList<>();
             int strikeCount = COUNT_INITALIZE;
