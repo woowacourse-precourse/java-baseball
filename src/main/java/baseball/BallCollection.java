@@ -36,7 +36,7 @@ public class BallCollection {
         }
     }
 
-    public static BallCollection stringToBall(String numbers) {
+    public static BallCollection stringToBallCollection(String numbers) {
         List<Integer> balls = Arrays.stream(numbers.split(""))
                 .map(number -> Integer.parseInt(number))
                 .collect(Collectors.toList());

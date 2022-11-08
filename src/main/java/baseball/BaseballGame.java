@@ -10,7 +10,7 @@ public class BaseballGame {
         String playerInput = requestPlayerInputNumbers();
 
         validateInputRange(playerInput);
-        return BallCollection.stringToBall(playerInput);
+        return BallCollection.stringToBallCollection(playerInput);
     }
 
     private String requestPlayerInputNumbers() {
