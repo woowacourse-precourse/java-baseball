@@ -29,7 +29,7 @@ public class Ball {
         if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
-        Ball other = (Ball)obj;
+        Ball other = (Ball) obj;
         return matchNumber(other)
             && matchPosition(other);
     }

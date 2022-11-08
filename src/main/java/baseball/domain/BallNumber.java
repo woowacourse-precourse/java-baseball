@@ -31,7 +31,7 @@ public class BallNumber {
         if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
-        BallNumber other = (BallNumber)obj;
+        BallNumber other = (BallNumber) obj;
         return this.number == other.number;
     }
 }
