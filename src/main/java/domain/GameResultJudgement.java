@@ -1,4 +1,4 @@
-package baseball;
+package domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,10 +7,6 @@ import java.util.List;
 public class GameResultJudgement {
 
     private int maxLen;
-
-    public GameResultJudgement() {
-        this(3);
-    }
 
     public GameResultJudgement(int maxLen) {
         this.maxLen = maxLen;

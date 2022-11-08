@@ -1,15 +1,10 @@
 package ui;
 
+import java.util.List;
+
 public interface Output {
-    void printMessage(String message);
 
-    void printStartMessage();
+    void printOut(String message);
+    void printOutAfterConversion(List<Integer> judgement);
 
-    void printRequestNumberInput();
-
-    void printEndGame();
-
-    void printRequestRestartGameInput();
-
-    void printGameResult(String buffer);
 }
