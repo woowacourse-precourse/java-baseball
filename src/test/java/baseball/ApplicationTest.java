@@ -2,9 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
-
-import java.util.List;
 
 import static baseball.Constant.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -19,7 +16,7 @@ class ApplicationTest extends NsTest {
     void 입력_길이_오류() {
         String playerAnswer = "1234";
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                Computer.validateNumber(playerAnswer));
+                Player.validateNumber(playerAnswer));
         assertEquals(LENGTH_ERROR_MESSAGE, exception.getMessage());
     }
 
@@ -27,7 +24,7 @@ class ApplicationTest extends NsTest {
     void 입력_중복_오류() {
         String playerAnswer = "133";
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                Computer.validateNumber(playerAnswer));
+                Player.validateNumber(playerAnswer));
         assertEquals(DUPLICATE_ERROR_MESSAGE, exception.getMessage());
     }
 
@@ -35,7 +32,7 @@ class ApplicationTest extends NsTest {
     void 입력_값_오류1() {
         String playerAnswer = "12p";
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                Computer.validateNumber(playerAnswer));
+                Player.validateNumber(playerAnswer));
         assertEquals(INPUT_ERROR_MESSAGE, exception.getMessage());
     }
 
