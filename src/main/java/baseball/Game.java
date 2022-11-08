@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
+    private static final int RESTART = 1;
+    private static final int EXIT = 2;
     private final Computer computer;
     private final User user;
 
@@ -13,7 +15,7 @@ public class Game {
 
     public static Game start(User user) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Computer computer = Computer.generateAnswer();
+        Computer computer = Computer.create();
         return new Game(computer, user);
     }
 
@@ -23,8 +25,8 @@ public class Game {
             Status status = computer.status(user);
             System.out.println(status);
             if (status.correct()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", Numbers.LENGTH);
+                System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n", RESTART, EXIT);
                 return restart();
             }
         }
@@ -40,8 +42,8 @@ public class Game {
     }
 
     private boolean restart(int input) {
-        if (input == 1) return true;
-        if (input == 2) return false;
+        if (input == RESTART) return true;
+        if (input == EXIT) return false;
         throw new IllegalArgumentException("잘못된 입력입니다");
     }
 }
