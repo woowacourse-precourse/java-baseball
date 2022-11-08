@@ -32,7 +32,7 @@ public class Application {
 
             Integer strike = calculateStrike(computerOutput, userInput);
 
-            String result = currentSituation(ball, strike);
+            String result = judgeCurrentSituation(ball, strike);
 
             System.out.println(result);
 
@@ -85,7 +85,7 @@ public class Application {
         return strike;
     }
 
-    public static String currentSituation(Integer ball, Integer strike) {
+    public static String judgeCurrentSituation(Integer ball, Integer strike) {
         if (ball == 0 && strike == 0) return "낫싱";
         else if (ball == 0) return strike + "스트라이크";
         else if (strike == 0) return ball + "볼";
