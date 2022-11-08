@@ -12,7 +12,7 @@ public class InputHandler {
     static OutputHandler outputHandler;
 
 
-    public static String getInput_returnMyNum() throws IOException {
+    public static String getInput_returnMyNum() {
         outputHandler = new OutputHandler();
         errorHandler = new ErrorHandler();
         outputHandler.printGetUserNumber();
@@ -31,12 +31,12 @@ public class InputHandler {
         if(!errorHandler.isRange(myNumList)){
             throw new IllegalArgumentException();
         }
-        if(!errorHandler.isNotDuplicated(myNumList)){
-            throw new IllegalArgumentException();
-        }
+//        if(!errorHandler.isNotDuplicated(myNumList)){
+//            throw new IllegalArgumentException();
+//        }
         return myNum;
     }
-    public int getRestartNum() throws IOException {
+    public int getRestartNum() {
         try {
             int restartNum = Integer.parseInt(Console.readLine());
             return restartNum;

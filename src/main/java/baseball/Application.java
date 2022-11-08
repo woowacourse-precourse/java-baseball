@@ -9,8 +9,7 @@ public class Application {
     static RadomNumberCreator radomNumberCreator;
     static InputHandler inputHandler;
     static OutputHandler outputHandler;
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static void main(String[] args) throws IOException {
+   public static void main(String[] args)  {
 
         inputHandler = new InputHandler();
         outputHandler = new OutputHandler();

@@ -8,12 +8,12 @@ public class BaseBallGame {
     static OutputHandler outputHandler = new OutputHandler();
 
 
-    public void baseballGame(String randomNum) throws IOException {
+    public void baseballGame(String randomNum) {
         while(true) {
             String myNum = inputHandler.getInput_returnMyNum();
 
             int strike = findStrike(randomNum, myNum);
-            int ball = findBoll(randomNum, myNum, strike);
+            int ball = findBall(randomNum, myNum, strike);
 
             outputHandler.Strike_andBall_result_print(strike, ball);
             if(strike==3){
@@ -31,7 +31,7 @@ public class BaseBallGame {
         return strikeCnt;
     }
 
-    public int findBoll(String comNum, String myNum, int strikeCnt) {
+    public int findBall(String comNum, String myNum, int strikeCnt) {
         int ballCnt = 0 ;
         for(int i=0; i<comNum.length(); i++){
             if(myNum.contains(comNum.substring(i, i+1))){
