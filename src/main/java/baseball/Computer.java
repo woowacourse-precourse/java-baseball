@@ -3,26 +3,22 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class Computer {
     final static int NUMBER_LENGTH = 3;
-    private ArrayList<Integer> randomNumbers = new ArrayList<>();
+    private ArrayList<String> randomNumbers = new ArrayList<>();
 
     Computer() {
         while (randomNumbers.size() < NUMBER_LENGTH) {
             Integer newRandomNumber = pickRandomNumber();
             if (!has(newRandomNumber)) {
-                randomNumbers.add(newRandomNumber);
+                randomNumbers.add(Integer.toString(newRandomNumber));
             }
         }
     }
 
-    public String getRandomNumbers() {
-        String randomNumberString = this.randomNumbers.stream()
-                .map(number -> number.toString())
-                .collect(Collectors.joining());
-        return randomNumberString;
+    public String getStringRandomNumbers() {
+        return String.join("", randomNumbers);
     }
 
     private boolean has(Integer number) {
