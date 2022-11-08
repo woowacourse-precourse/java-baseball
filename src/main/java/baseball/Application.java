@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Application {
-    private static List<Integer> rand_num_gen() {
+    private static List<Integer> randNumGen() {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
@@ -21,24 +21,24 @@ public class Application {
         return computer;
     }
 
-    private static List<Integer> rand_num_input() {
-        List<Integer> input_tolist = new ArrayList<>();
+    private static List<Integer> inputNum() {
+        List<Integer> inputToList = new ArrayList<>();
         String input = Console.readLine();
 
         for (int i = 0; i < input.length(); i++) {
-            input_tolist.add(Character.getNumericValue(input.charAt(i)));
+            inputToList.add(Character.getNumericValue(input.charAt(i)));
         }
 
-        return input_tolist;
+        return inputToList;
     }
 
-    private static boolean is_execption(List<Integer> input) {
+    private static boolean isException(List<Integer> input) {
         if (input.size() != 3) {
             return true;
         }
 
-        Set<Integer> input_toset = new HashSet<>(input);
-        if (input.size() != input_toset.size()) {
+        Set<Integer> inputToSet = new HashSet<>(input);
+        if (input.size() != inputToSet.size()) {
             return true;
         }
 
@@ -51,7 +51,7 @@ public class Application {
         return false;
     }
 
-    private static boolean compare_input(List<Integer> ans, List<Integer> input) {
+    private static boolean compareInput(List<Integer> ans, List<Integer> input) {
         int strike = 0;
         int ball = 0;
 
@@ -79,7 +79,7 @@ public class Application {
         return false;
     }
 
-    private static String exit_and_restart(){
+    private static String exitAndRestart(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -91,20 +91,20 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         //1. 상대방이 랜덤한 세 자리수를 생성한다.
-        List<Integer> rand_num = rand_num_gen();
+        List<Integer> randNum = randNumGen();
 
         while (true) {
             //2. 사용자로부터 세 자리수를 입력받는다.
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> input_num = rand_num_input();
+            List<Integer> inputNum = inputNum();
 
             //3. 사용자로부터 입력 받은 수가 잘못된 값인 경우 프로그램을 종료한다.
-            if (is_execption(input_num)){
+            if (isException(inputNum)){
                 throw new IllegalArgumentException();
             }
 
             //4. 사용자로부터 입력 받은 수를 상대방의 수와 비교해 결과를 출력하고, 두 수가 같은 지 판별한다.
-            boolean match = compare_input(rand_num, input_num);
+            boolean match = compareInput(randNum, inputNum);
 
             //5. 두 수가 같지 않다면, 게임을 계속해서 진행한다.
             if (!match) {
@@ -112,11 +112,11 @@ public class Application {
             }
 
             //6. 두 수가 같다면, 게임을 종료 후 재시작 여부를 사용자에게 입력받는다.
-            String input = exit_and_restart();
+            String input = exitAndRestart();
 
             //7. 재시작 여부에 대한 입력에 따라 처리한다.
             if (input.equals("1")){
-                rand_num = rand_num_gen();
+                randNum = randNumGen();
             } else if (input.equals("2")){
                 break;
             } else{
