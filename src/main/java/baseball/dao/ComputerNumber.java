@@ -7,10 +7,6 @@ public class ComputerNumber {
         this.computerNumber = number;
     }
 
-    public ComputerNumber() {
-        this.computerNumber = 123; //TODO - set random pick number
-    }
-
     public int getNumber() {
         return this.computerNumber;
     }
