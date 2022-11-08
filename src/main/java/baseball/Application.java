@@ -28,9 +28,16 @@ public class Application {
     public static void playGame(){
         printInputMsg();
         String computer = getRandomNumber();
-        String userInput = Console.readLine();
-        validateNum(userInput);
-        compare(computer, userInput);
+        while(true){
+            String userInput = Console.readLine();
+            validateNum(userInput);
+            int[] results = compare(computer, userInput);
+            printHintMsg(results);
+            if (results[STRIKE_IDX] == 3){
+                printEndMsg();
+                break;
+            }
+        }
     }
 
     public static int[] compare(String computer, String user) {
