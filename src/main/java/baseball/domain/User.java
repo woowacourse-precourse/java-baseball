@@ -6,12 +6,25 @@ import java.util.List;
 
 public class User {
 
+    List<String> userAnswer;
+    String userReplayAnswer;
+
     public List<String> getUserAnswer() {
-        return Input.inputNumber();
+        inputUserAnswer();
+        return userAnswer;
+    }
+
+    private void inputUserAnswer() {
+        userAnswer = Input.inputNumber();
     }
 
     public String getUserReplayAnswer() {
-        return Input.inputReplayAnswer();
+        inputUserReplayAnswer();
+        return userReplayAnswer;
+    }
+
+    private void inputUserReplayAnswer() {
+        userReplayAnswer = Input.inputReplayAnswer();
     }
 
 }
