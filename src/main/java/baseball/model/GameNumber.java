@@ -4,11 +4,12 @@ import baseball.controller.NumberValidator;
 import baseball.controller.RandomUtility;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class GameNumber {
     private String inputString;
-    private int[] playerNumbers;
-    private int[] computerNumbers;
+    private List<Integer> playerNumbers;
+    private List<Integer> computerNumbers;
 
     public void setInputString(String inputString) {
         this.inputString = inputString.replaceAll(" ", "");
@@ -18,20 +19,20 @@ public class GameNumber {
         return inputString;
     }
 
-    public void setPlayerNumbers(int[] playerNumbers) {
+    public void setPlayerNumbers(List<Integer> playerNumbers) {
         this.playerNumbers = playerNumbers;
     }
 
-    public int[] getPlayerNumbers() {
+    public List<Integer> getPlayerNumbers() {
         return playerNumbers;
     }
 
-    public void setComputerNumbers(int[] computerNumbers) {
+    public void setComputerNumbers(List<Integer> computerNumbers) {
         this.computerNumbers = computerNumbers;
-        System.out.println("computerNumbers" + Arrays.toString(computerNumbers));
+        System.out.println("computerNumbers" + Arrays.toString(new List[]{computerNumbers}));
     }
 
-    public int[] getComputerNumbers() {
+    public List<Integer> getComputerNumbers() {
         return computerNumbers;
     }
 }

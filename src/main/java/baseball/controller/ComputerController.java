@@ -4,6 +4,7 @@ import baseball.model.GameNumber;
 import baseball.view.OutputView;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class ComputerController {
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
@@ -20,20 +21,20 @@ public class ComputerController {
     OutputView outputView = new OutputView();
 
     public void startGame(GameNumber gameNumber) {
-        int[] computerNumbers = randomUtility.generateRandomNumbers();
+        List<Integer> computerNumbers = randomUtility.generateRandomNumbers();
         gameNumber.setComputerNumbers(computerNumbers);
     }
 
     public boolean proceedComputerToDo(GameNumber gameNumber) {
-        int[] playerNumbers = gameNumber.getPlayerNumbers();
-        int[] computerNumbers = gameNumber.getComputerNumbers();
+        List<Integer> playerNumbers = gameNumber.getPlayerNumbers();
+        List<Integer> computerNumbers = gameNumber.getComputerNumbers();
 
         compareNumbers(playerNumbers, computerNumbers);
 
         return isThreeStrike();
     }
 
-    private void compareNumbers(int[] playerNumbers, int[] computerNumbers) {
+    private void compareNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         initCount();
         checkStrikeAndBall(playerNumbers, computerNumbers);
         provideHint();
@@ -44,10 +45,10 @@ public class ComputerController {
         ballCount = INIT_ZERO;
     }
 
-    private void checkStrikeAndBall(int[] playerNumbers, int[] computerNumbers) {
+    private void checkStrikeAndBall(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
-            countStrike(computerNumbers[i], playerNumbers[i]);
-            countBall(computerNumbers, playerNumbers[i], i);
+            countStrike(computerNumbers.get(i), playerNumbers.get(i));
+            countBall(computerNumbers, playerNumbers.get(i), i);
         }
     }
 
@@ -57,9 +58,8 @@ public class ComputerController {
         }
     }
 
-    private void countBall(int[] computerNumbers, int playerNumber, int numberIndex) {
-        if ((computerNumbers[numberIndex] != playerNumber)
-                && Arrays.stream(computerNumbers).anyMatch(number -> number == playerNumber)) {
+    private void countBall(List<Integer> computerNumbers, int playerNumber, int numberIndex) {
+        if (computerNumbers.get(numberIndex) != playerNumber && computerNumbers.contains(playerNumber)) {
             ballCount++;
         }
     }

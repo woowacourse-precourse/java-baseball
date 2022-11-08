@@ -4,6 +4,8 @@ import baseball.model.GameNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.List;
+
 public class GameController {
     private static final String WRONG_ANSWER_INPUT_MESSAGE = "1 혹은 2만 입력 가능합니다.";
     private static final String BASEBALL_GAME_RESTART_ANSWER = "1";
@@ -37,7 +39,7 @@ public class GameController {
 
     private void setAndSavePlayerNumbers() {
         gameNumber.setInputString(inputView.enterGameNumber());
-        int[] playerNumbers = numberValidator.toValidateData(gameNumber.getInputString());
+        List<Integer> playerNumbers = numberValidator.toValidateData(gameNumber.getInputString());
         gameNumber.setPlayerNumbers(playerNumbers);
     }
 

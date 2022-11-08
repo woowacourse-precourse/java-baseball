@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -13,7 +14,7 @@ public class NumberValidator {
     private static final char BASEBALL_GAME_START_NUMBER_CHAR = '1';
     private static final char BASEBALL_GAME_END_NUMBER_CHAR = '9';
 
-    public int[] toValidateData(String inputNumber) {
+    public List<Integer> toValidateData(String inputNumber) {
         if (!isTreeLetters(inputNumber)) {
             throw new IllegalArgumentException(WRONG_LENGTH_INPUT_MESSAGE);
         } else if (!isNumericString(inputNumber)) {
@@ -22,7 +23,7 @@ public class NumberValidator {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_INPUT_MESSAGE);
         }
 
-        return convertStringToIntArray(inputNumber);
+        return convertStringToIntList(inputNumber);
     }
 
     public boolean isTreeLetters(String inputNumber) {
@@ -50,7 +51,8 @@ public class NumberValidator {
         return setNumbers.size() == BASEBALL_GAME_NUMBER_LENGTH;
     }
 
-    public int[] convertStringToIntArray(String inputNumber) {
-        return Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).toArray();
+    public List<Integer> convertStringToIntList(String inputNumber) {
+        int[] convertIntArray = Stream.of(inputNumber.split("")).mapToInt(Integer::parseInt).toArray();
+        return Arrays.stream(convertIntArray).boxed().collect(Collectors.toList());
     }
 }
