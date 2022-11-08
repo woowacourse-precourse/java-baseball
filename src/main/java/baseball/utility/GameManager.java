@@ -11,4 +11,11 @@ public class GameManager {
     private GameManager() {
         this.gameStatus = GameStatus.STOPPED;
     }
+
+    public static GameManager getGameManager() {
+        if (gameManager == null) {
+            gameManager = new GameManager();
+        }
+        return gameManager;
+    }
 }
