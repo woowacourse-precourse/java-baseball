@@ -1,16 +1,16 @@
 package baseball.domain;
 
-import baseball.excpetion.NumberException;
+import baseball.excpetion.InputException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserNumber {
-    private NumberException numberException;
+    private InputException numberException;
 
     public UserNumber(){
-        numberException = new NumberException();
+        numberException = new InputException();
 
     }
 
@@ -18,7 +18,7 @@ public class UserNumber {
         String userNumber = Console.readLine();
         numberException.validNumberLength(userNumber);
         numberException.validDuplicateNumber(userNumber);
-        numberException.validContainLetter(userNumber);
+        numberException.validNumberType(userNumber);
         return stringToList(userNumber);
 
     }

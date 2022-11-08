@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.excpetion.NumberException;
+import baseball.excpetion.InputException;
 import baseball.domain.ComputerNumber;
 import baseball.domain.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
@@ -20,13 +20,13 @@ public class GamePlay {
     private ComputerNumber computerNumber;
     private UserNumber userNumber;
     private List<Integer> userNumberList;
-    private NumberException numberException;
+    private InputException numberException;
     private int strike =0;
 
     public GamePlay(){
         computerNumber = new ComputerNumber();
         userNumber = new UserNumber();
-        numberException = new NumberException();
+        numberException = new InputException();
 
     }
 

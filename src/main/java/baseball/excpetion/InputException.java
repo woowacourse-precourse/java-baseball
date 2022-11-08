@@ -3,15 +3,16 @@ package baseball.excpetion;
 import java.util.HashSet;
 import java.util.Set;
 
-public class NumberException {
+public class InputException {
 
     public void validNumberLength(String input){
         if(input.length()!=3){
             throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
         }
     }
-    public void validContainLetter(String input){
-        if(input.matches("^[1-9]")){
+    public void validNumberType(String input){
+        String regExp = "[1-9]+";
+        if(!input.matches(regExp)){
             throw new IllegalArgumentException("0을 제외한 숫자만 입력해주세요.");
         }
     }

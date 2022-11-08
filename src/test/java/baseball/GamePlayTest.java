@@ -2,8 +2,7 @@ package baseball;
 
 import baseball.domain.ComputerNumber;
 import baseball.domain.UserNumber;
-import baseball.excpetion.NumberException;
-import org.assertj.core.internal.bytebuddy.pool.TypePool;
+import baseball.excpetion.InputException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +22,7 @@ public class GamePlayTest {
     final GamePlay gamePlay = new GamePlay();
     final ComputerNumber computerNumber = new ComputerNumber();
     final UserNumber userNumber = new UserNumber();
-    final NumberException numberException = new NumberException();
+    final InputException numberException = new InputException();
 
     @BeforeEach
     void setUp(){
@@ -114,7 +113,7 @@ public class GamePlayTest {
         assertThat(uniqueList.size()).isEqualTo(3);
     }
     @Test
-    void 컴퓨터의_숫자가_숫자로만_구성(){
+    void 컴퓨터의_숫자가_범위내에서_구성(){
         // given
         List<Integer> computerNumberList = computerNumber.generateNumber();
         String numbers = "1234567989";
@@ -147,7 +146,7 @@ public class GamePlayTest {
         // given
         String userInput = "015";
         // when
-        assertThatThrownBy(()-> numberException.validContainLetter(userInput))
+        assertThatThrownBy(()-> numberException.validNumberType(userInput))
                 //then
                 .isInstanceOf(IllegalArgumentException.class);
     }
