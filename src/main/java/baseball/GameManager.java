@@ -78,14 +78,21 @@ public class GameManager {
         System.out.println("숫자 야구 게임을 시작합니다.");
         this.init();
         while (isContinue) {
-            this.scanNumber();
-            this.judgeResult();
-            this.printResult();
-            if (resultHash.get('S')==3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                scanIsContinue();
-                this.init();
+            this.gameFlow();
+        }
+    }
+
+    void gameFlow() {
+        this.scanNumber();
+        this.judgeResult();
+        this.printResult();
+        if (resultHash.get('S')==3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            scanIsContinue();
+            if (!isContinue) {
+                return;
             }
+            this.init();
         }
     }
 }
