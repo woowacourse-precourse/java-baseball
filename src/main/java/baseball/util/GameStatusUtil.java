@@ -1,4 +1,6 @@
-package baseball.config;
+package baseball.util;
+
+import baseball.config.GameStatus;
 
 public class GameStatusUtil {
     /**
