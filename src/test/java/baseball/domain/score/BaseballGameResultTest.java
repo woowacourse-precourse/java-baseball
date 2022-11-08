@@ -43,4 +43,11 @@ class BaseballGameResultTest {
     board = new Result(2,3);
     assertEquals("3볼 2스트라이크", board.getResults());
   }
+
+  @Test
+  @DisplayName("점수 결과가 3볼일 경우")
+  void print_3_ball(){
+    board = new Result(0,3);
+    assertEquals("3볼", board.getResults());
+  }
 }
