@@ -6,7 +6,7 @@ public interface GameInterface {
 
     abstract void start(); // 게임을 시작한다. 시작 메시지를 띄워 준다.
 
-    abstract void end(); // 사용자에게 게임을 다시 시작할 것인지 묻고, 종료할 것이라면 true, 아니면 false 를 반환한다.
+    abstract boolean end(); // 사용자에게 게임을 다시 시작할 것인지 묻고, 종료할 것이라면 true, 아니면 false 를 반환한다.
 
     abstract boolean askRestart(); // 사용자에게 게임을 다시 시작할 것인지 묻는다.
 
