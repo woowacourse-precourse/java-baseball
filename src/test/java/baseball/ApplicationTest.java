@@ -58,6 +58,14 @@ class ApplicationTest extends NsTest {
             assertThat(answer.charAt(i)).isGreaterThanOrEqualTo('1');
         }
     }
+
+    @Test
+    void testIsStrike() {
+        Application app = new Application();
+
+        assertThat(app.isStrike("123","123")).isTrue();
+        assertThat(app.isStrike("123","321")).isFalse();
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
