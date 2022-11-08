@@ -11,8 +11,8 @@ public class UserBall {
 	private String status;
 
 	public UserBall(Integer ball, Integer strike) {
-		this.ball = 0;
-		this.strike = 0;
+		this.ball = ball;
+		this.strike = strike;
 	}
 
 	public static UserBall createUserBall() {

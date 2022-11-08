@@ -28,7 +28,7 @@ class UserBallTest {
 		Assertions.assertThat(userBallFalse.is3Strike()).isFalse();
 	}
 
-	@DisplayName("볼 개수를 업데이트 하면 그에 따른 userBall 의 상태가 볼개수+볼 문자열 상태를 가진다")
+	@DisplayName("볼 개수로 updateBallCount 시 userball 의 ball 상태 변화 확인 테스트")
 	@Test
 	void updateBallCount() {
 		Integer ballCount = 2;
@@ -36,10 +36,13 @@ class UserBallTest {
 		userBall.updateBallCount(ballCount);
 		userBall.updateStatus();
 
-		Assertions.assertThat(userBall.createUserBallStatusStringDto()).isEqualTo(ballCount + "볼");
+		UserBall userBallTest = new UserBall(ballCount, 0);
+		userBallTest.updateStatus();
+
+		Assertions.assertThat(userBall).isEqualTo(userBallTest);
 	}
 
-	@DisplayName("스트라이크 개수를 업데이트 하면 그에 따른 userBall 의 상태가 스트라이크개수+스트라이크 문자열 상태를 가진다")
+	@DisplayName("스트라이크 개수로 updateStrikeCount 시 userball 의 strike 상태 변화 확인 테스트")
 	@Test
 	void updateStrikeCount() {
 		Integer strikeCount = 2;
@@ -47,7 +50,10 @@ class UserBallTest {
 		userBall.updateStrikeCount(strikeCount);
 		userBall.updateStatus();
 
-		Assertions.assertThat(userBall.createUserBallStatusStringDto()).isEqualTo(strikeCount + "스트라이크");
+		UserBall userBallTest = new UserBall(0, strikeCount);
+		userBallTest.updateStatus();
+
+		Assertions.assertThat(userBall).isEqualTo(userBallTest);
 	}
 
 	@DisplayName("모든 ball, strike 개수에 따른 userball 상태필드 업데이트 확인 테스트")
