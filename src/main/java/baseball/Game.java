@@ -33,6 +33,7 @@ public class Game {
 
     public void playGame(){
         System.out.println("게임을 시작합니다.");
+        System.out.println("숫자를 입력해주세요.:");
         answerNumber.RandomNumber();
         answerNumberList = answerNumber.getAnswerNumberList();
         do{
