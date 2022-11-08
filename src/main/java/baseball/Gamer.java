@@ -1,9 +1,8 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import static baseball.Constant.*;
 import static baseball.Util.*;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
