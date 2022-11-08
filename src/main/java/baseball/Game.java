@@ -46,7 +46,7 @@ public class Game {
     public String getResult(String playerNumbers) {
         List<Integer> result = new ArrayList<>(2);
         result.add(countStrikes(playerNumbers));
-        result.add(countBalls(playerNumbers ) - result.get(STRIKE));
+        result.add(countBalls(playerNumbers) - result.get(STRIKE));
 
         return getResultMessage(result);
     }
@@ -54,16 +54,14 @@ public class Game {
     private String getResultMessage(List<Integer> result) {
         String resultMessage = "";
         if (result.get(BALL) > 0) {
-//            resultMessage = resultMessage.concat(String.join(Integer.toString(result.get(BALL)), "볼", " "));
-            resultMessage = String.join(Integer.toString(result.get(BALL)), "볼 ");
+            resultMessage = Integer.toString(result.get(BALL)).concat("볼 ");
         }
 
         if (result.get(STRIKE) > 0) {
-//            resultMessage = resultMessage.concat(String.join(Integer.toString(result.get(STRIKE)), "스트라이크"));
-            resultMessage = String.join(resultMessage, Integer.toString(result.get(STRIKE)), "스트라이크");
+            resultMessage = resultMessage.concat(Integer.toString(result.get(STRIKE)).concat("스트라이크"));
         }
 
-        if (resultMessage.length() ==  0) {
+        if (resultMessage.length() == 0) {
             resultMessage = "낫싱";
         }
 
@@ -89,5 +87,4 @@ public class Game {
         }
         return balls;
     }
-
 }
