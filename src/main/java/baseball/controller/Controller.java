@@ -5,8 +5,8 @@ import baseball.service.ServiceImpl;
 import baseball.utils.GetInput;
 
 public class Controller {
-    GetInput getInput = new GetInput();
-    Service service = new ServiceImpl();
+    final GetInput getInput = new GetInput();
+    final Service service = new ServiceImpl();
     public Controller() {
     }
     public void playGame() {
