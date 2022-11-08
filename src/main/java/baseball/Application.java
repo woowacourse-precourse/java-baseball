@@ -23,4 +23,8 @@ public class Application {
 
         return computer;
     }
+
+    public static String[] split(String string){
+        return string.split("");
+    }
 }
