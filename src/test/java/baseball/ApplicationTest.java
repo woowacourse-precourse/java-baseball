@@ -76,14 +76,15 @@ class ApplicationTest extends NsTest {
     @DisplayName("게임 재시작 혹은 종료시 입력값 검증")
     void optionValidate() throws Exception {
         Application app = new Application();
-        Method optionValidate = app.getClass().getDeclaredMethod("optionValidate", int.class);
-        optionValidate.setAccessible(true);
+        Method optionValidate = getOptionValidateMethod(app);
 
         Assertions.assertThatThrownBy(()->
                  optionValidate.invoke(app, 0))
                         .isInstanceOf(InvocationTargetException.class)
                                 .getRootCause().isInstanceOf(IllegalArgumentException.class);
     }
+
+
 
 
     @Test
@@ -142,5 +143,11 @@ class ApplicationTest extends NsTest {
         InputStream in = new ByteArrayInputStream(data.getBytes());
         System.setIn(in);
         return data;
+    }
+
+    private Method getOptionValidateMethod(Application app) throws NoSuchMethodException {
+        Method optionValidate = app.getClass().getDeclaredMethod("optionValidate", int.class);
+        optionValidate.setAccessible(true);
+        return optionValidate;
     }
 }
