@@ -1,7 +1,19 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        gameStart();
+    }
+
+    // 게임 시작
+    public static void gameStart() {
+        int[] computerNumbers = getRandomNumbers();
+        int[] userNumbers = getUserNumbers();
+        compareNumbers(computerNumbers, userNumbers);
     }
 }
