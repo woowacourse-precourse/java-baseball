@@ -21,7 +21,7 @@ public class Application {
 
             List<Integer> computer_num = makeNum();
 
-            System.out.println("computer_num = " + computer_num);
+//            System.out.println("computer_num = " + computer_num);
 
             start = playGame(computer_num);
 
