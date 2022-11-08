@@ -6,7 +6,7 @@ public class Computer {
 
 	String number;
 
-	Computer() {
+	public Computer() {
 		number = getRandomNumber();
 	}
 	private Computer(String number){
