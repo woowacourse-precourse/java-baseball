@@ -264,17 +264,17 @@ while (computer.size() < 3) {
   - 내부적으로 `getScore`를 호출하여 점수를 계산하고, 이 점수를 `translateScoreToHint`를 통해 일정한 형식의 문자열(예: "3스트라이크", "낫싱", "1볼 2스트라이크" 등)로 변환하여 호출자에 반환한다.
   - 이 함수의 호출자인 `GameManager`는 반드시 **유효한** 컴퓨터 번호와 **유효한** 사용자 번호를 인자로 전달해야 한다.
 - **컴퓨터 번호와 사용자 번호를 대조하여 점수를 계산하는 기능**
-  - `private static Score getScore(String computerNumber, String playerNumber)`
+  - `public static Score getScore(String computerNumber, String playerNumber)`
   - 컴퓨터 번호와 사용자 번호를 대조하여 볼과 스트라이크 개수를 계산한다.
   - 계산된 값을 기반으로 `Score` 타입 개체를 생성 및 반환한다.
 - **특정 숫자의 '스트라이크' 여부를 판단하는 기능**
-  - `private static int isStrikeOrNot(String computerNumber, String playerNumber, int index)`
+  - `public static int isStrikeOrNot(String computerNumber, String playerNumber, int index)`
   - 사용자 번호의 특정 색인(`index`)에 위치한 숫자가, 컴퓨터 번호의 같은 색인에 위치할 경우, `스트라이크`라는 의미로 `1`을 반환한다. 그렇지 않을 경우, `0`을 반환한다. 
 - **특정 숫자의 '볼' 여부를 판단하는 기능**
-  - `private static int isBallOrNot(String computerNumber, String playerNumber, int index)`
+  - `public static int isBallOrNot(String computerNumber, String playerNumber, int index)`
   - 사용자 번호의 특정 색인(`index`)에 위치한 숫자가, 컴퓨터 번호의 특정 색인(`index`)을 **제외한** 나머지 색인 어딘가에 존재할 경우, `볼`이라는 의미로 `1`을 반환한다. 그렇지 않을 경우, `0`을 반환한다.
 - **점수를 힌트 문자열로 변환하는 기능** 
-  - `private static String translateScoreToHint(Score score)`
+  - `public static String translateScoreToHint(Score score)`
   - `Score` 타입의 점수를 인자로 받아 이를 일정 형식의 힌트 문자열로 변환한다.
     - 볼의 개수가 `n`, 스트라이크 개수가 `m`일 경우 `n볼 m스트라이크` 형식의 문자열로 변환된다.
     - `n`과 `m` 중 어느 하나만 0일 경우, 0인 쪽은 문자열로 나타내지 않는다.
