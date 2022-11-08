@@ -12,9 +12,17 @@ public class Application {
 	private static List<Integer> computerNumber;
 	private static List<Integer> userNumber;
 	private static String regex = "^[1-9]{3}$";
+	private static final String GAMESTARTSTRING = "숫자 야구 게임을 시작합니다.";
+	private static final String USERINPUTSTRING = "숫자를 입력해주세요 : ";
+	private static final String GAMECLEARSTRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+	private static final String GAMEENDSTRING = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	public static void main(String[] args) {
+		printStr(GAMESTARTSTRING);
+	}
 
+	private static void printStr(String str) {
+		System.out.println(str);
 	}
 
 	private static void createRandomNumber() {
