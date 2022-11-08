@@ -2,8 +2,8 @@ package baseball;
 
 import baseball.data.BaseballData;
 import baseball.game.NumberParser;
-import baseball.game.NumberReferee;
-import baseball.game.ComputerInput;
+import baseball.game.NumberComparer;
+import baseball.game.ComputerNumberGenerator;
 import baseball.game.PlayerNumberInput;
 import baseball.printer.ResultPrint;
 import baseball.printer.PrintData;
@@ -11,8 +11,8 @@ import java.util.List;
 
 public class Application {
     private static final PlayerNumberInput playerNumberInput = new PlayerNumberInput();
-    private static final ComputerInput computerInput = new ComputerInput();
-    private static final NumberReferee numberReferee = new NumberReferee();
+    private static final ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
+    private static final NumberComparer numberComparer = new NumberComparer();
     private static final NumberParser numberParser = new NumberParser();
     private static final ResultPrint resultPrint = new ResultPrint();
 
@@ -25,7 +25,7 @@ public class Application {
     public static void startNumberBaseballGame() {
         List<Integer> computer;
         do {
-            computer = computerInput.generateComputerNumbers();
+            computer = computerNumberGenerator.generateComputerNumbers();
             startGuessingPhase(computer);
         } while (startQuestioningPhase());
     }
@@ -35,10 +35,10 @@ public class Application {
         int strike = 0;
         int ball = 0;
         while (strike != BaseballData.GAME_SIZE) {
-            String input = playerNumberInput.inputPlayerString();
-            player = numberParser.parsePlayerNumber(input);
-            strike = numberReferee.checkStrike(player, computer);
-            ball = numberReferee.checkBall(player, computer);
+            String input = playerNumberInput.inputPlayerString(); // 문자열 형식으로 플레이어의 숫자 입력
+            player = numberParser.parsePlayerNumber(input); //
+            strike = numberComparer.checkStrike(player, computer);
+            ball = numberComparer.checkBall(player, computer);
 
             resultPrint.printGuessResult(strike, ball);
         }

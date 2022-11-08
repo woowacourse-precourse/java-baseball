@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerInput {
+public class ComputerNumberGenerator {
     public List<Integer> generateComputerNumbers(){
         List<Integer> computer = new ArrayList<>(0);
         int randomNumber;
