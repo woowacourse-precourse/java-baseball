@@ -41,4 +41,17 @@ class Game {
 
         return cnt;
     }
+
+    boolean nothing() {
+        int strikeCount, ballCount;
+
+        strikeCount = strike();
+        ballCount = ball();
+
+        if(strikeCount == 0 && ballCount == 0) {
+            return true;
+        }
+
+        return false;
+    }
 }
