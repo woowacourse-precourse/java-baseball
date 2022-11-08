@@ -26,6 +26,7 @@ public class Application {
         // 기본 게임 로직
 
         do {
+            // 재시작 할 경우 다시 초기화해야한다.
             hint.clear();
             while (hint.strike < 3) {
                 hint.clear();
@@ -77,12 +78,12 @@ class Game {
         int validRestartOrEndInput = game.validRestartOrEndInput(userInput);
 
         if (validRestartOrEndInput == 1) {
-            System.out.println("새로운 게임을 시작합니다.");
+            System.out.println("1");
             return 1;
         }
 
         if (validRestartOrEndInput == 2) {
-            System.out.println("게임이 종료 되었습니다.");
+            System.out.println("2");
             return 2;
         }
 
