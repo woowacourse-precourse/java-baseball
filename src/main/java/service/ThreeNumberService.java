@@ -1,17 +1,20 @@
 package service;
 
+import model.ComputerThreeNumber;
 import model.ThreeNumber;
 
 import java.util.ArrayList;
 
 public class ThreeNumberService {
-    private static ThreeNumber computer;
+    private static ComputerThreeNumber computer;
+    private static ThreeNumber user;
     private static int ball;
     private static int strike;
     private static boolean nothing;
 
     public ThreeNumberService() {
-        computer = new ThreeNumber();
+        computer = new ComputerThreeNumber();
+        user = new ThreeNumber();
     }
 
     public void reset() {
