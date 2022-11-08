@@ -11,7 +11,6 @@ public class Game {
     final private int COUNT_FIN = 3;
     final private int STRIKE_NUM = 1;
     final private int BALL_NUM = 2;
-    final private String GAME_START_STRING = "숫자 야구 게임을 시작합니다.";
     final private String NOTHING_STRING = "낫싱";
     final private String GAME_OVER_STRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final private String BALL_STRING = "볼 ";
@@ -30,38 +29,39 @@ public class Game {
     public Game() {
     }
 
-    public void GameStart() {
+    public void gameStart() {
         Number userNumber = new Number();
         Number computerNumber = new Number();
 
         computerNumber.setComputerNumbers();
         computer = computerNumber.getNumbers();
-        GameStartString();
+        gameStartString();
 
         while(!end) {
             userNumber.setUserNumbers();
             user = userNumber.getNumbers();
 
-            ScoreReset();
-            Calculator();
+            scoreReset();
+            calculator();
             printResult();
 
             if (strike == COUNT_FIN) {
-                GameOver(computerNumber);
+                gameOver(computerNumber);
             }
         }
     }
-    private void GameStartString() {
+    private void gameStartString() {
+        String GAME_START_STRING = "숫자 야구 게임을 시작합니다.";
         System.out.println(GAME_START_STRING);
     }
-    private void GameOver(Number computerNumber) {
+    private void gameOver(Number computerNumber) {
         String input = getGameOver();
         if (END_NUM.equals(input)) {
             end = true;
         } else {
             computerNumber.setComputerNumbers();
             computer = computerNumber.getNumbers();
-            GameStartString();
+            gameStartString();
         }
 
     }
@@ -69,25 +69,25 @@ public class Game {
     private String getGameOver() {
         System.out.println(END_STRING);
         String input = Console.readLine();
-        if (!WrongInput(input)) {
+        if (!wrongInput(input)) {
             throw new IllegalArgumentException();
         }
         return input;
     }
-    private boolean WrongInput(String input) {
+    private boolean wrongInput(String input) {
         Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(input);
-        return pattern.matcher(input).matches();
+        return matcher.find();
     }
-    private void ScoreReset() {
+    private void scoreReset() {
         strike = COUNT_START;
         ball = COUNT_START;
     }
 
-    private void Calculator() {
+    private void calculator() {
         int i = COUNT_START;
         while (i < COUNT_FIN) {
-            int currentScore = StrikeVsBall(user[i], i);
+            int currentScore = strikeVsBall(user[i], i);
             if (currentScore == STRIKE_NUM) {
                 strike += 1;
             }
@@ -98,7 +98,7 @@ public class Game {
         }
     }
 
-    private int StrikeVsBall(int number, int index) {
+    private int strikeVsBall(int number, int index) {
         int i = COUNT_START;
         while (i < COUNT_FIN) {
             if (computer[i] == number && i == index) {

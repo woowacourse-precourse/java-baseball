@@ -39,42 +39,42 @@ public class Number {
                 computer.add(randomNumber);
             }
         }
-        this.numbers = ConvertArrayListToArray(computer);
+        this.numbers = convertArrayListToArray(computer);
     }
 
-    public int[] ConvertArrayListToArray(List<Integer> list) {
+    public int[] convertArrayListToArray(List<Integer> list) {
         return list.stream().mapToInt(Integer::intValue).toArray();
     }
 
     public void setUserNumbers(String userInput) {
-        if (!WrongString(userInput)) {
+        if (!wrongString(userInput)) {
             throw new IllegalArgumentException();
         }
-        this.numbers = ConvertArrayListToArray2(userInput);
+        this.numbers = convertArrayListToArray2(userInput);
     }
 
-    public boolean WrongString(String userInput) {
-        return CheckOnlyInteger(userInput) && CheckLength(userInput) && CheckDuplicate(userInput);
+    public boolean wrongString(String userInput) {
+        return checkOnlyInteger(userInput) && checkLength(userInput) && checkDuplicate(userInput);
     }
 
-    public boolean CheckOnlyInteger(String userInput) {
+    public boolean checkOnlyInteger(String userInput) {
         Pattern pattern = Pattern.compile(REGEX1);
         Matcher matcher = pattern.matcher(userInput);
         return matcher.find();
     }
 
-    public boolean CheckLength(String userInput) {
+    public boolean checkLength(String userInput) {
         return userInput.length() == COUNT;
     }
 
-    public boolean CheckDuplicate(String userInput) {
+    public boolean checkDuplicate(String userInput) {
         HashSet<Character> set = new HashSet<>();
         for (char x : userInput.toCharArray()) {
             set.add(x);
         }
         return userInput.length() == set.size();
     }
-    public int[] ConvertArrayListToArray2(String userInput) {
+    public int[] convertArrayListToArray2(String userInput) {
         return Arrays.stream(userInput.split(REGEX2)).mapToInt(Integer::parseInt).toArray();
     }
 }

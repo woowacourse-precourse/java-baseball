@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,12 +18,12 @@ public class NumberTest {
     @Test
     void isValidateComputerNumber() {
         number.setComputerNumbers();
-        Assertions.assertTrue(Check());
+        Assertions.assertTrue(check());
     }
     @Test
     void isValidateUserNumber() {
         number.setUserNumbers("356");
-        Assertions.assertTrue(Check());
+        Assertions.assertTrue(check());
     }
     @Test
     void isValidateLength() {
@@ -42,10 +41,10 @@ public class NumberTest {
     void isCharacter() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> number.setUserNumbers("abc"));
     }
-    private boolean Check() {
-        return CheckDuplicate() && CheckLength() && CheckValidInteger();
+    private boolean check() {
+        return checkDuplicate() && checkLength() && checkValidInteger();
     }
-    private boolean CheckValidInteger() {
+    private boolean checkValidInteger() {
         for (int x : number.getNumbers()) {
             if (x < 1 || x > 9) {
                 return false;
@@ -54,16 +53,16 @@ public class NumberTest {
         return true;
     }
 
-    private boolean CheckLength() {
+    private boolean checkLength() {
         return number.getNumbers().length == 3;
     }
-    private boolean CheckDuplicate() {
+    private boolean checkDuplicate() {
         int[] numbers = number.getNumbers();
-        Set<Integer> set = ConvertArrToHashset(numbers);
+        Set<Integer> set = convertArrToHashset(numbers);
         return numbers.length == set.size();
     }
 
-    private Set<Integer> ConvertArrToHashset(int[] numbers) {
+    private Set<Integer> convertArrToHashset(int[] numbers) {
         return Arrays.stream(numbers).boxed().collect(Collectors.toSet());
     }
 }
