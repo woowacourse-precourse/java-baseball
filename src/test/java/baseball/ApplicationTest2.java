@@ -28,14 +28,12 @@ class ApplicationTest2 extends NsTest {
         );
     }
 
-    // strikeInsepction()
+    // strikeCount()
     @Test
     void 스트라이크_점수_계산() {
-        int input = 6;
-        int computer = 6;
-        assertEquals(Application.strikeInspection(input, computer), true);
-        computer = 1;
-        assertEquals(Application.strikeInspection(input, computer), false);
+        String input = "123";
+        List<Integer> computer = List.of(1, 3, 5);
+        assertEquals(1, Application.strikeCount(input, computer));
     }
 
     // ballCount()
