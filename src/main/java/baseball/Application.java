@@ -24,7 +24,7 @@ public class Application {
         } else if (endGame.equals("2")) {
             return false;
         } else {
-            throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -64,7 +64,7 @@ public class Application {
         String userNum = Console.readLine();
         List<Integer> userNumbers = new ArrayList<>();
         if (userNum.length() != 3) {
-            throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
+            throw new IllegalArgumentException();
         }
 
         for (int i = 0; i < 3; i++) {
@@ -76,7 +76,7 @@ public class Application {
         int b = userNumbers.get(1);
         int c = userNumbers.get(2);
         if (a == 0 || b == 0 || c == 0 || a == b || a == c || b == c) {
-            throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
+            throw new IllegalArgumentException();
         }
 
         return userNumbers;
