@@ -34,10 +34,17 @@ public class Application {
         }
 
         private boolean gamePlay() {
-//            Ready();
+            String ball = Ready();
 //            play();
 //            return nextAction();
             return false;
+        }
+
+        private String Ready() {
+//            printSetBallStatus();
+//            String ball = setBall();
+//            return trimBall(ball);
+            return "";
         }
 
         private void gameInit() {
