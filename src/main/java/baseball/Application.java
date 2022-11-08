@@ -38,4 +38,17 @@ public class Application {
         return makeNumber;
     }
 
+    static boolean checkInputAllNumber(String Input) {
+        int asciiOne = (int) '1';
+        int asciiNine = (int) '9';
+
+        for (int k = 0; k < 3; k++) {
+            int separatedNum = (int) Input.charAt(k);
+
+            if (separatedNum < asciiOne || separatedNum > asciiNine) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
