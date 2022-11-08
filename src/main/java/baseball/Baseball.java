@@ -24,8 +24,30 @@ public class Baseball {
         }
 
     }
+    public void checkInputUserName(String inputUserName){
+        userNumber.clear();
+        if(inputUserName.length()!=3){
+            throw new IllegalArgumentException();
+        }
+        Character firstNum = inputUserName.charAt(0);
+        Character secondNum = inputUserName.charAt(1);
+        Character thirdNum = inputUserName.charAt(2);
+        if(Character.isDigit(firstNum)&&!userNumber.contains(firstNum-'0')){
+            userNumber.add(firstNum-'0');
+        }
+        if(Character.isDigit(firstNum)&&!userNumber.contains(secondNum-'0')){
+            userNumber.add(secondNum-'0');
+        }
+        if(Character.isDigit(firstNum)&&!userNumber.contains(thirdNum-'0')){
+            userNumber.add(thirdNum-'0');
+        }
+        if(userNumber.size()!=3){
+            throw new IllegalArgumentException();
+        }
+    }
     public void setUserNumber(){
         userNumber.clear();
         String inputUserName = Console.readLine();
+        checkInputUserName(inputUserName);
     }
 }
