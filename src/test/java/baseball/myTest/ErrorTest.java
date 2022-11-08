@@ -27,9 +27,17 @@ public class ErrorTest extends NsTest {
 	}
 
 	@Test
-	void 숫자에러() {
+	void 숫자에러1() {
 		assertSimpleTest(() ->
 			assertThatThrownBy(() -> runException("12a"))
+				.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
+	@Test
+	void 숫자에러2() {
+		assertSimpleTest(() ->
+			assertThatThrownBy(() -> runException("023"))
 				.isInstanceOf(IllegalArgumentException.class)
 		);
 	}
