@@ -54,8 +54,8 @@ public class Application {
                 isanswer = false;
             }
         }
-        if(isanswer) {
-            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if(isanswer == true) {
+            System.out.println("3스트라이크");
             // System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
         return isanswer;
@@ -107,7 +107,7 @@ public class Application {
             make_computer_number();
             make_user_number();
             if( catchillegal() == -1 ) throw new IllegalArgumentException();
-            if(!if3strike()){
+            while(!if3strike()){
                 check_ball();
                 check_strike();
                 check_nothing();
@@ -116,11 +116,12 @@ public class Application {
             }
             computer.clear();
             userlist.clear();
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             kk = camp.nextstep.edu.missionutils.Console.readLine();
             keepgoing = Integer.parseInt(kk);
             if(keepgoing == 2) {
-                System.out.println("게임종료");
+                System.out.println("게임 종료");
                 return;
             }
         }
