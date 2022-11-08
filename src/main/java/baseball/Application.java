@@ -16,27 +16,31 @@ public class Application {
 
 class Baseball {
     private final int NUMBER_SIZE = 3;
-    private final int BALL_INDEX = 0;
-    private final int STRIKE_INDEX = 1;
-    private List<Integer> computerNumber = new ArrayList<>();
-    private List<Integer> playerNumber = new ArrayList<>();
-    private List<Integer> baseballCount = List.of(0, 0);
+    private final int STRIKE_INDEX = 0;
+    private final int BALL_INDEX = 1;
+    private List<Integer> computerNumber;
 
     public void gameStart() {
+        this.computerNumber = new ArrayList<>();
+        List<Integer> playerNumber = new ArrayList<>();
+        List<Integer> baseballCount = List.of(0, 0);
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean option;
         do {
-            pickRandomNumber();
-            gameInProgress();
+            pickRandomNumber(computerNumber);
+            gameInProgress(computerNumber, playerNumber, baseballCount);
             option = gameEnd();
         } while (option);
     }
-    public void gameInProgress() {
+    public void gameInProgress(List<Integer> computerNumber, List<Integer> playerNumber, List<Integer> baseballCount) {
+        String getPlayerNumber;
         do {
-            getPlayerNumber();
-            comparisonPlayerComputer();
-            printBaseballScore();
-        } while (rightAnswer());
+            getPlayerNumber = getPlayerNumber();
+            playerNumberList(getPlayerNumber, playerNumber);
+            comparisonPlayerComputer(computerNumber, playerNumber, baseballCount);
+            printBaseballScore(baseballCount);
+        } while (rightAnswer(baseballCount.get(STRIKE_INDEX)));
     }
     public boolean gameEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -45,29 +49,29 @@ class Baseball {
         return option;
     }
 
-    public void pickRandomNumber() {
-        for (int i = 0; i < NUMBER_SIZE;) {
+    public void pickRandomNumber(List<Integer> computerNumber) {
+        this.computerNumber.clear();
+        while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
-                i++;
             }
         }
     }
 
-    public void getPlayerNumber() {
+    public String getPlayerNumber() {
         String getPlayerNumber = null;
         try {
             InputStreamReader ir = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(ir);
-            System.out.print("숫자를 입력해주세요 :");
+            System.out.print("숫자를 입력해주세요 : ");
             getPlayerNumber = br.readLine();
             getPlayerNumberError(getPlayerNumber);
-            playerNumberList(getPlayerNumber);
         } catch (Exception e) {
         }
+        return getPlayerNumber;
     }
-    public void playerNumberList(String getPlayerNumber) {
+    public void playerNumberList(String getPlayerNumber, List<Integer> playerNumber) {
         int playerNum = Integer.parseInt(getPlayerNumber);
         for (int i = 0; i < NUMBER_SIZE; i++) {
             playerNumber.add(playerNum % 10);
@@ -92,50 +96,52 @@ class Baseball {
         return getException;
     }
 
-    public void comparisonPlayerComputer() {
+    public void comparisonPlayerComputer(List<Integer> computerNumber, List<Integer> playerNumber, List<Integer> baseballCount) {
+
         for (int i = 0; i < NUMBER_SIZE; i++) {
             for (int j = 0; j < NUMBER_SIZE; j++) {
-                comparisonNumber(playerNumber.get(i), computerNumber.get(j), i, j);
+                comparisonNumber(playerNumber.get(i), computerNumber.get(j), i, j, baseballCount);
             }
         }
     }
-    public void comparisonNumber(int playerNumber, int computerNumber, int i, int j) {
+    public void comparisonNumber(int playerNumber, int computerNumber, int i, int j, List<Integer> baseballCount) {
         if (playerNumber == computerNumber) {
             if (i == j) {
-                countBaseball(STRIKE_INDEX);
+                countBaseball(baseballCount, STRIKE_INDEX);
             } else {
-                countBaseball(BALL_INDEX);
+                countBaseball(baseballCount, BALL_INDEX);
             }
         }
     }
-    public void countBaseball(int i) {
+    public void countBaseball(List<Integer> baseballCount, int i) {
         int count;
         count = baseballCount.get(i) + 1;
         baseballCount.set(i, count);
     }
 
-    public void printBaseballScore() {
-        if (baseballCount.get(STRIKE_INDEX) == 0 && baseballCount.get(BALL_INDEX) == 0) {
-            System.out.print("낫싱");
+    public void printBaseballScore(List<Integer> baseballCount) {
+        if ((baseballCount.get(STRIKE_INDEX) > 0) || (baseballCount.get(BALL_INDEX) > 0)) {
+            printBall(baseballCount.get(BALL_INDEX));
+            printStrike(baseballCount.get(STRIKE_INDEX));
         } else {
-            printBall();
-            printStrike();
+            System.out.print("낫싱");
+        }
+        System.out.print("\n");
+    }
+    public void printStrike(int strike) {
+        if (strike > 0) {
+            System.out.printf("%d스트라이크", strike);
         }
     }
-    public void printStrike() {
-        if (baseballCount.get(STRIKE_INDEX) != 0) {
-            System.out.printf("%d스트라이크", baseballCount.get(STRIKE_INDEX));
-        }
-    }
-    public void printBall() {
-        if (baseballCount.get(BALL_INDEX) != 0) {
-            System.out.printf("%d볼 ", baseballCount.get(BALL_INDEX));
+    public void printBall(int ball) {
+        if (ball > 0) {
+            System.out.printf("%d볼 ", ball);
         }
     }
 
-    public boolean rightAnswer() {
+    public boolean rightAnswer(int strike) {
         boolean success = false;
-        if (baseballCount.get(STRIKE_INDEX) == 3) {
+        if (strike == 3) {
             success = true;
         }
         return !success;
@@ -154,18 +160,11 @@ class Baseball {
         boolean option;
         if (optionNumber.equals("1")) {
             option = true;
-            listClear();
         } else if (optionNumber.equals("2")) {
             option = false;
         } else {
             throw new IllegalArgumentException("옵션값이 아닙니다.");
         }
         return !option;
-    }
-    public void listClear() {
-        this.computerNumber.clear();
-        this.playerNumber.clear();
-        this.baseballCount.set(BALL_INDEX, 0);
-        this.baseballCount.set(STRIKE_INDEX, 0);
     }
 }
