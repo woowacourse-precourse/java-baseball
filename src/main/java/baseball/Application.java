@@ -16,6 +16,14 @@ public class Application {
     }
 
     static void baseballGame() {
+        continueGame = true;
+        gameStart();
+
+        while (continueGame) {
+            setComputer();
+            playGame();
+            continueGame = playNewGame();
+        }
     }
 
     static void playGame() {
