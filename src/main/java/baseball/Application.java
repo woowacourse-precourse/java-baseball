@@ -16,6 +16,7 @@ public class Application {
         baseBallGame = new BaseBallGame();
         radomNumberCreator = new RadomNumberCreator();
 
+        outputHandler.printStart();
         while (true) {
             String comNum = radomNumberCreator.makeRandomNumber();
 

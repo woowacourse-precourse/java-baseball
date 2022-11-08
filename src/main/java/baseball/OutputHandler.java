@@ -3,7 +3,9 @@ package baseball;
 public class OutputHandler {
     public void printStart(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("숫자를 입력해주세요 : ");
+    }
+    public void printGetUserNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
     }
     public void Strike_andBall_result_print(int strike, int ball){
         int sum = strike+ball;

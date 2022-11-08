@@ -8,9 +8,14 @@ import java.util.List;
 
 public class InputHandler {
     static ErrorHandler errorHandler;
+    static OutputHandler outputHandler;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
     public static String getInput_returnMyNum() throws IOException {
+        outputHandler = new OutputHandler();
         errorHandler = new ErrorHandler();
+        outputHandler.printGetUserNumber();
+
         String myNum = br.readLine();
 
         List<Integer> myNumList = new ArrayList<>();
@@ -23,7 +28,6 @@ public class InputHandler {
         if(!errorHandler.isNotDuplicated(myNumList)){
             throw new IllegalArgumentException("중복된 수를 입력하였습니다.");
         }
-        System.out.println("입력 수 : "+myNum);
         return myNum;
     }
     public int getRestartNum() throws IOException {
