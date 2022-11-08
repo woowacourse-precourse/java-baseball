@@ -86,12 +86,12 @@ class HintTest {
         List<Integer> userNumber_false = List.of(1, 3, 5);
         //when
         hint.giveHint(computerNumber, userNumber_true);
-        boolean threeStrike_true = hint.isThreeStrike();
+        boolean threeStrike_true = hint.isAllStrike();
 
         hint.initHint();
 
         hint.giveHint(computerNumber, userNumber_false);
-        boolean threeStrike_false = hint.isThreeStrike();
+        boolean threeStrike_false = hint.isAllStrike();
         //then
         assertThat(threeStrike_true).isTrue();
         assertThat(threeStrike_false).isTrue();
