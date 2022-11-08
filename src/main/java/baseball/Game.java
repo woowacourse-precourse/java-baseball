@@ -35,6 +35,13 @@ public class Game {
         Hint hint = new Hint();
         hint.checkAnswer(userAnswer, computerAnswer);
         hint.showHint();
+
+        if(hint.strike != 3){
+            Game.init(computerAnswer);
+            return;
+        }
+
+
     }
 
     private static Game getAnswer() {
