@@ -60,11 +60,11 @@
 - [x] **정답이 나올 때까지 2번 ~ 5번 기능 반복**
 
 ### 6. 사용자로부터 종료 구분 값을 입력받는 기능
-- [ ] 종료 여부 문구 출력
+- [x] 종료 여부 문구 출력
 ```
 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
 ```
-- [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자 종료 구분값 받음
+- [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자 종료 구분값 받음
 
 ### 7. 종료 구분 입력값 검증
 - [ ] 예외 사항 검증

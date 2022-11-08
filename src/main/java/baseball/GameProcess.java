@@ -34,7 +34,6 @@ public class GameProcess {
 
         // 정답 확인
         checkAnswer(randomNumList, inputNum, answer);
-
     }
 
     // 정답 체크
@@ -47,8 +46,15 @@ public class GameProcess {
 
         answer = Answer.isAnswer(randomNumList, inputNumList);
 
+        // 오답인 경우, 반복
         if (!answer) {
             getInputNum(randomNumList, answer);
+        }
+
+        // 정답인 경우, 종료 구분값 받기
+        if(answer) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String inputOverYn = Console.readLine();
         }
     }
 }
