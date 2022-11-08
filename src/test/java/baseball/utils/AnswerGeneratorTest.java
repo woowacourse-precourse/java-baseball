@@ -11,7 +11,7 @@ public class AnswerGeneratorTest {
         List<Integer> tempNums = AnswerGenerator.generateAnswer();
 
         //then
-        Assertions.assertThatCode(() ->InputValidator.hasValidInput(tempNums))
+        Assertions.assertThatCode(() -> InputValidator.hasValidInput(tempNums))
                 .doesNotThrowAnyException();
     }
 }
