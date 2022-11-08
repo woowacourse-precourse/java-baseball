@@ -36,7 +36,7 @@ public class Computer {
     private int strike(User user) {
         int countStrike = 0;
         for (int i = 0; i < LENGTH; i++) {
-            if (answer.get(i) == user.guess.get(i)) {
+            if (answer.get(i) == user.get(i)) {
                 countStrike++;
             }
         }
@@ -46,7 +46,7 @@ public class Computer {
     private int ball(User user) {
         int countBall = 0;
         for (int i = 0; i < LENGTH; i++) {
-            int findIndex = answer.indexOf(user.guess.get(i));
+            int findIndex = answer.indexOf(user.get(i));
             if (findIndex != -1 && findIndex != i) {
                 countBall++;
             }
