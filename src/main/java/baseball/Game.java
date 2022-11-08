@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
 
-    List<Integer> computer;
+    private List<Integer> computer;
 
     public Game(){
         // 게임 시작 시 컴퓨터 숫자 생성
@@ -18,26 +18,26 @@ public class Game {
             }
         }
     }
-    
-    public void startGame() throws IllegalAccessException {
+
+    public PlayResult playGame(String[] input) throws IllegalAccessException {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-
-
-        String[] input = Console.readLine().split("");
-
         // 사용자가 잘못된 값을 입력할 경우
-        if(input.length != 3){
+        if (input.length != 3) {
             throw new IllegalAccessException();
         }
 
         List<Integer> user = new ArrayList<>();
-        for(int i = 0; i < input.length; i++){
+        for (int i = 0; i < input.length; i++) {
             user.add(Integer.parseInt(input[i]));
         }
 
+        int strike = 0;
+        int ball = 0;
+
+        // 체크
 
 
+        return new PlayResult(strike, ball);
     }
-
 }

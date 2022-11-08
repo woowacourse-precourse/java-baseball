@@ -1,12 +1,21 @@
 package baseball;
 
-public class Application {
-    public static void main(String[] args) throws IllegalAccessException {
-        // TODO: 프로그램 구현
+import camp.nextstep.edu.missionutils.Console;
 
-        while(true){
-            Game game = new Game();
-            game.startGame();
+public class Application {
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        try {
+            while (true) {
+                Game game = new Game();
+                boolean isEnd = false;
+                while (!isEnd) {
+                    PlayResult playResult = game.playGame(Console.readLine().split(""));
+                    isEnd = playResult.success();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
