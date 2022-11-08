@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -9,12 +11,12 @@ public class User implements Number {
 
     @Override
     public void create() {
-
+        number = convertInputAsNumber(Console.readLine());
     }
 
     @Override
     public List<Integer> get() {
-
+        return number;
     }
 
     public static List<Integer> convertInputAsNumber(String inputNumber) {
