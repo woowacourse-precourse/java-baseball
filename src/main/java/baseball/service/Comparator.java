@@ -28,4 +28,21 @@ public class Comparator {
         return ballCount;
     }
 
+    public static boolean printHint(int strikeCount, int ballCount) {
+        if (strikeCount == 3) {
+            System.out.println(strikeCount + "스트라이크");
+            return true;
+        }
+        if (ballCount > 0 && strikeCount > 0) {
+            System.out.println(ballCount+"볼 " + strikeCount + "스트라이크");
+        } else if (ballCount > 0) {
+            System.out.println(ballCount + "볼");
+        } else if (strikeCount > 0) {
+            System.out.println(strikeCount + "스트라이크");
+        } else if (ballCount + strikeCount == 0) {
+            System.out.println("낫싱");
+        }
+        return false;
+    }
+
 }
