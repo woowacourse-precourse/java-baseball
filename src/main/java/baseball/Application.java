@@ -39,6 +39,8 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String restartNumber = Console.readLine();
+        validateRestartNumber(restartNumber);
+
         return restartNumber;
     }
 
@@ -122,6 +124,12 @@ public class Application {
         checkLength(baseballNumber);
         checkNumber(baseballNumber);
         checkDuplicate(baseballNumber);
+    }
+
+    public static void validateRestartNumber(String restartNumber) {
+        if (!(restartNumber.equals("2") || restartNumber.equals("1"))) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
     }
 
     public static void baseballGame() {
