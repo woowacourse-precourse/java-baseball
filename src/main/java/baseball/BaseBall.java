@@ -15,9 +15,14 @@ public class BaseBall {
 
     public void startGame() {
         String input = Console.readLine();
+        readNumber(input);
     }
 
     public void readNumber(String input) {
+        validateInputSize(input);
+        validateInputType(input);
+        validateInputUnique(input);
+
         Set<Integer> userNumber = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toSet());
