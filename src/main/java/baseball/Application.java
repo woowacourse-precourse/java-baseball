@@ -116,6 +116,7 @@ public class Application {
         List<Integer> currentBaseBallResult;
 
         while(true){
+            System.out.print("숫자를 입력해주세요 : ");
             String input = getInput();
 
             validateInput(input);
