@@ -1,7 +1,9 @@
 package baseball;
 
+// 어플리케이션 관리
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        new Server().run();
     }
 }
