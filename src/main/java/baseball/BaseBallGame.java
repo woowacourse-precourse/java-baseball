@@ -53,7 +53,7 @@ public class BaseBallGame {
         return message.contains("게임 종료");
     }
 
-    private String checkMessage(String message) {
+    public String checkMessage(String message) {
         if (message.isEmpty()) {
             message = MessageList.NOTHING;
         }
@@ -63,7 +63,7 @@ public class BaseBallGame {
         return message;
     }
 
-    private String countStrike(List<Integer> computer, List<Integer> inputNumbers) {
+    public String countStrike(List<Integer> computer, List<Integer> inputNumbers) {
         int strikes = 0;
         for (int i = 0; i < 3; i++) {
             if (computer.get(i).equals(inputNumbers.get(i))) {
@@ -73,7 +73,7 @@ public class BaseBallGame {
         return MessageList.setStrikeMessage(strikes);
     }
 
-    private String countBall(List<Integer> computer, List<Integer> inputNumbers) {
+    public String countBall(List<Integer> computer, List<Integer> inputNumbers) {
         int balls = 0;
         for (int i = 0; i < 3; i++) {
             Integer inputNumber = inputNumbers.get(i);
