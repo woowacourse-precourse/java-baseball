@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumber {
-    List<Integer> randomNumberList;
+    private final List<Integer> randomNumberList;
 
     public RandomNumber(){
-        this.randomNumberList = getRandomNumberList();
+        this.randomNumberList = setRandomNumberList();
     }
 
     public int getNumberOfStrike(List<Integer> userNumberList){
@@ -32,7 +32,11 @@ public class RandomNumber {
         return numberOfBall;
     }
 
-    private List<Integer> getRandomNumberList(){
+    public List<Integer> getRandomNumberList() {
+        return this.randomNumberList;
+    }
+
+    private List<Integer> setRandomNumberList(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
