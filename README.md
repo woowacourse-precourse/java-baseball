@@ -156,4 +156,4 @@ while (computer.size() < 3) {
 
 
 ## 📜 도메인 모델링
-![image](https://user-images.githubusercontent.com/68049320/200561155-20e49334-b59d-4a65-b318-a475c2d4896b.png)
+![image](https://user-images.githubusercontent.com/68049320/200581285-925f46f4-ed73-4788-ad92-c0a617ee2dca.png)
