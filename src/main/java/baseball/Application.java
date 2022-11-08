@@ -92,7 +92,7 @@ public class Application {
             int digit = userNumbers.get(i);
             if (digit == comNumbers.get(i)) {
                 strike++;
-            } else if (digit == comNumbers.get((i + 1) / 3) || digit == comNumbers.get((i - 1) / 3)) {
+            } else if (digit == comNumbers.get((i + 1) % 3) || digit == comNumbers.get((i - 1) % 3)) {
                 ball++;
             }
         }
