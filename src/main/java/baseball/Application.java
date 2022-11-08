@@ -20,4 +20,14 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+    public static boolean containSameNumber(String numString){
+        HashMap<Character, Integer> checkSameNumber = new HashMap<>();
+        for (int i = 0; i < numString.length(); i++) {
+            if (checkSameNumber.containsKey(numString.charAt(i))){
+                return false;
+            }
+            checkSameNumber.put(numString.charAt(i), i);
+        }
+        return true;
+    }
 }
