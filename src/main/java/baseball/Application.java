@@ -61,7 +61,8 @@ public class Application {
             while (ballNumber >= Math.pow(10, pow)) {
                 int digit = digitNumber(ballNumber, pow);
 
-
+                makeNumberOrder(this.ballArr, digit, pow);
+                makeNumberUsage(this.ballUsageArr, digit);
 
                 pow += 1;
             }
@@ -124,17 +125,17 @@ public class Application {
         private void makeGoal() {
             for (int idx = 0; idx < NUM_DIGIT; idx++) {
                 int randomNum = makeNumber();
-                makeNumberOrder(this.ballArr, randomNum, idx);
-                makeNumberUsage(this.ballUsageArr, randomNum);
+                makeNumberOrder(this.goalArr, randomNum, idx);
+                makeNumberUsage(this.goalUsageArr, randomNum);
             }
         }
 
-        private void makeNumberUsage(int[] arr, int randomNum) {
-            arr[randomNum] += 1;
+        private void makeNumberUsage(int[] arr, int num) {
+            arr[num] += 1;
         }
 
-        private void makeNumberOrder(int[] arr, int randomNum, int idx) {
-            arr[idx] = randomNum;
+        private void makeNumberOrder(int[] arr, int num, int idx) {
+            arr[idx] = num;
         }
 
         private int makeNumber() {
