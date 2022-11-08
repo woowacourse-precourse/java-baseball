@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball.view;
 
 import static baseball.utils.Constants.BASEBALL_DIGIT_LENGTH;
 

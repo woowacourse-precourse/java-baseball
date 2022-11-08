@@ -6,7 +6,7 @@ import baseball.utils.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.utils.Constants.GAME_RESTART;
-import static baseball.utils.Messages.*;
+import static baseball.view.Messages.*;
 
 public class GameView {
     public void startGame() {
