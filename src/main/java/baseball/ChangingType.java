@@ -1,6 +1,6 @@
 package baseball;
 
-public class ChangeType {
+public class ChangingType {
     public int StringToInt(String word){
         return Integer.parseInt(word);
     }
