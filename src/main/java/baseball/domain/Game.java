@@ -1,8 +1,10 @@
 package baseball.domain;
 
 public class Game {
+    private static final int STRIKE_OUT = 3;
     private int strike;
     private int ball;
+
 
     public int getStrike() {
         return strike;
@@ -25,5 +27,9 @@ public class Game {
                 }
             }
         }
+    }
+
+    public boolean checkEnd() {
+        return this.strike != STRIKE_OUT;
     }
 }
