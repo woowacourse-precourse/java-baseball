@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -24,6 +25,24 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("3자리_숫자_이상인_경우_테스트")
+    void 숫자3자리_이상인_경우_테스트() {
+        String input = "abc";
+
+        assertThatThrownBy(() -> input.charAt(5))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 5");
+    }
+
+    @Test
+    void 영이_포함되어있는지_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
