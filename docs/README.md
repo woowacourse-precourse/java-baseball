@@ -1,9 +1,15 @@
 #기능 목록
-1. 컴퓨터가 3자리의 무작위 숫자를 만드는 함수
-2. 특정 숫자 둘을 비교해서 서로 같으면 true,다르면 false를 return하는 메소드
-3. 사용자에게 숫자를 입력 받은 후 잘못된 값인지 확인하는 메소드 
-4. 사용자에게 입력받은 String을 Integer List로 바꿔주는 메소드
-5. 사용자에게 입력한 String를 예외처리하고 Integer List로 돌려주는 메소드
-6. 사용자가 입력한 Integer List와 컴퓨터의 IntegerList를 인수로 받아 2번 메소드를 실행시켜 볼,스트라이크의 개수를 맞출때까지 확인하는 
-7. 컴퓨터 IntegerList를 인수로 받아 이전 메소드를 실행시켜 정답을 맞추거나 예외처리가 나오기 전까지 반복하는 메소드. 맞춘 다면 게임종료 여부를 물어본다 
-8. 게임을 시작하고,게임 종료 전까지 컴퓨터 IntegerList를 만들고 계속 각 게임 실행하는 것을 반복하는 메소드
+Application.java 
+1. Game객체를 만들어 게임 반복하는 함수를 실행
+Game.java
+1.Computer객체를 만들어 무작위의 컴퓨터의 3자리 수를 만들고 게임이 끝날떄 까지 반복하는 메소드
+2.각 게임마다 숫자를 입력받고 User객체를 만들어 유저에게 숫자를 받아 볼,스트라이크를 계산하고 결과를 나타내주는 메소드
+Computer.java
+1.무작위의 세자리 수를 IntegerList로 만들어 this.integerList로 설정해주는 메소드
+User.java
+1.String을 각자리마다 숫자로 만들어 integerList로 반환해주는 메소드
+2. 첫자리가 0인지, 세자리수가 아닌지, 각자리가 '0'~'9'인지 확인해주고 아니면 IllegalArgumentException()에러를 날려주는 메소드
+3. 1,2함수를 같이 실행해 intergetList를 반환해주는 메소드
+4. 유저에게 string을 입력받고 3번 함수의 반환값을 this.integerList로 만들어주는 메소드
+Result.java
+5. List<Integer>을 두개 받아 각 인덱스의 숫자가 같으면 strike++,다르지만 혹시 다른 자리에 포함된다면 ball++을 해주는 메소드
