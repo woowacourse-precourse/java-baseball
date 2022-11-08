@@ -101,7 +101,7 @@ public class Application {
     // 3자리여부, 숫자여부, 중복여부
     public static void userException(String userNum, List userList) {
         if (userNum.length() != 3) {
-            throw new IllegalArgumentException("3자리 입력 해주세요");
+            throw new IllegalArgumentException();
         } else if(!userNum.chars().allMatch((Character::isDigit))) {
             throw new IllegalArgumentException("숫자만 입력 해주세요");
         }
