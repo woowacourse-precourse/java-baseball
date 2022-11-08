@@ -4,8 +4,8 @@ import baseball.domain.BaseBallService;
 import baseball.domain.BaseBallServiceImpl;
 import baseball.domain.Verification;
 import baseball.domain.VerificationImpl;
-import baseball.domain.entity.NumberRepository;
-import baseball.domain.entity.NumberRepositoryImpl;
+import baseball.domain.repository.NumberRepository;
+import baseball.domain.repository.NumberRepositoryImpl;
 import baseball.view.MessagePrinter;
 import baseball.view.MessagePrinterImpl;
 
