@@ -14,13 +14,14 @@ public class InputView {
 
   public static List<Integer> inputNumbers(){
     String inputString = read();
-    System.out.println(inputString);
+    checkEmpty(inputString);
     checkDigit(inputString);
     return convertStringToIntegerList(splitInput(inputString));
   }
 
   public static int inputMenu(){
     String inputString = read();
+    checkEmpty(inputString);
     checkDigit(inputString);
     validateMenu(inputString);
     return Integer.parseInt(inputString);
@@ -42,6 +43,12 @@ public class InputView {
 
   public static String[] splitInput(String inputString){
     return inputString.split("");
+  }
+
+  public static void checkEmpty(String inputString){
+    if(inputString.equals("")){
+      throw new IllegalArgumentException(NULL_INPUT.getErrorMessage());
+    }
   }
 
   public static void checkDigit(String inputString){
