@@ -12,4 +12,8 @@ public class OutputView {
     public static void endSystemMessage() {
         System.out.println("게임 종료");
     }
+
+    public static void printString(String string){
+        System.out.println(string);
+    }
 }

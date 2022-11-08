@@ -25,7 +25,7 @@ public class BaseballGame {
         while (true) {
             List<Integer> userNumber = User.getNumbers();
             String result = Referee.checkResult(computerNumber, userNumber);
-            System.out.println(result);
+            OutputView.printString(result);
             if (result.equals("3스트라이크")){
                 break;
             }
