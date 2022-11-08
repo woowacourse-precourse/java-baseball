@@ -64,7 +64,13 @@ public class BaseballGame {
         List<Integer> computer = this.getRandomNumbers();
 
         User user = new User();
-        user.setProposal();
+        try {
+            user.setProposal();
+        } catch (IllegalArgumentException e) {
+            System.out.print(e.getMessage());
+            System.out.println(" 게임 종료");
+            return;
+        }
         List<Integer> proposal = user.getProposal();
 
         List<Integer> result = this.checkNumber(computer, proposal);

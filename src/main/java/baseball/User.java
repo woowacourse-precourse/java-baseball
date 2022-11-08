@@ -11,11 +11,16 @@ public class User {
     public void setProposal() {
         System.out.print("숫자를 입력해주세요 : ");
         proposal = new ArrayList<>();
-        for (char ch : Console.readLine().toCharArray()) {
-            proposal.add(Integer.valueOf(String.valueOf(ch)));
+        String input = Console.readLine();
+
+        if (input.length() == 3 && input.matches("[0-9]+")) {
+            for (char ch : input.toCharArray()) {
+                proposal.add(Integer.valueOf(String.valueOf(ch)));
+            }
+        } else {
+             throw new IllegalArgumentException("입력이 잘못되었습니다.");
         }
 
-        System.out.println("proposal: "+proposal);
     }
 
     public List<Integer> getProposal() {
