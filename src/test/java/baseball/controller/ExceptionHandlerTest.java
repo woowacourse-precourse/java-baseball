@@ -14,7 +14,7 @@ public class ExceptionHandlerTest {
     class validateUserNumberOfString {
 
         @Test
-        @DisplayName("1) \"12\" 입력 -> 예외 발생")
+        @DisplayName("\"12\" 입력 -> 예외 발생")
         void 두자리수_입력() {
             String userNumberOfString = "12";
             assertThatThrownBy(() -> ExceptionHandler.validateUserNumberOfString(userNumberOfString))
@@ -23,7 +23,7 @@ public class ExceptionHandlerTest {
         }
 
         @Test
-        @DisplayName("2) \"1234\" 입력 -> 예외 발생")
+        @DisplayName("\"1234\" 입력 -> 예외 발생")
         void 네자리수_입력() {
             String userNumberOfString = "1234";
             assertThatThrownBy(() -> ExceptionHandler.validateUserNumberOfString(userNumberOfString))
@@ -32,7 +32,7 @@ public class ExceptionHandlerTest {
         }
 
         @Test
-        @DisplayName("3) \"12a\" 입력 -> 예외 발생")
+        @DisplayName("\"12a\" 입력 -> 예외 발생")
         void 영어_입력() {
             String userNumberOfString = "12a";
             assertThatThrownBy(() -> ExceptionHandler.validateUserNumberOfString(userNumberOfString))
@@ -41,7 +41,7 @@ public class ExceptionHandlerTest {
         }
 
         @Test
-        @DisplayName("4) \"112\" 입력 -> 예외 발생")
+        @DisplayName("\"112\" 입력 -> 예외 발생")
         void 중복_숫자_입력() {
             String userNumberOfString = "12a";
             assertThatThrownBy(() -> ExceptionHandler.validateUserNumberOfString(userNumberOfString))
@@ -55,7 +55,7 @@ public class ExceptionHandlerTest {
     class validateOneIfGameRepeatOrTwo {
 
         @Test
-        @DisplayName("1) \"11\" 입력 -> 예외 발생")
+        @DisplayName("\"11\" 입력 -> 예외 발생")
         void 두자리수_입력() {
             String oneIfGameRepeatOrTwo = "11";
             assertThatThrownBy(() -> ExceptionHandler.validateOneIfGameRepeatOrTwo(oneIfGameRepeatOrTwo))
@@ -64,7 +64,7 @@ public class ExceptionHandlerTest {
         }
 
         @Test
-        @DisplayName("2) \"a\" 입력 -> 예외 발생")
+        @DisplayName("\"a\" 입력 -> 예외 발생")
         void 영어_입력() {
             String oneIfGameRepeatOrTwo = "a";
             assertThatThrownBy(() -> ExceptionHandler.validateOneIfGameRepeatOrTwo(oneIfGameRepeatOrTwo))

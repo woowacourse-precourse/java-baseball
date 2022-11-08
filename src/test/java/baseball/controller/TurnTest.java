@@ -21,14 +21,14 @@ public class TurnTest {
     class checkCanRepeat {
 
         @Test
-        @DisplayName("1) 반복 가능 -> true 반환")
+        @DisplayName("반복 가능 -> true 반환")
         void 반복_가능() {
             Turn turn = new Turn(testTarget);
             assertThat(turn.checkCanRepeat()).isEqualTo(true);
         }
 
         @Test
-        @DisplayName("2) 반복 불가능 -> out 반환")
+        @DisplayName("반복 불가능 -> out 반환")
         void 반복_불가능() {
             TurnScore turnScore = new TurnScore(0, 3, ResultTurn.OUT);
             Turn turn = new Turn(testTarget, turnScore);
@@ -59,7 +59,7 @@ public class TurnTest {
     class returnOneIfSameOrZero {
 
         @Test
-        @DisplayName("1) 두 수가 같은 경우 -> 1 반환")
+        @DisplayName("두 수가 같은 경우 -> 1 반환")
         void 같은_경우() {
             Turn turn = new Turn(testTarget);
             int result = turn.returnOneIfSameOrZero(3, 3);
@@ -67,7 +67,7 @@ public class TurnTest {
         }
 
         @Test
-        @DisplayName("2) 두 수가 다른 경우 -> 0 반환")
+        @DisplayName("두 수가 다른 경우 -> 0 반환")
         void 다른_경우() {
             Turn turn = new Turn(testTarget);
             int result = turn.returnOneIfSameOrZero(3, 5);
@@ -80,7 +80,7 @@ public class TurnTest {
     class returnOneIfListContainNumber {
 
         @Test
-        @DisplayName("1) 리스트에 숫자가 포함된 경우 -> 1 반환")
+        @DisplayName("리스트에 숫자가 포함된 경우 -> 1 반환")
         void 포함된_경우() {
             Turn turn = new Turn(testTarget);
             List<Integer> listForTestIsContainNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
@@ -89,7 +89,7 @@ public class TurnTest {
         }
 
         @Test
-        @DisplayName("2) 리스트에 숫자가 포함되지 않은 경우 -> 0 반환")
+        @DisplayName("리스트에 숫자가 포함되지 않은 경우 -> 0 반환")
         void 포함되지_않은_경우() {
             Turn turn = new Turn(testTarget);
             List<Integer> listForTestIsContainNumber = new ArrayList<>(Arrays.asList(1, 2, 3));

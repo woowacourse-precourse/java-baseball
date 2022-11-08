@@ -18,14 +18,14 @@ public class GameTest {
     class checkIsGameStatusInProgress {
 
         @Test
-        @DisplayName("1) 진행 상태")
+        @DisplayName("진행 상태")
         void 진행상태() {
             Game game = new Game(testTargetNumberList);
             assertThat(game.checkIsGameStatusInProgress()).isEqualTo(true);
         }
 
         @Test
-        @DisplayName("2) 종료 상태")
+        @DisplayName("종료 상태")
         void 종료상태() {
             Game game = new Game(testTargetNumberList);
             game.setResultGameEnd();
@@ -38,14 +38,14 @@ public class GameTest {
     class checkIsOne {
 
         @Test
-        @DisplayName("1) 입력이 1인 경우 -> true 반환")
+        @DisplayName("입력이 1인 경우 -> true 반환")
         void 입력이_1인_경우() {
             Game game = new Game(testTargetNumberList);
             assertThat(game.checkIsOne("1")).isEqualTo(true);
         }
 
         @Test
-        @DisplayName("2) 입력이 2인 경우 -> false 반환")
+        @DisplayName("입력이 2인 경우 -> false 반환")
         void 입력이_2인_경우() {
             Game game = new Game(testTargetNumberList);
             assertThat(game.checkIsOne("2")).isEqualTo(false);
