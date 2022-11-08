@@ -34,26 +34,25 @@ public class Application {
         }
 
         private boolean gamePlay() {
-            Ready();
+//            Ready();
 //            play();
 //            return nextAction();
             return false;
         }
 
         private boolean Ready() {
-            String player = inputPlayer();
-            if (verifyPlayer(player)) {
-                makePlayer();
-            } else {
-                throw new IllegalArgumentException();
-            }
+//            String player = inputPlayer();
+//            if (verifyPlayer(player)) {
+//                makePlayer();
+//            } else {
+//                throw new IllegalArgumentException();
+//            }
+            return false;
         }
 
         private String inputPlayer() {
             printSetBallStatus();
-            String ball = setBall();
-//            return trimBall(ball);
-            return "";
+            return setBall();
         }
 
         private String setBall() {

@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.Application.BaseBall;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -31,10 +32,16 @@ class ApplicationTest extends NsTest {
 //    }
 
     @Test
+    void testReadLine() {
+        String str = Console.readLine();
+        assertThat(str).isEqualTo("abcd");
+    }
+
+    @Test
     void testMakeNumber() {
         int num = Randoms.pickNumberInRange(1, 9);
         for (int i = 0; i < 100; i++) {
-            assertThat(num).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
+            assertThat(num).isBetween(1, 9);
         }
     }
 
