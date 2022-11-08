@@ -23,6 +23,7 @@ public class Application {
         String input = Console.readLine();
 
         //[예외처리]
+        //세자리 숫자 이외의 입력 시
         if (input.length() > 3) { //3자리 이상 숫자 입력 시
             System.out.println("3자리 이상의 숫자를 입력하셨습니다.");
             throw new IllegalArgumentException();
@@ -30,10 +31,15 @@ public class Application {
             System.out.println("아무것도 입력하지 않았습니다.");
             throw new IllegalArgumentException();
         }
-        
-        //정상 입력 시
+        //세자리 숫자 입력 시
         for(int i=0; i<input.length(); i++){
-            inputNumber.add(Integer.parseInt(String.valueOf(input.charAt(i))));
+            int eachNumber = Integer.parseInt(String.valueOf(input.charAt(i)));
+            if( inputNumber.contains(eachNumber)) {
+                System.out.println("중복된 숫자를 입력했습니다.");
+                throw new IllegalArgumentException();
+            } else {
+                inputNumber.add(eachNumber);
+            }
         }
         return inputNumber;
     }
