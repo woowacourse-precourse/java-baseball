@@ -20,12 +20,12 @@ public class User {
 
         String[] numberStringArray = numberString.split("");
 
-        int nonDupplicateElementCnt = Arrays.stream(numberStringArray).distinct().toArray(String[]::new).length;
+        int nonDupplicateElementCnt = Arrays.stream(numberStringArray)
+                .distinct().toArray(String[]::new).length;
 
         if(nonDupplicateElementCnt!=numberStringArray.length) {
             throw new IllegalArgumentException("중복된 원소가 있습니다");
         }
-
     }
 
     public List<Integer> generateNumberList(String numberString) {
