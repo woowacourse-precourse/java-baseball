@@ -20,10 +20,11 @@ public class Game {
         readyToPlay();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        String comRandomNumber = GetRandomNumber.GetRandomNumber();
+        List<Integer> comRandomNumber = GetRandomNumber.getNumberList();
         String input = Console.readLine();
         List<Integer> integerList = validateInput.validateInput(input);
         System.out.println("숫자를 입력해주세요 : "+input);
+
 
     }
 }

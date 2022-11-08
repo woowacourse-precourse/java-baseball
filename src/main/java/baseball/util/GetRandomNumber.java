@@ -7,15 +7,14 @@ import java.util.List;
 
 public class GetRandomNumber {
 
-    public static String GetRandomNumber() {
-        List<String> getNumbers = new ArrayList<>();
+    public static List<Integer> getNumberList() {
+        List<Integer> getNumbers = new ArrayList<>();
         while (getNumbers.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
             if (!getNumbers.contains(number)) {
-                getNumbers.add(String.valueOf(number));
+                getNumbers.add(number);
             }
         }
-        String result = String.join(",", getNumbers);
-        return result;
+        return getNumbers;
     }
 }
