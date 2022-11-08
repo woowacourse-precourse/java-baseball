@@ -25,13 +25,9 @@ public class Input {
     }
 
     private static Boolean valid(List<Integer> numbers){
-        if (numbers.size() > 3 || numbers.isEmpty())
+        if (numbers.size() != 3)
             return false;
 
-        return checkDuplicate(numbers);
-    }
-
-    private static Boolean checkDuplicate(List<Integer> numbers){
         Set<Integer> numberSet = new HashSet<>(numbers);
         return numberSet.size() == numbers.size();
     }
