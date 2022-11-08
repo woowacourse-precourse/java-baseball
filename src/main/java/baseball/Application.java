@@ -13,6 +13,25 @@ public class Application {
     }
 
 
+    // 6. 게임 진행
+    public static boolean startGame() {
+        List<Integer> computer = computerNumber();
+//        System.out.println(computer);
+        String baseballResult = "";
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userNum = userNumber();
+            List<Integer> user = userNumberIsValid(userNum);
+            baseballResult = result(computer, user);
+            System.out.println(baseballResult);
+        } while (!baseballResult.equals("3스트라이크"));
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String retry = userNumber();
+        return isGameRetry(retry);
+    }
+
+
     // 5. 맞으면 유저에게 1 또는 2를 받아서 새로 게임을 시작할지, 게임을 끝낼지 결정
     public static boolean isGameRetry(String retry) {
         if (retry.equals("1")) {
