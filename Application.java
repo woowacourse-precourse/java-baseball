@@ -48,6 +48,7 @@ public class Application {
         if (num.charAt(0) == num.charAt(1) || num.charAt(1) == num.charAt(2) || num.charAt(0) == num.charAt(2)) {
             throw new IllegalArgumentException("세 자릿수 각각은 서로 달라야 합니다.");
         }
+
         return num;
     }
 
