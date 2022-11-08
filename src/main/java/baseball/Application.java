@@ -31,7 +31,7 @@ public class Application {
             if (restart_orExit == 2) {
                 break;
             } else if (restart_orExit != 1) {
-                throw new IllegalArgumentException("1이나 2를 입력해야합니다.");
+                throw new IllegalArgumentException();
             }
         }
     }

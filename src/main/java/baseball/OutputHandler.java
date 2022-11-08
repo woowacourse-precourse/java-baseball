@@ -11,7 +11,7 @@ public class OutputHandler {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
     public void Strike_andBall_result_print(int strike, int ball) {
-        if((ball+strike)==0){
+        if(ball==0 && strike==0){
             System.out.println("낫싱");
         }
         else if(ball==0&&strike<=3){
@@ -20,10 +20,10 @@ public class OutputHandler {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
         }
-        else if(strike==0&&ball<3){
+        else if(strike==0&&ball!=0){
             System.out.println(ball+"볼");
         }
-        else if(ball>0&&strike>0&&(strike+ball)<=3){
+        else{
             System.out.println(ball+"볼 "+strike+"스트라이크");
         }
     }

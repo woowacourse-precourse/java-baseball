@@ -27,6 +27,9 @@ public class InputHandler {
         if(!errorHandler.isLengthSizeis3(myNumList)){
             throw new IllegalArgumentException();
         }
+        if(!errorHandler.isRange(myNumList)){
+            throw new IllegalArgumentException();
+        }
         if(!errorHandler.isNotDuplicated(myNumList)){
             throw new IllegalArgumentException();
         }

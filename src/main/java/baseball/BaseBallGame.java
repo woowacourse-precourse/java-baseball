@@ -19,7 +19,7 @@ public class BaseBallGame {
             int ball = findBoll(randomNum, myNum, strike);
 
             outputHandler.Strike_andBall_result_print(strike, ball);
-            if(strike==3 && ball==0){
+            if(strike==3){
                 break;
             }
         }

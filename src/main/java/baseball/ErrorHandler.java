@@ -30,4 +30,12 @@ public class ErrorHandler {
         }
         return true;
     }
+
+    public boolean isRange(List<Integer> baseball) {
+        boolean[] duplicate = new boolean[10];
+        for (int i : baseball) {
+            if (i < 1 || i > 9) return false;
+        }
+        return true;
+    }
 }
