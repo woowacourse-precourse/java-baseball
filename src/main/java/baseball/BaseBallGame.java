@@ -121,10 +121,10 @@ public class BaseBallGame {
             }
         }
 
-        setCountResult(gameResult, ballCount, strikeCount);
+        putCountResult(gameResult, ballCount, strikeCount);
     }
 
-    public void setCountResult(Map<String, Integer> gameResult, int ballCount, int strikeCount) {
+    public void putCountResult(Map<String, Integer> gameResult, int ballCount, int strikeCount) {
         gameResult.put(BALL, ballCount);
         gameResult.put(STRIKE, strikeCount);
     }
