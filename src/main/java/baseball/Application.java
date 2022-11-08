@@ -50,14 +50,12 @@ public class Application {
         int numOfNothing = 0;
 
         for (int num : player) {
-            if (!computer.contains(num)) {
-                numOfNothing++;
+            if (player.indexOf(num) == computer.indexOf(num)) {
+                numOfStrike++;
+            }else if (computer.contains(num)) {
+                numOfBall++;
             }else {
-                if (player.indexOf(num) == computer.indexOf(num)) {
-                    numOfStrike++;
-                }else {
-                    numOfBall++;
-                }
+                numOfNothing++;
             }
         }
 
