@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static baseball.game.message.GameMessage.*;
+import static baseball.message.GameMessage.*;
 import static baseball.interaction.GameUtil.STRIKE_OUT_COUNT;
 
 public class Game {

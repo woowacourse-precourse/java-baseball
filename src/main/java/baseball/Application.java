@@ -4,9 +4,9 @@ import baseball.game.Game;
 import baseball.system.enums.UserAction;
 import baseball.interaction.SystemUtil;
 
-import baseball.game.message.GameMessage;
+import baseball.message.GameMessage;
 
-import baseball.system.message.SystemMessage;
+import baseball.message.SystemMessage;
 
 
 public class Application {
