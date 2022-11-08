@@ -1,64 +1,67 @@
 package baseball.domain.ingame;
 
-import baseball.domain.baseballnumber.BaseballNumber;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.List;
-
 import static baseball.domain.baseballnumber.BaseballNumberListGenerator.baseballNumberList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.domain.baseballnumber.BaseballNumber;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 class GuessTest {
 
-    @ParameterizedTest(name = "중복_숫자를_입력하면_예외를_던진다")
+    @ParameterizedTest(name = "중복 숫자를 입력하면 예외를 던진다")
     @ValueSource(strings = {"112", "111"})
-    void 중복_숫자를_입력하면_예외를_던진다(String inputValue) {
+    void duplicationTest(String inputValue) {
         assertThatThrownBy(() -> new Guess(inputValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복 숫자는 입력할 수 없습니다.");
     }
 
-    @ParameterizedTest(name = "세_자리가_아닌_문자열을_입력받으면_예외를_던진다")
+    @ParameterizedTest(name = "세 자리가 아닌 문자열을 입력받으면 예외를 던진다")
     @ValueSource(strings = {"1234", "12"})
-    void 세_자리가_아닌_문자열을_입력받으면_예외를_던진다(String inputValue) {
+    void threeNumberTest(String inputValue) {
         assertThatThrownBy(() -> new Guess(inputValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세자리의 숫자를 입력해 주세요.");
     }
 
+    @DisplayName("ball이 3일 경우 3을 리턴한다")
     @Test
-    void ball이_3일_경우_3을_리턴한다() {
+    void ThreeBallTest() {
         Guess guess = new Guess("123");
         List<BaseballNumber> answer = baseballNumberList("312");
 
         assertThat(guess.ballCount(answer)).isEqualTo(3);
     }
 
+    @DisplayName("ball이 0일 경우 0을 리턴한다")
     @Test
-    void ball이_0일_경우_0을_리턴한다() {
+    void zeroBallTest() {
         Guess guess = new Guess("123");
         List<BaseballNumber> answer = baseballNumberList("123");
 
         assertThat(guess.ballCount(answer)).isEqualTo(0);
     }
 
+    @DisplayName("strike가 3일 경우 3을 리턴한다")
     @Test
-    void strike가_3일_경우_3을_리턴한다() {
+    void threeStrikeTest() {
         Guess guess = new Guess("123");
         List<BaseballNumber> answer = baseballNumberList("123");
 
         assertThat(guess.strikeCount(answer)).isEqualTo(3);
     }
 
+    @DisplayName("strike가 0일 경우 0을 리턴한다")
     @Test
-    void strike가_0일_경우_0을_리턴한다() {
+    void zeroStrikeTest() {
         Guess guess = new Guess("123");
         List<BaseballNumber> answer = baseballNumberList("312");
 
         assertThat(guess.strikeCount(answer)).isEqualTo(0);
     }
-
 }

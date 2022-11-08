@@ -3,7 +3,7 @@ package baseball.domain.baseballnumber;
 import java.util.List;
 import java.util.Objects;
 
-public class BaseballNumber {
+public final class BaseballNumber {
 
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 9;

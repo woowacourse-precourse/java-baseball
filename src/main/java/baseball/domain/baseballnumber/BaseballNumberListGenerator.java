@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class BaseballNumberListGenerator {
+public final class BaseballNumberListGenerator {
     public static List<BaseballNumber> baseballNumberListOfRandomNumbers() {
         List<Integer> randomNumbers = RandomNumberGenerator.randomNumbers();
         return IntStream.range(0, 3)

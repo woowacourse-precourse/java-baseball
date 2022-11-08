@@ -10,7 +10,7 @@ import baseball.domain.ingame.Guess;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 
-public class BaseballGame {
+public final class BaseballGame {
 
     private final NumberScanner numberScanner;
     private final MessagePrinter messagePrinter;

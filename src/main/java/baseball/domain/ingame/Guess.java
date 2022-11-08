@@ -6,7 +6,7 @@ import baseball.domain.baseballnumber.BaseballNumber;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Guess {
+public final class Guess {
 
     private final List<BaseballNumber> inputNumbers;
 

@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -17,8 +18,9 @@ class NumberScannerTest {
 
     private final NumberScanner numberScanner = new NumberScanner();
 
+    @DisplayName("올바른 숫자를 입력하면 검증 로직을 통과하고 입력값을 반환한다")
     @Test
-    void 올바른_숫자를_입력하면_검증_로직을_통과하고_입력값을_반환한다() {
+    void testSuccess() {
         String inputValue = "123";
         InputStream inputStream = getInputStream(inputValue);
         System.setIn(inputStream);
@@ -26,9 +28,9 @@ class NumberScannerTest {
         assertThat(numberScanner.inputNumber()).isEqualTo(inputValue);
     }
 
-    @ParameterizedTest(name = "숫자가_아닌_것을_입력하면_예외를_던진다")
-    @ValueSource(strings = {"ㅎㅇ", "hi", "^^"})
-    void 숫자가_아닌_것을_입력한다(String inputValue) {
+    @ParameterizedTest(name = "숫자가 아닌 것을 입력하면 예외를 던진다")
+    @ValueSource(strings = {"ㅎㅇ", "hi", "", "^^"})
+    void testFail(String inputValue) {
         InputStream inputStream = getInputStream(inputValue);
         System.setIn(inputStream);
 
@@ -37,7 +39,7 @@ class NumberScannerTest {
                 .hasMessageContaining("숫자만 입력해 주세요.");
     }
 
-    @ParameterizedTest(name = "1_또는_2를_입력하면_검증_로직을_통과하고_입력값을_반환한다")
+    @ParameterizedTest(name = "1 또는 2를 입력하면 검증 로직을 통과하고 입력값을 반환한다")
     @ValueSource(strings = {"1", "2"})
     void inputOneOrTwoTestSuccess(String inputValue) {
         InputStream inputStream = getInputStream(inputValue);
@@ -46,7 +48,7 @@ class NumberScannerTest {
         assertThat(numberScanner.inputOneOrTwo()).isEqualTo(inputValue);
     }
 
-    @ParameterizedTest(name = "1_또는_2_이외의_숫자를_입력하면_예외를_던진다")
+    @ParameterizedTest(name = "1 또는 2 이외의 숫자를 입력하면 예외를 던진다")
     @ValueSource(strings = {"3", "4"})
     void inputOneOrTwoTestFail(String inputValue) {
         InputStream inputStream = getInputStream(inputValue);

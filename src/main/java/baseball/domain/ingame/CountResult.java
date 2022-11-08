@@ -1,6 +1,6 @@
 package baseball.domain.ingame;
 
-public class CountResult {
+public final class CountResult {
 
     private final int ballCount;
     private final int strikeCount;

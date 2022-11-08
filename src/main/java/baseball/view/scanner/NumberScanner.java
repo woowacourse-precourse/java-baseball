@@ -1,30 +1,31 @@
 package baseball.view.scanner;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.NoSuchElementException;
 
-public class NumberScanner {
+public final class NumberScanner {
 
     public String inputNumber() {
-        String inputValue = Console.readLine();
+        String inputValue = readLine();
         validateItIsNumber(inputValue);
 
         return inputValue;
     }
 
     public String inputOneOrTwo() {
-        String inputValue = Console.readLine();
+        String inputValue = readLine();
         validateOneOrTwo(inputValue);
 
         return inputValue;
     }
 
-//    private String readLine() {
-//        try {
-//            return Console.readLine();
-//        } catch (NoSuchElementException e) {
-//            return "";
-//        }
-//    }
+    private String readLine() {
+        try {
+            return Console.readLine();
+        } catch (NoSuchElementException e) {
+            return "";
+        }
+    }
 
     private void validateItIsNumber(String inputValue) {
         final String REGEX_FOR_ONLY_NUMBER = "\\d+";
