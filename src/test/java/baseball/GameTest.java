@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -50,6 +51,22 @@ public class GameTest {
         assertThatThrownBy(() -> baseballGame.checkUserInput(duplicateInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 숫자를 입력하였습니다.");
+    }
+
+    @Test
+    void 힌트를_위한_strike_갯수_계산하기() {
+        List<Integer> computer = Arrays.asList(1, 4, 2);
+        List<Integer> user = Arrays.asList(1, 3, 2);
+
+        assertThat(baseballGame.countStrike(computer, user)).isEqualTo(2);
+    }
+
+    @Test
+    void 힌트를_위한_ball_갯수_계산하기() {
+        List<Integer> computer = Arrays.asList(1, 4, 5);
+        List<Integer> user = Arrays.asList(5, 4, 2);
+
+        assertThat(baseballGame.countBall(computer, user)).isEqualTo(1);
     }
 
 }
