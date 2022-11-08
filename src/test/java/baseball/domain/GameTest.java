@@ -23,4 +23,10 @@ class GameTest {
     public void isComputerAndUserInitialized() {
         assertThat(game.getComputer()).isInstanceOf(Computer.class);
     }
+
+    @Test
+    @DisplayName("Game 내부의 멤버 변수로 User 생성 여부 확인")
+    public void isComputerAndUserInitialized() {
+        assertThat(game.getUser()).isInstanceOf(User.class);
+    }
 }
