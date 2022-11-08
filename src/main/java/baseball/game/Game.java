@@ -7,22 +7,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Game {
+    private List<Integer> computerRandomNumber;
+
     private Game() {
 
-    }
-
-    public void init() {
-        List<Integer> computerNumber = getComputerNumber();
-
-        while (true) {
-            List<Integer> userNumber = getInputUserNumber();
-            Map<String, Integer> ballStrikeCount = getBallStrikeCount(userNumber, computerNumber);
-            printGameResult(ballStrikeCount);
-
-            if (isGameEnd(ballStrikeCount.get("스트라이크"))) {
-                break;
-            }
-        }
     }
 
     public static void start() {
@@ -30,14 +18,38 @@ public class Game {
         Game game = Game.create();
         game.init();
     }
+
+    public void init() {
+        computerRandomNumber = getComputerNumber();
+
+        while (true) {
+            List<Integer> userNumber = getInputUserNumber();
+            Map<String, Integer> ballStrikeCount = getBallStrikeCount(userNumber, computerRandomNumber);
+            printGameResult(ballStrikeCount);
+
+            if (isGameEnd(ballStrikeCount)) {
+                break;
+            }
+        }
+    }
     public static Game create() {
         return new Game();
     }
 
-    public boolean isGameEnd(int strikeCount) {
-        if (strikeCount == 3) {
+    public boolean isGameEnd(Map<String, Integer> ballStrikeCount) {
+        if (ballStrikeCount.get("스트라이크") == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String userInputNumber = Console.readLine();
+            if (!userInputNumber.matches("^[1-2]{1}$")) {
+                throw new IllegalArgumentException("1과 2만 입력할 수 있습니다.");
+            }
+            if (userInputNumber.equals("1")) {
+                computerRandomNumber = getComputerNumber();
+                ballStrikeCount.clear();
+                return false;
+            }
             return true;
         }
         return false;
