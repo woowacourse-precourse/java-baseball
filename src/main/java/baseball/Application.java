@@ -144,5 +144,9 @@ public class Application {
             isPlaying = false;
         }
     }
+    //입력값이 명령에 유효한지 확인
+    public static boolean isOneOrTwo (String input){
+        return input.equals("1") || input.trim().equals("2") ;
+    }
 
 }
