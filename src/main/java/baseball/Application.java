@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
@@ -67,10 +68,21 @@ class Game
 
         // 정답을 다 맞출 때까지 무한 루프를 돈다.
         while(true) {
-            // implement
+            // 세 자리 숫자로 된 문자열을 입력받기
+            input = readLine();
+
+            // 입력값 규정 준수 여부 처리
+            user = checkGameUserInput(input, user);
+
             break;
         }
         // 만약 3개의 숫자를 다 맞췄다면 : while 루프를 break
         System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+    }
+
+    List<Integer> checkGameUserInput(String input, List<Integer> user) {
+        // implement
+
+        return user;
     }
 }
