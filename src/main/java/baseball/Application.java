@@ -127,7 +127,7 @@ public class Application {
             List<Integer> ballAndStrike = getUserAnswerBallAndStrike(computer, userAnswer);
             System.out.println(parseResult(ballAndStrike));
             result = getResult(ballAndStrike);
-        } while (result != 0);
+        } while (result != 1);
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
