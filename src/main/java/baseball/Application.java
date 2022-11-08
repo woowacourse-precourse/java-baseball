@@ -21,7 +21,26 @@ public class Application {
         return computer;
     }
 
+    public static List<Integer> getUserInput(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        System.out.println(userInput);
+        List<Integer> user = new ArrayList<>();
+        String[] userInputCharArray = userInput.split("");
+        if(userInputCharArray.length > 3) throw new IllegalArgumentException();
+        for(String s : userInputCharArray){
+            if(user.contains(Integer.parseInt(s))){
+                throw new IllegalArgumentException();
+            }
+            user.add(Integer.parseInt(s));
+        }
+        return user;
+    }
+
     public static void main(String[] args) {
         computer = chooseNumByComputer();
+        while (true) {
+            user = getUserInput();
+        }
     }
 }
