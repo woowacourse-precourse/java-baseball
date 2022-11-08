@@ -61,9 +61,7 @@ public class Application {
     public static void printResult(int ball, int strike) {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-        }
-
-        else {
+        } else {
             if (ball > 0) {
                 System.out.print(ball + "볼 ");
             }
