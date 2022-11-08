@@ -1,5 +1,8 @@
 package baseball;
 
+import static baseball.Constants.MAX_NUMBER;
+import static baseball.Constants.MIN_NUMBER;
+import static baseball.Constants.NUMBER_LENGTH;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
@@ -12,8 +15,8 @@ public class Computer {
     public List<Integer> createComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
 
-        while (computerNumbers.size() != 3) {
-            int randomNumber = pickNumberInRange(1, 9);
+        while (computerNumbers.size() != NUMBER_LENGTH) {
+            int randomNumber = pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);

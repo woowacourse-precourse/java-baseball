@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.InputValidation.CHOICE_ERROR;
+import static baseball.InputValidation.DUPLICATION_ERROR;
+import static baseball.InputValidation.LENGTH_ERROR;
+import static baseball.InputValidation.NUMBER_RANGE_ERROR;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +24,7 @@ class InputValidationTest {
     @CsvSource(value = {"1", "12", "1234", "12345"})
     void validateLength(String input) {
         assertThatThrownBy(() -> inputValidation.validatePlayerNumbersInput(input))
-                .hasMessage("3자리 수를 입력해야 합니다.");
+                .hasMessage(LENGTH_ERROR);
     }
 
     @ParameterizedTest
@@ -28,7 +32,7 @@ class InputValidationTest {
     @CsvSource(value = {"abc", "가나다", "a1b", "12가", "102", "1 2"})
     void validateNumberRange(String input) {
         assertThatThrownBy(() -> inputValidation.validatePlayerNumbersInput(input))
-                .hasMessage("1부터 9까지의 수를 입력해야 합니다.");
+                .hasMessage(NUMBER_RANGE_ERROR);
     }
 
     @ParameterizedTest
@@ -36,7 +40,7 @@ class InputValidationTest {
     @CsvSource(value = {"112", "121", "333"})
     void validateDuplication(String input) {
         assertThatThrownBy(() -> inputValidation.validatePlayerNumbersInput(input))
-                .hasMessage("각 자리의 수가 서로 달라야 합니다.");
+                .hasMessage(DUPLICATION_ERROR);
     }
 
     @ParameterizedTest
@@ -44,6 +48,6 @@ class InputValidationTest {
     @CsvSource(value = {"0", "3", "4", "a"})
     void validateChoice(String input) {
         assertThatThrownBy(() -> inputValidation.validateRestartInput(input))
-                .hasMessage("1 또는 2를 입력해야 합니다.");
+                .hasMessage(CHOICE_ERROR);
     }
 }
