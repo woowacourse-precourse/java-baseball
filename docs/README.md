@@ -38,3 +38,32 @@ Player.NumList 플레이어의 예측 숫자 세자리 입력 받는다.
 Strike 개수 countStrike로 세고
 Ball 개수 getSameNum - countStrike 해서 Ball 개수 세기
 EndSelect 에서 게임을 재시작 할 것인지 입력받는다.
+
+## 커밋 목록
+Refactor : Print 삭제, 힌트메세지에 추가, 그외 최종 정리 oreo 43 minutes ago
+Docs : 기능 구현 문서 다시 수정 oreo 56 minutes ago
+Refactor : Game 클래스 수정 oreo 56 minutes ago
+Refactor : Print클래스 수정 oreo 56 minutes ago
+Feat : 출력문을 그에 맞게 출력함수로 생성하였다. (StartMessage(),EndMessage(),RestartMessage();) 메세지 클래스에 생성. oreo 56 minutes ago
+Refactor : testComputer -> ComputerNumList 이름 변경 oreo Today 오후 9:12
+Refactor : Count 클래스 변화에 맞게 Game 클래스도 리팩토링 oreo Today 오후 9:10
+Feat : 객체에 맞게 ballCount 기능 구현 oreo Today 오후 9:09
+Feat : Count 클래스를 객체로 기능 구현 (getStrike, getBall, countStrike, countBall) oreo Today 오후 9:08
+Refactor : Game 클래스가 너무 지저분하여 리팩토링 (특히 EndSelect부분) oreo Today 오후 8:40
+Docs : 기능 구현 문서 수정 oreo Today 오후 8:26
+Refactor : study 삭제 oreo Today 오후 8:26
+Feat : Player 클래스 기능 구현, 체크하고 다시 플레이어의 숫자 배열 리스트 만들기 (NumList, CheckNum) 잘못 커밋해서 다시 만듬... oreo Today 오후 8:13
+Feat : 두번째 입력에서 1,2가 아닌 것을 제외하는 예외처리(CheckNotRestartNum) oreo Today 오후 7:53
+Feat : 첫 입력에서 숫자가 아닌 것을 제외하는 예외처리(CheckNotNumber) oreo Today 오후 7:52
+Feat : 첫 입력에서 중복 입력을 제거하는 예외처리(CheckNotRedundant) oreo Today 오후 7:51
+Feat : 첫 입력에서 세자리 수를 입력해야 하는 예외처리(CheckNotThreeLength) oreo Today 오후 7:50
+Feat : 컴퓨터의 숫자 리스트를 받아오는 기능 구현(NumList) oreo Today 오후 7:48
+Feat : 게임 시작 기능 구현 (startGame) oreo Today 오후 7:48
+Feat : 게임 Restart를 선택할 수 있는 기능 기현 (EndSelect) oreo Today 오후 7:46
+Feat : 기본적으로 게임을 플레이하는 기능 구현 (playGame) ㄴstrike가 3개가 될 때까지 게임 반복 oreo Today 오후 7:44
+Feat : Print 클래스에서 Hint를 출력하는 기능 (Hint) oreo Today 오후 7:42
+Feat : Count클래스에서 Strike의 개수를 세는 기능 oreo Today 오후 7:40
+Feat : Count 기능 중에 컴퓨터의 숫자가 플레이어의 input을 포함하는 것을 세는 기능 (strike + ball) oreo Today 오후 7:39
+Feat : App main 함수 구현 oreo Today 오후 7:38
+Docs : 프로그램 작성 전 기능 구현 목록 추가 oreo Today 오전 1:07
+feat: setup precourse baseball project woowabrie 2022-10-31 오후 4:34
