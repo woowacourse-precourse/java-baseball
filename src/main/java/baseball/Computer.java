@@ -19,7 +19,7 @@ public class Computer {
         do {
             threeNumberByComputer = getThreeRandomNumbers();
             playGame();
-        } while (!finishTheGame());
+        } while (!finishGame());
     }
 
     private List<Integer> getThreeRandomNumbers() {
@@ -48,7 +48,7 @@ public class Computer {
     }
 
     private boolean isRightAnswer(List<Integer> threeNumbers) {
-        List<Integer> strikeAndBall = countTheNumberOfStrikeAndBall(threeNumbers);
+        List<Integer> strikeAndBall = countOfStrikeAndBall(threeNumbers);
         int strikeCount = strikeAndBall.get(0);
         int ballCount = strikeAndBall.get(1);
 
@@ -70,7 +70,7 @@ public class Computer {
         return false;
     }
 
-    private List<Integer> countTheNumberOfStrikeAndBall(List<Integer> threeNumbers) {
+    private List<Integer> countOfStrikeAndBall(List<Integer> threeNumbers) {
         int strike = 0;
         int ball = 0;
 
@@ -98,7 +98,7 @@ public class Computer {
         return -1;
     }
 
-    private boolean finishTheGame() {
+    private boolean finishGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int responseNumber = gamePlayer.respondToFinishRequest();
         if (responseNumber == 1) {
