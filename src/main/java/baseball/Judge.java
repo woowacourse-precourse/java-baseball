@@ -17,8 +17,11 @@ public class Judge {
     return this.player.getNumbers();
   }
 
-  public Result compareBalls(ArrayList<Integer> playerNumbers){
-    ArrayList<Integer> computerNumbers = this.computer.getNumbers();
+  public ArrayList<Integer> getComputerNumbers(){
+    return this.computer.getNumbers();
+  }
+
+  public Result compareBalls(ArrayList<Integer> playerNumbers, ArrayList<Integer> computerNumbers){
     int strike = 0;
     int ball = 0;
 
