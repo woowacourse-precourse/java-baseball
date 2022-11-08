@@ -21,10 +21,32 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    /* 중복되는 숫자가 있는 경우 */
+    void 예외_테스트1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("입력된 숫자가 세 자리 수가 아닙니다.")
+        );
+    }
+
+    @Test
+    /* 3자리 숫자가 아닌 경우 */
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("서로 다른 3개의 숫자를 입력해야 합니다.")
+        );
+    }
+
+    @Test
+    /* 숫자가 아닌 경우 */
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12_"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("입력된 값이 숫자가 아닙니다.")
         );
     }
 
