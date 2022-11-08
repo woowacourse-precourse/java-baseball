@@ -14,6 +14,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
         gameStart();
     }
 
@@ -21,6 +22,12 @@ public class Application {
         computerRandomNumber = computerGetRandomNumber();
         System.out.println(computerRandomNumber);
 
+        playerDoing();
+
+        // 1이면 다시 시작, 2이면 종료료
+    }
+
+    private static void playerDoing() {
         boolean isNumberAvailable = playerInputCheck();
 //        System.out.println("playerInputNumber 의 isNumberAvailable : " + isNumberAvailable);
         // 입력한 값이 잘못된 값이면 종료함
@@ -30,30 +37,44 @@ public class Application {
 
         // 결과값을 출력
         resultOutput();
-
-        // 1이면 다시 시작, 2이면 종료료
     }
 
     private static void resultOutput() {
+        int nothingCount = 0;
         int strikeCount = 0;
         int ballCount = 0;
-        int nothingCount = 0;
 
         nothingCount = nothingOutput();
 
         if (nothingCount == 3) {
             System.out.println("낫싱");
-        }
-
-        if (nothingCount != 3) {
+        } else {
             strikeCount = strikeOutPut();
             ballCount = ballOutput(strikeCount);
         }
 
+        makeResultSentence(strikeCount, ballCount);
+    }
+
+    private static void makeResultSentence(int strikeCount, int ballCount) {
+        StringBuilder sentence = new StringBuilder();
+
         if (strikeCount == 3) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            sentence.append("3스트라이크 \n");
+            sentence.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
+
+        if (ballCount != 0) {
+            sentence.append(ballCount);
+            sentence.append("볼 ");
+        }
+
+        if (strikeCount != 0) {
+            sentence.append(strikeCount);
+            sentence.append("스트라이크");
+        }
+
+        System.out.println(sentence.toString());
     }
 
     private static int nothingOutput() {
