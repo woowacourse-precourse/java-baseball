@@ -11,6 +11,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ValidateInputTest {
 
     @Test
+    void validate_세자리_수_인지_확인() {
+        String input = "123";
+        assertThat(input.length()).isEqualTo(3);
+    }
+
+    @Test
     void validate_String을_List로_변경() {
         String input = "123";
         List<Integer> inputList = new ArrayList<>();

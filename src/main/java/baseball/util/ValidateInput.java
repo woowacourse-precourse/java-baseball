@@ -7,8 +7,15 @@ public class ValidateInput {
 
     public List<Integer> validateInput(String input) {
         isValidateNumber(input);
+        isValidateSize(input);
         List<Integer> inputList = inputToList(input);
         return inputList;
+    }
+
+    public void isValidateSize(String input) {
+        if (input.length() != 3) {
+            throw new IllegalStateException("세 자리의 숫자가 아닙니다.");
+        }
     }
 
     public void isValidateNumber(String input) {
