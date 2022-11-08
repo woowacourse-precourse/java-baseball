@@ -61,12 +61,10 @@ public class Game {
         }
 
         if (input.charAt(0) == '1') {
-            computer = getComputerNumber();
-
             return true;
+        }else {
+            return false;
         }
-
-        return false;
     }
 
     private void setFinished(){
