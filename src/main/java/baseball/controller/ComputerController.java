@@ -34,7 +34,7 @@ public class ComputerController {
         return isThreeStrike();
     }
 
-    private void compareNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+    public void compareNumbers(List<Integer> playerNumbers, List<Integer> computerNumbers) {
         initCount();
         checkStrikeAndBall(playerNumbers, computerNumbers);
         provideHint();
