@@ -58,10 +58,11 @@ public class GameController {
     public boolean getPlayGameAgainResult(String input) {
         validateInput("^[1-2]{1}$", input);
 
-        View view = new PlayGameAgainResultView(parseInt(input));
+        boolean isQuit = (parseInt(input) == 2);
+        View view = new PlayGameAgainResultView(isQuit);
         view.show();
 
-        return view.getResponseToBoolean();
+        return isQuit;
     }
 
     public static void validateInput(String regex, String input) {
