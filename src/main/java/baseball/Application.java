@@ -1,38 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static List<Integer> computerNumber() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
-
-    public static List<Integer> playerNumber() {
-        List<Integer> player = new ArrayList<>();
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-
-        int playerIdx = 0;
-        while (player.size() < 3) {
-            //잘못 입력한 경우에 대한 예외처리 기능 구현해야 함
-            char inputNumber = input.charAt(playerIdx);
-            int inputNumberToInt = inputNumber - '0';
-            player.add(inputNumberToInt);
-            playerIdx++;
-        }
-        return player;
-    }
+    public static boolean RESTART = false;
+    public static boolean FINISH = false;
 
     public static int findStrike(List<Integer> computer, List<Integer> player) {
         int strikeNumber = 0;
@@ -56,38 +30,61 @@ public class Application {
         return ballNumber;
     }
 
-    public static void compare(List<Integer> computer, List<Integer> player) {
-        int strikeNumber = findStrike(computer, player);
-        int ballNumber = findBall(computer, player);
+    public static void restart(Computer computer) {
+        System.out.println("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-/*        //check 과정
-        //사용자 숫자 확인
-        System.out.print("사용자의 숫자 : ");
-        for (int element : player) {
-            System.out.print(element);
-        }
-        System.out.println(" 입니다");
-        //컴퓨터 숫자 확인
-        System.out.print("컴퓨터의 숫자 : ");
-        for (int element : computer) {
-            System.out.print(element);
-        }
-        System.out.println(" 입니다");*/
+        String input = " ";
 
-
-        if (strikeNumber != 0) {
-            System.out.print(strikeNumber + "스트라이크 ");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        input = Console.readLine();
+        if (input.equals("1")) {
+            RESTART = true;
         }
+        else if (input.equals("2")) {
+            FINISH = true;
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void playStart(Computer computer, Player player) {
+        int strikeNumber = findStrike(computer.getComputerNumber(), player.getPlayerNumber());
+        int ballNumber = findBall(computer.getComputerNumber(), player.getPlayerNumber());
+
         if (ballNumber != 0) {
             System.out.print(ballNumber + "볼 ");
+        }
+        if (strikeNumber != 0) {
+            System.out.print(strikeNumber + "스트라이크 ");
+            if (strikeNumber == 3) {
+                restart(computer);
+                return;
+            }
         }
         if (strikeNumber == 0 && ballNumber == 0) {
             System.out.print("낫싱");
         }
+        System.out.print("\n");
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        compare(computerNumber(), playerNumber());
+        Computer computer = new Computer();
+        computer.makeRandom();
+        Player player = new Player();
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while(true) {
+            player.makePlayerNumber();
+            playStart(computer, player);
+
+            if (RESTART == true) {
+                computer.makeRandom();
+                RESTART = false;
+            }
+            else if (FINISH == true) {
+                break;
+            }
+        }
     }
 }
