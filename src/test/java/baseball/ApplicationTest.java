@@ -99,6 +99,15 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void int를_String으로_변환하는_기능_테스트() {
+        int intData = 1;
+
+        String result = gameInput.convertIntToString(intData);
+
+        assertThat(result).isInstanceOf(String.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
