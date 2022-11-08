@@ -35,7 +35,7 @@ public class Application {
         user_input = Integer.parseInt(input);
 
         if (user_input < 100 || user_input > 999) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("3자리수만 입력 가능 합니다");
         }
 
         user_list.add(user_input / 100);
@@ -43,13 +43,13 @@ public class Application {
         user_list.add(user_input % 10);
 
         if (user_list.contains(0)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("각 자리 수는 1~9 사이의 수만 입력 가능 합니다");
         }
 
         if (user_list.get(0) == user_list.get(1) ||
                 user_list.get(1) == user_list.get(2) ||
                 user_list.get(0) == user_list.get(2)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 수가 있지 않아야 합니다");
         }
 
         return user_list;
@@ -107,7 +107,8 @@ public class Application {
         }
     }
 
-    public static int Game(List<Integer> answer) {  //  return 값이 0이면 프로그램 종료, 1이면 재시작, 2면 입력값 계속 받기
+    //  return 값이 0이면 프로그램 종료, 1이면 재시작, 2면 입력값 계속 받기
+    public static int Game(List<Integer> answer) {
         List<Integer> user = new ArrayList<>();
         List<Integer> ballstrike = Arrays.asList(0, 0);
         boolean check_gameover = true;
@@ -116,8 +117,8 @@ public class Application {
         try {
             user = UserInput_list(UserInput());
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
-            return 0;
+            System.out.println(e.getMessage());
+            throw e;
         }
 
         ballstrike = BallStrike(answer, user);
@@ -135,8 +136,6 @@ public class Application {
         return 2;
     }
 
-
-
     public static void main(String[] args) {
         List<Integer> answer = new ArrayList<>();
         int check_gameover = 2;
@@ -148,7 +147,5 @@ public class Application {
                 check_gameover = Game(answer);
             }
         }
-
-
     }
 }
