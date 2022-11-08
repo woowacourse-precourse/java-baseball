@@ -23,7 +23,7 @@ public class Baseball {
 
     public BaseballScore playRound() {
         BaseballNumber userNumber = BaseballInput.getUserNumber();
-        return BaseballResult.getBaseballScore(computerNumbers, userNumber);
+        return BaseballScoreCalculation.getBaseballScore(computerNumbers, userNumber);
     }
 
 

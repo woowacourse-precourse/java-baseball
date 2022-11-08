@@ -1,7 +1,7 @@
 package baseball;
 
-public class BaseballResult {
-    private BaseballResult() {
+public class BaseballScoreCalculation {
+    private BaseballScoreCalculation() {
 
     }
 
