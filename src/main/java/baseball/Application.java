@@ -71,8 +71,8 @@ public class Application {
         return result;
     }
     public static int check_ball(List<Integer> computer_number, List<Integer> player_number){
-        int strike = check_strike();
-        int same = same();
+        int strike = check_strike(computer_number,player_number);
+        int same = same(computer_number,player_number);
         int ball = same - strike;
         return ball;
     }
