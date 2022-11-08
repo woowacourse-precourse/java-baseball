@@ -11,14 +11,13 @@ public class GameService {
 
     PrintMessage print = new PrintMessage();
     RandomNumber computer = new RandomNumber();
-    Game game = new Game();
+    Game game;
     User user = new User();
     InGame inGame = new InGame();
-    String input;
 
 
     public void playGame() {
-        game.setComputerNumber(computer.getRandomNumber());
+        game = new Game(computer.getRandomNumber());
         int strike = 0;
         while (strike != 3) {
             print.inputRequest();
@@ -36,7 +35,7 @@ public class GameService {
         getScore();
     }
     private int[] getUserNumbers() throws IllegalArgumentException{
-        input = Console.readLine();
+        String input = Console.readLine();
 
         return inGame.userInputToInt(input);
     }

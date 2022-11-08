@@ -6,12 +6,12 @@ public class Game {
     int strike;
     int ball;
 
-    public int[] getComputerNumber() {
-        return computerNumber;
+    public Game(int[] computerNumber) {
+        this.computerNumber = computerNumber;
     }
 
-    public void setComputerNumber(int[] randomNumber) {
-        computerNumber = randomNumber;
+    public int[] getComputerNumber() {
+        return computerNumber;
     }
     public void initStrike() {
         strike = 0;
