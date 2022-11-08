@@ -32,7 +32,7 @@ public class Game {
     public static void printHint(int strike, int ball) {
         validateStrikeBall(strike, ball);
         if (strike == 0 && ball == 0) {
-            System.out.println(Hint.NOTHING.message());
+            printNothing();
         }
         if (strike == 0 && ball > 0) {
             printBall(ball);
@@ -49,6 +49,10 @@ public class Game {
         if (strike + ball > Number.NUMBERS_SIZE) {
             throw new IllegalArgumentException("The number of strikes and balls is outside the allowed range.");
         }
+    }
+
+    public static void printNothing(){
+        System.out.println(Hint.NOTHING.message());
     }
 
     public static void printBall(int ball) {
