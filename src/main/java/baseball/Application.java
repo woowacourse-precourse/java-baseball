@@ -60,6 +60,29 @@ public class Application {
         return score;
     }
 
+    /**
+     * processScore()을 통해 비교된 결과를 플레이어에게 출력
+     *
+     * @param score processScore()을 통해 처리된 [스트라이크 수, 볼 수, miss 수]
+     */
+    public static void printScore(List<Integer> score) {
+        if (score.get(2) == 3) {
+            System.out.println("낫싱");
+            return;
+        }
+        String numOfBall = score.get(1).toString() + "볼";
+        String numOfStrike = score.get(0).toString() +  "스트라이크";
+        List<String> listOfInfo = new ArrayList<>(Arrays.asList(numOfBall, numOfStrike));
+        StringBuilder output = new StringBuilder();
+        // 0개인 정보는 무시
+        for(String stringScore: listOfInfo){
+            if (!(stringScore.charAt(0) == '0')){
+                output.append(stringScore).append(" ");
+            }
+        }
+        System.out.println(output.substring(0, output.length()-1));
+    }
+
 
     public static void main(String[] args) {
         List<Integer> computer = generateThreeDifferentNum();
