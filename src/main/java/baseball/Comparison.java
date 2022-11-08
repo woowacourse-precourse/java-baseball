@@ -41,7 +41,7 @@ public class Comparison {
     }
 
     boolean hasSameNum() {
-        return (copyUserNum.isEmpty());
+        return (!copyUserNum.isEmpty());
     }
 
     void createStrikeBallMessage(List<Integer> userNum) {
