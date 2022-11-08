@@ -21,7 +21,6 @@ public class Application {
         while (true) {
             String comNum = radomNumberCreator.makeRandomNumber();
 
-
             baseBallGame.baseballGame(comNum);
 
             outputHandler.printRestart_orExit();

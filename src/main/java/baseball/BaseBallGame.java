@@ -3,9 +3,6 @@ package baseball;
 import java.io.IOException;
 
 public class BaseBallGame {
-    // TODO: 랜덤 수 생성
-    // TODO: 입력받기
-    // TODO: 숫자 비교
 
     static InputHandler inputHandler = new InputHandler();
     static OutputHandler outputHandler = new OutputHandler();
@@ -41,7 +38,6 @@ public class BaseBallGame {
                 ballCnt +=1;
             }
         }
-        if(strikeCnt ==0) return ballCnt;
-        else return ballCnt - strikeCnt;
+        return ballCnt - strikeCnt;
     }
 }

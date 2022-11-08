@@ -1,6 +1,7 @@
 package baseball;
 
-import java.io.BufferedReader;
+
+import camp.nextstep.edu.missionutils.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -9,14 +10,14 @@ import java.util.List;
 public class InputHandler {
     static ErrorHandler errorHandler;
     static OutputHandler outputHandler;
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 
     public static String getInput_returnMyNum() throws IOException {
         outputHandler = new OutputHandler();
         errorHandler = new ErrorHandler();
         outputHandler.printGetUserNumber();
 
-        String myNum = br.readLine();
+        String myNum = Console.readLine();
         if(!errorHandler.isAllDigit(myNum)){
             throw new IllegalArgumentException();
         }
@@ -37,7 +38,7 @@ public class InputHandler {
     }
     public int getRestartNum() throws IOException {
         try {
-            int restartNum = Integer.parseInt(br.readLine());
+            int restartNum = Integer.parseInt(Console.readLine());
             return restartNum;
         }catch (NumberFormatException e){
             throw new IllegalArgumentException();
