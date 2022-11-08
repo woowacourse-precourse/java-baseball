@@ -2,9 +2,10 @@ package baseball.number.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
-import static baseball.number.util.GameNumberRange.BALL_SIZE;
 import static baseball.number.util.GamePhrase.*;
 
 public class HintsAboutNumbers {
@@ -29,15 +30,15 @@ public class HintsAboutNumbers {
 
         if(totalBall == strike && totalBall > 0) {
             System.out.println(strike + STRIKE_HINT_MESSAGE.getValue());
-            return strike == BALL_SIZE.getNumber();
+            return strike == 3;
         }
-        if(strike >= 0 && ball > 0 &&ball <= BALL_SIZE.getNumber()) {
+        if(strike >= 0 && ball > 0 && ball <= 3) {
             if(strike == 0) {
                 System.out.println(ball + BALL_HINT_MESSAGE.getValue());
                 return false;
             }
             System.out.println(ball + BALL_HINT_MESSAGE.getValue()
-                    +strike + STRIKE_HINT_MESSAGE.getValue());
+                    + strike + STRIKE_HINT_MESSAGE.getValue());
             return false;
         }
         System.out.println(NOTHING_HINT_MESSAGE.getValue());
@@ -45,27 +46,16 @@ public class HintsAboutNumbers {
     }
     private int countTotalBall() {
         int totalBall = (int) playerDigitNumbers.stream()
-                .filter(o -> randomDigitNumbers.stream()
-                        .anyMatch(Predicate.isEqual(o))).count();
+                .filter(number -> randomDigitNumbers.stream()
+                        .anyMatch(Predicate.isEqual(number))).count();
         return totalBall;
     }
 
     private int countStrike() {
-        int strike = 0;
+        int strike = (int) IntStream.range(0, 3).boxed()
+                .filter(number -> Objects.equals(playerDigitNumbers.get(number), randomDigitNumbers.get(number)))
+                .count();
 
-        for(int number = 0; number<3; number++) {
-            int playerDigitNumber = playerDigitNumbers.get(number);
-            int randomDigitNumber = randomDigitNumbers.get(number);
-
-            strike = isDigitNumberMatch(playerDigitNumber,randomDigitNumber,strike);
-        }
-        return strike;
-    }
-
-    private int isDigitNumberMatch (int playerDigitNumber, int randomDigitNumber, int strike) {
-        if(playerDigitNumber == randomDigitNumber) {
-            strike++;
-        }
         return strike;
     }
 }
