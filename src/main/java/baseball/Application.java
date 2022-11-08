@@ -3,132 +3,158 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
-    static boolean answer = true;
-    static boolean reStart = true;
     public static void main(String[] args) {
-        List<Integer> comList = new ArrayList<>();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // 3스트라이크가 아니면 반복
-        while(answer) {
-            if(reStart) {
-                comList = comNumber();
+        boolean isOver = false;
+
+        while (!isOver) {
+            isOver = startNewGame();
+        }
+
+    }
+
+    static boolean startNewGame() {
+        Integer answerNumber = getNewAnswer();
+        Integer userAnswerNumber = null;
+
+        while (!answerNumber.equals(userAnswerNumber)) {
+            System.out.print("숫자를 입력해주세요 : ");
+            userAnswerNumber = getIntegerInput();
+            validate(userAnswerNumber);
+            System.out.println();
+
+            List<Integer> gameResult = getGameResult(answerNumber, userAnswerNumber);
+            printGameResult(gameResult.get(0), gameResult.get(1));
+        }
+
+        boolean isOver;
+        userAnswerNumber = getIntegerInput();
+        System.out.println();
+
+        if (userAnswerNumber == 1) {
+            isOver = false;
+        } else if (userAnswerNumber == 2) {
+            isOver = true;
+        } else {
+            throw new IllegalArgumentException();
+        }
+
+        return isOver;
+    }
+
+    static void print(String text) {
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            bufferedWriter.write(text);
+            bufferedWriter.flush();
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
+
+    }
+
+    static Integer getNewAnswer() {
+        List<Integer> numbers = new ArrayList<>();
+
+        while (numbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
 
-            List userList = userNumber();
-            score(comList, userList);
-        }
-    }
-
-    // 컴퓨터의 서로 다른 숫자 3개 저장
-    public static List comNumber() {
-        List<Integer> comList = new ArrayList<>();
-
-        for (int i=0; i<3; i++) {
-            int num = Randoms.pickNumberInRange(1, 9);
-
-            if(!comList.contains(num)) {
-                comList.add(num);
-            } else {
-                i--;
-            }
         }
 
-        reStart = false;
+        int result = 0;
 
-        return comList;
-    }
-
-    // 사용자의 숫자 저장
-    public static List userNumber() {
-        List<Integer> userList = new ArrayList<>();
-
-        System.out.print("숫자를 입력해주세요 : ");
-
-        String userNum = Console.readLine();
-
-        for (int i=0; i<userNum.length(); i++) {
-            userList.add(userNum.charAt(i) - '0');
+        for (int index = numbers.size() - 1, digit = 1; 0 <= index; index--) {
+            result += numbers.get(index) * digit;
+            digit *= 10;
         }
 
-        userException(userNum, userList);
-
-        return userList;
+        return result;
     }
-    
-    // 점수 판단 기능
-    public static void score(List comList, List userList) {
-        int strike = 0;
+
+    static Integer getIntegerInput() throws IllegalArgumentException {
+
+        try {
+            String userInput = Console.readLine();
+            Integer result = Integer.parseInt(userInput);
+            return result;
+        } catch (NumberFormatException error) {
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    static void validate(Integer number) throws IllegalArgumentException {
+
+        if (number < 123 || 987 < number) {
+            throw new IllegalArgumentException();
+        }
+
+        Set<Integer> duplicateCheckSet = new HashSet<Integer>();
+        duplicateCheckSet.add(number % 10);
+        duplicateCheckSet.add((number / 10) % 10);
+        duplicateCheckSet.add((number / 100) % 10);
+
+        if (duplicateCheckSet.size() != 3 || duplicateCheckSet.contains(0)) {
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    static List<Integer> getGameResult(Integer answer, Integer userAnswer) {
         int ball = 0;
+        int strike = 0;
 
-        for (int i=0; i<comList.size(); i++) {
-            if(comList.get(i) == userList.get(i)) {
+        String answerString = String.valueOf(answer);
+        String userAnswerString = String.valueOf(userAnswer);
+
+        for (int index = 0; index < userAnswerString.length(); index++) {
+            Character targetChar = userAnswerString.charAt(index);
+
+            if (targetChar == answerString.charAt(index)) {
                 strike++;
-            } else if (userList.contains(comList.get(i))) {
+            } else if (answerString.contains(targetChar.toString())) {
                 ball++;
             }
+
         }
 
-        StringBuilder sb = new StringBuilder();
+        return List.of(ball, strike);
+    }
+
+    static void printGameResult(int ball, int strike) {
+
+        if (ball != 0) {
+            System.out.print(ball + "볼 ");
+        }
+
+        if (strike != 0) {
+            System.out.print(strike + "스트라이크");
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.print("낫싱");
+        }
 
         if (strike == 3) {
-            answer = false;
-            sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("3스트라이크");
-            System.out.println(sb);
-            reStartGame();
-            return;
-        } else if(ball > 0) {
-            sb.append(ball +"볼 ");
+            System.out.print("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
 
-        if(strike > 0) {
-            sb.append(strike +"스트라이크");
-        }
-
-        if(strike == 0 && ball == 0) {
-            sb.append("낫싱");
-        }
-
-        System.out.println(sb);
-    }
-
-    // 예외 처리 기능
-    // 3자리여부, 숫자여부, 중복여부
-    public static void userException(String userNum, List userList) {
-        if (userNum.length() != 3) {
-            throw new IllegalArgumentException();
-        } else if(!userNum.chars().allMatch((Character::isDigit))) {
-            throw new IllegalArgumentException("숫자만 입력 해주세요");
-        }
-
-        for(int i=0; i<3; i++) {
-            int count = Collections.frequency(userList, userNum.charAt(i) -'0');
-
-            if(count > 1) {
-                throw new IllegalArgumentException("다른 숫자만 입력 해주세요");
-            } else if (userNum.charAt(i) == '0') {
-                throw new IllegalArgumentException("1~9만 입력해주세요");
-            }
-        }
-    }
-
-    // 재시작, 종료 기능
-    public static void reStartGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        String input = Console.readLine();
-
-        if(input.contentEquals("1")) {
-            answer = true;
-            reStart = true;
-            return;
-        } else if (!input.contentEquals("2")) {
-            throw new IllegalArgumentException("1과 2만 입력 해주세요");
-        }
+        System.out.println();
     }
 }
