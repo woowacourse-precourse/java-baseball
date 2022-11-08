@@ -74,4 +74,26 @@ public class Application {
             throw new IllegalArgumentException("1또는 2를 입력해 주세요.");
         }
     }
+
+    // 유저의 숫자와 컴퓨터의 숫자를 비교하는 기능
+    public static List<Integer> compareNumbers(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        List<Integer> result = new ArrayList<>(List.of(0, 0));
+        boolean[] visited = new boolean[10];
+
+        for (Integer computerNumber : computerNumbers) {
+            visited[computerNumber] = true;
+        }
+
+        for (int i = 0; i < 3; i++) {
+            Integer userNumber = userNumbers.get(i);
+            Integer computerNumber = computerNumbers.get(i);
+
+            if (computerNumber.equals(userNumber)) { // 스트라이크
+                result.set(1, result.get(1)+1);
+            } else if (visited[userNumber]) { // 볼
+                result.set(0, result.get(0)+1);
+            }
+        }
+        return result;
+    }
 }
