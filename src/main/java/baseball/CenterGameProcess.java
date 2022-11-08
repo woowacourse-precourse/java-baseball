@@ -10,6 +10,8 @@ public class CenterGameProcess {
 
         String myNumber = output.Question(output.inputNumber, gameTypeNumber);
         List<Integer> myNumberList = output.InputNumberList(myNumber);
-
+        int countStrike = count.Strike(myNumberList, computer);
+        int countBall = count.Ball(myNumberList, computer);
+        
     }
 }
