@@ -16,16 +16,13 @@ public class GameResult {
   }
 
   public void printResult() {
-    if (ballCount != 0) {
-      System.out.print(ballCount + "볼 ");
+    String result = "";
+    if (strikeCount + ballCount == 0) result += "낫싱";
+    else  {
+      if (ballCount != 0) result += ballCount + "볼 ";
+      if (strikeCount != 0) result += strikeCount + "스트라이크";
     }
-    if (strikeCount != 0) {
-      System.out.print(strikeCount + "스트라이크");
-    }
-    if (strikeCount + ballCount == 0) {
-      System.out.print("낫싱");
-    }
-    System.out.println();
+    System.out.println(result);
   }
 
   public boolean isAnswer() {
