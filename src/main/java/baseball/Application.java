@@ -124,8 +124,8 @@ public class Application {
         return quit;
     }
 
-    public static boolean playBaseball() {
-        List<Integer> answer = makeAnswer();
+    public static boolean playBaseball(List<Integer> answer) {
+
         boolean isCorrect;
         boolean quitGame;
 
@@ -146,7 +146,8 @@ public class Application {
     public static void main(String[] args) {
         boolean quitGame = false;
         while (!quitGame) {
-            quitGame = playBaseball();
+            List<Integer> answer = makeAnswer();
+            quitGame = playBaseball(answer);
         }
     }
 }
