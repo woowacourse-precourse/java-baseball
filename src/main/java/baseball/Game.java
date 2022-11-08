@@ -26,7 +26,7 @@ public class Game {
             Integer totalNumber = inputTotalNumber();
             checkTotalNumberCount(totalNumber, secretNumber, hitCount);
             showHitCount(hitCount);
-        } while(!checkWin(hitCount));
+        } while (!checkWin(hitCount));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
@@ -50,9 +50,9 @@ public class Game {
     private static void checkOneDigitNumberCount
             (Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount) {
         if (secretNumber.get(index.intValue()).equals(number)) {
-            hitCount.set(0, hitCount.get(0)+1);
+            hitCount.set(0, hitCount.get(0) + 1);
         } else if (secretNumber.contains(number)) {
-            hitCount.set(1, hitCount.get(1)+1);
+            hitCount.set(1, hitCount.get(1) + 1);
         }
     }
 
@@ -102,10 +102,10 @@ public class Game {
         return secretNumber;
     }
 
-    private static void checkUserInput(String userInputNumber){
+    private static void checkUserInput(String userInputNumber) {
         if (!checkUserInputLength(userInputNumber)) {
             throw new IllegalArgumentException("입력된 숫자의 길이가 잘못되어 게임을 종료합니다.");
-        } else if (checkUserInputContainZero(userInputNumber)){
+        } else if (checkUserInputContainZero(userInputNumber)) {
             throw new IllegalArgumentException("입력된 숫자에 0이 포함되어 있어 게임을 종료합니다.");
         } else if (!checkUserInputNumber(userInputNumber)) {
             throw new IllegalArgumentException("숫자가 아닌 문자가 입력되어 게임을 종료합니다.");
@@ -125,7 +125,7 @@ public class Game {
     private static boolean checkUserInputNumber(String userInputNumber) {
         try {
             int numberValue = Integer.parseInt(userInputNumber);
-            if (numberValue / (int) Math.pow(10, NUMBER_SIZE-1) == 0) {
+            if (numberValue / (int) Math.pow(10, NUMBER_SIZE - 1) == 0) {
                 return false;
             }
         } catch (NumberFormatException e) {
@@ -135,10 +135,7 @@ public class Game {
     }
 
     private static boolean checkUserInputDuplicateNumber(String userInputNumber) {
-        int distinctCount = (int) Arrays
-                .stream(userInputNumber.split(""))
-                .distinct()
-                .count();
+        int distinctCount = (int) Arrays.stream(userInputNumber.split("")).distinct().count();
         return userInputNumber.length() == distinctCount;
     }
 
