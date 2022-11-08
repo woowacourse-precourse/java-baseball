@@ -27,4 +27,11 @@ public class User {
         return user;
     }
 
+    public List<Integer> reverseListOrder(List<Integer> numbersToList){
+        int lastNumber = numbersToList.get(2);
+        numbersToList.set(2, numbersToList.get(0));
+        numbersToList.set(0, lastNumber);
+        return numbersToList;
+    }
+
 }
