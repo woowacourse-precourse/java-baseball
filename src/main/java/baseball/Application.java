@@ -16,11 +16,28 @@ public class Application {
     static List<Integer> computer;
     static List<Integer> numbers;
 
+    static int strick;
+    static int ball;
+
     public static void main(String[] args) throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));
         selectNumber();
         while(!result){
             inputNumber(br);
+            checkNumber(numbers);
+        }
+    }
+
+    private static void checkNumber(List<Integer> numbers) {
+        strick = 0;
+        ball = 0;
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                if(computer.get(i) == numbers.get(j)){
+                    if(i == j) strick++;
+                    else ball++;
+                }
+            }
         }
     }
 
