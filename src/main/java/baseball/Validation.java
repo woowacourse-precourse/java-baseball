@@ -8,16 +8,22 @@ import java.util.stream.Collectors;
 
 public class Validation {
 
+    private static final String USER_NUMBER_RANGE = "^[1-9]{3}";
+    private static final int USER_NUMBER_DIGIT_SIZE = 3;
+
+    private static final String RESTART_NUMBER_RANGE = "^[1-2]{1}";
+    private static final int RESTART_NUMBER_DIGIT_SIZE = 1;
+
     public static void validateRestartNumber(String restartNumber) {
         validateDigit(restartNumber);
-        validateSize(restartNumber, 1);
-        validateRange(restartNumber, "^[1-2]*$");
+        validateSize(restartNumber, RESTART_NUMBER_DIGIT_SIZE);
+        validateRange(restartNumber, RESTART_NUMBER_RANGE);
     }
 
     public static List<Integer> validateUserNumber(String userNumbers) {
         validateDigit(userNumbers);
-        validateSize(userNumbers, 3);
-        validateRange(userNumbers, "^[1-9]*$");
+        validateSize(userNumbers, USER_NUMBER_DIGIT_SIZE);
+        validateRange(userNumbers, USER_NUMBER_RANGE);
         validateDuplication(userNumbers);
 
         return stringToIntegerList(userNumbers);
