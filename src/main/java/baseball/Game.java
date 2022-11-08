@@ -29,5 +29,6 @@ public class Game {
         } while (!gameEnd);
 
         Message.printGameEndMessage();
+        Message.printRestartOrEndMessage();
     }
 }
