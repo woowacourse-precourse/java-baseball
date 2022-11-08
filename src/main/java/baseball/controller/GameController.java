@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.view.*;
-
 import java.util.regex.Pattern;
 
 public class GameController {
@@ -18,7 +17,7 @@ public class GameController {
     }
 
     public boolean showSelectNumberResult(String input) {
-        validateInput("^[1-9]{3}", "중복되는 숫자가 없고 0이 아닌 3자리의 숫자를 입력해주세요.");
+        validateInput("^[1-9]{3}", input);
 
         View view = new SelectNumberResult(input);
         view.show();
@@ -37,7 +36,9 @@ public class GameController {
         return true;
     }
 
-    public static boolean validateInput(String regex, String input) {
-        return (Pattern.matches(regex, input));
+    public static void validateInput(String regex, String input) {
+        if (!Pattern.matches(regex, input)) {
+            throw new IllegalArgumentException("조건에 맞지 않는 입력이에요.");
+        }
     }
 }
