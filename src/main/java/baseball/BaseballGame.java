@@ -24,4 +24,14 @@ public class BaseballGame {
 
         throw new IllegalArgumentException();
     }
+
+    public void playGame() {
+        GameValidation gameValidation = new GameValidation();
+
+        System.out.print(GameMessage.INPUT_NUMBER_MESSAGE);
+        String userInput = Console.readLine();
+
+        gameValidation.setUserInput(userInput);
+        gameValidation.isAllCheck();
+    }
 }
