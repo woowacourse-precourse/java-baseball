@@ -21,4 +21,29 @@ public class BaseballResult {
     public void setBall(int ball) {
         this.ball = ball;
     }
+
+    public String getStrikeMessage() {
+        return getStrike() + GameMessage.GAME_STRIKE;
+    }
+
+    public String getBallMessage() {
+        return getStrike() + GameMessage.GAME_BALL;
+    }
+
+    @Override
+    public String toString() {
+        if (getStrike() > 0 && getBall() > 0) {
+            return getBallMessage() + " " + getStrikeMessage();
+        }
+
+        if (getStrike() > 0 && getBall() == 0) {
+            return getStrikeMessage();
+        }
+
+        if (getStrike() == 0 && getBall() > 0) {
+            return getBallMessage();
+        }
+
+        return GameMessage.GAME_NOTHING;
+    }
 }
