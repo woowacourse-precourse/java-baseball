@@ -152,6 +152,16 @@ class HintTest extends NsTest {
         assertThat(output()).isEqualTo("1스트라이크");
     }
 
+    @Test
+    public void 볼과_스트라이크가_없을_때_낫싱_출력() {
+        //given
+        Hint hint = new Hint();
+        //when
+        hint.print();
+        //then
+        assertThat(output()).isEqualTo("낫싱");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
