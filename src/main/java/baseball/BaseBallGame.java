@@ -3,11 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
-  private Computer computer;
+  private Computer computer = new Computer();
 
   public void start() {
     gameInit();
-    System.out.println(GameMessage.GAME_START_MESSAGE.toString());
+    System.out.println(GameMessage.GAME_START_MESSAGE.getMessage());
     String inputData;
     GameNumber gameNumber;
     boolean isGameOver = false;
@@ -20,7 +20,7 @@ public class BaseBallGame {
         result.setResultByGameNumber(computer.getAnswerNumber(), gameNumber);
         result.printResult();
         if (result.isAnswer()) {
-          System.out.println(GameMessage.GAME_FINISH_MESSAGE.toString());
+          System.out.println(GameMessage.GAME_FINISH_MESSAGE.getMessage());
           isGameOver = !checkRestart();
         }
       }
@@ -29,7 +29,7 @@ public class BaseBallGame {
 
   // 재시작 할 것인지 체크
   private boolean checkRestart() {
-    System.out.println(GameMessage.CHECK_RESTART_MESSAGE.toString());
+    System.out.println(GameMessage.CHECK_RESTART_MESSAGE.getMessage());
     while (true) {
       String input = Console.readLine();
       switch (input) {
@@ -39,18 +39,17 @@ public class BaseBallGame {
         case "2":
           return false;
         default:
-          System.out.println(GameMessage.IS_INVALID_VALUE.toString());
+          System.out.println(GameMessage.IS_INVALID_VALUE.getMessage());
       }
     }
   }
 
   private void gameInit() {
-    computer = new Computer();
     computer.setAnswerNumber();
   }
 
   private String getUserNumberInput() {
-    System.out.print(GameMessage.START_INPUT_MESSAGE.toString());
+    System.out.print(GameMessage.START_INPUT_MESSAGE.getMessage());
     return Console.readLine();
   }
 
@@ -72,7 +71,7 @@ public class BaseBallGame {
       this.message = message;
     }
 
-    public String toString() {
+    public String getMessage() {
       return message;
     }
   }
