@@ -27,7 +27,7 @@ public class Application {
 
         List<Integer> answerList = new ArrayList<>();
 
-        while (answerList.size() < 3) {
+        while (answerList.size() < Constants.NUMBER_SIZE) {
 
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
@@ -95,7 +95,10 @@ public class Application {
         for (int i = 0; i < userString.length(); i++)
             numberSet.add(userString.charAt(i));
 
-        if (numberSet.size() != 3 || userString.length() > 3)
+        if (userString.length() != Constants.NUMBER_SIZE)
+            throw new IllegalArgumentException("입력은 3자리 숫자여야 합니다.");
+
+        if (numberSet.size() != Constants.NUMBER_SIZE)
             throw new IllegalArgumentException("입력은 서로 다른 3자리 숫자여야 합니다.");
     }
 
@@ -130,7 +133,7 @@ public class Application {
 
         int strikes = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.NUMBER_SIZE; i++) {
             if (userNumber % 10 == answerNumber % 10) strikes += 1;
 
             userNumber /= 10;
@@ -148,7 +151,7 @@ public class Application {
         List<Integer> userDigits = integerToList(userNumber);
         List<Integer> answerDigits = integerToList(answerNumber);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.NUMBER_SIZE; i++) {
 
             int digit = userDigits.get(i);
             if (answerDigits.contains(digit))
@@ -163,7 +166,7 @@ public class Application {
 
         List<Integer> digits = new ArrayList<>();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.NUMBER_SIZE; i++) {
             digits.add(number % 10);
             number /= 10;
         }
@@ -193,6 +196,6 @@ public class Application {
 
     public static boolean threeStrikes(int strikes) {
 
-        return strikes == 3;
+        return strikes == Constants.NUMBER_SIZE;
     }
 }
