@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.component.BaseballGameController;
+import baseball.controller.BaseballGameController;
 
 public class Application {
     public static void main(String[] args) {

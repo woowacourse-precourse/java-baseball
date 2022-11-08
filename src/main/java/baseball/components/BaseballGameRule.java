@@ -1,4 +1,4 @@
-package baseball.component;
+package baseball.components;
 
 import java.util.ArrayList;
 import java.util.List;

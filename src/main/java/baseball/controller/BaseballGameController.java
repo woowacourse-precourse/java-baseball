@@ -1,5 +1,6 @@
-package baseball.component;
+package baseball.controller;
 
+import baseball.components.BaseballGameRule;
 import baseball.utils.GameUtils;
 import camp.nextstep.edu.missionutils.Console;
 
