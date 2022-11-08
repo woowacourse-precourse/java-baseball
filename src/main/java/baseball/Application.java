@@ -9,7 +9,7 @@ public class Application {
         disableWarning();
 
         Computer computer = new Computer();
-        computer.setAnswer();
+        computer.madeAnswer();
 
         while (true) {
 
@@ -17,10 +17,10 @@ public class Application {
             game.printInputNumber();
             user.setNumber();
 
-            game.checkNothing(computer.check, user.check);
+            game.checkNothing(computer.numberList, user.numberList);
 
             if (!game.nothing) {
-                game.countStrike(computer.check, user.check);
+                game.countStrike(computer.numberList, user.numberList);
                 game.countBall();
                 game.printResult();
             }
@@ -35,7 +35,7 @@ public class Application {
 
             if (user.game_state == 1) { // 유저가 새 게임을 시작하는 경우
                 computer = new Computer();
-                computer.setAnswer();
+                computer.madeAnswer();
 
                 game = new Game();
             }
