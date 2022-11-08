@@ -6,7 +6,11 @@ import java.util.List;
 
 public class Goal {
 
-    private List<Integer> goalNumber = new ArrayList<>();
+    private List<Integer> goalNumber;
+
+    public Goal() {
+        goalNumber = new ArrayList<>();
+    }
 
     public List<Integer> getGoalNumber() {
         return this.goalNumber;
