@@ -30,6 +30,10 @@ public class Baseball {
     private static final int END_VALUE = 9;
     private static final int NUMBER_COUNT = 3;
 
+    public void notifyGameStart() {
+        System.out.println(GAME_START_MESSAGE);
+    }
+
     public void startGame() throws IllegalArgumentException {
         List<Integer> computerNumbers = createComputerNumbers();
         boolean isCorrectAnswer = false;
@@ -42,25 +46,6 @@ public class Baseball {
         gameOver();
     }
 
-    private boolean isCorrectAnswer(String hint) {
-        if (hint.equals(ANSWER)) {
-            System.out.println(CONGRATULATION_MESSAGE);
-            return true;
-        }
-        return false;
-    }
-
-    public void gameOver() throws IllegalArgumentException {
-        System.out.println(GAME_OPTION_MESSAGE);
-        String gameOption = Console.readLine();
-        validGameOption(gameOption);
-        if (gameOption.equals(RESTART_GAME)) {
-            startGame();
-        } else if (gameOption.equals(GAME_OVER)) {
-            System.out.println(CLOSE_MESSAGE);
-        }
-    }
-
     public List<Integer> createComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < NUMBER_COUNT) {
@@ -70,10 +55,6 @@ public class Baseball {
             }
         }
         return computerNumbers;
-    }
-
-    public void notifyGameStart() {
-        System.out.println(GAME_START_MESSAGE);
     }
 
     public List<Integer> InputUserNumber() throws IllegalArgumentException {
@@ -101,6 +82,25 @@ public class Baseball {
         }
     }
 
+    public void gameOver() throws IllegalArgumentException {
+        System.out.println(GAME_OPTION_MESSAGE);
+        String gameOption = Console.readLine();
+        validGameOption(gameOption);
+        if (gameOption.equals(RESTART_GAME)) {
+            startGame();
+        } else if (gameOption.equals(GAME_OVER)) {
+            System.out.println(CLOSE_MESSAGE);
+        }
+    }
+
+    private boolean isCorrectAnswer(String hint) {
+        if (hint.equals(ANSWER)) {
+            System.out.println(CONGRATULATION_MESSAGE);
+            return true;
+        }
+        return false;
+    }
+
     private int getStrikeCnt(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int strikeCnt = 0;
         for (int loc = 0; loc < userNumbers.size(); loc++) {
@@ -122,7 +122,7 @@ public class Baseball {
         return ballCnt;
     }
 
-    public void validUserNumbers(String userNumbers) throws IllegalArgumentException {
+    private void validUserNumbers(String userNumbers) throws IllegalArgumentException {
         if (!userNumbers.matches("^[1-9]{3}$")) {
             throw new IllegalArgumentException(INPUT_USER_NUMBER_ERROR_MESSAGE);
         }
@@ -133,7 +133,7 @@ public class Baseball {
         }
     }
 
-    public void validGameOption(String inputGameOption) throws IllegalArgumentException {
+    private void validGameOption(String inputGameOption) throws IllegalArgumentException {
         if (!inputGameOption.matches("^[1-2]$")) {
             throw new IllegalArgumentException(GAME_OPTION_ERROR_MESSAGE);
         }
