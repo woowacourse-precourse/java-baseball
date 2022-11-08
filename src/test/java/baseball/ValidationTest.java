@@ -20,4 +20,14 @@ class ValidationTest {
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    public void 숫자의_길이가_맞는지_확인() throws Exception {
+        //given
+        List<Integer> number = List.of(1, 1, 1, 1);
+        //when
+        Throwable throwable = catchThrowable(() -> validation.validateLengthOfNumber(number));
+        //then
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
