@@ -20,6 +20,16 @@ public class Application {
         }
     }
 
+    public static void inputPlayerNumber(){
+        playerNumber.clear();
+        System.out.println("숫자를 입력해주세요 : ");
+        String inputNumber=Console.readLine();
+
+        for(int i=0;i<3;++i){
+            playerNumber.add(inputNumber.charAt(i)-'0');
+        }
+    }
+
     public static void main(String[] args) {
     }
 }
