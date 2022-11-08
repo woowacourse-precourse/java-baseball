@@ -21,7 +21,7 @@ public class Game {
             strike=0;
             ball=0;
             userNumber = user.getUserNumber();
-            calGame();
+            calGame(computerNumberToString(computerNumber),userNumberToString(userNumber));
 
         } while (strike!=3);
     }
@@ -36,15 +36,24 @@ public class Game {
         userNumber = new ArrayList<>();
     }
 
-    public void calGame() {
+    public String computerNumberToString(List<Integer> computerNumber){
         String strComputerNumber="";
-        String strUserNumber="";
+
         for(int a:computerNumber){
             strComputerNumber+=Integer.toString(a);
         }
+        return strComputerNumber;
+    }
+
+    public String userNumberToString(List<Integer> userNumber){
+        String strUserNumber="";
+
         for(int a:userNumber){
             strUserNumber+=Integer.toString(a);
         }
+        return strUserNumber;
+    }
+    public void calGame(String strComputerNumber,String strUserNumber) {
 
         for (int i = 0; i < 3; i++) {
             if(strUserNumber.charAt(i)==strComputerNumber.charAt(i)) strike++;
@@ -75,5 +84,13 @@ public class Game {
         answer= Console.readLine();
 
         return answer.equals("1");
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
     }
 }
