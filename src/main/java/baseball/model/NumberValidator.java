@@ -19,4 +19,8 @@ public class NumberValidator {
                 .collect(Collectors.toList());
     }
 
+    public static boolean isValidRange(List<Integer> numbers) {
+        return numbers.stream().allMatch(number -> FIRST_NUMBER.getNumber() <= number
+                && number <= LAST_NUMBER.getNumber());
+    }
 }
