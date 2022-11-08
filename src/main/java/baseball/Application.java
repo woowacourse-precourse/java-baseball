@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +16,7 @@ public class Application {
         while (choice == 1) {
             List<Integer> randomInt = getRandomIntList();
 //            System.out.println(randomInt);
+
             guessNumber(randomInt);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -28,6 +28,7 @@ public class Application {
         List<Integer> randomInt = new ArrayList<>();
         while (randomInt.size() < 3) {
             int tempRan = Randoms.pickNumberInRange(1, 9);
+
             if (!randomInt.contains(tempRan)) {
                 randomInt.add(tempRan);
             }
@@ -37,10 +38,13 @@ public class Application {
 
     public static void guessNumber(List<Integer> randomInt) {
         Grade grade = new Grade();
+
         while (grade.getStrike() != 3) {
             System.out.print("숫자를 입력해주세요 : ");
             int inputInt = getInputInt(Console.readLine());
+
             grade = grading(randomInt, inputInt);
+
             System.out.println(makeGradeMessage(grade));
         }
         System.out.println(grade.getStrike() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -79,8 +83,10 @@ public class Application {
     public static Grade grading(List<Integer> randomInt, int inputInt) {
         Grade grade = new Grade();
         int now = 2;
+
         while (inputInt > 0) {
             int digit = inputInt % 10;
+
             if (digit == randomInt.get(now)) {
                 grade.strikePlus();
             } else if (randomInt.contains(digit)) {
@@ -113,6 +119,7 @@ public class Application {
 
     public static int getChoice(String str) {
         int choice;
+
         if (str.equals("1")) {
             choice = 1;
         } else if (str.equals("2")) {
