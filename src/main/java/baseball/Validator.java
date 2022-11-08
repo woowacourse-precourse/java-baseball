@@ -4,9 +4,8 @@ public class Validator {
 	private static boolean isDecimalNumber(String userInput) {
 		int len = userInput.length();
 		int index = 0;
-		char current = userInput.charAt(index);
 
-		while (index < len && '0' < current && current <= '9')
+		while (index < len && '0' < userInput.charAt(index) && userInput.charAt(index) <= '9')
 			index++;
 		return (index == len);
 	}
@@ -14,7 +13,7 @@ public class Validator {
 	private static boolean isThreeDigits(String userInput) {
 		int userNumber = Integer.parseInt(userInput);
 
-		return (111 < userNumber && userNumber < 999);
+		return (100 < userNumber && userNumber < 999);
 	}
 
 	private static boolean isAllUnique(String userInput) {
