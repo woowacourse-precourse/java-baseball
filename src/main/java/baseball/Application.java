@@ -19,10 +19,31 @@ public class Application {
         int restart = 1;
         Random random = new Random();
         User user = new User();
+        Exceptions exceptions = new Exceptions();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         random.randomNum();
-        User.enterNum();
+
+        ;
+
+        try {
+            User.enterNum();
+            System.out.println(user);       //유저 입력값
+
+            exceptions.exceptionTest();
+
+        } catch (Exceptions.RedundantException re) {
+            System.err.println("에러메시지 : " + re.getMessage());
+            re.printStackTrace();
+        } catch (Exceptions.SizeException se) {
+            System.err.println("에러메시지 : " + se.getMessage());
+            se.printStackTrace();
+        } catch (Exceptions.NaturalException ne) {
+            System.err.println("에러메시지 : " + ne.getMessage());
+            ne.printStackTrace();
+        }
+
+
 //        do {
 //
 //
@@ -37,19 +58,7 @@ public class Application {
 //            int ball = 0;
 //            int userNumber = 0;
 //            do {
-//                try {
-//                    userEnterNum();
-//                    System.out.println(user);       //유저 입력값
-//                } catch (UserEnter.RedundantException re) {
-//                    System.err.println("에러메시지 : " + re.getMessage());
-//                    re.printStackTrace();
-//                } catch (UserEnter.SizeException se) {
-//                    System.err.println("에러메시지 : " + se.getMessage());
-//                    se.printStackTrace();
-//                } catch (UserEnter.NaturalException ne) {
-//                    System.err.println("에러메시지 : " + ne.getMessage());
-//                    ne.printStackTrace();
-//                }
+
 //
 //                //      기능3. 결과값 비교
 //
