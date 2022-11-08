@@ -18,7 +18,7 @@ public final class MessageConst {
     public static final String SUCCESS_MSG = NumberConst.INPUT_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static final String GAME_CONTROL_MSG = "게임을 새로 시작하려면 " + NumberConst.RESTART_NUM +
-            ", 종료하려면 " +NumberConst.EXIT_NUM + "를 입력하세요.";
+            ", 종료하려면 " + NumberConst.EXIT_NUM + "를 입력하세요.";
 
     public static final String INPUT_LENGTH_EXCEPTION_MSG = NumberConst.INPUT_LENGTH + "글자를 입력해 주세요.";
 

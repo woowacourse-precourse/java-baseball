@@ -32,6 +32,7 @@ public class InputValidation {
 
     /**
      * 입력값의 길이가 3인지 검증한다.
+     *
      * @param input 사용자의 입력값
      */
     public void validateInputLength(String input) {
@@ -42,6 +43,7 @@ public class InputValidation {
 
     /**
      * 입력값이 1~9 사이의 숫자인지 검증한다.
+     *
      * @param inputNums 사용자의 입력값의 각 자리를 쪼갠 리스트
      */
     public void validateInputRange(List<Integer> inputNums) {
@@ -55,6 +57,7 @@ public class InputValidation {
 
     /**
      * 입력값에 중복된 값이 존재하는지 검증한다.
+     *
      * @param inputNums 사용자의 입력값의 각 자리를 쪼갠 리스트
      */
     public void validateInputDuplicated(List<Integer> inputNums) {
@@ -65,6 +68,7 @@ public class InputValidation {
 
     /**
      * 게임 진행을 제어하는 입력값에 대해 검증한다.
+     *
      * @param input 사용자의 입력값
      */
     public void validateGameControlInput(int input) {
