@@ -10,6 +10,7 @@ import static baseball.Message.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class BallCounter {
@@ -18,7 +19,7 @@ public class BallCounter {
 
     List<String> playerNumber;
     List<String> targetNumber;
-    List<Boolean> numberState = new ArrayList<>(Arrays.asList(false,false,false));
+    List<Boolean> numberState = new ArrayList<>(Collections.nCopies(MATCH_NUM, false));
 
 
     public boolean countScore(PlayerNumber playerNumber, TargetNumber targetNumber) {
