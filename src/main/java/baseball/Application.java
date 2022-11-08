@@ -5,8 +5,6 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-    public static int BALL_INDEX = 0;
-    public static int STRIKE_INDEX = 1;
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
@@ -14,20 +12,14 @@ public class Application {
 
     static void startGame() {
         Game game = new Game();
-
         List<Integer> playerGuess;
-        int ball;
-        int strike;
+        GameResult gameResult;
 
         do {
             playerGuess = Player.guessAnswerOfGame();
-
-            List<Integer> ballStrikeCnt = game.getBallStrikeResult(playerGuess);
-            ball = ballStrikeCnt.get(BALL_INDEX);
-            strike = ballStrikeCnt.get(STRIKE_INDEX);
-
-            System.out.println(Game.getResultOfPlayerGuess(ball, strike));
-        } while (!Game.isAllStrike(strike));
+            gameResult = game.getBallStrikeResult(playerGuess);
+            System.out.println(gameResult.toString());
+        } while (!gameResult.isAllStrike());
 
         restartOrNot();
     }
