@@ -17,6 +17,11 @@ class ValidationTest {
     }
 
     @Test
-    void isValidReStart() {
+    void 유효한_3자리_숫자가_들어왔을_때_true_리턴() {
+        String input = "346";
+
+        boolean flag = isValidNumber(input);
+
+        assertThat(flag).isTrue();
     }
 }
