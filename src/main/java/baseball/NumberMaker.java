@@ -25,4 +25,10 @@ public class NumberMaker {
         String temp = Console.readLine();
         userNumber = temp;
     }
+
+    public String getComputerNumber() {
+        makeComputerNumber();
+        ValidateGameComponent.validateNumber(computerNumber);
+        return computerNumber;
+    }
 }
