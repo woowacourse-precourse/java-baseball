@@ -5,8 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class Number {
     public static int rangeCheck() {
         String beforeCheck = Console.readLine();
-        System.out.println("작성 : " +beforeCheck);
-
         if(beforeCheck.length()>3){
             throw new IllegalArgumentException("입력값은 3자리 숫자여야 합니다.");
         }
@@ -34,8 +32,4 @@ public class Number {
         }
         return finalNumber;
     }
-
-
-
-
 }
