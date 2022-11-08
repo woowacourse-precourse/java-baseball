@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,7 +13,7 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computerNumbers = getRandomNumbers();
         List<Integer> userNumbers;
-        int[] gameResult;
+        HashMap<String, Integer> gameResult;
         String userNumber;
         String commandNumber;
         int command;
@@ -33,7 +34,7 @@ public class Application {
 
             printGameResult(gameResult);
 
-            if (!isThreeStrike(gameResult[0])) {
+            if (!isThreeStrike(gameResult.get("스트라이크"))) {
                 continue;
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -61,15 +62,15 @@ public class Application {
         return startGame == 1;
     }
 
-    static void printGameResult(int[] gameResult) {
-        if (gameResult[0] > 0 && gameResult[1] > 0) {
-            System.out.println(gameResult[1] + "볼 " + gameResult[0] + "스트라이크");
+    static void printGameResult(HashMap<String, Integer> gameResult) {
+        if (gameResult.get("볼") > 0 && gameResult.get("스트라이크") > 0) {
+            System.out.println(gameResult.get("볼") + "볼 " + gameResult.get("스트라이크") + "스트라이크");
 
-        } else if (gameResult[0] > 0) {
-            System.out.println(gameResult[0] + "스트라이크");
+        } else if (gameResult.get("볼") > 0) {
+            System.out.println(gameResult.get("볼") + "볼");
 
-        } else if (gameResult[1] > 0) {
-            System.out.println(gameResult[1] + "볼");
+        } else if (gameResult.get("스트라이크") > 0) {
+            System.out.println(gameResult.get("스트라이크") + "스트라이크");
 
         } else {
             System.out.println("낫싱");
@@ -128,15 +129,18 @@ public class Application {
         return randomNumbers;
     }
 
-    static int[] getGameResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        int[] gameResult = {0, 0};   //스트라이크, 볼
+    static HashMap<String, Integer> getGameResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        HashMap<String, Integer> gameResult = new HashMap<>() {{
+            put("볼", 0);
+            put("스트라이크", 0);
+        }};
 
         for (int index = 0; index < 3; index++) {
             if (computerNumbers.get(index).equals(userNumbers.get(index))) {
-                gameResult[0] += 1;
+                gameResult.put("스트라이크", gameResult.get("스트라이크") + 1);
 
             } else if (computerNumbers.contains(userNumbers.get(index))) {
-                gameResult[1] += 1;
+                gameResult.put("볼", gameResult.get("볼") + 1);
             }
         }
         return gameResult;
