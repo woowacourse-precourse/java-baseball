@@ -33,7 +33,18 @@ public class NumberBaseballGame {
         }
     }
 
-    private void printStartMessage() {
+    public void printStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public List<Integer> getComputerNumber() {
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
+        }
+        return computerNumber;
     }
 }
