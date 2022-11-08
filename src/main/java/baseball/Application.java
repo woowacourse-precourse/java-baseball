@@ -18,7 +18,7 @@ public class Application {
         System.out.println(Constant.RESTART_COMMENT);
         int restartCommand = Integer.parseInt(Console.readLine());
         if (restartCommand != Constant.RESTART_NUMBER && restartCommand != Constant.STOP_NUMBER) {
-            throw new IllegalArgumentException();   // 예외 처리
+            throw new IllegalArgumentException(ArgumentExceptionMessage.COMMAND_NOT_FOUND.getMessage());   // 예외 처리
         }
         return restartCommand == Constant.RESTART_NUMBER;
     }
