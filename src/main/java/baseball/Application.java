@@ -7,7 +7,7 @@ public class Application {
         boolean isPlayAgain = true;
         GameController controller = new GameController();
 
-        //controller.showTutorial();
+        controller.showTutorial();
         controller.addComputerNumbersForTest();
 
         while(isPlayAgain) {
