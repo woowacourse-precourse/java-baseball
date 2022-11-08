@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class View {
 
     private final Scanner scanner;
+    private final String INPUT_NUMBER="숫자를 입력해주세요 : ";
 
     public View(Scanner scanner) {
         this.scanner = scanner;
@@ -14,7 +15,8 @@ public class View {
 
 
     public String userRequestNumber(){
-        System.out.println("숫자를 입력해주세요 : ");
+
+        viewMessage(INPUT_NUMBER);
         String input = scanner.nextLine();
 
         if(userInputException(input)){
@@ -23,6 +25,10 @@ public class View {
         else {
             throw new IllegalArgumentException("입력값 오류로 인하여 프로그램을 종료합니다");
         }
+    }
+
+    public void viewMessage(String message){
+        System.out.println(message);
     }
 
     private boolean userInputException(String input){
