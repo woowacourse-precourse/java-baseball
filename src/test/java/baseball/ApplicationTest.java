@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.utils.RandomUtils;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -7,8 +8,23 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
+    @Test
+    void 난수_생성기() {
+        // 배열의 길이가 3인지 확인
+        int length = RandomUtils.getRandomNumbers().length;
+        assertEquals(length, 3);
+
+        // 모두 다른 숫자인지 확인
+        int[] randomNumbers = RandomUtils.getRandomNumbers();
+        for (int i = 0; i < randomNumbers.length; i++) {
+            for (int j = 0; j < i; j++) {
+                assertNotEquals(randomNumbers[i], randomNumbers[j]);
+            }
+        }
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
