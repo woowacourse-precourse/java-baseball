@@ -39,6 +39,19 @@ class ExceptionTest extends NsTest {
                 .hasMessageContaining("3개의 숫자를 입력하지 않았습니다. 게임을 종료합니다.");
     }
 
+    @DisplayName("예외 처리 테스트3 - 사용자가 중복된 숫자를 입력했을 경우")
+    @Test
+    void userInputDuplicationExceptionTest() {
+        // given
+        String userInput = "111";
+        HandleException handleException = new HandleException();
+
+        // when, then
+        assertThatThrownBy(() -> handleException.handleUserInputDuplicationException(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복된 값을 입력하였습니다. 게임을 종료합니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
