@@ -2,10 +2,38 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+
+class Generate_Answer_test{
+    Practice p;
+
+    @BeforeEach
+    void Setup(){
+        p = new Practice();
+    }
+
+
+    @Test
+    void Generate_Answer_test(){
+        List<Integer> result = p.Generate_Answer();
+
+        assertThat(result).size().isEqualTo(3);
+        assertThat(result.get(0)).isNotEqualTo(result.get(1)).isNotEqualTo(result.get(2));
+        assertThat(result.get(1)).isNotEqualTo(result.get(2));
+
+        for (int i = 0; i>3; i++){
+            assertThat(result.get(i)).isBetween(1,9);
+        }
+    }
+}
 
 public class Application {
 
