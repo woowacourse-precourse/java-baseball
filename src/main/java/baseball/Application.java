@@ -30,12 +30,8 @@ class PlayerNumber {
     List<Integer> playerNumber;
 
     public PlayerNumber() {
-        try{
-            System.out.print("숫자를 입력해주세요 : ");
-            playerNumber = playerInput();
-        } catch(IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        System.out.print("숫자를 입력해주세요 : ");
+        playerNumber = playerInput();
     }
 
     private List<Integer> playerInput() {
@@ -46,11 +42,11 @@ class PlayerNumber {
 
     private void checkInputFormat(String inputString) {
         if (inputString.length() != 3)
-            throw new IllegalArgumentException("3자리 수만 입력 가능합니다.");
+            throw new IllegalArgumentException();
         if (!isNumber(inputString))
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException();
         if (!isAllDifferent(inputString))
-            throw new IllegalArgumentException("서로 다른 수로 이루어져야 합니다.");
+            throw new IllegalArgumentException();
     }
 
     private List<Integer> convertToIntegerList(String playerInputString) {
@@ -87,15 +83,12 @@ class GameInit{
     public GameInit() {
         computerNumber = new ComputerNumber().computerNumber;
         playerNumber = new PlayerNumber().playerNumber;
-        try {
-            GamePlay gamePlay = new GamePlay(computerNumber, playerNumber);
-            while (!gamePlay.isRight) {
-                playerNumber = new PlayerNumber().playerNumber;
-                gamePlay = new GamePlay(computerNumber, playerNumber);
-            }
-            new GameEnd();
-        } catch (NullPointerException e) {
+        GamePlay gamePlay = new GamePlay(computerNumber, playerNumber);
+        while (!gamePlay.isRight) {
+            playerNumber = new PlayerNumber().playerNumber;
+            gamePlay = new GamePlay(computerNumber, playerNumber);
         }
+        new GameEnd();
     }
 }
 
@@ -170,12 +163,8 @@ class GameEnd {
     }
 
     private int ask() {
-        try{
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            answer = answerInput();
-        } catch(IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        answer = answerInput();
         return answer;
     }
 
@@ -188,7 +177,7 @@ class GameEnd {
     private void checkAnswerFormat(String answer) {
         if (answer.equals("1") || answer.equals("2"))
             return;
-        throw new IllegalArgumentException("1과 2만 입력 가능합니다.");
+        throw new IllegalArgumentException();
     }
 }
 
