@@ -22,7 +22,8 @@ public class Application {
             inputNumber = inputNumber();
             int strike = BaseballNumber.countStrike(baseballNumber, inputNumber);
             int ball = BaseballNumber.countBall(baseballNumber, inputNumber);
-            BaseballNumber.printMessage(strike, ball);
+            String message = BaseballNumber.getMessage(strike, ball);
+            System.out.println(message);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
