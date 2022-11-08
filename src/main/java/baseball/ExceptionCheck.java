@@ -8,12 +8,12 @@ public class ExceptionCheck {
         checkExceptionforLength(Input);
         for(int i = 0; i < input.length() ;i++){
             checkExceptionforSameValue((int)(input.charAt(i) -'0'), i,Input);
-            checkExceptionforFormat(input.charAt(i), Input);
+            checkExceptionforFormat(input.charAt(i));
         }
         return true;
     }
 
-    public static void checkExceptionforFormat(char c, List<Integer> Input){
+    public static void checkExceptionforFormat(char c){
         if(c == '0'){
             throw new IllegalArgumentException("0이 포함된 수가 입력되었습니다.");
         }
