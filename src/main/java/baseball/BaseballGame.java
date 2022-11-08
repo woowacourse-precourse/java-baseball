@@ -49,18 +49,26 @@ public class BaseballGame {
             System.out.print(ballCount + "볼 " + strikeCount + "스트라이크\n");
         }
         if (strikeCount==3) {
-            this.endGame();
+            this.end();
         }
     }
 
-
-    public void endGame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        this.isPlayerWin=true;
-        restartGame();
+    public void start() {
+        generateTargetNumber();
+        while(this.isPlayerWin==false){
+            Input newInput = new Input();
+            String userNumber = newInput.getUserNumber();
+            compareWithTargetNum(userNumber);
+        }
     }
 
-    public void restartGame() {
+    public void end() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        this.isPlayerWin=true;
+        restart();
+    }
+
+    public void restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if (input.equals("1")) {
@@ -69,15 +77,6 @@ public class BaseballGame {
             this.isLastGame=true;
         } else {
             throw new IllegalArgumentException("1 또는 2를 입력하세요..");
-        }
-    }
-
-    public void startGame() {
-        generateTargetNumber();
-        while(this.isPlayerWin==false){
-            Input newInput = new Input();
-            String userNumber = newInput.getUserNumber();
-            compareWithTargetNum(userNumber);
         }
     }
 }
