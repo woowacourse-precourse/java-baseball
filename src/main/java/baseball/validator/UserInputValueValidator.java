@@ -12,12 +12,18 @@ public class UserInputValueValidator {
     private UserInputValueValidator() {
     }
 
-    public void validate(List<String> inputValue) {
+    public void validateInGamingInputValue(List<String> inputValue) {
         if (inputValue.stream()
                 .distinct()
                 .filter(element -> element.charAt(0) > 48)
                 .filter(element -> element.charAt(0) < 58)
                 .count() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateToAskingContinueGame(String inputValue) {
+        if (!(inputValue.charAt(0) > 48 && inputValue.charAt(0) < 58)) {
             throw new IllegalArgumentException();
         }
     }
