@@ -84,6 +84,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 명령입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> run("246", "135", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
