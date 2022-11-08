@@ -23,6 +23,8 @@ public class Application {
         }
     }
 
+    public static final String ERROR_MESSAGE = "잘못된 값을 입력하셨습니다. 종료합니다.";
+
     public static List<Integer> createRandomNum() {
         List<Integer> computerNum = new ArrayList<>();
         while (computerNum.size() < 3) {
@@ -97,7 +99,7 @@ public class Application {
         }
 
         if (!decision.equals("1") && !decision.equals("2")) {
-            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 종료합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
 
         return false;
@@ -105,6 +107,9 @@ public class Application {
 
     public static void wrongAnswer(List<Integer> computerNum, List<Integer> playerNum) {
         if (computerNum.size() != playerNum.size())
-            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 종료합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+
+        if (playerNum.contains("0"))
+            throw new IllegalArgumentException(ERROR_MESSAGE);
     }
 }
