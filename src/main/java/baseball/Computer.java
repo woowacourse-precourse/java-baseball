@@ -19,7 +19,6 @@ public class Computer {
             }
         }
         int answer = Integer.parseInt(String.valueOf(sb));
-        System.out.println(answer);
         correct_answer = answer;
     }
 }
