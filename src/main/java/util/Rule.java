@@ -22,6 +22,13 @@ public class Rule {
     }
 
     private static boolean isBall(int comNum, List<Integer> userNumbers, int index) {
+
+        for (int i=0; i< Constants.NUMBER_LENGTH; i++){
+            if (i != index && comNum == userNumbers.get(i)){
+                return true;
+            }
+        }
+
         return false;
     }
     private static boolean isStrike(int comNum, int userNum) {
