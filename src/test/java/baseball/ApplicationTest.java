@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,6 +30,18 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void validateThreeDifferentDigitsTest() {
+        Application application = new Application();
+        assertThatThrownBy(()-> application.validateThreeDifferentDigits("42")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> application.validateThreeDifferentDigits("2345")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> application.validateThreeDifferentDigits("434")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> application.validateThreeDifferentDigits("433")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> application.validateThreeDifferentDigits("223")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> application.validateThreeDifferentDigits("103")).isInstanceOf(IllegalArgumentException.class);
+    }
+
 
     @Override
     public void runMain() {
