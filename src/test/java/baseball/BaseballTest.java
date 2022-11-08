@@ -1,15 +1,12 @@
 package baseball.service;
 
 
-import baseball.Application;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
 
-import static baseball.Application.getAnswerNum;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BaseballTest {
@@ -17,14 +14,14 @@ class BaseballTest {
     @DisplayName("기능 요구사항 1")
     @Test
     void getAnswerNum_메서드_정답길이_3(){
-        List<Integer> answer = getAnswerNum();
+        List<Integer> answer = Computer.getAnswerNum();
         assertThat(answer.size()).isEqualTo(3);
     }
 
     @DisplayName("기능 요구사항 1")
     @Test
     void getAnswerNum_메서드_정답_중복없음(){
-        List<Integer> answer = Application.getAnswerNum();
+        List<Integer> answer = Computer.getAnswerNum();
         assertThat(answer.size()).isEqualTo(answer.stream().distinct().count());
     }
 
@@ -39,7 +36,7 @@ class BaseballTest {
         List<Integer> answer = List.of(1, 2, 3);
         List<Integer> guess = List.of(1, 2, 3);
 
-        String result = Application.checkGuess(answer, guess);
+        String result = AnswerCheck.checkGuess(answer, guess);
         assertThat(result.equals("3스트라이크"));
     }
 
@@ -49,7 +46,7 @@ class BaseballTest {
         List<Integer> answer = List.of(1, 2, 3);
         List<Integer> guess = List.of(2, 1, 5);
 
-        String result = Application.checkGuess(answer, guess);
+        String result = AnswerCheck.checkGuess(answer, guess);
         assertThat(result.equals("2볼"));
     }
 
@@ -59,7 +56,7 @@ class BaseballTest {
         List<Integer> answer = List.of(1, 2, 3);
         List<Integer> guess = List.of(4, 5, 6);
 
-        String result = Application.checkGuess(answer, guess);
+        String result = AnswerCheck.checkGuess(answer, guess);
         assertThat(result.equals("낫싱"));
     }
 
@@ -68,7 +65,7 @@ class BaseballTest {
     void cntBallStrike_메서드_볼스트라이크_개수세기(){
         List<Integer> answer = List.of(1, 2, 3);
         List<Integer> guess = List.of(2, 4, 3);
-        int[] cnt = Application.cntBallStrike(answer, guess);
+        int[] cnt = AnswerCheck.cntBallStrike(answer, guess);
 
         //cnt[0] ball, cnt[1] strike
         assertThat(cnt[0]).isEqualTo(1);

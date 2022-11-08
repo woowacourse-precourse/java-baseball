@@ -13,7 +13,7 @@ class ExceptionTest {
     void isInputLengthThree() {
         Assertions.assertThrows(RuntimeException.class, () -> {
             String[] inputArray = {"1","2","3","4"};
-            Application.isInputLengthThree(inputArray);
+            InputLengthException.isInputLengthThree(inputArray);
         });
     }
 
