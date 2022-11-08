@@ -11,6 +11,8 @@ import static baseball.userInterface.View.*;
 import static baseball.userInterface.Output.*;
 
 public class BaseballGame {
+    private static final int END_GAME_CONDITION = 3;
+    
     public void start() {
         do {
             play();
@@ -26,5 +28,14 @@ public class BaseballGame {
             userScore = scoreCalculator(answer, userInput);
             printScore(userScore);
         } while(!isWin(userScore));
+    }
+
+    public boolean isWin(Score userScore) {
+        int strike = userScore.getStrike();
+        if (strike == END_GAME_CONDITION) {
+            viewEndGameMessage();
+            return true;
+        }
+        return false;
     }
 }
