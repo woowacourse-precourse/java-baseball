@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Balls {
     private static final int BALL_SIZE = 3;
+    private static final String NOT_BALL_SIZE="3 개의 숫자를 입력해주세요";
     private List<Ball> balls;
 
     public Balls() {
@@ -12,7 +13,10 @@ public class Balls {
     }
 
     public boolean validateBallsSize() {
-        return balls.size()==BALL_SIZE;
+        if(balls.size()==BALL_SIZE){
+            return true;
+        }
+        throw new IllegalArgumentException(NOT_BALL_SIZE);
     }
 
     public boolean hasBall(Ball ball) {
