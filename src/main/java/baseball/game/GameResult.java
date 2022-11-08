@@ -18,19 +18,18 @@ public class GameResult {
 
     public String convertToString() {
         StringBuilder resultStringBuilder = new StringBuilder();
-        boolean zeroBall = ballCount == 0;
-        boolean zeroStrike = strikeCount == 0;
-        boolean allStrike = strikeCount == Number.FULL_SIZE;
-        if (!allStrike && !zeroBall) {
+        boolean ballExists = ballCount != 0;
+        boolean strikeExists = strikeCount != 0;
+        if (ballExists) {
             resultStringBuilder.append(ballCount);
             resultStringBuilder.append(BALL_STRING);
             resultStringBuilder.append(BLANK);
         }
-        if (!zeroStrike) {
+        if (strikeExists) {
             resultStringBuilder.append(strikeCount);
             resultStringBuilder.append(STRIKE_STRING);
         }
-        if (zeroBall && zeroStrike) {
+        if (!ballExists && !strikeExists) {
             resultStringBuilder.append(NOTHING_STRING);
         }
         return resultStringBuilder.toString();
