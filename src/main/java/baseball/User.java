@@ -17,12 +17,8 @@ public class User {
     public void setUserNumber() {
         List<Integer> userNumber=makeUserNumber();
 
-        if(isValidUserNumber(userNumber)){
-            this.userNumber=userNumber;
-        }
-        else{
-            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다");
-        }
+        userNumber=isValidUserNumber(userNumber);
+        this.userNumber=userNumber;
     }
 
     public List<Integer> makeUserNumber() {
@@ -34,9 +30,13 @@ public class User {
         }
         return inputNumber;
     }
-    public boolean isValidUserNumber(List<Integer> inputNumber){
-        return lengthCheck(inputNumber)
-                &&numberCheck(inputNumber);
+    public List<Integer> isValidUserNumber(List<Integer> inputNumber){
+        if(lengthCheck(inputNumber)&&numberCheck(inputNumber)){
+            return inputNumber;
+        }
+        else{
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다");
+        }
     }
     public boolean lengthCheck(List<Integer> inputNumber){
         return inputNumber.size()==3;
