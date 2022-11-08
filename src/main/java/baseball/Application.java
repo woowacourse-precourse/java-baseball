@@ -27,8 +27,8 @@ public class Application {
                 String number = Console.readLine();
                 int num = inputException(number);
                 input[0] = num/100;
-                input[0] = (num - input[0]*100)/10;
-                input[0] = (num - input[0]*100 - input[1]*10);
+                input[1] = (num - input[0]*100)/10;
+                input[2] = (num - input[0]*100 - input[1]*10);
 
                 ball = 0;
                 strike = 0;
@@ -61,7 +61,7 @@ public class Application {
 
     private static void checkEndGame() {
         if(strike == 3){
-            System.out.println(strike + "3스트라이크");
+            System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             b = false;
         }
