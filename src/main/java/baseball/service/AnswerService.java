@@ -26,7 +26,7 @@ public class AnswerService {
 
     public void setRandomNumbers() {
         Set<Integer> correctAnswer = new HashSet<>();
-        while (correctAnswer.size() < 3) {
+        while (correctAnswer.size() < CORRECT_ANSWER_NUMBER_SIZE) {
             correctAnswer.add(Randoms.pickNumberInRange(1, 9));
         }
         answerRepository.save(new ArrayList<>(correctAnswer));
