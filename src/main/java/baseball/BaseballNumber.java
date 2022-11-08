@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +25,7 @@ public class BaseballNumber {
     public BaseballNumber(List<Integer> numbers) throws IllegalArgumentException {
         Set<Integer> numbersSet = new HashSet<>(numbers);
 
-        are_all_constrains_met(numbers, numbersSet);
+        areAllConstrainsMet(numbers, numbersSet);
 
         this.numbers = numbers;
         this.numbersSet = numbersSet;
@@ -37,7 +38,7 @@ public class BaseballNumber {
                     .collect(Collectors.toList());
             Set<Integer> numbersSet = new HashSet<>(numbers);
 
-            are_all_constrains_met(numbers, numbersSet);
+            areAllConstrainsMet(numbers, numbersSet);
 
             this.numbers = numbers;
             this.numbersSet = numbersSet;
@@ -47,51 +48,53 @@ public class BaseballNumber {
         }
     }
 
-    private void are_all_constrains_met(List<Integer> numbers, Set<Integer> numbersSet)
+    private void areAllConstrainsMet(List<Integer> numbers, Set<Integer> numbersSet)
             throws IllegalArgumentException {
-        if (is_not_proper_size(numbers)) {
+        if (isNotProperSize(numbers)) {
             throw new IllegalArgumentException(NOT_PROPER_SIZE_EXCEPTION_MESSAGE);
         }
 
         for (Integer number : numbers) {
-            if (is_out_of_range(number)) {
+            if (isOutOfRange(number)) {
                 throw new IllegalArgumentException(OUT_OF_RANGE_EXCEPTION_MESSAGE);
             }
         }
 
-        if (has_duplicate_numbers(numbers, numbersSet)) {
+        if (hasDuplicateNumbers(numbers, numbersSet)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXCEPTION_MESSAGE);
         }
 
     }
 
 
-    private boolean is_not_proper_size(List<Integer> numbers) {
+    private boolean isNotProperSize(List<Integer> numbers) {
         return numbers.size() != NUMBER_COUNT;
     }
 
-    private boolean has_duplicate_numbers(List<Integer> numbers, Set<Integer> numbersSet) {
+    private boolean hasDuplicateNumbers(List<Integer> numbers, Set<Integer> numbersSet) {
         return numbers.size() != numbersSet.size();
 
     }
 
-    private boolean is_out_of_range(int number) {
+    private boolean isOutOfRange(int number) {
         return (number < MIN_NUMBER || number > MAX_NUMBER);
     }
 
     public static BaseballNumber getComputerPickedNumbers() {
-        boolean hasException = true;
 
         BaseballNumber computerNumbers = null;
-        while (hasException) {
+        boolean hasException = false;
+        do {
             try {
-                computerNumbers = new BaseballNumber
-                        (Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT));
-                hasException = false;
+                List<Integer> randomNumbers = new ArrayList<>();
+                for (int count = 1; count <= NUMBER_COUNT; count++) {
+                    randomNumbers.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
+                }
+                computerNumbers = new BaseballNumber(randomNumbers);
             } catch (IllegalArgumentException e) {
-
+                hasException = true;
             }
-        }
+        } while (hasException);
         return computerNumbers;
     }
 
@@ -100,7 +103,7 @@ public class BaseballNumber {
         return numbersSet.contains(number);
     }
 
-    public boolean is_number_in_index_equal_to(int index, int num) {
+    public boolean isNumberInIndexEqualTo(int index, int num) {
         return numbers.get(index) == num;
     }
 
