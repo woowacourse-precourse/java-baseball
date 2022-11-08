@@ -18,6 +18,27 @@ public class Application {
         } return computer;
     }
 
+
+    static int calculateStrike(ArrayList<Integer> computer, String user){
+        ArrayList<Integer> intAnswer = convertStringToInt(user);
+        int strike = 0;
+        for(int i=0; i<computer.size();i++){
+            if(computer.get(i) == intAnswer.get(i)){
+                strike ++;
+            }
+        }
+        return strike;
+    }
+    static int calculateBall(ArrayList<Integer> computer, String user){
+        ArrayList<Integer> intAnswer = convertStringToInt(user);
+        int ball = 0;
+        for(int i=0; i<computer.size();i++){
+            if(computer.contains(intAnswer.get(i)) && computer.get(i) != intAnswer.get(i)){
+                ball ++;
+            }
+        }
+        return ball;
+    }
     static ArrayList<Integer> convertStringToInt(String user){
         ArrayList<Integer> intAnswer = new ArrayList<>();
         String[] splitNumber = user.split("");
