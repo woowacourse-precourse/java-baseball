@@ -7,8 +7,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
 
-    boolean finished;
-    static Scanner sc = new Scanner(System.in);
+    private boolean finished;
+    private static Scanner sc = new Scanner(System.in);
     private List<Integer> computer;
 
     public Game() {
