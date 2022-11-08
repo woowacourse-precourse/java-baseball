@@ -8,8 +8,17 @@ public class Computer {
     private void continueOrQuit() {
     }
 
-    private List<Integer> selectNumbers() {
-        return new ArrayList<>();
+    public List<Integer> selectNumbers() {
+        ArrayList<Integer> selectNumberList = new ArrayList<>();
+        Ball ball = new Ball();
+
+        while (selectNumberList.size() < 3) {
+            int randomNumber = ball.getRandomNumber();
+            if (selectNumberList.contains(randomNumber)) continue;
+            selectNumberList.add(randomNumber);
+        }
+
+        return selectNumberList;
     }
 
     private String printResult() {
