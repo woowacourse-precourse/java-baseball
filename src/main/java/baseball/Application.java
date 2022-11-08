@@ -10,12 +10,17 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        while (true) {
-            Operator op = new Operator();
-            op.playGame();
-            if (!op.getRestart()) {
-                break;
+        try {
+            while (true) {
+                Operator op = new Operator();
+                op.playGame();
+                if (!op.getRestart()) {
+                    break;
+                }
             }
+        }
+        catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
     }
 }
