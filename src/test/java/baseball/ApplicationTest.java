@@ -31,6 +31,11 @@ class ApplicationTest extends NsTest {
         input.add(8);
         assertThatThrownBy(() -> Game.isValid(input))
                 .isInstanceOf(IllegalArgumentException.class);
+        input.add(8);
+        input.add(8);
+        input.add(8);
+        assertThatThrownBy(() -> Game.isValid(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
