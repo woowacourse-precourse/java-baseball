@@ -60,7 +60,15 @@ public class BaseballGame {
     }
 
     public boolean checkRetry(String retry) {
-        return validateStringToInteger(retry) == 1;
+        return validateRetry(retry) == 1;
+    }
+
+    private int validateRetry(String retry) {
+        int retryInt = validateStringToInteger(retry);
+        if (retryInt != 1 && retryInt != 2) {
+            throw new IllegalArgumentException("1 혹은 2가 입력되어야 합니다.");
+        }
+        return retryInt;
     }
 
     public int validateStringToInteger(String retry) {
