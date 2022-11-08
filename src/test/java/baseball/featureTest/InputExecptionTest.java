@@ -16,6 +16,16 @@ public class InputExecptionTest {
     }
 
     @Test
+    void exception_inputHasSameCharException(){
+        assertThatIllegalArgumentException().isThrownBy(()->{
+            InputException.inputHasSameCharException("");
+        });
+        assertThatIllegalArgumentException().isThrownBy(()->{
+            InputException.inputHasSameCharException("12333");
+        });
+    }
+
+    @Test
     void exception_inputNotThreeNumberException(){
         assertThatIllegalArgumentException().isThrownBy(()->{
             InputException.inputNotThreeNumberException("");
