@@ -18,6 +18,9 @@ public class Application {
 
         private boolean[] isStrike;
         private int numBall;
+        private int numStrike;
+
+        private StringBuilder sb;
 
         public BaseBall() {
             goalArr = new int[NUM_DIGIT];
@@ -52,6 +55,24 @@ public class Application {
             printPlayStatus();
         }
 
+        private void printPlayStatus() {
+            sb = new StringBuilder();
+            if (numBall > 0) {
+                sb.append(numBall).append("볼");
+            }
+            if (sb.length() > 0) {
+                sb.append(" ");
+            }
+            if (numStrike > 0) {
+                sb.append(numStrike).append("스트라이크");
+            }
+            if (sb.length() == 0) {
+                sb.append("낫싱");
+            }
+
+            System.out.println(sb.toString());
+        }
+
         private void checkBall() {
             numBall = 0;
 
@@ -68,10 +89,12 @@ public class Application {
 
         private void checkStrike() {
             isStrike = new boolean[NUM_DIGIT];
+            numStrike = 0;
 
             for (int idx = 0; idx < NUM_DIGIT; idx++) {
                 if (goalArr[idx] == ballArr[idx]) {
                     isStrike[idx] = true;
+                    numStrike += 1;
                 }
             }
         }
