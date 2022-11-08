@@ -12,6 +12,11 @@
 - 사용자가 잘못된 값을 입력하는 경우에는 IllegalArgumentException 발생
 
 ### 기능 구현 리스트
+#### 유형별 기능 (main)
+1. main은 두 개의 method로 구현되어 있다.
+   1. gameProcess() : 숫자 야구 실행시키는 프로세스
+   2. decideExit() : 숫자 야구 게임 종료 시 계속 진행 여부를 사용자로부터 입력받고 판별하는 프로세스
+
 #### 유형별 기능 (입력)
 1. API 사용한 입력 및 입력 조건 확인하기 - *checkInputCondition()*
    1. API 사용한 입력 - *Console.readLine()* - Application.java 기본 코드 구성
