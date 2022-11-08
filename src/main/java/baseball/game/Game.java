@@ -11,6 +11,7 @@ import java.util.List;
 
 import static baseball.game.GameMessage.END_GAME;
 import static baseball.game.GameMessage.START_GAME;
+import static utils.ConvertUtil.convertDigit;
 
 public class Game {
 
@@ -47,7 +48,7 @@ public class Game {
     public boolean play(){
         List<Digit> inputDigitNumber = InputUtil.inputTryNumber();
         List<Integer> targetNumber = computer.getTargetNumber();
-        Digits digitTragetList = new Digits(InputUtil.convertDigit(targetNumber));
+        Digits digitTragetList = new Digits(convertDigit(targetNumber));
         List<ScoreStatus> scoreResultList = digitTragetList.checkAllDigits(new Digits(inputDigitNumber));
         score.countTotalScore(scoreResultList);
         score.printScore();
