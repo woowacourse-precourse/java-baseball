@@ -31,7 +31,7 @@ public class BaseBall {
     
     private void playBaseBallGameOnce() {
         compareBallsRepeatedly(new BaseBallGame());
-        OutputView.baseBallGameEndMessagePrint();
+        baseBallGameEndMessagePrint();
     }
     
     private void compareBallsRepeatedly(final BaseBallGame baseBallGame) {
@@ -45,7 +45,7 @@ public class BaseBall {
     
     private Referee compareBallsOnce(final BaseBallGame baseBallGame) {
         final Referee referee = playResult(baseBallGame);
-        OutputView.printResult(new ScoresDTO(referee));
+        printResult(referee);
         return referee;
     }
     
@@ -62,8 +62,16 @@ public class BaseBall {
         return InputView.inputUserBalls();
     }
     
+    private void printResult(final Referee referee) {
+        OutputView.printResult(new ScoresDTO(referee));
+    }
+    
     private boolean isBaseBallGameEnd(final Referee referee) {
         return referee.isBaseBallGameEnd();
+    }
+    
+    private void baseBallGameEndMessagePrint() {
+        OutputView.baseBallGameEndMessagePrint();
     }
     
     private int selectedNumberForRestart() {
