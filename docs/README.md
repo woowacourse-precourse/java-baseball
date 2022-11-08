@@ -9,5 +9,5 @@
         - [x] 플레이어는 입력받은 값을 리스트로 변환한다. - Player.StringToList()
             - [x] 잘못된 값이 입력되는것을 검사한다. - Player.checkWrongInput()
             - [x] 입력을 받을 수 있다. - Player.getInput()
-        - [ ] 몇개의 숫자가 같은지 알 수 있다. - Computer.checkSameNumbersCount()
+        - [x] 몇개의 숫자가 같은지 알 수 있다. - Computer.checkSameNumbersCount()
         - [ ] 같은 자릿수인지 알 수 있다. - Computer.checkSameNumberOfDigit()

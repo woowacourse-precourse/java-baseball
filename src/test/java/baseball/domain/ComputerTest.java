@@ -26,4 +26,17 @@ class ComputerTest {
         assertThat(validateCnt).isEqualTo(3);
 
     }
+
+    @Test
+    void 같은_숫자_갯수_검사_테스트() {
+
+        Computer computer = new Computer();
+
+        List<Integer> computerList = List.of(1, 2, 3);
+        List<Integer> playerList = List.of(1, 2, 4);
+
+        int sameCnt = computer.checkSameNumbersCount(computerList, playerList);
+
+        assertThat(sameCnt).isEqualTo(2);
+    }
 }
