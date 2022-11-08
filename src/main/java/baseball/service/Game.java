@@ -66,16 +66,32 @@ public class Game {
 	}
 
 	protected void checkInput(String[] playerInputs) {
-		if (playerInputs.length != 3) {
+		checkInputLength(playerInputs);
+		checkInputDuplication(playerInputs);
+		checkInputNumbers(playerInputs);
+	}
+
+	private void checkInputLength(String[] playerInputs) {
+		if (playerInputs.length != NUMBER_LENGTH) {
 			throw new IllegalArgumentException();
 		}
-		if (new HashSet<>(List.of(playerInputs)).size() != 3) {
+	}
+
+	private void checkInputDuplication(String[] playerInputs) {
+		if (new HashSet<>(List.of(playerInputs)).size() != NUMBER_LENGTH) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	private void checkInputNumbers(String[] playerInputs) {
 		for (String playerInput : playerInputs) {
-			if (!Character.isDigit(playerInput.charAt(0)) || playerInput.equals("0")) {
-				throw new IllegalArgumentException();
-			}
+			checkNumber(playerInput);
+		}
+	}
+
+	private void checkNumber(String playerInput) {
+		if (!Character.isDigit(playerInput.charAt(0)) || playerInput.equals("0")) {
+			throw new IllegalArgumentException();
 		}
 	}
 
