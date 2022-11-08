@@ -30,16 +30,16 @@ public class BaseballGame {
 	class Computer {
 
 		List<Integer> suggestion = new ArrayList<>();
+		List<Integer> answer = new ArrayList<>();
 
-		List<Integer> setRandomNumber() {
-			List<Integer> computer = new ArrayList<>();
-			while (computer.size() < 3) {
+		void setAnswer() {
+			answer.clear();
+			while (answer.size() < 3) {
 				int randomNumber = Randoms.pickNumberInRange(1, 9);
-				if (!computer.contains(randomNumber)) {
-					computer.add(randomNumber);
+				if (!answer.contains(randomNumber)) {
+					answer.add(randomNumber);
 				}
 			}
-			return computer;
 		}
 
 		void setSuggestion(List<Integer> suggestion) {
