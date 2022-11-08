@@ -2,6 +2,8 @@ package baseball.controller;
 
 import baseball.service.GameService;
 import baseball.view.*;
+import baseball.vo.Scoreboard;
+
 import java.util.regex.Pattern;
 
 public class GameController {
@@ -31,10 +33,19 @@ public class GameController {
     public boolean showSelectNumberResult(String input) {
         validateInput("^[1-9]{3}$", input);
 
-        View view = new SelectNumberResultView(parseInt(input));
+        int number = parseInt(input);
+        boolean response = false;
+        GameService service = new GameService();
+        Scoreboard scoreboard = service.compareComputerNumberWith(number);
+
+        if (scoreboard.getStrikePoint() == 3 && scoreboard.getBallPoint() == 0) {
+            response = service.deleteComputerNumber(number);
+        }
+
+        View view = new SelectNumberResultView(scoreboard);
         view.show();
 
-        return view.getResponseToBoolean();
+        return response;
     }
 
     public String showSelectPlayGameAgain() {
