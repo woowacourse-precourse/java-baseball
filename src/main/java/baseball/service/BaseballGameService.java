@@ -8,11 +8,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BaseballGameService {
-    private final BaseballNumber computer;
+    private BaseballNumber computer;
 
-    public BaseballGameService() {
-        computer = new BaseballNumber();
-    }
+    public BaseballGameService() {}
 
     public void gameStart() {
         BaseballGameOutputView.gameStart();
@@ -20,6 +18,7 @@ public class BaseballGameService {
 
     public void playing() {
         boolean isFinished = false;
+        computer = new BaseballNumber();
         while (!isFinished) {
             BallCount ballCount = getCounts();
             BaseballGameOutputView.printBallCount(ballCount);
