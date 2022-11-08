@@ -30,7 +30,7 @@ class ComputerTest {
         Integer answer = 3;
         ArrayList<Integer> numberList = new ArrayList<>(Arrays.asList(1, 2));
         numberList.add(answer);
-        assertThat(answer).isEqualTo(numberList.get(2));
+        assertThat(numberList.get(2)).isEqualTo(answer);
     }
 
     @Test
@@ -42,7 +42,7 @@ class ComputerTest {
                 numberList.add(randomNumber);
             }
         }
-        assertThat(3).isEqualTo(numberList.size());
+        assertThat(numberList.size()).isEqualTo(3);
 
         ArrayList<Integer> answer = new ArrayList<>();
         for(int i = 0; i < 3; i++){

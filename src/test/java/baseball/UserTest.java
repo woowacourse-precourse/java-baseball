@@ -75,7 +75,7 @@ class UserTest {
         Character answer = '3';
         ArrayList<Character> numberList = new ArrayList<>(Arrays.asList('1', '2'));
         numberList.add(answer);
-        assertThat(answer).isEqualTo(numberList.get(2));
+        assertThat(numberList.get(2)).isEqualTo(answer);
     }
 
     @Test
@@ -106,7 +106,7 @@ class UserTest {
         Integer answer = 123;
         String input = "123";
         Integer inputInt = Integer.valueOf(input);
-        assertThat(answer).isEqualTo(inputInt);
+        assertThat(inputInt).isEqualTo(answer);
     }
 
     @Test
