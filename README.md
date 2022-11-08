@@ -1,5 +1,11 @@
 # 미션 - 숫자 야구
 
+## 클래스 다이어그램
+
+클래스 간 Association, Dependency 관계를 표현한 그림은 아래와 같다.
+
+![클래스 다이어그램](./ClassDiagram.png)
+
 ## 구현 기능 목록
 
 - [X] Application 클래스: 재시작 입력값에 따라 무한히 runGame 메서드 호출
