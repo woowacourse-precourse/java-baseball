@@ -9,19 +9,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException {
         try {
-            while (true) {
-                Operator op = new Operator();
-                op.playGame();
-                if (!op.getRestart()) {
-                    break;
-                }
-            }
+            Operator op = new Operator();
+            op.playGameReady();
+            op.playGame();
+            op.playGameEnd();
+            if(op.getRestart()) main(new String[0]);
+        } catch (IllegalArgumentException e) {
+            // throw new IllegalArgumentException();
         }
-        catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
+
     }
 }
 
@@ -37,7 +35,7 @@ class Computer {
             }
         }
         number = numberList;
-        // System.out.println("컴퓨터 생성숫자: " + number);
+        System.out.println("컴퓨터 생성숫자: " + number);
     }
 
     public List<Integer> getNumber() {
@@ -52,17 +50,19 @@ class Player {
         showInputStatement();
         List<Integer> numberList = new ArrayList<>();
         int num;
-        try {
-            num = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.(숫자가 아님)");
+        String s = Console.readLine();
+        boolean isNumberic = s.matches("[+-]?\\d*(\\.\\d+)?");
+        if (isNumberic) {
+            num = Integer.parseInt(s);
+        } else {
+            throw new IllegalArgumentException(); // 숫자가 아닌 문자열을 입력했을 경우.
         }
         while (num > 0) {
             numberList.add(num % 10);
             num /= 10;
         }
-        if (!Operator.isCorrectNumber(numberList)) {
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.(서로 다른 3자리 숫자가 아님)");
+        if (!Operator.isCorrectNumber(numberList)) { // 서로 다른 1~9까지의 3자리 수가 아닐 경우.
+            throw new IllegalArgumentException();
         }
         Collections.reverse(numberList);
         number = numberList;
@@ -95,14 +95,26 @@ class Operator {
         restart = true;
     }
 
-    public void playGame() throws IllegalArgumentException {
+    public void playGameReady() {
         showStartStatement();
         computer.setNumber();
+    }
+
+    public void playGame() throws IllegalArgumentException {
+//        showStartStatement();
+//        computer.setNumber();
+
         while (!correctAnswer) {
             player.inputNumber();
             compareNumber();
             showResult();
         }
+
+//        showRestartStatement();
+//        inputWhetherToRestart();
+    }
+
+    public void playGameEnd() {
         showRestartStatement();
         inputWhetherToRestart();
     }
@@ -159,7 +171,7 @@ class Operator {
         } else if (inputString.equals("2")) {
             restart = false;
         } else {
-            throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.(재시작/종료 숫자가 아님)");
+            throw new IllegalArgumentException();
         }
     }
 
