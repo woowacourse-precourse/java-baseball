@@ -40,6 +40,11 @@ public class Game {
     }
 
     public boolean isFinishGame() {
+        System.out.println(Constants.GAME_FINISH);
+        return isRestartGame();
+    }
+
+    private boolean isRestartGame() {
         return false;
     }
 }
