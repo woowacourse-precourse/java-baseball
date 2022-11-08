@@ -25,6 +25,7 @@ public class BaseballGame {
         while (true) {
             printInputMessage();
             String userInput = getUserInput();
+            validateNumberInput(userInput);
             Map<String, Integer> score = gradeScore(answer, userInput);
             printScore(score.get("strike"), score.get("ball"));
             if (score.get("strike") == 3) {
@@ -36,6 +37,7 @@ public class BaseballGame {
     public boolean selectIfReplay() {
         printEndMessage();
         String userInput = getUserInput();
+        validateIfReplayInput(userInput);
         return userInput.equals("1");
     }
 
@@ -100,4 +102,21 @@ public class BaseballGame {
         }
     }
 
+    public void validateNumberInput(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("입력값의 길이가 3이 아닙니다.");
+        }
+        for (int i=0 ; i<3 ; i++) {
+            char c = input.charAt(i);
+            if ('0' > c || '9' < c){
+                throw new IllegalArgumentException("입력값의 범위가 잘못됐습니다.");
+            }
+        }
+    }
+
+    public void validateIfReplayInput(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
 }
