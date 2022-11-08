@@ -1,5 +1,6 @@
 package baseball.Input;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,8 @@ class InputNumberVerificationTest {
     class verifyNumberTest {
 
         @Test
-        void 숫자_4개_입력될_경우_예외_처리한다() {
+        @DisplayName("숫자_4개_입력될_경우_예외_처리한다")
+        void case1() {
             int number = 1234;
 
             assertThatThrownBy(() -> inputNumberVerification.verifyNumber(number))
@@ -21,7 +23,8 @@ class InputNumberVerificationTest {
         }
 
         @Test
-        void 숫자_2개_입력될_경우_예외_처리한다() {
+        @DisplayName("숫자_2개_입력될_경우_예외_처리한다")
+        void case2() {
             int number = 12;
 
             assertThatThrownBy(() -> inputNumberVerification.verifyNumber(number))
@@ -30,7 +33,8 @@ class InputNumberVerificationTest {
         }
 
         @Test
-        void 숫자_1개_입력될_경우_예외_처리한다() {
+        @DisplayName("숫자_1개_입력될_경우_예외_처리한다")
+        void case3() {
             int number = 1;
 
             assertThatThrownBy(() -> inputNumberVerification.verifyNumber(number))
@@ -39,7 +43,8 @@ class InputNumberVerificationTest {
         }
 
         @Test
-        void 중복된_숫자_입력될_경우_예외_처리한다() {
+        @DisplayName("중복된_숫자_입력될_경우_예외_처리한다")
+        void case4() {
             int number = 112;
 
             assertThatThrownBy(() -> inputNumberVerification.verifyNumber(number))
@@ -48,7 +53,8 @@ class InputNumberVerificationTest {
         }
 
         @Test
-        void 숫자_한개씩_1부터_9_사이에_숫자가_아닌_경우_예외_처리한다() {
+        @DisplayName("숫자_한개씩_1부터_9_사이에_숫자가_아닌_경우_예외_처리한다")
+        void case5() {
             int number = 160;
 
             assertThatThrownBy(() -> inputNumberVerification.verifyNumber(number))
@@ -61,7 +67,8 @@ class InputNumberVerificationTest {
     class verifyOneOrTwoButtonTest {
 
         @Test
-        void 숫자_1_또는_2가_아닌_3이_입력될_경우_false() {
+        @DisplayName("숫자_1_또는_2가_아닌_3이_입력될_경우_false")
+        void case1() {
             int testNumber = 3;
             assertThatThrownBy(() -> inputNumberVerification.verifyOneOrTwoButton(testNumber))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -69,7 +76,8 @@ class InputNumberVerificationTest {
         }
 
         @Test
-        void 숫자_1_또는_2가_아닌_0이_입력될_경우_false() {
+        @DisplayName("숫자_1_또는_2가_아닌_0이_입력될_경우_false")
+        void case2() {
             int testNumber = 0;
             assertThatThrownBy(() -> inputNumberVerification.verifyOneOrTwoButton(testNumber))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -77,7 +85,8 @@ class InputNumberVerificationTest {
         }
 
         @Test
-        void 숫자_1_또는_2가_아닌_음수가_입력될_경우_false() {
+        @DisplayName("숫자_1_또는_2가_아닌_음수가_입력될_경우_false")
+        void case3() {
             int testNumber = -1;
             assertThatThrownBy(() -> inputNumberVerification.verifyOneOrTwoButton(testNumber))
                     .isInstanceOf(IllegalArgumentException.class)
