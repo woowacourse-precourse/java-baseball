@@ -3,9 +3,6 @@ package baseball;
 import java.util.List;
 
 public class Game {
-    public int ball;
-    public int strike;
-
     public static int strike(List<Integer> input, List<Integer> answer) {
         int strike = 0;
         for (int idx = 0; idx < User.INPUT_LENGTH; idx++) {
