@@ -6,8 +6,8 @@ public class GameManager {
     public GameManager(){
     }
 
-    public void run(){ // initialize game state and run the game.
-
+    public StateEnum run(){ // initialize game state and run the game.
+        return StateEnum.REDO;
     }
 
 }

@@ -7,7 +7,11 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        GameManager gameManager = new GameManager();
-        gameManager.run();
+        while(true){
+            GameManager gameManager = new GameManager();
+            StateEnum GAME_STATE = gameManager.run();
+            if(GAME_STATE != StateEnum.REDO)
+                return;
+        }
     }
 }
