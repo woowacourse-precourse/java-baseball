@@ -35,13 +35,13 @@ public class Balls {
 		return new Balls(firstNumber, middleNumber, lastNumber);
 	}
 
-	public static Balls create(String consoleInput) {
-		return new Balls(consoleInput);
+	public static Balls create(String userInput) {
+		return new Balls(userInput);
 	}
 
 	public static Balls createRandom() {
 		ArrayList<Integer> randomNumbers = getRandomNumbers();
-		return Balls.create(
+		return create(
 			randomNumbers.get(FIRST),
 			randomNumbers.get(MIDDLE),
 			randomNumbers.get(LAST)
