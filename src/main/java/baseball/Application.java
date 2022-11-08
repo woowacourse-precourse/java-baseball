@@ -37,7 +37,7 @@ public class Application {
         int strikeCount = countStrike(computer, user);
         int ballCount = countBall(computer, user) - strikeCount;
 
-        return null;
+        return isGameOverPrint(strikeCount, ballCount);
     }
     // 볼 개수 계산
     public static int countBall(List<Integer> computerNum, List<Integer> userNum) {
@@ -58,6 +58,27 @@ public class Application {
             }
         }
         return strikeCount;
+    }
+    // 비교한 숫자 결과 출력
+    public static boolean isGameOverPrint(int strikeCount, int ballCount) {
+        if(strikeCount==3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        if(ballCount== 0 && strikeCount == 0 ){
+            System.out.println("낫싱");
+        }
+        else if(strikeCount!=0 && ballCount!=0) {
+            System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
+        }
+        else if(strikeCount==0 && ballCount!=0){
+            System.out.println(ballCount+"볼");
+        }
+        else if(strikeCount!=0 && ballCount==0){
+            System.out.println(strikeCount+"스트라이크");
+        }
+        return false;
     }
     // 숫자 입력
     public static List<Integer> inputNumber() {
