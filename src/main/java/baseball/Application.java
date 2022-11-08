@@ -102,6 +102,7 @@ public class Application {
         // 스트라이크가 있는 경우
         if (sCount > 0) {
             noticeResult = noticeResult + sCount + "스트라이크";
+            System.out.println(noticeResult);
 
             // 모두 맞힌 경우
             if (sCount == 3) {
