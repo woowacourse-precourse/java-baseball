@@ -39,6 +39,32 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("-12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트4() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("246", "135", "132", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 2
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
