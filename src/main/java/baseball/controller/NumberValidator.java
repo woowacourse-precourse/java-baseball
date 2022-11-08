@@ -16,7 +16,7 @@ public class NumberValidator {
     public int[] toValidateData(String inputNumber) {
         if (!isTreeLetters(inputNumber)) {
             throw new IllegalArgumentException(WRONG_LENGTH_INPUT_MESSAGE);
-        } else if (!isNumericSting(inputNumber)) {
+        } else if (!isNumericString(inputNumber)) {
             throw new IllegalArgumentException(WRONG_RANGE_INPUT_MESSAGE);
         } else if (!isDifferentCharacters(inputNumber)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_INPUT_MESSAGE);
@@ -29,7 +29,7 @@ public class NumberValidator {
         return inputNumber.length() == BASEBALL_GAME_NUMBER_LENGTH;
     }
 
-    public boolean isNumericSting(String inputNumber) {
+    public boolean isNumericString(String inputNumber) {
         for (int i = 0; i < inputNumber.length(); i++) {
             if (!isBetween1And9(inputNumber.charAt(i))) {
                 return false;
