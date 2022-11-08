@@ -12,29 +12,29 @@ public class MatchResult {
     }
 
     public int getBall() {
-        return ball;
+        return this.ball;
     }
     public int getStrike() {
-        return strike;
+        return this.strike;
     }
 
     public void print(){
         if(ball > 0){
-            System.out.print(ball + "볼");
+            System.out.print(this.ball + "볼");
         }
-        if(ball > 0 && strike > 0){
+        if(this.ball > 0 && this.strike > 0){
             System.out.print(" ");
         }
-        if(strike > 0){
-            System.out.print(strike + "스트라이크");
+        if(this.strike > 0){
+            System.out.print(this.strike + "스트라이크");
         }
-        if(strike == 0 && ball == 0){
+        if(this.strike == 0 && this.ball == 0){
             System.out.print("낫싱");
         }
         System.out.print(System.lineSeparator());
     }
 
     public boolean isCorrect(){
-        return (strike == 3);
+        return (this.strike == 3);
     }
 }

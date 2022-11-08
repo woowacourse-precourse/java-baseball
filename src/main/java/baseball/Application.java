@@ -21,7 +21,6 @@ public class Application{
     public static boolean runGame(){
         BaseballNumber baseballNumber = new BaseballNumber();
         baseballNumber.makeRandomNumber();
-        InputReader inputReader = new InputReader();
         String inputString;
         while(true) {
             System.out.println("숫자를 입력해주세요 : ");
@@ -33,10 +32,8 @@ public class Application{
                 break;
             }
         }
-
         System.out.println("게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
         return InputReader.readGameStatus();
     }
 }

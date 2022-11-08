@@ -23,7 +23,6 @@ public class InputReader {
         if(inputString.length() != 3){
             throw new IllegalArgumentException("숫자의 길이는 3이여야 합니다.");
         }
-
         if(inputString.charAt(0) == inputString.charAt(1) &&
                 inputString.charAt(1) == inputString.charAt(2) && inputString.charAt(0) == inputString.charAt(2)){
             throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력해야 합니다.");
