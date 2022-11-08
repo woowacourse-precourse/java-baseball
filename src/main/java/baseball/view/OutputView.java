@@ -19,6 +19,11 @@ public class OutputView {
         printNothing();
     }
 
+    private void printBallAndStrike() {
+        if (BALL_COUNT != 0 && STRIKE_COUNT != 0)
+            System.out.println(BALL_COUNT + "볼 " + STRIKE_COUNT + "스트라이크");
+    }
+
     private void printNothing() {
         if (BALL_COUNT == 0 && STRIKE_COUNT == 0)
             System.out.println("낫싱");
