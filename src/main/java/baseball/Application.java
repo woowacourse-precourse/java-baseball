@@ -43,6 +43,14 @@ class Game {
         return Console.readLine();
     }
 
+    // 3. strike 개수 확인 메서드
+    public int checkingStrike(ArrayList<Integer> randomNum, String inputNum, int strikeCount){
+        for(int i = 0; i < 3; i ++){
+            if (randomNum.get(i) == inputNum.charAt(i) - '0') strikeCount ++;
+        }
+        return strikeCount;
+    }
+
 }
 
 class ErrorChecking{
