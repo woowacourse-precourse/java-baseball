@@ -21,4 +21,12 @@ class NumberBaseballTest {
         assertThat(test2.checkInput("359")).isEqualTo(true);
     }
 
+    @Test
+    public void testCountStrike(){
+        NumberBaseball test3 = new NumberBaseball();
+        test3.setAnswer(1,2,3);
+        int[] testanswer = {1, 4, 5};
+        assertThat(test3.countStrike(testanswer)).isEqualTo(1);
+    }
+
 }
