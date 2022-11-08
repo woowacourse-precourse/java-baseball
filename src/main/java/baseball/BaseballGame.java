@@ -7,17 +7,13 @@ public class BaseballGame {
     int ball;
 
     BaseballGame(){
+        this.com=new Computer();
     }
 
     public void initialzeScore(){
         this.strike=0;
         this.ball=0;
     }
-
-    public void setComputer(){
-        this.com=new Computer();
-    }
-
 
     public void playing(){
         this.user=new User();

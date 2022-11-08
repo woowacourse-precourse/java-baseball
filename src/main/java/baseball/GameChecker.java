@@ -6,7 +6,6 @@ public class GameChecker {
     boolean restartGame;
     public void startGame(){
         BaseballGame game=new BaseballGame();
-        game.setComputer();
         game.playing();
     }
 
@@ -21,7 +20,7 @@ public class GameChecker {
         else if(restart.equals("1")){
             this.restartGame =true;
         }
-        else if(!restart.equals("1")){
+        else{
             IllegalArgumentException e=new IllegalArgumentException("재시작 입력 오류");
             throw e;
         }
