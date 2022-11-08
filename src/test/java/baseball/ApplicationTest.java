@@ -20,12 +20,43 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 입력 길이가 3이 아닌 경우
     @Test
-    void 예외_테스트() {
+    void illegal_input1_test() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
+                assertThatThrownBy(() -> runException("78"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("5555"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    // 입력이 숫자가 아닌 경우
+    @Test
+    void illegal_input2_test(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("!@#"))
+                        .isInstanceOf(IllegalArgumentException.class));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("   "))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    // 중복된 입력이 들어온 경우
+    @Test
+    void illegal_input3_test(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class));
     }
 
     @Override
