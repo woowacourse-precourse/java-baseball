@@ -19,4 +19,9 @@ public class Result {
     public int getBall(){
         return ball;
     }
+
+    public void initBallAndStrike(){
+        strike=0;
+        ball=0;
+    }
 }

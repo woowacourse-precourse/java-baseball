@@ -2,6 +2,8 @@ package baseball;
 
 import baseball.ball.Ball;
 import baseball.ball.Balls;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.List;
 
@@ -18,12 +20,10 @@ public class Game {
         return playerBalls.getBalls();
     }
 
-
     public void playGame(){
-        Result result= new Result();
-        Judge judge= new Judge(settingComputerBall(),result);
-        while(result.getStrike()!=3){
+        Judge judge= new Judge(settingComputerBall());
+        do{
             judge.compareComputerAndPlayer(settingPlayerBall());
-        }
+        }while(judge.getStrikeCount()!=3);
     }
 }
