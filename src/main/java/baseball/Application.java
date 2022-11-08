@@ -93,7 +93,22 @@ class Game {
         System.out.println(NEW_GAME_CHECK_MESSAGE);
 
         String newGameAnswer = readLine();
-        return 1;
+        return Game.getNewGameAnswer(newGameAnswer);
+    }
+
+    static int getNewGameAnswer(String str) {
+        int value;
+        try {
+            value = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (value != 1 && value != 2) {
+            throw new IllegalArgumentException();
+        }
+
+        return value;
     }
 
     static Game userAnswer() {
