@@ -3,6 +3,7 @@ package baseball.game;
 import baseball.entity.Computer;
 import baseball.entity.User;
 import baseball.number.NumberJudgment;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
@@ -10,6 +11,19 @@ public class GameService {
     private Computer computer = new Computer();
     private User user = new User();
     private NumberJudgment numberJudgment = new NumberJudgment();
+
+    public void start() {
+        int strikeCount = 0;
+
+        while (strikeCount < 3) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInputNumber = Console.readLine();
+
+            UserException.checkUserInputException(userInputNumber);
+            user.setUserNumberList(userInputNumber);
+            strikeCount = proceed();
+        }
+    }
 
     private int proceed() {
         List<Integer> userNumberList = user.getUserNumberList();
