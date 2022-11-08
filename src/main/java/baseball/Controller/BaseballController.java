@@ -14,6 +14,7 @@ public class BaseballController {
     private List<String> inputList = new ArrayList<>();
     public Baseball baseball = new Baseball(randomList, inputList);
     private static final int RESTART=1;
+    private static final int END=2;
     private static final int STRIKE_MAX=3;
     private static final int STRIKE_MIN=0;
     private static final int BALL_MIN=0;
@@ -42,6 +43,7 @@ public class BaseballController {
 
     public void endGame() {
         int answer = Integer.parseInt(Console.readLine());
+        System.out.println(answer);
         gameExit(answer);
     }
 
@@ -91,6 +93,20 @@ public class BaseballController {
         return StrikeOrBall+1 ;
     }
 
+    public void gameExit(int number) {
+        baseballService.isValidNumber(number);
+
+        if (number==RESTART) {
+            runBaseballGame();
+        }
+        gameExitException(number);
+    }
+
+    public void gameExitException(int number) {
+        if (number!=RESTART && number!=END) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     public void result(int strike, int ball) {
         if (strike==STRIKE_MAX) {
@@ -99,8 +115,7 @@ public class BaseballController {
         } else if (strike==STRIKE_MIN && ball==BALL_MIN) {
             System.out.println("낫싱");
         } else {
-            System.out.println(ball+"볼 "+strike+"스트라이크");
-
+            printResultMessage(strike, ball);
         }
     }
 
@@ -112,17 +127,22 @@ public class BaseballController {
         System.out.println("숫자를 입력해주세요 : ");
     }
 
-    public void printEndMessage() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+    public void printResultMessage(int strike, int ball) {
+        if (strike==0 && ball!=0) {
+            System.out.println(ball+"볼 ");
+        }
+
+        if (strike!=0 && ball==0) {
+            System.out.println(strike+"스트라이크");
+        }
+
+        if (strike!=0 && ball!=0) {
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        }
     }
 
-
-    public void gameExit(int number) {
-        baseballService.isValidNumber(number);
-
-        if (number==RESTART) {
-            runBaseballGame();
-        }
+    public void printEndMessage() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
     }
 
 }

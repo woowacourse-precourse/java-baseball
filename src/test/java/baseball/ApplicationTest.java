@@ -21,7 +21,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 입력한_숫자가_범위를_벗어나는지_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -29,7 +29,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트2() {
+    void 입력한_숫자에_범위_외의_숫자가_포함되어_있는지_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("305"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트3() {
+    void 입력한_숫자에_중복된_숫자가_포함되어_있는지_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("414"))
                         .isInstanceOf(IllegalArgumentException.class)
