@@ -28,6 +28,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 유효한_컴퓨터_랜덤_숫자(){
+        Game game = new Game();
+        int[] number = game.number;
+        assertThat(number.length).isEqualTo(3);
+    }
+
+    @Test
+    void 유효하지않은_컴퓨터_랜덤_숫자(){
+        Game game = new Game();
+        int[] number = game.number;
+        assertThat(number.length).isNotEqualTo(1);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

@@ -35,7 +35,7 @@ class Array {
 }
 
 class Game {
-
+    
     int[] number = new int[3];
 
     Game() {
