@@ -29,4 +29,23 @@ public class Utility {
 
         return sb.toString();
     }
+
+    public static List<Integer> CalculateBallAndStrike(String user, String answer){
+        int ballCount = 0;
+        int StrikeCount = 0;
+
+        for(int i=0; i<user.length(); i++){
+            if(user.charAt(i) == answer.charAt(i)){
+                StrikeCount += 1;
+            }
+            else if(answer.contains(user.substring(i, i+1))){
+                ballCount += 1;
+            }
+        }
+
+        List<Integer> list = new ArrayList<>();
+        list.add(StrikeCount);
+        list.add(ballCount);
+        return list;
+    }
 }
