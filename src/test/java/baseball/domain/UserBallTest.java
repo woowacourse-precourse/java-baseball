@@ -19,7 +19,7 @@ class UserBallTest {
 
 	@ParameterizedTest(name = "스트라이크 개수가 3이면 isStrike 메서드에서 true 반환 아니면, false 를 반환한다")
 	@CsvSource(value = {"3, true", "2, false"})
-	void is3Strike(Integer strikeCount, boolean expected) {
+	void is3StrikeTest(Integer strikeCount, boolean expected) {
 		UserBall userBallTrue = UserBall.createUserBall();
 		userBallTrue.updateStrikeCount(strikeCount);
 		userBallTrue.updateStatus();
@@ -28,7 +28,7 @@ class UserBallTest {
 
 	@DisplayName("볼 개수로 updateBallCount 시 userball 의 ball 상태 변화 확인 테스트")
 	@Test
-	void updateBallCount() {
+	void updateBallCountTest() {
 		Integer ballCount = 2;
 		UserBall userBall = UserBall.createUserBall();
 		userBall.updateBallCount(ballCount);
@@ -42,7 +42,7 @@ class UserBallTest {
 
 	@DisplayName("스트라이크 개수로 updateStrikeCount 시 userball 의 strike 상태 변화 확인 테스트")
 	@Test
-	void updateStrikeCount() {
+	void updateStrikeCountTest() {
 		Integer strikeCount = 2;
 		UserBall userBall = UserBall.createUserBall();
 		userBall.updateStrikeCount(strikeCount);
@@ -67,7 +67,7 @@ class UserBallTest {
 
 	@ParameterizedTest(name = "모든 ball, strike 개수에 따른 userball 상태필드 업데이트 확인 테스트")
 	@MethodSource("provideForResult")
-	void updateStatus(List<String> userInput, List<String> userBallStatus, List<Integer> answer, Integer size) {
+	void updateStatusTest(List<String> userInput, List<String> userBallStatus, List<Integer> answer, Integer size) {
 		for (int i = 0; i < size; i++) {
 			UserBall userBall = userBallService.makeUserBall(userInput.get(i), answer);
 			Assertions.assertThat(userBall.createUserBallStatusStringDto()).isEqualTo(userBallStatus.get(i));
