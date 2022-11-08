@@ -59,6 +59,14 @@ public class Application {
             }
         }
 
+        private boolean isCompleteGoal() {
+            if (numStrike == NUM_DIGIT) {
+                return GAME_END;
+            } else {
+                return GAME_CONTINUE;
+            }
+        }
+
         private void play() {
             checkStrike();
             checkBall();
