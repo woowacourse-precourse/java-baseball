@@ -50,7 +50,9 @@ public class Application {
         }
 
         // numChar로 받은 input을 stream으로 List<Integer> 타입으로 변환
-        inputNum = Arrays.stream(numChar.split("")).map(Integer::parseInt).collect(Collectors.toList());
+        inputNum = Arrays.stream(numChar.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     private void setAnswer() {
