@@ -27,9 +27,10 @@
 
 ### ✔️ About 야구 게임 종료 혹은 재시작
 
-- `restartGame` : 게임 재시작 여부를 입력받는 함수
-  - 1이 입력되면 다시 게임 시작 함수 호출, 2가 입력되면 게임 종료
+- `askRestartGame` : 게임 재시작 여부를 입력받는 함수
   - `checkValidationRestartNumber` : 입력받은 재시작 수에 대해 검증하는 함수
+- `restartGame`
+  - 1이 입력되면 다시 게임 시작 함수 호출, 2가 입력되면 게임 종료
 
 
 # 🛠 최종 구조
@@ -39,6 +40,7 @@
 - `game` : 야구게임이 진행되는 주 클래스를 관리하는 패키지
   - `BaseballGame`
     - `playBaseballGame`
+    - `askRestartGame`
     - `restartGame`
   - `CompareNumbers`
     - `compareNumber`
