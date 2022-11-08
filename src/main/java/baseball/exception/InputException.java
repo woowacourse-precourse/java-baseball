@@ -23,4 +23,8 @@ public class InputException {
         }
         return true;
     }
+
+    public static boolean isValidRestartOrStop(String restartOrStop){
+        return restartOrStop.equals("1") || restartOrStop.equals("2");
+    }
 }
