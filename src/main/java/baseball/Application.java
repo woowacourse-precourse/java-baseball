@@ -118,6 +118,9 @@ public class Application {
         if (!available_number.contains(playmore_stop_number)) {
             throw new IllegalArgumentException();
         }
+        if (playmore_stop_number.length() != 1) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void main(String[] args) {
