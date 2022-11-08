@@ -32,10 +32,10 @@ public class Computer {
         return result;
     }
 
-    public static boolean printResult(List<Integer> result) {
+    public static void printResult(List<Integer> result) {
         if (result.get(0) == EMPTY_COUNT && result.get(1) == EMPTY_COUNT) {
             System.out.println("낫싱");
-            return true;
+            return;
         }
 
         if (result.get(0) != EMPTY_COUNT) {
@@ -48,13 +48,20 @@ public class Computer {
             System.out.println(result.get(1) + "스트라이크");
 
             if (result.get(1) == STRIKE_COUNT) {
-                return false;
+                return;
             }
-            return true;
+            return;
         }
 
         System.out.println();
 
+        return;
+    }
+
+    public static boolean shouldGuessAgain(List<Integer> result) {
+        if (result.get(1) == STRIKE_COUNT) {
+            return false;
+        }
         return true;
     }
 }

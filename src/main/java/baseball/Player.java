@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.Computer.calcResult;
 import static baseball.Computer.printResult;
+import static baseball.Computer.shouldGuessAgain;
 import static baseball.Number.readNum;
 
 import java.util.List;
@@ -11,8 +12,8 @@ public class Player {
         int playerNum = readNum();
         List<Integer> result = calcResult(opponentNum, playerNum);
 
-        boolean shouldGuessAgain = printResult(result);
+        printResult(result);
 
-        return shouldGuessAgain;
+        return shouldGuessAgain(result);
     }
 }

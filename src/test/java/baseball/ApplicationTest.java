@@ -1,7 +1,7 @@
 package baseball;
 
 import static baseball.Computer.calcResult;
-import static baseball.GameManager.decideWhetherRestartGame;
+import static baseball.GameManager.shouldRestartGame;
 import static baseball.Number.generateRandomNumber;
 import static baseball.Number.readNum;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -203,43 +203,43 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void decideWhetherRestartGame_메서드에서_1_입력() {
+    void shouldRestartGame_메서드에서_1_입력() {
         InputStream in = generateUserInput("1");
         System.setIn(in);
 
-        boolean result = decideWhetherRestartGame();
+        boolean result = shouldRestartGame();
 
         assertThat(result).isEqualTo(true);
     }
 
     @Test
-    void decideWhetherRestartGame_메서드에서_2_입력() {
+    void shouldRestartGame_메서드에서_2_입력() {
         InputStream in = generateUserInput("2");
         System.setIn(in);
 
-        boolean result = decideWhetherRestartGame();
+        boolean result = shouldRestartGame();
 
         assertThat(result).isEqualTo(false);
     }
 
     @Test
-    void decideWhetherRestartGame_메서드에서_올바르지_않은_입력_case_1() {
+    void shouldRestartGame_메서드에서_올바르지_않은_입력_case_1() {
         InputStream in = generateUserInput("3");
         System.setIn(in);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> decideWhetherRestartGame())
+                assertThatThrownBy(() -> shouldRestartGame())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
-    void decideWhetherRestartGame_메서드에서_올바르지_않은_입력_case_2() {
+    void shouldRestartGame_메서드에서_올바르지_않은_입력_case_2() {
         InputStream in = generateUserInput("10");
         System.setIn(in);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> decideWhetherRestartGame())
+                assertThatThrownBy(() -> shouldRestartGame())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

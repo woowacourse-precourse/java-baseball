@@ -19,12 +19,10 @@ public class GameManager {
     public static boolean restartGame() {
         startOneGame();
 
-        boolean shouldRestartGame = decideWhetherRestartGame();
-
-        return shouldRestartGame;
+        return shouldRestartGame();
     }
 
-    public static boolean decideWhetherRestartGame() {
+    public static boolean shouldRestartGame() {
         printEndingMessage();
 
         int inputNum;
