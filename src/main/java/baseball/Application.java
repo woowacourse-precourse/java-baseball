@@ -48,18 +48,9 @@ public class Application {
         return true;
     }
 
-    // 중복된 값을 입력했는지 확인
-    private static boolean isDuplicated(String num) {
-        for (int i = 0; i < 3; i++) {
-            if (num.length() - num.replace(num.valueOf(i), "").length() != 2)
-                return true;
-        }
-        return false;
-    }
-
     // 입력받은 값이 유효한지 확인
     private static boolean isValid(String num) {
-        if (isLen3(num) && isNum(num) && !isDuplicated(num))
+        if (isLen3(num) && isNum(num))
             return true;
         return false;
     }
