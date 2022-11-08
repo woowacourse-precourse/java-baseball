@@ -13,7 +13,7 @@ public class Player {
         this.inputReader = inputReader;
     }
 
-    public boolean selectRetryOrExit() {
+    public boolean selectReplayOrExit() {
         String inputMenu = inputReader.readLine();
         validateInputMenu(inputMenu);
         return inputMenu.equals("1");

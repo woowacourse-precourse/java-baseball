@@ -16,7 +16,7 @@ public class BaseBallGameManager {
         beforeGameStart();
         do {
             startGame();
-        } while (doRetry());
+        } while (doReplay());
     }
 
     private void beforeGameStart() {
@@ -32,9 +32,9 @@ public class BaseBallGameManager {
         printGameOverMessage();
     }
 
-    private boolean doRetry() {
-        printRetryOrExitMessage();
-        if (player.selectRetryOrExit()) {
+    private boolean doReplay() {
+        printReplayOrExitMessage();
+        if (player.selectReplayOrExit()) {
             computer.resetAnswer();
             return true;
         }
@@ -49,7 +49,7 @@ public class BaseBallGameManager {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private void printRetryOrExitMessage() {
+    private void printReplayOrExitMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
