@@ -1,11 +1,11 @@
 package baseball.model;
 
-public enum ValidateNumberLength {
+public enum ValidateNumber {
     NUMBER_LENGTH(3);
 
     private final int code;
 
-    ValidateNumberLength(int code) {
+    ValidateNumber(int code) {
         this.code = code;
     }
 
