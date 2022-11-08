@@ -26,6 +26,7 @@ public class Application {
                 ball -= strike;
                 printResult(strike,ball);
             }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
 
 
@@ -35,6 +36,21 @@ public class Application {
         }while(restartCounter==1);
 
         return;
+    }
+
+    private static void printResult(Integer strike, Integer ball) {
+        if(ball==0 && strike ==0){
+            System.out.println("낫싱");
+            return;
+        }
+        if(ball!=0){
+            System.out.println(ball+"볼");
+            return;
+        }
+        if(strike!=0){
+            System.out.println(strike+"스트라이크");
+            return ;
+        }
     }
 
     private static Integer checkBall(List<Integer> computer, List<Integer> user) {
