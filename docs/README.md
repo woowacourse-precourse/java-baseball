@@ -8,3 +8,4 @@
   3. `compareNumber` 메서드 : 스트라이크 및 볼 여부 확인
   4. `getResult` 메서드 : 숫자 비교 후 결과를 출력
   5. `askEnd` 메서드 : 게임 종료 여부를 확인
+  6. `validationCheck` 메서드 : 입력의 오류 여부 확인
