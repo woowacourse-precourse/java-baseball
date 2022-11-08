@@ -24,6 +24,14 @@ public final class GameValidation {
         }
     }
 
+    public boolean isAllCheck() {
+        if (isCheckLength() && isAllCorrectNumber() && isNotDuplicateNumber()) {
+            return true;
+        }
+
+        throw new IllegalArgumentException();
+    }
+
     public boolean isCheckLength() {
         if (userInput.length() == 3) {
             return true;
