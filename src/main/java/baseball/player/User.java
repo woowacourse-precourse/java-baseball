@@ -1,6 +1,7 @@
 package baseball.player;
 
 import static baseball.Constant.ERR_MSG;
+import static baseball.Constant.INPUT_NUMBER_MSG;
 
 import baseball.Validation;
 import camp.nextstep.edu.missionutils.Console;
@@ -16,6 +17,13 @@ public class User {
 
     public User(Validation validation) {
         this.validation = validation;
+    }
+
+    public List<Integer> getNumber() throws IllegalArgumentException {
+        System.out.print(INPUT_NUMBER_MSG);
+        number = makeStringNumberToList();
+        validation.validate(number);
+        return number;
     }
 
     public List<Integer> makeStringNumberToList() {
