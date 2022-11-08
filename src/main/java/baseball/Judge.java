@@ -21,7 +21,7 @@ public class Judge {
         return count;
     }
 
-    public int countNoting() {
-        return 1;
+    public boolean isNoting(List<Integer> hitterNumber, List<Integer> pitcherNumber) {
+        return countBall(hitterNumber, pitcherNumber) == 0;
     }
 }
