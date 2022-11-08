@@ -37,7 +37,6 @@ public class BaseBallGameManager {
         int restartNumber = Input.inputRestartNumber();
         if (restartNumber < RESTART_NUMBER_THREE) {
             if (restartNumber == GAME_RESET_NUMBER_ONE) {
-
                 startGame();
             }
         }
