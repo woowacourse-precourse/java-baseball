@@ -1,11 +1,12 @@
 package baseball;
 
 import baseball.view.InputView;
-import baseball.view.OutputView;
 
 import static baseball.constants.Constant.*;
 import static baseball.constants.Exception.*;
 import static baseball.constants.Message.*;
+import static baseball.view.OutputView.*;
+
 
 public class Game {
 
@@ -45,7 +46,7 @@ public class Game {
   public void playGame() {
     setAnswer();
     guessNumber();
-    OutputView.printEndMessage();
+    printEndMessage();
   }
 
   public boolean isRestart() {
@@ -62,6 +63,7 @@ public class Game {
   }
 
   public void playBaseballGame() {
+    printStartMessage();
     playGame();
     if (isRestart()) {
       playGame();

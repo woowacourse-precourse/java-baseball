@@ -32,7 +32,7 @@ public class Validator {
 
   public boolean isBetween(List<Integer> numbers) {
     for (int number : numbers) {
-      return number >= RANGE_END && number <= RANGE_END;
+      return number >= 1 && number <= 9;
     }
     return false;
   }
