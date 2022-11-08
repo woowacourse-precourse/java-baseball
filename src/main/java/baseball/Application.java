@@ -37,11 +37,30 @@ public class Application {
         gameStartOrStop(restartNumber);
     }
 
-    private static void gameStartOrStop(String restartNumber) {
-        if (restartNumber.equals("1")) {
-            baseball();
-        } else if (restartNumber.equals("2")) {
-            System.out.println("게임을 종료합니다.");
+    private static void createRandomNumber() {
+        answerNumberList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            int random = Randoms.pickNumberInRange(1, 9);
+
+            while (answerNumberList.contains((random))) {
+                random = Randoms.pickNumberInRange(1, 9);
+            }
+            answerNumberList.add(random);
+        }
+    }
+
+    private static void userInputNumber() {
+        userNumberList = new ArrayList<>();
+
+        System.out.print("숫자를 입력해주세요:");
+        String userInput = Console.readLine();
+
+        if (!userInput.matches("^[1-9]{3}$")) {
+            throw new IllegalArgumentException();
+        }
+        for(int i = 0; i < userInput.length(); i++) {
+            userNumberList.add(userInput.charAt(i) - 48);
         }
     }
 
@@ -69,30 +88,11 @@ public class Application {
         return result;
     }
 
-    private static void userInputNumber() {
-        userNumberList = new ArrayList<>();
-
-        System.out.print("숫자를 입력해주세요:");
-        String userInput = Console.readLine();
-
-        if (!userInput.matches("^[1-9]{3}$")) {
-            throw new IllegalArgumentException();
-        }
-        for(int i = 0; i < userInput.length(); i++) {
-            userNumberList.add(userInput.charAt(i) - 48);
-        }
-    }
-
-    private static void createRandomNumber() {
-        answerNumberList = new ArrayList<>();
-
-        for (int i = 0; i < 3; i++) {
-            int random = Randoms.pickNumberInRange(1, 9);
-
-            while (answerNumberList.contains((random))) {
-                random = Randoms.pickNumberInRange(1, 9);
-            }
-            answerNumberList.add(random);
+    private static void gameStartOrStop(String restartNumber) {
+        if (restartNumber.equals("1")) {
+            baseball();
+        } else if (restartNumber.equals("2")) {
+            System.out.println("게임을 종료합니다.");
         }
     }
 
