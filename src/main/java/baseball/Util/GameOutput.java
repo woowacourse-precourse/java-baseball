@@ -23,7 +23,7 @@ public class GameOutput {
     public void printResult(String result) {
         System.out.println(result);
     }
-    public void printInputExceptionLog() {
+    public static void printInputExceptionLog() {
         System.out.println("입력이 잘못되었습니다. 게임을 종료합니다.");
     }
 }

@@ -27,28 +27,23 @@ public class Application {
     Referee referee = Referee.getInstance();
     DB database = DB.getInstance();
 
-    public void startGame() {
+    public void startGame() throws IllegalArgumentException {
         gameOutput.printStartLog();
         answer = generateAnswer();
 
         boolean isContinue = true;
         while (isContinue) {
-            try {
-                userInput = gameInput.getInput();
-                gameInput.isLegalInput(userInput);
+            userInput = gameInput.getInput();
+            gameInput.isLegalInput(userInput);
 
-                tryCount++;
+            tryCount++;
 
-                String judgement = referee.judge(userInput, answer);
-                gameOutput.printResult(judgement);
+            String judgement = referee.judge(userInput, answer);
+            gameOutput.printResult(judgement);
 
-                if (judgement == Referee.THREE_STRIKE) {
-                    gameOutput.printGameEndInfo();
-                    isContinue = isFinishGame();
-                }
-            } catch (IllegalArgumentException illegalArgumentException) {
-                gameOutput.printInputExceptionLog();
-                throw illegalArgumentException;
+            if (judgement == Referee.THREE_STRIKE) {
+                gameOutput.printGameEndInfo();
+                isContinue = isFinishGame();
             }
         } // end of While
 
@@ -93,6 +88,11 @@ public class Application {
 
     public static void main(String[] args) {
         Application application = new Application();
-        application.startGame();
+        try {
+            application.startGame();
+        } catch (IllegalArgumentException illegalArgumentException) {
+            GameOutput.printInputExceptionLog();
+            throw illegalArgumentException;
+        }
     }
 }
