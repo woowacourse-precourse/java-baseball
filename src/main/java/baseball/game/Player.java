@@ -38,6 +38,7 @@ public class Player {
         return GameProgress.values()[number - 1];
     }
 
+    // 문자열에 구분자들을 제거하여 반환
     public String removeSeparator(String input) {
         return input.replaceAll(SEPARATOR_PATTERN, "");
     }
@@ -48,12 +49,14 @@ public class Player {
         }
     }
 
+    // 유추하는 숫자리스트를 검증
     public void baseballValid(List<Integer> list) {
         if (list.size() > NUMBER_OF_BASEBALL) {
             throw new IllegalArgumentException();
         }
     }
 
+    // 게임진행 여부 입력값을 검증
     public void progressValid(int number) {
         if (number != GameProgress.CONTINUE.getProgress() && number != GameProgress.STOP.getProgress()) {
             throw new IllegalArgumentException();
