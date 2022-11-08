@@ -14,7 +14,7 @@ public class GameHandler {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
 
-    public static boolean isGameEnd;
+    public boolean isGameEnd;
 
     public static List<Integer> computerNumber;
     public static List<Integer> inputNumber;
@@ -79,8 +79,8 @@ public class GameHandler {
         return sb.toString();
     }
 
-    public boolean askRestart() {
+    public boolean askEnd() {
         String input = Console.readLine();
-        return input.compareTo("1") == 0;
+        return input.compareTo("2") == 0;
     }
 }
