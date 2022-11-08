@@ -21,6 +21,7 @@ public class Message {
     public static String getNothingMessage() {
         return NOTHING_MESSAGE;
     }
+
     public static String getGameStartMessage() {
         return GAME_START_MESSAGE;
     }
@@ -36,7 +37,6 @@ public class Message {
     public static String getInputNumberMessage() {
         return INPUT_NUMBER_MESSAGE;
     }
-
 
 
 }

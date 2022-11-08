@@ -25,21 +25,21 @@ public class ComparedNumberResult {
     @Override
     public String toString() {
 
-        if(ballCount + strikeCount == 0) {
+        if (ballCount + strikeCount == 0) {
             return Message.getNothingMessage();
         }
 
         StringBuilder message = new StringBuilder();
 
-        if(ballCount > 0) {
+        if (ballCount > 0) {
             message.append(ballCount + Message.getBallMessage());
         }
 
-        if(ballCount > 0 && strikeCount > 0) {
+        if (ballCount > 0 && strikeCount > 0) {
             message.append(" ");
         }
 
-        if(strikeCount > 0) {
+        if (strikeCount > 0) {
             message.append(strikeCount + Message.getStrikeMessage());
         }
 

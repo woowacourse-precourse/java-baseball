@@ -18,11 +18,11 @@ public class NumberManager {
 
         StringBuilder randomNumber = new StringBuilder();
 
-        while(randomNumber.length() < LENGTH) {
+        while (randomNumber.length() < LENGTH) {
 
             int pickedNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
-            if(randomNumber.indexOf(String.valueOf(pickedNumber)) == -1) {
+            if (randomNumber.indexOf(String.valueOf(pickedNumber)) == -1) {
                 randomNumber.append(pickedNumber);
             }
         }
@@ -48,11 +48,11 @@ public class NumberManager {
 
     public void validate(StringBuilder userNumber) {
 
-        if(!userNumber.toString().matches(REGEX)) {
+        if (!userNumber.toString().matches(REGEX)) {
             throw new IllegalArgumentException();
         }
 
-        if(Arrays.stream(userNumber.toString().split("")).collect(Collectors.toSet()).size() != LENGTH) {
+        if (Arrays.stream(userNumber.toString().split("")).collect(Collectors.toSet()).size() != LENGTH) {
             throw new IllegalArgumentException();
         }
 
@@ -68,12 +68,12 @@ public class NumberManager {
 
             int currentUserNumber = userNumber.charAt(i) - '0';
 
-            if(userNumberArray.get(currentUserNumber) == randomNumberArray.get(currentUserNumber)) {
+            if (userNumberArray.get(currentUserNumber) == randomNumberArray.get(currentUserNumber)) {
                 comparedNumberResult.plusStrikeCount();
                 continue;
             }
 
-            if(randomNumberArray.get(currentUserNumber) != 0) {
+            if (randomNumberArray.get(currentUserNumber) != 0) {
                 comparedNumberResult.plusBallCount();
             }
         }

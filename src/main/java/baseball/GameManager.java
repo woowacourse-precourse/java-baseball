@@ -42,12 +42,12 @@ public class GameManager {
 
         int gameContinue = Integer.parseInt(Console.readLine());
 
-        if(gameContinue == CONTINUE) {
+        if (gameContinue == CONTINUE) {
             numberManager.setRandomNumber();
             return true;
         }
 
-        if(gameContinue == EXIT) {
+        if (gameContinue == EXIT) {
             return false;
         }
 

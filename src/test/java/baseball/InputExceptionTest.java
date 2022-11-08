@@ -68,7 +68,6 @@ public class InputExceptionTest extends NsTest {
     }
 
 
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
