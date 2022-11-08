@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.util.Util;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -50,6 +51,15 @@ public class Application {
             throw new IllegalArgumentException("input cannot be overlap.");
         }
     }
+
+    private static boolean isOverlap(String input) {
+        Set<String> inputSet = new HashSet<>();
+        for (String number : input.split("")) {
+            inputSet.add(number);
+        }
+        return input.length() != inputSet.size();
+    }
+
     private static boolean isEnd(String comment) {
         return comment.contains("게임 종료");
     }
