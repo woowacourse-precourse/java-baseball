@@ -37,7 +37,7 @@ public class Application {
         }
         return false;
     }
-    public static boolean validInput(String input) {
+    public static boolean validateGameInput(String input) {
         if (input.length() != 3)
             return false;
         else if (input.contains("0"))
@@ -51,7 +51,7 @@ public class Application {
     public static List<Integer> getUserAnswer() {
         List<Integer> userAnswer = new ArrayList<>();
         String input = Console.readLine();
-        if (!validInput(input))
+        if (!validateGameInput(input))
             throwIllegalArgumentException();
         for (int index = 0; index < input.length(); index++) {
             int temp = input.charAt(index) - '0';
