@@ -25,7 +25,7 @@ public class GameHandler {
         computerNumber = new ArrayList<>();
         inputNumber = new ArrayList<>(3);
         compareResult = new ArrayList<>(2);
-        compareNumber();
+        selectNumber();
         System.out.println(GAME_START);
     }
 
@@ -38,7 +38,7 @@ public class GameHandler {
         }
     }
 
-    public void selectNumber() {
+    private void selectNumber() {
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
@@ -47,7 +47,7 @@ public class GameHandler {
         }
     }
 
-    private void compareNumber() {
+    public void compareNumber() {
         int strike = 0, ball = 0, number;
         for(int i = 0; i < 3; i++) {
             number = inputNumber.get(i);
