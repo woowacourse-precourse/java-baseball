@@ -34,26 +34,26 @@ public class Application {
         }
         return number;
     }
-    private static boolean checkValidate (String number) {
+    public static boolean checkValidate (String number) {
         if (!checkLength(number))
             return false;
         if (!checkIsDigit(number))
             return false;
         return true;
     }
-    private static boolean checkLength (String number) {
+    public static boolean checkLength (String number) {
         if (number.length() != 3)
             return false;
         return true;
     }
-    private static boolean checkIsDigit (String number) {
+    public static boolean checkIsDigit (String number) {
         for (char c : number.toCharArray()) {
             if (!Character.isDigit(c) | c == '0')
                 return false;
         }
         return true;
     }
-    private static String createAnswer () {
+    public static String createAnswer () {
         List<String> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -63,7 +63,7 @@ public class Application {
         }
         return String.join("",computer);
     }
-    private static boolean isStrike (String input, String answer) {
+    public static boolean isStrike (String input, String answer) {
         int strikeCnt = 0;
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == answer.charAt(i))
@@ -75,7 +75,7 @@ public class Application {
             return true;
         return false;
     }
-    private static void strikeMessage (int strike, int ball) {
+    public static void strikeMessage (int strike, int ball) {
         if (strike == 3) {
             System.out.println("3스트라이크\n"+"3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"+"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         } else if (strike + ball == 0) {
@@ -88,7 +88,7 @@ public class Application {
             System.out.println(ball+"볼 "+strike+"스트라이크");
         }
     }
-    private static boolean isStop () {
+    public static boolean isStop () {
         int input = Integer.parseInt(Console.readLine());
         if (input == 2)
             return true;
