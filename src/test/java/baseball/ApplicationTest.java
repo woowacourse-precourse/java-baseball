@@ -225,6 +225,27 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 정답_맞추는_과정_case1() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("147", "137", "153", "163", "123", "2");
+                    assertThat(output()).contains("1스트라이크", "1볼 1스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+    @Test
+    void 정답_맞추는_과정_case2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("791", "891", "291", "219", "912", "192", "129", "123", "2");
+                    assertThat(output())
+                            .contains("1볼", "2볼", "1볼 1스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
