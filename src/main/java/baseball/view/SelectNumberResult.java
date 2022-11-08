@@ -15,7 +15,12 @@ public class SelectNumberResult extends View {
     public void show() {
         GameService service = new GameService();
         Scoreboard scoreboard = service.compareComputerNumberWith(this.number);
-        this.response = (scoreboard.getStrikePoint() == 3 && scoreboard.getBallPoint() == 0);
+
+        if (scoreboard.getStrikePoint() == 3 && scoreboard.getBallPoint() == 0) {
+            service.deleteComputerNumber(number);
+
+            this.response = true;
+        }
 
         printLine(scoreboard.toString());
     }
