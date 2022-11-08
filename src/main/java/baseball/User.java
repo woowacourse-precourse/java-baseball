@@ -9,9 +9,9 @@ public class User {
     protected String input;
     protected int number;
 
-    protected boolean game_state = true;
+    protected int game_state;
 
-    ArrayList<Character> user = new ArrayList<>();
+    ArrayList<Character> numberList = new ArrayList<>();
 
     public void inputNumber() {
         String input = readLine();
@@ -26,7 +26,7 @@ public class User {
     public void inputGameState() {
         String input = readLine();
         if (input.equals("2")) {
-            this.game_state = false;
+            this.game_state = 2;
         } else if (!input.equals("1") || !input.equals("2")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
@@ -49,11 +49,11 @@ public class User {
     }
 
     public boolean checkNumber(Character number) {
-        return user.contains(number);
+        return numberList.contains(number);
     }
 
     public void addNumber(Character input) {
-        user.add(input);
+        numberList.add(input);
     }
 
     public void madeNumber(String input) {
@@ -65,7 +65,7 @@ public class User {
     }
 
     public void checkNumberDigit() {
-        if (user.size() != 3) {
+        if (numberList.size() != 3) {
             throw new IllegalArgumentException("입력한 수가 서로 다른 3자리의 수가 아닙니다.");
         }
     }
