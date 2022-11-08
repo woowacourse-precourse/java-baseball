@@ -15,24 +15,11 @@ public class ComputerTest {
     }
 
     @Test
-    void reset_스트라이크인지_볼인지_판별() {
+    void resetHintMap_힌트리스트_초기화() {
         Computer computer = new Computer();
         computer.resetHintMap();
-        HashMap<String, Integer> result = HintMap;
         assertThat(HintMap.get("스트라이크")).isEqualTo(0);
         assertThat(HintMap.get("볼")).isEqualTo(0);
-        assertThat(HintMap.get("낫싱")).isEqualTo(0);
-    }
-    @Test
-    void isNothing_낫싱인지_판별(){
-        Computer computer = new Computer();
-        computer.resetHintMap();
-        List<Integer> list = List.of(0, 0, 0);
-        for (int i =0; i<list.size(); i++){
-            computer.isNothing(list.get(i));
-        }
-        int result = HintMap.get("낫싱");
-        assertThat(result).isEqualTo(3);
     }
 
     @Test
@@ -46,4 +33,27 @@ public class ComputerTest {
         int result = HintMap.get("볼");
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    void checkPlayerAnswer_플레이어의_정답을_비교(){
+        Computer computer = new Computer();
+        computer.resetHintMap();
+        List<Integer> list = List.of(0, 0, 0);
+        for (int i =0; i<list.size(); i++){
+            computer.checkPlayerAnswer(Answer.get(i), list.get(i));
+        }
+        assertThat(HintMap.get("스트라이크")).isEqualTo(0);
+        assertThat(HintMap.get("볼")).isEqualTo(0);
+    }
+
+    @Test
+    void makeHintMap_플레이어의_답안에_맞춘_HintList_갱신(){
+        Computer computer = new Computer();
+        computer.resetHintMap();
+        List<Integer> list = List.of(0, 0, 0);
+        computer.makeHintMap(list);
+        assertThat(HintMap.get("스트라이크")).isEqualTo(0);
+        assertThat(HintMap.get("볼")).isEqualTo(0);
+    }
+
 }

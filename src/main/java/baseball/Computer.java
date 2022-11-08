@@ -16,7 +16,6 @@ public class Computer {
         HintMap = new HashMap<>();
         HintMap.put("스트라이크", 0);
         HintMap.put("볼", 0);
-        HintMap.put("낫싱", 0);
     }
     public static List<Integer> makeAnswer(){
         List<Integer> Answer = new ArrayList<>();
@@ -26,17 +25,23 @@ public class Computer {
         return Answer;
     }
 
-    public static void isNothing(int num){
-        if (!Answer.contains(num)) {
-            HintMap.replace("낫싱", HintMap.get("낫싱")+1);
-        }
-    }
-
     public static void isStrikeOrBall(int AnswerNum, int num){
         if(AnswerNum == num){
             HintMap.replace("스트라이크", HintMap.get("스트라이크")+1);
         }
         HintMap.replace("볼", HintMap.get("볼")+1);
+    }
+
+    public static void checkPlayerAnswer(int AnswerNum, int num){
+        if (Answer.contains(num)) {
+            isStrikeOrBall(AnswerNum, num);
+        }
+    }
+
+    public static void makeHintMap(List<Integer> list){
+        for(int i = 0; i < list.size(); i++){
+            checkPlayerAnswer(Answer.get(i), list.get(i));
+        }
     }
 }
 
