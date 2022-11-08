@@ -9,14 +9,19 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
+    final static int INPUT_SIZE = 3;
+    final static int FLAG_SIZE = 1;
+    final static char CONTINUE_GAME = 1;
+    final static char EXIT_GAME = 2;
+
     public static void main(String[] args) {
         startGame();
 
         List<Integer> answer;
         List<Integer> userInput;
-        int flag = 1;
+        int flag = CONTINUE_GAME;
 
-        while (flag == 1) {
+        while (flag == CONTINUE_GAME) {
             answer = getAnswer();
             userInput = getUserInput();
             while (!isAnswer(answer, userInput)) {
@@ -34,8 +39,9 @@ public class Application {
     }
 
     public static String isValidFlag(String readLine) {
-        boolean isOneOrTwo = (readLine.charAt(0) == '1' || readLine.charAt(0) == '2');
-        boolean isOnce = (readLine.length() == 1);
+        boolean isOneOrTwo = (Character.getNumericValue(readLine.charAt(0)) == CONTINUE_GAME
+                || Character.getNumericValue(readLine.charAt(0)) == EXIT_GAME);
+        boolean isOnce = (readLine.length() == FLAG_SIZE);
 
         if (isOneOrTwo && isOnce) {
             return readLine;
@@ -45,7 +51,7 @@ public class Application {
 
     public static String isValidUserInput(String readLine) {
         boolean isNumeric = Pattern.matches("^[0-9]*$", readLine);
-        boolean isTriple = (readLine.length() == 3);
+        boolean isTriple = (readLine.length() == INPUT_SIZE);
         boolean isDifferentEach = ((readLine.charAt(0) != readLine.charAt(1))
                 && (readLine.charAt(1) != readLine.charAt(2))
                 && (readLine.charAt(2) != readLine.charAt(0)));
@@ -88,7 +94,7 @@ public class Application {
     public static int getBall(List<Integer> answer, List<Integer> userInput) {
         int ball = 0;
 
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < INPUT_SIZE; index++) {
             if (answer.contains(userInput.get(index)) && !answer.get(index).equals(userInput.get(index))) {
                 ball += 1;
             }
@@ -100,7 +106,7 @@ public class Application {
     public static int getStrike(List<Integer> answer, List<Integer> userInput) {
         int strike = 0;
 
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < INPUT_SIZE; index++) {
             if (answer.get(index).equals(userInput.get(index))) {
                 strike += 1;
             }
@@ -125,7 +131,7 @@ public class Application {
     public static List<Integer> getAnswer() {
         List<Integer> answer = new ArrayList<>();
 
-        while (answer.size() < 3) {
+        while (answer.size() < INPUT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
