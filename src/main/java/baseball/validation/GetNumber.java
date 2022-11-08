@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 
 public class GetNumber {
-    boolean getNumberValidate(String numberString) {
+    public boolean getNumberValidate(String numberString) {
         if (getNumberOnlyNumber(numberString) && getNumberLengthThree(numberString)) {
             if (getNumberDuplicateCheck(numberString)) {
                 return true;

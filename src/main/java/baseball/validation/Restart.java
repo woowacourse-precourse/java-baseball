@@ -3,12 +3,11 @@ package baseball.validation;
 import java.util.regex.Pattern;
 
 public class Restart {
-    boolean validate(String restartValue) {
+    public boolean validate(String restartValue) {
         if (lengthCheck(restartValue)) {
             return valueCheck(restartValue);
-        } else {
-            return false;
         }
+        return false;
     }
 
     private boolean lengthCheck(String restartValue) {
