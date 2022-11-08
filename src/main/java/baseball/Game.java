@@ -70,7 +70,7 @@ public class Game {
         String input = sc.nextLine();
 
         for(char c : input.toCharArray()) {
-            if (48 < c && c < 57)
+            if (c < 48 || 57 < c)
                 throw new IllegalArgumentException("숫자를 입력하세요.");
         }
 
