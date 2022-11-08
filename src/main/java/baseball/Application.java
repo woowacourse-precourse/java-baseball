@@ -10,13 +10,12 @@ import java.util.Set;
 public class Application {
 
     public static void main(String[] args) {
-        List<Integer> randomNumberByComputer;
+        List<Integer> randomNumberByComputer = generateRandomNumber();
         List<Integer> randomNumberByUser;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            randomNumberByComputer = generateRandomNumber();
             System.out.print("숫자를 입력해주세요 : ");
             randomNumberByUser = inputNumberByUser();
 
@@ -32,7 +31,7 @@ public class Application {
 
             String input = exitOrRestart();
             if (input.equals("1")) {
-                continue;
+                randomNumberByComputer = generateRandomNumber();
             } else if (input.equals("2")) {
                 break;
             } else {
@@ -60,7 +59,7 @@ public class Application {
         String num = Console.readLine();
 
         for (int i = 0; i < num.length(); i++) {
-            inputNumber.add((int) num.charAt(i));
+            inputNumber.add(Character.getNumericValue(num.charAt(i)));
         }
         return inputNumber;
     }
@@ -99,13 +98,13 @@ public class Application {
 
         }
         if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            System.out.println("\n낫싱");
         } else if (ball == 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.println("\n" + strike + "스트라이크");
         } else if (strike == 0) {
-            System.out.println(ball + "스트라이크");
+            System.out.println("\n" +ball + "스트라이크");
         } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            System.out.println("\n" +ball + "볼 " + strike + "스트라이크");
         }
 
         if (strike == 3) {
