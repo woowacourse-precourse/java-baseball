@@ -78,7 +78,7 @@ public class GameTest extends NsTest {
                     "볼", 1,
                     "스트라이크", 2
             ));
-            assertThat(output()).isEqualTo("1볼 2스트라이크");
+            assertThat(output()).contains("1볼 2스트라이크");
         });
     }
 
@@ -89,7 +89,7 @@ public class GameTest extends NsTest {
                     "볼", 0,
                     "스트라이크", 3
             ));
-            assertThat(output()).isEqualTo("3스트라이크");
+            assertThat(output()).contains("3스트라이크");
         });
     }
 
@@ -100,7 +100,7 @@ public class GameTest extends NsTest {
                     "볼", 3,
                     "스트라이크", 0
             ));
-            assertThat(output()).isEqualTo("3볼");
+            assertThat(output()).contains("3볼");
         });
     }
 
@@ -111,7 +111,7 @@ public class GameTest extends NsTest {
                     "볼", 0,
                     "스트라이크", 0
             ));
-            assertThat(output()).isEqualTo("낫싱");
+            assertThat(output()).contains("낫싱");
         });
     }
 
