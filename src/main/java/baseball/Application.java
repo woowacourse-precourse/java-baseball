@@ -95,6 +95,10 @@ public class Application {
     public static boolean checkStrike(int i, List<Integer> answerNumber, List<Integer> guessNumber) {
         boolean isStrike = false;
 
+        if (answerNumber.get(i) == guessNumber.get(i)) {
+            isStrike = true;
+        }
+
         return isStrike;
     }
 
