@@ -70,4 +70,20 @@ public class NumberBaseballGame {
         Matcher m = pattern.matcher(input);
         return !m.matches();
     }
+
+    public List<Integer> calculateStrikeAndBall(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int ball = 0;
+        int strike = 0;
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            if (playerNumber.get(i) == computerNumber.get(i)) {
+                strike++;
+            } else if (computerNumber.contains(playerNumber.get(i))){
+                ball++;
+            }
+        }
+        result.add(strike);
+        result.add(ball);
+        return result;
+    }
 }
