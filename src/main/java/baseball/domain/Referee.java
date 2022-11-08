@@ -23,14 +23,10 @@ public class Referee {
         int getCorrectCount = correctCount.compare(computer, player);
         int getStrike = strike.score(computer, player);
         int getBall = ball.score(getCorrectCount, getStrike);
-
-        if (getCorrectCount == 0) {
-            return SystemMessage.NOTHING_MESSAGE;
-        }
-        return getResult(getStrike, getBall);
+        return getResult(getStrike, getBall, getCorrectCount);
     }
 
-    public String getResult(int strike, int ball) {
+    public String getResult(int strike, int ball, int CorrectCount) {
         if (ball >= STANDARD && strike == 0) {
             return ball + SystemMessage.BALL_MESSAGE;
         }
@@ -41,6 +37,14 @@ public class Referee {
 
         if (strike >= STANDARD && ball >= STANDARD) {
             return ball + SystemMessage.BALL_MESSAGE + " " + strike + SystemMessage.STRIKE_MESSAGE;
+        }
+
+        return getNothing(CorrectCount);
+    }
+
+    public String getNothing(int CorrectCount) {
+        if (CorrectCount == 0) {
+            return SystemMessage.NOTHING_MESSAGE;
         }
         return null;
     }
