@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 
 public class ResultPrinter {
-    boolean isCorrect;
+    private boolean isCorrect;
 
     public ResultPrinter() {
         isCorrect = false;
