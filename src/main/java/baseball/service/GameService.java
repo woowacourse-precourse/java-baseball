@@ -12,28 +12,27 @@ import static baseball.service.NeedForGameService.*;
 
 public class GameService {
     public final static List<Integer> RANDOMBALL = new ArrayList<>();
-    public static List<Integer> userball = new ArrayList<>();
-    public static final int BALL_COUNTS = 3;
-    public static int strike, ball, errorcheck = 0;
+    public static final int BALLCOUNTS = 3;
+    public static List<Integer> userBall = new ArrayList<>();
+    public static int strike, ball, errorCheck = 0;
 
-    public static void CatchRandomBall() {
+    public static void catchRandomBall() {
         while(strike != 3){
             checkInput();
-            if(errorcheck == 1) break;
+            if(errorCheck == 1) break;
             findRandomBall();
 
             if(strike != 3) initData();
         }
-
-        if(errorcheck == 0) selectContinue();
-        if(errorcheck == 1) return;
+        if(errorCheck == 0) selectContinue();
+        if(errorCheck == 1) return;
     }
 
     public static void checkInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        String inputball = Console.readLine();
-        checkHandler(inputball);
-        userball = stringToList(inputball);
+        String inputBall = Console.readLine();
+        checkHandler(inputBall);
+        userBall = stringToList(inputBall);
     }
 
     public static void findRandomBall() {
@@ -44,20 +43,20 @@ public class GameService {
 
     private static void selectContinue() {
         PrintOutput.finishOrder();
-        String iscontinue = Console.readLine();
+        String isContinue = Console.readLine();
 
-        if(Integer.valueOf(iscontinue) == 1) {
+        if(Integer.valueOf(isContinue) == 1) {
             initData();
             RANDOMBALL.clear();
-            userball.clear();
+            userBall.clear();
             PlayGameController.run();
         }
 
-        if(Integer.valueOf(iscontinue) == 2) return;
+        if(Integer.valueOf(isContinue) == 2) return;
     }
 
     public static List<Integer> makeRandomBall() {
-        while(RANDOMBALL.size() < BALL_COUNTS) {
+        while(RANDOMBALL.size() < BALLCOUNTS) {
             int number = 0;
             number = Randoms.pickNumberInRange(1, 9);
             if(!RANDOMBALL.contains(number)) RANDOMBALL.add(number);

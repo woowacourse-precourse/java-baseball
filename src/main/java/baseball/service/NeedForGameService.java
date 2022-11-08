@@ -13,52 +13,48 @@ public class NeedForGameService {
         PrintOutput.startOrder();
     }
 
-    public static int callErrorOrder() {
-        return 1;
-    }
-
     static void initData() {
         strike = 0;
         ball = 0;
-        errorcheck = 0;
+        errorCheck = 0;
     }
 
-    public static List<Integer> stringToList(String inputballs) {
+    public static List<Integer> stringToList(String inputBalls) {
 
-        List<Integer> userballobject = new ArrayList<>();
-        String[] inputballarray = inputballs.split("");
+        List<Integer> userBallObject = new ArrayList<>();
+        String[] inputBallArr = inputBalls.split("");
 
-        for(int i=0; i<inputballs.length(); i++){
-            userballobject.add(Integer.valueOf(inputballarray[i]));
+        for(int i=0; i<inputBalls.length(); i++){
+            userBallObject.add(Integer.valueOf(inputBallArr[i]));
         }
 
-        return userballobject;
+        return userBallObject;
     }
 
-    public static void checkHandler(String inputball) {
+    public static void checkHandler(String inputBall) {
 
         ExceptionHanlder exceptionHanlder = new ExceptionHanlder();
 
-        exceptionHanlder.checkInputBallSize(inputball);
-        exceptionHanlder.checkSameInput(inputball);
-        exceptionHanlder.CatchNonZero(inputball);
+        exceptionHanlder.checkInputBallSize(inputBall);
+        exceptionHanlder.checkSameInput(inputBall);
+        exceptionHanlder.CatchNonZero(inputBall);
     }
 
     public static void checkStrike(){
-        for(int i = 0; i < BALL_COUNTS; i++){
-            if(RANDOMBALL.get(i) == userball.get(i)) strike++;
+        for(int i = 0; i < BALLCOUNTS; i++){
+            if(RANDOMBALL.get(i) == userBall.get(i)) strike++;
         }
     }
 
     public static void checkBall() {
-        for(int i = 0; i < BALL_COUNTS; i++) {
+        for(int i = 0; i < BALLCOUNTS; i++) {
             countBalls(i);
         }
     }
 
     public static void countBalls(int index) {
-        for(int i = 0; i < BALL_COUNTS; i++){
-            if(i != index && RANDOMBALL.get(i) == userball.get(index)) ball++;
+        for(int i = 0; i < BALLCOUNTS; i++){
+            if(i != index && RANDOMBALL.get(i) == userBall.get(index)) ball++;
         }
     }
 

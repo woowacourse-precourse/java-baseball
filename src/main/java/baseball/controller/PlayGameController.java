@@ -7,6 +7,6 @@ public class PlayGameController {
     public static void run() {
         NeedForGameService.callStartOrder();
         GameService.makeRandomBall();
-        GameService.CatchRandomBall();
+        GameService.catchRandomBall();
     }
 }

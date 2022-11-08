@@ -1,54 +1,52 @@
 package baseball.handler;
 
-import baseball.service.GameService;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.service.GameService.RANDOMBALL;
-import static baseball.service.GameService.errorcheck;
+import static baseball.service.GameService.errorCheck;
 
 public class ExceptionHanlder {
-    public void checkInputBallSize(String inputballs) {
+    public void checkInputBallSize(String inputBalls) {
 
-        int checkindex = 0;
+        int checkIndex = 0;
 
-        for(int i = 0 ; i<inputballs.length(); i++) {
-            checkindex++;
+        for(int i = 0 ; i<inputBalls.length(); i++) {
+            checkIndex++;
         }
 
-        if(checkindex != RANDOMBALL.size()) {
-            errorcheck = 1;
+        if(checkIndex != RANDOMBALL.size()) {
+            errorCheck = 1;
             throw new IllegalArgumentException();
         }
     }
 
-    public void checkSameInput(String inputballs) {
+    public void checkSameInput(String inputBalls) {
 
-        String[] inputballarr = inputballs.split("");
-        boolean sameinputcheck = true;
+        String[] inputBallArr = inputBalls.split("");
+        boolean sameInputCheck = true;
 
-        if(inputballarr[0].equals(inputballarr[1])) sameinputcheck = false;
-        if(inputballarr[1].equals(inputballarr[2])) sameinputcheck = false;
-        if(inputballarr[0].equals(inputballarr[2])) sameinputcheck = false;
+        if(inputBallArr[0].equals(inputBallArr[1])) sameInputCheck = false;
+        if(inputBallArr[1].equals(inputBallArr[2])) sameInputCheck = false;
+        if(inputBallArr[0].equals(inputBallArr[2])) sameInputCheck = false;
 
-        if(!sameinputcheck){
-            errorcheck = 1;
+        if(!sameInputCheck){
+            errorCheck = 1;
             throw new IllegalArgumentException();
         }
     }
 
-    public void CatchNonZero(String inputballs) {
+    public void CatchNonZero(String inputBalls) {
 
-        List<Integer> checknonzero = new ArrayList<>();
-        String[] inputballarr = inputballs.split("");
+        List<Integer> checkNonZero = new ArrayList<>();
+        String[] inputBallArr = inputBalls.split("");
 
-        for(int i = 0; i < inputballs.length(); i++) {
-            checknonzero.add(Integer.valueOf(inputballarr[i]));
+        for(int i = 0; i < inputBalls.length(); i++) {
+            checkNonZero.add(Integer.valueOf(inputBallArr[i]));
         }
 
-        if(checknonzero.contains(0)) {
-            errorcheck = 1;
+        if(checkNonZero.contains(0)) {
+            errorCheck = 1;
             throw new IllegalArgumentException();
         }
     }
