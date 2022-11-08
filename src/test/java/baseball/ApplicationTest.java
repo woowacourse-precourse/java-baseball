@@ -135,6 +135,19 @@ class ApplicationTest extends NsTest {
         assertThat(result.printResult()).isEqualTo("낫싱");
     }
 
+    @Test
+    public void check_all_correct() {
+        Result result = new Result();
+        List<Integer> baseball = List.of(1,2,3);
+        List<Integer> input1 = List.of(1,2,3);
+        List<Integer> input2 = List.of(3,2,1);
+        List<Integer> input3 = List.of(4,5,6);
+
+        assertThat(result.countResult(baseball, input1)).isEqualTo(true);
+        assertThat(result.countResult(baseball, input2)).isEqualTo(false);
+        assertThat(result.countResult(baseball, input3)).isEqualTo(false);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
