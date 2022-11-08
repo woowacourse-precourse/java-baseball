@@ -61,7 +61,7 @@ public class Computer {
         return false;
     }
 
-    public static List<Integer> makeStringNumberToList(String inputStringNumber) throws IllegalArgumentException {
+    public static List<Integer> makeStringNumberToList(String inputStringNumber){
 
         List<Integer> inputNumber = new ArrayList<>();
         if(inputStringNumber.length() != 3) throw new IllegalArgumentException("입력값은 3자리 숫자여야 합니다.");
@@ -111,10 +111,17 @@ public class Computer {
     public boolean checkFinish() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputString= Console.readLine();
+        checkFinishNumber(inputString);
         if(inputString.equals("1")) {
             System.out.println("게임을 새로 시작하겠습니다.");
             return false;
         }
         return true;
+    }
+
+    private void checkFinishNumber(String inputString) {
+        if(!inputString.equals("1") && !inputString.equals("2")){
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+        }
     }
 }
