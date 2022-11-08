@@ -5,6 +5,7 @@
    
 2. InputException.java : 사용자각 잘못된 값을 입력한 경우 발생, 이후 어플리케이션은 종료
    - inputEmptyException() : 입려값 없을 경우 발생 
+   - inputHasSameCharException() : 문장에 중복된 문자가 있을 경우 발생
    - inputNotThreeNumberException() : 길이가 3이 아니고 입력값이 숫자가 아닐 경우 발생 
    - inputNotOneOrTwoException() : 입력값이 1이나 2가 아닐 때 발생
    
