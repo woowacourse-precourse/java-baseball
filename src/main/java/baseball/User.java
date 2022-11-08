@@ -22,4 +22,24 @@ public class User {
         return this.proposal;
     }
 
+    public boolean confirm(List<Integer> result) {
+        int strikeCount = result.get(0);
+        int ballCount = result.get(1);
+
+        if (strikeCount == 3) {
+            System.out.println("3스트라이크");
+            return true;
+        } else if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+        } else if (strikeCount > 0 && ballCount == 0) {
+            System.out.printf("%d스트라이크\n", strikeCount);
+        } else if (strikeCount == 0 && ballCount > 0) {
+            System.out.printf("%d볼\n", ballCount);
+        } else {
+            System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
+        }
+
+        return false;
+
+    }
 }

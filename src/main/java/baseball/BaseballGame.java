@@ -50,8 +50,12 @@ public class BaseballGame {
 
     public List<Integer> checkNumber(List<Integer> computer, List<Integer> proposal) {
         List<Integer> checkList = new ArrayList<>();
+
         int strikeCount = checkStrikes(computer, proposal);
         int ballCount = checkBalls(computer, proposal);
+
+        checkList.add(strikeCount);
+        checkList.add(ballCount);
 
         return checkList;
     }
@@ -64,6 +68,9 @@ public class BaseballGame {
         List<Integer> proposal = user.getProposal();
 
         List<Integer> result = this.checkNumber(computer, proposal);
+        if (user.confirm(result)) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
 
     }
 }
