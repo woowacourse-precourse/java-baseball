@@ -19,11 +19,24 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
-
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트_숫자가아닐시() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("/)9"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트_중복숫자(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("999"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
