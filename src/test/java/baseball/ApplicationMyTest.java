@@ -195,7 +195,6 @@ public class ApplicationMyTest {
     void retry_사용자로부터_재시도_여부_입력_받기_게임_종료() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method retryMethod = getPrivateMethod("retry");
         input("2");
-        System.setIn(new ByteArrayInputStream("2\n".getBytes()));
         boolean retry = (boolean) retryMethod.invoke(Application.class);
 
         assertThat(retry).isFalse();
