@@ -1,11 +1,12 @@
 package IOController;
 
-public class Screen {
+public class ScreenOutput {
 
     private static final int GAME_START_MODE = 1;
     private static final int INPUT_NUMBER_MODE = 2;
     private static final int GAME_END_MODE = 3;
     private static final int CALCULATED_OUTPUT_MODE = 4;
+
 
     public static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
