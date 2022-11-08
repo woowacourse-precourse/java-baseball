@@ -118,12 +118,18 @@ public class GameTest extends NsTest {
 
     @Test
     void 스트라이크가_3이면_true가_나와야_한다() {
-        assertThat(game.isGameEnd(3)).isTrue();
+        assertThat(game.isGameEnd(Map.of(
+                "볼", 0,
+                "스트라이크", 3
+        ))).isTrue();
     }
 
     @Test
     void 스트라이가_3이_아니면_false가_나와야_한다() {
-        assertThat(game.isGameEnd(1)).isFalse();
+        assertThat(game.isGameEnd(Map.of(
+                "볼", 2,
+                "스트라이크", 1
+        ))).isFalse();
     }
 
     @Override
