@@ -11,14 +11,14 @@ public class BaseBallGameManager {
     public void startGame() {
         Output.printGameStart();
         List<Long> computerNumbers = Computer.makeRandomNumber();
-        System.out.println(computerNumbers);
+       // System.out.println(computerNumbers);
         User user = new User(Input.inputUserNumber());
         while (isRestartGameThreeStrike(user, computerNumbers)) {
             RuleManager.compareFourBall(user, computerNumbers);
             RuleManager.compareStrike(user, computerNumbers);
             RuleManager.compareBall(user, computerNumbers);
             RuleManager.compareStrikeBall(user, computerNumbers);
-            System.out.println(computerNumbers);
+           // System.out.println(computerNumbers);
             user = new User(Input.inputUserNumber());
         }
     }
