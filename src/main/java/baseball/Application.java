@@ -9,6 +9,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
     }
 
     public static void welcomeMessage(){
@@ -87,6 +88,22 @@ public class Application {
             System.out.print(" "+strikes+"스트라이크");
         }
         System.out.println();
+    }
+
+    public static Integer isGameOver() throws IllegalArgumentException{
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = readLine();
+        Integer userInputNumber = 1;
+        if (userInput.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        try{
+            userInputNumber = Integer.parseInt(userInput);
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
+        return userInputNumber;
     }
 
 
