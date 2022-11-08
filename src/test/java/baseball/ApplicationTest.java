@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.service.GameService;
-import baseball.service.NeedForGameService;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +15,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     @BeforeEach
     void initData() {
-        NeedForGameService.initData();
+        GameService gameService = new GameService();
+        gameService.initData();
     }
     @Test
     void 입력수_숫자로만_존재하는지() {
@@ -28,9 +28,11 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 랜덤수_중복유무_체크() {
+        GameService gameService = new GameService();
+
         List<Integer> randomBalls;
         boolean doubleCheck = true;
-        randomBalls = GameService.makeRandomBall();
+        randomBalls = gameService.makeRandomBall();
 
         if (randomBalls.get(0).equals(randomBalls.get(1))) doubleCheck = false;
         if (randomBalls.get(1).equals(randomBalls.get(2))) doubleCheck = false;
@@ -40,9 +42,11 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 랜덤수_자릿수_체크() {
+        GameService gameService = new GameService();
+
         int checkIndex = 0;
         List<Integer> checkSize;
-        checkSize = GameService.makeRandomBall();
+        checkSize = gameService.makeRandomBall();
 
         for(int i : checkSize) {
             checkIndex++;

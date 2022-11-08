@@ -3,7 +3,6 @@ package baseball.handler;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.service.GameService.RANDOMBALL;
 import static baseball.service.GameService.errorCheck;
 
 public class ExceptionHanlder {
@@ -15,7 +14,7 @@ public class ExceptionHanlder {
             checkIndex++;
         }
 
-        if(checkIndex != RANDOMBALL.size()) {
+        if(checkIndex != 3) {
             errorCheck = 1;
             throw new IllegalArgumentException();
         }

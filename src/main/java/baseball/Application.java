@@ -4,6 +4,7 @@ import baseball.controller.PlayGameController;
 
 public class Application {
     public static void main(String[] args) {
-        PlayGameController.startGame();
+        PlayGameController playGameController = new PlayGameController();
+        playGameController.startGame();
     }
 }

@@ -1,16 +1,17 @@
 package baseball.controller;
 
 import baseball.service.GameService;
-import baseball.service.NeedForGameService;
 
 public class PlayGameController {
-    public static void startGame() {
-        NeedForGameService.callStartOrder();
+    public void startGame() {
+        GameService gameService = new GameService();
+        gameService.callStartOrder();
         run();
     }
 
-    public static void run() {
-        GameService.makeRandomBall();
-        GameService.catchRandomBall();
+    public void run() {
+        GameService gameService = new GameService();
+        gameService.makeRandomBall();
+        gameService.catchRandomBall();
     }
 }
