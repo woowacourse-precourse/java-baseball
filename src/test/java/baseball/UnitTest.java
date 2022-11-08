@@ -16,42 +16,6 @@ import static org.assertj.core.api.Assertions.*;
 
 class UnitTest extends NsTest {
 
-    /* @Test
-    void 세자리_수_입력값_적정성_검토() {
-
-        String examNum1 = "1234";
-        String examNum2 = "110";
-        String examNum3 = "ktx";
-        String examNum4 = "112";
-
-        boolean return1 = ValidationUtil.validateInputNumber(examNum1);
-        boolean return2 = ValidationUtil.validateInputNumber(examNum2);
-        boolean return3 = ValidationUtil.validateInputNumber(examNum3);
-        boolean return4 = ValidationUtil.validateInputNumber(examNum4);
-
-        assertThat(return1).isInstanceOf(RuntimeException.class);
-        assertThat(return2).isInstanceOf(RuntimeException.class);
-        assertThat(return3).isInstanceOf(RuntimeException.class);
-        assertThat(return4).isInstanceOf(RuntimeException.class);
-    } */
-
-    /*
-    @Test
-    void 세자리_수_입력값_적정성_검토_후_리스트_변환(){
-
-        String inputNum = "123";
-        List<Integer> answerList = new ArrayList<>();
-        answerList.add(1);
-        answerList.add(2);
-        answerList.add(3);
-
-        if (ValidationUtil.validateInputNumber(inputNum)){
-            List<Integer> inputNumList = new ArrayList<>();
-            inputNumList = JudgeGame.getInputNumberList(inputNum);
-            assertThat(inputNumList).isEqualTo(answerList);
-        }
-    }*/
-
     @Test
     void 컴퓨터_생성_세자리_난수_적정성_검토(){
         ComputerNumber computerNumber = new ComputerNumber();
@@ -104,6 +68,38 @@ class UnitTest extends NsTest {
 
         assertThat(getGameResult).isEqualTo(true);
 
+    }
+
+    @Test
+    void 첫_번째_입력값_예외_테스트1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 첫_번째_입력값_예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 첫_번째_입력값_예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 첫_번째_입력값_예외_테스트5() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Override
