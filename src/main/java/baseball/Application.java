@@ -25,8 +25,8 @@ public class Application {
     }
 
 
-    // 2. 유저에게 숫자 받기
-    public static String userNumber() {
+    // 2. 유저에게 숫자 받기기
+   public static String userNumber() {
         return Console.readLine();
     }
 
@@ -65,6 +65,48 @@ public class Application {
         userNumberList.add((int)thirdNum-48);
 
         return userNumberList;
+    }
+
+
+    // 4. 값이 일치하지 않으면 볼, 스트라이크 개수 표시
+    public static String result(List<Integer> computerNumber, List<Integer> userNumber) {
+        String strikeBallResult = "";
+        int strikeCnt = isStrike(computerNumber, userNumber);
+        int ballCnt = isBall(computerNumber, userNumber);
+        if (ballCnt != 0 && strikeCnt != 0) {
+            strikeBallResult += ballCnt + "볼 " + strikeCnt + "스트라이크";
+        } else if (ballCnt != 0) {
+            strikeBallResult += ballCnt + "볼";
+        } else if (strikeCnt != 0) {
+            strikeBallResult += strikeCnt + "스트라이크";
+        } else if (ballCnt == 0 && strikeCnt == 0) {
+            strikeBallResult += "낫싱";
+        }
+
+        return strikeBallResult;
+    }
+
+    // 4-1. 스트라이크 개수 구하기
+    public static Integer isStrike(List<Integer> computerNumber, List<Integer> userNumber) {
+        int strikeCount = 0;
+        for (int i = 0 ; i < 3 ; i++) {
+            if (computerNumber.get(i).equals(userNumber.get(i))) {
+                strikeCount += 1;
+            }
+        }
+        return strikeCount;
+    }
+
+
+    // 4-2. 볼 개수 구하기
+    public static Integer isBall(List<Integer> computerNumber, List<Integer> userNumber) {
+        int ballCount = 0;
+        for (int i = 0 ; i < 3 ; i++) {
+            if (!computerNumber.get(i).equals(userNumber.get(i)) && userNumber.contains(computerNumber.get(i))) {
+                ballCount += 1;
+            }
+        }
+        return ballCount;
     }
 }
 
