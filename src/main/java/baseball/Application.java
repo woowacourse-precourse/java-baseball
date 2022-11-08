@@ -19,7 +19,7 @@ class Game {
         result.put("ball", 0);
     }
 
-    public void startGame() {
+    public void startGame() throws IllegalArgumentException{
         // 컴퓨터 객체
         Computer computer = new Computer();
 
@@ -35,18 +35,23 @@ class Game {
             resetResult();
 
             // 사용자로부터 숫자 입력받기
-            player.inputNumber();
-            System.out.println("사용자 핸덤숫자 : " + player.myInputNumber);
+            try {
+                player.inputNumber();
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException();
+            }
+            //System.out.println("사용자 랜덤숫자 : " + player.myInputNumber);
 
             // 숫자 비교하기
             compareNumbers(computer.myNumberList, player.myInputNumber);
-            System.out.println("숫자 비교" + result);
+            //System.out.println("숫자 비교" + result);
 
             // 출력하기
             String printResult = printCompareResult();
 
             // 출력 결과값이 다 맞췄다면 break;
             if (printResult.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
 
@@ -59,6 +64,7 @@ class Game {
     }
 
     public void compareNumbers(List<Integer> comNum, List<Integer> userNum) {
+        //System.out.println("비교 : " + comNum + " " + userNum);
         for (int i = 0; i < 3; i++) {
             int eachUserNum = userNum.get(i);
             int eachComNum = comNum.get(i);
@@ -150,12 +156,21 @@ class Computer {
 class Player {
     List<Integer> myInputNumber = new ArrayList<>();
 
-    public void inputNumber() {
+    public void inputNumber() throws IllegalArgumentException {
         myInputNumber.clear();
 
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNum = Console.readLine();
+        System.out.println(inputNum);
+
+        // 3자리 숫자가 아닌경우 예외
+        if (inputNum.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+
         for (int i = 0; i < 3; i++) {
-            int num = ((int) inputNum.charAt(i) % 10);
+            int num = Character.getNumericValue(inputNum.charAt(i));
             myInputNumber.add(num);
         }
     }
@@ -164,6 +179,8 @@ class Player {
 
 
 public class Application {
+    public static boolean isSystemOn = true;
+
     public static void main(String[] args) {
         boolean checkPlayGame = true;
 
@@ -172,16 +189,25 @@ public class Application {
 
         while (checkPlayGame) {
             // 게임 시작
-            game.startGame();
+            try {
+                game.startGame();
+            }
+            catch (IllegalArgumentException e) {
+               throw new IllegalArgumentException();
+            }
 
             // 게임 종료 조건 확인
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restartCheckNum = Console.readLine();
-            if (restartCheckNum == "2") {
+            if (restartCheckNum.equals("2")) {
                 checkPlayGame = false;
             }
+            if (restartCheckNum.equals("1")) {
+                continue;
+            }
+
+            // 그 외의 숫자를 입력했을 때
+            break;
         }
-
-
     }
 }
