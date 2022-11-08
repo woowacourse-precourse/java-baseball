@@ -20,7 +20,7 @@ public class GameService {
         master.initCount();
     }
 
-    public void getUserNumbers() {
+    public void getUserInputs() {
         requestMessage.requestInputNumbers();
         String userInput = Console.readLine();
         user = new User(validator.validateUserInput(userInput));
