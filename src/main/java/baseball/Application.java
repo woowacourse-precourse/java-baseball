@@ -10,6 +10,7 @@ public class Application {
         System.out.println(GameMessage.START_GAME_MESSAGE);
         do {
             baseballGame.playGame();
+            System.out.println(GameMessage.ALL_CORRECT_MESSAGE);
         } while(baseballGame.askNewGame());
     }
 }
