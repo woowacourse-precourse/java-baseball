@@ -5,10 +5,9 @@ import static baseball.util.RandomNumberMaker.generateRandomNumber;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-    private static boolean gameStatus = true;
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        boolean gameStatus = true;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (gameStatus) {
@@ -28,14 +27,12 @@ public class Application {
                 strikeFlag = judgeResult.isThreeStrikes();
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            String continueInput = readLine();
-            if (continueInput.equals("2")) {
-                gameStatus = !gameStatus;
+            int continueFlag = Integer.parseInt(readLine());
+            if (continueFlag == 2) {
+                gameStatus = false;
             }
         }
-        // 게임 종료
     }
 }
