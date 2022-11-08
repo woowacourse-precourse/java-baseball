@@ -1,9 +1,10 @@
 package computer;
 
-import iosystem.TrialValidator;
+import baseball.validator.TrialValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
+import utils.RandomGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;

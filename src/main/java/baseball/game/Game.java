@@ -1,12 +1,16 @@
-package baseball;
+package baseball.game;
 
-import computer.Computer;
-import iosystem.InputSystem;
+import baseball.computer.Computer;
+import baseball.digit.Digit;
+import baseball.digit.Digits;
+import baseball.score.Score;
+import baseball.score.ScoreStatus;
+import utils.InputSystem;
 
 import java.util.List;
 
-import static baseball.GameMessage.END_GAME;
-import static baseball.GameMessage.START_GAME;
+import static baseball.game.GameMessage.END_GAME;
+import static baseball.game.GameMessage.START_GAME;
 
 public class Game {
 

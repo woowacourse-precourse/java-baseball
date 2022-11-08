@@ -1,4 +1,6 @@
-package baseball;
+package baseball.digit;
+
+import baseball.score.ScoreStatus;
 
 import java.util.Objects;
 

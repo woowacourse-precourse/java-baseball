@@ -1,4 +1,6 @@
-package computer;
+package baseball.computer;
+
+import utils.RandomGenerator;
 
 import java.util.List;
 

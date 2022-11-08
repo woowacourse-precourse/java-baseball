@@ -1,4 +1,4 @@
-package computer;
+package utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

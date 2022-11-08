@@ -1,4 +1,4 @@
-package baseball;
+package baseball.score;
 
 public enum ScoreStatus {
 

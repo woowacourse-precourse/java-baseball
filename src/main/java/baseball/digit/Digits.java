@@ -1,4 +1,6 @@
-package baseball;
+package baseball.digit;
+
+import baseball.score.ScoreStatus;
 
 import java.util.List;
 import java.util.stream.Collectors;
