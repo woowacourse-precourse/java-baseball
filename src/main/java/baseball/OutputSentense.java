@@ -64,5 +64,16 @@ public class OutputSentense {
         return sentense;
     }
 
+    public List setRandomNumber(List<Integer> computer, int gameTypeNumber) {
+        computer.clear();
+        while (computer.size() < gameTypeNumber) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+
 
 }
