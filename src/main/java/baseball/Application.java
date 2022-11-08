@@ -25,5 +25,13 @@ public class Application {
             }
         }
 
+        // count STRIKE
+        int countStrike = 0;
+        for(int i=0; i<correct.size(); i++) {
+            int eachUserNumber = userRandNumber.charAt(i) - '0';
+            if (eachUserNumber == correct.get(i)) {
+                countStrike ++;
+            }
+        }
     }
 }
