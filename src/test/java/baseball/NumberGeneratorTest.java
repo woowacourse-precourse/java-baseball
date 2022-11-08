@@ -7,6 +7,7 @@ import static baseball.util.RandomUtil.generateComputerNumber;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.RepeatedTest;
 
 public class NumberGeneratorTest {
@@ -29,6 +30,15 @@ public class NumberGeneratorTest {
     void 컴퓨터숫자는_세자리여야함() {
         List<Integer> computer = generateNumber();
         assertThat(computer.size()).isEqualTo(NUMBER_LENGTH);
+    }
+
+    @RepeatedTest(10)
+    void 숫자는_랜덤하게_생성되어야함() {
+        List<Integer> computer1 = generateNumber();
+        List<Integer> computer2 = generateNumber();
+        List<Integer> computer3 = generateNumber();
+        assertThat(Stream.of(computer1, computer2, computer3).distinct().count()).isEqualTo(
+                3);
     }
 
     private List<Integer> generateNumber() {
