@@ -49,4 +49,39 @@ public class Application {
         return userInputList;
     }
 
+
+    public static boolean numberCompare(List<Integer> answer, List<Integer> userInput) {
+        boolean returnValue = false;
+        int strike = 0;
+        int ball = 0;
+        List<Integer> numberFlag = new ArrayList<>();
+        for (int i = 0; i < 11; i++) {
+            numberFlag.add(0);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (answer.get(i) == userInput.get(i)) {
+                strike++;
+            } else {
+                numberFlag.set(userInput.get(i), 1);
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (numberFlag.get(answer.get(i)) == 1)
+                ball++;
+        }
+
+        if (strike == 3)
+            returnValue = true;
+        if (ball == 0 && strike == 0)
+            System.out.print("낫싱");
+        if (ball != 0)
+            System.out.printf("%d볼 ", ball);
+        if (strike != 0)
+            System.out.printf("%d스트라이크", strike);
+        System.out.println();
+
+        return returnValue;
+    }
 }
