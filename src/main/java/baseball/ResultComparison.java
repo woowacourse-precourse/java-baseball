@@ -10,7 +10,7 @@ public class ResultComparison {
 		  String strike ="스트라이크";
 		  String ball = "볼";	
 		  boolean gameEnd = false;
-		  String countInformation = count.get(ball)+ball + count.get(strike)+strike;
+		  String countInformation = count.get(ball)+ball+" "+count.get(strike)+strike;
 	     
 	      
 	      if(count.get(ball).equals(0)){
@@ -23,7 +23,7 @@ public class ResultComparison {
 	    	  countInformation = "낫싱";
 	      }//if
 	      if(count.get(strike).equals(3)) {
-	    	 countInformation =strike + System.lineSeparator() + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+	    	 countInformation =count.get(strike) + strike + System.lineSeparator() + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 	         gameEnd = true;
 	      }//if
 	      
