@@ -21,7 +21,6 @@ public class GamePlay {
     private UserNumber userNumber;
     private List<Integer> userNumberList;
     private InputException numberException;
-    private int strike =0;
 
     public GamePlay(){
         computerNumber = new ComputerNumber();
