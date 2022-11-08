@@ -6,5 +6,9 @@ import baseball.score.Result;
 import baseball.score.Score;
 
 public class GameImpl implements Game{
+  public Computer computerPlayer;
+  public User userPlayer;
+  public Score score;
+  public Boolean flag = true;
 
 }
