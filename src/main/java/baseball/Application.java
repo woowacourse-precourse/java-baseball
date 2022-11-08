@@ -47,7 +47,7 @@ public class Application {
 
         String str = readLine();
 
-        if(!userNumberCheck(str))
+        if (!userNumberCheck(str))
             throw new IllegalArgumentException("서로 다른 3자리 숫자로 입력해야합니다.");
 
         Integer number = Integer.parseInt(str);
@@ -92,7 +92,7 @@ public class Application {
         String str = readLine();
         Integer flag = Integer.parseInt(str);
 
-        if(!restartBaseBallGameCheck(flag))
+        if (!restartBaseBallGameCheck(flag))
             throw new IllegalArgumentException("1 혹은 2를 입력해야합니다.");
 
         return flag;
@@ -111,7 +111,8 @@ public class Application {
 
         return true;
     }
-    public static boolean restartBaseBallGameCheck(Integer flag){
+
+    public static boolean restartBaseBallGameCheck(Integer flag) {
         if (!flag.equals(1) && !flag.equals(2)) return false;
 
         return true;
