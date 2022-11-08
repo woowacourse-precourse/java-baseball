@@ -103,6 +103,12 @@ public class Application {
         return playmore_stop_number;
     }
 
+    public static void decide_newgame_endgame_number_error(String playmore_stop_number) {
+        String available_number = "12";
+        if (!available_number.contains(playmore_stop_number)) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -129,6 +135,7 @@ public class Application {
             } while (three_strike_judge == 0);
 
             playmore_stop_number = decide_newgame_endgame();
+            decide_newgame_endgame_number_error(playmore_stop_number);
         } while (playmore_stop_number.equals("1"));
     }
 }
