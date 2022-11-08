@@ -15,7 +15,7 @@ public class Application {
             String input = getInput();
             if (!isStrike(input, answer))
                 continue;
-            else if (isStop())
+            else if (isStop(Console.readLine()))
                 break;
             answer = createAnswer();
         }
@@ -88,8 +88,8 @@ public class Application {
             System.out.println(ball+"볼 "+strike+"스트라이크");
         }
     }
-    public static boolean isStop () {
-        int input = Integer.parseInt(Console.readLine());
+    public static boolean isStop (String val) {
+        int input = Integer.parseInt(val);
         if (input == 2)
             return true;
         if (input == 1)
