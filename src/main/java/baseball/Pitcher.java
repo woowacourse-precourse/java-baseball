@@ -1,20 +1,18 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Pitcher {
 
-    Set<Integer> number = new HashSet<>();
+    List<Integer> number;
 
     public Pitcher() {
     }
 
-    public Set<Integer> getNumber() {
+    public List<Integer> getNumber() {
         return number;
     }
 
@@ -23,10 +21,10 @@ public class Pitcher {
         validateInputType(input);
         validateInputUnique(input);
 
-        Set<Integer> userNumber = Arrays.stream(input.split(""))
+        List<Integer> userNumber = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        number.addAll(userNumber);
+                .collect(Collectors.toList());
+        number = userNumber;
     }
 
     public void validateInputSize(String input) {

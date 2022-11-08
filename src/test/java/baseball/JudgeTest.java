@@ -2,8 +2,8 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class JudgeTest {
@@ -12,8 +12,8 @@ class JudgeTest {
 
     @Test
     void ball개수_확인() {
-        Set<Integer> pitcherNumber = new HashSet<>(Set.of(1, 2, 3));
-        Set<Integer> HitterNumber = new HashSet<>(Set.of(2, 3, 4));
+        List<Integer> pitcherNumber = new ArrayList<>(List.of(1, 2, 3));
+        List<Integer> HitterNumber = new ArrayList<>(List.of(2, 3, 4));
 
         int ballCount = judge.countBall(pitcherNumber, HitterNumber);
 

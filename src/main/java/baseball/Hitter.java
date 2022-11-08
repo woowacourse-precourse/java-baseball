@@ -3,18 +3,18 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Hitter {
 
-    private Set<Integer> number;
+    private List<Integer> number;
 
     public Hitter() {
         generateNumber();
     }
 
-    public Set<Integer> getNumber() {
+    public List<Integer> getNumber() {
         return number;
     }
 
@@ -27,7 +27,7 @@ public class Hitter {
             }
             map.put(oneNum, 1);
         }
-        number = map.keySet();
+        number = List.copyOf(map.keySet());
     }
 
 }

@@ -1,14 +1,13 @@
 package baseball;
 
-import java.util.Set;
+import java.util.List;
 
 public class Judge {
 
-    public int countBall(Set<Integer> hitterNumber, Set<Integer> PitcherNumber) {
-        Set<Integer> intersectSet = hitterNumber;
-        intersectSet.retainAll(PitcherNumber);
-
-        return intersectSet.size();
+    public int countBall(List<Integer> hitterNumber, List<Integer> pitcherNumber) {
+        return (int) hitterNumber.stream()
+                .filter(pitcherNumber::contains)
+                .count();
     }
 
     public int countStrike() {
