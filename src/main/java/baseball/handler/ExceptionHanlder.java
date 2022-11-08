@@ -6,51 +6,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExceptionHanlder {
-
-    public void checkInputBallSize(String inputball){
+    public void checkInputBallSize(String inputballs) {
 
         int checkindex = 0;
-        List<Integer> checksize;
-        checksize = GameService.makeRandomBall();
+        List<Integer> randomballsize = GameService.makeRandomBall();;
 
-        for(int i : checksize) {
+        for(int i : randomballsize) {
             checkindex++;
         }
 
-        if(checkindex != inputball.length()){
+        if(checkindex != inputballs.length()) {
             throw new IllegalArgumentException();
         }
     }
 
-    //변수 다시보기
-    public void checkSameInput(String inputball){
+    public void checkSameInput(String inputballs) {
 
-        boolean doublecheck = true;
-        String[] inputballarr = inputball.split("");
+        String[] inputballarr = inputballs.split("");
+        boolean sameinputcheck = true;
 
-        if(inputballarr[0].equals(inputballarr[1])) doublecheck = false;
-        if(inputballarr[1].equals(inputballarr[2])) doublecheck = false;
-        if(inputballarr[0].equals(inputballarr[2])) doublecheck = false;
+        if(inputballarr[0].equals(inputballarr[1])) sameinputcheck = false;
+        if(inputballarr[1].equals(inputballarr[2])) sameinputcheck = false;
+        if(inputballarr[0].equals(inputballarr[2])) sameinputcheck = false;
 
-        if(!doublecheck){
+        if(!sameinputcheck){
             throw new IllegalArgumentException();
         }
     }
 
-    public void CatchNonZero(String inputball) {
+    public void CatchNonZero(String inputballs) {
 
-        List<Integer> checkballs = new ArrayList<>();
-        String[] inputballarr = inputball.split("");
+        List<Integer> checknonzero = new ArrayList<>();
+        String[] inputballarr = inputballs.split("");
 
-        for(int i = 0; i < inputball.length(); i++){
-            checkballs.add(Integer.valueOf(inputballarr[i]));
+        for(int i = 0; i < inputballs.length(); i++) {
+            checknonzero.add(Integer.valueOf(inputballarr[i]));
         }
 
-        if(checkballs.contains(0)){
+        if(checknonzero.contains(0)) {
             throw new IllegalArgumentException();
         }
     }
 }
-
-
-

@@ -9,7 +9,6 @@ import java.util.List;
 import static baseball.service.GameService.*;
 
 public class NeedForGameService {
-
     public static void callStartOrder() {
         PrintOutput.startOrder();
     }
@@ -25,16 +24,16 @@ public class NeedForGameService {
         errorcheck = 0;
     }
 
-    public static List<Integer> stringToList(String inputball) {
+    public static List<Integer> stringToList(String inputballs) {
 
-        List<Integer> usernumberdata = new ArrayList<>();
-        String[] inputballarray = inputball.split("");
+        List<Integer> userballobject = new ArrayList<>();
+        String[] inputballarray = inputballs.split("");
 
-        for(int i=0; i<inputball.length(); i++){
-            usernumberdata.add(Integer.valueOf(inputballarray[i]));
+        for(int i=0; i<inputballs.length(); i++){
+            userballobject.add(Integer.valueOf(inputballarray[i]));
         }
 
-        return usernumberdata;
+        return userballobject;
     }
 
     public static void checkHandler(String inputball) {

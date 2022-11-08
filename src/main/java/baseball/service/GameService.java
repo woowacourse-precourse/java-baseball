@@ -14,11 +14,9 @@ public class GameService {
     public final static List<Integer> RANDOMBALL = new ArrayList<>();
     public static List<Integer> userball = new ArrayList<>();
     public static final int BALL_COUNTS = 3;
-    public static int strike = 0;
-    public static int ball = 0;
-    public static int errorcheck = 0;
+    public static int strike, ball, errorcheck = 0;
 
-    public static void CatchException() {
+    public static void CatchRandomBall() {
         while(strike != 3){
             try {   checkInput();
             } catch (IllegalArgumentException e){   errorcheck = callErrorOrder();
@@ -31,7 +29,6 @@ public class GameService {
 
         if(errorcheck == 0) selectContinue();
         if(errorcheck == 1) return;
-
     }
 
     public static void checkInput() {
@@ -49,20 +46,20 @@ public class GameService {
 
     private static void selectContinue() {
         PrintOutput.finishOrder();
-        String selectNumber = Console.readLine();
+        String iscontinue = Console.readLine();
 
-        if(Integer.valueOf(selectNumber) == 1) {
+        if(Integer.valueOf(iscontinue) == 1) {
             initData();
             RANDOMBALL.clear();
             userball.clear();
             PlayGameController.run();
         }
 
-        if(Integer.valueOf(selectNumber) == 2) return;
+        if(Integer.valueOf(iscontinue) == 2) return;
     }
 
     public static List<Integer> makeRandomBall() {
-        while(RANDOMBALL.size() < BALL_COUNTS){
+        while(RANDOMBALL.size() < BALL_COUNTS) {
             int number = 0;
             number = Randoms.pickNumberInRange(1, 9);
             if(!RANDOMBALL.contains(number)) RANDOMBALL.add(number);
