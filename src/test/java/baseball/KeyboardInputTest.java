@@ -1,6 +1,6 @@
 package baseball;
 
-import IOController.KeyboardInput;
+import io.KeyboardInput;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.assertj.core.api.Assertions;

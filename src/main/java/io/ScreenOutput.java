@@ -1,4 +1,4 @@
-package IOController;
+package io;
 
 public class ScreenOutput {
 

@@ -1,6 +1,6 @@
 package baseball;
 
-import IOController.InputOutputController;
+import io.InputOutputController;
 
 public class Application {
 

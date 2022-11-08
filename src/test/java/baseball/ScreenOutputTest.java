@@ -1,6 +1,6 @@
 package baseball;
 
-import IOController.ScreenOutput;
+import io.ScreenOutput;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.assertj.core.api.Assertions;
