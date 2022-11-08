@@ -19,12 +19,13 @@ public class GameService {
         int strike = 0;
         int ball = 0;
         boolean isOut = false;
-        List<Integer> inputs = userInput.getNumbers();
+        List<Integer> userInputs = userInput.getNumbers();
+        List<Integer> gameNumbers = game.getGameNumbers();
 
-        for (int i = 0; i < inputs.size(); i++) {
-            if (inputs.get(i) == game.getGameNumbers().get(i)) {
+        for (int i = 0; i < userInputs.size(); i++) {
+            if (userInputs.get(i) == gameNumbers.get(i)) {
                 strike++;
-            } else if (game.getGameNumbers().contains(inputs.get(i))) {
+            } else if (gameNumbers.contains(userInputs.get(i))) {
                 ball++;
             }
         }
