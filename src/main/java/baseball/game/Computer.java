@@ -13,16 +13,19 @@ import java.util.function.Predicate;
 public class Computer {
 
     private final BallGenerator ballGenerator;
+    private final Output output;
 
     public Computer() {
         this.ballGenerator = new BallGenerator();
+        this.output = new Output();
     }
 
     public List<Integer> getComputerBalls() {
         return ballGenerator.createComputerBalls();
     }
 
-    public void countStrikeAndBallResults(List<Integer> computerBalls, List<Integer> playerBalls, List<Integer> strikeAndBallResults) {
+    public void countStrikeAndBallResults(List<Integer> computerBalls, List<Integer> playerBalls,
+            List<Integer> strikeAndBallResults) {
         playerBalls.stream()
                 .filter(ball -> computerBalls.stream().anyMatch(Predicate.isEqual(ball)))
                 .forEach(ball -> updateStrikeAndBallResults(strikeAndBallResults,
@@ -58,5 +61,9 @@ public class Computer {
             return strikeCnt + SystemMessage.STRIKE;
         }
         return SystemMessage.NOTHING;
+    }
+
+    public void printResultMessage(String resultMessage) {
+        output.printMessage(resultMessage);
     }
 }

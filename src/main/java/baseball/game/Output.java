@@ -16,7 +16,7 @@ public class Output {
         System.out.print(SystemMessage.ENTER_NUMBER);
     }
 
-    public void printResultMessage(String resultMessage) {
-        System.out.println(resultMessage);
+    public void printMessage(String message) {
+        System.out.println(message);
     }
 }

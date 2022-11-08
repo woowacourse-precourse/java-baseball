@@ -60,7 +60,7 @@ public class Game {
         computer.countStrikeAndBallResults(computerBalls, playerBalls, strikeAndBallResults);
         resultMessage = computer.getResultMessage(strikeAndBallResults.get(STRIKE_COUNT),
                 strikeAndBallResults.get(BALL_COUNT));
-        output.printResultMessage(resultMessage);
+        computer.printResultMessage(resultMessage);
         return resultMessage;
     }
 
