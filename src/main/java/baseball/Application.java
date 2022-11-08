@@ -35,6 +35,9 @@ public class Application {
             }
 
         }
+        System.out.println(computer.get(0));
+        System.out.println(computer.get(1));
+        System.out.println(computer.get(2));
         return computer;
     }
 
@@ -46,6 +49,10 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             String[] inputList = input.split("");
+
+            // 입력값 검증
+            validateCase(inputList);
+
             int[] inputNums = Arrays.stream(inputList).mapToInt(Integer::valueOf).toArray();
 
             saveNumberStatus(inputNums, computer,gameStatus);
@@ -95,6 +102,10 @@ public class Application {
         Boolean nothing = false;
         Integer strike = 0;
         Integer ball = 0;
+    }
+
+    private static void validateCase(String[] inputList){
+        if(inputList.length != 3) throw new IllegalArgumentException();
     }
 
 
