@@ -15,7 +15,7 @@ class RandomGeneratorTest {
 		randomGenerator = new RandomGenerator();
 	}
 
-	@RepeatedTest(10)
+	@RepeatedTest(value = 10, name = "{currentRepetition}: 1에서 9까지의 난수 생성 검증")
 	public void 난수_1_9_생성_검증() {
 		//given
 		int randomNumber = randomGenerator.generateNumber();
@@ -25,7 +25,7 @@ class RandomGeneratorTest {
 		assertThat(validResult).isTrue();
 	}
 
-	@RepeatedTest(10)
+	@RepeatedTest(value = 10, name = "{currentRepetition}: 서로 다른 3개의 난수 생성 검증")
 	public void 서로_다른_3개_난수_생성_검증() {
 		//given
 		List<Integer> randomNumbers = randomGenerator.generateNumbers();
