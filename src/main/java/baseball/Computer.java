@@ -57,5 +57,8 @@ public class Computer {
             System.out.println(this.ball + Constants.RESULT_BALL + " " + this.strike + Constants.RESULT_STRIKE);
         }
     }
+    public boolean isGameOver() {
+        return this.strike == 3;
+    }
 
 }
