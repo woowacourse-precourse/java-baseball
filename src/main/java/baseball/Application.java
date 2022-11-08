@@ -27,6 +27,59 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String userInputNumber = bf.readLine();
         verifyUserNumber(userInputNumber);
+
+        List<String> userNumberList = List.of(userInputNumber.split(""));
+        CntBallAndStrike(computer, userNumberList);
+    }
+
+    private static void CntBallAndStrike(List<Integer> computer, List<String> userNumberList) throws IOException {
+        int ballCnt = 0;
+        int strikeCnt = 0;
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String userInputNumber;
+        List<String> userNumberListMethodList;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.contains(Integer.parseInt(userNumberList.get(i))) && !computer.get(i).equals(Integer.parseInt(userNumberList.get(i)))) {
+                ballCnt++;
+            }
+            if (computer.get(i).equals(Integer.parseInt(userNumberList.get(i)))) {
+                strikeCnt++;
+            }
+        }
+
+        String ballCntStr = ballCnt + "볼";
+        String strikeCntStr = strikeCnt + "스크라이크";
+
+        if (strikeCnt == 3) {
+            System.out.println(strikeCntStr);
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
+        if (ballCnt == 0 && strikeCnt == 0) {
+            System.out.println("낫싱");
+            System.out.print("숫자를 입력해주세요 : ");
+            userInputNumber = bf.readLine();
+            verifyUserNumber(userInputNumber);
+            userNumberListMethodList = List.of(userInputNumber.split(""));
+            CntBallAndStrike(computer, userNumberListMethodList);
+        }
+        if (ballCnt > 0 || strikeCnt > 0) {
+            if (strikeCnt == 0) {
+                System.out.println(ballCntStr);
+            }
+            if (ballCnt == 0) {
+                System.out.println(strikeCntStr);
+            }
+            if (ballCnt > 0 && strikeCnt > 0) {
+                System.out.println(ballCntStr + " " + strikeCntStr);
+            }
+            System.out.print("숫자를 입력해주세요 : ");
+            userInputNumber = bf.readLine();
+            verifyUserNumber(userInputNumber);
+            userNumberListMethodList = List.of(userInputNumber.split(""));
+            CntBallAndStrike(computer, userNumberListMethodList);
+        }
     }
 
     private static String verifyUserNumber(String number) {
