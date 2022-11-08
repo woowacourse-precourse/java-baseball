@@ -8,6 +8,8 @@ public class BaseballController {
 
     public void gameStart(){
         baseballService.gameStartMessage();
+
+        baseballService.gameInProgress();
     }
 
 }
