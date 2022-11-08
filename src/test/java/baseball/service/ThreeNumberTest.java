@@ -19,9 +19,7 @@ class ThreeNumberTest {
         //when
         number.generate();
         //then
-        for (int num : number.getNumber()) {
-            assertThat(dup.contains(num)).isFalse();
-            dup.add(num);
-        }
+        assertThat(number.getNumber())
+                .doesNotHaveDuplicates();
     }
 }
