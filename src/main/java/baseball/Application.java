@@ -47,5 +47,12 @@ public class Application {
 
         //결과 출력
         System.out.println(countBall + "볼 " + countStrike + "스트라이크");
+
+        //게임 진행 판단
+        int gameStatus = 1;
+        if (countStrike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히였습니다! 게임 종료");
+            gameStatus = 0;
+        }
     }
 }
