@@ -1,35 +1,48 @@
 package game;
 
 import camp.nextstep.edu.missionutils.Console;
-import error.Examine;
+import game.util.Compare;
 import game.player.Computer;
-import print.Print;
+import game.player.User;
+import game.util.Print;
+import game.util.Validate;
 
 public class BaseballGame {
-	private Computer computer;
+    private Computer computer;
+    private User user;
 
-	public void ready() throws IllegalArgumentException {
-		Print.printGettingStart();
-		computer = new Computer();
-		roundWithComputer();
-		Print.printGameOverAndAfterRound();
-		if (again()) {
-			ready();
-		}
-	}
+    public BaseballGame() {
+    }
 
-	private void roundWithComputer() throws IllegalArgumentException {
-		computer.resetBallAndStrike();
-		Print.printInputNumbers();
-		String userNumbers = Examine.hasDifferentNumbers(Console.readLine());
-		if (!computer.computeAndPrintResult(userNumbers)) {
-			roundWithComputer();
-		}
-	}
+    public void start() throws IllegalArgumentException {
+        ready();
+        roundWithComputer();
+        if (again()) {
+            start();
+        }
+    }
 
-	private boolean again() throws IllegalArgumentException {
-		String str = Console.readLine();
-		Examine.isOneOrTwo(str);
-		return Examine.isOneOrTwo(str) == 1;
-	}
+    private void ready() {
+        computer = new Computer();
+        Print.printGettingStart();
+    }
+
+    private void input() throws IllegalArgumentException {
+        Print.printInputNumbers();
+        user = new User();
+    }
+
+    private void roundWithComputer() throws IllegalArgumentException {
+        input();
+
+        Compare c = new Compare();
+        if (!c.isStrikeOut(computer, user)) {
+            roundWithComputer();
+        }
+    }
+
+    private boolean again() throws IllegalArgumentException {
+        Print.printGameOverAndAfterRound();
+        return Validate.isOneOrTwo(Console.readLine()) == 1;
+    }
 }
