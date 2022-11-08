@@ -135,6 +135,12 @@ public class GamePlayTest {
     }
     @Test
     void 사용자의_숫자가_중복(){
+        // given
+        String userInput = "112";
+        // when
+        assertThatThrownBy(()-> numberException.validDuplicateNumber(userInput))
+        //then
+                .isInstanceOf(IllegalArgumentException.class);
 
     }
     @Test
