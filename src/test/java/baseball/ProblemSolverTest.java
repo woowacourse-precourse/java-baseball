@@ -46,6 +46,46 @@ class ProblemSolverTest {
     }
 
     @Test
-    void chooseToRestart() {
+    void chooseToRestart_재시작() {
+        InputStream in = new ByteArrayInputStream("1".getBytes());
+        System.setIn(in);
+        ProblemSolver problemSolver = new ProblemSolver();
+        int restart = problemSolver.chooseToRestart();
+        int result = 1;
+        assertThat(result).isEqualTo(restart);
+    }
+
+    @Test
+    void chooseToRestart_종료() {
+        InputStream in = new ByteArrayInputStream("2".getBytes());
+        System.setIn(in);
+        ProblemSolver problemSolver = new ProblemSolver();
+        int restart = problemSolver.chooseToRestart();
+        int result = 2;
+        assertThat(result).isEqualTo(restart);
+    }
+
+    @Test
+    void chooseToRestart_예외2자리() {
+        InputStream in = new ByteArrayInputStream("12".getBytes());
+        System.setIn(in);
+        ProblemSolver problemSolver = new ProblemSolver();
+        assertThatThrownBy(()->problemSolver.chooseToRestart()).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void chooseToRestart_예외문자() {
+        InputStream in = new ByteArrayInputStream("a".getBytes());
+        System.setIn(in);
+        ProblemSolver problemSolver = new ProblemSolver();
+        assertThatThrownBy(()->problemSolver.chooseToRestart()).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void chooseToRestart_예외범위벗어난숫자() {
+        InputStream in = new ByteArrayInputStream("3".getBytes());
+        System.setIn(in);
+        ProblemSolver problemSolver = new ProblemSolver();
+        assertThatThrownBy(()->problemSolver.chooseToRestart()).isInstanceOf(IllegalArgumentException.class);
     }
 }
