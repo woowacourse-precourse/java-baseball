@@ -1,6 +1,10 @@
 package baseball.validator;
 
-import java.util.*;
+import baseball.exception.CantBlankOrNullInputException;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class TrialValidator {
 
@@ -42,7 +46,7 @@ public class TrialValidator {
 
     private static void validateBlank(final String input){
         if (isBlank(input)){
-            throw new IllegalArgumentException("null 이나 빈값이 들어올 수 없습니다.");
+            throw new CantBlankOrNullInputException();
         }
     }
 
