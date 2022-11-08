@@ -1,14 +1,10 @@
 package baseball;
 
-
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ComputerTest {
@@ -33,6 +29,5 @@ class ComputerTest {
         //then
         assertThat(expected.size()).isEqualTo(actual.size());
     }
-
 
 }
