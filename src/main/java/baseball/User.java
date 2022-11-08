@@ -38,7 +38,7 @@ public class User {
 
     public void inputValidation(String num) {
         if (!checkNumFormat(num) || !checkNumLength(num) || !checkNumDuplication(num)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
     }
 

@@ -11,11 +11,13 @@ public class Game {
     private static int startFlag = 1;
     private static int NumberLength = 3;
 
+    //새로 게임 만들 때의 생성자
     public Game() {
         Computer = new Computer();
         User = new User();
         Calculator = new Calculator();
     }
+    // 사용자가 정확한 답 못맞췄을 경우, 생성자.
     public Game(String computerNum) {
         Computer = new Computer(computerNum);
         User = new User();
@@ -49,7 +51,7 @@ public class Game {
     }
 
     public void IsEnd(){
-        if (!checkEndGame()) {
+        if (!checkEndGame(startFlag)) {
             new Game().start();
         }
     }
@@ -62,9 +64,9 @@ public class Game {
         startFlag = Input.getStartFlag();
     }
 
-    public boolean checkEndGame() {
+    public boolean checkEndGame(int startFlag) {
         if (startFlag != 1 && startFlag != 2) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
         return startFlag == 2;
     }
