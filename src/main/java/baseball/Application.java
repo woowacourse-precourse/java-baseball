@@ -87,6 +87,30 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
+    public static boolean round(List<Integer> computerNumber) {
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> userNumber = setUserNumber();
+
+        int numsOfEqualNumber = numsOfEqualNumber(computerNumber, userNumber);
+        int Strike = countStrike(computerNumber, userNumber);
+        int Ball = countBall(numsOfEqualNumber, Strike);
+
+        if (Strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else if (Strike == 0 && Ball == 0) {
+            System.out.println("낫싱");
+        } else if (Strike == 0) {
+            System.out.println(Ball + "볼");
+        } else if (Ball == 0) {
+            System.out.println(Strike + "스트라이크");
+        } else {
+            System.out.println(Ball + "볼 " + Strike + "스트라이크");
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
