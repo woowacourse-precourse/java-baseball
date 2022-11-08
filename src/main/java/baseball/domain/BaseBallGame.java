@@ -75,7 +75,7 @@ public class BaseBallGame {
 			return;
 		}
 		if (!selectOption.equals(RESTART_OPTION)) {
-			throw new IllegalArgumentException("1, 2 만 입력할 수 있습니다.");
+			throw new IllegalArgumentException(Constants.RESTART_OPTION_ERR_MSG);
 		}
 	}
 }

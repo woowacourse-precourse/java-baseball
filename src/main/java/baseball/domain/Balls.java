@@ -37,7 +37,7 @@ public class Balls {
 
 	private void validateSize(int size) {
 		if (size != Constants.NUMBER_SIZE) {
-			throw new IllegalArgumentException("공은 서로 다른 3개의 수로 구성되어야 합니다.");
+			throw new IllegalArgumentException(Constants.BALLS_VALIDATE_ERR_MSG);
 		}
 	}
 
@@ -45,7 +45,7 @@ public class Balls {
 		Pattern pattern = Pattern.compile(Constants.NUMBERS_REGEX);
 		Matcher matcher = pattern.matcher(inputNumbers);
 		if (!matcher.matches()) {
-			throw new IllegalArgumentException("서로 다른 3개의 수를 공백없이 입력해주세요. ex) 123");
+			throw new IllegalArgumentException(Constants.BALLS_STRING_ERR_MSG);
 		}
 	}
 
@@ -54,7 +54,7 @@ public class Balls {
 		int number2 = numbers.get(1);
 		int number3 = numbers.get(2);
 		if (number1 == number2 || number1 == number3 || number2 == number3) {
-			throw new IllegalArgumentException("공은 서로 다른 3개의 수로 구성되어야 합니다.");
+			throw new IllegalArgumentException(Constants.BALLS_VALIDATE_ERR_MSG);
 		}
 	}
 

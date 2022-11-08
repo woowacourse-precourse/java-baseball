@@ -11,7 +11,7 @@ public class BallNumber {
 
 	private void validateBallNumber(int ballNumber) {
 		if (ballNumber < Constants.MIN_NUMBER || ballNumber > Constants.MAX_NUMBER) {
-			throw new IllegalArgumentException("야구공의 숫자는 1~9 사이의 숫자입니다.");
+			throw new IllegalArgumentException(Constants.BALL_NUMBER_ERR_MSG);
 		}
 	}
 
