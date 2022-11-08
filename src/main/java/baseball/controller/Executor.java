@@ -18,7 +18,8 @@ public class Executor {
         Printer.gameStart();
         while(flag) {
             Printer.inputNumber();
-            guessResult = guessNumber(computerRandomBaseball);
+            Baseball userInputNumber = getUserInputNumber();
+            guessResult = compareNumber(computerRandomBaseball, userInputNumber);
             if(guessResult.isALLCorrect()) {
                 String resultString = guessResult.getResult();
                 System.out.println(resultString);
@@ -28,20 +29,19 @@ public class Executor {
         }
 
     }
-
     private Baseball createRandomBaseball() {
         return new Computer().createRandomBaseball();
     }
-
-    public BaseballResult guessNumber(Baseball computerRandomBaseball) {
-        Baseball userBaseball = inputUserBaseball();
-        HashMap<String, Integer> check_result = checker.start(computerRandomBaseball, userBaseball);
-        return new BaseballResult(check_result);
+    public Baseball getUserInputNumber() {
+        return inputUserBaseball();
     }
     public Baseball inputUserBaseball() {
         User user = new User();
-        Baseball userBaseball = user.getInput();
-        return userBaseball;
+        return user.getInput();
+    }
+    public BaseballResult compareNumber(Baseball computerBaseball, Baseball userBaseball) {
+        HashMap<String, Integer> check_result = checker.start(computerBaseball, userBaseball);
+        return new BaseballResult(check_result);
     }
     public void askRestart() {
         Printer.askRestart();
