@@ -1,4 +1,5 @@
 package baseball;
+
 import java.util.*;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -8,7 +9,7 @@ public class Game {
 
     private List<Integer> computer;
 
-    public Game(){
+    public Game() {
         // 게임 시작 시 컴퓨터 숫자 생성
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -35,8 +36,17 @@ public class Game {
         int strike = 0;
         int ball = 0;
 
-        // 체크
-
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == j && computer.get(i) == user.get(j)) {
+                    strike++;
+                    break;
+                } else if (computer.get(i) == user.get(j)) {
+                    ball++;
+                    break;
+                }
+            }
+        }
 
         return new PlayResult(strike, ball);
     }
