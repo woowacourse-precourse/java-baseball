@@ -103,8 +103,7 @@ public class BaseballGame {
         } catch (IllegalArgumentException e) {
             System.out.print(e.getMessage());
             System.out.println(" 게임 종료");
+            return 2;
         }
-
-
     }
 }
