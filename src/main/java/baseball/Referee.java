@@ -12,6 +12,7 @@ public class Referee {
 
     public void compareComputerWith(List<Integer> playerInput) {
         baseballScore = new BaseballScore();
+
         for (int i = 0; i < computer.getNumbers().size(); i++) {
             if (computer.getNumbers().get(i).equals(playerInput.get(i))) {
                 baseballScore.increaseStrike();

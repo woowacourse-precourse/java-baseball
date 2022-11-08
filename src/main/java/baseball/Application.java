@@ -18,6 +18,7 @@ public class Application {
     private static boolean askRestart() {
         System.out.println(MESSAGE_COMMAND_RESTART_OR_END);
         int restartInput = Character.getNumericValue(Console.readLine().charAt(0));
+
         if (restartInput == 1) {
             return true;
         } else {

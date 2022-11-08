@@ -11,6 +11,7 @@ public class Translator {
         for (int i = 0; i < input.length(); i++) {
             char character = input.charAt(i);
             Validator.validateInteger(character);
+
             list.add(Integer.parseInt(String.valueOf(character)));
         }
 
