@@ -1,4 +1,4 @@
-package baseball.game.enums;
+package baseball.enums.game;
 
 public enum GuessTarget {
     STRIKE("스트라이크"),

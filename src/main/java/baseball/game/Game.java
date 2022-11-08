@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.game.enums.GuessTarget;
+import baseball.enums.game.GuessTarget;
 import baseball.game.rule.Rule;
 import baseball.game.rule.RuleChecker;
 import baseball.game.rule.BallCountRule;

@@ -1,6 +1,6 @@
 package baseball.game.rule;
 
-import baseball.game.enums.GuessTarget;
+import baseball.enums.game.GuessTarget;
 
 import java.util.LinkedHashMap;
 import java.util.List;

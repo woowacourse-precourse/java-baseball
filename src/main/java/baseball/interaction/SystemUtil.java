@@ -1,7 +1,7 @@
 package baseball.interaction;
 
 import baseball.message.Message;
-import baseball.system.enums.UserAction;
+import baseball.enums.system.UserAction;
 import baseball.validation.Condition;
 import baseball.validation.system.IsOperationCodeCond;
 import baseball.validation.Validator;

@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.game.Game;
-import baseball.system.enums.UserAction;
+import baseball.enums.system.UserAction;
 import baseball.interaction.SystemUtil;
 
 import baseball.message.GameMessage;

@@ -1,7 +1,7 @@
 package baseball.game.rule;
 
 
-import baseball.game.enums.GuessTarget;
+import baseball.enums.game.GuessTarget;
 
 import static baseball.interaction.GameUtil.NUMBER_SIZE;
 
