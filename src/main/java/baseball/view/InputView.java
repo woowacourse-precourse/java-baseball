@@ -2,11 +2,8 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Scanner;
-
 public class InputView {
 
-    private static final Scanner scanner = new Scanner(System.in);
     private static final int CONTINUE = 1;
     private static final int STOP = 2;
 
