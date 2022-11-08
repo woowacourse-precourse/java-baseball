@@ -95,11 +95,39 @@ public class Application {
         }
     }
 
+    public static int ProvideGameResultToUser(HashMap<String, Integer> resultMap) {
+        int gameStatus = GAME_PROGRESS;
+
+        DropHintToUser(resultMap);
+
+        if( resultMap.containsKey(STRING_STRIKE) ) {
+            if (STRIKE_MAX == resultMap.get(STRING_STRIKE)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                gameStatus = Integer.valueOf(Console.readLine());
+            }
+        }
+
+        return gameStatus;
+    }
+
     public static void BaseballGame() {
         int gameStatus = GAME_PROGRESS;
 
         ArrayList<Integer> computerNumbers = SelectNumbers();
 
+        while ( GAME_END != gameStatus ) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String stringNumbers = Console.readLine();
+            ArrayList<Integer> inputNumbers = ConvertStringToIntegerArray( stringNumbers );
+
+            HashMap<String, Integer> resultMap = JudgeNumber( computerNumbers, inputNumbers );
+
+            gameStatus = ProvideGameResultToUser(resultMap);
+            if( GAME_RESTART == gameStatus ) {
+                computerNumbers = SelectNumbers();
+            }
+        }
     }
 
     public static void main(String[] args) {
