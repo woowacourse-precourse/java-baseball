@@ -15,22 +15,22 @@ public class Result {
         this.strike = strike;
     }
 
-    public Optional<String> countBall() {
+    public String countBall() {
         if (ball == 0) {
-            return Optional.empty();
+            return "";
         }
-        return Optional.of(ball + "볼");
+        return ball + "볼";
     }
 
-    public Optional<String> countStrike() {
+    public String countStrike() {
         if (strike == 0) {
-            return Optional.empty();
+            return "";
         }
-        return Optional.of(strike+"스트라이크");
+        return strike+"스트라이크";
     }
 
     public String toString() {
-        String out = String.join(" ",countBall().orElse(""),countStrike().orElse(""));
+        String out = String.join(" ",countBall(),countStrike());
         if (out.isBlank()) {
             return "낫싱";
         }
