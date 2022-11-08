@@ -2,6 +2,8 @@ package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Input {
   private String input;
@@ -14,9 +16,10 @@ public class Input {
     return Integer.valueOf(this.input);
   }
 
-  public int[] toIntList() {
+  public List<Integer> toIntList() {
     String[] strList = input.split("");
-   return Arrays.stream(strList).mapToInt(Integer::parseInt).toArray();
+    int[] intList = Arrays.stream(strList).mapToInt(Integer::parseInt).toArray();
+    return Arrays.stream(intList).boxed().collect(Collectors.toList());
   }
 
   public String getInput() {
