@@ -5,12 +5,14 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static baseball.contants.Contants.LIST_SIZE;
+
 public class Computer {
     private List<Integer> ballCounts = new ArrayList<>();
 
     void initRandomNumbers() {
         this.clearRandomNumbers();
-        while (this.ballCounts.size() < 3) {
+        while (this.ballCounts.size() < LIST_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!this.ballCounts.contains(randomNumber)) {
                 this.ballCounts.add(randomNumber);

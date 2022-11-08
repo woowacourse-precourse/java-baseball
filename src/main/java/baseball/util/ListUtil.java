@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static baseball.contants.Contants.LIST_SIZE;
+
 public class ListUtil {
     public static List<Integer> stringToIntegerList(String input) {
         List<Integer> list = new ArrayList<>();
@@ -25,7 +27,7 @@ public class ListUtil {
     }
 
     public static int countSameLocationValues(List<Integer> l1, List<Integer> l2) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(0, LIST_SIZE)
                 .filter(index -> l1.get(index) == l2.get(index))
                 .count();
     }

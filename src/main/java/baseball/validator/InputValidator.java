@@ -2,22 +2,24 @@ package baseball.validator;
 
 import java.util.List;
 
+import static baseball.contants.Contants.*;
+
 public class InputValidator {
 
-    // 2. 게임 종료 - 1 혹은 2
+    // 재실행 입력 검증
     public static void validateNotInPlaying(String input) {
-        if (!(input.equals("1") || input.equals("2"))) throw new IllegalArgumentException("1 혹은 2만 입력하세요.");
+        if (!(input.equals(NEW_GAME) || input.equals(END_GAME))) throw new IllegalArgumentException(EXCEPTION_CHOICE);
     }
 
-    // 게임 중 - 서로 다른 3자리 수
+    // 게임 중 - 서로 다른 LIST_SIZE 자리 수
     public static void validateInPlaying(List<Integer> input) {
         validateCharacterInPlaying(input);
         long deduplicatedSize = input.stream().distinct().count();
-        if (deduplicatedSize != 3) throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+        if (deduplicatedSize != LIST_SIZE) throw new IllegalArgumentException(EXCEPTION_DUPLICATED);
     }
 
-    // 1 ~ 9 외의 문자 입력 ( base )
+    // 1 ~ 9 내 문자 입력 검증
     public static void validateCharacterInPlaying(List<Integer> input) {
-        if (!input.stream().allMatch(n -> n > 0 && n < 10)) throw new IllegalArgumentException("1 ~ 9 사이 숫자를 입력하세요.");
+        if (!input.stream().allMatch(n -> n > 0 && n < 10)) throw new IllegalArgumentException(EXCEPTION_OVER_RANGE);
     }
 }

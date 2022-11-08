@@ -4,6 +4,8 @@ import baseball.util.ListUtil;
 
 import java.util.List;
 
+import static baseball.contants.Contants.*;
+
 public class GameController {
     private static GameController instance = null;
     private static Computer computer = null;
@@ -30,6 +32,7 @@ public class GameController {
     }
 
     public void run() {
+        System.out.println(NOTICE_START);
         // 종료 플래그가 나올 때까지 계속 실행
         while (getKeepPlaying()) {
             playGame();
@@ -42,10 +45,10 @@ public class GameController {
     }
 
     void playGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
         computer.initRandomNumbers();
 
         while (true) {
+            System.out.print(NOTICE_INPUT);
             boolean clearGame = isClear(user.inputUserAnswer(), computer.getBallCounts());
             printScore();
             initScore();
@@ -69,10 +72,11 @@ public class GameController {
         if (ball != 0) System.out.print(ball + "볼 ");
         if (strike != 0) System.out.print(strike + "스트라이크");
         System.out.println();
-        if (strike == 3) System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        if (strike == LIST_SIZE) System.out.println(NOTICE_CLEAR);
     }
 
     void requestNewGame() {
+        System.out.println(NOTICE_REQUEST_NEW_GAME);
         if (!user.inputKeepPlaying()) keepPlaying = false;
     }
 
