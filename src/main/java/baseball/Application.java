@@ -90,12 +90,67 @@ public class Application {
 
         return validation;
     }
+
+    //게임 시작 또는 종료 버튼
+    public static void button(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String button = Console.readLine();
+        if(!(button.equals("1") || button.equals("2"))){
+            button();
+        }
+        if(button.equals("1")){
+            execute();
+        }
+    }
+
+    //게임 실행 메서드(버튼 메서드에서 재실행을 하기 위해 분리)
+    public static void execute(){
+        //랜덤수 생성
+        int randomNumber = makeRandomNum();
+        //strike 초기화(while 문을 빠져나오기 위한 장치)
+        int strike = 0;
+        while(strike!=3){
+            //입력
+            System.out.print("숫자를 입력해 주세요 : ");
+            String inputStr = Console.readLine();
+            //유효성 검사
+            boolean validation = validation(inputStr);
+            if(!validation){
+                throw new IllegalArgumentException("각 자리가 1-9까지의 서로 다른 수로 이루어져 있는 3자리 자연수를 입력해 주세요");
+            }
+            //변수 생성
+            int input = Integer.parseInt(inputStr);
+            int ball = ball(input,randomNumber);
+            //strike 재초기화
+            strike = strike(input,randomNumber);
+            String ballStr = Integer.toString(ball);
+            String strikeStr = Integer.toString(strike);
+            String ballNumStr = String.format("%s볼",ballStr);
+            String strikeNumStr = String.format("%s스트라이크",strikeStr);
+            //게임 실행
+            if(strike!=0 && ball!=0){
+                System.out.print(ballNumStr);
+                System.out.print(" ");
+                System.out.println(strikeNumStr);
+            }
+            if(strike!=0 && ball==0){
+                System.out.println(strikeNumStr);
+            }
+            if(strike==0 && ball!=0){
+                System.out.println(ballNumStr);
+            }
+            if(strike==0 && ball==0){
+                System.out.println("낫싱");
+            }
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        button();
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int randomNumber = makeRandomNum();
-        String inputStr = Console.readLine();
-        boolean validation = validation(inputStr);
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        execute();
     }
 }
 
