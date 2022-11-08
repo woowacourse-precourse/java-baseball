@@ -17,24 +17,16 @@ public class Application {
         return computer;
     }
 
-    public static boolean isInputFormat(String userInput) {
+    public static void isInputFormat(String userInput) throws IllegalArgumentException {
         String pattern = "^[1-9]{3}$";
-        try {
-            if (!userInput.matches(pattern)) {
-                throw new IllegalArgumentException();
-            } else if (!compareNumber(userInput)) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException exception) {
-            exception.printStackTrace();
-        }
-        return true;
-    }
-
-    public static boolean compareNumber(String number) {
-        String[] splitArray = number.split("");
+        String[] splitArray = userInput.split("");
         Set<String> numberSet = new HashSet<>(List.of(splitArray));
-        return splitArray.length == numberSet.size();
+        if (splitArray.length != numberSet.size()) {
+            throw new IllegalArgumentException("서로 다른 3자리 수를 입력해주세요.");
+        }
+        if (!userInput.matches(pattern)) {
+            throw new IllegalArgumentException("1-9사이의 3자리 숫자를 입력해주세요.");
+        }
     }
 
     public static Map<String, Integer> countScore(List<Integer> userInput, List<Integer> computerInput) {
@@ -102,15 +94,10 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (stopPoint) {
-            System.out.println(computerNumber);
-
             System.out.print("숫자를 입력해주세요 : ");
             guessNumber = Console.readLine();
-            if (isInputFormat(guessNumber)) {
-                splitNumberArray = Arrays.stream(guessNumber.split(""))
-                        .map(Integer::parseInt)
-                        .collect(Collectors.toList());
-            }
+            isInputFormat(guessNumber);
+
             scoreMap = countScore(splitNumberArray, computerNumber);
             gamePoint = printScore(scoreMap);
             if (gamePoint) {
