@@ -15,12 +15,10 @@ public class Computer {
 
     static List<Integer> computer = new ArrayList<>();
 
-    public Computer(){
+    public void selectUniqueNumbers(){
+
         computer.clear();
 
-    }
-
-    public void init(){
         while (computer.size() < LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             if (!computer.contains(randomNumber)) {
@@ -30,25 +28,25 @@ public class Computer {
     }
 
 
-    public static Map<String, Integer> calcScore(Player player){
+    public Map<String, Integer> getScoreMap(Player player){
         List<Boolean> visit = new ArrayList<>();
         for(int i = 0; i < LENGTH; i++){
             visit.add(false);
         }
 
+        Map<String, Integer> resultMap = new HashMap<>();
 
-        List<Integer> playerInputList = player.getPlayerInputList();
-        Map<String, Integer> result = new HashMap<>();
+        Map<Integer, Integer> playerInputMap = player.getPlayerInputMap();
 
         // 스트라이크 계산
         for(int i = 0; i < LENGTH; i++){
-            if(playerInputList.get(i).equals(computer.get(i))){
-                if(result.containsKey(STRIKE)){
+            if(playerInputMap.get(i).equals(computer.get(i))){
+                if(resultMap.containsKey(STRIKE)){
 
-                    result.put(STRIKE, result.get(STRIKE) + 1);
+                    resultMap.put(STRIKE, resultMap.get(STRIKE) + 1);
 
                 }else {
-                    result.put(STRIKE, 1);
+                    resultMap.put(STRIKE, 1);
                 }
                 visit.set(i, true);
             }
@@ -57,13 +55,13 @@ public class Computer {
 
         for(int i = 0; i < LENGTH; i++){
             if(!visit.get(i)){
-                if(computer.contains(playerInputList.get(i))){
-                    if(result.containsKey(BALL)){
+                if(computer.contains(playerInputMap.get(i))){
+                    if(resultMap.containsKey(BALL)){
 
-                        result.put(BALL, result.get(BALL) + 1);
+                        resultMap.put(BALL, resultMap.get(BALL) + 1);
 
                     }else {
-                        result.put(BALL, 1);
+                        resultMap.put(BALL, 1);
                     }
                     visit.set(i, true);
                 }
@@ -71,26 +69,16 @@ public class Computer {
         }
 
         if(!visit.contains(true)){
-            result.put(NOTHING, 0);
+            resultMap.put(NOTHING, 0);
         }
 
-        validateScoreCount(result);
-        validateNothing(result);
-        return result;
+        validateScoreCount(resultMap);
+        validateNothing(resultMap);
+        return resultMap;
     }
 
-    @Override
-    public String toString() {
-        Iterator<Integer> it = computer.iterator();
 
-        String s = "";
-        while(it.hasNext()){
-            s += it.next() + ", ";
-        }
-        return s;
-    }
-
-    public static void validateScoreCount(Map<String, Integer> scoreMap){
+    public void validateScoreCount(Map<String, Integer> scoreMap){
         Set<String> keySet = scoreMap.keySet();
         Iterator<String> it = keySet.iterator();
 
@@ -103,11 +91,23 @@ public class Computer {
         }
     }
 
-    public static void validateNothing(Map<String, Integer> scoreMap){
+    public void validateNothing(Map<String, Integer> scoreMap){
         Set<String> keySet = scoreMap.keySet();
         if(keySet.size() > 1 && keySet.contains(NOTHING)){
             throw new IllegalArgumentException(NOTHING + "이면서 다른 결과값도 가지고 있습니다.");
         }
     }
+
+
+    //    @Override
+//    public String toString() {
+//        Iterator<Integer> it = computer.iterator();
+//
+//        String s = "";
+//        while(it.hasNext()){
+//            s += it.next() + ", ";
+//        }
+//        return s;
+//    }
 
 }

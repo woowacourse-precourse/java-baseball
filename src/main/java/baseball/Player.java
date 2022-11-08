@@ -6,7 +6,8 @@ public class Player {
 
     private static final int FIXED_INPUT_LENGTH = 3;
 
-    private static List<Integer> InputList = new ArrayList<>();
+//    private static List<Integer> inputList = new ArrayList<>();
+    private static Map<Integer, Integer> playerInputMap = new HashMap<>();
 
     public void input(String inputString) {
 
@@ -19,7 +20,7 @@ public class Player {
     }
 
     public void inputStringToInputList(String inputString){
-        InputList.clear();
+        playerInputMap.clear();
 
         int inputLength = inputString.length();
 
@@ -27,12 +28,12 @@ public class Player {
             char token = inputString.charAt(idx);
             int tokenToInt = token - '0';
 
-            InputList.add(tokenToInt);
+            playerInputMap.put(idx, tokenToInt);
         }
     }
 
-    public List<Integer> getPlayerInputList() {
-        return Collections.unmodifiableList(InputList);
+    public Map<Integer, Integer> getPlayerInputMap() {
+        return Collections.unmodifiableMap(playerInputMap);
     }
 
 
@@ -59,7 +60,7 @@ public class Player {
 
     public void validateInputLength(String inputString) {
         if (inputString.length() != FIXED_INPUT_LENGTH) {
-            throw new IllegalArgumentException("입력값은 세자리여야 합니다.");
+            throw new IllegalArgumentException(inputString + " 입력값은 세자리여야 합니다.");
         }
     }
 
