@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class User {
 
     private static final String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
-    private static final String REGEX = "[0-9]{3,3}";
+    private static final Pattern INPUT_REGEX = Pattern.compile("[0-9]{3,3}");
     int userNumber;
 
     public User() {}
@@ -36,7 +36,7 @@ public class User {
     }
 
     private Boolean getTypeValidation(String input) {
-        boolean checkType = Pattern.matches(REGEX, input);
+        boolean checkType = INPUT_REGEX.matcher(input).matches();
         return checkType;
     }
 
