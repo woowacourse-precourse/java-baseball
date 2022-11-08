@@ -31,4 +31,11 @@ public class NumberMaker {
         ValidateGameComponent.validateNumber(computerNumber);
         return computerNumber;
     }
+
+    public String getUserNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        makeUserNumber();
+        ValidateGameComponent.validateNumber(userNumber);
+        return userNumber;
+    }
 }
