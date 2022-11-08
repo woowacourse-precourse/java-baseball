@@ -1,4 +1,4 @@
-package baseball.Message;
+package baseball.message;
 
 public class ExceptionMessage {
     public static final String ILLEGAL_ERR_MSG = "ILLEGAL_INPUT";

@@ -1,4 +1,4 @@
-package baseball.Domain;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 import static baseball.Constants.*;
-import static baseball.Message.ExceptionMessage.*;
+import static baseball.message.ExceptionMessage.*;
 
 public class User {
-    public static String userInput = "";
     public static String inputUserNumber() {
         String userInput = Console.readLine();
         checkedValidate(userInput);

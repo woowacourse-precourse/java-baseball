@@ -1,16 +1,16 @@
-package baseball.Controller;
+package baseball.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.stream.IntStream;
 
 import static baseball.Constants.*;
-import static baseball.Domain.Computer.*;
-import static baseball.Domain.User.*;
-import static baseball.Message.ExceptionMessage.*;
-import static baseball.Message.OutputMessage.*;
+import static baseball.domain.Computer.*;
+import static baseball.domain.User.*;
+import static baseball.message.ExceptionMessage.*;
+import static baseball.message.OutputMessage.*;
 
-public class StartBaseBallGame {
+public class BaseballGame {
 
     public static void run(){
         printGameStartMessage(); //
