@@ -13,13 +13,14 @@ public class Application{
     	int strikeCount = 0;
     	String keepGoing = "1";
     	
-    	System.out.println(answer);
-    	
     	System.out.println("숫자 야구 게임을 시작합니다.");
     	
     	while(keepGoing.equals("1")) {
         	System.out.print("숫자를 입력해주세요 : ");
         	input = Console.readLine();
+        	
+        	if(!uniqueNumCheck(input))
+        		throw new IllegalArgumentException("입력된 값은 서로 다른 세자리 숫자로 이루어져야 합니다.");
         	
         	strikeCount = comparison(answer,input);
         	
@@ -27,7 +28,10 @@ public class Application{
         		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         		keepGoing = Console.readLine();
-        	}  	
+        	}
+        	
+        	if(keepGoing!="1"&&keepGoing!="2")
+        		throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
     	}
  
     	return;
@@ -44,6 +48,17 @@ public class Application{
     	}
     	
     	return result;
+    }
+    
+    public static boolean uniqueNumCheck(String input) {
+    	String[] inputSet = input.split("");
+    	HashSet<String> hash = new HashSet<>();
+    	for(String s:inputSet)
+    		hash.add(s);
+    	if(hash.size()==3)
+    		return true;
+    	else
+    		return false;
     }
     
     public static int comparison(String comNum,String userNum) {
