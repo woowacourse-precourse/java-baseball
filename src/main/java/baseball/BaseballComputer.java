@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BaseballComputer {
     private List<Integer> computerNumber = new ArrayList<>(); // 3자리수
-    ChangeType changeType = new ChangeType();
+    ChangingType changeType = new ChangingType();
     GameMessage gameMessage = new GameMessage();
 
     private String userInputNumberInGame(){
@@ -75,12 +75,6 @@ public class BaseballComputer {
             }
         }
 
-        // 게임 승리
-        if(strike == 3){
-            gameMessage.endGameMessage();
-            return true;
-        }
-
         //ball
         for(int i = 0; i < splitNumber.length; i++){
             if(splitNumber[i] != computerNumber.get(i) && computerNumber.contains(splitNumber[i])){
@@ -93,6 +87,12 @@ public class BaseballComputer {
 
 
         printHitStatus(checkHitNumber);
+
+        // 게임 승리
+        if(strike == 3){
+            gameMessage.endGameMessage();
+            return true;
+        }
 
         return false;
     }
