@@ -88,6 +88,18 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
+	@DisplayName("3스트라이크시, 1과 2외의 값을 입력했을 때, 1또는 2를 입력받을때까지 되묻기")
+	void 성공시_예외숫자입력처리(){
+		assertRandomNumberInRangeTest(
+			() -> {
+				run("246", "135", "3","4","2");
+				assertThat(output()).contains("낫싱", "3스트라이크", "1 아니면 2를 입력해주세요", "1 아니면 2를 입력해주세요", "게임 종료");
+			},
+			1, 3, 5
+		);
+	}
+
+	@Test
 	void 게임종료_후_재시작() {
 		assertRandomNumberInRangeTest(
 			() -> {

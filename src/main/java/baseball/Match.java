@@ -35,18 +35,26 @@ class Match {
 		return ballNumber;
 	}
 
+	public int validationRestartOrEnd(){
+		String inputNumber = Console.readLine();
+
+		while (Integer.parseInt(inputNumber)!=1 && Integer.parseInt(inputNumber)!=2){
+			System.out.println("1 아니면 2를 입력해주세요");
+			inputNumber=Console.readLine();
+		}
+		return Integer.parseInt(inputNumber);
+	}
+
 	public int play() throws IllegalArgumentException {
 		int strike = getStrike();
 		int ball = getBall() - strike;
-		int restartOrEnd = 0;
+		int restartOrEnd=0;
 
 		if (strike == 3) {
 			System.out.println("3스트라이크");
 			System.out.println("3개의 숫자를 모두 맞히셨습니다!게임 종료");
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-			restartOrEnd = Integer.parseInt(Console.readLine());
-
-			if (restartOrEnd != 1 && restartOrEnd != 2) throw new IllegalArgumentException("숫자 1 혹은 2만 입력해주세요");
+			restartOrEnd = validationRestartOrEnd();
 		}
 		else if (strike > 0 || ball > 0) {
 			if (strike == 0) {
