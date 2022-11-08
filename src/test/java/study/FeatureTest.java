@@ -99,9 +99,9 @@ public class FeatureTest {
        //when
        int strike = hint.getStrike();
        int ball = hint.getBall();
-       int nothing = hint.getNothing();
 
        //then
        assertThat(strike>0).isEqualTo(true);
+       assertThat(ball>0).isEqualTo(true);
    }
 }

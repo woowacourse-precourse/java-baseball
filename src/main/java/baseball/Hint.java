@@ -9,21 +9,19 @@ import java.util.Map;
 public class Hint {
 
 
-    private static int strike = 0;
-    private static int ball = 0;
-    private static int nothing = 0;
+    public static int strike;
+    public static int ball;
 
-    public int getStrike() {
-        return this.strike;
+
+    public static int getStrike() {
+        return strike;
     }
 
-    public int getBall() {
-        return this.ball;
+    public static int getBall() {
+        return ball;
     }
 
-    public int getNothing() {
-        return this.nothing;
-    }
+
 
 
 
@@ -38,7 +36,7 @@ public class Hint {
 
             countStrike(userValue, userKey, computerValue, computerKey);
             countBall(userValue, userKey, computerValue, computerKey);
-            countNoting(userValue, userKey, computerValue, computerKey);
+
 
         }
     }
@@ -54,7 +52,7 @@ public class Hint {
     // 볼 (같은 수 == 같은 수 && 같은 자리 != 같은 자리)
     public static int countBall(Integer userValue, Integer userKey, Integer computerValue, Integer computerKey) {
 
-        if (userValue.equals(computerValue) && userKey != computerKey) {
+        if ( userKey != computerKey && userValue.equals(computerValue)) {
             ball++;
         }
 
@@ -63,16 +61,7 @@ public class Hint {
 
     }
 
-    // 낫싱 (같은 수 != 같은 수 && 같은 자리 != 같은 자리)
-    public static int countNoting(Integer userValue, Integer userKey, Integer computerValue, Integer computerKey) {
 
-        if (userValue != computerValue && userKey == computerKey) {
-            nothing++;
-        }
-
-        return nothing;
-
-    }
 
 
 }
