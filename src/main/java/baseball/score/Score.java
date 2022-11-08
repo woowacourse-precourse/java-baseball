@@ -36,7 +36,7 @@ public class Score {
 
     public String printMessage(){
         String resultString ="";
-        if (strike == 0 && ball == 0){
+        if (hasnotAnyBallAndStrike()){
             return ScoreStatus.NOTHING.getMessage();
         }
         if (ball !=0){
@@ -48,6 +48,11 @@ public class Score {
 
         return resultString;
     }
+
+    private boolean hasnotAnyBallAndStrike() {
+        return strike == 0 && ball == 0;
+    }
+
     public void printScore(){
         System.out.println(printMessage());
     }
