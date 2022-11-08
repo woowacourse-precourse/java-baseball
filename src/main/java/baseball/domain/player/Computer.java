@@ -20,11 +20,13 @@ public class Computer {
   }
 
   /*
-   * [TEST] 컴퓨터의 숫자가 세 자리 미만이거나 초과일 때 오류 발생
+   * [TEST]
+   * 1. 컴퓨터의 숫자가 세 자리 미만이거나 초과일 때 오류 발생
+   * 2. 컴퓨터의 숫자 중 중복의 숫자가 있을 때 오류 발생
    */
   public Computer(List<Integer> numList) {
     init();
-    computer.addAll(numList);
+    this.computer.addAll(numList);
     validateComputerNumber();
   }
 
@@ -40,9 +42,13 @@ public class Computer {
   }
 
   private void validateComputerNumber() {
-    if(!getSize().equals(COMPUTER_NUMBER_SIZE)){
+    if(!isValidComputerNumberSize()){
       throw new IllegalArgumentException(COMPUTER_NUMBER_SIZE_ERROR_MESSAGE);
     }
+  }
+
+  public boolean isValidComputerNumberSize() {
+    return getSize().equals(COMPUTER_NUMBER_SIZE);
   }
 
   private Integer getSize(){
