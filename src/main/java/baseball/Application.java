@@ -12,56 +12,91 @@ import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
-        new BaseballController(new NumbersGenerator(),
-                new Console(new Input(), new Output()),
+        new BaseballController(new Console(new Input(), new Output()),
                 new GameStatus(),
-                new BaseballGame(new Numbers(), new Validator())).run();
+                new BaseballGame(new Validator(), new Computer(new NumbersGenerator(), new Numbers()), new Player(new Numbers())))
+                .run();
     }
 }
 
 class BaseballController {
     private final int COUNT_OF_NUMBERS = 3;
 
-    private NumbersGenerator numbersGenerator;
     private Console console;
     private GameStatus gameStatus;
     private BaseballGame baseballGame;
 
-    BaseballController(NumbersGenerator numbersGenerator, Console console, GameStatus gameStatus, BaseballGame baseballGame) {
-        this.numbersGenerator = numbersGenerator;
+    BaseballController(Console console, GameStatus gameStatus, BaseballGame baseballGame) {
         this.console = console;
         this.gameStatus = gameStatus;
         this.baseballGame = baseballGame;
-    }
-    public void run() {
-        Numbers answer = numbersGenerator.generate(COUNT_OF_NUMBERS);
         console.printOutput("숫자 야구 게임을 시작합니다.");
+    }
+
+    public void run() {
+        Numbers answer = initProcess();
 
         while (gameStatus.isRunning()) {
-            try {
-                console.printOutput("숫자를 입력해주세요 : ");
-                Numbers inputNumbers = baseballGame.convertToNumbers(console.getInput());
+            playGame(answer, COUNT_OF_NUMBERS);
+        }
+    }
 
-                BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
-                console.printOutput(ballCount.toString());
-            } catch (IllegalArgumentException e) {
-                console.printOutput(e.getMessage());
+    private Numbers initProcess() {
+        return baseballGame.generateNumbers(COUNT_OF_NUMBERS);
+    }
+
+    private void playGame(Numbers answer, int count) {
+        try {
+            console.printOutput("숫자를 입력해주세요 : ");
+            Numbers inputNumbers = baseballGame.convertToNumbers(console.getInput());
+
+            BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
+            console.printOutput(ballCount.toString());
+
+            if (ballCount.isAllStrike(COUNT_OF_NUMBERS)) {
+                gameStatus.quitProgram();
+                checkGoOrStop(ballCount);
             }
+
+        } catch (IllegalArgumentException e) {
+            console.printOutput(e.getMessage());
+        }
+    }
+
+    private void checkGoOrStop(BallCount ballCount) {
+        console.printOutput(COUNT_OF_NUMBERS + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        switch (console.getInput()) {
+            case "1":
+                gameStatus.restartProgram();
+                run();
+                break;
+            case "2":
+                console.printOutput("게임이 종료되었습니다.");
+                gameStatus.quitProgram();
         }
     }
 }
-class BaseballGame {
-    Numbers numbers;
-    Validator validator;
 
-    BaseballGame(Numbers numbers, Validator validator) {
-        this.numbers = numbers;
+class BaseballGame {
+    Validator validator;
+    Computer computer;
+    Player player;
+
+    BaseballGame(Validator validator, Computer computer, Player player) {
         this.validator = validator;
+        this.computer = computer;
+        this.player = player;
+    }
+
+    public Numbers generateNumbers(int count) {
+        return computer.getRandomNumbers(count);
     }
 
     public Numbers convertToNumbers(String inputString) {
         if (validator.isRightFormat(inputString)) {
-            return numbers.parseToNumbers(inputString);
+            return player.parseToNumbers(inputString);
         }
         throw new IllegalArgumentException("잘못된 입력입니다.");
     }
@@ -83,6 +118,32 @@ class BaseballGame {
     }
 }
 
+class Computer {
+    private NumbersGenerator numbersGenerator;
+    private Numbers numbers;
+
+    public Computer(NumbersGenerator numbersGenerator, Numbers numbers) {
+        this.numbersGenerator = numbersGenerator;
+        this.numbers = numbers;
+    }
+
+    public Numbers getRandomNumbers(int count) {
+        return numbersGenerator.generate(count);
+    }
+}
+
+class Player {
+    private Numbers numbers;
+
+    public Player(Numbers numbers) {
+        this.numbers = numbers;
+    }
+
+    public Numbers parseToNumbers(String inputString) {
+        return numbers.parseToNumbers(inputString);
+    }
+}
+
 class BallCount {
     private int ball;
     private int strike;
@@ -90,6 +151,13 @@ class BallCount {
     BallCount(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
+    }
+
+    public boolean isAllStrike(int count) {
+        if (strike == count) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -125,6 +193,14 @@ class GameStatus {
 
     public boolean isRunning() {
         return status;
+    }
+
+    public void quitProgram() {
+        this.status = false;
+    }
+
+    public void restartProgram() {
+        this.status = true;
     }
 }
 
