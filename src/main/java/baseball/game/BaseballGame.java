@@ -15,6 +15,10 @@ public class BaseballGame {
     private static final int DO_NOT_PLAY_AGAIN_CONDITION = 2;
     private boolean isPlayAgain = true;
 
+    public BaseballGame() {
+        viewStartGameMessage();
+    }
+
     public void start() {
         do {
             play();
