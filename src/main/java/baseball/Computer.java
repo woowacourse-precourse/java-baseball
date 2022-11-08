@@ -29,7 +29,9 @@ public class Computer {
         if(AnswerNum == num){
             HintMap.replace("스트라이크", HintMap.get("스트라이크")+1);
         }
-        HintMap.replace("볼", HintMap.get("볼")+1);
+        else{
+            HintMap.replace("볼", HintMap.get("볼")+1);
+        }
     }
 
     public static void checkPlayerAnswer(int AnswerNum, int num){

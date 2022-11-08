@@ -26,12 +26,15 @@ public class ComputerTest {
     void isStrikeOrBall_스트라이크인지_볼인지_판별(){
         Computer computer = new Computer();
         computer.resetHintMap();
-        List<Integer> list = List.of(0, 0, 0);
+        computer.Answer = List.of(1,2,3);
+        List<Integer> list = List.of(2,1,3);
         for (int i =0; i<list.size(); i++){
             computer.isStrikeOrBall(Answer.get(i), list.get(i));
         }
-        int result = HintMap.get("볼");
-        assertThat(result).isEqualTo(3);
+        int strike = HintMap.get("스트라이크");
+        int ball = HintMap.get("볼");
+        assertThat(strike).isEqualTo(1);
+        assertThat(ball).isEqualTo(2);
     }
 
     @Test
