@@ -20,13 +20,13 @@ public class GameView {
 
     public int inputValidate(String input) {
         if (input.equals("")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값이 없습니다.");
         }
         try {
             return Integer.parseInt(input);
         }
         catch(NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자가 아닌 값을 입력하셨습니다.");
         }
     }
 

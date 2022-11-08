@@ -17,7 +17,7 @@ public class Again {
 
     public void validate() {
         if (this.doTry != EXIT_CODE && this.doTry != GO_CODE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력할 수 있는 숫자 외의 값을 입력하셨습니다");
         }
     }
 }

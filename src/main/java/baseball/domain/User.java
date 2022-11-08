@@ -36,14 +36,14 @@ public class User {
 
     public void allDifferentNumberCheck(Set<Integer> answerSet, int oneLetterFromAnswer) {
         if (answerSet.contains(oneLetterFromAnswer)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("같은 숫자를 여러번 쓸 수 없습니다");
         }
         answerSet.add(oneLetterFromAnswer);
     }
 
     public void answerSizeCheck(List<Integer> answer) {
         if (answer.size() != ANSWER_SIZE){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("길이가 틀립니다.");
         }
     }
 }
