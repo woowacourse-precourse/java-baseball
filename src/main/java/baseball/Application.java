@@ -20,4 +20,8 @@ public class Application {
         }
         return computer;
     }
+
+    public static void countStrikeAndBall(){
+
+    }
 }
