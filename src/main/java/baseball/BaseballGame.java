@@ -66,4 +66,25 @@ public class BaseballGame {
         return -1;
     }
 
+    private void printResult() {
+        System.out.println(getResultString());
+        if(strike == CNT) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    private String getResultString() {
+        if(strike == 0 && ball == 0) {
+            return NOTHING;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        if(ball > 0) {
+            sb.append(ball).append(BALL_STR);
+        }
+        if(strike > 0) {
+            sb.append(strike).append(STRIKE_STR);
+        }
+        return sb.toString();
+    }
 }
