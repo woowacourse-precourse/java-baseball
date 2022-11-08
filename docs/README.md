@@ -31,7 +31,8 @@
 
 ### BallNumber
 #### 입력으로 받거나 Computer 객체가 생성한 숫자를 나타내는 클래스다.
-- String으로 부터 자기자신을 만들어 반환한다.
+- List<Integer>로부터 자기자신을 만들어 반환한다.
+- String으로부터 자기자신을 만들어 반환한다.
 
 ### BallNumberComparer
 #### 입력으로 들어온 두 BallNumber를 비교하여 Score객체를 반환하는 클래스다.
