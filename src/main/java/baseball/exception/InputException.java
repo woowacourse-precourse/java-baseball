@@ -4,6 +4,7 @@ import static java.util.regex.Pattern.*;
 
 public class InputException {
 
+    // 입력 숫자가 잘못된 입력인지 검증
     public static void validateInputNumber(String inputNumber) throws RuntimeException {
         if (isEmptyInput(inputNumber) || containsNonDigit(inputNumber)
                 || isNotThreeDigits(inputNumber) || containsDuplicateDigits(inputNumber)) {

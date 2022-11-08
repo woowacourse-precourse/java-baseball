@@ -34,7 +34,8 @@ public class BaseballGame {
         return numberOfStrike;
     }
 
-    // 해당 자리의 숫자가 볼인지 확인
+    //== 입력 숫자에서 각 자릿수마다 볼인지 스트라인지 확인 ==//
+    // 해당 자릿수가 볼이면 true, 볼이 아니면 false를 반환
     private Boolean isBall(String targetNumber, int indexOfInput, char digitOfInput) {
         for (int indexOfTarget = 0; indexOfTarget < targetNumber.length(); indexOfTarget++) {
             char digitOfTarget = targetNumber.charAt(indexOfTarget);
@@ -44,6 +45,7 @@ public class BaseballGame {
         return false;
     }
 
+    // 해당 자릿수가 스트라이크면 true, 스트라이크가 아니면 false를 반환
     private Boolean isStrike(String targetNumber, int indexOfInput, char digitOfInput) {
         int indexOfTarget = indexOfInput;
         char digitOfTarget = targetNumber.charAt(indexOfTarget);
