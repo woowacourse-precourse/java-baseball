@@ -49,7 +49,11 @@ class Baseball {
             BufferedReader br = new BufferedReader(ir);
             System.out.print("숫자를 입력해주세요 :");
             getPlayerNumber = br.readLine();
-        } catch (Exception e) { }
+            if (playerNumberOverLength(getPlayerNumber) || playerNumberGetChar(getPlayerNumber)) {
+                throw new IllegalAccessError();
+            }
+        } catch (Exception | IllegalAccessError e) {
+        }
         playerNumberList(getPlayerNumber);
     }
     public void playerNumberList(String getPlayerNumber) {
@@ -58,6 +62,15 @@ class Baseball {
             playerNumber.set(i, (playerNum % 10));
             playerNum /= 10;
         }
+    }
+    public boolean playerNumberOverLength (String getPlayerNumber) {
+        boolean getException = (getPlayerNumber.length() != 3);
+        return getException;
+    }
+    public boolean playerNumberGetChar (String getPlayerNumber) {
+        int playerNumber = Integer.parseInt(getPlayerNumber);
+        boolean getException = (playerNumber / 1000 != 0);
+        return getException;
     }
 
     public void comparisonPlayerComputer() {
