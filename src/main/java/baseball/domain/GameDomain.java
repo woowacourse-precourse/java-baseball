@@ -13,4 +13,12 @@ public class GameDomain {
         strike = 0;
         ball = 0;
     }
+
+    public int getStrikeScore() {
+        return strike;
+    }
+
+    public int getBallScore() {
+        return ball;
+    }
 }
