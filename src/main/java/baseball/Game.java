@@ -54,13 +54,13 @@ public class Game {
         return strike == ANSWER_SIZE;
     }
 
-    int countNumbersContainedInAnswer(List<Integer> playerGuess){
+    private int countNumbersContainedInAnswer(List<Integer> playerGuess){
         return (int) playerGuess.stream()
                 .filter(input -> answer.contains(input))
                 .count();
     }
 
-    int countStrike(List<Integer> playerGuess){
+    private int countStrike(List<Integer> playerGuess){
         int strike = 0;
         for(int idx = 0; idx < ANSWER_SIZE; idx++){
             if(playerGuess.get(idx) == answer.get(idx)){
