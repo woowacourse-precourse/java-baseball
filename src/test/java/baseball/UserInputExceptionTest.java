@@ -49,4 +49,29 @@ public class UserInputExceptionTest {
         assertThat(UserInputException.checkUserNumberInput(input))
                 .isEqualTo(true);
     }
+
+    @Test
+    void checkUserRestartInput_재시작문자열_옳지않은_입력_확인() {
+        String input = "3";
+
+        assertThatThrownBy(() ->
+                UserInputException.checkUserRestartInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void checkUserRestartInput_재시작문자열_올바른_입력_확인_1() {
+        String input = "1";
+
+        assertThat(UserInputException.checkUserRestartInput(input))
+                .isEqualTo(true);
+    }
+
+    @Test
+    void checkUserRestartInput_재시작문자열_올바른_입력_확인_2() {
+        String input = "2";
+
+        assertThat(UserInputException.checkUserRestartInput(input))
+                .isEqualTo(true);
+    }
 }
