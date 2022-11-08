@@ -1,35 +1,59 @@
 package baseball;
 
+import baseball.domain.GameLogic;
 import baseball.domain.RandomNumbers;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseBallGameTest {
+    RandomNumbers randomNumbers;
+    GameLogic result;
+
+    @BeforeEach
+    void createNewRandomNumbers() {
+        randomNumbers = new RandomNumbers();
+        List<Integer> playerNumbers = List.of(5, 9, 7);
+        result = new GameLogic(randomNumbers, playerNumbers);
+        System.out.println("randomNumbers = " + randomNumbers.toString());
+    }
+
     @Nested
     class randomNumbers {
         @DisplayName("컴퓨터 랜덤 숫자 생성 테스트")
         @Test
         void getComputerRandomNumbers() {
-            RandomNumbers computerNumbers = new RandomNumbers();
-            System.out.println(computerNumbers.toString());
-            assertThat(computerNumbers.size()).isEqualTo(3);
+            assertThat(randomNumbers.size()).isEqualTo(3);
         }
     }
 
-//    @Nested
-//    class hintTest {
+    @Nested
+    class hintTest {
+//        @BeforeEach
+//        void getGameResult() {
+//            List<Integer> playerNumbers = List.of(5, 9, 7);
+//            result = new GameLogic(computerNumbers, playerNumbers);
+//            System.out.println(computerNumbers.toString());
+//        }
+
 //        @DisplayName("스트라이크 개수 테스트")
 //        @Test
 //        void getStrikeCount() {
-//            final List<Integer> computerNumbers = List.of(5, 8, 9);
 //            final List<Integer> playerNumbers = List.of(5, 9, 7);
 //
-//            assertThat(Application.getStrikeCount(computerNumbers, playerNumbers)).isEqualTo(1);
+//            try {
+//                Method method = result.getClass().getDeclaredMethod("getStrikeCount",RandomNumbers.class, List.class);
+//                method.setAccessible(true);
+//                String ret = (String) method.invoke(result, 1,2);
+//                assertThat(30, is(ret));
+//            } catch (NoSuchMethodException e) {
+//                throw new RuntimeException(e);
+//            });
 //        }
 //
 //        @DisplayName("볼 개수 테스트")
@@ -47,7 +71,7 @@ public class BaseBallGameTest {
 //            final List<Integer> computerNumbers = List.of(5, 8, 9);
 //            final List<Integer> playerNumbers = List.of(5, 9, 7);
 //            System.out.println(Application.baseBallGame(computerNumbers, playerNumbers));
-//            assertThat(Application.baseBallGame(computerNumbers, playerNumbers)).isEqualTo("1볼 1스트라이크");
+//            assertThat(result).isEqualTo("2볼");
 //        }
-//    }
+    }
 }
