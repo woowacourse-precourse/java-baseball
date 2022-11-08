@@ -76,8 +76,8 @@ public class Application {
     }
 
     static int judgeCount() {
-        int strike = 0;
         int ball = 0;
+        int strike = 0;
 
         for (int i = 0; i < 3; i++) {
             int currentUserNumber = userNumber.get(i);
@@ -90,7 +90,7 @@ public class Application {
                 ball++;
             }
         }
-        printJudgeResult(strike, ball);
+        printJudgeResult(ball, strike);
         return strike;
     }
 
