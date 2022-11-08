@@ -24,13 +24,13 @@ public class Application {
    public static List<Integer> computerPick() {
       List<Integer> computerPickNums = new ArrayList<>();
       while (computerPickNums.size() < 3) {
-         int randomNumber = Randoms.pickNumberInRange(1, 9);
-         pushComNum(randomNumber, computerPickNums);
+         pushComNum(computerPickNums);
       }
       return computerPickNums;
    }
    
-   public static void pushComNum(int randNumber, List<Integer> computerPickNums) {
+   public static void pushComNum(List<Integer> computerPickNums) {
+	   int randomNumber = Randoms.pickNumberInRange(1, 9);
 	   if (!computerPickNums.contains(randomNumber)) {
 		   computerPickNums.add(randomNumber);
 	   }
