@@ -1,9 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 /*
 1. 게임을 시작한다. -> 게임 시작 메소드 필요
@@ -23,27 +24,29 @@ import java.util.ArrayList;
  */
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Game game = new Game();
+        game.gameInit();
     }
 }
 
 class Game {
 
-    ArrayList<Integer> randomNum;
     int strikeCount = 0;
 
-    public void gameInit(ArrayList<Integer> randomNum){
-        while(keepGoing()){
-            randomNum = makingRandomNum();
-            if(!comparingNum(randomNum, strikeCount)){
-                break;
-            }
+    public void gameInit() {
+        while (true) {
+            ArrayList<Integer> randomNum = makingRandomNum();
+            if (!comparingNum(randomNum, strikeCount)) break;
+            if (!keepGoing()) break;
         }
     }
 
     // 1. 난수 발생 메서드 구현
     public ArrayList<Integer> makingRandomNum() {
         ArrayList<Integer> randomNum = new ArrayList<>();
+        randomNum.add(0);
+        randomNum.add(0);
+        randomNum.add(0);
         while (randomNum.get(0).equals(randomNum.get(1)) || randomNum.get(0).equals(randomNum.get(2)) || randomNum.get(1).equals(randomNum.get(2))) {
             randomNum.clear();
             randomNum.add(Randoms.pickNumberInRange(1, 9));
@@ -55,13 +58,15 @@ class Game {
 
     // 2. 참여자 숫자 입력 메서드
     public String inputNum() {
-        return Console.readLine();
+        return readLine();
+
     }
 
     public boolean comparingNum(ArrayList<Integer> randomNum, int strikeCount) {
         while (strikeCount != 3) {
             int ballCount = 0;
             strikeCount = 0;
+            System.out.print("숫자를 입력해주세요: ");
             String inputNum = inputNum();
             if (!ErrorChecking.errorChecking(inputNum)) {
                 return false;
@@ -70,6 +75,7 @@ class Game {
             strikeCount = checkingStrike(randomNum, inputNum, strikeCount);
             System.out.println(ballCount + "볼 " + strikeCount + " 스트라이크");
         }
+
         return true;
     }
 
@@ -96,16 +102,16 @@ class Game {
         return ballCount;
     }
 
-    public boolean keepGoing(){
+    public boolean keepGoing() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String keepGoing = Console.readLine();
-        if (!keepGoing.equals("1") && !keepGoing.equals("2")){
+        String keepGoing = readLine();
+        if (!keepGoing.equals("1") && !keepGoing.equals("2")) {
             try {
                 throw new IllegalArgumentException("잘못 입력하셨습니다");
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 return false;
             }
-        }else return keepGoing.equals("1");
+        } else return keepGoing.equals("1");
 
     }
 }
