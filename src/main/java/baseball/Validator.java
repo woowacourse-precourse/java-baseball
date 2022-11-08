@@ -4,8 +4,9 @@ public class Validator {
 	private static boolean isDecimalNumber(String userInput) {
 		int len = userInput.length();
 		int index = 0;
+		char current = userInput.charAt(index);
 
-		while (index < len && Character.isDigit(userInput.charAt(index)))
+		while (index < len && '0' < current && current <= '9')
 			index++;
 		return (index == len);
 	}
@@ -26,7 +27,7 @@ public class Validator {
 
 	public static void doNumberValidation(String userInput) {
 		if (!isDecimalNumber(userInput))
-			throw (new IllegalArgumentException("0 ~ 9 이외의 문자는 허용되지 않습니다."));
+			throw (new IllegalArgumentException("1 ~ 9 이외의 문자는 허용되지 않습니다."));
 		if (!isThreeDigits(userInput))
 			throw (new IllegalArgumentException("입력은 세 자리 십진수여야 합니다."));
 		if (!isAllUnique(userInput))
