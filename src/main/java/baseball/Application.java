@@ -13,6 +13,7 @@ public class Application {
     static final int gameEnd = 2;
     static final int COUNT_INITALIZE = 0;
     static final int GAME_END_STRIKE_COUNT = 3;
+
     public static List<Integer> createRandomNumber(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -79,6 +80,11 @@ public class Application {
         int gameContinue = gameRestart;
         while(gameContinue != gameEnd) {
             int strikeCount = COUNT_INITALIZE;
+            while(strikeCount != GAME_END_STRIKE_COUNT)
+            {
+                strikeCount = numberBaseballGame(computerCreateNumber,userInputNumber);
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
             gameContinue = Integer.parseInt(readLine());
