@@ -1,7 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.lang.reflect.Method;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +32,24 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    public void noticeStartGame_실행_시_숫자_야구_게임_시작_출력에_대한_테스트() throws Exception {
+        //reflection
+        Method method = Application.class.getDeclaredMethod("noticeStartGame");
+        method.setAccessible(true);
+
+        //given
+        final String message = "숫자 야구 게임을 시작합니다.\n";
+
+        //when
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        method.invoke(new Application());
+
+        //then
+        assertThat(out.toString()).isEqualTo(message);
     }
 
     @Override
