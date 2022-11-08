@@ -28,6 +28,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 게임종료_예외_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("246", "123", "256", "12")).isInstanceOf(IllegalArgumentException.class);
+                },
+                2, 5, 6
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
