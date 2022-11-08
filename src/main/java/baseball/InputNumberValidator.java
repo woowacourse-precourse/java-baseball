@@ -7,4 +7,14 @@ public class InputNumberValidator {
     - 사용자가 숫자를 1-9외 범위로 입력했을 경우
     - 사용자 입력 숫자 사이에 공백이 있을 경우
      */
+
+
+
+
+    public static boolean StringIndexOutOfRange(String inputNumber){
+        return inputNumber.length() == 3;
+    }
+    ㅑ
+
+
 }
