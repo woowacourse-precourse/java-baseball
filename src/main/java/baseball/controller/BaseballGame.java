@@ -11,11 +11,8 @@ import static baseball.constant.ConstantValue.STRIKE;
 public class BaseballGame {
     private static final View view = new View();
     private static final GameManager gm = new GameManager();
-    private boolean endGame = false;
-
     public BaseballGame(){
     }
-
     public void startGame(){
         view.initView();
         BallNumber computer = new BallNumber(gm.createComputerNumber());
@@ -24,7 +21,7 @@ public class BaseballGame {
         String initNumber;
         BallNumber player;
         List<Integer> playerNumber;
-
+        boolean endGame = false;
         while(!endGame){
             initNumber = view.gameView();
             player = new BallNumber(gm.toList(initNumber));
@@ -37,7 +34,6 @@ public class BaseballGame {
 
         String userChoice = gm.isRestart(view.endView());
         if(userChoice.equals("restart")){
-            endGame = false;
             startGame();
         }
 
