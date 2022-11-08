@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void 게임종료_후_재시작() {
+    void 게임실행_및_게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2");
