@@ -3,7 +3,7 @@
 [자바 스타일 가이드 링크](https://github.com/JunHoPark93/google-java-styleguide)
 <br>❗꼭 기억해야 할 것 기록하기️❗
 > 빈 블럭들: {}괄호 안에 문자가 없거나 줄바꿈이라면 열자마자 끝날 수 있음. 하지만 멀티 블럭 구문에서는 할 수 없음!<br>
-> 블럭 들여쓰기: +2 스페이스 <br>
+> 블럭 들여쓰기: +4 스페이스 <br>
 > 열 제한: 100 <br>
 > 클래스 이름은 UpperCamelCase이다. <br>
 > 함수 이름은 lowerCamelCase이다.<br>
@@ -48,29 +48,55 @@ while (computer.size() < 3) {
 > 2. 1 또는 2 숫자가 아니라면 예외처리 -> IllegalArgumentException
 6. 사용자의 입력에 따른 결과를 출력하는 메서드 추가
 > strike 개수, ball개수에 따라 출력하는 메서드 생성
-
+***
 ```Java
-class Computer {
+class Computer { // 컴퓨터 클래스
   private List<Integer> numbers;
+  private static final int MAX_SIZE = 3;
   
-  public Computer(){}; 
-  public makeRandomNumbers(){};
-  public getNumbers(){};
+  public Computer(){}
+  public makeRandomNumbers(){}
+  public getNumbers(){}
 }
 
-class Player {
+class Player { // 플레이어 클래스
   private List<Integer> numbers;
-  private boolean progress;
   
-  public Player(){};
-  public inputData(){};
-  public decideNumbers();
-  public decideGameProgress();
+  public Player(){}
+  public inputNumbers(){}
+  public inputGameStatusData(){}
+  public decideNumbers(){}
+  public getNumbers(){}
 }
 
-class Judge {
+class Judge { // 게임 진행자 클래스
   
-  public Judge(){};
-  public decideGameStatus();
+  public Judge(){}
+  public decideGameStatus(){}
+  public getPlayerNumbers(){}
+  public getComputerNumbers(){}
+  public compareBalls(){}
+}
+
+class CheckException { // 예외 처리 클래스
+    private static final int MAX_SIZE = 3;
+    public static final int RESTART = 1;
+    public static final int EXIT = 2;
+    
+    public validateConsistsOfNumber(){}
+    public validateNumberLength(){}
+    public validateOverlap(){}
+    public validateGameStatusData(){}
+}
+
+class Application {
+    public static void main(String[] args){}
+    public static void printMessage(){}
+    public static void decideResult(){}
 }
 ```
+***
+# 📝 기능 분석 변경 사항
+* Player라는 클래스가 하는 일만 메서드로 등록하기 -> 하나의 클래스에서의 기능이 너무 많으면 유지보수가 
+힘들다는 것을 이해했다.
+* CheckException 클래스를 통해서 예외 사항을 체크하는 메서드를 Player에서 분리하여 추가
