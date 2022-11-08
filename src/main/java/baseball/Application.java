@@ -16,7 +16,7 @@ public class Application {
 
         public void clear(){}
         public boolean startGame() throws IOException {
-
+            computerNum = makeComputerNum();
         }
         public List<Integer> makeComputerNum() {
             List<Integer> computerNum = new ArrayList<>();
@@ -30,7 +30,15 @@ public class Application {
             }
             return computerNum;
         }
-        public List<Integer> toInputNum(){}
+        public List<Integer> toInputNum(String input){
+            List<Integer> inputNum=new ArrayList<>();
+            String[] inputStr=input.split("");
+
+            for(int i=0;i<3;i++){
+                inputNum.add(Integer.parseInt(inputStr[i]));
+            }
+            return inputNum;
+        }
         public int strike(){}
         public int ball(){}
         public boolean resultPrint(){}
