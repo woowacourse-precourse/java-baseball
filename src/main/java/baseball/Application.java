@@ -4,29 +4,42 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
 public class Application {
-    private List<Integer> computer;
+    public static List<String> input_valid_set = Arrays.asList("1","2","3","4","5","6","7","8","9");
+    public static List<String> terminate_valid_set = Arrays.asList("1","2");
+    private List<Integer> answer;
+    private String input_text;
 
     public Application() {
-        this.computer = new ArrayList<>();
+        this.answer = new ArrayList<>();
     }
 
     public void pickRandomNumber() {
-        while (this.computer.size() < 3) {
+        while (this.answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!this.computer.contains(randomNumber)) {
-                this.computer.add(randomNumber);
+            if (!this.answer.contains(randomNumber)) {
+                this.answer.add(randomNumber);
             }
         }
     }
 
-    public boolean playGame() {
-        boolean end_state = false;
+    public boolean checkValidInput(List<String> valid_set) {
+        int input_len = this.input_text.length();
 
-        return end_state;
+        for (int i = 0; i < input_len; i++) {
+            if (!valid_set.contains(this.input_text.substring(i,i+1)))
+                return false;
+        }
+
+        return false;
+    }
+
+    public void playGame() {
+
     }
 
     public static void main(String[] args) {
@@ -34,7 +47,9 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(app.playGame());
+        while(true){
+            app.playGame();
+        }
 
     }
 }
