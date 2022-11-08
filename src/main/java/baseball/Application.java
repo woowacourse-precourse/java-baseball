@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 
 class Generate_Answer_test{
@@ -35,6 +36,25 @@ class Generate_Answer_test{
     }
 }
 
+class Input_test{
+    Practice p;
+
+    @BeforeEach
+    void Setup(){
+        p = new Practice();
+    }
+
+    @Test
+    void IllegalArgumentException_test () {
+        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException("12"); });
+        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException("133"); });
+        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException(""); });
+        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException(" "); });
+        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException("j"); });
+    }
+
+}
+
 public class Application {
 
     static List<Integer> Answer_Numbers = new ArrayList<>();
@@ -55,6 +75,7 @@ public class Application {
             }
         }
     }
+
 
     public void Input() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
