@@ -26,6 +26,7 @@ public class Judge {
             computerBalls.contains(playBalls.get(i));
             calculateStrikeAndBall(computerBalls,playBalls,i);
         }
+        printGameResult();
     }
 
     private void calculateStrikeAndBall(List<Ball> computerBalls, List<Ball> playBalls, int i){
@@ -33,6 +34,10 @@ public class Judge {
             result.plusStrike();
         }
         result.plusBall();
+    }
+
+    private void printGameResult(){
+        OutputView.gameResult(result);
     }
 }
 
