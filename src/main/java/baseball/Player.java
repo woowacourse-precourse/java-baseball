@@ -36,6 +36,8 @@ public class Player {
 
         String inputRestartOrEnd = Console.readLine();
 
+        InputValidator.validateRestartOrEnd(inputRestartOrEnd);
+
         if (inputRestartOrEnd.equals(RESTART)) {
             wantRestart = true;
         }

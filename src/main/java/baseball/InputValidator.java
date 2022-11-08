@@ -5,6 +5,8 @@ import java.util.HashSet;
 public class InputValidator {
     public static final int INPUT_NUMBER_LENGTH_LIMIT = 3;
     public static final char ZERO_CHARACTER = '0';
+    public static final String RESTART_STRING = "1";
+    public static final String END_STRING = "2";
 
     public static void validateInputNumber(String numbers) {
         validateOnlyNumbers(numbers);
@@ -49,6 +51,18 @@ public class InputValidator {
             if (numbers.charAt(i) == ZERO_CHARACTER) {
                 throw new IllegalArgumentException(Message.ZERO_INCLUDED_EXCEPTION_MESSAGE);
             }
+        }
+    }
+
+    public static void validateRestartOrEnd(String number) {
+        try {
+            Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Message.NOT_NUMBER_EXCEPTION_MESSAGE);
+        }
+
+        if (!number.equals(RESTART_STRING) && !number.equals(END_STRING)) {
+            throw new IllegalArgumentException(Message.NOT_RESTART_OR_END_OPTION_EXCEPTION_MESSAGE);
         }
     }
 }
