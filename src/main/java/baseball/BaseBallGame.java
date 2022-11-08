@@ -1,8 +1,7 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -26,6 +25,16 @@ public class BaseBallGame {
 
     private void initPlayer(){
         player = new ArrayList<>(Arrays.asList(0,0,0));
+    }
+
+    private void initFirstMessage(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    private void initGame(){
+        initComputer();
+        initPlayer();
+        initFirstMessage();
     }
 
     private void initPlayerInput(){
@@ -63,16 +72,94 @@ public class BaseBallGame {
         }
     }
 
+    private Map<HitStatus, Integer> countHitStatus(){
+        int strike = 0;
+        int ball = 0;
+        int nothing = 0;
+
+        for(int i = 0; i < 3; i++){
+            if(stepResult.get(i) == STRIKE){
+                strike++;
+            }
+            else if(stepResult.get(i) == BALL){
+                ball++;
+            }
+            else{
+                nothing++;
+            }
+        }
+        Map<HitStatus, Integer> result = new HashMap<>();
+        result.put(STRIKE, strike);
+        result.put(BALL, ball);
+        result.put(NOTHING,nothing);
+        return result;
+    }
+
+    private boolean playerContinueGame(){
+        boolean continueGame;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playerInput = Console.readLine();
+
+        if(playerInput.contains("1")){
+            continueGame = true;
+        }
+        else if(playerInput.contains("2")){
+            continueGame = false;
+        }
+        else{
+            throw new IllegalArgumentException();
+        }
+
+        return continueGame;
+    }
+
+    private boolean checkBallType(){
+        boolean threeStrike;
+        Map<HitStatus, Integer> result = countHitStatus();
+
+        if(result.get(STRIKE) != 0){
+
+        }
+        if(result.get(BALL) != 0){
+
+        }
+        if(result.get(NOTHING) == 3){
+
+        }
+
+        return true;
+    }
+
+    private boolean judgeResult(){
+        boolean continueGame;
+        if(checkBallType()){
+            boolean wantContinueGame = playerContinueGame();
+            if(wantContinueGame == true){
+                continueGame = true;
+                initGame();
+            }
+            else{
+                continueGame = false;
+            }
+        }
+        else{
+            continueGame = true;
+        }
+        return continueGame;
+    }
+
     public void play(){
-        initComputer();
-        initPlayer();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        initGame();
 
         while(true){
             initPlayerInput();
             initStepResult();
             doHit();
-            break;
+
+            if(judgeResult() == false){
+                System.out.println("게임 종료");
+                break;
+            }
         }
     }
 }
