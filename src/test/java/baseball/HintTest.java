@@ -8,11 +8,11 @@ import java.util.List;
 class HintTest {
 
     Hint hint = new Hint();
-
+    List<Integer> computerNumber = List.of(1, 3, 5);
+    
     @Test
     public void 스트라이크_확인() throws Exception {
         //given
-        List<Integer> computerNumber = List.of(1, 3, 5);
         int userNumber = 1;
         int index_true = 0; // correct index
         int index_false = 1; // incorrect index
@@ -27,7 +27,6 @@ class HintTest {
     @Test
     public void 볼_확인() throws Exception {
         //given
-        List<Integer> computerNumber = List.of(1, 3, 5);
         int userNumber_true = 3;
         int userNumber_false = 2;
         //when
@@ -41,7 +40,6 @@ class HintTest {
     @Test
     public void 힌트_정확성_확인_3스트라이크() throws Exception {
         //given
-        List<Integer> computerNumber = List.of(1, 3, 5);
         List<Integer> userNumber = List.of(1, 3, 5);
         //when
         hint.giveHint(computerNumber, userNumber);
@@ -52,7 +50,6 @@ class HintTest {
     @Test
     public void 힌트_정확성_확인_3볼() throws Exception {
         //given
-        List<Integer> computerNumber = List.of(1, 3, 5);
         List<Integer> userNumber = List.of(3, 5, 1);
         //when
         hint.giveHint(computerNumber, userNumber);
@@ -63,7 +60,6 @@ class HintTest {
     @Test
     public void 힌트_정확성_확인_1볼_1스트라이크() throws Exception {
         //given
-        List<Integer> computerNumber = List.of(1, 3, 5);
         List<Integer> userNumber = List.of(1, 5, 8);
         //when
         hint.giveHint(computerNumber, userNumber);
@@ -75,7 +71,6 @@ class HintTest {
     @Test
     public void 힌트_정확성_확인_0볼_0스트라이크() throws Exception {
         //given
-        List<Integer> computerNumber = List.of(1, 3, 5);
         List<Integer> userNumber = List.of(2, 4, 8);
         //when
         hint.giveHint(computerNumber, userNumber);
@@ -87,7 +82,6 @@ class HintTest {
     @Test
     public void 스트라이크가_3개인지_확인() throws Exception {
         //given
-        List<Integer> computerNumber = List.of(1, 3, 5);
         List<Integer> userNumber_true = List.of(1, 3, 5);
         List<Integer> userNumber_false = List.of(1, 3, 5);
         //when
@@ -107,7 +101,6 @@ class HintTest {
     @Test
     public void 출력_확인_1볼_1스트라이크_일때() throws Exception {
         //given
-        List<Integer> computerNumber = List.of(1, 3, 5);
         List<Integer> userNumber = List.of(1, 5, 8);
         hint.giveHint(computerNumber, userNumber);
         //when
@@ -119,7 +112,6 @@ class HintTest {
     @Test
     public void 출력_확인_낫싱_일때() throws Exception {
         //given
-        List<Integer> computerNumber = List.of(1, 3, 5);
         List<Integer> userNumber = List.of(2, 4, 6);
         hint.giveHint(computerNumber, userNumber);
         //when
