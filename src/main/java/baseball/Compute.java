@@ -16,7 +16,7 @@ public class Compute {
 
 		for (int digitPosition = 0; digitPosition < DIGIT_LENGTH; digitPosition++) {
 			int currentDigit = injectNumber.get(digitPosition);
-			int findDigit = answer.indexOf(currentDigit);
+			int findDigit = answer.indexOf(currentDigit); // 추측값의 숫자를 answer의 값에서 찾는다. 있으면 0이상 없으면 -1
 
 			if (findDigit == digitPosition) {
 				strike++;
@@ -39,16 +39,16 @@ public class Compute {
 	}
 
 	private static void print() {
-		if (strike == 0 && ball == 0) {
+		if (strike == ZERO && ball == ZERO) {
 			System.out.println("낫싱");
 		}
-		if (ball == 0 && strike > 0) {
+		if (ball == ZERO && strike > ZERO) {
 			System.out.println(strike + "스트라이크");
 		}
-		if (strike == 0 && ball > 0) {
+		if (strike == ZERO && ball > ZERO) {
 			System.out.println(ball + "볼");
 		}
-		if (strike > 0 && ball > 0) {
+		if (strike > ZERO && ball > ZERO) {
 			System.out.println(ball + "볼 " + strike + "스트라이크");
 		}
 	}
