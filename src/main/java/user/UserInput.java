@@ -18,7 +18,9 @@ public class UserInput {
                 throw new IllegalArgumentException();
             }
             userInputList = changeUserInputToList(userInput);
-        }catch (Exception e){};
+        }catch (Exception e){
+
+        };
         return userInputList;
     }
 
