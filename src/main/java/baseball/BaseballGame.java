@@ -6,6 +6,23 @@ public class BaseballGame {
     private static final char BEGIN_RANGE = '1';
     private static final char END_RANGE = '9';
 
+    private void game() {
+        BallCollection computer = BallCollection.createComputerNumbers();
+        BallCollection player;
+        Result result;
+
+        do {
+            printNumberInputRequestMessage();
+
+            player = createPlayerNumbers();
+
+            result = Result.compare(computer, player);
+            result.printResult();
+        } while (!result.isAllStrike());
+
+        printSuccessMessage();
+    }
+
     private BallCollection createPlayerNumbers() {
         String playerInput = requestPlayerInputNumbers();
 
