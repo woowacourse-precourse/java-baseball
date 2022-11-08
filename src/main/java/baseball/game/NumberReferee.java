@@ -6,8 +6,6 @@ import java.util.List;
  * 플레이어와 컴퓨터의 숫자를 비교해서 볼과 스트라이크를 판단.
  */
 public class NumberReferee {
-
-
     /**
      * 스트라이크 체크
      * @param player 플레이어의 숫자들

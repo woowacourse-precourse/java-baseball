@@ -15,19 +15,19 @@ public class Application {
     private static final NumberParser numberParser = new NumberParser();
 
     public static void main(String[] args) {
-        StartNumberBaseballGame();
+        startNumberBaseballGame();
     }
 
-    public static void StartNumberBaseballGame() {
+    public static void startNumberBaseballGame() {
         List<Integer> computer;
         ComputerInput computerInput = new ComputerInput();
         do {
-            computer = computerInput.GenerateComputerNumbers();
-            StartGuessingPhase(computer);
-        } while (StartQuestioningPhase());
+            computer = computerInput.generateComputerNumbers();
+            startGuessingPhase(computer);
+        } while (startQuestioningPhase());
     }
 
-    public static void StartGuessingPhase(List<Integer> computer){
+    public static void startGuessingPhase(List<Integer> computer){
         List<Integer> player;
         int strike = 0;
         int ball = 0;
@@ -36,11 +36,11 @@ public class Application {
             player = numberParser.parsePlayerNumber(input);
             strike = numberReferee.checkStrike(player, computer);
             ball = numberReferee.checkBall(player, computer);
-            PrintResult(strike, ball);
+            printResult(strike, ball);
         }
     }
 
-    public static boolean StartQuestioningPhase() {
+    public static boolean startQuestioningPhase() {
         String restartString = playerNumberInput.inputRestartString();
         numberParser.checkExceptionsPlayerRestartString(restartString);
         if(numberParser.checkPlayerRestartString(restartString)){
@@ -49,7 +49,7 @@ public class Application {
         return false;
     }
 
-    public static void PrintResult(int strike, int ball) {
+    public static void printResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
             return;
