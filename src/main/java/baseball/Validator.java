@@ -34,7 +34,7 @@ public class Validator {
             if (idxNum<=9 && idxNum>=1){
                 check = true;
             }else{
-                check = false;
+                return false;
             }
         }
         return check;
