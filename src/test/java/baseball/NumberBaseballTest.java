@@ -2,7 +2,6 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 class NumberBaseballTest {
@@ -18,7 +17,8 @@ class NumberBaseballTest {
     @Test
     public void testCheckInput(){
         NumberBaseball test2 = new NumberBaseball();
-        assertThat(test2.checkInput("359")).isEqualTo(true);
+        assertThat(test2.checkInput("359"))
+                .isEqualTo(true);
     }
 
     @Test
@@ -26,7 +26,8 @@ class NumberBaseballTest {
         NumberBaseball test3 = new NumberBaseball();
         test3.setAnswer(1,2,3);
         int[] testanswer = {1, 4, 5};
-        assertThat(test3.countStrike(testanswer)).isEqualTo(1);
+        assertThat(test3.countStrike(testanswer))
+                .isEqualTo(1);
     }
 
     @Test
@@ -34,7 +35,8 @@ class NumberBaseballTest {
         NumberBaseball test4 = new NumberBaseball();
         test4.setAnswer(1,2,3);
         int[] testanswer = {3, 1, 2};
-        assertThat(test4.countStrike(testanswer)).isEqualTo(0);
+        assertThat(test4.countStrike(testanswer))
+                .isEqualTo(0);
     }
 
     @Test
@@ -42,14 +44,16 @@ class NumberBaseballTest {
         NumberBaseball test5 = new NumberBaseball();
         test5.setAnswer(1,2,3);
         int[] testanswer = {1, 4, 2};
-        assertThat(test5.countBall(testanswer)).isEqualTo(2);
+        assertThat(test5.countBall(testanswer))
+                .isEqualTo(2);
     }
     @Test
     public void testCountBall2(){
         NumberBaseball test6 = new NumberBaseball();
         test6.setAnswer(1,2,3);
         int[] testanswer = {3, 2, 1};
-        assertThat(test6.countBall(testanswer)).isEqualTo(3);
+        assertThat(test6.countBall(testanswer))
+                .isEqualTo(3);
     }
 
     @Test
@@ -57,13 +61,15 @@ class NumberBaseballTest {
         NumberBaseball test7 = new NumberBaseball();
         test7.setAnswer(4,5,6);
         int[] testanswer = {4,5,6};
-        assertThat(test7.judgeBall(testanswer)).isEqualTo(true);
+        assertThat(test7.judgeBall(testanswer))
+                .isEqualTo(true);
     }
     @Test
     public void testJudgeBall2(){
         NumberBaseball test8 = new NumberBaseball();
         test8.setAnswer(4,5,6);
         int[] testanswer = {6,4,5};
-        assertThat(test8.judgeBall(testanswer)).isEqualTo(false);
+        assertThat(test8.judgeBall(testanswer))
+                .isEqualTo(false);
     }
 }
