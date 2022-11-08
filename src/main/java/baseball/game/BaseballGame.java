@@ -2,6 +2,7 @@ package baseball.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -34,7 +35,12 @@ public class BaseballGame {
      */
     private List<Integer> usersChoice() {
 
-        String input = Console.readLine();
+        String input;
+        try{
+            input = Console.readLine();
+        } catch(NoSuchElementException e){
+            throw new IllegalArgumentException("NoSuchElementException: no line was found");
+        }
         System.out.println(input);
         inputExceptionHandler(input);   // 입력값 예외처리
 
@@ -52,8 +58,11 @@ public class BaseballGame {
      */
     private void inputExceptionHandler(String input) {
 
-        if (input.length() > 3) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException("you can't enter more than three digits");
+        }
+        if (!input.chars().allMatch( Character::isDigit )){
+            throw new IllegalArgumentException("you can't enter non-numeric values");
         }
     }
 
@@ -103,7 +112,13 @@ public class BaseballGame {
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
+
+        String input;
+        try{
+            input = Console.readLine();
+        } catch(NoSuchElementException e){
+            throw new IllegalArgumentException("NoSuchElementException: no line was found");
+        }
         System.out.println(input);
 
         if (Integer.valueOf(input).equals(1)) {
