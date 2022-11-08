@@ -1,9 +1,5 @@
-package baseball.controller;
+package baseball.domain;
 
-import baseball.domain.Computer;
-import baseball.domain.Game;
-import baseball.domain.NumberComparator;
-import baseball.domain.Player;
 import baseball.view.OutputView;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameControllerTest {
+public class GameTest {
 
     public final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
