@@ -225,38 +225,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class IsNumericTest {
-        @Test
-        void isNumericTest1() {
-            String input = "11034";
-            assertThat(UtilMethods.isNumeric(input)).isEqualTo(true);
-        }
-
-        @Test
-        void isNumericTest2() {
-            String input = "011034";
-            assertThat(UtilMethods.isNumeric(input)).isEqualTo(true);
-        }
-
-        @Test
-        void isNumericTest3() {
-            String input = "a11034";
-            assertThat(UtilMethods.isNumeric(input)).isEqualTo(false);
-        }
-
-        @Test
-        void isNumericTest4() {
-            String input = "1,1034";
-            assertThat(UtilMethods.isNumeric(input)).isEqualTo(false);
-        }
-
-        @Test
-        void isNumericTest5() {
-            String input = "11034a";
-            assertThat(UtilMethods.isNumeric(input)).isEqualTo(false);
-        }
-    }
-    @Nested
     class GameRepeatTest {
         @Test
         void 게임종료_후_재시작() {
