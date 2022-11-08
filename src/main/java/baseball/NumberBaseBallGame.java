@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.player.Computer;
 import baseball.player.User;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -71,6 +72,14 @@ public class NumberBaseBallGame {
 
     private boolean isEverythingRight(int strike) {
         return strike == 3;
+    }
+
+    private boolean getRestartFlag() {
+        String restartNumber = Console.readLine();
+        if (isNotRestartNumber(restartNumber)) {
+            throw new IllegalArgumentException();
+        }
+        return restartNumber.equals(Flag.RESTART.getValue());
     }
 
     private boolean isNotRestartNumber(String restartFlag) {
