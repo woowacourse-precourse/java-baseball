@@ -131,6 +131,7 @@ class BaseBallGame {
     }
 
     public boolean is3DigitNumber(String inputStr) {
+        int x = 3;
         String inputNumberRegex = "^[1-9]{3}$";
 
         return inputStr.matches(inputNumberRegex);
@@ -150,7 +151,7 @@ class BaseBallGame {
     public String getRandomDiff3DigitNumber() {
         String randomDiff3DigitNumber = "";
 
-        while (randomDiff3DigitNumber.length() < 3) {
+        while (randomDiff3DigitNumber.length() < GOAL) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
             if (!randomDiff3DigitNumber.contains(Integer.toString(randomNumber))) {
