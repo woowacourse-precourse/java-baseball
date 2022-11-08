@@ -44,4 +44,20 @@ public class GameController {
 
         return returnValue;
     }
+
+    public boolean checkGame() {
+        String restartGameValue;
+
+        if (!runningGame()) {
+            restartGameValue = restartGame();
+
+            if (restartGameValue.equals("1")) {
+                startGame();
+                return true;
+            } else if (restartGameValue.equals("2")) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
