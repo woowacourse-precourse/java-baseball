@@ -11,7 +11,19 @@ public class Application {
 
     private static boolean checkRepeate(){
         boolean isRepeate = true;
-        // TODO: 입력받고, 게임 재시작 여부 판단
+
+        String input = readLine();
+        System.out.println(input);
+
+        if(input.equals("1")){
+            isRepeate = true;
+        } else if(input.equals("2")){
+            isRepeate = false;
+        } else{
+            System.out.println("Hello");
+            //throw new IllegalArgumentException();
+        }
+
         return isRepeate;
     }
 
@@ -28,16 +40,12 @@ public class Application {
         return answer;
     }
 
-    private static boolean checkDuplicateNum(String input){
-        boolean isDuplicate = true;
+    private static void checkDuplicateNum(String input){
         // TODO: 입력값 중 중복숫자 여부 확인
-        return isDuplicate;
     }
 
-    private static boolean checkException(String input){
-        boolean isOK = true;
+    private static void checkException(String input){
         // TODO: 입력값이 예외인지 확인, 예외일시 IllegalArgumentException 발생
-        return isOK;
     }
 
     private static int calStrike(String answer, String input){
@@ -58,19 +66,32 @@ public class Application {
 
 
     private static void playBaseball(String answer){
-        // TODO: 플레이
+        String input;
+        int strike = 0;
+        int ball = 0;
+
+        while(strike < 3){
+            input = readLine();
+
+            checkException(input);
+
+            strike = calStrike(answer, input);
+            ball = calBall(answer, input);
+
+            printResult(strike, ball);
+        }
     }
 
 
     public static void main(String[] args) {
         String answer;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("Start Baseball Game!");
         do {
             answer = makeAnswer();
             playBaseball(answer);
 
         } while(checkRepeate());
-        System.out.println("게임 종료");
+        System.out.println("Game end");
     }
 }
