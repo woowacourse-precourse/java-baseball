@@ -8,18 +8,21 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
-
 public class Application {
     public static void main(String[] args) {
 
+        final int REPLAY = 1;
+        final int EXIT = 2;
         String numberPresentedByPlayer = ""; // User로부터 입력받을 숫자를 저장할 변수
         List<String> threeNumber = new ArrayList<>(); // 컴퓨터가 선택한 3개의 수를 저정할 리스트
+        String whetherToReplay = ""; // 새로운 게임을 시작할지 여부를 저장
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
             threeNumber = createThreeNumbers(); // 컴퓨터가 서로 다른 3개의 수를 선택
             System.out.println(threeNumber);
             while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
                 numberPresentedByPlayer = receiveUserInput(); // 게임플레이어로 부터 숫자를 입력받고 변수에 저장
                 // 입력받은 데이터에 대한 예외처리
                 if (!checkValidForInputThreeNumber(numberPresentedByPlayer)) {
@@ -27,24 +30,33 @@ public class Application {
                 } else {
                     int theNumberOfStrikes = calculateTheNumberOfStrikes(threeNumber,numberPresentedByPlayer);
                     int theNumberOfBalls = calculateTheNumberOfBalls(threeNumber,numberPresentedByPlayer);
-                    if (outputFinalResultAndWhetherAllCorrect(theNumberOfStrikes,theNumberOfBalls)){
+                    if (outputFinalResultAndWhetherAllMatches(theNumberOfStrikes,theNumberOfBalls)){
                         break;
                     }
                 }
             }
-            break;
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            whetherToReplay = receiveUserInput();
+            if (!checkValidForInputWhetherReplay(whetherToReplay)) {
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            } else {
+                if (Integer.valueOf(whetherToReplay) == REPLAY) {
+                    continue;
+                } else if (Integer.valueOf(whetherToReplay) == EXIT) {
+                    break;
+                }
+            }
         }
     }
 
     // user로부터 3개의 숫자를 입력받는 메서드
-    public static String receiveUserInput(){
+    public static String receiveUserInput() {
 
         Scanner receivedUserInput = new Scanner(System.in); // Scanner 클래스를 통해 시스템의 입력장치로부터 읽은 Scanner 생성하여 변수에 저장
 
         //BufferedReader receiveInput = new BufferedReader(new InputStreamReader(System.in));
 
         //입력 데이터 읽기
-        System.out.print("숫자를 입력해주세요 : ");
         String numbers = receivedUserInput.nextLine();
         return numbers;
     }
@@ -132,7 +144,7 @@ public class Application {
     }
 
     // 입력한 숫자에 대한 결과와 모두 맞혔는지 여부를 출력하는 메서드
-    public static boolean outputFinalResultAndWhetherAllCorrect(int numberOfStrikes, int numberOfBalls) {
+    public static boolean outputFinalResultAndWhetherAllMatches(int numberOfStrikes, int numberOfBalls) {
         if (numberOfStrikes == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
@@ -148,6 +160,16 @@ public class Application {
         return false;
     }
 
+    // 게임플레이어로 부터 입력받은 새로운 게임을 시작할지 여부에 대한 숫자 예외처리
+    public static Boolean checkValidForInputWhetherReplay(String input) {
+        int Number = Integer.valueOf(input);
+        if (!(Number == 1 || Number == 2)){
+            return false;
+        }
+        return true;
+    }
 
 //numberPresentedByPlayer = receivedUserInput.nextLine();
 }
+
+
