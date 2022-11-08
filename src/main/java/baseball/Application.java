@@ -1,10 +1,10 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -17,11 +17,13 @@ public class Application {
             String result = "";
 
             while(!result.equals("3스트라이크")){
+                //빼볼까 시도해보자
                 List<Integer> player = playerNum();
                 wrongAnswer(computer, player);
                 result = judge(computer, player);
                 System.out.println(result);
             }
+
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             again = playAgainOrNot();
         }
@@ -84,11 +86,16 @@ public class Application {
 
     public static boolean playAgainOrNot(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        char decision = readLine().charAt(0);
+        String decision = readLine();
 
-        if(decision == '1'){
+        if(decision.equals("1")){
             return true;
         }
+
+        if(!decision.equals("1") && !decision.equals("2")){
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 종료합니다.");
+        }
+
         return false;
     }
 
