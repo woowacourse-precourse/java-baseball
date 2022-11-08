@@ -3,9 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -20,6 +19,8 @@ class ApplicationTest extends NsTest {
 
     static String START_GAME = "1";
     static String END_GAME = "2";
+    static String TEST_STRING = "test";
+    static List<Character> TEST_STRING_TO_CHAR_LIST = List.of('t','e','s','t');
 
     static final String GAME_GET_NUMBER = "숫자를 입력해주세요 : ";
     static final String GAME_START = "숫자 야구 게임을 시작합니다.";
@@ -176,36 +177,61 @@ class ApplicationTest extends NsTest {
                 GAME_RESTART_OR_END);
     }
 
+    @Test
+    void UtilsTest_CharConvert() {
+        String input = TEST_STRING;
+        List<Character> list = Utils.StringToCharList(input);
+        HashSet<Character> set = Utils.StringToCharSet(input);
+        List<Character> answerList = new ArrayList<>(TEST_STRING_TO_CHAR_LIST);
+        HashSet<Character> answerSet = new HashSet<>(TEST_STRING_TO_CHAR_LIST);
 
-/*
+        assertThat(list).isEqualTo(answerList);
+        assertThat(set).isEqualTo(answerSet);
+    }
 
     @Test
-    void inGame_
-
-
-    @Test
-    void
-
-
-    @Test
-    void
-
+    void UtilsTest_addOneToMap() {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put(TEST_STRING, 1);
+        HashMap<String, Integer> answerMap = map;
+        answerMap.put(TEST_STRING, 2);
+        Utils.addOneToMap(map, TEST_STRING);
+        assertThat(map).isEqualTo(answerMap);
+    }
 
     @Test
-    void
-
-
-    @Test
-    void
-
-
-
-
-*/
-
+    void InputTest_InGame() {
+        byte[] buf = "123".getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        List<Character> input = Input.getInputInGame();
+        assertThat(input).isEqualTo(List.of('1','2','3'));
+    }
 
     @Test
-    void inGameTest_생성된_숫자가_중복되지_않는_세자리_숫자() {
+    void InputTest_EndGame(){
+        byte[] bufRestart = "1".getBytes();
+        System.setIn(new ByteArrayInputStream(bufRestart));
+        char inputRestart = Input.getInputEndGame();
+
+        byte[] bufEnd = "2".getBytes();
+        System.setIn(new ByteArrayInputStream(bufEnd));
+        char inputEnd = Input.getInputEndGame();
+
+        assertThat(inputRestart).isEqualTo('1');
+        assertThat(inputEnd).isEqualTo('2');
+    }
+    /*   @Test
+       void
+
+       @Test
+       void
+
+       @Test
+       void
+
+
+       @Test*/
+    void GameTest_생성된_숫자가_중복되지_않는_세자리_숫자() {
 
     }
 
