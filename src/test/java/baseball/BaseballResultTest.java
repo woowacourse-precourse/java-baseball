@@ -21,7 +21,7 @@ class BaseballResultTest {
         BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(3, 0);
 
-        assertEquals(score.getBalls(), expected.getStrikes());
+        assertEquals(score.getStrikes(), expected.getStrikes());
         assertEquals(score.getBalls(), expected.getBalls());
     }
 
