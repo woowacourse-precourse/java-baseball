@@ -74,7 +74,6 @@ public class Application {
 
     public static void runGame() {
         List<Integer> computer = generateRandomNumber();
-        System.out.println(computer);
         List<Integer> guess = new ArrayList<>();
         while(true) {
             getUserGuess(guess);
