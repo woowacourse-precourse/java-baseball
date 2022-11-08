@@ -35,6 +35,7 @@
 - void guess() : 추측한 답을 입력받는 메서드
   - 입력된 문자열이 숫자가 아니라면 IllegalArgumentException 던져야 함
   - validation 통과하지 못하면 IllegalArgumentException 던져야 함
+- int get(int i) : guess 의 i번째 원소를 반환하는 메서드
 
 ### class Game
 

@@ -17,4 +17,8 @@ public class User {
         }
         guess = Numbers.of(inputList);
     }
+
+    public int get(int i) {
+        return guess.get(i);
+    }
 }
