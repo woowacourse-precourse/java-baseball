@@ -159,7 +159,7 @@ public class BaseBallGame {
 
         if (ball != 0 && strike == 0) {
             System.out.printf("%d볼\n", ball);
-        } else {
+        } else if (ball != 0 ) {
             System.out.printf("%d볼 ", ball);
         }
         if (strike != 0) {
