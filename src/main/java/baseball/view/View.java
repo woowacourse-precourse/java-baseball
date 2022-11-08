@@ -7,7 +7,7 @@ public class View {
     public static String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static String GAME_OVER = "게임 종료";
     public static String CORRECT_ANSWER = "개의 숫자를 모두 맞히셨습니다. 게임 종료";
-    public static void gameStartMessage(){
+    public static void printGameStartMessage(){
         System.out.println(gameStartMessage);
     }
 
@@ -22,18 +22,18 @@ public class View {
         System.out.println(result);
     }
 
-    public static String inputUserNumber(){
+    public static String askUserNumber(){
         System.out.println(USER_INPUT_MESSAGE);
-        String input = readLine();
-        return input;
+        String userInput = readLine();
+        return userInput;
     }
 
-    public static String askRestartOrExit(String userChoice){
-        System.out.println(userChoice);
-        String input = readLine();
-        return input;
+    public static String askRestartOrExit(String USER_CHOICE_SENTENCE){
+        System.out.println(USER_CHOICE_SENTENCE);
+        String response_RestartOrExit = readLine();
+        return response_RestartOrExit;
     }
-    public static void correctAnswer(int BASEBALL_GAME_NUMBER_LENGTH){
+    public static void printCorrectAnswerMessage(int BASEBALL_GAME_NUMBER_LENGTH){
         System.out.println(BASEBALL_GAME_NUMBER_LENGTH + "스트라이크");
         System.out.println(BASEBALL_GAME_NUMBER_LENGTH + CORRECT_ANSWER);
     }
