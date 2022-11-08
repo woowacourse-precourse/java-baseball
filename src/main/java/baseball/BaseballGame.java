@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class BaseballGame {
 
     public void printStartMessage() {
@@ -15,6 +17,8 @@ public class BaseballGame {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-
+    public String getUserInput() {
+        return Console.readLine();
+    }
 
 }
