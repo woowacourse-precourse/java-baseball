@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InputUtility {
 
@@ -13,6 +15,11 @@ public class InputUtility {
         return input;
     }
 
+    public static List<Integer> parsingNumber(String input) {
+        return Stream.of(input.split(""))
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
+    }
 
     private static void validationTest(String input, int type) {
 
@@ -32,6 +39,7 @@ public class InputUtility {
             throw new IllegalArgumentException("유효하지 않은 문자입니다.");
         }
     }
+
     private static void isValidAttack(String input) {
         if (!isNaturalNumber(input)) {
             throw new IllegalArgumentException("1-9 이외의 문자가 들어있습니다. 1-9까지의 숫자만 입력해주세요");
