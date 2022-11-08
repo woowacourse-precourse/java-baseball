@@ -1,39 +1,35 @@
 package baseball;
 
+import java.util.Arrays;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserNumGenerator extends IllegalArgumentException {
-	public int[] nums = new int[3];
+	public int[] nums;
 
 	public UserNumGenerator() {
-		try {
-			this.nums = pickThreeNum();
-		} catch (IllegalArgumentException e) {
-			System.exit(0);
-		}
+		this.nums = pickThreeNum();
 	}
 
-	public int[] pickThreeNum() {
+	public static int[] pickThreeNum() {
 		System.out.print("숫자를 입력해주세요 : ");
-		String numsString = Console.readLine();
-		if (numsString == null || numsString.length() != 3) {
-			// null, not len 3
-			throw new IllegalArgumentException();
+		String numString = Console.readLine();
+		int[] nums = stringToIntArray(numString);
+		if (nums.length == 3 && isOneNineInt(nums) && isNotSame(nums)) {
+			return nums;
 		}
-		for (int i = 0; i < 3; i++) {
-			char numChar = numsString.charAt(i);
-			if (Character.isDigit(numChar) && numChar != '0') {
-				nums[i] = numChar - '0';
-				continue;
-			}
-			// not num, 0
-			throw new IllegalArgumentException();
-		}
-		if (!isNotSame(nums)) {
-			// same num
-			throw new IllegalArgumentException();
-		}
-		return nums;
+		throw new IllegalArgumentException("IllegalArgumentException!");
+	}
+
+	public static int[] stringToIntArray(String str) {
+		return str.chars()
+			.map(num -> num - '0')
+			.toArray();
+	}
+
+	public static boolean isOneNineInt(int[] nums) {
+		return Arrays.stream(nums)
+			.allMatch(num -> 1 <= num && num <= 9);
 	}
 
 	public static boolean isNotSame(int[] nums) {

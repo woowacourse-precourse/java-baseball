@@ -1,21 +1,22 @@
 package baseball;
 
+import java.util.Arrays;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerNumGenerator {
-	public int[] nums = new int[3];
+	public int[] nums;
 
 	public ComputerNumGenerator() {
 		do {
-			nums = pickThreeNum(nums);
+			this.nums = pickThreeNum();
 		} while (!isNotSame(nums));
 	}
 
-	public static int[] pickThreeNum(int[] nums) {
-		for (int i = 0; i < nums.length; i++) {
-			nums[i] = Randoms.pickNumberInRange(1, 9);
-		}
-		return nums;
+	public static int[] pickThreeNum() {
+		return Arrays.stream(new int[3])
+			.map(num -> Randoms.pickNumberInRange(1, 9))
+			.toArray();
 	}
 
 	public static boolean isNotSame(int[] nums) {
