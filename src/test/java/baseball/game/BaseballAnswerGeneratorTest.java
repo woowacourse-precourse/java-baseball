@@ -1,6 +1,5 @@
-package baseball;
+package baseball.game;
 
-import baseball.game.BaseballAnswerGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

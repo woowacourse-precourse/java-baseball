@@ -1,6 +1,5 @@
-package baseball;
+package baseball.user;
 
-import baseball.user.UserInput;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -34,9 +33,9 @@ class UserInputTest{
         System.setIn(new ByteArrayInputStream(buf));
 
         assertSimpleTest(() ->
-                        assertThatThrownBy(() -> userInput.inputNumber())
-                                .isInstanceOf(IllegalArgumentException.class)
-                                .hasMessageContaining("숫자만 입력 가능합니다."));
+                assertThatThrownBy(() -> userInput.inputNumber())
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("숫자만 입력 가능합니다."));
     }
 
     @Test
