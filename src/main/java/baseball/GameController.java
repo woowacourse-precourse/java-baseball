@@ -36,8 +36,7 @@ public class GameController {
     }
 
     static void throwBall() {
-        message.inputNumberMessage();
-        String inputNumber = Console.readLine();
+        String inputNumber = message.inputNumberMessage();
 
         player = new Player();
         player.setPlayerNumber(inputNumber);
