@@ -11,28 +11,34 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        boolean restart = true;
+        boolean start = true;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (restart) {
+        while (start) {
 
-            List<Integer> computer_num = Randoms.pickUniqueNumbersInRange(1,9,3);
+            List<Integer> computer_num = makeNum();
+
             System.out.println("computer_num = " + computer_num);
 
-            restart = playGame(computer_num);
+            start = playGame(computer_num);
 
 
 
         }
 
 
+    }
 
-
-
-
-
-
+    public static List<Integer> makeNum(){
+        List<Integer> num = new ArrayList<>();
+        while (num.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!num.contains(randomNumber)) {
+                num.add(randomNumber);
+            }
+        }
+        return num;
     }
 
     public static boolean playGame(List<Integer> computer_num) {
@@ -106,18 +112,18 @@ public class Application {
     public static boolean askContinue() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-        while (true){
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String answer = Console.readLine();
 
-            if (answer.equals("1")){
-                return true;
-            } else if (answer.equals("2")) {
-                return false;
-            } else {
-                throw new IllegalArgumentException("숫자 1,2중 하나로 입력해야 합니다.");
-            }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String answer = Console.readLine();
+
+        if (answer.equals("1")){
+            return true;
+        } else if (answer.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("숫자 1,2중 하나로 입력해야 합니다.");
         }
+
 
     }
 
