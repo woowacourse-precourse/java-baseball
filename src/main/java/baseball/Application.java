@@ -146,4 +146,16 @@ public class Application {
             endValue = printBallStrike(printList);
         }
     }
+
+    public static boolean playRestart() {
+        String restartNum = readLine();
+
+        if (restartNum.equals("1")) {
+            return true;
+        } else if (restartNum.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 }
