@@ -30,8 +30,7 @@ public class GameController {
 
     public void setComputerBall() {
         Computer computer = new Computer();
-        computer.setComputerRandomNumber();
-        this.computerBall = computer.getComputerRandomNumber();
+        this.computerBall = computer.createRandomBall();
     }
 
     public Action receiveUserAction() {
