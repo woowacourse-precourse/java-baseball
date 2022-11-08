@@ -5,12 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 public abstract class View {
     public abstract void show();
 
-    public String getResponseToString() {
+    public String getResponse() {
         return "";
-    }
-
-    public boolean getResponseToBoolean() {
-        return false;
     }
 
     public static void printLine(String message) {
