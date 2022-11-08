@@ -25,48 +25,48 @@ public class Computer {
     }
 
     public boolean checkResult(List<Integer> guessNumber) {
-        int strikeNumber = countStrike(guessNumber);
-        int ballNumber = countBall(guessNumber);
+        int strikeCount = countStrike(guessNumber);
+        int ballCount = countBall(guessNumber);
 
-        System.out.println(resultMessage(strikeNumber, ballNumber));
+        System.out.println(resultMessage(strikeCount, ballCount));
 
-        return strikeNumber == Rule.SUCCESS_STRIKE_COUNT;
+        return strikeCount == Rule.SUCCESS_STRIKE_COUNT;
     }
 
     private int countStrike(List<Integer> guessNumber) {
-        int strikeNumber = 0;
+        int strikeCount = 0;
 
         for (int i = 0; i < Rule.NUMBER_SIZE; i++) {
             if (Objects.equals(answerNumber.get(i), guessNumber.get(i))) {
-                strikeNumber++;
+                strikeCount++;
             }
         }
 
-        return strikeNumber;
+        return strikeCount;
     }
 
     private int countBall(List<Integer> guessNumber) {
-        int ballNumber = 0;
+        int ballCount = 0;
 
         for (int i = 0; i < Rule.NUMBER_SIZE; i++) {
             if (Objects.equals(answerNumber.get(i), guessNumber.get(i))) {
                 continue;
             }
             if (answerNumber.contains(guessNumber.get(i))) {
-                ballNumber++;
+                ballCount++;
             }
         }
 
-        return ballNumber;
+        return ballCount;
     }
 
-    private String resultMessage(int strikeNumber, int ballNumber) {
-        if (strikeNumber > 0 && ballNumber > 0) {
-            return ballNumber + Message.BALL + " " + strikeNumber + Message.STRIKE;
-        } else if (strikeNumber > 0 && ballNumber == 0) {
-            return strikeNumber + Message.STRIKE;
-        } else if (strikeNumber == 0 && ballNumber > 0) {
-            return ballNumber + Message.BALL;
+    private String resultMessage(int strikeCount, int ballCount) {
+        if (strikeCount > 0 && ballCount > 0) {
+            return ballCount + Message.BALL + " " + strikeCount + Message.STRIKE;
+        } else if (strikeCount > 0 && ballCount == 0) {
+            return strikeCount + Message.STRIKE;
+        } else if (strikeCount == 0 && ballCount > 0) {
+            return ballCount + Message.BALL;
         } else {
             return Message.NOTHING;
         }
