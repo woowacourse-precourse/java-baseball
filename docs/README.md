@@ -32,7 +32,7 @@
 - (6) 스트라이크 수를 반환한다.
 
 
-### 5. void BallStrike(int ballCount, int strikeCount)
+### 5. void BallStrikeNothing(int ballCount, int strikeCount)
 - (1) 볼, 스트라이크가 모두 0 이면 낫싱을 출력한다.
 - (2) 볼, 스트라이크가 모두 0이 아니면 n볼 m스트라이크를 출력한다.
 - (3) 볼은 0이 아니고 스트라이크는 0이면 n볼을 출력한다.
