@@ -3,6 +3,7 @@ package model;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
+	private static final String start_game_input_usernumber = "숫자를 입력해주세요 : ";
 	private int[] answer;
 
 	public User() {
@@ -10,7 +11,7 @@ public class User {
 	}
 
 	public void setnumber() {
-		System.out.print("숫자를 입력해주세요 : ");
+		System.out.print(start_game_input_usernumber);
 		
 		String input;
 		try {
