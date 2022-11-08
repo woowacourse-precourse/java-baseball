@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Application {
@@ -21,7 +22,6 @@ public class Application {
     //[플레이어] 서로 다른 3개의 숫자 입력
     public static List<Integer> input(List<Integer> inputNumber){
         String input = Console.readLine();
-
         //[예외처리]
         //세자리 숫자 이외의 입력 시
         if (input.length() > 3) { //3자리 이상 숫자 입력 시
@@ -44,16 +44,17 @@ public class Application {
         return inputNumber;
     }
     //[기능] 2번 : 스트라이크, 볼 갯수 판별
-    public static List<Integer> caseCheck(List<Integer> computer, List<Integer>inputNumber, List<Integer>result) {
+    public static HashMap<String, Integer> caseCheck(List<Integer> computer, List<Integer>inputNumber) {
+        HashMap<String, Integer> gameResult = new HashMap<>();
         int strike = 0;
         int ball = 0;
         for(int i=0; i<3; i++){
             if( inputNumber.get(i) == computer.get(i) ) strike ++;
             else if ( computer.contains(inputNumber.get(i)) ) ball++;
         }
-        result.add(strike);
-        result.add(ball);
-        return result;
+        gameResult.put("strike", strike);
+        gameResult.put("ball", ball);
+        return gameResult;
     }
     //[출력] 결과문 출력
     public static void output(int strike, int ball) {
@@ -79,7 +80,6 @@ public class Application {
         while (true) {
 
             List<Integer> inputNumber = new ArrayList<>();
-            List<Integer> gameResult = new ArrayList<>();
             int strike = 0;
             int ball = 0;
             
@@ -91,9 +91,9 @@ public class Application {
             input(inputNumber);
             
             //야구게임 결과 (ex 2스트라이크 1볼) 저장
-            caseCheck(computer, inputNumber, gameResult);
-            strike = gameResult.get(0);
-            ball = gameResult.get(1);
+            HashMap<String, Integer> gameResult = caseCheck(computer, inputNumber);
+            strike = gameResult.get("strike");
+            ball = gameResult.get("ball");
             
             //결과 출력
             output(strike, ball);
