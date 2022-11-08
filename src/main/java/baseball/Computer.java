@@ -7,18 +7,25 @@ import java.util.List;
 
 public class Computer {
     private List<Integer> computerNumber;
+
     public List<Integer> getComputerNumber() {
-        setComputerNumber();
+        setComputerNumber(makeComputerNumber());
         return computerNumber;
     }
-    public void setComputerNumber() {
+
+    public void setComputerNumber(List<Integer> computerNumber) {
+        this.computerNumber=computerNumber;
+    }
+
+    public List<Integer> makeComputerNumber(){
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
         }
-        this.computerNumber=computerNumber;
+        return computerNumber;
     }
 }
