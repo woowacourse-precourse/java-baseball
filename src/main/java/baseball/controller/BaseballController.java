@@ -40,7 +40,7 @@ public class BaseballController {
             baseBallService.userInputSave(userNumber);
             baseBallService.saveResult();
 
-            if (baseBallService.isNotting()) {
+            if (baseBallService.isNoting()) {
                 outputView.printNothing();
                 continue;
             }

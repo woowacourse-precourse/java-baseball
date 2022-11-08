@@ -100,7 +100,7 @@ class ApplicationTest extends NsTest {
 
             String result = getResult();
 
-            assertThat(result).isEqualTo(OutputView.NOTTING_MESSAGE);
+            assertThat(result).isEqualTo(OutputView.NOTING_MESSAGE);
         }
 
         @Test
@@ -154,7 +154,7 @@ class ApplicationTest extends NsTest {
         private String getResult() {
             String result = "";
 
-            if (baseBallService.isNotting()) {
+            if (baseBallService.isNoting()) {
                 result = outputView.printNothing();
             } else {
                 result = outputView.printResult(baseBallService.getStrike(), baseBallService.getBall());
