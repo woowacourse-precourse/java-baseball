@@ -24,7 +24,9 @@ public class GameController {
         service.startGame();
         Views.INITIAL_VIEW.getView().view();
 
-        checkHint();
+        while (!service.isAnswer()) {
+            checkHint();
+        }
     }
 
     public void checkHint() {
@@ -36,6 +38,8 @@ public class GameController {
                 .mapToInt(Integer::parseInt)
                 .mapToObj(Ball::fromNumber)
                 .collect(Collectors.toList());
+
+        System.out.println(service.checkInput(balls));
     }
 
     private void validateInput(String input) {
@@ -50,5 +54,5 @@ public class GameController {
     private boolean isOutOfBounds(String string) {
         return string.length() != Config.MAX_BALLS_SIZE;
     }
-    }
+
 }

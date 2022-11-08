@@ -28,4 +28,13 @@ public class Balls {
     private boolean isDuplicate(List<Integer> numbers) {
         return numbers.stream().distinct().count() != numbers.size();
     }
+
+    public boolean containBall(Ball ball, int position) {
+        int index = balls.indexOf(ball);
+        return index != position && index > 0;
+    }
+
+    public boolean isExactlyCorrect(Ball ball, int position) {
+        return balls.get(position).equals(ball);
+    }
 }
