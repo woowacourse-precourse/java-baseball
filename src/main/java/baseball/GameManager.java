@@ -17,12 +17,12 @@ public class GameManager {
         int ballResult;
         String computerNumberResult = randomNumberResult(); //
         do {
-            numberInputMessage();
+            printNumberInputMessage();
             String userInput = inputUserNumber();
             ballResult = countBall(userInput, computerNumberResult);
             strikeResult = countStrike(userInput, computerNumberResult);
             printResult(ballResult, strikeResult);
-        } while (strikeResult != 3);
+        } while (strikeResult != THREE_STRIKE);
         printGameSetMessage();
     }
 
