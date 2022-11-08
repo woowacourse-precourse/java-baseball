@@ -14,8 +14,8 @@ public class Game {
         ScreenOutput.printGameStart();
     }
 
-    public int startAndPlayAgain(InputOutputController ioController) {
-        Referee.generateRandom();
+    public int startAndPlayAgain(InputOutputController ioController, int numberLength) {
+        Referee.generateRandom(numberLength);
         progress(ioController);
         return checkContinueMode(ioController);
     }
