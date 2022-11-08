@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameHandler {
@@ -18,7 +19,7 @@ public class GameHandler {
     public static List<Integer> compareResult;
 
     public void init() {
-        computerNumber = new ArrayList<>(3);
+        computerNumber = new ArrayList<>();
         inputNumber = new ArrayList<>(3);
         compareResult = new ArrayList<>(2);
         System.out.println(GAME_START);
@@ -30,6 +31,15 @@ public class GameHandler {
         // validation check
         for(char c : input.toCharArray()) {
             inputNumber.add(c - '0');
+        }
+    }
+
+    public void selectNumber() {
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
         }
     }
 
