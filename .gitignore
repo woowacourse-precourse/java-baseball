@@ -30,3 +30,14 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### node_modules ###
+node_modules/
+
+intellij-java-google-style.xml
+wowa_java_style.xml
+quti
+
+### json ###
+package.json
+package-lock.json
