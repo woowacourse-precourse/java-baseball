@@ -28,7 +28,7 @@ public final class BaseBallNumber {
     public static void validateDuplicate(List<Character> numbers) {
         Set<Character> number = new HashSet<>(numbers);
         if (number.size() != numbers.size()) {
-                throw new IllegalArgumentException("Baseball number has duplicate number.");
+            throw new IllegalArgumentException("Baseball number has duplicate number.");
         }
     }
 

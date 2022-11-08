@@ -32,8 +32,8 @@ public final class Referee {
         } else if (ball != 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         } else if ((answer.get(FIRST_NUM) != comparison.charAt(FIRST_NUM)) &&
-            (answer.get(SECOND_NUM) != comparison.charAt(SECOND_NUM)) &&
-            (answer.get(THIRD_NUM) != comparison.charAt(THIRD_NUM))) {
+                (answer.get(SECOND_NUM) != comparison.charAt(SECOND_NUM)) &&
+                (answer.get(THIRD_NUM) != comparison.charAt(THIRD_NUM))) {
             System.out.println("낫싱");
         }
     }
