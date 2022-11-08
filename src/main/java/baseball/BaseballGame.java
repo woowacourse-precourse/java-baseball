@@ -4,13 +4,9 @@ import java.util.List;
 
 import static utils.PlayerAdditionalGameInputUtil.readAdditionalGameQuestion;
 import static utils.PlayerBallsInputUtil.readBalls;
+import static baseball.BaseballGameConst.*;
 
 public class BaseballGame {
-
-	private final int ADDITIONAL_GAME = 1;
-	private final int NO_ADDITIONAL_GAME = 2;
-	private final int ING = 3;
-	private final String endGameResult = "3스트라이크";
 
 	private Computer computer = new Computer();
 	private Player player = new Player();
