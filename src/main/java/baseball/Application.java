@@ -47,11 +47,11 @@ public class Application {
 
     private static void validateDigit(List<String> numberList) {
         for (String number : numberList) {
-            isDigit(number);
+            checkDigit(number);
         }
     }
 
-    private static void isDigit(String number) {
+    private static void checkDigit(String number) {
         if (!Character.isDigit(number.charAt(0))) {
             throw new IllegalArgumentException("UserNumber must be digit");
         }
