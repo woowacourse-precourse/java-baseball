@@ -28,6 +28,19 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 쓰리스트라이크_일시_메시지를_출력(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "2");
+                    assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                },
+                1, 2, 3
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
