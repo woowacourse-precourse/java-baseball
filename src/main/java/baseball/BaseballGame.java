@@ -54,7 +54,12 @@ public class BaseballGame {
         }
 
         System.out.println(gameResult);
+        status = checkEndGame(status);
 
+        return status;
+    }
+
+    private int checkEndGame(int status) {
         if(gameResult.equals(END_RESULT_STR)) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -66,12 +71,16 @@ public class BaseballGame {
 
     private void countBallStrike(int comparativeNumbers) {
         String comparativeString = Integer.toString(comparativeNumbers);
-        strikeCnt = 0;
-        ballCnt = 0;
+        initCount();
 
         for(int i = 0; i < 3; i++) {
             compareNumber(randomList.get(i), comparativeString.charAt(i) - '0');
         }
+    }
+
+    private void initCount() {
+        strikeCnt = 0;
+        ballCnt = 0;
     }
 
     private void compareNumber(int originalNumber, int comparativeNumber) {

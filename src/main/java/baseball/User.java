@@ -22,7 +22,7 @@ public class User {
             System.out.print("숫자를 입력해주세요 : ");
 
             int userNumber = input();
-            checkThreeDigit(userNumber);
+            checkEachDigit(userNumber);
 
             int end = baseballGame.checkGameResult(userNumber);
             inputExitNumber(end);
@@ -60,24 +60,26 @@ public class User {
         };
     }
 
-    private void checkDigit(char word) {
-        if (!Character.isDigit(word)) {
-            throw new InputNotDigitException();
-        }
-    }
-
-    private void checkThreeDigit(int gameNumber) {
+    private void checkEachDigit(int gameNumber) {
         List<Integer> gameNumberList = new ArrayList<>();
 
         while (gameNumber > 0) {
-            int n = gameNumber % 10;
+            int n = findDigitOfOne(gameNumber);
             checkDuplication(n, gameNumberList);
 
-            gameNumberList.add(gameNumber % 10);
+            gameNumberList.add(n);
             gameNumber = gameNumber / 10;
         }
 
-        if (gameNumberList.size() != 3) {
+        checkThreeDigit(gameNumberList);
+    }
+
+    private int findDigitOfOne(int number) {
+        return (number % 10);
+    }
+
+    private void checkThreeDigit(List<Integer> numberList) {
+        if (numberList.size() != 3) {
             throw new InputNotThreeDigitException();
         }
     }
@@ -91,6 +93,12 @@ public class User {
     private void checkExitNumber() {
         if (exit != 1 && exit != 2) {
             throw new InputNotOneOrTwoException();
+        }
+    }
+
+    private void checkDigit(char word) {
+        if (!Character.isDigit(word)) {
+            throw new InputNotDigitException();
         }
     }
 }
