@@ -114,9 +114,17 @@ class ApplicationTest extends NsTest {
     void allStrike() {
         /*given*/
         String end = "게임종료";
+        String readLine = game.campConsole();
+        readLine = "1";
+        List<Integer> computerInput = new ArrayList<>();
+        computerInput.add(1);
+        computerInput.add(5);
+        computerInput.add(7);
 
         /*when*/
+        String allStrike = game.allStrike("3스트라이크",computerInput);
         /*then*/
+        assertThat(allStrike).isEqualTo(end);
     }
 
     @Test

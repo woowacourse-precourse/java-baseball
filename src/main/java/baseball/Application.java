@@ -131,37 +131,3 @@ class Game {
         return counting;
     }
 }
-
-//class AllStrike {
-//    Game gameClass = new Game();
-//
-//    public String allStrike(String counting, List<Integer> computer) {
-//
-//        if (counting.equals("3스트라이크")) {
-//            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//            String game = Console.readLine();
-//            if (game.equals("1")) {
-//                List<Integer> computerNext = gameClass.randomPick();
-//
-//                return answer(computerNext);
-//            }
-//            return "게임종료";
-//        } else {
-//            return answer(computer);
-//        }
-//    }
-//
-//    public String answer(List<Integer> computer) {
-//        List<Integer> user = gameClass.inputNumber();
-//        gameClass.checkException(user);
-//        int countStrike = gameClass.strike(user, computer);
-//        int countBall = gameClass.ball(user, computer);
-//
-//        String counting = gameClass.counting(countStrike, countBall);
-//        System.out.println(counting);
-//
-//        allStrike(counting, computer);
-//        return counting;
-//    }
-//}
