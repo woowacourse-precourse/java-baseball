@@ -71,7 +71,8 @@ public class Player {
                 Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END, Constants.NUMBER_COUNT)),
         ERROR_NUMBER_SAME_NUMBER(String.format("%d-%d 사이의 숫자 %d개를 입력해주세요.",
                 Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END, Constants.NUMBER_COUNT)),
-        ERROR_QUIT_OR_RESTART(String.format("%s, %s 중 하나의 수를 입력해주세요.", RESTART_GAME_CODE, QUIT_GAME_CODE));
+        ERROR_QUIT_OR_RESTART(String.format("%s, %s 중 하나의 수를 입력해주세요.", RESTART_GAME_CODE, QUIT_GAME_CODE))
+        ;
 
         private final String message;
         Message(String message) {
