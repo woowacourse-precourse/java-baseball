@@ -22,20 +22,12 @@ public class BallNumberComparer {
         return strikeScore;
     }
 
-    /**
-     * TODO: 2중 for문 refactoring 필요함.
-     */
     private int calculateBallScore(BallNumber playerBallNumber, BallNumber computerBallNumber) {
         int ballScore = 0;
         for (int i = 0; i < INPUT_SIZE; ++i) {
-            for (int j = 0; j < INPUT_SIZE; ++j) {
-                if (i == j) {
-                    continue;
-                }
-
-                if (playerBallNumber.get(i).equals(computerBallNumber.get(j))) {
-                    ++ballScore;
-                }
+            int indexOfComputerBallNumber = computerBallNumber.indexOf(playerBallNumber.get(i));
+            if (indexOfComputerBallNumber != i && indexOfComputerBallNumber != -1) {
+                ++ballScore;
             }
         }
         return ballScore;

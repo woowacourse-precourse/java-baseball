@@ -23,4 +23,8 @@ public class BallNumber {
     public Integer get(int i) {
         return numberList.get(i);
     }
+
+    public int indexOf(Integer number) {
+        return numberList.indexOf(number);
+    }
 }
