@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.controller.BaseballGame;
+import baseball.model.ValidateNumber;
 
 public class OutputView {
 
@@ -10,6 +11,10 @@ public class OutputView {
     public OutputView(BaseballGame game) {
         this.STRIKE_COUNT = game.STRIKE_COUNT;
         this.BALL_COUNT = game.BALL_COUNT;
+    }
+
+    public static void printGameClear() {
+        System.out.println(ValidateNumber.NUMBER_LENGTH.getNumber() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void printGameResult() {

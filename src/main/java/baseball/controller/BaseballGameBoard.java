@@ -26,6 +26,7 @@ public class BaseballGameBoard {
             new OutputView(game).printGameResult();
             matchedAllNumber = game.matchedAllNumber();
         } while (!matchedAllNumber);
+        OutputView.printGameClear();
     }
 
     private static boolean exit() throws IllegalArgumentException {
