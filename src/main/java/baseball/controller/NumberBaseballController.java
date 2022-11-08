@@ -18,15 +18,15 @@ public class NumberBaseballController {
     public void startGame() {
         numberBaseballService.initNumber();
         numberBaseballView.printStartGame();
-        inputUserAnswer();
+        requestUserAnswer();
     }
 
     public void restartGame() {
         numberBaseballService.initNumber();
-        inputUserAnswer();
+        requestUserAnswer();
     }
 
-    public void inputUserAnswer() {
+    public void requestUserAnswer() {
         List<Integer> resultList = numberBaseballService.createResultList(numberBaseballView.inputUserAnswer());
         printGameResult(resultList);
     }
@@ -39,14 +39,14 @@ public class NumberBaseballController {
 
     public void determineNextMove(GuessResultStatus resultType) {
         if (resultType == GuessResultStatus.WIN) {
-            inputNewGameAnswer();
+            requestNewGameAnswer();
         }
         if (resultType == GuessResultStatus.NOT_WIN) {
-            inputUserAnswer();
+            requestUserAnswer();
         }
     }
 
-    public void inputNewGameAnswer() {
+    public void requestNewGameAnswer() {
         String userAnswer = numberBaseballView.inputNewGameAnswer();
         userAnswerValidator.validateNewGameAnswer(userAnswer);
         if (userAnswer.equals(RESTART)) {
