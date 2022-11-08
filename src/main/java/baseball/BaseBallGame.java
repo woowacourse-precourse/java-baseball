@@ -12,11 +12,11 @@ public class BaseBallGame {
     public static final String BALL = "ball";
     public static final int REGAME = 1;
 
-    GameMessageDisplay gameMessageDisplay;
-    Validator inputValidator;
-    List<Integer> computerNumbers;
-    List<Integer> userNumbers;
-    boolean success;
+    public GameMessageDisplay gameMessageDisplay;
+    public Validator inputValidator;
+    public List<Integer> computerNumbers;
+    public List<Integer> userNumbers;
+    public boolean success;
 
     public BaseBallGame() {
         this.gameMessageDisplay = new GameMessageDisplay();
