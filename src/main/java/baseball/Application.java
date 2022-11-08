@@ -72,6 +72,10 @@ public class Application {
         return strike;
     }
 
+    public static int countBall(int numsOfEqualNumber, int strike) {
+        return numsOfEqualNumber - strike;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
