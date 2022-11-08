@@ -36,7 +36,7 @@ public class Application {
         return;
     }
 
-    private static String getInputByUser(Scanner sc) throws IllegalArgumentException{
+    public static String getInputByUser(Scanner sc) throws IllegalArgumentException{
         System.out.println("숫자를 입력해주세요 :");
         String input = sc.nextLine();
         validateInputString(input);
@@ -44,7 +44,7 @@ public class Application {
         return input;
     }
 
-    private static void printResult(Integer strike, Integer ball) {
+    public static void printResult(Integer strike, Integer ball) {
         if(ball==0 && strike ==0){
             System.out.println("낫싱");
             return;
@@ -61,7 +61,7 @@ public class Application {
         return ;
     }
 
-    private static Integer checkBall(List<Integer> computer, List<Integer> user) {
+    public static Integer checkBall(List<Integer> computer, List<Integer> user) {
         Integer ball = 0;
         for(Integer n : user){
             if(computer.contains(n)) ball++;
@@ -69,7 +69,7 @@ public class Application {
         return ball;
     }
 
-    private static Integer checkStrike(List<Integer> computer, List<Integer> user) {
+    public static Integer checkStrike(List<Integer> computer, List<Integer> user) {
         Integer strike = 0;
         for(int i = 0; i<3; i++){
             if(computer.get(i).equals(user.get(i))) strike++;
@@ -77,7 +77,7 @@ public class Application {
         return strike;
     }
 
-    private static List<Integer> makeListOfUser(String input) {
+    public static List<Integer> makeListOfUser(String input) {
         List<Integer> user;
         String[] splits = input.split("");
         user = changeStringArrToIntegerList(splits);

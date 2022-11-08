@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static baseball.Application.validateInputString;
+import static baseball.Application.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -45,6 +45,33 @@ public class BaseBallTest {
         //when
         //then
         assertThatThrownBy(()->validateInputString(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("볼 체크")
+    public void ballTest(){
+        //when
+        List<Integer> computer = List.of(1,2,3);
+        List<Integer> user = List.of(4,5,6);
+
+        //then
+        Integer balls = checkBall(computer,user);
+
+        //when
+        Assertions.assertThat(balls).isEqualTo(0);
+    }
+    @Test
+    @DisplayName("스트라이크 체크")
+    public void strikeTest(){
+        //when
+        List<Integer> computer = List.of(1,2,3);
+        List<Integer> user = List.of(1,2,3);
+
+        //then
+        Integer strike = checkStrike(computer,user);
+
+        //when
+        Assertions.assertThat(strike).isEqualTo(3);
     }
 
 
