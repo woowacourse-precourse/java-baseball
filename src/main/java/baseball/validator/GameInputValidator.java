@@ -11,6 +11,7 @@ public class GameInputValidator {
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException();
 		}
+
 		if (!(inputParseInt == RESTART_GAME || inputParseInt == STOP_GAME)) {
 			throw new IllegalArgumentException();
 		}
