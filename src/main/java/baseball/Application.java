@@ -34,9 +34,10 @@ public class Application {
                 int ball = checkTheNumberOfBall(user,computer);
                 // 사용자에게 볼과 스트라이크 개수 출력
                 outputTheNumberOfBallAndStrikes(strike,ball);
-
-
             }
+            // 1게임이 끝날을 경우 종료 여부 확인 후 종료 시 프로그램 종료
+            if(checkForShutdown())
+                break;
         }
     }
 
@@ -101,5 +102,15 @@ public class Application {
             System.out.println(ball + "볼 ");
         else
             System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
+    // 1게임이 끝날을 경우 종료 여부 확인 후 종료 시 프로그램 종료
+    public static boolean checkForShutdown(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String game_Whether_to_proceed = Console.readLine();
+        if (game_Whether_to_proceed.equals("2")) {
+            System.out.println("게임 종료");
+            return true;
+        }
+        else return false;
     }
 }
