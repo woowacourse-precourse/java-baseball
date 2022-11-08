@@ -10,6 +10,7 @@ import java.util.Objects;
 
 public class BaseBallController {
 
+    public static final String CONTINUE_COMMAND = "1";
     private final BaseBallService baseBallService;
 
     public BaseBallController(BaseBallService baseBallService) {
@@ -23,15 +24,15 @@ public class BaseBallController {
 
     private void gameStart() {
         baseBallService.init();
-        playGameUntilEnd(new Score(0, 0));
+        Score initialScore = new Score(0, 0);
+        playGameUntilEnd(initialScore);
         quitOrContinueGame();
     }
 
     private void playGameUntilEnd(Score score) {
         while (canContinueGame(score)) {
             InputView.printInputMessage();
-            String input = Console.readLine();
-            score = baseBallService.compareAnswer(input);
+            score = inputAndCompareAnswer();
             OutputView.printResultMessage(score);
         }
     }
@@ -40,16 +41,33 @@ public class BaseBallController {
         return Objects.isNull(score) || score.canContinue();
     }
 
+    private Score inputAndCompareAnswer() {
+        String input = Console.readLine();
+        return compareAnswer(input);
+    }
+
+    private Score compareAnswer(String input) {
+        return baseBallService.compareAnswer(input);
+    }
+
     private void quitOrContinueGame() {
-        OutputView.printQuitMessage();
-        InputView.printChoiceMessage();
+        printQuitAndChoiceMessage();
         String input = Console.readLine();
         continueOrQuit(input);
     }
 
+    private static void printQuitAndChoiceMessage() {
+        OutputView.printQuitMessage();
+        InputView.printChoiceMessage();
+    }
+
     private void continueOrQuit(String input) {
-        if (input.equals("1")) {
+        if (choiceContinue(input)) {
             gameStart();
         }
+    }
+
+    private static boolean choiceContinue(String input) {
+        return input.equals(CONTINUE_COMMAND);
     }
 }
