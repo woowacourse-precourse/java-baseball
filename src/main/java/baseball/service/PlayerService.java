@@ -37,5 +37,15 @@ public class PlayerService {
         return playerNumberList;
     }
 
+    public Boolean inputRestartAnswer() {
+        String answer = Console.readLine();
+        if (answer.equals("1")) {
+            return true;
+        }else if (answer.equals("2")){
+            return false;
+        }else {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
