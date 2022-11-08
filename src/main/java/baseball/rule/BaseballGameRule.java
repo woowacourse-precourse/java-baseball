@@ -52,6 +52,7 @@ public class BaseballGameRule {
 	}
 
 	public String getScore() {
+		playerNumber = player.getNumber();
 		scoreList = new ArrayList<>(Arrays.asList(0, 0));
 		countStrike();
 		countBall();
