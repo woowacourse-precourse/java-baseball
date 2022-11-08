@@ -3,9 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.ThrowableAssert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +15,6 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
@@ -32,18 +28,6 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(set.size()).isEqualTo(targetNum.size());
     }
 
-    private List<Integer> getTargetNum() throws  Exception {
-        Application app= new Application();
-        Method createRandomTargetNum = app.getClass().getDeclaredMethod("createRandomTargetNum");
-        createRandomTargetNum.setAccessible(true);
-        createRandomTargetNum.invoke(app);
-
-        Field targetField = app.getClass().getDeclaredField("targetNum");
-        targetField.setAccessible(true);
-        List<Integer> targetNum = (List<Integer>) targetField.get(app);
-        return targetNum;
-    }
-
     @Test
     @DisplayName("랜덤숫자가 3개 선택되었는지 확인")
     void RandomNumSize() throws Exception {
@@ -55,8 +39,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("사용자 잘못된 값 입력시 오류 발생")
     void badInputException() throws Exception{
         Application app= new Application();
-        Method inputValidate = app.getClass().getDeclaredMethod("inputValidate", List.class);
-        inputValidate.setAccessible(true);
+        Method inputValidate = getInputValidateMethod(app);
 
         Assertions.assertThatThrownBy(()->
                 inputValidate.invoke(app,List.of("1234"))).getRootCause()
@@ -76,9 +59,7 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("1을 입력하면 게임 재시작 , 2는 종료")
     void restartOrEnd() throws Exception {
-        String data = String.valueOf(Randoms.pickNumberInList(List.of(1,2)));
-        InputStream in = new ByteArrayInputStream(data.getBytes());
-        System.setIn(in);
+        String data = setSystemIn_1_or_2();
 
         Application app= new Application();
         Method endGame = app.getClass().getDeclaredMethod("endGame");
@@ -91,6 +72,13 @@ class ApplicationTest extends NsTest {
             Assertions.assertThat(endGame.invoke(app)).isEqualTo(true);
         }
 
+    }
+
+    private String setSystemIn_1_or_2() {
+        String data = String.valueOf(Randoms.pickNumberInList(List.of(1,2)));
+        InputStream in = new ByteArrayInputStream(data.getBytes());
+        System.setIn(in);
+        return data;
     }
 
     @Test
@@ -130,5 +118,23 @@ class ApplicationTest extends NsTest {
     public void runMain(){
         Application.main(new String[]{});
 
+    }
+
+    private List<Integer> getTargetNum() throws  Exception {
+        Application app= new Application();
+        Method createRandomTargetNum = app.getClass().getDeclaredMethod("createRandomTargetNum");
+        createRandomTargetNum.setAccessible(true);
+        createRandomTargetNum.invoke(app);
+
+        Field targetField = app.getClass().getDeclaredField("targetNum");
+        targetField.setAccessible(true);
+        List<Integer> targetNum = (List<Integer>) targetField.get(app);
+        return targetNum;
+    }
+
+    private Method getInputValidateMethod(Application app) throws NoSuchMethodException {
+        Method inputValidate = app.getClass().getDeclaredMethod("inputValidate", List.class);
+        inputValidate.setAccessible(true);
+        return inputValidate;
     }
 }
