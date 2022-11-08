@@ -105,7 +105,11 @@ public final class Application {
     }
 
     private String newAnswer() {
-        return String.valueOf(Randoms.pickNumberInRange(LOWEST_ANSWER, HIGHEST_ANSWER));
+        String newAnswer = "000";
+        while (newAnswer.contains("0")) { // 0은 포함 불가
+            newAnswer = String.valueOf(Randoms.pickNumberInRange(LOWEST_ANSWER, HIGHEST_ANSWER));
+        }
+        return newAnswer;
     }
 
     private void prompt(String message) {
