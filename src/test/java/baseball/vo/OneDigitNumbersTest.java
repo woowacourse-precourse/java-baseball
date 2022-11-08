@@ -48,6 +48,22 @@ public class OneDigitNumbersTest {
     }
 
     @Test
+    void 인덱스로_엘리먼트_찾기() {
+        List<Integer> numbers = List.of(1, 2, 3);
+        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
+
+        assertThat(oneDigitNumbers.indexOf(1)).isEqualTo(0);
+    }
+
+    @Test
+    void 원소_포함_여부() {
+        List<Integer> numbers = List.of(1, 2, 3);
+        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
+
+        assertThat(oneDigitNumbers.contains(1)).isTrue();
+    }
+
+    @Test
     void 반복문() {
         List<Integer> numbers = List.of(1, 2, 3);
         OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
@@ -58,13 +74,5 @@ public class OneDigitNumbersTest {
         }
 
         assertThat(afterNumbers).containsExactly(1, 2, 3);
-    }
-
-    @Test
-    void 인덱스로_엘리먼트_찾기() {
-        List<Integer> numbers = List.of(1, 2, 3);
-        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
-
-        assertThat(oneDigitNumbers.indexOf(1)).isEqualTo(0);
     }
 }
