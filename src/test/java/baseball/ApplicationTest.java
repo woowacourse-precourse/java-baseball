@@ -10,6 +10,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
+    void 정답생성_후_유효성검사_10회반복() {
+        for(int i = 0; i < 10; i++) {
+            assertThat(Application.isValid(Application.generateAnswer())).isEqualTo(true);
+        }
+    }
+
+    @Test
+    void 스트라이크_볼_검사() {
+        assertThat(Application.makeGuessInfo("123", "135")).isEqualTo(new GuessInfo(1, 1));
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -21,9 +33,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_잘못된_길이() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_0_포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("460"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_숫자_중복() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("757"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
