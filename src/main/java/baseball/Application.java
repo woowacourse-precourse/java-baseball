@@ -96,7 +96,7 @@ public class Application {
         List<Integer> ballAndStrike = Arrays.asList(0, 0, 0);
         for (int i = 0; i < userAnswer.size(); i++) {
             int ballOrStrike = getElementBallOrStrike(computer, i, userAnswer.get(i));
-            ballAndStrike.set(ballOrStrike, ballAndStrike.get(i) + 1);
+            ballAndStrike.set(ballOrStrike, ballAndStrike.get(ballOrStrike) + 1);
         }
 
         return ballAndStrike;
