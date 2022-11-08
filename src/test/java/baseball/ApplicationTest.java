@@ -87,7 +87,26 @@ class ApplicationTest extends NsTest {
         final byte[] buf = String.join("\n", args).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
     }
-    
+
+    @Test
+    void playGameTest(){
+        Application application = new Application();
+        command("456", "123");
+        application.playGame(List.of(1,2,3));
+        assertThat(output()).contains("낫싱","3스트라이크");
+    }
+
+    @Test
+    void gameStartTest(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("146", "597","238", "135", "2");
+                    assertThat(output()).contains("1스트라이크", "1볼", "1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+
 
     @Override
     public void runMain() {
