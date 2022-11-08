@@ -41,21 +41,12 @@ public class Application {
     }
 
     //3. 입력한 값이 유효한 값인지 확인하기
-    public static boolean isValidNumber(String input){
-        if(!isNumber(input)) {
-            return false;
-        }
-        if (input.contains("0")) {
-            return false;
-        }
-        Set<Integer> numberSet = new HashSet<>();
-        int playerNumber =  Integer.parseInt(input);
-        while(playerNumber!=0){
-            numberSet.add(playerNumber%10);
-            playerNumber /=10;
-        }
-        return numberSet.size() == DIGITS ;
+    public static boolean isValidNumber(List<Integer> playerNumber) {
+        return isCorrectSize(playerNumber) &&
+                isInRange(playerNumber) &&
+                isNotDuplicated(playerNumber);
     }
+
     //숫자인지 확인
     public static boolean isNumber(String input) {
         return input.chars()
