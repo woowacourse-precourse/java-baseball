@@ -23,8 +23,8 @@ public class GameController {
         do {
             outputView.printStartGameAlert();
             oppositeNumber = GameNumber.getRandomInstance();
-
             repeatGetInputAndCompare();
+
             restartInput = getAndProcessRestartInput();
         } while(restartInput.shouldGameRestart());
     }
@@ -49,6 +49,7 @@ public class GameController {
     private RestartMode getAndProcessRestartInput() {
         outputView.printAfterGameEndAlert();
         String inputString = inputView.readInput();
+
         return RestartMode.makeInstance(inputString);
     }
 }
