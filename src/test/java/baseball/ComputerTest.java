@@ -24,6 +24,11 @@ class ComputerTest {
     }
 
     @Test
+    void 생성한_수가_값이_있다() {
+        assertThat(computerNumbers).isNotEmpty();
+    }
+
+    @Test
     void 생성한_수의_자리_수가_올바르다() {
         assertEquals(computerNumbers.size(), Config.DIGIT_SIZE);
     }
