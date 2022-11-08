@@ -9,9 +9,6 @@ public class Game {
         player = new Player();
     }
     public void play() {
-        Computer computer = new Computer();
-        Player player = new Player();
-
         int score;
 
         System.out.println(Message.GAME_START.message());
