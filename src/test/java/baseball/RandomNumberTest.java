@@ -64,6 +64,39 @@ class RandomNumberTest extends NsTest {
 
         assertThat(randomNumber.getNumberOfStrike(compareNumber)).isEqualTo(3);
     }
+    @Test
+    public void getNumberOfBallCase1(){
+        List<Integer> randomNumberList = randomNumber.getRandomNumberList();
+        List<Integer> compareNumber = new ArrayList<>();
+        compareNumber.add(0);
+        compareNumber.add(randomNumberList.get(0));
+        compareNumber.add(0);
+
+
+        assertThat(randomNumber.getNumberOfBall(compareNumber)).isEqualTo(1);
+    }
+
+    @Test
+    public void getNumberOfBallCase2(){
+        List<Integer> randomNumberList = randomNumber.getRandomNumberList();
+        List<Integer> compareNumber = new ArrayList<>();
+        compareNumber.add(randomNumberList.get(1));
+        compareNumber.add(0);
+        compareNumber.add(randomNumberList.get(0));
+
+        assertThat(randomNumber.getNumberOfBall(compareNumber)).isEqualTo(2);
+    }
+
+    @Test
+    public void getNumberOfBallCase3(){
+        List<Integer> randomNumberList = randomNumber.getRandomNumberList();
+        List<Integer> compareNumber = new ArrayList<>();
+        compareNumber.add(randomNumberList.get(2));
+        compareNumber.add(randomNumberList.get(2));
+        compareNumber.add(randomNumberList.get(2));
+
+        assertThat(randomNumber.getNumberOfBall(compareNumber)).isEqualTo(3);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{
