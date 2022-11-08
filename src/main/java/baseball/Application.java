@@ -24,11 +24,22 @@ public class Application {
     }
     
     static boolean startNewGame() {
+        Integer answerNumber = getNewAnswer();
         Integer userAnswerNumber = null;
-        userAnswerNumber = getIntegerInput();
-        print("\n");
+        
+        while (!answerNumber.equals(userAnswerNumber)) {
+            print("숫자를 입력해주세요 : ");
+            userAnswerNumber = getIntegerInput();
+            validate(userAnswerNumber);
+            print("\n");
+            
+            List<Integer> gameResult = getGameResult(answerNumber, userAnswerNumber);
+            printGameResult(gameResult.get(0), gameResult.get(1));
+        }
         
         boolean isOver;
+        userAnswerNumber = getIntegerInput();
+        print("\n");
         
         if (userAnswerNumber == 1) {
             isOver = false;
