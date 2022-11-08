@@ -69,7 +69,7 @@ class Input {
     static List<Character> getInputInGame() {
         System.out.print(GAME_GET_NUMBER);
         String input = Console.readLine();
-        Input.validInputInGame(input);
+        validInputInGame(input);
         return Utils.StringToCharList(input);
     }
 
@@ -82,7 +82,6 @@ class Input {
 
 
 class Compare {
-    static final String NOTHING = "낫싱";
     static final String BALL = "볼";
     static final String STRIKE = "스트라이크";
 
@@ -91,12 +90,10 @@ class Compare {
         HashMap<String, Integer> comparedMap = new HashMap<>();
         comparedMap.put(BALL, 0);
         comparedMap.put(STRIKE, 0);
-        comparedMap.put(NOTHING, 1);
         for (int comparingNum = 0; comparingNum < 3; comparingNum++) {
             char answer = answerList.get(comparingNum);
             char input = userInputList.get(comparingNum);
             if (answerList.contains(input)) {
-                comparedMap.put(NOTHING, 0);
                 computeBallStrike(comparedMap, answer, input);
             }
         }
@@ -105,7 +102,6 @@ class Compare {
 
     static void computeBallStrike(HashMap<String, Integer> comparedMap,
                                   char answer, char input) {
-        comparedMap.put(NOTHING, 0);
         if (answer == input) {
             Utils.addOneToMap(comparedMap, STRIKE);
         } else {
@@ -143,14 +139,14 @@ class Game {
         int balls = comparedMap.get(BALL);
         int strikes = comparedMap.get(STRIKE);
 
-        if (comparedMap.get(NOTHING) != 0) {
-            System.out.print(NOTHING);
-        }
         if (comparedMap.get(BALL) != 0) {
             System.out.print(balls + BALL + " ");
         }
         if (comparedMap.get(STRIKE) != 0) {
             System.out.print(strikes + STRIKE);
+        }
+        if ((comparedMap.get(BALL) == 0)&&(comparedMap.get(STRIKE) == 0)) {
+            System.out.print(NOTHING);
         }
         System.out.print("\n");
     }
