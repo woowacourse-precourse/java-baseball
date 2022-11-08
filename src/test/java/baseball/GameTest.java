@@ -55,6 +55,42 @@ class GameTest extends NsTest {
         );
     }
 
+    @DisplayName("게임 종료 뒤 재시작 또는 종료 진행과 관련한 입력 오류 - [1] 1자리 값이 아닌 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"12", "123"})
+    void invalidInputForGameProcess(String input) {
+        assertRandomNumberInRangeTest(
+                () -> assertThatThrownBy(() -> run("246", "135", input))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("1자리 수를 입력해주세요."),
+                1, 3, 5
+        );
+    }
+
+    @DisplayName("게임 종료 뒤 재시작 또는 종료 진행과 관련한 입력 오류 - [2] 수가 아닌 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "*"})
+    void invalidInputForGameProcessNonDigit(String input) {
+        assertRandomNumberInRangeTest(
+                () -> assertThatThrownBy(() -> run("246", "135", input))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("숫자만 입력해주세요."),
+                1, 3, 5
+        );
+    }
+
+    @DisplayName("게임 종료 뒤 재시작 또는 종료 진행과 관련한 입력 오류 - [3] 1 또는 2가 아닌 경우")
+    @ParameterizedTest()
+    @ValueSource(strings = {"0", "3"})
+    void invalidInputForGameProcessNon1Or2(String input) {
+        assertRandomNumberInRangeTest(
+                () -> assertThatThrownBy(() -> run("246", "135", input))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수만 입력해주세요."),
+                1, 3, 5
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
