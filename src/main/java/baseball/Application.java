@@ -6,10 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
-    //git commit test
     public static void game_start_message(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -94,17 +92,17 @@ public class Application {
         String strike_count_message = "";
         String ball_count_message = "";
         if (strike_count != 0) {
-            strike_count_message = "%d스트라이크";
+            strike_count_message = " %d스트라이크";
         }
 
         if (ball_count != 0) {
-            ball_count_message = "%d볼 ";
+            ball_count_message = "%d볼";
         }
 
         if (nothing_count == 3) {
             System.out.println("낫싱");
         } else if (ball_count == 0){
-            System.out.printf(strike_count_message + "\n", strike_count);
+            System.out.printf(strike_count_message.trim() + "\n", strike_count);
         } else {
             System.out.printf(ball_count_message + strike_count_message + "\n", ball_count, strike_count);
         }
@@ -124,11 +122,9 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        //First commit
         game_start_message();
         String playmore_stop_number = "1";
         do {
-            //컴퓨터 숫자 생성 함수
             String computer_number = make_computer_number();
             String[] computer_number_list = computer_number.split("");
             List<Integer> strike_ball_nothing_list = Arrays.asList(0, 0, 0);
