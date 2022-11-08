@@ -109,4 +109,24 @@ public class BaseballTest {
         }
     }
 
+    @Nested
+    class FunctionList7{
+        @Test
+        void 문자열에서_정수형으로_변환기능_테스트1(){
+            Integer answer = Application.stringToInteger("123");
+            assertThat(answer).isEqualTo(123);
+        }
+        @Test
+        void 문자열에서_정수형으로_변환기능_테스트2(){
+            Integer answer = Application.stringToInteger("321");
+            assertThat(answer).isEqualTo(321);
+        }
+        @Test
+        void 문자열에서_정수형으로_변환기능_예외처리(){
+            String answer = "abc";
+            assertThatThrownBy(() -> Application.stringToInteger(answer))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
 }
