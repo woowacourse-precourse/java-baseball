@@ -38,15 +38,22 @@ public class Application {
 
     private static void matchLists(List<Integer> userNumberList, List<Integer> computerNumberList, Map<String, Integer> scoreTable) {
         for (Integer userNumber : userNumberList) {
-            if (computerNumberList.contains(userNumber)) {
-                if (userNumberList.indexOf(userNumber) == computerNumberList.indexOf(userNumber)) {
-                    scoreTable.put("스트라이크", scoreTable.get("스트라이크") + 1);
-                }
-                else {
-                    scoreTable.put("볼", scoreTable.get("볼") + 1);
-                }
-            }
+            matchingNumbers(userNumberList, computerNumberList, scoreTable, userNumber);
         }
+    }
+
+    private static void matchingNumbers(List<Integer> userNumberList, List<Integer> computerNumberList, Map<String, Integer> scoreTable, Integer userNumber) {
+        if (computerNumberList.contains(userNumber)) {
+            checkStrike(userNumberList, computerNumberList, scoreTable, userNumber);
+        }
+    }
+
+    private static void checkStrike(List<Integer> userNumberList, List<Integer> computerNumberList, Map<String, Integer> scoreTable, Integer userNumber) {
+        if (userNumberList.indexOf(userNumber) == computerNumberList.indexOf(userNumber)) {
+            scoreTable.put("스트라이크", scoreTable.get("스트라이크") + 1);
+            return;
+        }
+        scoreTable.put("볼", scoreTable.get("볼") + 1);
     }
 
     private static Map<String, Integer> createScoreTable() {
