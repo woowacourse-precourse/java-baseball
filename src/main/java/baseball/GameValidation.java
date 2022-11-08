@@ -19,4 +19,13 @@ public final class GameValidation {
             userInputList.add(userInput.charAt(i));
         }
     }
+
+    public boolean isCheckLength() {
+        if (userInput.length() == 3) {
+            return true;
+        }
+
+        throw new IllegalArgumentException();
+    }
+
 }
