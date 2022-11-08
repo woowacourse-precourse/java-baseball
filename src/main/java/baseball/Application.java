@@ -30,4 +30,11 @@ public class Application {
         String userNumbers = Console.readLine();
         return userNumbers.chars().map(Character::getNumericValue).boxed().collect(Collectors.toList());
     }
+
+    // 세자리 숫자가 맞는지 검증하는 기능
+    public static void checkNumberSize(List<Integer> numbers) {
+        if (numbers.size() != 3) {
+            throw new IllegalArgumentException("3개의 숫자를 입력해 주세요.");
+        }
+    }
 }
