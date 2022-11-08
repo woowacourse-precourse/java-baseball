@@ -84,4 +84,31 @@ public class Application {
         }
         return com_num;
     }
+    public ArrayList<Integer> game_start(){
+        ArrayList<Integer> com_num = new ArrayList<>();
+        com_num = make_computer_number();
+        return com_num;
+    }
+
+    public boolean game(boolean flag) {
+        ArrayList<Integer> com_num = new ArrayList<>(game_start());
+        int status = 0;
+        while(flag){
+            ArrayList<Integer> my_num = new ArrayList<>(input_my_num());
+            status = compare_nums(my_num, com_num);
+            flag=restart_or_end(status);
+        }
+        if(status==2)flag=false;
+        else flag=true;
+        return flag;
+    }
+
+    public static void main(String[] args) {
+        boolean flag = true;
+        Application te = new Application();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (flag) {
+            flag = te.game(flag);
+        }
+    }
 }
