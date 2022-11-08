@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-
 public class Application {
 
     static boolean Exception_Status = true;
@@ -24,18 +23,31 @@ public class Application {
         return user;
     }
 
+    public static boolean InputErrorCheck(String input){
+        char key = input.charAt(0);
+        if((int)(key)<49 || (int)(key)>57 ) {
+            if(key == ' ' || key == ',') {
+                return true;
+            }
+            else{
+                IllegalArgumentException();
+                return false;
+            }
+        }
+        else {
+            return true;
+        }
+    }
+
     public static List<Integer> StringtoInteger_Input(String [] userNumber){
 
         List<Integer> user = new ArrayList<>();
 
         for(int i=0; i<userNumber.length; i++){
+            Exception_Status = InputErrorCheck(userNumber[i]);
+            if(!Exception_Status) break;
             if(userNumber[i].equalsIgnoreCase(" ") || userNumber[i].equalsIgnoreCase(","));
-            else if(Integer.parseInt(userNumber[i]) >= 1 && Integer.parseInt(userNumber[i]) <= 9) {
-                user.add(Integer.parseInt(userNumber[i]));
-            }
-            else {
-                IllegalArgumentException();
-            }
+            else user.add(Integer.parseInt(userNumber[i]));
         }
         return user;
     }
@@ -47,22 +59,34 @@ public class Application {
     }
 
     public static boolean Compare(List<Integer> computer, List<Integer> Input) {
-        int strike = 0;
         int ball = 0;
+        int strike = 0;
         for(int i=0; i<computer.size(); i++){
-            ball += BallCount(i, computer, Input).get(0);
-            strike += BallCount(i, computer, Input).get(1);
+            ball = Sum(ball, BallCount(i, computer, Input).get(0));
+            strike = Sum(strike, BallCount(i, computer, Input).get(1));
         }
 
-        if (strike+ball==0) System.out.println("낫싱");
-        else System.out.println(ball+"볼 "+strike+"스트라이크");
+        Output_of_BallCount(ball, strike);
+        return CompareResult(strike);
+    }
 
-        if (strike<3)        return true;
+    public static int Sum(int a, int b){
+        return a+b;
+    }
+
+    public static void Output_of_BallCount(int ball, int strike){
+        if (ball+strike==0) System.out.println("낫싱");
+        else System.out.println(ball+"볼 "+strike+"스트라이크");
+    }
+
+    public static boolean CompareResult(int strike){
+        if (strike<3) return true;
         else {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             return false;
         }
     }
+
     public static List<Integer> BallCount(int index, List<Integer> computer, List<Integer> Input){
         List<Integer> count = new ArrayList<>();
         int ball = 0;
@@ -100,11 +124,18 @@ public class Application {
     }
 
     public static boolean NewGameStart(){
+        String temp;
         int Number;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Number = Integer.parseInt(Console.readLine());
+        temp = Console.readLine();
+        if(!InputErrorCheck(temp)) return false;
 
+        Number = Integer.parseInt(temp);
+        return NewGameFlag(Number);
+    }
+
+    public static boolean NewGameFlag(int Number){
         if(Number == 1){
             GameStart();
             return  true;
@@ -126,7 +157,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-
+        System.out.println(computer);
         System.out.println("숫자 야구게임을 시작합니다.");
         return computer;
 
