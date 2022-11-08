@@ -14,11 +14,11 @@ public class Player {
         this.numbers = numbers;
     }
 
-    public void addNumber(int number){
+    public void addNumber(int number) {
         numbers.add(number);
     }
 
-    public void initialize(){
+    public void initialize() {
         numbers.clear();
     }
 }
