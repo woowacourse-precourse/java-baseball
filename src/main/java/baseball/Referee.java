@@ -26,6 +26,14 @@ public class Referee {
         this.userNumbers = userNumbers;
     }
 
+    public boolean judgeReferee(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        resetReferee(computerNumbers, userNumbers);
+        ballCount = countBall();
+        strikeCount = countStrike();
+        printMessage();
+        return isCorrect();
+    }
+
     public boolean isBall(int index) {
         if (computerNumbers.contains(userNumbers.get(index))) {
             return true;
