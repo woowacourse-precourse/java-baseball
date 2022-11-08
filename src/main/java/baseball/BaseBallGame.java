@@ -26,6 +26,11 @@ public class BaseBallGame {
             userNumber = getUserNumber();
 
             getHint();
+
+            if (isGameClear()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 
@@ -92,5 +97,9 @@ public class BaseBallGame {
 
     private static boolean isStrike(int computer, int user) {
         return computerNumber.indexOf(computer) == userNumber.indexOf(user);
+    }
+
+    private static boolean isGameClear() {
+        return hint.getStrikeCount() == 3;
     }
 }
