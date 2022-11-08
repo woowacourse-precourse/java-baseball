@@ -1,9 +1,7 @@
 package baseball.domain.manager;
 
 import baseball.constant.GameStatus;
-
-import java.util.ArrayList;
-import java.util.List;
+import baseball.util.BallCount;
 
 public class NumberBaseBallManager {
 
@@ -58,6 +56,14 @@ public class NumberBaseBallManager {
         if (digit<=0 || digit>=10) throw new IllegalArgumentException();
 
         return digit;
+    }
+
+    public void checkResult(BallCount result){
+        int strike = result.getStrike();
+
+        if (strike==3) {
+            status = GameStatus.PENDING;
+        }
     }
 
     public GameStatus getStatus(){

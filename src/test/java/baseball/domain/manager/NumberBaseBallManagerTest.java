@@ -1,6 +1,7 @@
 package baseball.domain.manager;
 
 import baseball.constant.GameStatus;
+import baseball.util.BallCount;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -133,5 +134,31 @@ class NumberBaseBallManagerTest {
 
         //when
         baseballManager.validateGuess(str);
+    }
+
+    @DisplayName("결과값이 3스트라이크이면 끝났다고 결정.")
+    @Test
+    void givenThreeStrike_whenCheckResult_DetermineGameIsSetOrNot() {
+        //given
+        BallCount result = new BallCount(3, 0);
+
+        //when
+        baseballManager.checkResult(result);
+
+        //then
+        assertThat(baseballManager.getStatus()).isEqualTo(GameStatus.PENDING);
+    }
+
+    @DisplayName("결과값이 3스트라이크가 아니면 끝나지 않았다고 결정.")
+    @Test
+    void givenBallCount_whenCheckResult_DetermineGameIsSetOrNot() {
+        //given
+        BallCount result = new BallCount(2, 1);
+
+        //when
+        baseballManager.checkResult(result);
+
+        //then
+        assertThat(baseballManager.getStatus()).isNotEqualTo(GameStatus.PENDING);
     }
 }
