@@ -73,6 +73,7 @@ class Game
 
             // 입력값 규정 준수 여부 처리
             user = checkGameUserInput(input, user);
+            List<Integer> result = checkBallsAndStrikes();
 
             break;
         }
@@ -102,5 +103,16 @@ class Game
         if(status == false) {
             throw new IllegalArgumentException(message);
         }
+    }
+
+    List<Integer> checkBallsAndStrikes() {
+        List<Integer> result = new ArrayList<>();
+
+        int balls = 0;
+        int strikes = 0;
+
+        // implement
+
+        return result;
     }
 }
