@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -108,9 +109,9 @@ public class Application {
     }
 
     public static String GetUserInput(String str, boolean lineBreak){
-        Scanner s = new Scanner(System.in);
         OutputString(str, lineBreak);
-        return s.next();
+        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+        return userInput;
     }
 
     /*
@@ -129,10 +130,10 @@ public class Application {
             if(userInputWord < '0' || userInputWord >'9')
                 return false;
 
-            if(checkSameNumArray[userInputWord])
+            if(checkSameNumArray[userInputWord - '0'])
                 return false;
 
-            checkSameNumArray[userInputWord] = true;
+            checkSameNumArray[userInputWord - '0'] = true;
         }
 
         return true;
