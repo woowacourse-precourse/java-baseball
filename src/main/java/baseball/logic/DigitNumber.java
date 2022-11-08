@@ -45,7 +45,7 @@ public class DigitNumber {
         Validator.isVaildNumber(userNumberStr, digit);
         Map<Integer, Integer> userNumber = new HashMap<>();
 
-        for (int i = 0; i < digit; i++) {
+        for (int len = userNumberStr.length(), i = 0; i < len; i++) {
             int current = userNumberStr.charAt(i) - '0';
             userNumber.put(current, i);
         }
