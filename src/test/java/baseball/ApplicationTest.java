@@ -43,6 +43,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임_볼과_스트라이크가_섞인_경우_확인() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135", "321", "123", "2");
+                    assertThat(output()).contains("1볼 1스트라이크", "2볼 1스트라이크", "3스트라이크","게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
+    @Test
     void 예외_테스트_길이() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
