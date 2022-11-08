@@ -68,20 +68,24 @@ public class Application {
             List<Integer> gameResult = new ArrayList<>();
             int strike = 0;
             int ball = 0;
-
+            
+            //컴퓨터가 3자리 숫자 생성
             makeNumber(computer);
 
+            //플레이어가 3자리 숫자 입력
             System.out.print("숫자를 입력해주세요 : ");
             input(inputNumber);
-
+            
+            //야구게임 결과 (ex 2스트라이크 1볼) 저장
             caseCheck(computer, inputNumber, gameResult);
             strike = gameResult.get(0);
             ball = gameResult.get(1);
-
+            
+            //결과 출력
             output(strike, ball);
-
+            
+            //정답 맞췄을 시, 게임 종료 혹은 반복 가능
             if ( strike == 3) {
-
                 String repeat = Console.readLine();
                 if (repeat.equals("2")) break;
                 else computer.clear();
