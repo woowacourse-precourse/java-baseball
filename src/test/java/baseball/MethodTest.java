@@ -19,6 +19,22 @@ public class MethodTest extends NsTest {
         assertThat(randomComputer(computer).size()).isEqualTo(result);
 
     }
+    @Test
+    void 볼_판별(){
+        ArrayList<Integer> computer = new ArrayList<Integer>(Arrays.asList(1,3,2));
+        String user = "123";
+        int ball = calculateBall(computer,user);
+        int result = 2;
+        assertThat(ball).isEqualTo(result);
+    }
+    @Test
+    void 스트라이크_판별(){
+        ArrayList<Integer> computer = new ArrayList<Integer>(Arrays.asList(6,5,4));
+        String user = "654";
+        int strike = calculateStrike(computer,user);
+        int result = 3;
+        assertThat(strike).isEqualTo(result);
+    }
 
 
 
