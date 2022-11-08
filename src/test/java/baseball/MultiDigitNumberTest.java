@@ -129,7 +129,7 @@ public class MultiDigitNumberTest {
 
             Assertions.assertThat(
                     multiDigitNumber.getCompareResult(new MultiDigitNumber(3, 2, 1)).toString())
-                .isEqualTo("1스트라이크 2볼");
+                .isEqualTo("2볼 1스트라이크");
             Assertions.assertThat(
                     multiDigitNumber.getCompareResult(new MultiDigitNumber(1, 4, 5)).toString())
                 .isEqualTo("1스트라이크");
