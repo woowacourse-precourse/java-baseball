@@ -38,7 +38,6 @@ public class ExecuteGame extends IllegalArgumentException {
             }
             return userValidInput;
         } catch (IllegalArgumentException e) {
-            System.exit(0);
             throw e;
         }
     }
