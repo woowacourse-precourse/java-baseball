@@ -54,18 +54,21 @@ public class GameHandler {
     }
 
     public void init() {
-        isGameEnd = false;
-        computerNumber = new ArrayList<>();
-        inputNumber = new ArrayList<>(3);
-        compareResult = new ArrayList<>(2);
-        selectNumber();
         System.out.println(GAME_START);
     }
 
-    public void inputHandler() throws IllegalArgumentException {
+    public void start() {
+        isGameEnd = false;
+        computerNumber = new ArrayList<>();
+        selectNumber();
+    }
+
+    public void inputHandler() {
         System.out.println(INSERT_NUMBER);
         String input = Console.readLine();
-        // validation check
+        validationCheck(input);
+        inputNumber = new ArrayList<>();
+        compareResult = new ArrayList<>();
         for(char c : input.toCharArray()) {
             inputNumber.add(c - '0');
         }
@@ -98,7 +101,7 @@ public class GameHandler {
             sb.append(String.format("%d%s", strike, STRIKE));
         }
         if(strike == 3) {
-            sb.append(String.format("\n%s\n%s\n", GAME_END, GAME_RESTART));
+            sb.append(String.format("\n%s\n%s", GAME_END, GAME_RESTART));
             isGameEnd = true;
         }
         System.out.println(sb);
