@@ -21,6 +21,11 @@ public class BaseballGame {
 
             checkUserInput(userInput);
             List<Integer> userNumber = convertInput(userInput);
+
+            int strike = countStrike(computerNumber, userNumber);
+            int ball = countBall(computerNumber, userNumber);
+
+            gameContinue = checkResult(strike, ball);
         }
 
     }
@@ -101,6 +106,67 @@ public class BaseballGame {
         }
 
         return newInput;
+    }
+
+    public int countStrike(List<Integer> computer, List<Integer> user) {
+
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+
+            if (computer.get(i) == user.get(i)) strike++;
+        }
+
+        return strike;
+    }
+
+    public int countBall(List<Integer> computer, List<Integer> user) {
+
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+
+            int computerNum = computer.get(i);
+
+            ball += checkBall(i, computerNum, user);
+        }
+
+        return ball;
+    }
+
+    public int checkBall(int computerIndex, int computerNumber, List<Integer> user) {
+
+        int count = 0;
+
+        for (int i = 0; i < 3; i++) {
+
+            if (computerIndex == i) continue;
+
+            if (computerNumber == user.get(i)) count++;
+        }
+
+        return count;
+    }
+
+    public boolean checkResult(int strike, int ball) {
+
+        if (strike + ball == 0) {
+            System.out.println("낫싱");
+        } else if (strike > 0 && ball > 0) {
+            System.out.printf("%d볼 %d스트라이크\n", strike, ball);
+
+        } else if (ball > 0) {
+            System.out.printf("%d볼\n", ball);
+
+        } else if (strike > 0 && strike < 3) {
+            System.out.printf("%d스트라이크\n", strike);
+
+        } else if (strike == 3) {
+            System.out.printf("%d스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n", strike);
+            return false;
+        }
+
+        return true;
     }
 
 }
