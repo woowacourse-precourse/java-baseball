@@ -86,4 +86,29 @@ public class Application {
             restartGame();
         }
     }
+
+    // 힌트 출력
+    public static void printHint(int[] computerNumbers, int[] userNumbers) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < computerNumbers.length; i++) {
+            if (computerNumbers[i] == userNumbers[i]) {
+                strike++;
+            } else if (computerNumbers[i] == userNumbers[0] || computerNumbers[i] == userNumbers[1] || computerNumbers[i] == userNumbers[2]) {
+                ball++;
+            }
+        }
+
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println(strike + "스트라이크 " + ball + "볼");
+        }
+
+        getUserNumbers();
+    }
 }
