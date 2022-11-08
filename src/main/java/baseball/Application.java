@@ -45,5 +45,12 @@ public class Application {
 		playerPickNums.add(numThree);
 		return playerPickNums;
     }
+    public static void error() {
+    	try {
+    		throw new Exception("IllegalArgumentException");
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
     
 }
