@@ -1,12 +1,25 @@
 package baseball;
 
 public class Game {
+    public static final boolean CORRECT_ANSWER = true;
     private String userNumber = "";
     private String computerNumber = "";
     private NumberMaker numberMaker;
 
     public Game() {
         numberMaker = new NumberMaker();
+    }
+
+    public void playGame() {
+        computerNumber = numberMaker.getComputerNumber();
+        while (true) {
+            userNumber = numberMaker.getUserNumber();
+            printStrikeBallResult(userNumber, computerNumber);
+            if (numberResult(userNumber, computerNumber) == CORRECT_ANSWER) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
     private void printStrikeBallResult(String userNumber, String computerNumber) {
