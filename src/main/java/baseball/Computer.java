@@ -8,6 +8,7 @@ public class Computer {
   public List<Integer> answer = new ArrayList<>();
   static String STRIKE = "%d스트라이크";
   static String BALL = "%d볼";
+  static String NOTHING = "낫싱";
 
   public Computer(){
     while(answer.size() < 3){
@@ -26,7 +27,19 @@ public class Computer {
     if(getStrikeCount(input) > 0){
       result += String.format(STRIKE, getStrikeCount(input));
     }
+    if(isNothing(input)){
+      return NOTHING;
+    }
     return result;
+  }
+
+  public boolean isNothing(String input){
+    for(int i = 0; i<answer.size(); i++){
+      if(answer.contains(input.charAt(i) - '0')){
+        return false;
+      }
+    }
+    return true;
   }
 
   public boolean isStrike(int number, int index){
