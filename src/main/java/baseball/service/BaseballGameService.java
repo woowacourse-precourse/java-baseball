@@ -8,17 +8,14 @@ public class BaseballGameService {
     private final NumberGenerator numberGenerator = new NumberGenerator();
     private Umpire umpire;
 
-    public void newGame(String playerInputNumbers) {
-        GameNumber computerGameNumber = new GameNumber(numberGenerator.createRandomNumbers());
-        GameNumber playerGameNumber = GameNumber.from(playerInputNumbers);
-
-        umpire = new Umpire(computerGameNumber, playerGameNumber);
+    public void newGame() {
+        GameNumber answer = new GameNumber(numberGenerator.createRandomNumbers());
+        umpire = new Umpire(answer);
     }
 
     public GameResult playGame(String playerInputNumbers) {
         GameNumber playerGameNumber = GameNumber.from(playerInputNumbers);
-        umpire.changePlayerGameNumber(playerGameNumber);
 
-        return umpire.decision();
+        return umpire.decision(playerGameNumber);
     }
 }

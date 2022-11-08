@@ -18,9 +18,18 @@ public class BaseballGameController {
     }
 
     public void start() {
-        String playerInputNumbers = getPlayerInput();
-        baseballGameService.newGame(playerInputNumbers);
+        baseballGameService.newGame();
         play();
+    }
+
+    public void play() {
+        boolean isClear = false;
+        while (!isClear) {
+            String playerInputNumbers = getPlayerInput();
+            isClear = guessNumber(playerInputNumbers);
+        }
+        gameScreen.printEnd();
+        askRestart();
     }
 
     private String getPlayerInput() {
@@ -28,17 +37,7 @@ public class BaseballGameController {
         return Console.readLine();
     }
 
-    public void play() {
-        boolean isClear = false;
-        while (!isClear) {
-            isClear = guessNumber();
-        }
-        gameScreen.printEnd();
-        askRestart();
-    }
-
-    public boolean guessNumber() {
-        String playerInputNumbers = getPlayerInput();
+    public boolean guessNumber(String playerInputNumbers) {
         GameResult gameResult = baseballGameService.playGame(playerInputNumbers);
         gameScreen.printResult(gameResult);
 

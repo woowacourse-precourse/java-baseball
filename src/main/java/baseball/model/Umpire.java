@@ -3,33 +3,27 @@ package baseball.model;
 import java.util.List;
 
 public class Umpire {
-    private final GameNumber computerGameNumber;
-    private GameNumber playerGameNumber;
+    private final GameNumber answer;
 
-    public Umpire(GameNumber computerGameNumber, GameNumber playerGameNumber) {
-        this.computerGameNumber = computerGameNumber;
-        this.playerGameNumber = playerGameNumber;
+    public Umpire(GameNumber answer) {
+        this.answer = answer;
     }
 
-    public void changePlayerGameNumber(GameNumber playerGameNumber) {
-        this.playerGameNumber = playerGameNumber;
-    }
-
-    public GameResult decision() {
+    public GameResult decision(GameNumber playerGameNumber) {
+        List<Integer> answerNumbers = answer.getNumbers();
         List<Integer> playerNumbers = playerGameNumber.getNumbers();
-        List<Integer> computerNumbers = computerGameNumber.getNumbers();
         int strike = 0;
         int ball = 0;
 
         for (int gameCount = 0; gameCount < 3; gameCount++) {
             int playerPeek = playerNumbers.get(gameCount);
-            int computerPeek = computerNumbers.get(gameCount);
+            int computerPeek = answerNumbers.get(gameCount);
 
             if (playerPeek == computerPeek) {
                 strike++;
                 continue;
             }
-            if (computerNumbers.contains(playerPeek)) {
+            if (answerNumbers.contains(playerPeek)) {
                 ball++;
             }
         }
