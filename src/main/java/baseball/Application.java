@@ -1,11 +1,30 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
+    public static List<Integer> createRandomNumber() {
+        List<Integer> computer = new ArrayList<>();
+        int randomNumber = 0;
+        while (computer.size() < 3) {
+            randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+
     public static void baseballGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> randomNumber;
         String restartNumber = "";
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            // TODO: 랜덤 숫자 생성
+            randomNumber = createRandomNumber();
             restartNumber = startGame();
         } while (!restartNumber.equals("2"));
     }
