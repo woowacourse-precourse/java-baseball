@@ -18,4 +18,9 @@ public class InputUtility {
         return deduplicatedInput.length() != input.length();
     }
 
+    private static boolean isNaturalNumber(String input) {
+        return input.matches("[1-9]+");
+    }
+
+
 }
