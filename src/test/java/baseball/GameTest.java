@@ -153,4 +153,31 @@ public class GameTest {
         }
     }
 
+    @Nested
+    class 문자열길이체크_테스트 {
+        @Test
+        void 문자열길이체크_테스트1_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method checkUserInputLengthMethod = Game.class.getDeclaredMethod("checkUserInputLength", String.class);
+            checkUserInputLengthMethod.setAccessible(true);
+            boolean isNumber = (boolean) checkUserInputLengthMethod.invoke(game, "153");
+            assertThat(isNumber).isEqualTo(true);
+        }
+
+        @Test
+        void 문자열길이체크_테스트2_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method checkUserInputLengthMethod = Game.class.getDeclaredMethod("checkUserInputLength", String.class);
+            checkUserInputLengthMethod.setAccessible(true);
+            boolean isNumber = (boolean) checkUserInputLengthMethod.invoke(game, "가나1");
+            assertThat(isNumber).isEqualTo(true);
+        }
+
+        @Test
+        void 문자열길이체크_테스트3_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method checkUserInputLengthMethod = Game.class.getDeclaredMethod("checkUserInputLength", String.class);
+            checkUserInputLengthMethod.setAccessible(true);
+            boolean isNumber = (boolean) checkUserInputLengthMethod.invoke(game, "31");
+            assertThat(isNumber).isEqualTo(false);
+        }
+    }
+
 }
