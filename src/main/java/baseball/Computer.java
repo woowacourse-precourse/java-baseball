@@ -11,6 +11,7 @@ public class Computer {
 
 
     public void init() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         resultNumber = makeRandomNumber();
     }
 
@@ -27,7 +28,9 @@ public class Computer {
 
     public void startGame() {
         while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
             String inputStringNumber = Console.readLine();
+            System.out.println(inputStringNumber);
             List<Integer> inputNumber = makeStringNumberToList(inputStringNumber);
             boolean findNumber = calculationNumber(resultNumber, inputNumber);
             if (findNumber) {
@@ -41,6 +44,10 @@ public class Computer {
         int strike = countStrike(resultNumber, inputNumber);
         int ball = countBall(resultNumber, inputNumber);
         printResult(strike, ball);
+        return isAnswer(strike);
+    }
+
+    private static boolean isAnswer(int strike) {
         if(strike == 3){
             return true;
         }
