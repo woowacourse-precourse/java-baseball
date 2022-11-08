@@ -1,4 +1,6 @@
-# 기능목록
+# JAVA-BASEBALL
+
+## 기능목록
 
 ### 1. generateNumber();
 

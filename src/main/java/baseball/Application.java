@@ -1,13 +1,19 @@
 package baseball;
 
+import static java.util.stream.Collector.*;
+import static java.util.stream.Collectors.toList;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
@@ -36,7 +42,7 @@ public class Application {
         List<String> stringNumberList = List.of(input.split(""));
         List<Integer> inputNumberList = stringNumberList.stream()
             .map(Integer::parseInt)
-            .collect(Collectors.toList());
+            .collect(toList());
         ArrayList<Integer> inputNumberArrayList = new ArrayList<>(inputNumberList);
         Set<Integer> inputNumberSet = new HashSet<>(inputNumberList);
         long count = stringNumberList.stream().filter("0"::equals).count();
@@ -60,29 +66,19 @@ public class Application {
         return strike;
     }
 
-    public static int countBalls(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
-        int ball = 0;
-        if ((Objects.equals(generatedNumber.get(0), inputNumber.get(1))) || Objects.equals(generatedNumber.get(0),
-            inputNumber.get(2))) {
-            ball++;
+    public static int countRawBalls(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
+        int rawBall = 0;
+        for (int i = 0; i < generatedNumber.size(); i++) {
+            int dupCheck = Collections.frequency(inputNumber, generatedNumber.get(i));
+            rawBall += dupCheck;
         }
-        if ((Objects.equals(generatedNumber.get(1), inputNumber.get(0))) || Objects.equals(generatedNumber.get(1),
-            inputNumber.get(2))) {
-            ball++;
-        }
-        if ((Objects.equals(generatedNumber.get(2), inputNumber.get(0))) || Objects.equals(generatedNumber.get(2),
-            inputNumber.get(1))) {
-            ball++;
-        }
-        return ball;
+        return rawBall;
     }
 
     public static String gameReferee(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
         String answer = "";
-        int strike = 0;
-        int ball = 0;
-        strike = countStrikes(generatedNumber, inputNumber);
-        ball = countBalls(generatedNumber, inputNumber);
+        int strike = countStrikes(generatedNumber, inputNumber);
+        int ball = countRawBalls(generatedNumber, inputNumber) - strike;
 
         if(ball > 0) {
             answer += ball + "볼 ";
