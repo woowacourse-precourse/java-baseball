@@ -21,7 +21,7 @@ public class Game {
 
         List<Integer> guessNumber;
         do {
-            System.out.println(Message.ENTER_NUMBER);
+            System.out.print(Message.ENTER_NUMBER);
             guessNumber = player.createGuessNumber();
         } while (!computer.checkResult(guessNumber));
     }
