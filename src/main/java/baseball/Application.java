@@ -29,7 +29,8 @@ public class Application {
             while(true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
-                if(input.length()>3) throw new IllegalArgumentException();
+                if(input.length()!=3) throw new IllegalArgumentException();
+
                 List<Integer> inputNum = toInputNum(input);
 
                 strikeResultClear();
