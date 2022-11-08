@@ -31,11 +31,15 @@ public class BaseBallGame {
     }
     
     private Referee playResult(final String userNumbers) {
-        final List<BallStatus> comparisonResult = computerBalls.compareBalls(new Balls(userNumbers));
+        final List<BallStatus> comparisonResult = compareBalls(userNumbers);
         final Referee referee = new Referee();
         referee.decide(comparisonResult);
         
         return referee;
+    }
+    
+    private List<BallStatus> compareBalls(final String userNumbers) {
+        return computerBalls.compareBalls(new Balls(userNumbers));
     }
     
     @Override
