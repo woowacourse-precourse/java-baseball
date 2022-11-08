@@ -66,14 +66,15 @@ class ApplicationTest extends NsTest {
 
     @Test
     void getUserInput() {
+        ArrayList<Integer> userInput = new ArrayList<>();
+
     }
 
     @Test
+    @DisplayName("유저의 입력에 중복이 있는가 없는가, 숫자가 3자리인가 아닌가 테스트")
     void checkUserInput() {
-    }
-
-    @Test
-    void makeRandomNumber() {
+        assertThatThrownBy(()->runException("112")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()->runException("1234")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
