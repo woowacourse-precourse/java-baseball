@@ -9,6 +9,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class Application {
     public static void main(String[] args) {
         CreateRandomNum();
+        playerNum();
 
 
 
@@ -23,5 +24,16 @@ public class Application {
             }
         }
         return computerNum;
+    }
+
+    public static List<Integer> playerNum(){
+        System.out.println("숫자를 입력해주세요 : ");
+        String inputNumber = readLine();
+        List<Integer> playerNumber = new ArrayList<>();
+
+        for(String number : inputNumber.split("")){
+            playerNumber.add(Integer.parseInt(number));
+        }
+        return playerNumber;
     }
 }
