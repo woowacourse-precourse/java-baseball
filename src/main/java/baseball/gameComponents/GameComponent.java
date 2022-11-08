@@ -68,8 +68,14 @@ public class GameComponent {
             return true;
             //그 외
         } else {
-            System.out.print(ballsAndStrikes[0] + "볼 ");
-            System.out.println(ballsAndStrikes[1] + "스트라이크");
+            int balls = ballsAndStrikes[0];
+            int strikes = ballsAndStrikes[1];
+            if(balls > 0) {
+                System.out.print(balls + "볼");
+                if(strikes > 0) System.out.print(" ");
+            }
+            if(strikes > 0) System.out.print(strikes + "스트라이크");
+            System.out.println();
             return false;
         }
     }

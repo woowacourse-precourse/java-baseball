@@ -88,6 +88,36 @@ public class ExamineResultAndPrintTest {
         assertThat(out.toString())
                 .isEqualTo("1볼 2스트라이크\n");
     }
+    @Test
+    void 볼_test() {
+        //출력값 테스트위한 설정
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        //given
+        int[] input = new int[] {1, 0};
+        //when
+        boolean actual = printExamineResult(input);
+        //then
+        assertThat(actual)
+                .isEqualTo(false);
+        assertThat(out.toString())
+                .isEqualTo("1볼\n");
+    }
+    @Test
+    void 스트라이크_test() {
+        //출력값 테스트위한 설정
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        //given
+        int[] input = new int[] {0, 2};
+        //when
+        boolean actual = printExamineResult(input);
+        //then
+        assertThat(actual)
+                .isEqualTo(false);
+        assertThat(out.toString())
+                .isEqualTo("2스트라이크\n");
+    }
     //[0] : ball
     //[1] : strike
     public boolean printExamineResult(int[] ballsAnsStrikes) {
