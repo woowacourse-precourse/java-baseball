@@ -12,8 +12,8 @@ import java.util.List;
 
 public class GameControllerTest {
 
-    @DisplayName("재시작 명령이면 정답을 랜덤으로 재생성하고, 종료 명령이면 게임의 상태를 바꾼다. 이후 결과가 초기화된다.")
     @Test
+    @DisplayName("재시작 명령이면 정답을 랜덤으로 재생성하고, 종료 명령이면 게임의 상태를 바꾼다. 이후 결과가 초기화된다.")
     void 재시작과_종료_동작_테스트() {
         Game game = new Game();
         Player player = new Player();
