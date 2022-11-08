@@ -26,6 +26,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+        System.out.println("숫자 야구 게임을 시작합니다.");
         return computer.stream().mapToInt(i -> i).toArray();
     }
 }
