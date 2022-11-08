@@ -53,8 +53,8 @@ public class Game {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
-        for (int i = 0; i<4; i++){
-            int index = input.indexOf(answer.charAt(i));
+경        for (int i = 0; i<3; i++){
+            int index = answer.indexOf(input.charAt(i));
             if(index == i){
                 strike++;
             }else if(index != -1){
