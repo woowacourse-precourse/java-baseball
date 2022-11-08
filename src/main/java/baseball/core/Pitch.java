@@ -28,6 +28,18 @@ public class Pitch {
         return this;
     }
 
+    public Count compareTo(Pitch another) {
+        Count count = new Count();
+        for (int i = 0; i < 3; i++) {
+            if (this.pitches.get(i) == another.pitches.get(i)) {
+                count.addStrike();
+            } else if (this.pitches.contains(another.pitches.get(i))) {
+                count.addBall();
+            }
+        }
+        return count;
+    }
+
     private void validateInputString(String s) {
         if (s.length() != 3 | containsDuplicateCharacters(s) | !s.matches("[1-9]+")) {
             throw new IllegalArgumentException();
