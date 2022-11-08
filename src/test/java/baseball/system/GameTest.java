@@ -6,7 +6,10 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -24,6 +27,20 @@ class GameTest {
         List<Integer> result = List.of(game.getStrikeCnt(), game.getBallCnt());
 
         assertThat(result).isEqualTo(List.of(1,2));
+    }
+
+    @Test
+    void 스트라이크와_볼의_개수를_출력하는_기능_테스트() {
+        List<Integer> problem = List.of(1,2,3);
+        String answer = "321";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        game.giveHint(problem,answer);
+        String expect = "2볼 1스트라이크";
+
+        assertThat(out.toString().trim()).isEqualTo(expect);
+
     }
 
     @Test
