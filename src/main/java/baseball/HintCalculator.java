@@ -23,15 +23,12 @@ public class HintCalculator {
     public static boolean calculateHint(List<Integer> randomNumber, List<Integer> playerNumber) {
         int ball = 0, strike = 0;
         for (Integer number: randomNumber) {
-            if (isBall(number, playerNumber)) {
-                int randomNumberIndex = randomNumber.indexOf(number);
-                int playerNumberIndex = playerNumber.indexOf(number);
-                if (isStrike(randomNumberIndex, playerNumberIndex)) {
-                    strike ++;
-                }
-                else {
-                    ball ++;
-                }
+            int randomNumberIndex = randomNumber.indexOf(number);
+            int playerNumberIndex = playerNumber.indexOf(number);
+            if(isStrike(randomNumberIndex, playerNumberIndex)) {
+                strike ++;
+            } else if (isBall(number, playerNumber)) {
+                ball ++;
             }
         }
         return HintOutput.printHint(ball, strike);
