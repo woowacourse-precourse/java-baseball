@@ -1,5 +1,8 @@
-package baseball;
+package baseball.model;
 
+import baseball.Converter;
+import baseball.GameStatus;
+import baseball.NumberValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;

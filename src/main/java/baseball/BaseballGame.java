@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.model.Computer;
+import baseball.model.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
