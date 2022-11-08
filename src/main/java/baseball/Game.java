@@ -16,7 +16,7 @@ public class Game {
     }
 
 
-    public void play2(List<Integer> computerBallsList){
+    public void play2(List<Integer> computerBallsList) {
         do {
             ball = 0;
             strike = 0;
@@ -24,7 +24,7 @@ public class Game {
             List<Integer> userBallsList = User.inputBalls();
             compareComputerAndUser(computerBallsList, userBallsList);
             System.out.println(printResult());
-        } while(strike<3);
+        } while (strike < 3);
     }
 
 
