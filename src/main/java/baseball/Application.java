@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 enum BaseballResult {
     NOTHING("낫싱"),
@@ -132,6 +133,18 @@ public class Application {
     private static void validateBaseballNumber(String baseballNumber) throws IllegalArgumentException {
         if (baseballNumber.length() != 3) {
             throw new IllegalArgumentException("올바른 3자리의 수를 입력해주세요.");
+        }
+        validateDuplicateBaseballNumber(baseballNumber);
+    }
+
+    public static void validateDuplicateBaseballNumber(String baseballNumber) throws IllegalArgumentException {
+        int[] duplicateNumbers = new int[10];
+        for (int i = 0; i < MAX_DIGIT; i++) {
+            int number = baseballNumber.charAt(i) - '0';
+            if (duplicateNumbers[number] >= 1) {
+                throw new IllegalArgumentException("중복되지 않은 3자리의 수를 입력해주세요.");
+            }
+            ++duplicateNumbers[number];
         }
     }
 }
