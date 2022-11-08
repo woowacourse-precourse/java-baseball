@@ -1,65 +1,65 @@
-# 🔨 기능 요구 사항
+# 🔨 Requirements
 
-#### 1. 게임을 시작하는 기능
+#### 1. Game start
 
-- 함수명: playTheGame
-- 기능상세: 안내 메시지와 함께 게임이 시작된다
+- name: playTheGame
+- function detail: the game starts with the message
 
-#### 2. 안내 메시지를 출력하는 기능
+#### 2. Print the game start message
 
-- 함수명: printTheGameStartMessage
-- 기능상세: "숫자 야구 게임을 시작합니다."를 출력한다
+- name: printTheGameStartMessage
+- function detail: returns "숫자 야구 게임을 시작합니다."
 
-#### 3. 서로 다른 임의의 3개 숫자를 선택하는 기능
+#### 3. Get random number
 
-- 함수명: getRandomNumber
-- 기능상세: 서로 다른 임의의 3자리 숫자를 리턴한다
-- 활용 라이브러리: camp.nextstep.edu.missionutils.Randoms
+- name: getRandomNumber
+- function detail: return 3 different numbers
+- library: camp.nextstep.edu.missionutils.Randoms
 
-#### 4. 숫자를 입력하는 기능
+#### 4. Guess number
 
-- 플레이어가 터미널을 사용해 숫자를 입력할 수 있다
-- 활용 라이브러리: camp.nextstep.edu.missionutils.Console
+- name: guessNumber
+- function detail: 플레이어가 터미널을 사용해 숫자를 입력할 수 있다
+- library: camp.nextstep.edu.missionutils.Console
 
-#### 5. 잘못된 입력 값을 처리하는 기능
+#### 5. IllegalArgumentException handler
 
-- 함수명: isInputNumberValid
-- 기능상세: 
-  - 길이가 3을 초과하면 IllegalArgumentException을 발생시킨다
-  - 숫자 외의 문자가 입력되면 IllegalArgumentException을 발생시킨다
+- name: isInputNumberValid
+- function detail:
+  - throws IllegalArgumentException if the length of number is not 3
+  - throws IllegalArgumentException if any of the character is not int
+    
 
+#### 6. Get score of the current turn
 
-#### 6. 입력된 숫자의 최종 점수를 판단하는 기능
+- name: getScoreOfTheCurrentTurn()
+- function detail: return the score in ball, strike count
 
-- 함수명: getScoreOfTheCurrentTurn()
-- 스트라이크: 같은 수가 같은 자리에 있는 경우
-- 볼: 수가 다른 자리에 있는 경우
-- 낫싱: 같은 수가 전혀 없는 경우
+#### 7. Judge strike
 
-#### 7. 입력된 숫자의 스트라이크 여부를 판단하는 기능
+- name: judgeStrike()
+- function detail: if the same number is at the exact index, return 1 else 0
 
-- 함수명: judgeStrike()
-- 기능상세: 같은 수가 같은 자리에 있는 경우 1을, 그렇지 않은 경우 0을 리턴한다
+#### 8. Judge ball
 
-#### 8. 입력된 숫자의 볼 여부를 판단하는 기능
+- name: judgeBall()
+- function detail: if the number is at the wrong index, return 1 else 0
 
-- 함수명: judgeBall()
-- 기능상세: 수가 다른 자리에 있는 경우 1을, 그렇지 않은 경우 0을 리턴한다
+#### 9. Get result of the current turn
 
-#### 9. 결과를 출력하는 기능
+- name: getResultOfTheCurrentTurn()
+- function detail: return the result message according to the score
 
-- 함수명: getResultOfTheCurrentTurn()
-- 스트라이크, 볼을 취합하여 결과를 출력한다
-- 볼을 스트라이크보다 먼저 출력한다
+#### 10. Message of game continue or exit
 
-#### 10. 정답을 맞춘 경우 메시지를 출력하는 기능
+- name: askContinueOrExitGame
+- function detail: if 3 strike, return message to guide the player 
+  - if press 1, game restart
+  - if press 2, game end
 
-- 함수명: askContinueOrExitGame
-- 기능상세: 정답을 맞춘 경우, 재시작 또는 종료를 선택하도록 메시지를 출력한다
+#### 11. Choose to end game or continue
 
-#### 11. 게임 재시작 또는 종료를 선택하는 기능
-
-- 함수명: chooseToEndGameOrContinue
-- 기능상세: 사용자의 입력값에 따라 게임이 재시작 또는 종료된다
-  - 1을 입력하는 경우 게임을 재시작한다
-  - 2를 입력하는 경우 게임이 완전히 종료된다
+- name: chooseToEndGameOrContinue
+- function detail: game end or continue depends on the player's choice
+  - if press 1, game restart
+  - if press 2, game end
