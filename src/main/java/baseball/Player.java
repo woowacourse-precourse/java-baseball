@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static constants.GameConstant.*;
 
 public class Player {
-    public String getPlayerNumber() throws IllegalArgumentException{
+    public String getPlayerNumber(){
         System.out.print(INPUT_NUMBER_MESSAGE);
         String playerNumber = readLine();
         BaseballGame.validateInputNumber(playerNumber);

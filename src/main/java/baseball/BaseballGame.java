@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 
-
 import static constants.GameConstant.*;
 public class BaseballGame {
     private final Player player;

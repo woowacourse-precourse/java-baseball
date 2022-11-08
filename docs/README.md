@@ -29,18 +29,18 @@
     - `checkRestartGame`
         - if (isRestartNumber) → startGame
     - `isRestartNumber`
+    - 올바른 입력인지 검사: `validateInputNumber`
+      - `validateNumberLength`
+      - `validateNumberRepeat`
+          - 매개변수 string을 set으로 만들어 size비교
+      - `validateNumberOrNotNumber`
+          - regex 활용
 - **Player**
     - 모든 매서드에서 `IllegalArgumentException()`
     - 3개 수 입력: `getPlayerNumber`
         - “숫자를 입력해주세요 : 713”
             - readLine으로 받아오기
     - `getRestartOrEndNumber`
-    - 올바른 입력인지 검사: `validateInputNumber`
-        - `validateNumberLength`
-        - `validateNumberRepeat`
-            - 매개변수 string을 set으로 만들어 size비교
-        - `validateNumberOrNotNumber`
-            - regex 활용
 - **Computer**
     - 3개 수 선택: `getComputerNumber`
     - 스트라이크, 볼, 낫싱 검사: `checkNumber`
