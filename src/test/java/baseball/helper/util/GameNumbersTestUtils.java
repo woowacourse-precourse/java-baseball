@@ -13,6 +13,7 @@ public final class GameNumbersTestUtils {
     private GameNumbersTestUtils() {
     }
 
+    @SuppressWarnings("unchecked")
     public static List<GameNumber> getGameNumberList(GameNumbers gameNumbers) {
         Field gameNumberList = ReflectionFieldUtils.processReflectionField(GameNumbers.class, GAME_NUMBERS_FIELD_NAME);
 

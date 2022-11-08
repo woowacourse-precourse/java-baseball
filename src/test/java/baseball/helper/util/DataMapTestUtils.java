@@ -12,6 +12,7 @@ public final class DataMapTestUtils {
     private DataMapTestUtils() {
     }
 
+    @SuppressWarnings("unchecked")
     public static Map<String, Object> getModelDataMap(DataMap model) {
         Field dataMap = ReflectionFieldUtils.processReflectionField(DataMap.class, DATA_MAP_FIELD_NAME);
 
