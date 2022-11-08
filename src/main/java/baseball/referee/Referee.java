@@ -7,7 +7,7 @@ import java.util.Map;
 public class Referee {
 
     private boolean checkStrikeCondition(int userValueIndex, int computerValueIndex,
-                                        List<String> userValue, List<String> computerGeneratedValue) {
+                                         List<String> userValue, List<String> computerGeneratedValue) {
         return userValueIndex == computerValueIndex &&
                 computerGeneratedValue.get(computerValueIndex)
                         .equals(userValue
@@ -15,29 +15,33 @@ public class Referee {
     }
 
     private boolean checkBallCondition(int userValueIndex, int computerValueIndex,
-                                      List<String> userValue, List<String> computerGeneratedValue) {
+                                       List<String> userValue, List<String> computerGeneratedValue) {
         return userValueIndex != computerValueIndex &&
                 computerGeneratedValue.get(computerValueIndex)
                         .equals(userValue
                                 .get(userValueIndex));
     }
 
-    private int countStrike(int computerValueIndex, List<String> computerGeneratedValue, List<String> userValue) {
+    private int countStrike(
+            int computerValueIndex, List<String> computerGeneratedValue, List<String> userInputValue) {
         int strikeCount = 0;
 
         for (int userValueIndex = 0; userValueIndex < 3; userValueIndex++) {
-            if (checkStrikeCondition(userValueIndex, computerValueIndex, userValue, computerGeneratedValue)) {
+            if (checkStrikeCondition(userValueIndex, computerValueIndex,
+                    userInputValue, computerGeneratedValue)) {
                 strikeCount += 1;
             }
         }
         return strikeCount;
     }
 
-    private int countBall(int computerValueIndex, List<String> computerGeneratedValue, List<String> userValue) {
+    private int countBall(
+            int computerValueIndex, List<String> computerGeneratedValue, List<String> userInputValue) {
         int ballCount = 0;
 
         for (int userValueIndex = 0; userValueIndex < 3; userValueIndex++) {
-            if (checkBallCondition(userValueIndex, computerValueIndex, userValue, computerGeneratedValue)) {
+            if (checkBallCondition(userValueIndex, computerValueIndex,
+                    userInputValue, computerGeneratedValue)) {
                 ballCount += 1;
             }
         }
@@ -78,5 +82,11 @@ public class Referee {
         } else if (judgement.get("strikeCount") != 0 && judgement.get("ballCount") != 0) {
             System.out.println(judgement.get("ballCount") + "볼 " + judgement.get("strikeCount") + "스트라이크");
         }
+    }
+
+    public void sayGameEnded() {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
