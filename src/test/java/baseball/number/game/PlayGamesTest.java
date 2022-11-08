@@ -45,7 +45,7 @@ public class PlayGamesTest extends NsTest{
 
         quit = "2";
         playGames.outputQuitGameMessage(quit);
-        assertThat(out.toString()).contains("게임을 종료합니다");
+        assertThat(out.toString()).contains("게임 종료");
         assertThat("2").isEqualTo(quit);
 
         quit = "hahyunwoo";
@@ -68,7 +68,7 @@ public class PlayGamesTest extends NsTest{
 
         playGames.quitGameMessage();
 
-        assertThat(out.toString()).contains("게임을 종료합니다");
+        assertThat(out.toString()).contains("게임 종료");
     }
 
     @Test

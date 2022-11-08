@@ -16,7 +16,7 @@ public enum GamePhrase {
     VICTORY_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임종료"),
     RESTART_MESSAGE("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요"),
     INVALID_QUIT_NUMBER_MESSAGE("1 또는 2를 입력해주세요"),
-    QUIT_MESSAGE("게임 종료.");
+    QUIT_MESSAGE("게임 종료");
 
     private String value;
 
