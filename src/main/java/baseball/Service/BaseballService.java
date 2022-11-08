@@ -59,7 +59,7 @@ public class BaseballService {
     }
 
     public boolean areThreeLength(String input) {
-        if (input.length() <= 3) {
+        if (input.length() == 3) {
             return true;
         }
 
