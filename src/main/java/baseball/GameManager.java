@@ -77,8 +77,11 @@ public class GameManager {
     void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         this.init();
-        while (isContinue) {
+        while (true) {
             this.gameFlow();
+            if (!isContinue) {
+                break;
+            }
         }
     }
 
