@@ -92,6 +92,16 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 다맞출_경우_종료() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run( "135", "2");
+                    assertThat(output()).contains("게임 종료");
+                },
+                1, 3, 5
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
