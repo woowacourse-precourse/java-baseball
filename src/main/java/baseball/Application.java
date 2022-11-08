@@ -27,9 +27,6 @@ public class Application {
 				computerPickNums.add(randomNumber);
 			}
 		}
-		System.out.println(computerPickNums.get(0));
-		System.out.println(computerPickNums.get(1));
-		System.out.println(computerPickNums.get(2));
 		return computerPickNums;
 	}
 
@@ -37,8 +34,6 @@ public class Application {
 		List<Integer> playerPickNums = playerPick();
 		int strike = findStrike(computerPickNums, playerPickNums);
 		int ball = findball(computerPickNums, playerPickNums);
-		System.out.println(ball);
-		System.out.println(strike);
 		scoreBoard(strike, ball);
 		winLose(strike, computerPickNums);
 	}
@@ -56,9 +51,6 @@ public class Application {
 		if (numOne == numTwo || numTwo == numOne || numThree == numOne || numOne == 0 || numTwo == 0 || numThree == 0) {
 			error();
 		}
-		System.out.println(numOne);
-		System.out.println(numTwo);
-		System.out.println(numThree);
 		answer.add(numOne);
 		answer.add(numTwo);
 		answer.add(numThree);
