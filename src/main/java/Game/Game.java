@@ -22,7 +22,7 @@ public class Game {
         while (!isGameOver) {
             System.out.print("숫자를 입력해주세요 : ");
             String predictedValue = CheckException.inputGameValid(scanner.nextLine());
-            scoreBoard.display(targetNumber, convertToList(predictedValue));
+            scoreBoard.action(targetNumber, convertToList(predictedValue));
             isGameOver = checkCorrectAnswer(scoreBoard.getStrikeScore());
         }
         return new Game(scanner);

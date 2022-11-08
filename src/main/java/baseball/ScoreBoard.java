@@ -8,6 +8,15 @@ public class ScoreBoard {
     List<Integer> targetNumber;
     List<Integer> predictedNumber;
 
+    public void action(List<Integer> targetNumber, List<Integer> predictedNumber) {
+
+        this.targetNumber = targetNumber;
+        this.predictedNumber = predictedNumber;
+
+        int strikeScore = getStrikeScore();
+        printScoreBoard(strikeScore, getBallScore(strikeScore));
+    }
+
     public int getStrikeScore() {
 
         int strikeScore = 0;
@@ -15,15 +24,6 @@ public class ScoreBoard {
             if (Objects.equals(targetNumber.get(index), predictedNumber.get(index))) strikeScore++;
         }
         return strikeScore;
-    }
-
-    public void display(List<Integer> targetNumber, List<Integer> predictedNumber) {
-
-        this.targetNumber = targetNumber;
-        this.predictedNumber = predictedNumber;
-
-        int strikeScore = getStrikeScore();
-        printScoreBoard(strikeScore, getBallScore(strikeScore));
     }
 
     private int getBallScore(int strikeScore) {
