@@ -143,6 +143,19 @@ public class Application {
     }
 
     static boolean playNewGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String nextGameCheck = Console.readLine();
+        System.out.println(nextGameCheck);
+
+
+        if (nextGameCheck.equals("1")) {
+            return true;
+        } else if (nextGameCheck.equals("2")) {
+            return false;
+        } else {
+            System.out.println("입력값 오류!");
+            return playNewGame();
+        }
     }
 
 
