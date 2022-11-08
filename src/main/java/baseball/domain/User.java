@@ -16,10 +16,10 @@ public class User {
         return userInputs;
     }
 
-    public int inputKeepPlaying() {
+    public boolean inputKeepPlaying() {
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         String choice = Console.readLine().trim();
         InputValidator.validateNotInPlaying(choice);
-        return Integer.parseInt(choice);
+        return Integer.parseInt(choice) == 1;
     }
 }
