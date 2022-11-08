@@ -1,30 +1,28 @@
 package baseball;
 
 import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 import utils.InputUtils;
 
 public class Game {
-    private final String ERROR_MESSAGE = "1과 2중 하나만 입력하세요";
     private GameHost gamehost;
     private Player player;
 
     public void play() throws IllegalArgumentException {
-        while (true) {
-            startGame();
-            beingGame();
-            if (!isGameRestart()) {
-                break;
-            }
+        startGame();
+        playGame();
+        if (isGameRestart()) {
+            play();
         }
     }
 
-    public boolean isGameRestart() throws IllegalArgumentException {
+    private boolean isGameRestart() throws IllegalArgumentException {
         int playerInput = isValidPlayerInput();
         return playerInput == 1;
     }
 
-    public Integer isValidPlayerInput() throws IllegalArgumentException {
+    private Integer isValidPlayerInput() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String playerInput = Console.readLine();
         if (!InputUtils.isDigit(playerInput) || !InputUtils.isDigitInValidRange(playerInput)) {
@@ -33,37 +31,47 @@ public class Game {
         return Integer.parseInt(playerInput);
     }
 
-    public void startGame() {
+    private void startGame() {
         this.gamehost = new GameHost();
         this.player = new Player();
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public boolean isGameEnd(String hint) {
-        return hint.equals("3스트라이크");
-    }
-
-    public void beingGame() throws IllegalArgumentException {
+    private void playGame() throws IllegalArgumentException {
         while (true) {
-            String playerBaseballNumber = getPlayerBaseballNumber();
-
-            player.isValidBaseballNumber(playerBaseballNumber);
-
-            List<Integer> playerInput = player.getBaseballNumber();
-            gamehost.setHint(playerInput);
-            String hint = gamehost.getHint();
-            System.out.println(hint);
-
-            if (isGameEnd(hint)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            beingGame();
+            if (isGameEnd()) {
+                endGame();
                 break;
             }
         }
     }
 
-    public String getPlayerBaseballNumber() {
+    private void endGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private boolean isGameEnd() {
+        return gamehost.getHint().equals("3스트라이크");
+    }
+
+    private void beingGame() throws IllegalArgumentException {
+        getPlayerBaseballNumber();
+        List<Integer> playerInput = player.getBaseballNumber();
+        gamehost.setHint(playerInput);
+        printHint();
+    }
+
+    private void printHint() {
+        String hint = gamehost.getHint();
+        System.out.println(hint);
+    }
+
+    private void getPlayerBaseballNumber() throws IllegalArgumentException {
         System.out.println("숫자를 입력해주세요 :");
-        return Console.readLine();
+        String playerBaseballNumber = Console.readLine();
+        player.isValidBaseballNumber(playerBaseballNumber);
+        player.setBaseballNumber(InputUtils.changeStringInputToList(playerBaseballNumber));
     }
 }
 
