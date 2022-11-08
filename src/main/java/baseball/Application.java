@@ -2,32 +2,38 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Scanner;
+import static baseball.GameMessage.*;
+import static baseball.InputNumberExceptionChecker.hasException;
 
 public class Application {
     public static void main(String[] args) {
-
-        int ball;
-        int strike;
-        int restartOrNot;
-        // 우선 main에서 짜고 분리하는 방식으로 해야겠다 ..
+        boolean continuousGame = true;
         NumberMaker numberMaker = new NumberMaker();
+        game(numberMaker);
+    }
+
+    private static void game(NumberMaker numberMaker) {
+        int restartOrNot;
+        int strike;
         String randomNumber;
         String playerNumber;
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        int ball;
         randomNumber = numberMaker.makeRandomNumber();
+        System.out.println(GAME_START_MESSAGE);
         while (true) {
-            System.out.printf("숫자를 입력해주세요 : ");
+            System.out.printf(INPUT_NUMBER_MESSAGE);
             playerNumber = numberMaker.makePlayerNumber();
+            hasException(playerNumber);
             BallStrikeChecker ballStrikeChecker = new BallStrikeChecker();
             ball = ballStrikeChecker.countBall(randomNumber, playerNumber);
             strike = ballStrikeChecker.countStrike(randomNumber, playerNumber);
-            ballStrikeChecker.printHint(strike, ball);
+            ballStrikeChecker.printHint(ball, strike);
             // 완전히 동일한 경우
             if (randomNumber.equals(playerNumber)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                System.out.println(THREE_STRIKE_MESSAGE);
+                System.out.println(RESTART_OR_NOT_MESSAGE);
                 restartOrNot = Integer.parseInt(Console.readLine());
+                hasException(restartOrNot);
                 if (restartOrNot == 1) {
                     randomNumber = numberMaker.makeRandomNumber();
                     continue;
@@ -36,6 +42,7 @@ public class Application {
                 }
             }
         }
-
     }
+
+    private static
 }
