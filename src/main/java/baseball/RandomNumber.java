@@ -52,4 +52,8 @@ public class RandomNumber {
     public int combineEachDigit() {
         return firstDigit * 100 + secondDigit * 10 + thirdDigit;
     }
+
+    public void initialize() {
+        randomNumber = null;
+    }
 }
