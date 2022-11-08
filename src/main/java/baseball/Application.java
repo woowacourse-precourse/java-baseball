@@ -4,9 +4,18 @@ import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 public class Application {
-
-    // TODO: 프로그램 구현
+    static boolean isPlaying = true;
     // 1. 랜덤 넘버 생성기.(input void, output List<Integer>)
+    public static ArrayList<Integer> computerNumberMaker(){
+        ArrayList<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
     // 2. input들어온 수가 조건에 맞는가? (input String, output boolean)
     // 3. input들어온 수를 List로 (input int, output List<Integer>)
     // 4-1. 스트라이크의 개수 (input List<Integer> usernumber, List<Integer> computernumber, output int)
