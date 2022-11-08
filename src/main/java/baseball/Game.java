@@ -15,4 +15,13 @@ public class Game {
     player.setNumbers(input);
   }
 
+  public String getHint(Player player, Computer computer) {
+    Hint hint = new Hint(player, computer);
+    return hint.getHint();
+  }
+
+  public void printHint(String hint) {
+    System.out.println(hint);
+  }
+
 }
