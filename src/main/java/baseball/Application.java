@@ -8,7 +8,6 @@ import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-
     }
 
     static int getRandomValue() {
@@ -48,6 +47,7 @@ public class Application {
     }
 
     static int getInputValue() {
+        System.out.println("숫자를 입력해 주십시오.");
         String input = Console.readLine();
         boolean valid = validationOfInput(input);
         if (!valid) {

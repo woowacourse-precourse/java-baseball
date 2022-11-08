@@ -72,12 +72,27 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 볼_스트라이크_계산하기() {
-        int input =321;
-        int[] randoms = {0,3,2,1,0,0,0,0,0,0};
+        int input = 321;
+        int[] randoms = {0, 3, 2, 1, 0, 0, 0, 0, 0, 0};
         int[] result = Application.compareToNum(input, randoms);
         assertThat(result[0]).isEqualTo(2);
         assertThat(result[1]).isEqualTo(1);
     }
+
+    @Test
+    void 스트라이크_성공_체크() {
+        int[] ballAndStrike = {0, 3};
+        boolean correct = Application.isCorrect(ballAndStrike);
+        assertThat(correct).isTrue();
+    }
+
+    @Test
+    void 스트라이크_실패_체크() {
+        int[] ballAndStrike = {1, 2};
+        boolean correct = Application.isCorrect(ballAndStrike);
+        assertThat(correct).isFalse();
+    }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
