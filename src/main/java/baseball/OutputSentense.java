@@ -18,5 +18,16 @@ public class OutputSentense {
     public String strike =  "스트라이크";
     public String ball = "볼";
 
+    public  OutputSentense(){
+    }
+
+    public String Question(String str, int gameTypeNumber)throws IllegalArgumentException  {
+        System.out.println(str);
+        String myNumber = Console.readLine();
+        if (myNumber.length() != gameTypeNumber) {
+            throw new IllegalArgumentException();
+        }
+        return myNumber;
+    }
 
 }
