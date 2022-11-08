@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -21,7 +22,7 @@ public class PlayBaseballGame {
 
     public void playGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         checkUserInput(userInput);
         this.UserNum = getUserNum(userInput);
@@ -43,16 +44,15 @@ public class PlayBaseballGame {
 
     public void checkUserInput(String userInput){
         if (userInput.length() != 3){
-            throw new IllegalArgumentException("3자리 숫자를 입력하세요");
+            throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
         }
 
         if (userInput.contains("0")){
-            throw new IllegalArgumentException("0 이 아닌 ");
+            throw new IllegalArgumentException("0 이 아닌 1~9 사이에 숫자들을 입력하세요.");
         }
 
 
-        // 각 자리 숫자 비교해서 달라야함 (숫자가 서로 달라야 한다)
-    }
+     }
 
     public void countTotal(){
         this.total = 0;
