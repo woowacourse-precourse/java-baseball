@@ -30,5 +30,13 @@ public class Game {
         return numberCandidate.stream().map(String::valueOf).collect(Collectors.joining(""));
     }
 
+    private static String inputPlayerNumber(){
+        TextIO.Out("숫자를 입력해주세요 : ");
+        String userInput = TextIO.In(false);
+
+        return userInput;
+    }
+
+
 
 }
