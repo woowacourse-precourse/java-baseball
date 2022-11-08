@@ -34,7 +34,7 @@ public class Application {
     }
 
     public static void validateBaseBallInput(String input) {
-        if (input.length() != 3)
+        if (input.length() != RANDOM_NUMBER_DIGIT_SIZE)
             throw new IllegalArgumentException();
         if (!isNumeric(input))
             throw new IllegalArgumentException();
