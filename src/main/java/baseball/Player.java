@@ -38,14 +38,14 @@ public class Player {
         throw new IllegalArgumentException();
     }
     private boolean checkSize(List<Integer> number){
-        return number.size() == Computer.NUMBER_LENGTH;
+        return number.size() == BaseBall.NUMBER_LENGTH;
     }
 
     private boolean checkDuplicate(List<Integer> number){
         long count = number.stream()
                 .distinct()
                 .count();
-        return count == Computer.NUMBER_LENGTH;
+        return count == BaseBall.NUMBER_LENGTH;
     }
 
 

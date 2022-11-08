@@ -3,7 +3,10 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class BaseBall {
+    public static final int NUMBER_LENGTH = 3;
     private Computer computer;
     private Player player;
     public BaseBall(Computer computer, Player player) {
@@ -16,7 +19,7 @@ public class BaseBall {
         boolean flag;
         do {
             player.input();
-            flag = computer.printResult(player.getNumber());
+            flag = printResult();
         } while (flag);
 
         askRestart();
@@ -35,4 +38,45 @@ public class BaseBall {
         }
     }
 
+    private String buildResultSentence(int strike, int ball){
+        StringBuilder sb = new StringBuilder();
+        if(ball != 0){
+            sb.append(ball).append("볼 ");
+        }
+        if(strike != 0){
+            sb.append(strike).append("스트라이크");
+        }
+        if(ball == 0 && strike == 0){
+            sb.append("낫싱");
+        }
+        return sb.toString().strip();
+    }
+
+
+    public boolean printResult() {
+        int[] strikeAndBallCount = getStrikeAndBallCount(player.getNumber());
+        int strike = strikeAndBallCount[0];
+        int ball = strikeAndBallCount[1];
+
+        if(strike == NUMBER_LENGTH){
+            System.out.println(buildResultSentence(strike, ball));
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }else{
+            System.out.println(buildResultSentence(strike, ball));
+            return true;
+        }
+    }
+
+    private int[] getStrikeAndBallCount(List<Integer> playerNumber) {
+        int[] cnt = new int[2];
+        for(int i=0; i<playerNumber.size(); i++){
+            if(computer.getNumber().get(i) == playerNumber.get(i)){
+                cnt[0]++;
+            }else if(computer.getNumber().contains(playerNumber.get(i))){
+                cnt[1]++;
+            }
+        }
+        return cnt;
+    }
 }
