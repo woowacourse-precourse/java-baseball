@@ -21,8 +21,8 @@ public class Application {
         List<Integer> inputNumber = new ArrayList<>();
         String input = Console.readLine();
         //세자리 숫자 이외의 입력 시
-        if (input.length() > 3) { //3자리 이상 숫자 입력 시
-            System.out.println("3자리 이상의 숫자를 입력하셨습니다.");
+        if (input.length() > 3 || input.length() < 3){ //3자리 숫자 외 입력 시
+            System.out.println("3자리 숫자를 입력하시오.");
             throw new IllegalArgumentException();
         } else if (input.isBlank()) { //아무것도 입력하지 않았을 시
             System.out.println("아무것도 입력하지 않았습니다.");
