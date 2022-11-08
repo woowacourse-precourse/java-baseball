@@ -20,7 +20,7 @@ public class BaseballGame {
 
     private void playOneGame() {
         computer.ready();
-        while (!computer.isGameEnd) {
+        while (!computer.getIsGameEnd()) {
             System.out.print("숫자를 입력해주세요 : ");
             computer.giveResult(player.suggest());
         }
