@@ -11,11 +11,9 @@ public class Play {
 
         if(checkUserAnswer.equals("1"))  {
             restartOrEnd = 1;
-            System.out.println("aaaaaaaaaaaaa");
         }
         if(checkUserAnswer.equals("2"))  {
             restartOrEnd = 2;
-            System.out.println("aaaaaaaaaaaaa");
         }
     }
 
