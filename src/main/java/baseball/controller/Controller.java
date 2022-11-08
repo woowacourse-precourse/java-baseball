@@ -25,7 +25,7 @@ public class Controller {
     }
 
     public void runGame(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        view.printGameStart();
         while (getGameState() == Game.GameState.RUNNING){
             String userInput = Console.readLine();
             setUserNumeralList(toList(userInput));

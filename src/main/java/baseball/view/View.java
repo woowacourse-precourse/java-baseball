@@ -8,6 +8,7 @@ public class View {
     private static final String BALL_MESSAGE_FORMAT = "%d볼\n";
     private static final String BALL_AND_STRIKE_MESSAGE_FORMAT = "%d볼 %d스트라이크\n";
 
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.\n";
     private static final String GAME_CLEAR_MESSAGE_FORMAT = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
     private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
 
@@ -35,4 +36,6 @@ public class View {
     public void printReplay(){
         System.out.printf(REPLAY_MESSAGE);
     }
+
+    public void printGameStart() {System.out.printf(GAME_START_MESSAGE)};
 }
