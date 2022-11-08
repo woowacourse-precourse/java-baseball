@@ -7,6 +7,10 @@ import static baseball.Computer.*;
 import static baseball.User.*;
 
 public class Referee {
+    static final String BALL = "볼";
+    static final String STRIKE = "스트라이크";
+    static final String OUT = "낫싱";
+    static final String CORRECT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final int MAX_SIZE = 3;
 
     private int ballCount;
@@ -62,4 +66,20 @@ public class Referee {
         }
         return false;
     }
+
+    public void printMessage() {
+        if (isCorrect()) {
+            System.out.println(strikeCount + STRIKE);
+            System.out.println(CORRECT);
+        } else if (ballCount != 0 && strikeCount != 0) {
+            System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
+        } else if (ballCount != 0) {
+            System.out.println(ballCount + BALL);
+        } else if (strikeCount != 0) {
+            System.out.println(strikeCount + STRIKE);
+        } else {
+            System.out.println(OUT);
+        }
+    }
+
 }
