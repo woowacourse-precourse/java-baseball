@@ -8,6 +8,7 @@ public class ValidationUtil {
                 && validateIsDigit(input) && validateDuplicateNumber(input)) {
             return;
         }
+        System.out.println("잘못된 입력입니다.");
         throw new IllegalArgumentException();
     }
 
@@ -32,6 +33,7 @@ public class ValidationUtil {
 
     public static void validateInputRestart(String input) {
         if (!input.equals("1") && !input.equals("2")) {
+            System.out.println("잘못된 입력입니다.");
             throw new IllegalArgumentException();
         }
         if (input.equals("1")) {
