@@ -16,7 +16,7 @@ class RefereeTest {
 
     @BeforeEach
     void setUp() {
-        referee = new Referee(new Ball(), new Strike(), new CorrectCount());
+        referee = new Referee(new Ball(), new Strike(), new TotalIncludedNumbers());
     }
 
     @Nested

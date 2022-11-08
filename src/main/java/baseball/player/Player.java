@@ -1,6 +1,9 @@
 package baseball.player;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 public class Player {
     private static final int DIGIT_NUM = 3;
@@ -12,7 +15,7 @@ public class Player {
         return Collections.unmodifiableList(list);
     }
 
-    private List<Integer> getList(String verifiedInput) {
+    public List<Integer> getList(String verifiedInput) {
         List<Integer> list = new ArrayList<>();
 
         for (String read : verifiedInput.split("")) {
@@ -30,8 +33,7 @@ public class Player {
     }
 
     private void validateCharacters(String readLine) {
-        String regularExpression = REGULAR_PATTERN;
-        if (!(readLine.matches(regularExpression))) {
+        if (!(readLine.matches(REGULAR_PATTERN))) {
             throw new IllegalArgumentException(ExceptionMessage.CHARACTERS_INPUT);
         }
     }
@@ -47,9 +49,9 @@ public class Player {
 
     private void validateZero(String readLine) {
         for (int readIndex = 0; readIndex < readLine.length(); readIndex++) {
-            char location = readLine.charAt(readIndex);
+            char playerNumber = readLine.charAt(readIndex);
 
-            if (location == '0') {
+            if (playerNumber == '0') {
                 throw new IllegalArgumentException(ExceptionMessage.ZERO_INPUT);
             }
         }

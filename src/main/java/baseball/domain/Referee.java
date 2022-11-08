@@ -11,22 +11,22 @@ public class Referee {
 
     private final Ball ball;
     private final Strike strike;
-    private final CorrectCount correctCount;
+    private final TotalIncludedNumbers totalIncludedNumbers;
 
-    public Referee(Ball ball, Strike strike, CorrectCount correctCount) {
+    public Referee(Ball ball, Strike strike, TotalIncludedNumbers totalIncludedNumbers) {
         this.ball = ball;
         this.strike = strike;
-        this.correctCount = correctCount;
+        this.totalIncludedNumbers = totalIncludedNumbers;
     }
 
     public String resultJudgment(List<Integer> computer, List<Integer> player) {
-        int getCorrectCount = correctCount.compare(computer, player);
+        int getCorrectCount = totalIncludedNumbers.compare(computer, player);
         int getStrike = strike.score(computer, player);
         int getBall = ball.score(getCorrectCount, getStrike);
         return getResult(getStrike, getBall, getCorrectCount);
     }
 
-    public String getResult(int strike, int ball, int CorrectCount) {
+    public String getResult(int strike, int ball, int correctCount) {
         if (ball >= STANDARD && strike == 0) {
             return ball + SystemMessage.BALL_MESSAGE;
         }
@@ -39,11 +39,11 @@ public class Referee {
             return ball + SystemMessage.BALL_MESSAGE + " " + strike + SystemMessage.STRIKE_MESSAGE;
         }
 
-        return getNothing(CorrectCount);
+        return getNothing(correctCount);
     }
 
-    public String getNothing(int CorrectCount) {
-        if (CorrectCount == 0) {
+    public String getNothing(int correctCount) {
+        if (correctCount == 0) {
             return SystemMessage.NOTHING_MESSAGE;
         }
         return null;
