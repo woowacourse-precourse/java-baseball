@@ -41,4 +41,10 @@ public class OutputSentense {
         return myList;
     }
 
+    public int escape(String str) {
+        int a = Integer.parseInt(str);
+        return a;
+    }
+
+
 }
