@@ -18,23 +18,63 @@ public class Application {
         }
         return computer;
     }
-    public static void main(String[] args) {
-        List<Integer> answer = createAnswerNumber();
-        System.out.println("start baseball");
 
-        String inputNum = Console.readLine();
-        List<Integer> arrayTrial = splitAnswerNumber(inputNum);
+    public static String returnResult(List<Integer> trial, List<Integer> answer) {
+        int ballcount = checkBall(trial, answer);
+        int strikecount = checkStrike(trial, answer);
 
-        while(checkStrike(arrayTrial, answer) != 3) {
-            inputNum = Console.readLine();
-            arrayTrial = splitAnswerNumber(inputNum);
-            int ballcount = checkBall(arrayTrial, answer);
-            int strikecount = checkStrike(arrayTrial, answer);
-            System.out.println(ballcount);
-            System.out.println(strikecount);
+        String result = "";
+        if(ballcount >0 && strikecount >0) {
+            result += ballcount + "볼 " + strikecount + "스트라이크";
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        else if (ballcount > 0) {
+            result += ballcount +"볼";
+        }
+        else if(strikecount > 0) result += strikecount+"스트라이크";
+        else result += "낫싱";
+
+        return result;
     }
+    public static boolean checkVal(String num) {
+        return num.length() != 3;
+    }
+
+    public static List<Integer> inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputNum = Console.readLine();
+        if (checkVal(inputNum)) throw new IllegalArgumentException("Invalid input");
+        List<Integer> arrayTrial = splitAnswerNumber(inputNum);
+        return arrayTrial;
+    }
+
+    public static void gamestart(){
+        List<Integer> answer = createAnswerNumber();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        String result = "";
+        while(!result.equals("3스트라이크")) {
+            List<Integer> arrayTrial = inputNumber();
+            result = returnResult(arrayTrial, answer);
+            System.out.println(result);
+        }
+        stop();
+    }
+    public static void main(String[] args) {
+        gamestart();
+
+    }
+
+    public static void stop() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputNum = Console.readLine();
+
+        if(inputNum.equals("1")) gamestart();
+        else if(inputNum.equals("2")) System.out.println("게임 종료");
+        else System.out.println("잘못된 입력값입니다.");
+
+    }
+
     public static List<Integer> splitAnswerNumber(String number) {
         Integer intNum = Integer.valueOf(number);
         List<Integer> splited_trial_number = new ArrayList<>();
