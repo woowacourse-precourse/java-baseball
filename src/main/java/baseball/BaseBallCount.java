@@ -5,8 +5,17 @@ import java.util.List;
 public class BaseBallCount {
 
     int numberOfBall;
-    int numberOfStrik;
+    int numberOfStrike;
 
+    public void countStrikeNumber(List<Integer> computerBaseBallNumber, String userBaseBallNumber) {
+        int count = 0;
+        for (int i = 0; i < computerBaseBallNumber.size(); i++) {
+            if (computerBaseBallNumber.get(i).equals(userBaseBallNumber.charAt(i) - '0')) {
+                count++;
+            }
+        }
+        numberOfStrike = count;
+    }
 
     public static int countBall(int eachComputerBaseBallNumber, String userBaseBallNumber, int Index) {
         for (int i = 0; i < userBaseBallNumber.length(); i++) {
