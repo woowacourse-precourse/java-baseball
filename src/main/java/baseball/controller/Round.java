@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Round {
-    private final int STRIKE_TO_WIN = 3;
+    private static final int STRIKE_TO_WIN = 3;
     private final Validator validator = new Validator();
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private final Judge judge = new Judge();
