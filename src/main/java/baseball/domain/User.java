@@ -34,4 +34,7 @@ public class User {
         return numbersToList;
     }
 
+    public List<Integer> getUser() {
+        return user;
+    }
 }
