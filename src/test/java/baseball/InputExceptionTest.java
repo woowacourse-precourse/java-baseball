@@ -58,6 +58,26 @@ public class InputExceptionTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 게임종료_여부_입력_오류_1_2_가아닌경우_1() {
+        Exception exception = new Exception();
+
+        Integer guess_case = 0;
+
+        assertThatThrownBy(() -> exception.chkUserTerminateInputValid(guess_case))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임종료_여부_입력_오류_1_2_가아닌경우_2() {
+        Exception exception = new Exception();
+
+        Integer guess_case = 100;
+
+        assertThatThrownBy(() -> exception.chkUserTerminateInputValid(guess_case))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
