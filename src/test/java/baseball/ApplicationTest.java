@@ -1,14 +1,44 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assert;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class ApplicationTest extends NsTest {
+
+    @RepeatedTest(10)
+    @DisplayName("반복테스트")
+    void repeatTest() {
+
+    }
+
+    @Test
+    @DisplayName("inputNumber 테스트입니다.")
+    void inputNumber() {
+        List<Integer> inputNumber1 = new ArrayList<>();
+        for(int i=0; i<3; i++) {
+            inputNumber1.add(i);
+        }
+
+    }
+
+
+
+
+
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
