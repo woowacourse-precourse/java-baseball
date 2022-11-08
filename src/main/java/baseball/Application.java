@@ -47,4 +47,13 @@ public class Application {
             throw new IllegalArgumentException("서로 다른 임의의 수 3개를 선택해 주세요");
         }
     }
+
+    // 1~9 사이 숫자인지 검증하는 기능
+    public static void checkNumberRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 9) {
+                throw new IllegalArgumentException("1~9 사이의 숫자만 입력해 주세요.");
+            }
+        }
+    }
 }
