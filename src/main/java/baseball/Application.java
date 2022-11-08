@@ -25,14 +25,24 @@ public class Application {
 
 class Game {
     private static List<Integer> gameAnswer;
-    public static List<Integer> guessNumber;
+    private static List<Integer> guessNumber;
 
     Game() {
-        gameAnswer = getGameRandomNumber();
+        Game.setGameAnswer(getGameRandomNumber());
     }
 
     public static List<Integer> getGameAnswer() {
         return gameAnswer;
+    }
+
+    public static void setGameAnswer(List<Integer> randomNumber) {
+        gameAnswer = randomNumber;
+    }
+    public static List<Integer> getGuessNumber() {
+        return guessNumber;
+    }
+    public static void setGuessNumber(List<Integer> userInput) {
+        guessNumber = userInput;
     }
 
 
@@ -46,7 +56,7 @@ class Game {
         List<Integer> userInputList = parseIntList(userInput);
 
         // guessNumber에 할당한다.
-        guessNumber = userInputList;
+        Game.setGuessNumber(userInputList);
     }
 
     public List<Integer> parseIntList(String userInputNumber) {
@@ -148,7 +158,7 @@ class Hint {
         List<Integer> gameAnswer = Game.getGameAnswer();
         // 각 자리별로 비교하면 Strike, Ball을 계산한다.
         for (int digit = 0; digit < gameAnswer.size(); digit++) {
-            int curNumber = Game.guessNumber.get(digit);
+            int curNumber = Game.getGuessNumber().get(digit);
 
             if (isStrike(gameAnswer, curNumber, digit)) {
                 addStrikeCount();

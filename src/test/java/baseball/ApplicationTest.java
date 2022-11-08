@@ -80,13 +80,13 @@ class ApplicationTest extends NsTest {
         }
 
         Hint hint = new Hint();
-        game.guessNumber = guessOneCorrect;
+        game.setGuessNumber(guessOneCorrect);
         hint.compareAnswer(game);
         assertThat(hint.strike).isEqualTo(1);
 
         // initialize
         hint.strike = 0;
-        game.guessNumber = pseudoAnswer;
+        game.setGuessNumber(pseudoAnswer);
         hint.compareAnswer(game);
         assertThat(hint.strike).isEqualTo(3);
     }
@@ -108,13 +108,13 @@ class ApplicationTest extends NsTest {
         }
 
         Hint hint = new Hint();
-        game.guessNumber = guessOneCorrect;
+        game.setGuessNumber(guessOneCorrect);
         hint.compareAnswer(game);
         assertThat(hint.ball).isEqualTo(2);
 
         // 이전 결과 초기화
         hint.ball = 0;
-        game.guessNumber = pseudoAnswer;
+        game.setGuessNumber(pseudoAnswer);
         hint.compareAnswer(game);
         assertThat(hint.ball).isZero();
     }
@@ -137,7 +137,7 @@ class ApplicationTest extends NsTest {
 
         Hint hint = new Hint();
         // 1스트라이크 2볼
-        game.guessNumber = guessOneCorrect;
+        game.setGuessNumber(guessOneCorrect);
         hint.compareAnswer(game);
         assertThat(hint.getResult()).isEqualTo("2볼 1스트라이크");
         hint.showResult();
@@ -147,7 +147,7 @@ class ApplicationTest extends NsTest {
         hint.ball = 0;
 
         // 3스트라이크
-        game.guessNumber = pseudoAnswer;
+        game.setGuessNumber(pseudoAnswer);
         hint.compareAnswer(game);
         assertThat(hint.getResult()).isEqualTo("3스트라이크");
         hint.showResult();
