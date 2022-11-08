@@ -22,7 +22,7 @@ public class BaseballGame {
     public void playGame() {
         User user = new User();
         Computer computer = new Computer();
-        BaseballResult baseballResult = new BaseballResult();
+        BaseballResult baseballResult;
         boolean correctFlag = false;
 
         computer.createAnswer();
