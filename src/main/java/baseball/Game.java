@@ -13,8 +13,10 @@ class Game {
     private List<Integer> answerList;
 
     public void start() {
+        System.out.println(START.message());
         while (true) {
-            if (play() == EXIT.option()) {
+            int result = play();
+            if (result == EXIT.option()) {
                 break;
             }
         }
@@ -22,17 +24,15 @@ class Game {
 
     private int play() {
         answerList = initAnswerList();
-        System.out.println(START.message());
-
         Hint hint = new Hint(answerList);
         while (true) {
             System.out.print(TYPE_USER_GUESS.message());
-
             List<Integer> guess = getUserGuess();
-            if (isCorrect(guess))
-                break;
-
             System.out.println(hint.retrieve(guess));
+
+            if (isCorrect(guess)) {
+                break;
+            }
         }
 
         System.out.println(CORRECT.message());
@@ -43,8 +43,9 @@ class Game {
 
     private int getRegameOption() {
         int input = Integer.parseInt(Console.readLine());
-        if (input != REPLAY.option() && input != EXIT.option())
+        if (input != REPLAY.option() && input != EXIT.option()){
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_OPTION.message());
+        }
         return input;
     }
 
@@ -86,14 +87,16 @@ class Game {
 
     private void validateInputRange(List<Integer> guess) {
         for (int g : guess) {
-            if (!(MIN_ANSWER_NUMBER.option() <= g && g <= MAX_ANSWER_NUMBER.option()))
+            if (!(MIN_ANSWER_NUMBER.option() <= g && g <= MAX_ANSWER_NUMBER.option())){
                 throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_RANGE.message());
+            }
         }
     }
 
     private void validateInputSize(List<Integer> guess) {
-        if (guess.size() != ANSWER_SIZE.option())
+        if (guess.size() != ANSWER_SIZE.option()){
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_SIZE.message());
+        }
     }
 
     private void validateInputDuplicate(List<Integer> guess) {

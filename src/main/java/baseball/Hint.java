@@ -15,6 +15,7 @@ class Hint {
 
     public String retrieve(List<Integer> guess) {
         countStrikeAndBall(guess);
+
         if (strikeCnt == 0 && ballCnt == 0) {
             return NOTHING.message();
         }
