@@ -35,4 +35,28 @@ public class Computer {
 
         return cnt;
     }
+
+    public String getResult(String input) {
+        StringBuilder sb = new StringBuilder();
+
+        int ballCnt = countBall(input);
+        int strikeCnt = countStrike(input);
+
+        if (ballCnt != 0) {
+            sb.append(ballCnt + " 볼");
+        }
+
+        if (strikeCnt != 0) {
+            if (sb.length() != 0) {
+                sb.append(" ");
+            }
+            sb.append(strikeCnt + " 스트라이크");
+        }
+
+        if (sb.length() == 0) {
+            sb.append("낫싱");
+        }
+
+        return sb.toString();
+    }
 }
