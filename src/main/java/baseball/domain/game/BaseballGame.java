@@ -1,9 +1,9 @@
 package baseball.domain.game;
 
-public class BaseballGameImpl {
+public class BaseballGame {
   private GameImpl baseball = new GameImpl();
 
-  public BaseballGameImpl(){
+  public BaseballGame(){
     baseball.GameInit();
     baseball.GameReady();
 
