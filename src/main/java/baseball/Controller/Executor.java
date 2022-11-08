@@ -53,7 +53,7 @@ public class Executor {
         if(reStart == RESTART){
             startGame();
         }else if(reStart != EXIT){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1 또는 2의 숫자를 입력해주세요.");
         }else{
             flag = false;
         }

@@ -13,7 +13,7 @@ public class User {
         List<Integer> userNumber = mappingToList(input);
 
         if(!isCorrectForm(userNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ZERO + "이 아닌 " + BASEBALL_LENGTH + "자리 숫자를 입력해주세요.");
         }
         return new Baseball(userNumber);
     }
