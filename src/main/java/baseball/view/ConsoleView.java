@@ -1,9 +1,6 @@
 package baseball.view;
 
 import static baseball.constant.Finish.getFinishByCode;
-import static baseball.hint.Hint.BALL;
-import static baseball.hint.Hint.NOTHING;
-import static baseball.hint.Hint.STRIKE;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.constant.Finish;
@@ -27,7 +24,7 @@ public class ConsoleView implements View {
 
     @Override
     public void printHint(Hint hint) {
-        String hintMessage = convertHint(hint);
+        String hintMessage = inputController.convertHintToString(hint);
         System.out.println(hintMessage);
     }
 
@@ -45,25 +42,6 @@ public class ConsoleView implements View {
     public Finish inputFinishCode() {
         String input = readLine();
         return getFinishByCode(input);
-    }
-
-    private String convertHint(Hint hint) {
-        StringBuilder stringBuilder = new StringBuilder();
-        int ball = hint.getBall();
-        int strike = hint.getStrike();
-        if (ball > 0) {
-            stringBuilder.append(ball).append(BALL);
-        }
-        if (strike > 0) {
-            if (stringBuilder.length() > 0) {
-                stringBuilder.append(" ");
-            }
-            stringBuilder.append(strike).append(STRIKE);
-        }
-        if (stringBuilder.length() == 0) {
-            stringBuilder.append(NOTHING);
-        }
-        return stringBuilder.toString();
     }
 
     private String inputString() {
