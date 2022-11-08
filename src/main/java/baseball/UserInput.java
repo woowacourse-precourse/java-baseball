@@ -5,7 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Const.*;
+import static baseball.Const.INPUT_MESSAGE;
+import static baseball.Const.NUMBER_LENGTH;
+import static baseball.Const.RESTART_MESSAGE;
+
 
 public class UserInput {
 
