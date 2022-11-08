@@ -102,4 +102,15 @@ public class Application {
         if(parsing.size()>3) return false; // 세 자리 수가 아닌 경우
        return true;
     }
+
+    public static int getBallCount(String userNumber, String randomNumber){
+        int ballCount = 0;
+        int strikeCount = getStrikeCount(userNumber, randomNumber);
+        for(String number : userNumber.split("")){
+            if(randomNumber.contains(number)){
+                ballCount++;
+            }
+        }
+        return ballCount-strikeCount;
+    }
 }
