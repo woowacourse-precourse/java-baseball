@@ -101,5 +101,23 @@ public class Application {
 
     // 7. main 함수 꾸미기
     public static void main(String[] args) {
+        ArrayList<Integer> computerNumber = computerNumberMaker();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(computerNumber);
+        while (isPlaying){
+            System.out.print("숫자를 입력해주세요 : ");
+            String tempStringInput = Console.readLine();
+            if(!isValidNumber(tempStringInput))
+                return;
+            int inputRaw = Integer.parseInt(tempStringInput);
+            ArrayList<Integer>playerInputList = inputNumberMaker(inputRaw);
+            System.out.println(answerPrinter(strikeNumber(playerInputList,computerNumber),ballNumber(playerInputList,computerNumber)));
+            if(!isPlaying){
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                int choice = Integer.parseInt(Console.readLine());
+                reStarter(choice);
+                computerNumber = computerNumberMaker();
+            }
+        }
     }
 }
