@@ -37,13 +37,8 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
 
-        // 숫자인지 확인
-        if (!userInput.matches("^[1-9]*$")) {
-            throw new IllegalArgumentException();
-        }
-
-        // 숫자가 3개인지 확인
-        if (userInput.length() != 3) {
+        // 숫자인지 확인, 숫자가 3개인지 확인
+        if (!userInput.matches("^[1-9]{3}$")) {
             throw new IllegalArgumentException();
         }
 
