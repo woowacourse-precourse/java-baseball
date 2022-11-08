@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,16 +9,22 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("랜덤 숫자 생성 확인")
-    void randomTest(){
+    void createComputerRandomNumberTest(){
         List<Integer> test = ComputerRandomNumbersFactory.createComputerRandomNumber();
         assertThat(3).isEqualTo(test.size());
+    }
+
+    @Test
+    @DisplayName("랜덤 숫자 범위 확인")
+    void createComputerRandomNumberRangeTest() {
+        List<Integer> test = ComputerRandomNumbersFactory.createComputerRandomNumber();
+        assertThat(test.stream().allMatch(v -> v >= 1 && v <= 9)).isTrue();
     }
 
     @Test
