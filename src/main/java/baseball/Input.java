@@ -33,7 +33,7 @@ class Input {
 
         for (char c : numberArray) {
             if ((int)c < INT_CHAR_1 || (int)c > INT_CHAR_9) {
-                throw new IllegalArgumentException("0을 입력하셨거나 숫자가 아닌 문자를 입력하셨습니다.");
+                throw new IllegalArgumentException("1과 9 사이 정수를 제외한 다른 문자가 들어있습니다.");
             }
         }
 
