@@ -11,6 +11,7 @@ public class GameService {
     public static final int BALL_NUMBERS = 3;
     public static int strike = 0;
     public static int ball = 0;
+    public static int errorcheck = 0;
     public final static List<Integer> RANDOMBALL = new ArrayList<>();
     public static List<Integer> userball = new ArrayList<>();
     public static void startOrder(){
@@ -19,7 +20,6 @@ public class GameService {
     }
     public static void inputOrder() {
         while(strike != 3){
-            int errorcheck = 0;
             try {   checkInput();
             } catch (IllegalArgumentException e){   errorcheck = errorOutput();
             }
@@ -28,10 +28,11 @@ public class GameService {
             findRandomBall();
             if(strike!=3) initData();
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        selectContinue();
+        if(errorcheck == 0) selectContinue();
+        if(errorcheck == 1) return;
     }
     private static void selectContinue() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String selectNumber = Console.readLine();
 
