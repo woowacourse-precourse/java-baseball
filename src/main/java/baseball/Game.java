@@ -33,7 +33,7 @@ public class Game {
         getResult(input);
 
         if (strike == 3) {
-            // 정답으로 판단, 문구 출력
+            restartOrFinish();
         }
     }
 
@@ -58,6 +58,18 @@ public class Game {
             } else if (answer.contains(input.get(i))) {
                 ball++;
             }
+        }
+    }
+
+    private void restartOrFinish() {
+        String inputString = Console.readLine();
+
+        if (inputString.equals("1")) {
+            answer = Computer.createAnswer();
+        } else if (inputString.equals("2")) {
+            finish = true;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
