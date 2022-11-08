@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.validate.UserValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 /**
@@ -7,9 +8,14 @@ import camp.nextstep.edu.missionutils.Console;
  */
 public class User {
     private String number;
+    private UserValidator validator = new UserValidator();
 
     public void inputNumber() {
         this.number = Console.readLine();
+    }
+
+    public void validateNumber() {
+        validator.validateNumber(number);
     }
 
 }
