@@ -101,7 +101,6 @@ public class Application {
                 appearedNumList.add(tmpInputStr);
         }
     }
-    // 에러케이스 구분할 것!
 
     public static List<Integer> checkWhereIsNotStrike(List<Integer> computerAnswer,
                                                    List<Integer> userAnswer){
