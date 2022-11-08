@@ -81,21 +81,21 @@ public class Application {
         }
     }
     public static List<Integer> ballAndStrike(HashMap<Integer,String> comMap,HashMap<Integer,String> usrMap){
-        List<Integer> countSandB = new ArrayList<>();
+        List<Integer> countBandS = new ArrayList<>();
         int strike=0;
         int ball=0;
 
-        for(int i=0;i<3;i++){
-            Object num=comMap.get(i);
-            if(usrMap.containsValue(num)&&usrMap.get(i).equals(num)){
+        for(int digits=0;digits<3;digits++){
+            Object num=comMap.get(digits);
+            if(usrMap.containsValue(num)&&usrMap.get(digits).equals(num)){
                 strike+=1;
             }else if(usrMap.containsValue(num)){
                 ball+=1;
             }
         }
 
-        countSandB.add(ball);
-        countSandB.add(strike);
-        return countSandB;
+        countBandS.add(ball);
+        countBandS.add(strike);
+        return countBandS;
     }
 }
