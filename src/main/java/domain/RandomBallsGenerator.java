@@ -27,7 +27,7 @@ public class RandomBallsGenerator implements BallsGenerator {
         int randomNumber;
 
         while (randomNumbers.length() != maxLen) {
-             randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
+            randomNumber = Randoms.pickNumberInRange(startInclusive, endInclusive);
             if (!randomNumbers.toString().contains(String.valueOf(randomNumber))) {
                 randomNumbers.append(randomNumber);
             }
