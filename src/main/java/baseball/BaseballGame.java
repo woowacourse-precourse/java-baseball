@@ -13,6 +13,7 @@ public class BaseballGame {
 
 
     private void initAnswer() {
+        comAnswer = new ArrayList<>();
         while (comAnswer.size() < 3) {
             int randomInt = Randoms.pickNumberInRange(1, 9);
 
