@@ -10,7 +10,19 @@ public class Application {
 
 
     public static void baseballGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
+        List<Integer> answerNumbers = newAnswer();
+        boolean guessResult;
+
+        do {
+            guessResult = tryGuess(answerNumbers);
+        } while (!guessResult);
+
+        boolean newGame = askNewGame();
+
+        if (newGame) baseballGame();
+        else return;
     }
 
 
