@@ -12,6 +12,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Game {
     List<Integer> numbersPickedByComputer;
     List<Integer> numbersPickedByUser;
+    int strike=0;
+    int ball=0;
 
     public void computerSelectThreeNumbers() {
         numbersPickedByComputer = new ArrayList<>();
@@ -69,6 +71,16 @@ public class Game {
         numbersPickedByUser = new ArrayList<>();
         for (int i = 0; i < numberString.length(); i++) {
             numbersPickedByUser.add(Character.getNumericValue(numberString.charAt(i)));
+        }
+    }
+
+    public void countMatchingNumbers() {
+        for (int i = 0; i < numbersPickedByComputer.size(); i++) {
+            if (numbersPickedByComputer.get(i) == numbersPickedByUser.get(i)) {
+                strike++;
+            } else if (numbersPickedByComputer.contains(numbersPickedByUser.get(i))) {
+                ball++;
+            }
         }
     }
 
