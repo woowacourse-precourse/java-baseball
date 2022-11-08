@@ -95,4 +95,16 @@ public class Application {
         }
         return printList;
     }
+
+    public static List<Integer> checkNumBall(String currentRandomNumber, String inputRandomNum, List<Integer> printList) {
+        for (int i = 0; i < 3; i++) {
+            if (currentRandomNumber.contains(String.valueOf(inputRandomNum.charAt(i)))) {
+                printList.set(0, printList.get(0) + 1);
+            }
+        }
+
+        printList.set(0, printList.get(0) - printList.get(1));
+
+        return printList;
+    }
 }
