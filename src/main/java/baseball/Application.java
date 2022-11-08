@@ -11,12 +11,12 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        String quitOrContinue;
         boolean restart = true;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (restart) {
+
             List<Integer> computer_num = Randoms.pickUniqueNumbersInRange(1,9,3);
             System.out.println("computer_num = " + computer_num);
 
