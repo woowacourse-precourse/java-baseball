@@ -1,5 +1,7 @@
 package baseball.util;
 
+import baseball.controller.GameController;
+
 public class ValidationUtil {
 
     public static boolean validateInputNumber(String input) {
@@ -29,11 +31,17 @@ public class ValidationUtil {
         return true;
     }
 
-    public static boolean validateInputRestart(String input){
-        if (!input.equals("1") || !input.equals("2")){
-            return false;
+    public static void validateInputRestart(String input){
+        if (input.equals("1")){
+            GameController gameController = new GameController();
+            gameController.startGame();
         }
-        return true;
+
+        if (input.equals("2")){
+            return;
+        }
+
+        throw new IllegalArgumentException();
     }
 
 
