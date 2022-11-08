@@ -64,12 +64,9 @@ public class User {
         return true;
     }
 
-    public void restartGame() {
-        Computer computer = new Computer();
+    public int inputRestartNumber() {
         number = Console.readLine();
         int inputNumber = Integer.parseInt(number);
-        if (inputNumber == 1) {
-            computer.printGameResult();
-        }
+        return inputNumber;
     }
 }

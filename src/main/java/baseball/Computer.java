@@ -97,7 +97,7 @@ public class Computer {
                 printStrike();
                 printGameOver();
                 computerNumbers.clear();
-                user.restartGame();
+                restartGame();
                 break;
             }
             if (ballCount > 0 && strikeCount > 0) {
@@ -130,6 +130,14 @@ public class Computer {
     public void printNothing() {
         if (nothingCount == 3) {
             System.out.println(NOTHING);
+        }
+    }
+
+    public void restartGame() {
+        User user = new User();
+        int number = user.inputRestartNumber();
+        if (number == 1) {
+            printGameResult();
         }
     }
 }
