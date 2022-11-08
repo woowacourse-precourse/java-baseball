@@ -59,6 +59,35 @@ public class Application {
         return true;
     }
 
+    public static void judgement(List<Integer> computer, List<Integer> user){
+        int ball = 0;
+        int strike = 0;
+        for(int i=0;i<3;i++){
+            int position = computer.indexOf(user.get(i));
+            if(position==i){
+                strike += 1;
+            } else if (!(position==-1)) {
+                ball += 1;
+            }
+        }
+        if(showResult(strike,ball)) oneGameFinished = true;
+    }
+
+    public static boolean showResult(int strike, int ball){
+        if(strike==3){
+            System.out.println("3스트라이크");
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        else{
+            if(strike==0 && ball==0) System.out.print("낫싱");
+            if(ball!=0)              System.out.print(ball+"볼 ");
+            if(strike!=0)            System.out.print(strike+"스트라이크 ");
+            return false;
+        }
+    }
+
+
 
     public static void main(String[] args) {
         List<Integer> computer = new ArrayList<>();
