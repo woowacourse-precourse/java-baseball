@@ -18,4 +18,9 @@ public class OutputView {
         printBallAndStrike();
         printNothing();
     }
+
+    private void printNothing() {
+        if (BALL_COUNT == 0 && STRIKE_COUNT == 0)
+            System.out.println("낫싱");
+    }
 }
