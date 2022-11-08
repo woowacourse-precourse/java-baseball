@@ -27,7 +27,7 @@ public class NumberBaseballController {
     }
 
     public void inputUserAnswer() {
-        List<Integer> resultList = numberBaseballService.inputUserAnswer(numberBaseballView.inputUserAnswer());
+        List<Integer> resultList = numberBaseballService.createResultList(numberBaseballView.inputUserAnswer());
         printGameResult(resultList);
     }
 

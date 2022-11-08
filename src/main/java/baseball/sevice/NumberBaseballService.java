@@ -20,7 +20,7 @@ public class NumberBaseballService {
         numberBaseballRepository.generateComputerNumber();
     }
 
-    public List<Integer> inputUserAnswer(String userAnswer) {
+    public List<Integer> createResultList(String userAnswer) {
         userAnswerValidator.validateUserAnswer(userAnswer);
         List<Integer> userAnswerResultList = new ArrayList<>();
         userAnswerResultList.add(getStrikeCount(numberBaseballRepository.findComputerNumber(), userAnswer));
