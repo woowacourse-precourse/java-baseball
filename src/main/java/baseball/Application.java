@@ -12,6 +12,8 @@ public class Application {
         put("strike", 0);
         put("ball", 0);
     }};
+    static boolean correct = true;
+    static String isPlay = "1";
 
     private static void computerNumber(List<Integer> list){
         while(list.size() < 3){
@@ -66,21 +68,40 @@ public class Application {
         }
     }
 
+    private static void check3Strike(){
+        if(judgment.get("strike") == 3){
+            changeCorrect();
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            isPlay = Console.readLine(); //1, 2가 아닌경우 막아야함
+        }
+    }
+
+    private static void changeCorrect(){
+        correct = !correct;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        computer.clear();
-        computerNumber(computer);
+        while(isPlay.equals("1")){
+            if(correct){
+                changeCorrect();
+                computer.clear();
+                computerNumber(computer);
+            }
 
-        judgment.put("strike", 0);
-        judgment.put("ball", 0);
+            judgment.put("strike", 0);
+            judgment.put("ball", 0);
+            player.clear();
 
-        player.clear();
-        playerNumber(player);
+            playerNumber(player);
 
-        findNumber();
-        checkJudgment();
+            findNumber();
+            checkJudgment();
+            check3Strike();
+        }
 
         System.out.println("게임 종료");
     }
