@@ -96,6 +96,10 @@ public class Application {
         if(command.equals("2")) game_over = true;
     }
 
+    public static void iscommand(String command){
+        if(!(command.equals("1") || command.equals("2"))) throw new IllegalArgumentException("입력 값은 1 또는 2여야 합니다.");
+    }
+
 
 
     public static void main(String[] args) {
