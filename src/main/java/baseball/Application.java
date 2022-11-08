@@ -49,8 +49,8 @@ public class Application {
         return userNumber;
     }
 
-    public static boolean checkException(int num) {
-        String numString = Integer.toString(num);
+    public static boolean checkException(List<Integer> num) {
+        String numString = num.toString().replace("[","").replace("]","").replaceAll(",","").replaceAll(" ","");
         if (numString.length() != 3) {
             return false;
         }
