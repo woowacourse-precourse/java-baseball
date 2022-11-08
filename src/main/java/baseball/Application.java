@@ -42,6 +42,11 @@ public class Application {
     }
 
     static void playGame() {
+        boolean allStrike = true;
+        while (allStrike) {
+            readUser();
+            allStrike = !compareBall();
+        }
     }
 
     static boolean playNewGame() {
