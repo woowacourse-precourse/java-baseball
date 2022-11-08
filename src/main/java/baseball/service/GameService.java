@@ -44,10 +44,12 @@ public class GameService {
     }
 
     public String inputOneOrTwo() {
-        return Console.readLine();
+        String oneOrTwo = Console.readLine();
+        isNotRestartedAndQuitedGame(oneOrTwo);
+        return oneOrTwo;
     }
 
-    public void isNotRestartedAndQuitedGame(String oneOrTwo) {
+    private void isNotRestartedAndQuitedGame(String oneOrTwo) {
         if (!oneOrTwo.equals(RESTART_GAME) && !oneOrTwo.equals(QUIT_GAME)) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요");
         }
