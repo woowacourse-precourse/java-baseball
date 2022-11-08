@@ -32,10 +32,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class RandomNumbersTest {
+    class ComputerTest {
+        Computer computer = new Computer();
         @Test
         void 난수_생성시_중복여부_확인() {
-            List<Integer> randomNums = baseBallGame.randomNumbers();
+            List<Integer> randomNums = computer.randomNumbers();
             Set<Integer> setRandomNums = new HashSet<>(randomNums);
 
             assertEquals(randomNums.size(), setRandomNums.size());
@@ -43,62 +44,60 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 난수_범위가_1_9_인지_확인() {
-            List<Integer> randomNums = baseBallGame.randomNumbers();
+            List<Integer> randomNums = computer.randomNumbers();
             assertThat(randomNums.stream().allMatch(randomNum -> randomNum >= 1 && randomNum <= 9)).isTrue();
 
         }
     }
 
     @Nested
-    class inputNumbersTest {
+    class UserTest {
+        User user = new User();
         @Test
         void 숫자가_아닌_경우_에외_발생() {
             assertThrows(IllegalArgumentException.class, () -> {
-                baseBallGame.inputNumbers("aaa");
+                user.inputNumbers("aaa");
             });
         }
 
         @Test
         void 입력값의_길이가_3이_아닌_경우_예외_발생() {
             assertThrows(IllegalArgumentException.class, () -> {
-                baseBallGame.inputNumbers("12345");
+                user.inputNumbers("12345");
             });
 
             assertThrows(IllegalArgumentException.class, () -> {
-                baseBallGame.inputNumbers("12");
+                user.inputNumbers("12");
             });
         }
 
         @Test
         void 중복된_숫자가_있을_경우_예외_발생() {
             assertThrows(IllegalArgumentException.class, () -> {
-                baseBallGame.inputNumbers("111");
+                user.inputNumbers("111");
             });
         }
     }
 
     @Nested
-    class findNumberTest {
+    class GameTest {
+        Game game = new Game();
         @Test
         void find_Number함수_볼_스트라이크_결과_반환() {
             List<Integer> computerNumber = List.of(1, 2, 3);
-            List<Integer> strikeAndBall1 = baseBallGame.findNumber(computerNumber, List.of(1, 3, 0));
-            assertEquals("1볼 1스트라이크", baseBallGame.numberToString(strikeAndBall1));
+            game.setComputer(computerNumber);
 
-            List<Integer> strikeAndBall2 = baseBallGame.findNumber(computerNumber, List.of(1, 4, 5));
-            assertEquals("1스트라이크", baseBallGame.numberToString(strikeAndBall2));
-
-            List<Integer> strikeAndBall3 = baseBallGame.findNumber(computerNumber, List.of(4, 5, 1));
-            assertEquals("1볼", baseBallGame.numberToString(strikeAndBall3));
+            assertEquals("1볼 1스트라이크", game.gameRun(List.of(1, 3, 0)));
+            assertEquals("1스트라이크", game.gameRun(List.of(1, 4, 5)));
+            assertEquals("1볼", game.gameRun(List.of(4, 5, 1)));
 
         }
 
         @Test
         void _3스트라이크인_경우_게임_종료_반환() {
-            List<Integer> numbers = List.of(1, 2, 3);
-            List<Integer> strikeAndBall = baseBallGame.findNumber(numbers, numbers);
-
-            assertEquals("게임 종료", baseBallGame.numberToString(strikeAndBall));
+            List<Integer> computerNumber = List.of(1, 2, 3);
+            game.setComputer(computerNumber);
+            assertEquals("게임 종료", game.gameRun(List.of(1, 2, 3)));
         }
     }
 
@@ -112,8 +111,7 @@ class ApplicationTest extends NsTest {
             });
         }
     }
-
-
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
