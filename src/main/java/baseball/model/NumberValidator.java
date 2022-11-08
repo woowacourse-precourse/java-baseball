@@ -8,7 +8,7 @@ public class NumberValidator {
         return numbers.size() == numbers.stream().distinct().count();
     }
 
-    public static boolean isNumberExistInList(Integer integer, List<Integer> computerNum) {
-        return false;
+    public static boolean isNumberExistInList(Integer number, List<Integer> computerNum) {
+        return computerNum.contains(number);
     }
 }
