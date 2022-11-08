@@ -20,6 +20,8 @@ public class Application {
             List<Integer> user = new ArrayList<>();
             // 사용자에게 숫자 입력받기
             String user_number = getTheUserToInputNumber();
+            // 사용자의 숫자가 3자리가 아닌 경우 예외 처리
+            exceptionIfNumberIsNotThreeDigits(user_number.length());
         }
     }
 
@@ -38,5 +40,11 @@ public class Application {
     public static String getTheUserToInputNumber() {
         System.out.println("숫자를 입력해 주세요");
         return Console.readLine();
+    }
+    // 사용자의 숫자가 3자리가 아닌 경우 예외 처리
+    public static void exceptionIfNumberIsNotThreeDigits(int len) {
+        if (len != numberOfDigits) {
+            throw new IllegalArgumentException("숫자를 제대로 입력하시지 않았습니다.");
+        }
     }
 }
