@@ -16,7 +16,7 @@ public class BaseBallService {
         user = new User();
     }
 
-    public Score inputAndCompareAnswer(String input) {
+    public Score compareAnswer(String input) {
         List<Integer> numbers = user.toList(input);
         return baseBall.compareAnswer(numbers);
     }

@@ -31,7 +31,7 @@ public class BaseBallController {
         while (canContinueGame(score)) {
             InputView.printInputMessage();
             String input = Console.readLine();
-            score = baseBallService.inputAndCompareAnswer(input);
+            score = baseBallService.compareAnswer(input);
             OutputView.printResultMessage(score);
         }
     }
