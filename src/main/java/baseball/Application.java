@@ -13,6 +13,7 @@ public class Application {
                     PlayResult playResult = game.playGame(Console.readLine().split(""));
                     isEnd = playResult.success();
                 }
+                if(Console.readLine() == "2") break;
             }
         } catch (Exception e) {
             e.printStackTrace();
