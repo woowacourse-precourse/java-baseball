@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.GameMessage.*;
+
 class Game {
     public static final int MAX_ANSWER_SIZE = 3;
     public static final int MIN_ANSWER_NUMBER = 1;
@@ -27,11 +29,11 @@ class Game {
 
     public int play() {
         answerList = initAnswerList();
-        System.out.println(GameMessage.START.message());
+        System.out.println(START.message());
 
         Hint hint = new Hint(answerList);
         while (true) {
-            System.out.print(GameMessage.TYPE_USER_GUESS.message());
+            System.out.print(TYPE_USER_GUESS.message());
 
             List<Integer> guess = getUserGuess();
             if (isCorrect(guess))
@@ -40,16 +42,16 @@ class Game {
             System.out.println(hint.retrieve(guess));
         }
 
-        System.out.println(GameMessage.CORRECT.message());
-        System.out.println(GameMessage.REPLAY_OR_END.message());
+        System.out.println(CORRECT.message());
+        System.out.println(REPLAY_OR_END.message());
 
         return getRegameOption();
     }
 
     private int getRegameOption() {
         int input = Integer.parseInt(Console.readLine());
-        if(input != REPLAY && input != EXIT)
-            throw new IllegalArgumentException("1 혹은 2를 입력하지 않으셨습니다.");
+        if (input != REPLAY && input != EXIT)
+            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_OPTION.message());
         return input;
     }
 
@@ -63,19 +65,23 @@ class Game {
             }
         }
 
-        System.out.println("randomNumberList = " + answerList);
         return answerList;
     }
 
     public List<Integer> getUserGuess() {
         String input = Console.readLine();
-        List<Integer> guess = Arrays.stream(input.split(""))
-                .map(Integer::valueOf)
-                .collect(Collectors.toList());
+        List<Integer> guess;
+        try {
+            guess = Arrays.stream(input.split(""))
+                    .map(Integer::valueOf)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS.message());
+        }
 
-        for(int g : guess){
-            if(!(1 <= g && g <= 9))
-                throw new IllegalArgumentException("입력 숫자 범위는 1~9 여야 합니다.");
+        for (int g : guess) {
+            if (!(MIN_ANSWER_NUMBER <= g && g <= MAX_ANSWER_NUMBER))
+                throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS.message());
         }
         return guess;
     }
