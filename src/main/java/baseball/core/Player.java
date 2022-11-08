@@ -16,14 +16,13 @@ import static baseball.util.BaseballConst.MAX_BALL_COUNT;
 
 public class Player {
 
-
-    private List<Integer> threeNumbers;
     private String inputString;
 
-    public void inputThreeNumbers(String inputString) throws BaseballException {
+    public List<Integer> inputThreeNumbers(String inputString) throws BaseballException {
         this.inputString = inputString;
-        this.threeNumbers = getThreeNumbers(inputString);
+        List<Integer> threeNumbers = getThreeNumbers(inputString);
         validateIntegerList(threeNumbers);
+        return threeNumbers;
     }
 
     private List<Integer> getThreeNumbers(String inputString) {
@@ -59,10 +58,6 @@ public class Player {
         if (numSet.size() != integerList.size()) {
             throw new DuplicateNumberException(inputString);
         }
-    }
-
-    public List<Integer> sayThreeNumbers() {
-        return threeNumbers;
     }
 
     public StatusCode inputStatusCode(String inputString) throws BaseballException {

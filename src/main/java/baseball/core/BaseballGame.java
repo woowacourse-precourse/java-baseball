@@ -30,9 +30,8 @@ public class BaseballGame {
 
         do {
             console.printNumberInputMessage();
-            player.inputThreeNumbers(Console.readLine());
+            List<Integer> threeNumbers = player.inputThreeNumbers(Console.readLine());
 
-            List<Integer> threeNumbers = player.sayThreeNumbers();
             answer = computer.answer(threeNumbers);
             console.printResultMessage(answer);
 
