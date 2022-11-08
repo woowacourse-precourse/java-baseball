@@ -29,5 +29,9 @@ class ErrorCheckingTest {
 
     @Test
     void checkingContaingZero() {
+        boolean answer = ErrorChecking.checkingContaingZero("123");
+        assertTrue(answer);
+        boolean answerX = ErrorChecking.checkingContaingZero("103");
+        assertFalse(answerX);
     }
 }
