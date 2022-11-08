@@ -41,7 +41,7 @@ public class InputUserNumberException {
 
     public void checkInputRestartNumber(String choiceRestartNumber) {
         int choiceRestartNumberToInt = Integer.parseInt(choiceRestartNumber);
-        if (choiceRestartNumberToInt < 1 || choiceRestartNumberToInt > 2) {
+        if (!(choiceRestartNumberToInt == 1 || choiceRestartNumberToInt == 2)) {
             throw new IllegalArgumentException("1또는 2를 입력해주세요");
         }
     }
