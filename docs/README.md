@@ -4,7 +4,7 @@
 
 ## Application
 - [x] 맨 첫번째 게임의 객체를 생성한다.
-- [ ] IO Controller 객체를 생성한다.
+- [x] IO Controller 객체를 생성한다.
 
 ## InputOutputController
 - [x] 관리자가 숫자야구의 입출력을 무엇으로 할지 정할 수 있도록 한다.
