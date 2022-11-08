@@ -19,7 +19,7 @@ class Computer {
 		while (numberList.size() < SIZE) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
 			if (!numberList.contains(randomNumber)) {
-				numberList.add(randomNumber);
+					numberList.add(randomNumber);
 			}
 		}
 	}

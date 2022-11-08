@@ -34,18 +34,18 @@ class Game {
 		while (true) {
 			getAnswer = false;
 			if (!game_flag) {
-				computer.getThreeRandomNumber();
-				game_flag = true;
+					computer.getThreeRandomNumber();
+					game_flag = true;
 			}
 			while (!getAnswer) {
-				initResult();
-				getNumber();
-				getScore();
-				printMessage(RESULT);
+					initResult();
+					getNumber();
+					getScore();
+					printMessage(RESULT);
 			}
 			whenFinish();
 			if (Player.number == FINISH_GAME)
-				return;
+					return;
 			game_flag = false;
 		}
 	}
@@ -96,6 +96,8 @@ class Game {
 		}
 		if (checkSameNumber())
 			throw new IllegalArgumentException("same value");
+		if (!getAnswer && Player.numberList.contains(0))
+			throw new IllegalArgumentException("wrong value (0)");
 	}
 
 	private void checkInput() {
@@ -106,7 +108,6 @@ class Game {
 		}
 		if (!getAnswer && Player.numberString.length() != SIZE)
 			throw new IllegalArgumentException("wrong size");
-
 		if (getAnswer && !(Player.number == NEW_GAME || Player.number == FINISH_GAME))
 			throw new IllegalArgumentException("wrong value");
 	}
@@ -116,12 +117,11 @@ class Game {
 
 		for (int num : Player.numberList) {
 			if (usedNumber.contains(num))
-				return true;
+					return true;
 			usedNumber.add(num);
 		}
 		return false;
 	}
-
 
 	void getScore() {
 		checkStrike();
@@ -133,8 +133,8 @@ class Game {
 
 		for (int i = 0; i < SIZE; i++) {
 			if (computer.numberList.get(i) == Player.numberList.get(i)) {
-				strike++;
-				strikeSet.add(i);
+					strike++;
+					strikeSet.add(i);
 			}
 		}
 	}
@@ -142,7 +142,7 @@ class Game {
 	private void checkBall() {
 		for (int i = 0; i < SIZE; i++) {
 			if (strikeSet.contains(i))
-				continue;
+					continue;
 			addBall(i);
 		}
 	}
@@ -150,8 +150,8 @@ class Game {
 	private void addBall(int i) {
 		for (int j = 0; j < SIZE; j++) {
 			if (computer.numberList.get(i) == Player.numberList.get(j)) {
-				ball++;
-				break;
+					ball++;
+					break;
 			}
 		}
 	}
