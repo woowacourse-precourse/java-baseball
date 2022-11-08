@@ -14,18 +14,31 @@ public class GameResult {
     calculateResult(answerNumberList, gameNumberList);
   }
 
-  public void printResult() {
-    String result = "";
-    if (strikeCount + ballCount == 0) result += "낫싱";
-    else {
-      if (ballCount != 0) result += ballCount + "볼 ";
-      if (strikeCount != 0) result += strikeCount + "스트라이크";
-    }
-    System.out.println(result);
+  public String getResultString(){
+    if (strikeCount + ballCount == 0) return "낫싱";
+    return getBallString() + getStrikeString();
+  }
+
+  private String getStrikeString(){
+    if (strikeCount != 0) return strikeCount + "스트라이크";
+    else return "";
+  }
+
+  private String getBallString(){
+    if (ballCount != 0) return ballCount + "볼 ";
+    else return "";
   }
 
   public boolean isAnswer() {
     return strikeCount == 3;
+  }
+
+  public int getStrikeCount() {
+    return strikeCount;
+  }
+
+  public int getBallCount() {
+    return ballCount;
   }
 
   private void calculateResult(List<Integer> answerNumberList, List<Integer> gameNumberList) {

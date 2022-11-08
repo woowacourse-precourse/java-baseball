@@ -18,7 +18,7 @@ public class BaseBallGame {
       else {
         GameResult result = new GameResult();
         result.setResultByGameNumber(computer.getAnswerNumber(), gameNumber);
-        result.printResult();
+        System.out.println(result.getResultString());
         if (result.isAnswer()) {
           System.out.println(GameMessage.GAME_FINISH_MESSAGE.getMessage());
           isGameOver = !checkRestart();
