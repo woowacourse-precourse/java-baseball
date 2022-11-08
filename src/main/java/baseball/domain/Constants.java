@@ -6,7 +6,7 @@ public class Constants {
 	public static final int MIN_NUMBER = 1;
 	public static final int NUMBER_SIZE = 3;
 
-	public static final String MSG_STRIKE = "스트라이크";
-	public static final String MSG_BALL = "볼";
-	public static final String MSG_NOTHING = "낫싱";
+	public static final String STRIKE_MSG = "스트라이크";
+	public static final String BALL_MSG = "볼";
+	public static final String NOTHING_MSG = "낫싱";
 }
