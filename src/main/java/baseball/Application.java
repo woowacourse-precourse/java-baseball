@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -27,4 +28,15 @@ public class Application {
             return computerNumber;
         }
 
+
+    //2. 플레이어 수 입력받기
+    public static String getPlayerNumber () throws IllegalArgumentException {
+        String input = Console.readLine().trim();
+        if(isValidNumber(input)){
+            return input;
+        }
+        throw new IllegalArgumentException();
     }
+
+
+}
