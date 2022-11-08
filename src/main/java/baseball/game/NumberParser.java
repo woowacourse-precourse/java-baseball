@@ -1,5 +1,6 @@
-package baseball.data;
+package baseball.game;
 
+import baseball.data.BaseballData;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.Set;
 import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 
 /**
- * 문자열로 입력받은 숫자들을 리스트에 옮겨담는다.
+ * 1. 입력받은 문자열에서 입력 오류가 있는지 검사.
+ * 2. 오류가 없으면 정수형으로 변환 후 리스트에 옮긴다.
  */
 public class NumberParser {
 
@@ -19,11 +21,12 @@ public class NumberParser {
      */
     public List<Integer> parsePlayerNumber(String playerNumberString) {
         List<Integer> parsedNumbers;
+        checkPlayerStringException(playerNumberString);
         int tempNumbers;
         try{
             tempNumbers = Integer.parseInt(playerNumberString);
             parsedNumbers = divideNumbers(tempNumbers);
-            checkGuessPhaseExceptions(parsedNumbers);
+            checkPlayerIntegerExceptions(parsedNumbers);
         }
         catch(Exception e){
             throw new IllegalArgumentException("잘못된 입력입니다.");
@@ -39,11 +42,11 @@ public class NumberParser {
      * @param parsedNumbers 플레이어가 입력한 숫자 리스트
      * @throws IllegalArgumentException
      */
-    public void checkGuessPhaseExceptions(List<Integer> parsedNumbers) throws IllegalArgumentException {
-        Set<Integer> tempSet = new HashSet<>(parsedNumbers);
-        if(tempSet.size() != parsedNumbers.size()){
+    public void checkPlayerIntegerExceptions(List<Integer> parsedNumbers) {
+        Set<Integer> playerNumbersHashSet = new HashSet<>(parsedNumbers);
+        if(playerNumbersHashSet.size() != parsedNumbers.size()){
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        } else if(parsedNumbers.size() != BaseballData.GAME_SIZE){
+        } else if(playerNumbersHashSet.size() != BaseballData.GAME_SIZE){
             throw new IllegalArgumentException("3개의 숫자만 입력해주세요");
         }
     }
@@ -64,5 +67,22 @@ public class NumberParser {
             divider = divider / BaseballData.DIVIDE_TARGET; // 자릿수 한칸 이동
         }
         return tempNumbers;
+    }
+
+    public void checkPlayerStringException(String playerNumberString){
+        checkIsDigitPlayerString(playerNumberString);
+        if(playerNumberString.length() != BaseballData.GAME_SIZE){
+            throw new IllegalArgumentException("3개의 숫자만 입력해주세요.");
+        }
+    }
+
+    public void checkIsDigitPlayerString(String playerNumberString){
+        char oneCharacter;
+        for(int index = 0; index < playerNumberString.length(); index ++ ){
+            oneCharacter = playerNumberString.charAt(index);
+            if(!Character.isDigit(oneCharacter)){
+                throw new IllegalArgumentException("숫자만 입력해주세요");
+            }
+        }
     }
 }

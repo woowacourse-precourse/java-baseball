@@ -1,4 +1,4 @@
-package baseball.data;
+package baseball.game;
 
 import java.util.List;
 
@@ -26,7 +26,6 @@ public class NumberReferee {
                 strike++;
             }
         }
-
         return strike;
     }
 
@@ -46,7 +45,6 @@ public class NumberReferee {
                 ball++;
             }
         }
-
         return (ball - strike);
     }
 }

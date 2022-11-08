@@ -1,16 +1,19 @@
 package baseball;
 
 import baseball.data.BaseballData;
-import baseball.data.NumberParser;
-import baseball.data.NumberReferee;
-import baseball.data.ComputerInput;
-import baseball.data.PlayerInput;
+import baseball.game.NumberParser;
+import baseball.game.NumberReferee;
+import baseball.game.ComputerInput;
+import baseball.game.PlayerInput;
 import java.util.List;
-import java.util.ArrayList;
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+    private static final PlayerInput playerInput = new PlayerInput();
+    private static final ComputerInput computerInput = new ComputerInput();
+    private static final NumberReferee numberReferee = new NumberReferee();
+    private static final NumberParser numberParser = new NumberParser();
+
     public static void main(String[] args) {
         StartNumberBaseballGame();
     }
@@ -25,13 +28,10 @@ public class Application {
     }
 
     public static void StartGuessingPhase(List<Integer> computer) { // 병목지점. 반드시 메서드를 분리해야됨.
-        NumberParser numberParser = new NumberParser();
-        NumberReferee numberReferee = new NumberReferee();
-        PlayerInput playerInput = new PlayerInput();
         List<Integer> player;
         int strike = 0;
         int ball = 0;
-        while (strike != NumberParser.NUMBER_LENGTH) {
+        while (strike != BaseballData.GAME_SIZE) {
             String input = playerInput.inputPlayerString();
             player = numberParser.parsePlayerNumber(input);
             strike = numberReferee.checkStrike(player, computer);
