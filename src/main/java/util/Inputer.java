@@ -27,6 +27,7 @@ public class Inputer {
     }
 
     private List<Integer> stopOrGo(String input){
+        flag = true;
         if(Integer.parseInt(input) == 1) {
             return List.of(1);
         }
