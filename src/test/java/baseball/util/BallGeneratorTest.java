@@ -14,7 +14,7 @@ public class BallGeneratorTest {
     private BallGenerator ballGenerator;
 
     @BeforeEach
-    void initial() {
+    void initialize() {
         ballGenerator = new BallGenerator();
     }
 
@@ -48,6 +48,17 @@ public class BallGeneratorTest {
     @Test
     void 사용자_공에_1부터_9까지가_아닌_수가_포함되면_예외가_발생합니다() {
         String input = "120";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> {
+            ballGenerator.createPlayerBalls();
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 사용자_공에_문자가_포함되면_예외가_발생합니다() {
+        String input = "12#";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
