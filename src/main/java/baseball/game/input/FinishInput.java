@@ -1,20 +1,17 @@
 package baseball.game.input;
 
 public enum FinishInput {
-    RESTART_GAME(1),
-    QUIT_GAME(2);
+    RESTART_GAME,
+    QUIT_GAME;
 
-    private final int input;
-
-    FinishInput(int input) {
-        this.input = input;
-    }
+    public static final int RESTART_GAME_INPUT = 1;
+    public static final int QUIT_GAME_INPUT = 2;
 
     public static FinishInput numberOf(int input) {
         switch (input) {
-            case 1:
+            case RESTART_GAME_INPUT:
                 return FinishInput.RESTART_GAME;
-            case 2:
+            case QUIT_GAME_INPUT:
                 return FinishInput.QUIT_GAME;
             default:
                 throw new IllegalArgumentException("1또는 2를 입력해주세요.");
