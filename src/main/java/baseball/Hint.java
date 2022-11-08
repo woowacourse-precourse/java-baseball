@@ -10,8 +10,8 @@ public enum Hint {
     ONLY_STRIKE(count -> String.format("%s스트라이크", count.getStrikeCount()), count -> count.getBallCount() == 0 && count.getStrikeCount() >= 1),
     BALL_AND_STRIKE(count -> String.format("%s볼 %s스트라이크", count.getBallCount(), count.getStrikeCount()), count -> count.getBallCount() >= 1 && count.getStrikeCount() >= 1);
 
-    private Function<Count, String> messageExpression;
-    private Predicate<Count> conditionalExpression;
+    private final Function<Count, String> messageExpression;
+    private final Predicate<Count> conditionalExpression;
 
     Hint(Function<Count, String> messageExpression, Predicate<Count> conditionalExpression) {
         this.messageExpression = messageExpression;
@@ -22,7 +22,7 @@ public enum Hint {
         System.out.println(Arrays.stream(values())
                 .filter(hint -> hint.conditionalExpression.test(count))
                 .findAny()
-                .orElse(NOTHING)
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 값이 입력되었습니다."))
                 .getMessage(count));
     }
 
