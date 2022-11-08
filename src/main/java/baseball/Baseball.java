@@ -28,16 +28,22 @@ public class Baseball {
         }
     }
 
-    private boolean isValidNumber() {
+    private boolean isAllDigit() {
+        boolean result = true;
+
+        for (int i = 0; i < user.length() && result; i++) {
+            result = Character.isDigit(user.charAt(i) - '0');
+        }
+        return (result);
+    }
+
+    private void CheckValidNumber() {
         if (user.length() != LEN) {
-            return false;
+            throw new IllegalArgumentException("");
         }
-        for (int i = 0; i < user.length(); i++) {
-            if (!Character.isDigit(user.charAt(i))) {
-                return false;
-            }
+        else if (!isAllDigit()) {
+            throw new IllegalArgumentException("");
         }
-        return true;
     }
 
     private void readNumbers() {
@@ -72,9 +78,7 @@ public class Baseball {
         while (!isAnswer) {
             gameInfo = new GameInfo();
             readNumbers();
-            if (!isValidNumber()) {
-                throw new IllegalArgumentException("");
-            }
+            CheckValidNumber();
             compareNumber();
             printResult();
             isAnswer = gameInfo.isAnswer();
