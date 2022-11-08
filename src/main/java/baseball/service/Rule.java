@@ -1,5 +1,7 @@
 package baseball.service;
 
+import baseball.view.InputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class Rule {
     }
 
     public void generateRandomNumber() {
-        computer.number = ThreeNumberGenerator.generate();
+        computer.generateRandomNumber();
     }
 
     public List<Integer> decideStrikeOrBall() {
@@ -27,10 +29,20 @@ public class Rule {
     }
 
     private int countStrike(List<Integer> result) {
-
+        return 0;
     }
 
     private int countBall(List<Integer> result) {
+        return 0;
+    }
 
+    public void getNumberByPlayer() {
+        String input = InputView.read();
+        if(isValid(input)) {
+            player.setNumber(input);
+        }
+    }
+
+    public boolean isValid(String input) {
     }
 }
