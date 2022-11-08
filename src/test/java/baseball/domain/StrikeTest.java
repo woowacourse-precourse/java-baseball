@@ -1,8 +1,8 @@
 package baseball.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -36,6 +36,7 @@ class StrikeTest {
         }
     }
 
+    @DisplayName("메소드 통합 테스트")
     @Test
     void IntegratedTest() {
         final var strike1 = new Strike();

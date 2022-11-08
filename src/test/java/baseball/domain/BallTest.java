@@ -36,6 +36,7 @@ class BallTest {
         }
     }
 
+    @DisplayName("메소드 통합 테스트")
     @Test
     void IntegratedTest() {
         final var ball1 = new Ball();
