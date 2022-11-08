@@ -1,6 +1,7 @@
 package baseball.util;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class InputUtility {
@@ -10,6 +11,11 @@ public class InputUtility {
         if (!validProcess.contains(input)) {
             throw new IllegalArgumentException("유효하지 않은 문자입니다.");
         }
+    }
+
+    private static boolean isDuplicated(String input) {
+        String deduplicatedInput = String.join("", new HashSet<>(List.of(input.split(""))));
+        return deduplicatedInput.length() != input.length();
     }
 
 }
