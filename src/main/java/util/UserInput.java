@@ -51,7 +51,28 @@ public class UserInput {
         return true;
     }
 
-    public static boolean isValidGameStateInput(String restartInput) {
+    public static boolean isValidGameStateInput(String userInput) {
+        return isValidRestart(userInput) || isValidEnd(userInput);
+    }
+
+    private static boolean isValidRestart(String userInput) {
+
+        if (hasNotCharacter(userInput)){
+            if (userInput.equals(Integer.toString(Constants.RESTART))){
+                return true;
+            }
+        }
+
         return false;
     }
+    private static boolean isValidEnd(String userInput) {
+
+        if (hasNotCharacter(userInput)){
+            if (userInput.equals(Integer.toString(Constants.END))){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
