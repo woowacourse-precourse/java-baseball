@@ -26,13 +26,20 @@ public class BaseBall {
     public void play() throws IllegalArgumentException {
         Numbers computerNumbers = numberGenerator.generateUniqueNumbersInRange(NUMBER_MIN_VALUE, NUMBER_MAX_VALUE, COUNT_OF_NUMBERS);
 
-        Optional<Numbers> playerNumbers = getPlayerNumbers();
-        if (playerNumbers.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
+        while (true) {
+            Optional<Numbers> playerNumbers = getPlayerNumbers();
+            if (playerNumbers.isEmpty()) {
+                throw new IllegalArgumentException();
+            }
 
-        BallCount bc = ballCount(computerNumbers, playerNumbers.get());
-        output.ballCount(bc);
+            BallCount bc = ballCount(computerNumbers, playerNumbers.get());
+            output.ballCount(bc);
+
+            if (bc.getStrike() == COUNT_OF_NUMBERS) {
+                output.correct();
+                break;
+            }
+        }
     }
 
     private Optional<Numbers> getPlayerNumbers() {

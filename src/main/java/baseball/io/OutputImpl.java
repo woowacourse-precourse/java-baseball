@@ -15,4 +15,9 @@ public class OutputImpl implements Output {
         if (bc.getStrike() > 0) System.out.println(bc.getStrike() + "스트라이크");
         else System.out.print("\n");
     }
+
+    @Override
+    public void correct() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }

@@ -6,4 +6,6 @@ public interface Output {
     void start();
 
     void ballCount(BallCount bc);
+
+    void correct();
 }
