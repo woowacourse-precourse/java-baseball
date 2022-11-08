@@ -36,13 +36,13 @@ public class ResultModel {
         NumList.add(num % 10);
     }
 
-    public void compareInputNumWithResultList(int inputNum, List<Integer> resultNumList, int idx) {
-        if(resultNumList.contains(inputNum)) {
-            if(resultNumList.get(idx) == inputNum) {
+    public void compareInputListWithResultList(List<Integer> inputNumList, List<Integer> resultNumList, int idx) {
+        if(resultNumList.contains(inputNumList.get(idx))) {
+            if(resultNumList.get(idx) == inputNumList.get(idx)) {
                 strikeNum = strikeNum + 1;
             }
 
-            if(resultNumList.get(idx) != inputNum) {
+            if(resultNumList.get(idx) != inputNumList.get(idx)) {
                 ballNum = ballNum + 1;
             }
         }
@@ -53,7 +53,7 @@ public class ResultModel {
         injectElementToList(inputNumList, inputNum);
 
         for(int idx=0 ; idx<3 ; idx++) {
-            compareInputNumWithResultList(inputNumList.get(idx), resultNumList, idx);
+            compareInputListWithResultList(inputNumList, resultNumList, idx);
         }
     }
 
