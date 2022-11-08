@@ -37,7 +37,7 @@ public class PlayerInput {
         }
 
         for (int i = 0; i < playerInputs.length(); i ++) {
-            if(playerInputs.indexOf(playerInputs.charAt(i)) == i) {
+            if(playerInputs.indexOf(playerInputs.charAt(i)) != i) {
                 throw new IllegalArgumentException(EXCEPTION_MESSAGE);
             }
         }
