@@ -32,6 +32,7 @@ public class User {
      * 사용자의 서로 다른 3자리의 수 입력을 받아 검증 후 userInputList 에 저장하는 메소드
      */
     public void getUserGuessInput() {
+        System.out.print("숫자를 입력해주세요 : ");
         String userInput = camp.nextstep.edu.missionutils.Console.readLine();
         if (validateUserGuessInput(userInput)) {
             convertGuessInputToList(userInput);
