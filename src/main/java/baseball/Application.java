@@ -129,16 +129,13 @@ public class Application {
         String answer;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        try{
-            do {
-                answer = makeAnswer();
-                playBaseball(answer);
 
-            } while(checkRepeate());
-            System.out.println("게임 종료");
+        do {
+            answer = makeAnswer();
+            playBaseball(answer);
 
-        } catch(IllegalArgumentException e){
-            System.out.println(e);
-        }
+        } while(checkRepeate());
+        System.out.println("게임 종료");
+
     }
 }
