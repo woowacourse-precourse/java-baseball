@@ -22,7 +22,7 @@
       세 수를 생성)
 - view
     - PrintResult.java (결과 값을 전달받아 화면에 출력하는 역할 담당)
-    - UserInput.java (게임 진행에 필요한 유저 입력값을 받음, 게임 시작 및 종료 여부 입력을 받음)
+    - UserInput.java (게임 진행에 필요한 유저 입력값을 받아 변환, 게임 시작 및 종료 여부 입력을 받음)
 - util
     - Validator.java (검증 로직들을 담당) 
 - Application.java (실제 게임 실행을 담당)
