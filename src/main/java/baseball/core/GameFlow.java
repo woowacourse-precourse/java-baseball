@@ -33,7 +33,6 @@ public class GameFlow {
             if (numberOfStrike == 3) {
                 System.out.println(correctNumber);
                 String selectGameStatus = Console.readLine();
-                InputException.validateInputNumber(inputNumber);
                 currentStatus = changeGameStatus(currentStatus, selectGameStatus);
             } else {
                 printBallAndStrike(numberOfBall, numberOfStrike);

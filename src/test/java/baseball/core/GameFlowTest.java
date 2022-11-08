@@ -1,6 +1,7 @@
 package baseball.core;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static baseball.core.GameStatus.*;
@@ -8,10 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GameFlowTest {
 
+    String targetNumber;
+
+    @BeforeEach
+    void 정답숫자_초기화() {
+        targetNumber = "123";
+    }
+
     @Test
     void 입력숫자가_123인_경우() {
 
-        String targetNumber = "123";
         String inputNumber = "123";
         BaseballGame baseballGame = new BaseballGame(targetNumber, GameStatus.START);
         GameStatus currentStatus = baseballGame.getCurrentStatus();
@@ -29,7 +36,6 @@ class GameFlowTest {
     @Test
     void 입력숫자가_357인_경우() {
 
-        String targetNumber = "123";
         String inputNumber = "357";
         BaseballGame baseballGame = new BaseballGame(targetNumber, GameStatus.START);
         GameStatus currentStatus = baseballGame.getCurrentStatus();
