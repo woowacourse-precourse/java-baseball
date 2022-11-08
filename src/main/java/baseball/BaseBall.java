@@ -56,7 +56,7 @@ public class BaseBall {
 	}
 
 	private void makeGoal() {
-		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
+		for (int idx = Constants.NUM_DIGIT-1; idx >= 0; idx--) {
 			int randomNum = makeNumber();
 			makeNumberOrder(this.goalArr, randomNum, idx);
 			makeNumberUsage(this.goalUsageArr, randomNum);
@@ -68,6 +68,7 @@ public class BaseBall {
 		while (this.goalUsageArr[number] != 0) {
 			number = Randoms.pickNumberInRange(1, 9);
 		}
+		System.out.println(number);
 		return number;
 	}
 
