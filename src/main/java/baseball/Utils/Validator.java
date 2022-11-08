@@ -5,15 +5,14 @@ import java.util.Set;
 
 public class Validator {
 
-    private static final int VALID_INPUT_LENGTH = 3;
-    String input;
+    private final String input;
 
     public Validator(String input) {
         this.input = input;
     }
 
     public void isLengthThree() {
-        if (input.length() != VALID_INPUT_LENGTH) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException("3자리의 숫자를 입력해주세요(ex. 123)");
         }
     }
