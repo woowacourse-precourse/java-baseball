@@ -81,14 +81,25 @@ public class Application {
             if (!Character.isDigit(input.charAt(index))) {
                 System.out.println("입력하신 데이터에 숫자가 아닌 것이 존재합니다.");
                 System.out.printf("\'%s\'는 숫자가 아닙니다.\n", String.valueOf(input.charAt(index)));
-                System.out.println("'456', '147'과 같은 형식으로 3자리의 숫자를 입력해주세요.");
+                System.out.println("'456', '147'과 같은 형식으로 3자리 숫자를 입력해주세요.");
                 return false;
             } else if (!(1 <= number && 9 >= number)) {
                 System.out.println("입력하신 숫자는 입력 범위를 초과합니다.");
                 System.out.println("1부터 9까지의 숫자 중 하나의 숫자들로 이루어진 3자리 숫자를 입력해주세요.");
                 return false;
+            } else if (index==0) {
+                if (input.charAt(index) == input.charAt(index+1) || input.charAt(index) == input.charAt(index+2)){
+                    System.out.println("입력하신 숫자에는 중복되는 숫자가 존재합니다.");
+                    System.out.println("서로 다른 3자리 숫자를 입력해주세요.");
+                    return false;
+                }
+            } else if (index==1) {
+                if (input.charAt(index) == input.charAt(index+1)) {
+                    System.out.println("입력하신 숫자에는 중복되는 숫자가 존재합니다.");
+                    System.out.println("서로 다른 3자리 숫자를 입력해주세요.");
+                    return false;
+                }
             }
-
         }
         return true;
     }
