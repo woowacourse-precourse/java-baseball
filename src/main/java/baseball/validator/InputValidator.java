@@ -52,7 +52,7 @@ public class InputValidator {
     public static void validateStateNumber(String stateNumber) {
         validateType(stateNumber);
         validateStateLength(stateNumber);
-        validateNumber(stateNumber);
+        validateValue(stateNumber);
     }
 
     private static void validateStateLength(String stateNumber) {
@@ -61,9 +61,9 @@ public class InputValidator {
         }
     }
 
-    private static void validateNumber(String stateNumber) {
-        if(!State.isValidNumber(stateNumber)) {
-            throw new IllegalArgumentException(Message.STATE_NUMBER_EXCEPTION);
+    private static void validateValue(String stateNumber) {
+        if(!State.isValidValue(stateNumber)) {
+            throw new IllegalArgumentException(Message.STATE_VALUE_EXCEPTION);
         }
     }
 }

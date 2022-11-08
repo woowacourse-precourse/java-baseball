@@ -111,11 +111,11 @@ public class InputValidatorTest {
         assertThatThrownBy(() -> {
             InputValidator.validateStateNumber("0");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.STATE_NUMBER_EXCEPTION);
+                .hasMessageContaining(Message.STATE_VALUE_EXCEPTION);
 
         assertThatThrownBy(() -> {
             InputValidator.validateStateNumber("3");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Message.STATE_NUMBER_EXCEPTION);
+                .hasMessageContaining(Message.STATE_VALUE_EXCEPTION);
     }
 }

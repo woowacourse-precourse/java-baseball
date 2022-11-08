@@ -38,7 +38,7 @@ public enum State {
         return state.get();
     }
 
-    public static boolean isValidNumber(String number) {
+    public static boolean isValidValue(String number) {
         state = Optional.ofNullable(numbers.get(number));
         return state.isPresent();
     }
