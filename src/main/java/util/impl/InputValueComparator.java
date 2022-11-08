@@ -9,8 +9,21 @@ public class InputValueComparator implements Comparator {
     @Override
     public List<Integer> doIntCompare(List<Integer> standard, List<Integer> target) {
         List<Integer> result = new ArrayList<>();
+        int ball = 0, strike = 0;
+        for(int i = 0 ; i < 3 ; i++) {
+            ball += countBall(standard, target.get(i), i);
+        }
+        strike = countStrike(standard, target);
 
-        return null;
+        result.add(ball);
+        result.add(strike);
+        if(ball == 0 && strike == 0) {
+            result.add(1);
+        }
+        else {
+            result.add(0);
+        }
+        return result;
     }
 
     private Integer countBall(List<Integer> standard, int target, int positon) {
