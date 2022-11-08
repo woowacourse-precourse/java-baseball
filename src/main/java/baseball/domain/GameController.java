@@ -27,7 +27,20 @@ public class GameController {
             computer.initRandomNumbers();
         computer.getCounts();
         List<Integer> answer = user.inputUserAnswer();
-//        while (!getScore(answer)) answer = user.inputUserAnswer();
+        while (!getScore(answer)) answer = user.inputUserAnswer();
         computer.clearRandomNumbers();
     }
+
+    boolean getScore(List<Integer> input){
+
+        int strike = myList.countSameLocationValues(input, computer.getBallCounts());
+        int ball = myList.countDiffLocationValues(input, computer.getBallCounts());
+
+        if ( ball == 0 && strike == 0 ) System.out.println("낫싱");
+        if ( ball != 0 ) System.out.print(ball + "볼 ");
+        if ( strike != 0 ) System.out.println(strike + "스트라이크");
+        if ( strike == 3) return true;
+        return false;
+    }
+
 }
