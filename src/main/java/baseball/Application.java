@@ -10,13 +10,15 @@ public class Application {
 	public static void main(String[] args) {
 		// TODO: 프로그램 구현
 		System.out.println("숫자 야구 게임을 시작합니다.");
-		gameStart();
+		try {
+			gameStart();			
+		}catch(IllegalArgumentException e) {
+		}
 	}
 
 	public static void gameStart() {
 		List<Integer> computerPickNums = computerPick();
 		gamePlaying(computerPickNums);
-
 	}
 
 	public static List<Integer> computerPick() {
@@ -58,11 +60,7 @@ public class Application {
 	}
 
 	public static void error() {
-		try {
-			throw new Exception("IllegalArgumentException");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		throw new IllegalArgumentException();
 	}
 
 	public static int findStrike(List<Integer> computerPickNums, List<Integer> playerPickNums) {
