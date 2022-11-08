@@ -26,6 +26,29 @@ public class Score {
         this.maxScore = maxScore;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        if (this == obj) {
+            return true;
+        }
+
+        Score score = (Score) obj;
+
+        if (this.strike != score.getStrike() || this.ball != score.getBall() || this.fail != score.getFail()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
     private matchingTypes decideMatchingTypeBetween(int idxInUser, int idxInComputer) {
         if (idxInComputer == -1) {
