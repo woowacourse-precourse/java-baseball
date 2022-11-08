@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.List;
@@ -20,6 +22,13 @@ public class Game {
         guessNumbers();
     }
 
+    public boolean replay(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userReplayInput = Console.readLine();
+        Validate.validateReplay(userReplayInput);
+        return userReplayInput.equals("1");
+
+    }
     public void getComputerNumbers(){
         computer.selectNumbers();
         computerNumbers = computer.getSelectedNum();
@@ -32,7 +41,8 @@ public class Game {
             playerNumber = player.getSelectedNumber();
             Validate.validateInputNumber(playerNumber);
         }
-        while(judge(userNumber));
+        while(judge(playerNumber));
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public boolean judge(String num){
@@ -57,6 +67,9 @@ public class Game {
         }
         else if(cntBall==0){
             System.out.println(cntStrike+"스트라이크");
+        }
+        else if(cntStrike==0){
+            System.out.println(cntBall+"볼");
         }
         else{
             System.out.println(cntBall+"볼 "+cntStrike+"스트라이크");

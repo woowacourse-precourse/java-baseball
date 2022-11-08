@@ -21,4 +21,10 @@ public class Validate {
         }
     }
 
+    public static void validateReplay(String input){
+        if(!(input.equals("1") || input.equals("2"))){
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
