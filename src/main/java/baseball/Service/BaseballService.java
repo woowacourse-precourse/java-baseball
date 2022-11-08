@@ -49,6 +49,17 @@ public class BaseballService {
         return false;
     }
 
+    public boolean isNumberOneOrTwo(String choiceInput) {
+
+        char choiceInputChar = choiceInput.charAt(0);
+        int choiceInputNumber = choiceInputChar - '0';
+
+        if (choiceInputNumber == 1 || choiceInputNumber == 2) {
+            return true;
+        }
+        return false;
+    }
+
     public List<Integer> pickThreeNumbers() {
         List<Integer> computer = new ArrayList<>();
 
