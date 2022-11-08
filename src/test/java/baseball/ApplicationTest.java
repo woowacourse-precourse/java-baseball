@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.assertj.core.api.InputStreamAssert;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -51,4 +50,9 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void askNewGame() {
+        String input = "3";
+        assertThatThrownBy(() -> Application.askNewGame(input)).isInstanceOf(IllegalArgumentException.class);
+    }
 }

@@ -28,7 +28,7 @@ public class Application {
         userNumber[2] = Integer.parseInt(userInput.substring(2, 3));
     }
 
-    public static void compareInputWithNumber(String userInput) {
+    public static void compareInputWithNumber(String userInput) throws IllegalArgumentException {
         int strike = 0;
         int ball = 0;
 
@@ -43,7 +43,9 @@ public class Application {
 
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            askNewGame();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Console.readLine();
+            askNewGame(input);
         } else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
             guessWithUser();
@@ -60,9 +62,10 @@ public class Application {
 
     }
 
-    public static void askNewGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
+    public static void askNewGame(String input) {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
         if (input.equals("1")) {
             start();
         }
