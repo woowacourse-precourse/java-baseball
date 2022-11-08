@@ -10,6 +10,11 @@ public class GameNumber {
 
     private final List<Integer> numberListByDigit;
 
+    private GameNumber(List<Integer> integerList) {
+        numberListByDigit = new ArrayList<>();
+        numberListByDigit.addAll(integerList);
+    }
+
     public static GameNumber makeInstance(String input) {
         InputValidator.validateGameNumberInput(input);
 
@@ -25,21 +30,12 @@ public class GameNumber {
         return new GameNumber(makeRandomOneDigitIntListWithNoDuplicate());
     }
 
-    private GameNumber(List<Integer> integerList) {
-        numberListByDigit = new ArrayList<>();
-        numberListByDigit.addAll(integerList);
-    }
-
-    private static List<Integer> makeRandomOneDigitIntListWithNoDuplicate() {
-        List<Integer> output = new ArrayList<>();
-        while (output.size() < GAME_NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!output.contains(randomNumber)) {
-                output.add(randomNumber);
-            }
+    public BallStrikeResult countBallStrike(GameNumber oth) {
+        BallStrikeResult result = new BallStrikeResult();
+        for(int i = 0; i < this.numberListByDigit.size(); i++) {
+            countBallStrikeOnIdx(result, oth, i);
         }
-
-        return output;
+        return result;
     }
 
     @Override
@@ -52,12 +48,16 @@ public class GameNumber {
         return result.toString();
     }
 
-    public BallStrikeResult countBallStrike(GameNumber oth) {
-        BallStrikeResult result = new BallStrikeResult();
-        for(int i = 0; i < this.numberListByDigit.size(); i++) {
-            countBallStrikeOnIdx(result, oth, i);
+    private static List<Integer> makeRandomOneDigitIntListWithNoDuplicate() {
+        List<Integer> output = new ArrayList<>();
+        while (output.size() < GAME_NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!output.contains(randomNumber)) {
+                output.add(randomNumber);
+            }
         }
-        return result;
+
+        return output;
     }
 
     private void countBallStrikeOnIdx(BallStrikeResult result, GameNumber oth, int idx) {
