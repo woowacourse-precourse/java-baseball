@@ -1,4 +1,4 @@
-package baseball;
+package domain;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -6,19 +6,13 @@ import java.util.Set;
 
 public class ValidityChecker {
 
-    private final int MAX_LEN;
-
-    ValidityChecker(int maxLen) {
-        this.MAX_LEN = maxLen;
-    }
-
-    public void validateNumberInput(String input) {
-        validLength(input);
+    public void validateNumberInput(String input, final int MAX_LEN) {
+        validLength(input, MAX_LEN);
         validElement(input);
-        validContinuity(input);
+        validContinuity(input, MAX_LEN);
     }
 
-    public void validLength(String input) {
+    public void validLength(String input, final int MAX_LEN) {
         if (input.length() != MAX_LEN) {
                 throw new IllegalArgumentException("input의 길이가 유효하지 않습니다");
         }
@@ -31,7 +25,7 @@ public class ValidityChecker {
         }
     }
 
-    public void validContinuity(String input) {
+    public void validContinuity(String input, final int MAX_LEN) {
         Set<Character> numSet = new HashSet<>();
         for (int i = 0; i < input.length(); i++) {
                 numSet.add(input.charAt(i));
