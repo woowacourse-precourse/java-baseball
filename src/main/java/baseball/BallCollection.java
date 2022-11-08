@@ -26,4 +26,8 @@ public class BallCollection {
 
         return new BallCollection(balls);
     }
+
+    public int size() {
+        return this.balls.size();
+    }
 }
