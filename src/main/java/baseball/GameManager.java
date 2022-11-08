@@ -53,7 +53,7 @@ public class GameManager {
         } else if(!isThreeChar(input)) {
             throw new IllegalArgumentException("input length should be three.");
         } else if(hasDuplicatedDigit(input)) {
-            System.out.println("정답은 세자리 모두 다 다릅니다.");
+            throw new IllegalArgumentException("input has duplicated digit");
         }
     }
 
