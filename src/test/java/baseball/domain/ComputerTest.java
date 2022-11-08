@@ -11,6 +11,7 @@ class ComputerTest {
 
     private static final int MIN = 1;
     private static final int MAX = 9;
+    private static final int constantListSize = 3;
     private Computer computer;
 
     @BeforeEach
@@ -23,7 +24,7 @@ class ComputerTest {
     @Test
     @DisplayName("숫자의 크기는 3으로 고정")
     public void validNumberSize() {
-        assertThat(this.computer.getRandomNumbers().size()).isEqualTo(3);
+        assertThat(this.computer.getRandomNumbers().size()).isEqualTo(constantListSize);
     }
 
     @Test
