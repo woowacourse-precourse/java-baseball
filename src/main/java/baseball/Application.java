@@ -37,41 +37,42 @@ public class Application {
         return computer;
     }
 
-    static class BullsAndCows {
-        List<Integer> computerNumber;
-        BullsAndCowsResult bullsAndCowsResult;
+}
 
-        public BullsAndCows(List<Integer> computerNumber, BullsAndCowsResult bullsAndCowsResult) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
+class BullsAndCows {
+    List<Integer> computerNumber;
+    BullsAndCowsResult bullsAndCowsResult;
 
-            this.computerNumber = computerNumber;
-            this.bullsAndCowsResult = bullsAndCowsResult;
-        }
+    public BullsAndCows(List<Integer> computerNumber, BullsAndCowsResult bullsAndCowsResult) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        void start() {
-            System.out.print("숫자를 입력해주세요 : ");
-            String userInput = Console.readLine();
-            List<Integer> userInputNumber = checkExceptionAndInputToList(userInput);
-
-            bullsAndCowsResult.init();
-
-            for (int i = 0; i < computerNumber.size(); i++) {
-                int userIndex = findNumberIndex(userInputNumber, computerNumber.get(i));
-                bullsAndCowsResult.addCount(userIndex, i);
-            }
-
-            bullsAndCowsResult.printResult();
-        }
-
-        boolean isContinue() {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String answer = Console.readLine();
-
-            return answer.equals("1");
-        }
+        this.computerNumber = computerNumber;
+        this.bullsAndCowsResult = bullsAndCowsResult;
     }
 
-    private static int findNumberIndex(List<Integer> userInputNumber, int c) {
+    void start() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        List<Integer> userInputNumber = checkExceptionAndInputToList(userInput);
+
+        bullsAndCowsResult.init();
+
+        for (int i = 0; i < computerNumber.size(); i++) {
+            int userIndex = findNumberIndex(userInputNumber, computerNumber.get(i));
+            bullsAndCowsResult.addCount(userIndex, i);
+        }
+
+        bullsAndCowsResult.printResult();
+    }
+
+    boolean isContinue() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String answer = Console.readLine();
+
+        return answer.equals("1");
+    }
+
+    public static int findNumberIndex(List<Integer> userInputNumber, int c) {
         if (userInputNumber.contains(c)) {
             return userInputNumber.indexOf(c);
         } else {
@@ -79,7 +80,7 @@ public class Application {
         }
     }
 
-    private static List<Integer> checkExceptionAndInputToList(String userInput) throws IllegalArgumentException {
+    public static List<Integer> checkExceptionAndInputToList(String userInput) throws IllegalArgumentException {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
@@ -105,46 +106,45 @@ public class Application {
         return userInputNumber;
     }
 
-    private static boolean isValidNumber(int number) {
+    public static boolean isValidNumber(int number) {
         return 1 <= number && number <= 9;
     }
+}
+class BullsAndCowsResult {
 
-    static class BullsAndCowsResult {
+    int ballCount;
+    int strikeCount;
 
-        int ballCount;
-        int strikeCount;
+    void init() {
+        ballCount = 0;
+        strikeCount = 0;
+    }
 
-        void init() {
-            ballCount = 0;
-            strikeCount = 0;
+    void addCount(int userIndex, int computerIndex) {
+        if (userIndex == -1) {
+            return;
         }
 
-        void addCount(int userIndex, int computerIndex) {
-            if (userIndex == -1) {
-                return;
-            }
-
-            if (userIndex == computerIndex) {
-                strikeCount++;
-                return;
-            }
-
-            ballCount++;
+        if (userIndex == computerIndex) {
+            strikeCount++;
+            return;
         }
 
-        void printResult() {
-            if (ballCount == 0 && strikeCount == 0) {
-                System.out.println("낫싱");
-            } else if (strikeCount == 3) {
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            } else {
-                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-            }
-        }
+        ballCount++;
+    }
 
-        boolean finish() {
-            return strikeCount == 3;
+    void printResult() {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        } else if (strikeCount == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
+    }
+
+    boolean finish() {
+        return strikeCount == 3;
     }
 }
