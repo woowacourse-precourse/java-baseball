@@ -91,4 +91,8 @@ public class GameManager {
 
         return input.equals("1");
     }
+
+    private void changeGameStatusToStop() {
+        this.gameStatus = GameStatus.STOPPED;
+    }
 }
