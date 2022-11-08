@@ -11,6 +11,11 @@ public class Play {
 			User user = new User();
 			user.setnumber();
 			answer = user.getnumber();
+			
+			Check_answer check_answer = new Check_answer();
+
+			strike = check_answer.check_strike(answer, guessnumber);
+			ball = check_answer.check_ball(answer, guessnumber);
 		}
 	}
 }
