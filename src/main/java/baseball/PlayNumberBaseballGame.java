@@ -115,13 +115,14 @@ public class PlayNumberBaseballGame {
         else if(ball==0 && strike==0){
             result= "낫싱";
         }
+        else if(ball==0 && strike>0){
+            result= String.valueOf(strike)+"스트라이크";
+        }
+        else if(ball>0 && strike==0){
+            result=String.valueOf(ball)+"볼";
+        }
         else {
-            if (ball > 0) {
-                result=String.valueOf(ball)+"볼 ";
-            }
-            if (strike > 0) {
-                result+=(String.valueOf(strike)+"스트라이크");
-            }
+            result=String.valueOf(ball)+"볼 "+String.valueOf(strike)+"스트라이크";
         }
         return result;
     }
