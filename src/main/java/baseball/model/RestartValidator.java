@@ -15,7 +15,7 @@ public class RestartValidator extends Validator{
 	}
 
 	private void isOneOrTwo(){
-		if (!INPUT_VALUE.equals("1") && !INPUT_VALUE.equals("2")){
+		if (!INPUT_VALUE.equals("1") && !INPUT_VALUE.equals("2")) {
 			throw new IllegalArgumentException("It should be 1 or 2");
 		}
 	}

@@ -13,14 +13,14 @@ public abstract class Validator {
 
 	protected void isAllNum(){
 		for (int i = 0; i < INPUT_VALUE.length(); i++) {
-			if (!Character.isDigit(INPUT_VALUE.charAt(i))){
+			if (!Character.isDigit(INPUT_VALUE.charAt(i))) {
 				throw new IllegalArgumentException("Only digits are possible");
 			}
 		}
 	}
 
 	protected void isCorrectSize(){
-		if (INPUT_VALUE.length() != CORRECT_LENGTH){
+		if (INPUT_VALUE.length() != CORRECT_LENGTH) {
 			throw new IllegalArgumentException("The Length is wrong");
 		}
 	}

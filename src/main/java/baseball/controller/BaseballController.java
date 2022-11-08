@@ -14,7 +14,7 @@ public class BaseballController {
 	private final int ANSWER_LENGTH = 3;
 	private final int RESTART_ANSWER_LENGTH = 1;
 
-	public void start(){
+	public void start() {
 		do {
 			proceedGame();
 		} while (restartCheck());
@@ -37,11 +37,11 @@ public class BaseballController {
 		return new BaseballModel(randomAnswer);
 	}
 
-	protected String getRandomAnswer(){
+	protected String getRandomAnswer() {
 		String newAnswer = "";
 		while (newAnswer.length() < ANSWER_LENGTH){
 			int pickedNum = pickNumberInRange(0, 9);
-			if (!Util.isStringContainInt(newAnswer, pickedNum)){
+			if (!Util.isStringContainInt(newAnswer, pickedNum)) {
 				newAnswer += String.valueOf(pickedNum);
 			}
 		}
@@ -50,9 +50,9 @@ public class BaseballController {
 
 	protected void answerCheck(String tryAnswer, BaseballModel model){
 		for (int i = 0; i < tryAnswer.length(); i++) {
-			if (model.charAtAnswer(i) == tryAnswer.charAt(i)){
+			if (model.charAtAnswer(i) == tryAnswer.charAt(i)) {
 				model.addStrikeCount();
-			} else if (Util.isStringContainChar(model.answer, tryAnswer.charAt(i))){
+			} else if (Util.isStringContainChar(model.answer, tryAnswer.charAt(i))) {
 				model.addBallCount();
 			}
 		}
@@ -64,7 +64,7 @@ public class BaseballController {
 	}
 
 
-	private boolean isGameWin(BaseballModel model){
+	private boolean isGameWin(BaseballModel model) {
 		return model.strike == ANSWER_LENGTH;
 	}
 }

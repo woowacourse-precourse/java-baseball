@@ -16,15 +16,15 @@ public class BaseballModel {
 		ball = 0;
 	}
 
-	public void addStrikeCount(){
+	public void addStrikeCount() {
 		strike++;
 	}
 
-	public void addBallCount(){
+	public void addBallCount() {
 		ball++;
 	}
 
-	public char charAtAnswer(int idx){
+	public char charAtAnswer(int idx) {
 		return answer.charAt(idx);
 	}
 
