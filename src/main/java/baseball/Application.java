@@ -4,12 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
 
     static int input(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         int input = Integer.parseInt(Console.readLine());
         System.out.println(input);
         return input;
@@ -86,11 +87,12 @@ public class Application {
     }
 
     static void game(){
-        List<Integer> computer  = random();
+        List<Integer> computer =  new ArrayList<>();
         List<Integer> player = new ArrayList<>();
         do{
             int inputInt = input();
             player = separate(inputInt);
+            Collections.reverse(player);
             verifyPlayer(player);
         }while(!compare(computer,player));
     }
