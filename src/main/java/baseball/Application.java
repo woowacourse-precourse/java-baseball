@@ -37,7 +37,6 @@ public class Application {
         for(int comparison1=0;comparison1<num.length();comparison1++){
             for(int comparison2=comparison1+1;comparison2<num.length();comparison2++){
                 duplicateCount+=duplicateCheck1(num,comparison1,comparison2);
-                System.out.println(duplicateCount);
             }
         }
         if (duplicateCount != 0){
