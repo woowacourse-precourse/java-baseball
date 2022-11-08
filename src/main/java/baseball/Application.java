@@ -13,11 +13,11 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> answerNumbers = newAnswer();
-        boolean guessResult;
+        String guessResult;
 
         do {
             guessResult = tryGuess(answerNumbers);
-        } while (!guessResult);
+        } while (guessResult.equals("wrong"));
 
         boolean newGame = askNewGame();
 
@@ -33,8 +33,8 @@ public class Application {
     }
 
 
-    public static boolean tryGuess(List<Integer> answerNumber) {
-        boolean result = false;
+    public static String tryGuess(List<Integer> answerNumber) {
+        String result = "wrong";
 
         return result;
     }
