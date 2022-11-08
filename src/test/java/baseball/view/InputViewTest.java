@@ -9,8 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputViewTest {
     void inputFromUser(String input) {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
     }
