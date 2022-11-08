@@ -25,8 +25,6 @@ public class Computer {
     public int countStrike(String input) {
         int cnt = 0;
 
-        for (int i=0; i<input.length(); i++) {
-            if( answer.charAt(i) == input.charAt(i)) {
         for (int i = 0; i < input.length(); i++) {
             if (answer.charAt(i) == input.charAt(i)) {
                 cnt++;
