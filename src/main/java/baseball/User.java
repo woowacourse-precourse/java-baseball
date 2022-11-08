@@ -16,7 +16,7 @@ public class User {
         return userInputList;
     }
 
-    public void convertGuessInputToList(String userInput) {
+    private void convertGuessInputToList(String userInput) {
         userInputList.clear();
         for (int i = 0; i < userInput.length(); i++) {
             char eachCharInput = userInput.charAt(i);
