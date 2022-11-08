@@ -56,5 +56,28 @@ public class BaseballTest {
     }
 
 
+    @Test
+    void 예외_테스트(String userInput) {
+        assertThatThrownBy(() -> Validator.convertor(userInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
+    @Test
+    void 길이_예외_테스트(){
+        String userInput = "1234";
+        예외_테스트(userInput);
+
+    }
+
+    @Test
+    void 범위_예외_테스트(){
+        String userInput = "012";
+        예외_테스트(userInput);
+    }
+
+    @Test
+    void 숫자_예외_테스트(){
+        String userInput = "a12";
+        예외_테스트(userInput);
+    }
 }
