@@ -49,9 +49,14 @@ public class Application {
         }
     }
 
+    static List<Integer> createAnswer(){
+        List<Integer> answerList = new ArrayList<>();
+
+        return answerList;
+    }
+
     static List<Integer> inputAnswer(){
-        List<Integer> inputList;
-        Integer[] inputArray = new Integer[3];
+        List<Integer> inputList = new ArrayList<>(3);
         String inputString = Console.readLine();
         String[] parsedString = inputString.split(" ");
 
@@ -66,9 +71,8 @@ public class Application {
         handleException(parsedString);
 
         for (int i = 0; i < 3; i++) {
-            inputArray[i] = castToInteger(parsedString[i]);
+            inputList.add(castToInteger(parsedString[i])); //handle 0 input exception here
         }
-        inputList = Arrays.asList(inputArray);
 
         return inputList;
     }
