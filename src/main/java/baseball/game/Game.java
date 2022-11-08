@@ -28,30 +28,33 @@ public class Game {
     }
 
     public void playGame() {
+        List<Integer> playerBalls;
         List<Integer> computerBalls = computer.getComputerBalls();
         List<Integer> strikeAndBallCounts = new ArrayList<>(Arrays.asList(0, 0));
         String resultMessage;
         do {
-            List<Integer> playerBalls = getPlayerInput();
-            resultMessage = getResultFromComputer(computerBalls, playerBalls, strikeAndBallCounts);
-            System.out.println(resultMessage);
-            initialStrikeAndBallCounts(strikeAndBallCounts);
+            playerBalls = playerTurn();
+            resultMessage = computerTurn(computerBalls, playerBalls, strikeAndBallCounts);
+            initializeStrikeAndBallCounts(strikeAndBallCounts);
         } while (!resultMessage.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER));
     }
 
-    private void initialStrikeAndBallCounts(List<Integer> strikeAndBallCounts) {
+    private void initializeStrikeAndBallCounts(List<Integer> strikeAndBallCounts) {
         strikeAndBallCounts.set(STRIKE_COUNT, 0);
         strikeAndBallCounts.set(BALL_COUNT, 0);
     }
 
-    private String getResultFromComputer(List<Integer> computerBalls, List<Integer> playerBalls,
+    private String computerTurn(List<Integer> computerBalls, List<Integer> playerBalls,
             List<Integer> strikeAndBallCounts) {
+        String resultMessage;
         computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
-        return computer.getResultMessage(strikeAndBallCounts.get(STRIKE_COUNT),
+        resultMessage = computer.getResultMessage(strikeAndBallCounts.get(STRIKE_COUNT),
                 strikeAndBallCounts.get(BALL_COUNT));
+        System.out.println(resultMessage);
+        return resultMessage;
     }
 
-    private List<Integer> getPlayerInput() {
+    private List<Integer> playerTurn() {
         System.out.print(SystemMessage.ENTER_NUMBER);
         return player.getPlayerBalls();
     }
