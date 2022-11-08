@@ -64,4 +64,10 @@ public class NumberBaseballGame {
         }
         return playerNumber;
     }
+
+    public boolean isPlayerNumberException(String input) {
+        Pattern pattern = Pattern.compile("^[1-9]{3}$");
+        Matcher m = pattern.matcher(input);
+        return !m.matches();
+    }
 }
