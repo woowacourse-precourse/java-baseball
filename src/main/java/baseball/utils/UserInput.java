@@ -1,25 +1,28 @@
-package baseball;
+package baseball.utils;
 
+import baseball.model.Game;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
     private static int numberOfDigit;
+    private Game game;
 
-    public UserInput(final int NUMBER_OF_DIGIT) {
+    public UserInput(Game game, final int NUMBER_OF_DIGIT) {
         this.numberOfDigit = NUMBER_OF_DIGIT;
+        this.game = game;
     }
 
-    public static int getUserInput() {
+    public void setUserInput() {
         String input = Console.readLine();
         validateNumber(input);
         validateNumberOfDigits(input);
         validateDuplicateNumber(input);
 
         int inputNumber = Integer.parseInt(input);
-        return inputNumber;
+        game.setUserInputNumber(inputNumber);
     }
 
-    public static int getNewGameStatusInput(){
+    public static int getNewGameStatusInput() {
         String input = Console.readLine();
         validateNumber(input);
         validateNewGameNumber(input);
@@ -45,7 +48,7 @@ public class UserInput {
         }
     }
 
-    private static  void validateDuplicateNumber(String input) {
+    private static void validateDuplicateNumber(String input) {
         for (int i = 0; i < numberOfDigit; i++) {
             for (int j = i + 1; j < numberOfDigit; j++) {
                 compareChar(input.charAt(i), input.charAt(j));
@@ -59,9 +62,9 @@ public class UserInput {
         }
     }
 
-    private static void validateNewGameNumber(String input){
+    private static void validateNewGameNumber(String input) {
         int inputNum = Integer.parseInt(input);
-        if(inputNum != 1 && inputNum != 2){
+        if (inputNum != 1 && inputNum != 2) {
             throw new IllegalArgumentException("1 또는 2중에서 입력해주세요.");
         }
     }

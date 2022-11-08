@@ -1,14 +1,19 @@
-package baseball;
+package baseball.process;
+
+import baseball.model.Game;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Comparison {
     private static int numberOfDigit;
-    private static List<Integer> randomNumberList = new ArrayList<>();
-    private static List<Integer> userInputNumberList = new ArrayList<>();
+    private static List<Integer> randomNumberList;
+    private static List<Integer> userInputNumberList;
 
-    public Comparison(int randomNumber, int userInputNumber, final int NUMBER_OF_DIGIT) {
+    public Comparison(Game game, final int NUMBER_OF_DIGIT) {
+        int randomNumber = game.getRandomNumber();
+        int userInputNumber = game.getUserInputNumber();
+
         this.randomNumberList = numberToList(randomNumber);
         this.userInputNumberList = numberToList(userInputNumber);
         this.numberOfDigit = NUMBER_OF_DIGIT;

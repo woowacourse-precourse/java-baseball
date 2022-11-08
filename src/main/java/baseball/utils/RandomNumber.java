@@ -1,29 +1,37 @@
-package baseball;
+package baseball.utils;
 
+import baseball.model.Game;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumber {
     private int numberOfDigit;
+    private Game game;
 
-    public RandomNumber(final int NUMBER_OF_DIGIT) {
+    public RandomNumber(Game game, final int NUMBER_OF_DIGIT) {
+        this.game = game;
         this.numberOfDigit = NUMBER_OF_DIGIT;
     }
 
-    public int getRandomNum() {
-        List<Integer> randomNumList;
+    public void createRandomNum() {
+        List<Integer> randomNumList = new ArrayList<>();
 
         while (true) {
-            randomNumList = Randoms.pickUniqueNumbersInRange(0, 9, numberOfDigit);
-            if (isValidateDigitNum(randomNumList)) {
+            int pickedNumber = Randoms.pickNumberInRange(0, 9);
+
+            if(!randomNumList.contains(pickedNumber)){
+                randomNumList.add(pickedNumber);
+            }
+            if (randomNumList.size() == numberOfDigit && isValidateDigitNum(randomNumList)) {
                 break;
             }
         }
 
         int randomNum = numListToIntValue(randomNumList);
 
-        return randomNum;
+        game.setRandomNumber(randomNum);
     }
 
     public int numListToIntValue(List<Integer> numList) {
