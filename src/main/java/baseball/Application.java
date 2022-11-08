@@ -4,11 +4,12 @@ public class Application {
     public static void main(String[] args) {
         BaseBallGame baseBallGame = new BaseBallGame();
         baseBallGame.startGame();
-        while (true) {
+        while (baseBallGame.isRepeat()) {
             baseBallGame.getInputValue();
+            baseBallGame.checkResult();
 
-            if (baseBallGame.isAnswer()) {
-                break;
+            if (!baseBallGame.isRepeat()) {
+                baseBallGame.checkRestartGame();
             }
         }
     }

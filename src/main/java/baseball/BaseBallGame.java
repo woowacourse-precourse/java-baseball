@@ -10,11 +10,14 @@ public class BaseBallGame {
     private String randomNumber;
     private String userInputValue;
 
+    private boolean isRepeat = false;
+
     private static final int MAX_LENGTH = 3;
     private static final int WIN_CONDITION = 3;
 
     private Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
     public void startGame() {
+        isRepeat = true;
         printStartMessage();
         initRandomNumber();
     }
@@ -90,6 +93,7 @@ public class BaseBallGame {
         System.out.println(formatResultMessage(strikeCount, ballCount));
         if (strikeCount >= WIN_CONDITION) {
             System.out.println(GameMessage.END.getText());
+            isRepeat = false;
         }
     }
 
@@ -140,8 +144,11 @@ public class BaseBallGame {
         return resultMessage.toString();
     }
 
-    public boolean checkRestartGame() {
-        boolean isRestart = false;
+    public boolean isRepeat() {
+        return isRepeat;
+    }
+
+    public void checkRestartGame() {
         System.out.println(GameMessage.RESTART_QUESTION.getText());
         userInputValue = Console.readLine().trim();
 
@@ -151,14 +158,13 @@ public class BaseBallGame {
 
         if (isNumeric(userInputValue) && userInputValue.length() == 1) {
             if (userInputValue.equals("1")) {
-                isRestart = true;
+                initRandomNumber();
+                isRepeat = true;
             }
 
             if (userInputValue.equals("2")) {
-                isRestart = false;
+                isRepeat = false;
             }
         }
-
-        return isRestart;
     }
 }
