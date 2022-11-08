@@ -1,7 +1,17 @@
 package baseball;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        PrintStream ps = new PrintStream(System.out);
+        ExecuteGame executeGame = new ExecuteGame(System.in, ps);
+
+        do {
+        executeGame.play();
+        } while (executeGame.canRepeatGame());
     }
 }
