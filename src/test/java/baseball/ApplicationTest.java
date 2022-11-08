@@ -76,6 +76,24 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("입력값이 중복인 경우 확인")
+    void validateOverlapTest() {
+        String input = "113";
+        assertThatThrownBy(() -> new UserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("중복된 값이 있습니다.");
+    }
+
+    @Test
+    @DisplayName("입력값의 숫자 범위 확인")
+    void validateNumberRangeTest() {
+        String input = "012";
+        assertThatThrownBy(() -> new UserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자 범위가 벗어났습니다.");
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
