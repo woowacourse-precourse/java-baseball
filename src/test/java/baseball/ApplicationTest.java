@@ -33,7 +33,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 스트라이크_볼_상황_테스트() {
+    void 볼_스트라이크_상황_테스트() {
         Game game = new Game();
         game.initializeGame();
 
