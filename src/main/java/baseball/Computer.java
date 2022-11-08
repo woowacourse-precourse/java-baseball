@@ -1,15 +1,15 @@
 package baseball;
 
-import java.util.ArrayList;
+import camp.nextstep.edu.missionutils.Randoms;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import java.util.ArrayList;
 
 public class Computer {
     protected int answer;
     ArrayList<Integer> check = new ArrayList<>();
 
-    public int randNumber() {
-        return pickNumberInRange(1, 9);
+    public int randomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
     }
 
     public boolean checkNumber(Integer number) {
@@ -22,7 +22,7 @@ public class Computer {
 
     public void madeNumber() {
         while (check.size() < 3) {
-            int randomNumber = randNumber();
+            int randomNumber = randomNumber();
             if (!check.contains(randomNumber)) {
                 addNumber(randomNumber);
             }
