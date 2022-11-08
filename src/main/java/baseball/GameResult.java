@@ -15,6 +15,20 @@ public class GameResult {
     calculateStrike(answerNumberList, gameNumberList);
   }
 
+  public boolean printResult() {
+    if (ballCount != 0) {
+      System.out.print(ballCount + "볼 ");
+    }
+    if (strikeCount != 0) {
+      System.out.print(strikeCount + "스트라이크");
+    }
+    if (strikeCount + ballCount == 0) {
+      System.out.print("낫싱");
+    }
+    System.out.println();
+    return strikeCount == 3;
+  }
+
   private void calculateStrike(List<Integer> answerNumberList, List<Integer> gameNumberList) {
     for (int i = 0; i < answerNumberList.size(); i++) {
       for (int j = 0; j < gameNumberList.size(); j++) {
