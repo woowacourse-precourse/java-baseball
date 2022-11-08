@@ -11,7 +11,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    static List<Integer> makeNumber() {
+    static String makeNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -19,7 +19,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        return computer;
+        return computer.toString().replaceAll("[^0-9]", "");
     }
 
     static void errorMessage(String error) {
@@ -85,12 +85,60 @@ public class Application {
         return strNumber;
     }
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        startMessage();
-        List<Integer> computer = makeNumber();
-        if (getUserNumber() == null) {
-            return;
+    static void resultMessage(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
         }
+        String result = "";
+        if (ball != 0) {
+            result += String.format("%s볼 ", ball);
+        }
+        if (strike != 0) {
+            result += String.format("%s스트라이크", strike);
+        }
+        System.out.println(result);
+    }
+
+    static int compareNumber(String computer, int index, char num) {
+        if (computer.charAt(index) == num) {
+            return 1;
+        } else if (computer.contains(String.valueOf(num))) {
+            return 2;
+        }
+        return 0;
+    }
+
+    static int compare(String computer, String user) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < user.length(); i++) {
+            if (compareNumber(computer, i, user.charAt(i)) == 1) {
+                strike += 1;
+            } else if (compareNumber(computer, i, user.charAt(i)) == 2) {
+                ball += 1;
+            }
+        }
+        resultMessage(strike, ball);
+        return 0;
+    }
+
+    static void run() {
+        startMessage();
+        String computer = makeNumber();
+        int cmd;
+        while (true) {
+            String user = getUserNumber();
+            if (user == null) {
+                return;
+            }
+            cmd = compare(computer, user);
+            if (cmd != 0) {
+                break;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        run();
     }
 }
