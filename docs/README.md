@@ -1,5 +1,5 @@
 ### 📌 기능 리스트업
-####💡 구현 기능 <br> 🚫 예외 사항
+💡 구현 기능 <br> 🚫 예외 사항
 - ```스트라이크``` : number & position
 - ```볼``` : number & !position
 - ```낫싱``` : !number & !position 
