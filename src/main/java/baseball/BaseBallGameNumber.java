@@ -8,7 +8,7 @@ public class BaseBallGameNumber {
   private List<Integer> gameNumberList = new ArrayList<>();
 
   public void stringToGameNumber(String inputString) {
-    if (inputString.length() != 3) throw new IllegalArgumentException("세자리가 아닙니다!");
+    if (inputString.length() != 3) throwIllegalArgumentExceptionWithMessage("세자리가 아닙니다!");
     int gameNumber = stringToInt(inputString);
     setBaseBallGameNum(gameNumber);
     checkNumbersValid();
@@ -24,7 +24,7 @@ public class BaseBallGameNumber {
     try {
       return Integer.parseInt(inputString);
     } catch (NumberFormatException e) {
-      throw new IllegalArgumentException("숫자가 아닙니다!");
+      throwIllegalArgumentExceptionWithMessage("숫자가 아닙니다!");
     }
   }
 
@@ -43,12 +43,12 @@ public class BaseBallGameNumber {
     if (gameNumberList.get(0) == gameNumberList.get(1)
         || gameNumberList.get(1) == gameNumberList.get(2)
         || gameNumberList.get(0) == gameNumberList.get(2))
-      throw new IllegalArgumentException("중복되는 숫자가 있습니다.");
+      throwIllegalArgumentExceptionWithMessage("중복되는 숫자가 있습니다.");
   }
 
   private void checkIncludeZero() {
     if (gameNumberList.get(0) * gameNumberList.get(1) * gameNumberList.get(2) == 0)
-      throw new IllegalArgumentException("0이 포함되어 있습니다.");
+      throwIllegalArgumentExceptionWithMessage("0이 포함되어 있습니다.");
   }
 
   public void printNumbers() {
@@ -61,6 +61,12 @@ public class BaseBallGameNumber {
 
   public List<Integer> getGameNumberList() {
     return this.gameNumberList;
+  }
+
+  private void throwIllegalArgumentExceptionWithMessage(String message)
+      throws IllegalArgumentException {
+    System.out.println(message);
+    throw new IllegalStateException(message);
   }
 
   public BaseBallGameNumber() {}

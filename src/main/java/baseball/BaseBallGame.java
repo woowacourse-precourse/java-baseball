@@ -13,6 +13,7 @@ public class BaseBallGame {
     boolean isGameOver = false;
     while (!isGameOver) {
       inputData = getUserNumberInput();
+      System.out.println(inputData);
       gameNumber = createBaseBallGameNumber(inputData);
       if (gameNumber == null) isGameOver = true;
       else {
@@ -56,12 +57,7 @@ public class BaseBallGame {
 
   public BaseBallGameNumber createBaseBallGameNumber(String inputData) {
     BaseBallGameNumber gameNumber = new BaseBallGameNumber();
-    try {
-      gameNumber.stringToGameNumber(inputData);
-    } catch (IllegalArgumentException e) {
-      System.out.println(e.getMessage());
-      return null;
-    }
+    gameNumber.stringToGameNumber(inputData);
     return gameNumber;
   }
 
