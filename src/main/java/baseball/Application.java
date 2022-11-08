@@ -62,12 +62,10 @@ public class Application {
         int strike_cnt = 0;
         int game_set = Integer.MAX_VALUE;
         for (int i = 0; i < user.size(); i++) {
-            for (int j = 0; j < answer.size(); j++) {
-                if (user.get(i) == answer.get(j) && i == j) {
-                    strike_cnt++;
-                } else if (user.get(i) == answer.get(j) && i != j) {
-                    ball_cnt++;
-                }
+            if (answer.get(i) == user.get(i)) {
+                strike_cnt++;
+            } else if (answer.contains(user.get(i)) && answer.get(i) != user.get(i)) {
+                ball_cnt++;
             }
         }
         ballstrike.add(ball_cnt);
@@ -118,7 +116,7 @@ public class Application {
         try {
             user = UserInput_list(UserInput());
         } catch (IllegalArgumentException e) {
-            System.out.println("error");
+            System.out.println(e);
             return 0;
         }
 
@@ -150,7 +148,6 @@ public class Application {
         game :while(check_gameover != 0) {
             answer = Answer();
             check_gameover = 2;
-            System.out.println(answer);
             input: while(check_gameover == 2){
                 check_gameover = Game(answer);
             }
