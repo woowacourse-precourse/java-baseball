@@ -7,7 +7,7 @@ public class Computer {
         Balls computerBalls = new Balls();
 
         while (!computerBalls.isSize(maxSize)) {
-            computerBalls.addBall(Randoms.pickNumberInRange(minBallNumber, maxBallNumber));
+            computerBalls.addBall(new Ball(Randoms.pickNumberInRange(minBallNumber, maxBallNumber)));
         }
         return computerBalls;
     }

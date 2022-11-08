@@ -1,26 +1,23 @@
 package baseball.model;
 
-import baseball.view.Output;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String INVALID_INPUT_TYPE_MESSAGE = "숫자만 입력이 가능합니다.";
 
     public Balls generatePlayerBalls(String inputValue) {
-        Output.print(INPUT_NUMBER_MESSAGE);
         return new Balls(convertInputToBallList(inputValue));
     }
 
-    private List<Integer> convertInputToBallList(String playerInput) {
+    private List<Ball> convertInputToBallList(String playerInput) {
         validateParseStringToInteger(playerInput);
         String[] inputSplits = playerInput.split("");
 
-        List<Integer> playerValues = new ArrayList<>();
+        List<Ball> playerValues = new ArrayList<>();
         for (String inputSplit : inputSplits) {
-            playerValues.add(Integer.parseInt(inputSplit));
+            int number = Integer.parseInt(inputSplit);
+            playerValues.add(new Ball(number));
         }
         return playerValues;
     }
