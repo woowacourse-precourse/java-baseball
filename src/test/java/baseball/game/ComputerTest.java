@@ -26,7 +26,7 @@ public class ComputerTest {
     }
 
     @Test
-    void 스트라이크_개수_테스트() {
+    void 스트라이크의_수를_카운트합니다() {
         // when
         computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
 
@@ -36,7 +36,7 @@ public class ComputerTest {
     }
 
     @Test
-    void 볼_개수_테스트() {
+    void 볼의_수를_카운트합니다() {
         // when
         computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
 

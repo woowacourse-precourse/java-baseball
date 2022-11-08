@@ -17,7 +17,7 @@ public class PlayerTest {
     }
 
     @Test
-    void 사용자_대답_범위_테스트_X() {
+    void 사용자의_응답이_재시작_혹은_종료_문자가_아니라면_예외가_발생합니다() {
         // given
         String input = "3";
         InputStream in = new ByteArrayInputStream(input.getBytes());
