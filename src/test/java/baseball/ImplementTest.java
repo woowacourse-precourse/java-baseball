@@ -26,6 +26,19 @@ import static org.mockito.Mockito.mockStatic;
 
 public class ImplementTest extends NsTest{
 
+    final ByteArrayOutputStream captor = new ByteArrayOutputStream();
+    final PrintStream out = System.out;
+
+    @BeforeEach
+    void setOutput() {
+        System.setOut(new PrintStream(captor));
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.setOut(out);
+    }
+
     @Test
     void 정답_생성_테스트() {
         List<Integer> answer = GameManager.createAnswer();
