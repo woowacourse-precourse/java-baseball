@@ -25,6 +25,9 @@ public class BaseballList {
         }
         return false;
     }
+    public List<Baseball> getBaseballList() {
+        return this.baseballList;
+    }
     public Baseball getBaseballByIndex(int index){
         return this.baseballList.get(index);
     }
