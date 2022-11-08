@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.enums.ErrorMessage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,10 +11,6 @@ public class ThreeDigitNum {
     public static final int END_RANGE = 9;
     public static final int SIZE = 3;
 
-    public static final String OVER_SIZE_MESSAGE = "야구게임 값이 3자리 수를 초과했습니다.";
-    public static final String INVALID_SIZE_MESSAGE = "야구게임 값은 3자리 수여야 합니다.";
-    public static final String INVALID_DIGIT_MESSAGE = "야구게임 값의 각 자릿수는 1 ~ 9사이여야 합니다.";
-    public static final String DUPLICATE_DIGIT_MESSAGE = "야구 게임의 값의 각 자릿수는 서로 달라야 합니다.";
 
     private List<Integer> value;
 
@@ -56,7 +53,7 @@ public class ThreeDigitNum {
 
     private void validateIdx(int idx) {
         if (idx < 0) {
-            throw new IllegalArgumentException(OVER_SIZE_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessage.OVER_SIZE.value());
         }
     }
 
@@ -94,10 +91,10 @@ public class ThreeDigitNum {
 
     private void validateValue(List<Boolean> freq, int valueEach) {
         if (!isValidRange(valueEach)) {
-            throw new IllegalArgumentException(INVALID_DIGIT_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_DIGIT.value());
         }
         if (isUsedValue(freq, valueEach)) {
-            throw new IllegalArgumentException(DUPLICATE_DIGIT_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_DIGIT.value());
         }
     }
 
@@ -111,7 +108,7 @@ public class ThreeDigitNum {
 
     private void validateSize() {
         if (!isValidSize()) {
-            throw new IllegalArgumentException(INVALID_SIZE_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE.value());
         }
     }
 

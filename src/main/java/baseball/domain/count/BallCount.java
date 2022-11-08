@@ -1,9 +1,9 @@
 package baseball.domain.count;
 
 import baseball.domain.ThreeDigitNum;
+import baseball.enums.CountMessage;
 
 public class BallCount extends Count {
-    public static final String BALL_MESSAGE = "볼";
 
     public BallCount(ThreeDigitNum answer, ThreeDigitNum input) {
         super(answer, input);
@@ -15,7 +15,7 @@ public class BallCount extends Count {
 
     @Override
     public String toString() {
-        return String.format("%d%s", super.count, BALL_MESSAGE);
+        return String.format("%d%s", super.count, CountMessage.BALL.value());
     }
 
     @Override

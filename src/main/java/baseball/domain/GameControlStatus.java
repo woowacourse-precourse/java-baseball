@@ -1,10 +1,9 @@
 package baseball.domain;
 
-public class GameControlStatus {
+import baseball.enums.ErrorMessage;
+import baseball.enums.GameControl;
 
-    public static final int RESTART_VALUE = 1;
-    public static final int STOP_VALUE = 2;
-    public static final String INVALID_INPUT_MESSAGE = "유효하지 않은 입력입니다.";
+public class GameControlStatus {
 
     private int value;
 
@@ -19,7 +18,7 @@ public class GameControlStatus {
 
     private void validateValue() {
         if(!isValidValue()) {
-            throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.value());
         }
     }
 
@@ -28,10 +27,10 @@ public class GameControlStatus {
     }
 
     public boolean isStop() {
-        return value == STOP_VALUE;
+        return value == GameControl.STOP_VALUE.getValue();
     }
 
     public boolean isRestart() {
-        return value == RESTART_VALUE;
+        return value == GameControl.RESTART_VALUE.getValue();
     }
 }

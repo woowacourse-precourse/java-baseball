@@ -3,11 +3,9 @@ package baseball.domain;
 import static baseball.domain.count.CountManager.makeCountManager;
 
 import baseball.domain.count.CountManager;
+import baseball.enums.CountMessage;
 
 public class Hint {
-
-    public static final String SPACE_MESSAGE = " ";
-    public static final String NOTHING_MESSAGE = "낫싱";
 
     private CountManager countManager;
 
@@ -23,7 +21,7 @@ public class Hint {
     @Override
     public String toString() {
         if (countManager.isAllCountZero()) {
-            return NOTHING_MESSAGE;
+            return CountMessage.NOTHING.value();
         }
 
         return makeHintMsg();
@@ -47,7 +45,7 @@ public class Hint {
 
     private void addSpaceMsg(StringBuffer stringBuffer) {
         if (countManager.isAllCountExist()) {
-            stringBuffer.append(SPACE_MESSAGE);
+            stringBuffer.append(CountMessage.SPACE.value());
         }
     }
 

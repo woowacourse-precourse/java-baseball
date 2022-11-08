@@ -1,10 +1,10 @@
 package baseball.domain.count;
 
 import baseball.domain.ThreeDigitNum;
+import baseball.enums.CountMessage;
 
 public class StrikeCount extends Count {
 
-    public static final String STRIKE_MESSAGE = "스트라이크";
 
     public StrikeCount(ThreeDigitNum answer, ThreeDigitNum input) {
         super(answer, input);
@@ -16,7 +16,7 @@ public class StrikeCount extends Count {
 
     @Override
     public String toString() {
-        return String.format("%d%s", super.count, STRIKE_MESSAGE);
+        return String.format("%d%s", super.count, CountMessage.STRIKE.value());
     }
 
     @Override
