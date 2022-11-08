@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -93,4 +94,35 @@ public class FeatureTest {
         assertThat(ballAndStrike.get(0)).isEqualTo(0);
         assertThat(ballAndStrike.get(1)).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("게임 재시작, 종료, 잘못된 값 확인")
+    void 게임_종료_테스트() {
+        String nextStatus1 = "1";
+        GameStatus start = Arrays.stream(GameStatus.values())
+                .filter(gameStatus -> gameStatus.getNumber().equals(nextStatus1))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다."));
+        assertThat(start).isEqualTo(GameStatus.START);
+
+        String nextStatus2 = "2";
+        GameStatus end = Arrays.stream(GameStatus.values())
+                .filter(gameStatus -> gameStatus.getNumber().equals(nextStatus2))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다."));
+        assertThat(end).isEqualTo(GameStatus.END);
+
+        String wrongStatus = "3";
+        assertThrows(IllegalArgumentException.class,
+                () -> Arrays.stream(GameStatus.values())
+                        .filter(gameStatus -> gameStatus.getNumber().equals(wrongStatus))
+                        .findFirst()
+                        .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다."))
+        );
+
+
+
+    }
+
+
 }

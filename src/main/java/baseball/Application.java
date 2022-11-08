@@ -14,9 +14,9 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> answer = null;
-        GameStatus now = RESTART;
+        GameStatus now = START;
         while (!now.equals(END)) {
-            if (now.equals(RESTART)) {
+            if (now.equals(START)) {
                 answer = getRandomNumber();
                 now = IN_GAME;
             }

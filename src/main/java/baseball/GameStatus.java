@@ -2,7 +2,7 @@ package baseball;
 
 public enum GameStatus {
     IN_GAME("0"),
-    RESTART("1"),
+    START("1"),
     END("2");
 
     private final String number;
