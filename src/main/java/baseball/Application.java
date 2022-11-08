@@ -28,8 +28,36 @@ public class Application {
         boolean notGameOver = true;
         while(notGameOver){
             List<Integer> user = inputNumber();
+            notGameOver = !compareNum(user,computer);
         }
         return true;
+    }
+    // 숫자 비교
+    public static boolean compareNum(List<Integer> computer, List<Integer> user) {
+        int strikeCount = countStrike(computer, user);
+        int ballCount = countBall(computer, user) - strikeCount;
+
+        return null;
+    }
+    // 볼 개수 계산
+    public static int countBall(List<Integer> computerNum, List<Integer> userNum) {
+        int ballCount = 0;
+        for(int i=0; i< computerNum.size(); i++) {
+            if(computerNum.contains(userNum.get(i))){
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+    // 스트라이크 개수 계산
+    public static int countStrike(List<Integer> computerNum, List<Integer> userNum) {
+        int strikeCount = 0;
+        for (int i = 0; i < computerNum.size(); i++) {
+            if (computerNum.get(i) == userNum.get(i)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
     }
     // 숫자 입력
     public static List<Integer> inputNumber() {
