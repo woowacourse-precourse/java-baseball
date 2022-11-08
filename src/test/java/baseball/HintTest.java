@@ -116,4 +116,16 @@ class HintTest {
         assertThat(printHint).isEqualTo("1볼 1스트라이크");
     }
 
+    @Test
+    public void 출력_확인_낫싱_일때() throws Exception {
+        //given
+        List<Integer> computerNumber = List.of(1, 3, 5);
+        List<Integer> userNumber = List.of(2, 4, 6);
+        hint.giveHint(computerNumber, userNumber);
+        //when
+        String printHint = hint.printHint();
+        //then
+        assertThat(printHint).isEqualTo("낫싱");
+    }
+
 }
