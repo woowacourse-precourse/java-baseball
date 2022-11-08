@@ -52,4 +52,12 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void zero_를_포함하는_입력_주어지면_예외발생() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("101"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
