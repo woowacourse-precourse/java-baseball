@@ -5,14 +5,14 @@ import java.util.Arrays;
 
 public class UserNumGenerator extends NumGenerator {
     public UserNumGenerator() {
-        this.nums = pickThreeNum();
+        this.nums = pickUserNums();
     }
 
-    public static int[] pickThreeNum() throws IllegalArgumentException {
+    public static int[] pickUserNums() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String numString = Console.readLine();
         int[] nums = stringToIntArray(numString);
-        if (nums.length == 3 && isOneNineInt(nums) && isNotSame(nums)) {
+        if (nums.length == 3 && isOneNineInt(nums) && isNotDuplicate(nums)) {
             return nums;
         }
         throw new IllegalArgumentException("IllegalArgumentException!");
