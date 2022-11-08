@@ -15,7 +15,7 @@ public class Application {
             List<Integer> randomNumber = createRandomNumber();
             while(true){
                 System.out.print("숫자를 입력해주세요 : ");
-                int inputNumber = Integer.parseInt(Console.readLine());
+                String inputNumber = Console.readLine();
                 checkInputCondition(inputNumber);
 
                 List<Integer> listedInputNumber = convertIntegerIntoList(inputNumber);
@@ -51,28 +51,30 @@ public class Application {
         return createdNumber;
     }
 
-    static void checkInputCondition(int inputNumber) {
-        List<Integer> checkList = new ArrayList<>(3);
-        String strNumber = String.valueOf(inputNumber);
+    static void checkInputCondition(String inputNumber) {
+        if (inputNumber.equals("")) {
+            throw new IllegalArgumentException();
+        }
 
-        for (int i = 0; i < strNumber.length(); i++) {
-            int target = Integer.parseInt(String.valueOf(strNumber.charAt(i)));
+        List<Integer> checkList = new ArrayList<>(3);
+
+        for (int i = 0; i < inputNumber.length(); i++) {
+            int target = Integer.parseInt(String.valueOf(inputNumber.charAt(i)));
             if (!checkList.contains(target) && target > 0 && target <= 9) {
                 checkList.add(target);
             }
         }
 
-        if (strNumber.length() != 3 || checkList.size() < 3) {
+        if (inputNumber.length() != 3 || checkList.size() < 3) {
             throw new IllegalArgumentException();
         }
     }
 
-    static List<Integer> convertIntegerIntoList(int number) {
-        String strNumber = String.valueOf(number);
+    static List<Integer> convertIntegerIntoList(String number) {
         List<Integer> listNumber = new ArrayList<>();
 
-        for (int i = 0; i < strNumber.length(); i++) {
-            listNumber.add(Integer.parseInt(String.valueOf(strNumber.charAt(i))));
+        for (int i = 0; i < number.length(); i++) {
+            listNumber.add(Integer.parseInt(String.valueOf(number.charAt(i))));
         }
 
         return listNumber;
