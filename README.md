@@ -135,6 +135,7 @@ BUILD SUCCESSFUL in 0s
 #### 사용 예시
 
 ```java
+/*
 List<Integer> computer = new ArrayList<>();
 while (computer.size() < 3) {
     int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -142,6 +143,7 @@ while (computer.size() < 3) {
         computer.add(randomNumber);
     }
 }
+ */
 ```
 
 ---
@@ -153,3 +155,22 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+## 📜기능 체크리스트
+- [x] 컴퓨터가 정답 생성
+  - [x] 1~9 사이의 중복되지 않은 세 숫자 생성
+  - [x] 조건 검사 : 잘못된 값일 경우 Illegal Argument Exception 
+- [x] 사용자 임의의 수 입력
+  - [x] String to List<Integer>
+  - [x] 조건 검사 : 잘못된 값일 경우 IllegalArgumentException
+- [x] 컴퓨터의 값과 사용자 값 비교
+  - [x] 스트라이크 : 같은수가 같은 자리에 위치
+  - [x] 볼 : 같은 수가 다른 자리에 위치
+  - [x] 낫싱 : 같은 수가 없는 경우
+- [x] 플레이어가 답을 맞출 때까지 반복
+- [x] 게임 종료
+  - [x] 다시시작 : 1
+  - [x] 완전종료 : 2
+  
