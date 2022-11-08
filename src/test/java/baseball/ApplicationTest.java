@@ -52,6 +52,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 숫자_외의_문자가_포함된_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("3f5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
