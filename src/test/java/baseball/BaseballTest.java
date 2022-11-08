@@ -47,4 +47,43 @@ public class BaseballTest {
         }
     }
 
+    @Nested
+    class FunctionList4{
+        @Test
+        void 정답확인_메세지_출력_테스트1(){
+            List<Integer> com = Application.getAnswerRandomNumber();
+            List<Integer> player = List.of(com.get(2),com.get(0),com.get(1));
+            String onlyBall = Application.getAnswerCheckMessage(com,player);
+            assertThat(onlyBall).isEqualTo("3볼");
+        }
+        @Test
+        void 정답확인_메세지_출력_테스트2(){
+            List<Integer> com = Application.getAnswerRandomNumber();
+            List<Integer> player = List.of(com.get(0),com.get(1),com.get(2));
+            String onlyStrike = Application.getAnswerCheckMessage(com,player);
+            assertThat(onlyStrike).isEqualTo("3스트라이크");
+        }
+        @Test
+        void 정답확인_메세지_출력_테스트3(){
+            List<Integer> com = Application.getAnswerRandomNumber();
+            List<Integer> player = List.of(com.get(2),com.get(1),com.get(0));
+            String ballAndStrike = Application.getAnswerCheckMessage(com,player);
+            assertThat(ballAndStrike).isEqualTo("2볼 1스트라이크");
+        }
+        @Test
+        void 정답확인_메세지_출력_테스트4(){
+            List<Integer> com = Application.getAnswerRandomNumber();
+            List<Integer> player = List.of(-1,-1,-1);
+            String ballAndStrike = Application.getAnswerCheckMessage(com,player);
+            assertThat(ballAndStrike).isEqualTo("낫싱");
+        }
+    }
+    @Nested
+    class FunctionList5{
+        @Test
+        void HashMap_생성_기능(){
+
+        }
+    }
+
 }
