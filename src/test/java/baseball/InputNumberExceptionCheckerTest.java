@@ -30,6 +30,13 @@ class InputNumberExceptionCheckerTest {
 
     @Test
     void hasZero() {
+        InputNumberExceptionChecker inputNumberExceptionChecker;
+        inputNumberExceptionChecker = new InputNumberExceptionChecker();
+        assertThat(inputNumberExceptionChecker.hasZero("789"))
+                .isEqualTo(true);
+        assertThat(inputNumberExceptionChecker.hasZero("101"))
+                .isEqualTo(false);
+
     }
 
     @Test
@@ -37,10 +44,10 @@ class InputNumberExceptionCheckerTest {
     }
 
     @Test
-    void hasException() {
+    void hasExceptionStringParameter() {
     }
 
     @Test
-    void testHasException() {
+    void hasExceptionIntParameter() {
     }
 }
