@@ -10,8 +10,15 @@ public class Judge {
                 .count();
     }
 
-    public int countStrike() {
-        return 1;
+    public int countStrike(List<Integer> hitterNumber, List<Integer> pitcherNumber) {
+        int count = 0;
+
+        for (int numberIndex = 0; numberIndex < hitterNumber.size(); numberIndex++) {
+            if (hitterNumber.get(numberIndex) == pitcherNumber.get(numberIndex)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public int countNoting() {

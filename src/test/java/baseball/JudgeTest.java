@@ -19,4 +19,14 @@ class JudgeTest {
 
         assertThat(ballCount).isEqualTo(2);
     }
+
+    @Test
+    void Strike개수_확인() {
+        List<Integer> pitcherNumber = new ArrayList<>(List.of(1, 2, 3));
+        List<Integer> HitterNumber = new ArrayList<>(List.of(1, 2, 4));
+
+        int strikeCount = judge.countStrike(pitcherNumber, HitterNumber);
+
+        assertThat(strikeCount).isEqualTo(2);
+    }
 }
