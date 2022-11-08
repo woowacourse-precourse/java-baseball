@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -10,16 +11,20 @@ public class Computer {
 
     private static final Integer MIN_VALUE = 1;
     private static final Integer MAX_VALUE = 9;
-    private static final Integer ANSWER_LENGTH = 3;
 
     private List<Integer> answer;
 
     public Computer() {
-        init();
+        reset();
     }
 
-    private void init() {
-        answer = Randoms.pickUniqueNumbersInRange(MIN_VALUE, MAX_VALUE, ANSWER_LENGTH);
+    public void reset() {
+        Set<Integer> answerSet = new HashSet<>();
+        while (answerSet.size() <= 2) {
+            int nextAnswer = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+            answerSet.add(nextAnswer);
+        }
+        answer = new ArrayList<>(answerSet);
     }
 
     public Result compareAnswer(List<Integer> playerAnswer) {
