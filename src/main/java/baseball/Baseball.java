@@ -40,9 +40,20 @@ public class Baseball {
                 .count()==3;
     }
 
+    public boolean isThree(String response){
+        return (response.length()==3);
+    }
+
     public boolean generateEx(String response){
-        if(!(isNum(response) && isDifferent(response)))
-           throw new IllegalArgumentException();
+        if(!isNum(response))
+            throw new IllegalArgumentException("1~9사이의 숫자로만 입력해주세요.");
+
+        if(!isThree(response))
+            throw new IllegalArgumentException("3자리 숫자로 입력해주세요.");
+
+        if(!isDifferent(response))
+           throw new IllegalArgumentException("서로 다른 숫자로만 입력해주세요.");
+
         return true;
     }
 }
