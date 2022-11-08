@@ -1,11 +1,17 @@
 package baseball.domain.manager;
 
+import baseball.constant.GameMessage;
 import baseball.constant.GameStatus;
+import baseball.domain.computer.Computer;
+import baseball.domain.user.User;
 import baseball.util.BallCount;
+
+import java.io.IOException;
 
 public class NumberBaseBallManager {
 
     private GameStatus status = GameStatus.NOT_INITIALIZED;
+    private final User user = new User();
 
     public void validate(String input) throws IllegalArgumentException {
         GameStatus currentStatus = getStatus();
@@ -26,7 +32,7 @@ public class NumberBaseBallManager {
         }
 
         int val = input.charAt(0) - '0';
-        if (val != 0 && val != 1) {
+        if (val != 1 && val != 2) {
             throw new IllegalArgumentException();
         }
     }

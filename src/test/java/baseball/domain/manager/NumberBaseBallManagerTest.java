@@ -64,11 +64,23 @@ class NumberBaseBallManagerTest {
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("게임 재시작 요청 시 1,2 중 하나를 입력하면 아무것도 수행하지 않는다.")
+    @DisplayName("게임 재시작 요청 시 1을 입력하면 아무것도 수행하지 않는다.")
     @Test
-    void givenNotDigit_whenValidateContinueOrNot_thenDoNothing() {
+    void givenOne_whenValidateContinueOrNot_thenDoNothing() {
         //given
         String str = "1";
+        doCallRealMethod().when(baseballManager).
+                validateAnswerContinueOrNot(any(String.class));
+
+        //when
+        baseballManager.validateAnswerContinueOrNot(str);
+    }
+
+    @DisplayName("게임 재시작 요청 시 2를 입력하면 아무것도 수행하지 않는다.")
+    @Test
+    void givenTwo_whenValidateContinueOrNot_thenDoNothing() {
+        //given
+        String str = "2";
         doCallRealMethod().when(baseballManager).
                 validateAnswerContinueOrNot(any(String.class));
 
