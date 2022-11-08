@@ -32,10 +32,29 @@ public class ComputerThreeNumber extends ThreeNumber{
     }
 
     public void setMyList() {
-        while(myList.size() < 3) {
+        int check = 0;
+
+        while(check != 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-            addToMyList(randomNumber);
+            check += findDuplicate(randomNumber);
+        }
+
+        System.out.println("size: " + myList.size());
+
+        for(int i = 0; i < myList.size(); i++) {
+            System.out.print(myList.get(i) + " ");
+        }
+    }
+
+    public int findDuplicate(int num) {
+        if(addToMyList(num))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
         }
     }
 }

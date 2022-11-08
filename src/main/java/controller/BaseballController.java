@@ -21,8 +21,6 @@ public class BaseballController {
     }
 
     public int playGame() {
-        init();
-
         while(!isEnd()) {
             service.playGame();
         }

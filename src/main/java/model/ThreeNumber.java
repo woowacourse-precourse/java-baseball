@@ -17,7 +17,7 @@ public class ThreeNumber {
         }
         else
         {
-            throw new IllegalArgumentException();
+            return false;
         }
     }
 
@@ -27,5 +27,9 @@ public class ThreeNumber {
 
     public ArrayList<Integer> getMyList() {
         return myList;
+    }
+
+    public void reset() {
+        myList.clear();
     }
 }

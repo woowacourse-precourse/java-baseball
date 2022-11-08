@@ -16,18 +16,23 @@ public class ThreeNumberService {
     public ThreeNumberService() {
         computer = new ComputerThreeNumber();
         user = new ThreeNumber();
+        ball = 0;
+        strike = 0;
+        nothing = true;
     }
 
     public void reset() {
         strike = 0;
         ball = 0;
         nothing = true;
+        computer.reset();
+        user.reset();
     }
 
     public void init() {
-        computer.setMyList();
-
         reset();
+
+        computer.setMyList();
     }
 
     public boolean playGame() {
@@ -89,7 +94,7 @@ public class ThreeNumberService {
      * 사용자 숫자가 있는지 확인 함수
      * */
     public void calculateScore(int num, int index) {
-        if(computer.contains(num)) {
+        if(computer.contains(num) == true) {
             calculateStrikeOrBall(num, index);
         }
     }
