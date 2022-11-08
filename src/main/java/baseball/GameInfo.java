@@ -36,13 +36,6 @@ public class GameInfo {
         return result.toString();
     }
 
-    public boolean isEnd() {
-        if (strike == 3) {
-            return true;
-        }
-        return false;
-    }
-
     public boolean isAnswer() {
         if (strike == 3) {
             return true;
