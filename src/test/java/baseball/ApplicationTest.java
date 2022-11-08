@@ -59,6 +59,19 @@ class ApplicationTest extends NsTest {
 
     @Nested
     class GameProceedTest {
+        @Test
+        void 사용자_입력요청_문구_확인() {
+            OutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+
+            testGame.printInputRequest();
+
+            String actualOutput = out.toString()
+                    .replace(System.getProperty("line.separator").toString(), "");
+
+            String expectedOutput = "숫자를 입력해주세요 : ";
+            assertThat(actualOutput).isEqualTo(actualOutput);
+        }
         @Nested
         class ExceptionTest{
             @Test
