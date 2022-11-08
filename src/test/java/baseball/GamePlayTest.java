@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.ComputerNumber;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,13 +11,17 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 
 public class GamePlayTest {
     final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     final PrintStream standardOut = System.out;
     final GamePlay gamePlay = new GamePlay();
+    final ComputerNumber computerNumber = new ComputerNumber();
 
     @BeforeEach
     void setUp(){
@@ -92,6 +97,10 @@ public class GamePlayTest {
     }
     @Test
     void 컴퓨터의_숫자가_3자리(){
+        // given, when
+        List<Integer> computerNumberList = computerNumber.generateNumber();
+        //then
+        assertThat(computerNumberList.size()).isEqualTo(3);
 
     }
     @Test
