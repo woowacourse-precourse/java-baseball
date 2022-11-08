@@ -2,8 +2,8 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.*;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import camp.nextstep.edu.missionutils.test.NsTest;
 
 import java.io.ByteArrayInputStream;
 

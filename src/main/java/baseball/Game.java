@@ -32,5 +32,4 @@ public class Game {
         System.out.println(message);
         return Console.readLine();
     }
-
 }
