@@ -34,13 +34,17 @@ public class OneDigitNumbers implements Iterable<Integer> {
 
         return this.oneDigitNumbers.size();
     }
+    
+    public int indexOf(int index) {
+        return this.oneDigitNumbers.indexOf(index);
+    }
+
+    public boolean contains(int number) {
+        return this.oneDigitNumbers.contains(number);
+    }
 
     public List<Integer> toList() {
         return this.oneDigitNumbers;
-    }
-
-    public int indexOf(int index) {
-        return this.oneDigitNumbers.indexOf(index);
     }
 
     private List<Integer> splitFrom(int number) {
