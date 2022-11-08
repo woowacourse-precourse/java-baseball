@@ -3,18 +3,14 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.HashSet;
 import java.util.List;
 
-import static baseball.Application.generateComputerNumber;
-import static baseball.Application.welcomeMessage;
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -54,6 +50,37 @@ class ApplicationTest extends NsTest {
            assertThat(digit).isBetween(1,9);
        }
    }
+
+   @Test
+   void 숫자입력_테스트_1(){
+        String msg = "숫자를 입력해주세요 : ";
+        String input = "123";
+        OutputStream out = new ByteArrayOutputStream();
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        System.setOut(new PrintStream(out));
+        assertThat(getUserInputNumber()).isEqualTo(List.of(1,2,3));
+        assertThat(out.toString().trim()).isEqualTo(msg.trim());
+   }
+
+    @Test
+    void 숫자입력_테스트_2(){
+        String input = "1234";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Throwable thrown = catchThrowable(()->getUserInputNumber());
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 숫자입력_테스트_3(){
+        String input = "abc";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        System.setIn(in);
+        Throwable thrown = catchThrowable(()->getUserInputNumber());
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Override
     public void runMain() {
