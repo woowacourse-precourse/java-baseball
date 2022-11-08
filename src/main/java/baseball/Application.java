@@ -65,16 +65,16 @@ public class Application {
     }
     public boolean checkAllStrike(int strike_num) {
         if (strike_num == CORRECT_ANSWER) {
-            if (choiceRestartGame()){
+            if (choiceRestartGame()) {
                 return true;
-            }
-            else {
+            } else {
                 computer.randomNumber.clear();
                 computer.makeRandomNumber();
                 return false;
             }
+        } else {
+            return false;
         }
-        else {return false;}
     }
     public boolean choiceRestartGame(){
         System.out.println(CLEAR_GAME + CHOICE_ONE_OR_TWO);

@@ -12,10 +12,10 @@ public class Computer {
     public Computer(){
         randomNumber = new ArrayList<>();
     }
-    public void makeRandomNumber(){
+    public void makeRandomNumber() {
         while (randomNumber.size() < GAMEPLAY_SIZE) {
             int game_number = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
-            if (!randomNumber.contains(game_number)){
+            if (!randomNumber.contains(game_number)) {
                 randomNumber.add(game_number);
             }
         }
