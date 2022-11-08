@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Randoms;
 public class ComputerNumber {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
+    static final int MIN_NUMBER = 1;
+    static final int MAX_NUMBER = 9;
 
     private List<Integer> computerNumber;
 
