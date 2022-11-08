@@ -5,12 +5,12 @@ import domain.ComputerNumberList;
 import domain.UserInputNumberList;
 import service.CompareNumber;
 
-public class BaseballGame {
+public class BaseballGameController {
     public final ComputerNumberList computerNumberList;
     public final UserInputNumberList userNumberList;
     public final CompareNumber compareNumber;
 
-    public BaseballGame() {
+    public BaseballGameController() {
         this.computerNumberList = new ComputerNumberList();
         this.userNumberList = new UserInputNumberList();
         this.compareNumber = new CompareNumber(computerNumberList.getComputerNumber());
