@@ -53,6 +53,7 @@ public class GameService {
             RANDOMBALL.clear();
             userBall.clear();
             PlayGameController.run();
+            return;
         }
         if(Objects.equals(num, "2")) return;
 
