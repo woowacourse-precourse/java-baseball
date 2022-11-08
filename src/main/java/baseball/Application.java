@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -19,14 +16,30 @@ public class Application {
         String restartNumber;
 
         do {
-            System.out.print("숫자를 입력해주세요 : ");
-            String userNumber = Console.readLine();
-            List<Integer> userNumberList = validateUserNumber(userNumber);
+            List<Integer> computerNumberList = createComputerNumberList();
+            while (true) {
+                Map<String, Integer> scoreTable = createScoreTable();
+                System.out.print("숫자를 입력해주세요 : ");
+                String userNumber = Console.readLine();
+                List<Integer> userNumberList = validateUserNumber(userNumber);
+
+                if (scoreTable.get("스트라이크") == 3) {
+                    break;
+                }
+            }
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             restartNumber = Console.readLine();
             validateRestartNumber(restartNumber);
         } while (restartNumber.equals("1"));
+    }
+
+    private static Map<String, Integer> createScoreTable() {
+        Map<String, Integer> scoreTable = new HashMap<>();
+        scoreTable.put("스트라이크", 0);
+        scoreTable.put("볼", 0);
+
+        return scoreTable;
     }
 
     public static void validateRestartNumber(String restartNumber) {
