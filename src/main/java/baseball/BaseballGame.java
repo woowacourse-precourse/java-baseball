@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import static baseball.Constants.GAME_INPUT_LENGTH;
+import static baseball.Constants.RESTART_INPUT_LENGTH;
 import baseball.Constants.Message;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,12 @@ public class BaseballGame {
                 throw new IllegalArgumentException(Message.ERROR_MSG);
             }
             user.add(Input.charAt(i));
+        }
+    }
+
+    public static void exceptionOneNumber(String Input) {
+        if (Input.length() != RESTART_INPUT_LENGTH) {
+            throw new IllegalArgumentException(Message.ERROR_MSG);
         }
     }
 
