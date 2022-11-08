@@ -32,7 +32,6 @@ public class Score {
         result.add(getBall(answer,userNumber));
         result.add(getStrike(answer,userNumber));
 
-
         return result;
     }
 
@@ -74,8 +73,4 @@ public class Score {
             System.out.println("낫싱");
         }
     }
-
-
-
-
 }
