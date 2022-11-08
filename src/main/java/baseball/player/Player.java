@@ -20,4 +20,8 @@ public abstract class Player {
     int getBallsNumber() {
         return selectBalls.size();
     }
+
+    boolean isSelectBall(String ball) {
+        return selectBalls.contains(ball);
+    }
 }
