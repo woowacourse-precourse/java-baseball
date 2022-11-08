@@ -20,12 +20,12 @@ public class BaseBallGame {
             ballCount.calc(answer, userAnswer);
             System.out.println(ballCount.toString());
             // TODO: 게임 진행 중 콘솔로 출력되는 Comment 출력
-        } while(isFinished());
+        } while(!isFinished(answer, userAnswer));
     }
 
     // TODO: 게임 종료 여부 판단
-    private boolean isFinished() {
+    private boolean isFinished(List<Integer> answer, List<Integer> userAnswer) {
         // TODO: input data와 answer가 같은지 비교
-        return true;
+        return answer.equals(userAnswer);
     }
 }
