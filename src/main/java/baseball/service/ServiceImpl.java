@@ -14,7 +14,6 @@ public class ServiceImpl implements Service {
         while(game.getPlayer().getStrike() != 3) {
             System.out.print("숫자를 입력해주세요 : ");
             game.getPlayer().inputGenerate();
-            //System.out.println(game.getNumber());
             baseBall(game);
             game.printBaseBallCount();
         }
