@@ -8,6 +8,7 @@ import java.util.List;
 
 import static baseball.Player.*;
 import static baseball.SystemMessage.INVALID_LENGTH;
+import static baseball.SystemMessage.INVALID_NUMBER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -37,7 +38,7 @@ public class PlayerTest {
         String input = "12";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        
+
         String valid_message = "";
         try {
             getAnswer();
@@ -45,5 +46,20 @@ public class PlayerTest {
             valid_message = e.getMessage();
         }
         assertThat(valid_message).isEqualTo(INVALID_LENGTH);
+    }
+
+    @Test
+    void getAnswer_메소드로_Player_숫자_입력값_validation_number(){
+        String input = "019";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        String valid_message = "";
+        try {
+            getAnswer();
+        } catch (IllegalArgumentException e) {
+            valid_message = e.getMessage();
+        }
+        assertThat(valid_message).isEqualTo(INVALID_NUMBER);
     }
 }
