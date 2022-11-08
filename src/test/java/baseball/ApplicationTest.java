@@ -9,6 +9,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.in;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -106,6 +107,32 @@ class ApplicationTest extends NsTest {
 
         result.countBall(baseball, input4);
         assertThat(result.getBall()).isEqualTo(0);
+    }
+
+    @Test
+    void check_print() {
+        Result result = new Result();
+        List<Integer> baseball = List.of(1,2,3);
+        List<Integer> input1 = List.of(1,2,4);
+        List<Integer> input2 = List.of(3,2,1);
+        List<Integer> input3 = List.of(2,4,1);
+        List<Integer> input4 = List.of(4,5,6);
+
+        result.countBall(baseball, input1);
+        result.countStrike(baseball, input1);
+        assertThat(result.printResult()).isEqualTo("2스트라이크");
+
+        result.countBall(baseball, input2);
+        result.countStrike(baseball, input2);
+        assertThat(result.printResult()).isEqualTo("2볼 1스트라이크");
+
+        result.countBall(baseball, input3);
+        result.countStrike(baseball, input3);
+        assertThat(result.printResult()).isEqualTo("2볼 ");
+
+        result.countBall(baseball, input4);
+        result.countStrike(baseball, input4);
+        assertThat(result.printResult()).isEqualTo("낫싱");
     }
 
     @Override
