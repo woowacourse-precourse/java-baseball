@@ -21,7 +21,7 @@ public class Information {
     }
 
     public static void throwError(Error type) {
-
+        throw new IllegalArgumentException(type.message);
     }
 
     public static String createComparisonMessage(int ballCount, int strikeCount) {
