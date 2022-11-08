@@ -25,4 +25,20 @@ public class PlayerNumberTest {
         assertThat(Application.isValidNumber(input)).isFalse();
     }
 
+    @Test
+    void 입력값_리스트로_변환_테스트(){
+        // given
+        String input = "123"; //"가나다" ,"ABC" ,"012", "1234", "120" 오류
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        List<Integer> output = List.of(1,2,3);
+        assertThat(Application.getPlayerNumber()).isEqualTo(output);
+    }
+
+    @Test
+    void 문자열_숫자인지_체크_테스트(){
+        String input = "가나다";
+        assertThat(Application.isNumber(input)).isFalse();
+    }
+
 }
