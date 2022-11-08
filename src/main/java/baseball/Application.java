@@ -16,7 +16,7 @@ public class Application {
             gameStart();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             menu = Console.readLine();
-            if (Integer.parseInt(menu) > 2 || Integer.parseInt(menu) < 0) {
+            if (Integer.parseInt(menu) > 2 || Integer.parseInt(menu) < 1) {
                 throw new IllegalArgumentException();
             }
         }
@@ -115,7 +115,7 @@ public class Application {
             List<Integer> cnt = compareNumber(input, computer);
             int ball = cnt.get(1);
             int strike = cnt.get(0);
-            
+
             printResult(ball, strike);
             if (quit(strike)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
