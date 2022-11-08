@@ -1,4 +1,4 @@
-package baseball.domain.gamenumber;
+package baseball.domain.ingame;
 
 import baseball.domain.baseballnumber.BaseballNumber;
 import org.junit.jupiter.api.Test;

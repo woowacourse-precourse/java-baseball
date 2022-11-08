@@ -1,4 +1,4 @@
-package baseball.domain.gamenumber;
+package baseball.domain.ingame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

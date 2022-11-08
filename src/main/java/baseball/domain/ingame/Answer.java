@@ -1,4 +1,4 @@
-package baseball.domain.gamenumber;
+package baseball.domain.ingame;
 
 import static baseball.domain.baseballnumber.BaseballNumberListGenerator.baseballNumberListOfRandomNumbers;
 

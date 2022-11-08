@@ -1,4 +1,4 @@
-package baseball.domain.gamenumber;
+package baseball.domain.ingame;
 
 public class CountResult {
 
