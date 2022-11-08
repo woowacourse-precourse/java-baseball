@@ -16,6 +16,9 @@ public class Checker {
         if (this.isNumberDuplicated(number)) {
             throw new IllegalArgumentException(Texts.USER_INPUT_ILLEGAL_DUPLICATED + Texts.USER_INPUT_ILLEGAL_NOTICE + Texts.USER_INPUT_ILLEGAL + Texts.GAME_END);
         }
+        if (this.isContainsZero(number)) {
+            throw new IllegalArgumentException(Texts.USER_INPUT_ILLEGAL_ZERO + Texts.USER_INPUT_ILLEGAL_NOTICE + Texts.USER_INPUT_ILLEGAL + Texts.GAME_END);
+        }
     }
 
     public boolean isIntegerNumeric(String number) {
@@ -41,6 +44,16 @@ public class Checker {
                 if (digits[i].equals(digits[j])) {
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    public boolean isContainsZero(String number) {
+        String[] numeric = number.split("");
+        for (String s : numeric) {
+            if (s.equals("0")) {
+                return true;
             }
         }
         return false;
