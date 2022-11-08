@@ -12,6 +12,7 @@ public class Game {
     public static String startMessage = "숫자 야구 게임을 시작합니다.";
     public static String endMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static String restartMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static String inputMessage = "숫자를 입력해주세요 : ";
     public static List<Integer> computer;
     public static List<Integer> user;
     public static List<Integer> ballCount;
@@ -115,13 +116,26 @@ public class Game {
     }
 
     public void buildUser(){
-        user = new ArrayList<Integer>();
-        System.out.print("숫자를 입력해주세요 : ");
-        readUser();
+        initUser();
+        printInputMessage();
+
+        String userStr = readLine();
+        validateUser(userStr);
+        setUser(userStr);
     }
 
-    public void readUser(){
-        String userStr = readLine();
+    public void printInputMessage(){
+        System.out.print(inputMessage);
+    }
+
+    public void setUser(String userStr){
+        for(int index=0;index<userStr.length();index++){
+            int userInt = userStr.charAt(index) - '0';
+            user.add(userInt);
+        }
+    }
+
+    public void validateUser(String userStr){
         if(userStr.length() != 3) {
             throw new IllegalArgumentException("입력값은 세자리로 이뤄져야 합니다.");
         }
@@ -134,10 +148,7 @@ public class Game {
             if(user.contains(nowInt)){
                 throw new IllegalArgumentException("입력값은 서로 다른 3개의 수로 이뤄져야 합니다.");
             }
-
-            user.add(nowInt);
         }
-
     }
 
     public Integer confirmRestart(){
