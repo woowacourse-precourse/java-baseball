@@ -11,6 +11,7 @@ public class GameService {
     public void setGame(int digit, int minNumber, int maxNumber) {
         this.digit = digit;
         master = new Master(NumberGenerator.createRandomNumbers(digit, minNumber, maxNumber));
+        master.initCount();
     }
 
 }
