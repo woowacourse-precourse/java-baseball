@@ -17,7 +17,8 @@ enum BaseballResult {
         this.korName = korName;
     }
 
-    public String getKorName() {
+    @Override
+    public String toString() {
         return korName;
     }
 }
@@ -113,15 +114,15 @@ public class Application {
 
         Optional<Integer> nothingCnt = Optional.ofNullable(gameResult.get(BaseballResult.NOTHING));
         if (nothingCnt.isPresent() && nothingCnt.get() == 3) {
-            sb.append(BaseballResult.NOTHING.getKorName()).append('\n');
+            sb.append(BaseballResult.NOTHING).append('\n');
             return sb.toString();
         }
 
         Optional<Integer> ballCnt = Optional.ofNullable(gameResult.get(BaseballResult.BALL));
-        ballCnt.ifPresent(integer -> sb.append(integer).append(BaseballResult.BALL.getKorName()).append(" "));
+        ballCnt.ifPresent(integer -> sb.append(integer).append(BaseballResult.BALL).append(" "));
 
         Optional<Integer> strikeCnt = Optional.ofNullable(gameResult.get(BaseballResult.STRIKE));
-        strikeCnt.ifPresent(integer -> sb.append(integer).append(BaseballResult.STRIKE.getKorName()).append(" "));
+        strikeCnt.ifPresent(integer -> sb.append(integer).append(BaseballResult.STRIKE).append(" "));
 
         return sb.toString();
     }
