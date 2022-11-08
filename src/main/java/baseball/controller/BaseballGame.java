@@ -9,15 +9,10 @@ import baseball.view.Display;
 import java.util.List;
 
 public class BaseballGame {
-    private final DefenseNumberGenerator defenseNumberGenerator;
-    private final OffenseNumberGenerator offenseNumberGenerator;
+    private static final DefenseNumberGenerator defenseNumberGenerator = DefenseNumberGenerator.getInstance();
+    private static final OffenseNumberGenerator offenseNumberGenerator = OffenseNumberGenerator.getInstance();
     private static final Display display = Display.getInstance();
     private static final UserInput userInput = UserInput.getInstance();
-
-    public BaseballGame() {
-        defenseNumberGenerator = new DefenseNumberGenerator();
-        offenseNumberGenerator = new OffenseNumberGenerator();
-    }
 
     public void playBaseballGame() {
         List<Integer> defenseNumbers = defenseNumberGenerator.createDefenseNumbers();

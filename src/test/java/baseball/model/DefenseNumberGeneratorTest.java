@@ -11,12 +11,7 @@ class DefenseNumberGeneratorTest {
     private static final int MAX_DEFENSE_NUMBER = 9;
     private static final int MIN_DEFENSE_NUMBER = 1;
 
-    private final DefenseNumberGenerator defenseNumberGenerator;
-
-
-    public DefenseNumberGeneratorTest() {
-        defenseNumberGenerator = new DefenseNumberGenerator();
-    }
+    private static final DefenseNumberGenerator defenseNumberGenerator = DefenseNumberGenerator.getInstance();
 
     @Test
     void 유효한_방어_숫자가_생성되었는지_확인_길이가_세자리로_생성됐는지_확인() {

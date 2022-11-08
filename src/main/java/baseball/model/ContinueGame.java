@@ -1,8 +1,8 @@
 package baseball.model;
 
-import static baseball.error.ErrorMessage.CONTINUE_ERROR_MESSAGE;
-
 public class ContinueGame {
+    private static final String CONTINUE_ERROR_MESSAGE = "한 자리 숫자 1, 2 이외의 값이 들어갔습니다.";
+
     private ContinueGame() {
     }
 
@@ -12,6 +12,7 @@ public class ContinueGame {
 
     public boolean selectContinueGame(String inputToSelectContinueGame) {
         validateContinueInput(inputToSelectContinueGame);
+
         boolean continueGame = isContinueGame(inputToSelectContinueGame);
         return continueGame;
     }

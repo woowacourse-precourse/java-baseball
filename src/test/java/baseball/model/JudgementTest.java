@@ -9,23 +9,22 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class JudgementTest {
-    private final OffenseNumberGenerator offenseNumberGenerator;
+    private static final OffenseNumberGenerator offenseNumberGenerator = OffenseNumberGenerator.getInstance();
     private List<Integer> defenseNumbers;
     private Judgement judgement;
-
-    public JudgementTest() {
-        offenseNumberGenerator = new OffenseNumberGenerator();
-    }
 
     @BeforeEach
     void init() {
         defenseNumbers = List.of(1,2,3);
         judgement = Judgement.from(defenseNumbers);
     }
+
     @Test
     void 공격_성공의_경우를_확인() {
         List<Integer> offenseNumbers = offenseNumberGenerator.generateOffenseNumbers("123");
+
         boolean isFailureOffense = judgement.isFailureOffense(offenseNumbers);
+
         assertThat(isFailureOffense).isFalse();
     }
 
@@ -33,6 +32,7 @@ class JudgementTest {
     void 공격_실패의_경우를_확인() {
         List<Integer> offenseNumbers = offenseNumberGenerator.generateOffenseNumbers("124");
         boolean isFailureOffense = judgement.isFailureOffense(offenseNumbers);
+
         assertThat(isFailureOffense).isTrue();
     }
 

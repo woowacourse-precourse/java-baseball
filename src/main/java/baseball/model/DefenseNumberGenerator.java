@@ -8,6 +8,14 @@ import java.util.List;
 
 public class DefenseNumberGenerator {
     private static final int DEFENSE_NUMBER_SIZE = 3;
+
+    private DefenseNumberGenerator() {
+    }
+
+    public static DefenseNumberGenerator getInstance() {
+        return new DefenseNumberGenerator();
+    }
+
     public List<Integer> createDefenseNumbers() {
         List<Integer> defenseNumbers = new ArrayList<>();
 

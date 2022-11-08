@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.List;
 
 public class Judgement {
-    private final static int NUMBERS_SIZE = 3;
+    private static final int NUMBERS_SIZE = 3;
 
     private final List<Integer> defenseNumbers;
 
@@ -22,6 +22,7 @@ public class Judgement {
     public int countBall(List<Integer> offenseNumbers) {
         int sumOfBallAndStrikeCount = countSumOfBallAndStrike(offenseNumbers);
         int strikeCount = countStrike(offenseNumbers);
+
         return sumOfBallAndStrikeCount - strikeCount;
     }
 
@@ -34,6 +35,7 @@ public class Judgement {
         for (int i = 0; i < NUMBERS_SIZE; i++) {
             Integer offenseNumber = offenseNumbers.get(i);
             Integer defenseNumber = defenseNumbers.get(i);
+            
             strikeCount += isStrike(offenseNumber, defenseNumber);
         }
         return strikeCount;

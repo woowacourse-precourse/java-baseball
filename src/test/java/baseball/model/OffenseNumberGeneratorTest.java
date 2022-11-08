@@ -5,15 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static baseball.error.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class OffenseNumberGeneratorTest {
-    private final OffenseNumberGenerator offenseNumberGenerator;
 
-    public OffenseNumberGeneratorTest() {
-        offenseNumberGenerator = new OffenseNumberGenerator();
-    }
+    private static final String NOT_ONLY_NUMBER_ERROR_MESSAGE = "공격 값이 유효한 숫자로만 이루어지지 않았습니다.";
+    private static final String NOT_DISTINCT_ERROR_MESSAGE = "공격 값이 서로 다른 숫자가 아닙니다.";
+    private static final String SIZE_ERROR_MESSAGE = "공격 값의 길이가 3이 아닙니다.";
+    private static final OffenseNumberGenerator offenseNumberGenerator = OffenseNumberGenerator.getInstance();
 
     @Test
     void 유효한_공격_값을_넣었을_시_리스트를_반환() {

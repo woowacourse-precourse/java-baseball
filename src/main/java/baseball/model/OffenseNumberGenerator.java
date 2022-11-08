@@ -4,14 +4,23 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static baseball.error.ErrorMessage.*;
-
 
 public class OffenseNumberGenerator {
     private static final int OFFENSE_NUMBER_SIZE = 3;
+    private static final String NOT_ONLY_NUMBER_ERROR_MESSAGE = "공격 값이 유효한 숫자로만 이루어지지 않았습니다.";
+    private static final String NOT_DISTINCT_ERROR_MESSAGE = "공격 값이 서로 다른 숫자가 아닙니다.";
+    private static final String SIZE_ERROR_MESSAGE = "공격 값의 길이가 3이 아닙니다.";
+
+    private OffenseNumberGenerator() {
+    }
+
+    public static OffenseNumberGenerator getInstance() {
+        return new OffenseNumberGenerator();
+    }
 
     public List<Integer> generateOffenseNumbers(String input) {
         validateOffenseNumbersInput(input);
+
         List<Integer> offenseNumbers = convertStringToIntegerList(input);
         return offenseNumbers;
     }
@@ -37,7 +46,7 @@ public class OffenseNumberGenerator {
 
     private void validateDistinctNumber(String input) {
         String[] split = input.split("");
-        int distinctNumberCount = (int)Arrays.stream(split).distinct().count();
+        int distinctNumberCount = (int) Arrays.stream(split).distinct().count();
         if (distinctNumberCount != OFFENSE_NUMBER_SIZE) {
             throw new IllegalArgumentException(NOT_DISTINCT_ERROR_MESSAGE);
         }

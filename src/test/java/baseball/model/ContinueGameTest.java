@@ -3,10 +3,11 @@ package baseball.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static baseball.error.ErrorMessage.CONTINUE_ERROR_MESSAGE;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ContinueGameTest {
+    private static final String CONTINUE_ERROR_MESSAGE = "한 자리 숫자 1, 2 이외의 값이 들어갔습니다.";
     private final ContinueGame continueGame = ContinueGame.getInstance();
 
     @Test
