@@ -10,6 +10,8 @@ public class Player {
         Message.printInputNumbersMessage();
         String inputNumber = Console.readLine();
 
+        InputValidator.validateInputNumber(inputNumber);
+
         return inputNumber;
     }
 
