@@ -39,6 +39,10 @@ public class InputNumberValidator {
         return inputNumber.contains(",");
     }
 
+    public static boolean thereIsSpace(String inputNumber){
+        return inputNumber.contains(" ");
+    }
+
 
 
 }
