@@ -1,5 +1,6 @@
 package baseball.domain.manager;
 
+import baseball.constant.GameMessage;
 import baseball.constant.GameStatus;
 import baseball.util.BallCount;
 import org.junit.jupiter.api.DisplayName;
@@ -197,4 +198,17 @@ class NumberBaseBallManagerTest {
         //then
         assertThat(str).contains("1볼 1스트라이크");
     }
+    @DisplayName("PENDING 상태일 때 재시작 문구 반환")
+    @Test
+    void givenPendingState_whenSelectMessage_thenReturnRightMessage() {
+        //given
+        given(baseballManager.getStatus()).willReturn(GameStatus.PENDING);
+
+        //when
+        String message = baseballManager.selectMessage();
+
+        //then
+        assertThat(message).contains(GameMessage.QUESTION_TO_CONTINUE.getValue());
+    }
+
 }

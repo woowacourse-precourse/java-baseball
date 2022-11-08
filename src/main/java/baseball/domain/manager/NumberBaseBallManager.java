@@ -69,16 +69,34 @@ public class NumberBaseBallManager {
         }
     }
 
+    public String selectMessage() {
+        if (getStatus() == GameStatus.NOT_INITIALIZED) {
+            return GameMessage.START_GAME.getValue();
+        }
+        if (getStatus() == GameStatus.IN_GAME) {
+            return GameMessage.QUESTION_TO_GUESS_NUMBER.getValue();
+        }
+        if (getStatus() == GameStatus.OVER) {
+            return GameMessage.GAME_OVER.getValue();
+        }
+        if (getStatus() == GameStatus.PENDING) {
+            return GameMessage.QUESTION_TO_CONTINUE.getValue();
+        }
+
+        
+        return null;
+    }
+
     public String selectResultOutput(BallCount result) {
         int ball = result.getBall();
         int strike = result.getStrike();
-
+        
         if (ball == 0 && strike == 0) {
             return "낫싱\n";
         }
 
         StringBuilder sb = new StringBuilder();
-
+        
         if (result.getBall() > 0) {
             sb.append(result.getBall()).append(GameMessage.BALL.getValue());
         }
@@ -86,7 +104,6 @@ public class NumberBaseBallManager {
         if (result.getStrike() > 0) {
             sb.append(result.getStrike()).append(GameMessage.STRIKE.getValue());
         }
-
         return sb.toString();
    }
 
