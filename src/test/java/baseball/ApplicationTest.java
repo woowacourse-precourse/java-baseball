@@ -35,6 +35,36 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Nested
+    class ValidCheckTest {
+        @Test
+        void testExceptionNumber() {
+            HashMap<Integer, Integer> dummyHashmap = new HashMap<>();
+            dummyHashmap.put(1,1);
+            dummyHashmap.put(2,2);
+            dummyHashmap.put(3,3);
+            assertThatThrownBy(()-> ValidCheck.checkExceptionNumber("1232", dummyHashmap))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+        @Test
+        void testExceptionNumber2() {
+            HashMap<Integer, Integer> dummyHashmap = new HashMap<>();
+            dummyHashmap.put(1,1);
+            dummyHashmap.put(2,2);
+            dummyHashmap.put(2,2);
+            assertThatThrownBy(()-> ValidCheck.checkExceptionNumber("122", dummyHashmap))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+        @Test
+        void testExceptionNumber3() {
+            HashMap<Integer, Integer> dummyHashmap = new HashMap<>();
+            dummyHashmap.put(1,1);
+            dummyHashmap.put(2,2);
+            dummyHashmap.put(3,3);
+            assertThat(ValidCheck.checkExceptionNumber("123", dummyHashmap)).isNull();
+        }
+    }
     @Nested
     class GameManagerTest {
         @Test
