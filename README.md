@@ -238,15 +238,15 @@ while (computer.size() < 3) {
     - 사용자가 입력한 사용자 번호가 유효한 형식인지 확인한다.
     - 이를 위해서 아래 세 개 메서드를 도우미 함수로 사용한다.
   - **사용자 입력의 길이가 유효한지 확인하는 기능**
-    - `private static boolean isPlayerNumberLengthValid(String playerNumber)`
+    - `public static boolean isPlayerNumberLengthValid(String playerNumber)`
     - 사용자 번호의 길이가 게임에서 유효하다고 취급하는 길이인지 확인한다.
     - 유효한 길이의 값은 열거형 `GameConstant`의 `VALID_NUMBER_LENGTH`의 `value` 멤버 변수에 지정되어 있다.
   - **문자열의 한 문자가 1~9 범위 숫자인지 확인하는 기능**
-    - `private static boolean isNumericLiteralBetweenOneAndNine(char c)`
+    - `public static boolean isNumericLiteralBetweenOneAndNine(char c)`
     - 사용자 번호의 한 문자가 1에서 9의 양 끝을 포함하는 사이의 숫자인지 확인한다.
     - 인자 `char c`가 1~9 사이 숫자면 `true`, 그렇지 않으면 `false`를 반환한다.
   - **숫자 중복 여부를 확인하는 기능**
-    - `private static boolean isDuplicateNumericLiteral(char numericLiteral, boolean[] checkArray)`
+    - `public static boolean isDuplicateNumericLiteral(char numericLiteral, boolean[] checkArray)`
     - 사용자 번호의 한 숫자가 이미 앞쪽에서 그 존재가 확인된 숫자인지 확인한다.
     - 호출 시 전달되는 인자 `numericLiteral`은 1~9 사이의 숫자라고 전제한다. 
 
