@@ -115,14 +115,13 @@ public class PlayBaseballGame {
                 this.RandomNum=getRandomNum();
                 return true;
             }
+
             if (answer.equals("2")) {
                 return false;
             }
+
             throw new IllegalArgumentException("올바른 숫자가 아닙니다. 1 또는 2를 입력하세요.");
         }
-
         return true;
-
-
     }
 }
