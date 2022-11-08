@@ -1,17 +1,15 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-	private static List<Integer> computerNumber;
-	private static List<Integer> userNumber;
-	private static String regex = "^[1-9]{3}$";
+	private static RandomNumber computerNumber;
+	private static RandomNumber userNumber;
+	private static List<Integer> computerNumberList;
+	private static List<Integer> userNumberList;
 	private static String regexCode = "^[1-2]$";
 	private static final String GAMESTARTSTRING = "숫자 야구 게임을 시작합니다.";
 	private static final String USERINPUTSTRING = "숫자를 입력해주세요 : ";
@@ -23,11 +21,16 @@ public class Application {
 		int gameCode = 1;
 
 		while (gameCode != 2) {
-			createRandomNumber();
+			computerNumber = new RandomNumber();
+			computerNumber.createRandomNumber();
+			computerNumberList = new ArrayList<>(computerNumber.getRandomNumberList());
 
 			while (true) {
 				printStr(USERINPUTSTRING);
-				checkUserInput();
+				userNumber = new RandomNumber();
+				userNumber.checkUserInput();
+				userNumberList = new ArrayList<>(userNumber.getRandomNumberList());
+				
 				String compareResultStr = compareNumber();
 				printStr(compareResultStr);
 				if (compareResultStr.equals("3스트라이크")) {
@@ -52,40 +55,18 @@ public class Application {
 		System.out.println(str);
 	}
 
-	private static void createRandomNumber() {
-		Set<Integer> randomNumberSet = new LinkedHashSet<>();
-		while (randomNumberSet.size() < 3) {
-			int pickNumber = Randoms.pickNumberInRange(1, 9);
-			if (!randomNumberSet.contains(pickNumber)) {
-				randomNumberSet.add(pickNumber);
-			}
-		}
-		computerNumber = new ArrayList<>(randomNumberSet);
-	}
-
-	private static void checkUserInput() {
-		String userInput = Console.readLine();
-		if (!userInput.matches(regex)) {
-			throw new IllegalArgumentException();
-		}
-		userNumber = new ArrayList<>();
-		for (int i = 0; i < 3; i++) {
-			userNumber.add(userInput.charAt(i) - '0');
-		}
-	}
-
-	private static String compareNumber() {
+	public static String compareNumber() {
 		String resStr = "";
 		int strike = 0;
 		int ball = 0;
 
 		for (int i = 0; i < 3; i++) {
-			int computerNum = computerNumber.get(i);
-			int userNum = userNumber.get(i);
+			int computerNum = computerNumberList.get(i);
+			int userNum = userNumberList.get(i);
 
 			if (computerNum == userNum) {
 				strike++;
-			} else if (computerNumber.contains(userNum)) {
+			} else if (computerNumberList.contains(userNum)) {
 				ball++;
 			}
 		}
