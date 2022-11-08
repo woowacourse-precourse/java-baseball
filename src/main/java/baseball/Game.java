@@ -122,5 +122,10 @@ public class Game {
         }
     }
 
+    public void initializeBallCount() {
+        strike = 0;
+        ball = 0;
+    }
+
 
 }
