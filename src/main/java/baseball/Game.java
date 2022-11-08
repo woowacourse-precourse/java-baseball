@@ -10,6 +10,7 @@ public class Game {
 
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
+    private static final String RESTART = "1";
 
     public static void startOfGame() {
         PrintLine.startGamePrint();
@@ -48,7 +49,7 @@ public class Game {
 
     public static boolean tryAgainGame() {
         String restartNumber = inputRestartNumber();
-        return restartNumber.equals("1");
+        return restartNumber.equals(RESTART);
     }
 
     private static String inputRestartNumber() {
