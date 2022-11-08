@@ -66,6 +66,30 @@ class ClientTest {
         }
 
         @Test
+        void 숫자에_0이_입력되면_IllegalArgumentException이_발생한다() {
+            input("081");
+            assertThatThrownBy(
+                    Client::askPlayerNumberList
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 숫자_사이에_공백이_입력되면_IllegalArgumentException이_발생한다() {
+            input("8 1");
+            assertThatThrownBy(
+                    Client::askPlayerNumberList
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 숫자를_2글자만_쓰고_1글자를_공백으로_채우면면_IllegalArgumentException이_발생한다() {
+            input("19 ");
+            assertThatThrownBy(
+                    Client::askPlayerNumberList
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
         void 입력이_문자라면_IllegalArgumentException이_발생한다() {
             input("간다스");
             assertThatThrownBy(
@@ -76,6 +100,14 @@ class ClientTest {
         @Test
         void 입력이_4글자_이상이면_IllegalArgumentException이_발생한다() {
             input("4321");
+            assertThatThrownBy(
+                    Client::askPlayerNumberList
+            ).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 입력이_2글자라면_IllegalArgumentException이_발생한다() {
+            input("21");
             assertThatThrownBy(
                     Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
