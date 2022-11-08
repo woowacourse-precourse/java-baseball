@@ -9,8 +9,11 @@ public class BaseBallGameNumber {
 
   public void stringToGameNumber(String inputString) {
     if (inputString.length() != 3) throwIllegalArgumentExceptionWithMessage("세자리가 아닙니다!");
-    int gameNumber = stringToInt(inputString);
-    setBaseBallGameNum(gameNumber);
+    List<Integer> numbers = new ArrayList<>();
+    for(char s : inputString.toCharArray()){
+      numbers.add(charToInt(s));
+    }
+    setGameNumberByList(numbers);
     checkNumbersValid();
   }
 
@@ -20,20 +23,14 @@ public class BaseBallGameNumber {
     gameNumberList.add(numberList.get(2));
   }
 
-  private int stringToInt(String inputString) {
+  private int charToInt(char inputChar) {
     int gameNumber = 0;
     try {
-      gameNumber = Integer.parseInt(inputString);
+      gameNumber = Integer.parseInt(String.valueOf(inputChar));
     } catch (NumberFormatException e) {
       throwIllegalArgumentExceptionWithMessage("숫자가 아닙니다!");
     }
     return gameNumber;
-  }
-
-  private void setBaseBallGameNum(int gameNumber) {
-    gameNumberList.add(0, gameNumber / 100);
-    gameNumberList.add(1, gameNumber % 100 / 10);
-    gameNumberList.add(2, gameNumber % 10);
   }
 
   private void checkNumbersValid() {
