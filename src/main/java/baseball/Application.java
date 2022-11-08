@@ -156,7 +156,6 @@ class Operator {
         } else {
             throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.(재시작/종료 숫자가 아님)");
         }
-        // System.out.println("재시작 숫자: " + inputString);
     }
 
     public void showResult() {
