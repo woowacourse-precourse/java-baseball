@@ -30,4 +30,17 @@ public class Game {
         }
         return numsArr;
     }
+
+    private static Baseball checkAnswer(List<Integer> answer, List<Integer> input) {
+        Baseball result = new Baseball();
+        // strike 판별
+        for (int i=0; i<answer.size(); i++) {
+            if(answer.get(i) == input.get(i)) {
+                result.strike();
+            } else if (answer.contains(input.get(i))) {
+                result.ball();
+            }
+        }
+        return result;
+    }
 }
