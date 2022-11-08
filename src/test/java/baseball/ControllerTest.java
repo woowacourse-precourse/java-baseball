@@ -44,7 +44,7 @@ public class ControllerTest {
         String input = "3";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() -> baseBallGameController.isRestart())
+        assertThatThrownBy(baseBallGameController::isRestart)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ArgumentExceptionMessage.COMMAND_NOT_FOUND.getMessage());
     }
@@ -74,7 +74,7 @@ public class ControllerTest {
         try {
             method = baseBallGameController.getClass().getDeclaredMethod("toIntegerList", String.class);
             method.setAccessible(true);
-            List<Integer> integerList = (List<Integer>) method.invoke(baseBallGameController, "123");
+            Object integerList = method.invoke(baseBallGameController, "123");
             assertThat(integerList).isEqualTo(List.of(1,2,3));
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
