@@ -11,6 +11,7 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computer = Game.makeRandomNumberList();
         Game.repeatGame(computer);
+
         restartOrEndTheGame();
     }
 
@@ -24,6 +25,20 @@ public class Application {
                 }
             }
             return computer;
+        }
+
+        public static String repeatGame(List<Integer> computer) {
+            boolean flag = true;
+            while (flag){
+                List<String> player = inputPlayerAnswerList();
+                String hint = checkAnswerAndGiveHint(computer, player);
+                System.out.println(hint);
+                if (hint.contains("3스트라이크")){
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    flag = false;
+                }
+            }
+            return "종료";
         }
 
         private static List<String> inputPlayerAnswerList(){
@@ -47,7 +62,8 @@ public class Application {
                 if (Objects.equals(computer.get(i), Integer.valueOf(player.get(i)))){
                     strike++;
                 }
-                if (!Objects.equals(computer.get(i), Integer.valueOf(player.get(i))) && computer.contains(Integer.valueOf(player.get(i)))){
+                if (!Objects.equals(computer.get(i), Integer.valueOf(player.get(i)))
+                        && computer.contains(Integer.valueOf(player.get(i)))){
                     ball++;
                 }
             }
@@ -67,20 +83,6 @@ public class Application {
             else {
                 return ("낫싱");
             }
-        }
-
-        public static String repeatGame(List<Integer> computer) {
-            boolean flag = true;
-            while (flag){
-                List<String> player = inputPlayerAnswerList();
-                String hint = checkAnswerAndGiveHint(computer, player);
-                System.out.println(hint);
-                if (hint.contains("3스트라이크")){
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    flag = false;
-                }
-            }
-            return "종료";
         }
     }
 
