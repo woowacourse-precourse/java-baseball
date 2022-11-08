@@ -36,4 +36,13 @@ public class Application {
         }
         return playerNumber;
     }
+
+    public static int howManySame(List<Integer> computerNum, List<Integer> playerNum){
+        int result = 0;
+        for(int i = 0; i< playerNum.size(); i++){
+            if(computerNum.contains(playerNum.get(i)))
+                result+=1;
+        }
+        return result;
+    }
 }
