@@ -1,26 +1,21 @@
 ## List of Features
 
-- **Application**: playBall
-- **User**: greet, promptForNumber, congratulate, wantsToPlayOn
+- **Application**: playBall, playOn
+- **Message**: GREETING, PROMPT_FOR_NUMBER, CONGRATULATIONS, PROMPT_PLAY_ON
 - **Play**: getRandomNumber, getNumberFrom
-- **Score**: getScore, printScore
+- **Score**: of (get score _of user_ against _computer_), print
 
 ## Pseudocode
-```
-userWantsToPlay is true
-greet User
 
-While userWantsToPlay:
+```
+Print GREETING
+Do while playOn:
     playBall:
         getRandomNumber
-        strikeOut is false
-        While strikeOut is false:
-            promptForNumber
+        Do while Score is not strikeOut:
+            Print PROMPT_FOR_NUMBER
             getNumberFrom input
-            getScore from number
-            printScore
-            If score is all strikes, then strikeOut is true
-        congratulate User
-        If User wantsToPlayOn, then userWantsToPlay is true;
-        else, userWantsToPlay is false
+            Get Score of user against computer
+            print Score
+        Print CONGRATULATIONS
 ```
