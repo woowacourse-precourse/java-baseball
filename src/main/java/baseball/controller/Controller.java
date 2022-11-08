@@ -15,14 +15,8 @@ public class Controller {
         isGameOver = false;
         GameMessage.printGameStartMessage();
         while (!isGameOver) {
-            try {
-                playOneGame();
-                askRestartGame();
-            } catch (IllegalArgumentException error) {
-                System.out.println("message: " + error.getMessage());
-                isGameOver = true;
-                throw error;
-            }
+            playOneGame();
+            askRestartGame();
         }
     }
 
