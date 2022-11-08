@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.LinkedHashMap;
 
 public class Game {
@@ -35,9 +36,29 @@ public class Game {
 
     public boolean askRetry() {
         printAskRetryMessage();
+        if (getInputNumber() == GameConstant.RETRY) {
+            Game game = new Game();
+            game.play();
+        }
+        return false;
     }
 
     private void printAskRetryMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public static int getInputNumber() {
+        int inputNumber = Integer.parseInt(Console.readLine());
+        if (!isValidated(inputNumber)) {
+
+        }
+        return inputNumber;
+    }
+
+    public static boolean isValidated(int inputNumber) {
+        if ((inputNumber != GameConstant.RETRY) && (inputNumber != GameConstant.EXIT)) {
+            throw new IllegalArgumentException("잘못된 입력값입니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+        return true;
     }
 }
