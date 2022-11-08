@@ -1,9 +1,7 @@
 package baseball.controller;
 
 import baseball.model.GameNumber;
-import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 
