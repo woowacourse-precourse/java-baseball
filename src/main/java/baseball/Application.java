@@ -14,23 +14,24 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<String> answer = makeAnswer();
-//        System.out.println(answer);
+        int checkFinish = 0;
         while (true) {
             System.out.print("숫자를 입력해 주세요 : ");
             List<String> playerInput = checkAvailable(Input());
             List<Integer> compareResult = compareNumbers(answer, playerInput);
             showResult(compareResult);
+
             if (compareResult.get(0).equals(3)) {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                List<String> checkTerminate = Input();
-                if (checkTerminate.get(0).equals("1")) {
-                    answer = makeAnswer();
-                } else if (checkTerminate.get(0).equals("2")) {
-                    break;
-                } else {
-                    throw new IllegalArgumentException();
-                }
+                checkFinish = chooseTerminateOrNot(answer);
             }
+
+            if (checkFinish == 2) {
+                break;
+            } else if (checkFinish == 1) {
+                answer = makeAnswer();
+                checkFinish = 0;
+            }
+
         }
 
     }
@@ -46,7 +47,6 @@ public class Application {
         return answerList;
     }
     public static List<String> Input() {
-
         String numString = Console.readLine();
         List<String> numList = new ArrayList<>(Arrays.asList(numString.split("")));
         return numList;
@@ -73,14 +73,12 @@ public class Application {
         List<Integer> countList = new ArrayList<>(Arrays.asList(0,0,0));
 //        System.out.println(countList);
         for (int index = 0; index < 3; index++) {
-            if (!answer.contains(playerInput.get(index))) {
+            String playerNumber = playerInput.get(index);
+            String answerNumber = answer.get(index);
+            if (!answer.contains(playerNumber)) {
                 countList.set(2, countList.get(2)+1);
-            } else if (answer.contains(playerInput.get(index))) {
-                if (playerInput.get(index).equals(answer.get(index))) {
-                    countList.set(0, countList.get(0)+1);
-                } else {
-                    countList.set(1, countList.get(1)+1);
-                }
+            } else if (answer.contains(playerNumber)) {
+                updateCountListIfStrikeOrBall(playerNumber, answerNumber, countList);
             }
         }
         return countList;
@@ -94,14 +92,36 @@ public class Application {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             } else {
-                if (countList.get(0).equals(0)) {
-                    System.out.println(String.format("%d볼", countList.get(1)));
-                } else if (countList.get(1).equals(0)) {
-                    System.out.println(String.format("%d스트라이크", countList.get(0)));
-                } else {
-                    System.out.println(String.format("%d볼 %d스트라이크",countList.get(1), countList.get(0)));
-                }
+                showResultWithBallAndStrike(countList);
             }
+        }
+    }
+    public static void showResultWithBallAndStrike(List<Integer> countList) {
+        if (countList.get(0).equals(0)) {
+            System.out.println(String.format("%d볼", countList.get(1)));
+        } else if (countList.get(1).equals(0)) {
+            System.out.println(String.format("%d스트라이크", countList.get(0)));
+        } else {
+            System.out.println(String.format("%d볼 %d스트라이크",countList.get(1), countList.get(0)));
+        }
+    }
+
+    public static void updateCountListIfStrikeOrBall(String playerNumber, String answerNumber, List<Integer> countList) {
+        if (playerNumber.equals(answerNumber)) {
+            countList.set(0, countList.get(0)+1);
+        } else {
+            countList.set(1, countList.get(1)+1);
+        }
+    }
+    public static int chooseTerminateOrNot(List<String> answer) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        List<String> checkTerminate = Input();
+        if (checkTerminate.size() == 1 && checkTerminate.get(0).equals("1")) {
+            return 1;
+        } else if (checkTerminate.size() == 1 && checkTerminate.get(0).equals("2")) {
+            return 2;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
