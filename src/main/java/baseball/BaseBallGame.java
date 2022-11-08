@@ -81,6 +81,17 @@ public class BaseBallGame {
         return true;
     }
 
+    private int calculateStrike(String userInputValue) {
+        int strikeCount = 0;
+        for (int searchIndex = 0; searchIndex < MAX_LENGTH; searchIndex++) {
+            if (userInputValue.charAt(searchIndex) == randomNumber.charAt(searchIndex)) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
+    }
+
     public boolean isAnswer() {
         return false;
     }
