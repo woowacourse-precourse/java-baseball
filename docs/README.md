@@ -32,6 +32,10 @@
     - 목표 숫자와 같은 위치에 존재하지 않는다면, 볼이다. 리스트[1]의 값을 하나 증가시킨다.
 - 결과에 따라 메세지를 출력하고, 완성된 리스트 `result`를 리턴한다.
 
+## printTrialResult
+
+- 스트라이크, 볼, 낫싱 여부를 출력한다.
+
 ## isThreeStrikes
 
 - 2개의 원소를 가지는 `List<Integer>`를 매개변수로 받는다.
@@ -47,9 +51,18 @@
 
 ## simulateGame
 
-- 숫자 야구 게임을 시뮬레이션한다.
-- 시작 메세지를 출력한다.
+- `generateGoalNumber`를 호출하여, 목표 숫자를 설정한다.
+- 게임이 끝날 때까지, 다음 과정을 반복한다.
+  - `getUserNumber`를 통해 입력을 받는다.
+  - `isValidInput`을 통해 입력이 유효한지 검증한다.
+    - 유효하지 않다면 애플리케이션을 종료한다.
+  - `compareTwoNumbers`를 실행한다.
+  - `isThreeStrikes`를 통해 3스트라이크를 달성했는지 확인한다.
+    - 달성할 경우, 해당 루프를 종료한다.
+- `isContinue`를 통해 게임을 계속할지 여부를 확인한다.
+- 계속하는 경우, `generateGoalNumber`를 호출하는 시점부터 다시 시작한다.
+
 
 ### main
 
-- `simulateGame`을 호출한다.L
+- `simulateGame`을 호출한다.
