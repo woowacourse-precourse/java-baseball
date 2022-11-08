@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class ThreeNumber {
-    protected static ArrayList<Integer> myList;
+    protected ArrayList<Integer> myList;
 
     public ThreeNumber() {
         myList = new ArrayList<>();

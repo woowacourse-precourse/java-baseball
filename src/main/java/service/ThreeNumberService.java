@@ -53,6 +53,7 @@ public class ThreeNumberService {
 
     public void setUserData(String line) {
         int data = Integer.parseInt(line);
+
         for(int i = 100; i >= 1; i /= 10) {
             user.addToMyList(data / i);
 
