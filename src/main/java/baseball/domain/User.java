@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.util.myList;
+import baseball.util.ListUtil;
 import baseball.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -11,7 +11,7 @@ public class User {
     public List<Integer> inputUserAnswer() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine().trim();
-        List<Integer> userInputs = myList.stringToIntegerList(input);
+        List<Integer> userInputs = ListUtil.stringToIntegerList(input);
         InputValidator.validateInPlaying(userInputs);
         return userInputs;
     }

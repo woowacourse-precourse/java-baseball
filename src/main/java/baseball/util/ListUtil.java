@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class myList {
+public class ListUtil {
     public static List<Integer> stringToIntegerList(String input) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {

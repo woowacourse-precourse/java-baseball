@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.util.myList;
+import baseball.util.ListUtil;
 
 import java.util.List;
 
@@ -44,8 +44,8 @@ public class GameController {
     boolean isClear(List<Integer> input) {
         if (input == null) return false;
 
-        int strike = myList.countSameLocationValues(input, computer.getBallCounts());
-        int ball = myList.countDiffLocationValues(input, computer.getBallCounts());
+        int strike = ListUtil.countSameLocationValues(input, computer.getBallCounts());
+        int ball = ListUtil.countDiffLocationValues(input, computer.getBallCounts());
 
         if (ball == 0 && strike == 0) System.out.print("낫싱");
         if (ball != 0) System.out.print(ball + "볼 ");
