@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static baseball.Application.createRandomNumbers;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,5 +34,16 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    public void 랜덤수에_중복값이_없는_지_테스트() {
+        //given
+
+        //when
+        List<Integer> randomNumbers = createRandomNumbers();
+
+        //then
+        assertThat(randomNumbers).doesNotHaveDuplicates();
     }
 }
