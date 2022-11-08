@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 숫자 야구 게임을 진행한다.
@@ -12,8 +15,8 @@ public final class Application {
         new Application().startGameUntilTheEnd();
     }
 
-    private static final int LOWEST_ANSWER = 123;
-    private static final int HIGHEST_ANSWER = 987;
+    private static final int LOWEST_DIGIT = 1;
+    private static final int HIGHEST_DIGIT = 9;
 
     /**
      * 게임의 계속 진행 여부
@@ -105,11 +108,15 @@ public final class Application {
     }
 
     private String newAnswer() {
-        String newAnswer = "000";
-        while (newAnswer.contains("0")) { // 0은 포함 불가
-            newAnswer = String.valueOf(Randoms.pickNumberInRange(LOWEST_ANSWER, HIGHEST_ANSWER));
+        List<Integer> randomValues = new ArrayList<>();
+        while (randomValues.size() < 3) {
+            int newValue = Randoms.pickNumberInRange(LOWEST_DIGIT, HIGHEST_DIGIT);
+            if (randomValues.indexOf(newValue) != -1) {
+                continue;
+            }
+            randomValues.add(newValue);
         }
-        return newAnswer;
+        return randomValues.stream().map(String::valueOf).collect(Collectors.joining(""));
     }
 
     private void prompt(String message) {
