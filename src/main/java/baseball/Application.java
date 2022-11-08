@@ -35,7 +35,13 @@ class BaseballGame {
 
 
     boolean checkErrorNumber(List<Integer> list) {
-        return list.size() <= 3;
+        if (list.size() > 3) {
+            return false;
+        }
+        if (list.size() != list.stream().distinct().count()){
+            return false;
+        }
+        return true;
     }
 
 
