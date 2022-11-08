@@ -38,7 +38,9 @@ public class Game {
     public void judgeState(Computer computer, Player player){
         int playerNumber;
         int computerNumber;
+
         List<Integer> opponentNumbers=computer.getDigits();
+
         for(int opponentNumber: opponentNumbers){
             playerNumber=player.getNumberPosition(opponentNumber);
             computerNumber=computer.getNumberPosition(opponentNumber);
@@ -46,25 +48,25 @@ public class Game {
             countBall(playerNumber, computerNumber);
         }
     }
-    public boolean isFinished(){
+    public boolean isNotFinished(){
         return strikeCount!=ANSWER;
     }
     public void initializeStrikeAndBallCount(){
         strikeCount=NO_COUNT;
         ballCount=NO_COUNT;
     }
-    public void showResult(){
+    public String showResult(){
         if(strikeCount==NO_COUNT&&ballCount==NO_COUNT){
-            System.out.println(NOTHING_MESSAGE);
+            return String.format(NOTHING_MESSAGE);
         }
         else if (ballCount==NO_COUNT) {
-            System.out.printf(STRIKE_MESSAGE, strikeCount);
+            return String.format(STRIKE_MESSAGE, strikeCount);
         }
         else if (strikeCount==NO_COUNT) {
-            System.out.printf(BALL_MESSAGE, ballCount);
+           return String.format(BALL_MESSAGE, ballCount);
         }
         else{
-            System.out.printf(BALL_AND_STRIKE, ballCount, strikeCount);
+            return String.format(BALL_AND_STRIKE, ballCount, strikeCount);
         }
     }
 }
