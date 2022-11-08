@@ -16,4 +16,8 @@ public abstract class Player {
     public void clearSelectBalls() {
         selectBalls.clear();
     }
+
+    int getBallsNumber() {
+        return selectBalls.size();
+    }
 }
