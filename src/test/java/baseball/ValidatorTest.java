@@ -26,4 +26,20 @@ public class ValidatorTest {
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining("입력의 각 자릿값은 서로 달라야 합니다.");
 	}
+
+	@Test
+	void doStatusValidation_메서드로_진행상태와_관련된_입력값이_올바른지_확인() {
+		assertThatThrownBy(() -> Validator.doStatusValidation("qwe"))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("1 또는 2만 입력할 수 있습니다.");
+		assertThatThrownBy(() -> Validator.doStatusValidation(""))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("1 또는 2만 입력할 수 있습니다.");
+		assertThatThrownBy(() -> Validator.doStatusValidation("0"))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("1 또는 2만 입력할 수 있습니다.");
+		assertThatThrownBy(() -> Validator.doStatusValidation("3"))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("1 또는 2만 입력할 수 있습니다.");
+	}
 }
