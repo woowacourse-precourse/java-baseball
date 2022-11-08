@@ -28,4 +28,23 @@ public class Ball {
 			throw new IllegalArgumentException("야구공의 인덱스는 0~2 사이의 숫자입니다.");
 		}
 	}
+
+	public BallStatus compare(Ball otherBall) {
+		if (this.equals(otherBall)) {
+			return BallStatus.STRIKE;
+		}
+		if (this.ballNumber == otherBall.ballNumber) {
+			return BallStatus.BALL;
+		}
+		return BallStatus.NOTHING;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!obj.getClass().isAssignableFrom(Ball.class)) {
+			return false;
+		}
+		Ball otherBall = (Ball) obj;
+		return this.ballNumber == otherBall.ballNumber && this.ballIndex == otherBall.ballIndex;
+	}
 }
