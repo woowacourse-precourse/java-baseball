@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 class Input {
     private final static int LENGTH = 3;
+    private final static int INT_CHAR_1 = 49;
+    private final static int INT_CHAR_9 = 57;
 
     static String computer () {
         String number = new String();
@@ -30,7 +32,7 @@ class Input {
         }
 
         for (char c : numberArray) {
-            if ((int)c < 49 || (int)c > 57) {
+            if ((int)c < INT_CHAR_1 || (int)c > INT_CHAR_9) {
                 throw new IllegalArgumentException("0을 입력하셨거나 숫자가 아닌 문자를 입력하셨습니다.");
             }
         }
