@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 public class ServiceTest extends NsTest {
+
     @Test
     void test_Service_GenerateHint_3strike(){
         Service service = new Service();
@@ -31,7 +32,6 @@ public class ServiceTest extends NsTest {
         assertThat(service.generateHint(input).toString())
                 .isEqualTo("2볼 1스트라이크");
     }
-
 
     private String getAnswerString(Service service){
         return service.getAnswer()

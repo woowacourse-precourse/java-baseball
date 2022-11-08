@@ -51,6 +51,7 @@ public class InputView {
             throw new IllegalArgumentException("중복된 값은 입력될 수 없습니다.");
         }
     }
+
     public Input getInput() {
         return input;
     }

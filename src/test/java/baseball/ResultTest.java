@@ -13,6 +13,7 @@ import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 
 public class ResultTest extends NsTest {
+
     @Test
     void test_ResultView_RESTART(){
 

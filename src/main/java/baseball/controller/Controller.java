@@ -21,6 +21,7 @@ public class Controller {
         resultView = new ResultView();
         hintView = new HintView();
     }
+
     public void playGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(isRestart()){
@@ -42,6 +43,7 @@ public class Controller {
         inputView.getBaseballInput();
         hintView.setHint(service.generateHint(inputView.getInput()));
     }
+
     private void sendToHintView(){
         hintView.printHint();
         if(hintView.checkWinningCondition()){

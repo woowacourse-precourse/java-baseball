@@ -21,8 +21,6 @@ public class InputTest extends NsTest {
         assertThat(testList).containsExactly(1, 2, 3);
     }
 
-
-
     @Test
     void test_InputView(){
         String input = "123";
@@ -46,6 +44,7 @@ public class InputTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void test_InputView_Not_Numeric_Error(){
         String input = "abc";
@@ -58,6 +57,7 @@ public class InputTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void test_InputView_Duplication_Error(){
         String input = "122";
@@ -70,6 +70,7 @@ public class InputTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void test_InputView_No_Input_Error(){
         String input = "";
