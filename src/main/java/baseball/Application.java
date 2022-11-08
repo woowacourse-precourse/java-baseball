@@ -40,6 +40,15 @@ public class Application {
         res.add(ball);
         return res;
     }
+    public static int validate(int strike,int ball){
+
+        if(strike == 0 && ball == 0){
+            System.out.printf("낫싱\n");
+            return 0;
+        }
+        System.out.printf("%d볼 %d스트라이크\n",ball,strike);
+        return 0;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
