@@ -25,6 +25,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("3자리가 아닙니다.")
         );
     }
 
@@ -33,30 +34,53 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abcd"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("3자리가 아닙니다.")
         );
     }
 
     @Test
-    void 예외_테스트3_3자리문자() {
+    void 예외_테스트_3자리문자() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("sdf"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("0을 입력하셨거나 숫자가 아닌 문자를 입력하셨습니다.")
         );
     }
+
+    @Test
+    void 예외_테스트_2자리문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("l;"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("3자리가 아닙니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_2자리숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("56"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("3자리가 아닙니다.")
+        );
+    }
+
 
     @Test
     void 예외_테스트_중복된숫자() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("112"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("3자리가 아닙니다.")
         );
     }
 
     @Test
-    void 예외_테스트5_0포함() {
+    void 예외_테스트_0포함() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("806"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("0을 입력하셨거나 숫자가 아닌 문자를 입력하셨습니다.")
         );
     }
 
