@@ -156,7 +156,7 @@ public class NumberBaseballManager {
         if (result.getStrike() > 0) {
             sb.append(result.getStrike()).append(GameMessage.STRIKE.getValue());
         }
-        return sb.toString();
+        return sb.toString().trim();
    }
 
     public GameStatus getStatus(){
