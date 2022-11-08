@@ -17,6 +17,7 @@ public class BaseBall {
     private final String END_NUMBER2 = "2";
     private final int END_CONDITION = 3;
     private final int NUMBER_OF_DIGITS = 3;
+
     private int strike;
     private int ball;
     private boolean isRestart;
@@ -29,6 +30,22 @@ public class BaseBall {
         this.randomList = new ArrayList<>();
     }
 
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public boolean isRestart() {
+        return isRestart;
+    }
+
+    public List<String> getRandomList() {
+        return randomList;
+    }
+
     public void playBaseBall() {
         System.out.println(START_GAME);
         randomList = makeRandom();
@@ -37,7 +54,8 @@ public class BaseBall {
             playGame();
             boolean isStrike3 = isStrike3();
             if (isStrike3) {
-                restart();
+                String restartInput = makeRestartInput(readLine());
+                restart(restartInput);
             }
             if (this.isRestart == true) {
                 continue;
@@ -47,7 +65,7 @@ public class BaseBall {
         }
     }
 
-    private List<String> makeRandom() {
+    public List<String> makeRandom() {
         List<String> randomList = new ArrayList<>();
         while (randomList.size() < NUMBER_OF_DIGITS) {
             String random = String.valueOf(pickNumberInRange(1, 9));
@@ -58,20 +76,20 @@ public class BaseBall {
         return randomList;
     }
 
-    private void initGame() {
+    public void initGame() {
         this.strike = 0;
         this.ball = 0;
         this.isRestart = true;
     }
 
-    private void playGame() {
+    public void playGame() {
         System.out.print(ENTER_INPUT);
         List<String> inputList = makeMyInput();
         checkSameOfRandomAndMy(randomList, inputList);
         makeResult();
     }
 
-    private List<String> makeMyInput() {
+    public List<String> makeMyInput() {
         String input = readLine();
         List<String> inputList = getList(input);
         Set<String> inputSet = new HashSet<>(inputList);
@@ -81,11 +99,11 @@ public class BaseBall {
         return inputList;
     }
 
-    private List<String> getList(String s) {
+    public List<String> getList(String s) {
         return Arrays.asList(s.split(""));
     }
 
-    private void checkSameOfRandomAndMy(List<String> randomList, List<String> inputList) {
+    public void checkSameOfRandomAndMy(List<String> randomList, List<String> inputList) {
         for (int i = 0; i < randomList.size(); i++) {
             if (inputList.contains(randomList.get(i))) {
                 checkSameNumberOfDigits(randomList.get(i), i, inputList);
@@ -93,7 +111,7 @@ public class BaseBall {
         }
     }
 
-    private void checkSameNumberOfDigits(String random, int index, List<String> inputList) {
+    public void checkSameNumberOfDigits(String random, int index, List<String> inputList) {
         if (!inputList.get(index).equals(random)) {
             this.ball++;
         } else {
@@ -101,7 +119,7 @@ public class BaseBall {
         }
     }
 
-    private void makeResult() {
+    public void makeResult() {
         if (this.ball > 0 && this.strike == 0) {
             System.out.println(this.ball + BALL);
         } else if (this.ball > 0 && this.strike > 0) {
@@ -113,17 +131,16 @@ public class BaseBall {
         }
     }
 
-    private boolean isStrike3() {
+    public boolean isStrike3() {
         if (this.strike == END_CONDITION) {
             return true;
         }
         return false;
     }
 
-    private void restart() {
+    public void restart(String restartInput) {
         System.out.println(END_MENTION);
         System.out.println(RESTART_MENTION);
-        String restartInput = makeRestartInput();
         if (restartInput.equals(RESTART_NUMBER)) {
             System.out.println(START_GAME);
             randomList = makeRandom();
@@ -133,8 +150,7 @@ public class BaseBall {
         }
     }
 
-    private String makeRestartInput() {
-        String restartInput = readLine();
+    public String makeRestartInput(String restartInput) {
         if (!(restartInput.equals(RESTART_NUMBER) || restartInput.equals(END_NUMBER2))) {
             throw new IllegalArgumentException();
         }
