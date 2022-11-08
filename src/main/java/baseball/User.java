@@ -13,7 +13,11 @@ public class User {
         if(input.length() != 3) {
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
         }
-        
+
+        if(input.contains("0")) {
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        }
+
         return input;
     }
 }
