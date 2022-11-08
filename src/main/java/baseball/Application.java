@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Utils.isDistinct;
+import static baseball.Utils.isNumeric;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -110,33 +112,7 @@ public class Application {
             && isNumeric(string)
             && isDistinct(string);
     }
-
-    /**
-     * Verify string contains characters that have been used once.
-     * @param string the string to be checked.
-     * @return true if no duplicate value exists.
-     */
-    private static boolean isDistinct(String string) {
-        String[] strArr = string.split("");
-        return Arrays.stream(strArr)
-            .distinct()
-            .count() == strArr.length;
-    }
-
-    /**
-     * Verify string is numeric.
-     * @param string the string to be checked.
-     * @return true if string is numeric.
-     */
-    private static boolean isNumeric(String string) {
-        try {
-            Double.parseDouble(string);
-            return true;
-        } catch(NumberFormatException e){
-            return false;
-        }
-    }
-
+    
     /**
      * Generate the correct answer for a number baseball game.
      * @return answer
