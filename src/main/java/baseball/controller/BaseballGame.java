@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import baseball.model.ValidateNumber;
-
 import java.util.List;
 import java.util.stream.IntStream;
 

@@ -13,7 +13,7 @@ public class UserNumberGenerator {
     }
 
     private static List<Integer> generateUserNum() throws IllegalArgumentException {
-        String startInput = InputView.gameEndInput();
+        String startInput = InputView.gameStartInput();
         List<Integer> numbers = NumberValidator.convertStringToList(startInput);
         if (isValid(numbers))
             return numbers;
