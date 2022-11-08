@@ -1,8 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import static baseball.Application.generateAnswer;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +32,44 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("111"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("012"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("str"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Nested
+    @DisplayName("정답 생성 테스트")
+    class GenerateAnswerTest {
+        List<Integer> answer = new ArrayList<>();
+
+        @BeforeEach
+        void beforeEach() {
+            answer = generateAnswer();
+        }
+
+        @Test
+        @DisplayName("정답의 길이가 3인지 확인")
+        void checkAnswerSize() {
+            assertThat(answer.size()).isEqualTo(3);
+        }
+
+        @Test
+        @DisplayName("각 자리의 수가 모두 다른지 확인")
+        void checkRandomNumber () {
+            assertThat(answer.stream()
+                .distinct()
+                .count()
+            ).isEqualTo(3);
+        }
     }
 
     @Override
