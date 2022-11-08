@@ -39,4 +39,12 @@ class InputViewTest {
         assertThat(exception.getMessage()).isEqualTo("서로 다른 숫자 3자리를 입력해주세요.");
     }
 
+    @Test
+    void 게임종료시_입력_예외테스트() {
+        inputFromUser("3");
+        Exception exception = assertThrows(IllegalArgumentException.class, InputView::isReplay);
+        assertThat(exception.getClass()).isEqualTo(IllegalArgumentException.class);
+        assertThat(exception.getMessage()).isEqualTo("1 또는 2를 입력해주세요.");
+    }
+
 }
