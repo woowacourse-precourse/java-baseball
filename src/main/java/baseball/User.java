@@ -10,6 +10,10 @@ public class User {
     private String userBaseballNumber = "";
     private String userRestartNumber = "";
 
+    private String getUserBaseballNumber() {
+        return this.userBaseballNumber;
+    }
+
     private void setUserBaseballNumber(String userBaseballNumber) {
         this.userBaseballNumber = userBaseballNumber;
     }
@@ -43,15 +47,15 @@ public class User {
         System.out.print(GameMessage.ASK_RESTART_GAME);
         userInput = Console.readLine();
 
-        setUserRestartNumber(userBaseballNumber);
+        setUserRestartNumber(this.userRestartNumber);
 
-        return isCheckRestart(userInput);
+        return isCheckRestart();
     }
 
-    private boolean isCheckRestart(String userInput) {
+    private boolean isCheckRestart() {
         AskValidation askValidation = new AskValidation();
 
-        return askValidation.isCheckRestartInput(userInput);
+        return askValidation.isCheckRestartInput(this.userRestartNumber);
     }
 
     public boolean getRestartStatus() {
