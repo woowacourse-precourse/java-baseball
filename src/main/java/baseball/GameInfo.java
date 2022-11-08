@@ -33,4 +33,11 @@ public class GameInfo {
         }
         return result.toString();
     }
+
+    public boolean isAnswer() {
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
 }
