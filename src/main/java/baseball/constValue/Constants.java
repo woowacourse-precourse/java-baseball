@@ -13,9 +13,6 @@ public final class Constants {
         public static final String EXIT_NUMBER = "2";
     }
 
-    public class StrikeBallInfo{
-        public static final String NOTHING = "낫싱";
-    }
 
     public class ExceptionMessage{
         public static final String RESTART_INPUT_ERROR_MESSAGE = "재시작 여부 숫자는 1,2만 가능합니다.";
