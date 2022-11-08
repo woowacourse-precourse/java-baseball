@@ -30,19 +30,18 @@ public class CompareNumber {
     }
 
     private boolean printHint(int strikeCount, int ballCount) {
-        if (strikeCount != NO_COUNT && ballCount != NO_COUNT) {
-            System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
-        } else if (strikeCount != NO_COUNT) {
-            if (strikeCount == CORRECT_ANSWER) {
-                System.out.println(strikeCount + "스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                return true;
-            }
+        if (ballCount > NO_COUNT) {
+            System.out.println(ballCount + "볼" + " ");
+        }
+        if (strikeCount > NO_COUNT) {
             System.out.println(strikeCount + "스트라이크");
-        } else if (ballCount != NO_COUNT) {
-            System.out.println(ballCount + "볼");
-        } else {
+        }
+        if (ballCount + strikeCount == NO_COUNT) {
             System.out.println("낫싱");
+        }
+        if (strikeCount == CORRECT_ANSWER) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
         }
         return false;
     }
