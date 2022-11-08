@@ -1,16 +1,27 @@
 package baseball;
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import org.mockito.MockedStatic;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mockStatic;
 
 public class ImplementTest extends NsTest{
 
@@ -25,8 +36,8 @@ public class ImplementTest extends NsTest{
         }
     }
 
-    @DisplayName("정답 여부에 따른 게임 종료여부 테스트")
     @Test
+    @DisplayName("정답 여부에 따른 게임 종료여부 테스트")
     void isFinish_test() {
         int strike = 3;
         int ball = 1;
@@ -34,7 +45,37 @@ public class ImplementTest extends NsTest{
         assertThat(GameManager.isFinish(strike-ball)).isEqualTo(false);
     }
 
-    
+    @Tag("isAgain test")
+    @Test
+    @DisplayName("게임 종료후 재시작 테스트")
+    void isAgain_true_test() {
+        String restart = "1";
+        InputStream in = new ByteArrayInputStream(restart.getBytes());
+        System.setIn(in);
+        assertThat(GameManager.isAgain(true)).isEqualTo(true);
+    }
+
+    @Tag("isAgain test")
+    @Test
+    @DisplayName("게임 종료후 종료 테스트")
+    void isAgain_false_test() {
+        String terminate = "2";
+        InputStream in = new ByteArrayInputStream(terminate.getBytes());
+        System.setIn(in);
+        assertThat(GameManager.isAgain(true)).isEqualTo(false);
+    }
+
+    @Tag("isAgain test")
+    @Test
+    @DisplayName("게임 종료후 인풋 예외 테스트")
+    void isAgain_exception_test() {
+        String wrong_input = "2";
+        InputStream in = new ByteArrayInputStream(wrong_input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> runException(wrong_input))
+            .isInstanceOf(IllegalArgumentException.class
+        );
+    }
 
     @Override
     public void runMain() {
