@@ -1,7 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -31,5 +37,63 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Nested
+    class UserNumberTest {
+        @ParameterizedTest
+        @ValueSource(strings = {"4a3", "abc", "9l1", "32k", "kk1", "76p"})
+        @DisplayName("입력에 문자가 포함된 경우 정상적으로 예외처리 되는지 테스트")
+        void isValidNumber_IncludingCharacter_ExceptionThrown(String input) {
+            assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
+
+        }
+
+        @DisplayName("세자리수가 아닌 경우 정상적으로 예외처리 되는지 테스트")
+        @ParameterizedTest
+        @ValueSource(strings = {"9325", "12", "31", "1", "34718", "56"})
+        void isValidNumber_NotThreeDigitNumber_ExceptionThrown(String input) {
+            assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
+
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"112", "363", "633", "122", "989", "23156"})
+        @DisplayName("각 자릿수가 같은 경우 정상적으로 예외처리 되는지에 대한 테스트")
+        void isValidNumber_SameDigits_ExceptionThrown(String input) {
+            assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"102", "380", "013", "106", "120", "320"})
+        @DisplayName("0을 포함하는 숫자를 입력받았을 경우 정상적으로 예외처리 되는지에 대한 테스트")
+        void isValidNumber_IncludingZero_ExceptionThrown(String input) {
+            assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+    }
+
+    @Nested
+    class NumberToListTest {
+        @Test
+        @DisplayName("입력받은 서로다른 숫자를 리스트로 정상 변환해주는지 테스트")
+        void NumberToIntegerList_NormalNumber_Passed() {
+            List<Integer> result = List.of(1, 2, 3);
+            assertThat(Application.NumberToIntegerList(123)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("같은 값이 포함된 숫자를 리스트로 정상 변환해주는지 테스트")
+        void NumberToIntegerList_IncludingSameNumber_Passed() {
+            List<Integer> result = List.of(9, 4, 9);
+            assertThat(Application.NumberToIntegerList(949)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("0이 포함된 숫자를 리스트로 정상 변환해주는지 테스트")
+        void NumberToIntegerList_IncludingZero_Passed() {
+            List<Integer> result = List.of(1, 0, 2);
+            assertThat(Application.NumberToIntegerList(102)).isEqualTo(result);
+        }
     }
 }
