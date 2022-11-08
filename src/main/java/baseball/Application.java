@@ -1,8 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Collections;
 public class Application {
     public static void main(String[] args) {
         startNumberBaseballGame();
@@ -32,5 +35,33 @@ public class Application {
         }catch (NumberFormatException e){
             throw new IllegalArgumentException();
         }
+    }
+
+    static List<Integer> getListByInputNumber (String inputNumber){
+
+        String number = inputNumber;
+
+        Integer inputNumberStringToInteger = stringToInteger(number);
+
+        List<Integer> listByInputNumber = new ArrayList<>();
+
+        while(inputNumberStringToInteger!=0){
+            if(listByInputNumber.contains(inputNumberStringToInteger%10)){
+                throw new IllegalArgumentException();
+            } else {
+                listByInputNumber.add(inputNumberStringToInteger%10);
+                inputNumberStringToInteger = inputNumberStringToInteger/10;
+            }
+        }
+
+        if(listByInputNumber.size() != 3){
+            throw new IllegalArgumentException();
+        }
+
+        Collections.reverse(listByInputNumber);
+
+        System.out.println("입력 숫자 = "+listByInputNumber);
+
+        return listByInputNumber;
     }
 }
