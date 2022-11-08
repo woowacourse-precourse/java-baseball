@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import domain.Computer;
+import domain.User;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -27,10 +29,19 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+    @Test
+    void ComputerNumCheck(){
+        assertThat(Computer.getNumber_List()).isEqualTo(Computer.number_List);
+    }
+
+    @Test
+    void strike_countCheck(){
+        Computer.setNumber();
+
+        assertThat(User.strike_count()).isEqualTo();
     }
 }

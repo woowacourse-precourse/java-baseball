@@ -1,8 +1,11 @@
 package study;
 
+import Controller.Utils;
+import domain.Computer;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class StringTest {
 
