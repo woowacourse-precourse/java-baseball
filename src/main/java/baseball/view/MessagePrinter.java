@@ -4,7 +4,7 @@ public interface MessagePrinter {
 
     void printGameStart();
     void printReqGameNumbersInput();
-    void printGameResult();
+    void printGameResult(String message);
     void printGameEnd();
     void printQuestionGameRestart();
 }
