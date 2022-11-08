@@ -11,7 +11,7 @@ import static baseball.Constants.*;
 public class Computer {
     private static List<Integer> generateRandomNumber() {
         List<Integer> randomNumberList = new ArrayList<>();
-        for (int i = 0; i < RESULT_SIZE; i++) {
+        for (int i = 0; i < MAX_NUMBER_RESULT_SIZE; i++) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (randomNumberList.contains(randomNumber)) {
                 i--;

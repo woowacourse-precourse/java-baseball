@@ -12,11 +12,11 @@ import static baseball.message.ExceptionMessage.*;
 public class User {
     public static String inputUserNumber() {
         String userInput = Console.readLine();
-        checkedValidate(userInput);
+        checkValidate(userInput);
         return userInput;
     }
 
-    public static void checkedValidate(String input) {
+    public static void checkValidate(String input) {
         validateInputRange(input);
         checkDuplicatedNumber(input);
         validateContainZero(input);
@@ -25,7 +25,7 @@ public class User {
     public static void validateInputRange(String userInput) {
         String[] input = userInput.split("");
         if (input.length != 3) {
-            throw new IllegalArgumentException(RANGE_ERR_MSG);
+            throw new IllegalArgumentException(NUMBER_RANGE_ERR_MSG);
         }
     }
 
@@ -37,7 +37,7 @@ public class User {
 
     public static void checkDuplicatedNumber (String userInput) {
         Set<String> userInputList = new HashSet<>(List.of(userInput.split("")));
-        if (userInputList.size() != RESULT_SIZE) {
+        if (userInputList.size() != MAX_NUMBER_RESULT_SIZE) {
             throw new IllegalArgumentException(DUPLICATED_ERR_MSG);
         }
     }

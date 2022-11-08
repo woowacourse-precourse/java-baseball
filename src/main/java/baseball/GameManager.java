@@ -33,9 +33,6 @@ public class GameManager {
                 .count();
     }
 
-    /**
-     * 유저의 입력값과 컴퓨터의 입력값을 받아 볼의 갯수를 리턴
-     */
     private int countBall (String userInputNumber, String computerInputNumber) {
         return (int) userInputNumber.chars()
                 .map(value -> (char) value - INT_TO_CHAR_CONVERSION_CONSTANT)
