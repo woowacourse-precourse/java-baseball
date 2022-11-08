@@ -72,6 +72,6 @@ public class NumberBaseballView {
     }
 
     public void endGame() {
-        System.out.println("애플리케이션을 종료합니다.");
+        System.out.println(GameMessage.APPLICATION_END);
     }
 }
