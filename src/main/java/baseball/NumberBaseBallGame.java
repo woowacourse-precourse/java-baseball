@@ -74,6 +74,17 @@ public class NumberBaseBallGame {
         return strike == 3;
     }
 
+    private boolean isRestart() {
+        Message.RESTART.print();
+
+        boolean restartFlag = getRestartFlag();
+        if (restartFlag) {
+            restart();
+        }
+
+        return restartFlag;
+    }
+
     private void restart() {
         isEnd = false;
         computer.clearSelectBalls();
