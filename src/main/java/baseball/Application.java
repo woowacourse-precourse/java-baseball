@@ -84,6 +84,38 @@ public class Application {
         }
     }
 
+    //3. 사용자가 입력한 수와 컴퓨터 수 비교
+    //스트라이크 계산 method
+    public static int getStrike(List<Integer> computerNum, List<Integer> userNum){
+        int strike=0;
+        for (int i=0; i<len; i++) {
+            if(computerNum.get(i).equals(userNum.get(i))){
+                strike++;
+            }
+        }
+        return strike;
+    }
+    //볼 계산
+    public static int getBall(List<Integer> computerNum, List<Integer> userNum){
+        int ball=0;
+        int left=0;
+        int right=0;
+        int cnt=0;
+
+        while(cnt < 9){
+            if(computerNum.get(left).equals(userNum.get(right)) && left!=right){
+                ball++;
+            }
+            right++;
+            cnt++;
+            if(right == len){
+                left++;
+                right = 0;
+            }
+        }
+        return ball;
+    }
+
 
 
 
