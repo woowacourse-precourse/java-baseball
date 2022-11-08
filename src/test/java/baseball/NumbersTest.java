@@ -1,8 +1,7 @@
 package baseball;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,29 +9,39 @@ public class NumbersTest {
 
     @Test
     void validation_숫자_개수_확인() {
-        Numbers numbers = new Numbers(List.of(1, 2, 3, 4));
-        boolean result = false;
-        assertThat(result).isEqualTo(numbers.validation());
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Numbers.of(1, 2, 3, 4));
+        assertThat(exception != null).isTrue();
     }
 
     @Test
     void validation_숫자_범위_확인() {
-        Numbers numbers = new Numbers(List.of(1, 0, 10));
-        boolean result = false;
-        assertThat(result).isEqualTo(numbers.validation());
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Numbers.of(1, 0, 9));
+        assertThat(exception != null).isTrue();
     }
 
     @Test
     void validation_숫자_중복_확인() {
-        Numbers numbers = new Numbers(List.of(1, 2, 2));
-        boolean result = false;
-        assertThat(result).isEqualTo(numbers.validation());
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Numbers.of(1, 2, 2));
+        assertThat(exception != null).isTrue();
     }
 
     @Test
-    void validation_숫자_정상_확인() {
-        Numbers numbers = new Numbers(List.of(1, 2, 3));
-        boolean result = true;
-        assertThat(result).isEqualTo(numbers.validation());
+    void get_확인() {
+        Numbers numbers = Numbers.of(3, 2, 1);
+        assertThat(numbers.get(0)).isEqualTo(3);
+        assertThat(numbers.get(1)).isEqualTo(2);
+        assertThat(numbers.get(2)).isEqualTo(1);
+    }
+
+    @Test
+    void indexOf_확인() {
+        Numbers numbers = Numbers.of(3, 2, 1);
+        assertThat(numbers.indexOf(1)).isEqualTo(2);
+        assertThat(numbers.indexOf(2)).isEqualTo(1);
+        assertThat(numbers.indexOf(3)).isEqualTo(0);
+        assertThat(numbers.indexOf(8)).isEqualTo(-1);
     }
 }
