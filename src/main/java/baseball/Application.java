@@ -21,4 +21,15 @@ public class Application {
         }
         return answer;
     }
+
+    public static void baseballGame(List<Integer> answer) {
+        boolean exit = false;
+        while (!exit) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInputString = Console.readLine();
+            List<Integer> userInput = changeInput(userInputString);
+            exit = numberCompare(answer, userInput);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
