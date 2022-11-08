@@ -107,6 +107,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void should_ThrowException_When_UserDuplicate() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
