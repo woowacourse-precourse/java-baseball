@@ -1,14 +1,27 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         List<Integer> randomNumber = getRandomNumber();
+
+        while (true)
+        {
+            List<Integer> inputNumber = makeUserNumber();
+
+        }
 
     }
 
@@ -25,5 +38,26 @@ public class Application {
         }
 
         return computer;
+    }
+
+    private static List<Integer> makeUserNumber(){
+
+        List<Integer> inputNumber = new ArrayList<>();
+        String consoleInputNumber = Console.readLine();
+
+        for(int i =0 ; i < 3; i++)
+        {
+            Integer number = Integer.parseInt(String.valueOf(consoleInputNumber.charAt(i)));
+            // 같은 숫자를 입력한 예외 케이스 체크
+            if(inputNumber.contains(number))
+            {
+                throw new IllegalArgumentException("같은 숫자를 입력했습니다.");
+            }
+
+            inputNumber.add(number);
+        }
+
+        return inputNumber;
+
     }
 }
