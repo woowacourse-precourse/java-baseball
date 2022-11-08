@@ -9,6 +9,10 @@ import java.util.List;
 public class Computer {
     private List<Integer> resultNumber;
 
+    public int getResultNumberSize(){
+        return resultNumber.size();
+    }
+
 
     public void init() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -57,7 +61,7 @@ public class Computer {
         return false;
     }
 
-    private static List<Integer> makeStringNumberToList(String inputStringNumber) throws IllegalArgumentException {
+    public static List<Integer> makeStringNumberToList(String inputStringNumber) throws IllegalArgumentException {
 
         List<Integer> inputNumber = new ArrayList<>();
         if(inputStringNumber.length() != 3) throw new IllegalArgumentException("입력값은 3자리 숫자여야 합니다.");
@@ -70,7 +74,7 @@ public class Computer {
         return inputNumber;
     }
 
-    private static void printResult(int strike, int ball) {
+    public static void printResult(int strike, int ball) {
         if(strike == 0 && ball == 0){
             System.out.println("낫싱");
         }else if(strike == 0){
@@ -82,7 +86,7 @@ public class Computer {
         }
     }
 
-    private static int countStrike(List<Integer> resultNumber, List<Integer> inputNumber) {
+    public static int countStrike(List<Integer> resultNumber, List<Integer> inputNumber) {
         int countStrike = 0;
         for (int i = 0; i < 3; i++) {
             if(resultNumber.get(i) == inputNumber.get(i)){
@@ -92,7 +96,7 @@ public class Computer {
         return countStrike;
     }
 
-    private static int countBall(List<Integer> resultNumber, List<Integer> inputNumber) {
+    public static int countBall(List<Integer> resultNumber, List<Integer> inputNumber) {
         int ball = 0;
         for(int i =0; i<3; i++){
             int curNumber = resultNumber.get(i);
