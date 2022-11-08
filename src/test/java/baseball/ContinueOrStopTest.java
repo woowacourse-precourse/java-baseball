@@ -7,9 +7,9 @@ class ContinueOrStopTest {
 
   @Test
   void choice_throw_test_짧은_숫자가_들어온_경우() {
-    String testCase5 = "3";
+    String testCase1 = "3";
 
-    Assertions.assertThatThrownBy(() -> ContinueOrStop.choice(testCase5))
+    Assertions.assertThatThrownBy(() -> ContinueOrStop.choice(testCase1))
             .isInstanceOf(IllegalArgumentException.class);
   }
 
@@ -34,9 +34,9 @@ class ContinueOrStopTest {
 
   @Test
   void choice_throw_test_숫자가_아닌_경우() {
-    String testCase1 = "a";
+    String testCase5 = "a";
 
-    Assertions.assertThatThrownBy(() -> ContinueOrStop.choice(testCase1))
+    Assertions.assertThatThrownBy(() -> ContinueOrStop.choice(testCase5))
             .isInstanceOf(IllegalArgumentException.class);
   }
 
