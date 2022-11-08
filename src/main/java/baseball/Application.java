@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
@@ -37,7 +36,6 @@ public class Application {
         }
         return Integer.parseInt(randomNumber);
     }
-
 
 
     public static int userNumber() {
@@ -104,7 +102,6 @@ public class Application {
 
         return ball;
     }
-
 
 
     public static int restartOrEndGame() {
