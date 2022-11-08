@@ -83,6 +83,8 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void should_ThrowException_When_UserMoreThan3() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
