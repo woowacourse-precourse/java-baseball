@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class Game {
@@ -50,8 +49,17 @@ public class Game {
 
             initializeBallCount();
             setDigits();
-            calculateStrike();
-            calculateBall();
+
+            for(int i=0; i<NUMBER_LENGTH; i++) {
+                if(randomDigits.get(i).equals(userDigits.get(i))) {
+                    strike++;
+                }
+                for(int k=0; k<NUMBER_LENGTH; k++) {
+                    if(i != k && randomDigits.get(i).equals(userDigits.get(k))) {
+                        ball++;
+                    }
+                }
+            }
             printOutResult();
 
             if(strike == NUMBER_LENGTH) {
@@ -109,26 +117,6 @@ public class Game {
     private void setDigits() {
         randomDigits = getSplitList(randomNumber);
         userDigits = getSplitList(userNumber);
-    }
-
-    private void calculateBall() {
-        for(String userDigit: userDigits) {
-            boolean isContained = randomDigits.contains(userDigit);
-            boolean isBall = randomDigits.indexOf(userDigit) != userDigits.indexOf(userDigit);
-            if(isBall && isContained) {
-                ball++;
-            }
-        }
-    }
-
-    private void calculateStrike() {
-        for(String userDigit: userDigits) {
-            boolean isContained = randomDigits.contains(userDigit);
-            boolean isStrike = randomDigits.indexOf(userDigit) == userDigits.indexOf(userDigit);
-            if(isStrike && isContained) {
-                strike++;
-            }
-        }
     }
 
     private List<String> getSplitList(int number) {
