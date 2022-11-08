@@ -14,4 +14,10 @@ class UserInputTest {
 
         assertThat(UserInput.changeUserInputToList(userInput)).isEqualTo(userInputToList);
     }
+
+    @Test
+    void isRetry_1은재시작_2는게임종료() {
+        assertThat(UserInput.isRetry("1")).isTrue();
+        assertThat(UserInput.isRetry("2")).isFalse();
+    }
 }
