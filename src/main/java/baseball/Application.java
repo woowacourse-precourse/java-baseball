@@ -75,7 +75,18 @@ class Game
             user = checkGameUserInput(input, user);
             List<Integer> result = checkBallsAndStrikes();
 
-            break;
+            if(result.get(BALLS) == 0 && result.get(STRIKES) == 0) {
+                System.out.print("낫싱\n");
+            } else if(result.get(BALLS) == 0){
+                System.out.print(result.get(STRIKES) +"스트라이크\n");
+            } else if(result.get(STRIKES) == 0){
+                System.out.print(result.get(BALLS) + "볼\n");
+            } else {
+                System.out.print(result.get(BALLS) + "볼 " + result.get(STRIKES) +"스트라이크\n");
+            }
+            if(result.get(STRIKES) == maxLen) {
+                break;
+            }
         }
         // 만약 3개의 숫자를 다 맞췄다면 : while 루프를 break
         System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
@@ -111,8 +122,19 @@ class Game
         int balls = 0;
         int strikes = 0;
 
-        // implement
-
+        int comp;
+        for(int i = 0; i < maxLen; ++i) {
+            comp = user.get(i);
+            if(computer.contains(comp)) {
+                ++balls;
+            }
+            if(computer.get(i) == comp) {
+                --balls;
+                ++strikes;
+            }
+        }
+        result.add(balls);
+        result.add(strikes);
         return result;
     }
 }
