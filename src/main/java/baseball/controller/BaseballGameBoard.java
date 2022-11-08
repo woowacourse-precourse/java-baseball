@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumberGenerator;
+import baseball.model.UserNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -17,9 +18,14 @@ public class BaseballGameBoard {
 
     private static void startGame() {
         List<Integer> numberGeneratedByComputer = new ComputerNumberGenerator().VALIDATED_NUM;
-//        do {
-//            new OutputView()
-//        }while ()
+        List<Integer> numberGeneratedByUser;
+        boolean matchedAllNumber;
+        do {
+            numberGeneratedByUser = new UserNumberGenerator().VALIDATED_NUM;
+            BaseballGame game = new BaseballGame(numberGeneratedByUser, numberGeneratedByComputer);
+            new OutputView(game).printGameResult();
+            matchedAllNumber = game.matchedAllNumber();
+        } while (!matchedAllNumber);
     }
 
     private static boolean exit() throws IllegalArgumentException {
