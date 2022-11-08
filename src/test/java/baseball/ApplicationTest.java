@@ -33,7 +33,7 @@ class ApplicationTest extends NsTest {
         selectNumber();
         assertThat(computer.size()).isEqualTo(3);
     }
-    
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->

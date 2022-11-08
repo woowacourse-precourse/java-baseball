@@ -61,7 +61,7 @@ public class Application {
                 }
             }
         }
-       outputResult();
+       System.out.println(outputResult());
     }
 
     public static String outputResult() {
