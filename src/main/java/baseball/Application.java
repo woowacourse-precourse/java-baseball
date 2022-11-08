@@ -67,4 +67,22 @@ public class Application {
 
         return grade;
     }
+
+    public static String makeGradeMessage(Grade grade) {
+        int ball = grade.getBall();
+        int strike = grade.getStrike();
+
+        String message = "";
+        if (ball != 0) {
+            message = message + ball + "볼";
+            if (strike != 0) {
+                message = message + " " + strike + "스트라이크";
+            }
+        } else if (strike != 0) {
+            message = strike + "스트라이크";
+        } else {
+            message = "낫싱";
+        }
+        return message;
+    }
 }
