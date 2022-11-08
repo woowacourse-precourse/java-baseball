@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.domain.Opponent;
+import baseball.domain.Player;
+import baseball.domain.Referee;
 import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.SystemMessage.*;

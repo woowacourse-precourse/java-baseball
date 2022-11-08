@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;

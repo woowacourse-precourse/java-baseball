@@ -6,7 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 
-import static baseball.Player.*;
+import static baseball.domain.Player.*;
 import static baseball.SystemMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
