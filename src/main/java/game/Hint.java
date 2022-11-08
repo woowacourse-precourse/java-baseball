@@ -1,8 +1,8 @@
 package game;
 
 public class Hint {
-    private static int ball = 0;
-    private static int strike = 0;
+    private int ball = 0;
+    private int strike = 0;
 
     public int getBall() {
         return ball;
