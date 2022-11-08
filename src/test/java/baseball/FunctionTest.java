@@ -2,6 +2,8 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,5 +35,13 @@ public class FunctionTest {
         assertThat(game.isOver()).isEqualTo(true);
         game.checkAnswer(guess2);
         assertThat(game.isOver()).isEqualTo(false);
+    }
+
+    @Test
+    void testArgumentException() {
+        String overedString = "1234";
+
+        assertThatThrownBy(() -> game.checkInputFormat(overedString))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
