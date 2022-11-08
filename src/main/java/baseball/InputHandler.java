@@ -36,7 +36,7 @@ public class InputHandler {
             System.out.println("입력 수 : " + restartNum);
             return restartNum;
         }catch (NumberFormatException e){
-            throw new NumberFormatException("숫자를 입력해주세요");
+            throw new IllegalArgumentException("숫자를 입력해주세요");
         }
     }
 }
