@@ -1,8 +1,14 @@
 package baseball;
 
+import baseball.controller.BaseballController;
+import baseball.service.BaseBallService;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -75,6 +81,39 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Nested
+    @DisplayName("게임 결과 출력 테스트 모음")
+    class OutputTest {
+
+        private BaseballController baseballController = new BaseballController();
+        private BaseBallService baseBallService = baseballController.getBaseBallServiceForTest();
+        private OutputView outputView = baseballController.getOutputViewForTest();
+
+
+        @Test
+        @DisplayName("낫싱 출력 테스트")
+        void checkNothingTest() {
+            baseBallService.userInputSave("169");
+            baseBallService.setComputerNumberList(List.of(3, 2, 5));
+            baseBallService.saveResult();
+
+            String result = getResult();
+
+            assertThat(result).isEqualTo(OutputView.NOTTING_MESSAGE);
+        }
+
+        private String getResult() {
+            String result = "";
+
+            if (baseBallService.isNotting()) {
+                result = outputView.printNothing();
+            } else {
+                result = outputView.printResult(baseBallService.getStrike(), baseBallService.getBall());
+            }
+            return result;
+        }
     }
 
     @Override
