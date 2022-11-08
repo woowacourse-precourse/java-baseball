@@ -5,14 +5,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
     private static int numberOfDigit;
-    private Game game;
+    private static Game game;
 
     public UserInput(Game game, final int NUMBER_OF_DIGIT) {
         this.numberOfDigit = NUMBER_OF_DIGIT;
         this.game = game;
     }
 
-    public void setUserInput() {
+    public static void setUserInput() {
         String input = Console.readLine();
         validateNumber(input);
         validateNumberOfDigits(input);
