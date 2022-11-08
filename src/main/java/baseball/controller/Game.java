@@ -7,6 +7,24 @@ public class Game {
     public static int getShutDownCode() {
         return shutDownCode;
     }
+
+    /** 게임 라운드 시작 */
+    private static void startRound(List<Integer> answer){
+        int input = getInputNums();
+        List<Integer> numList = getNumsArr(input);
+        // 체크
+        Baseball result = checkAnswer(numList, answer);
+        // 결과 출력
+        System.out.println(printRoundResult(result));
+        // 종료 체크
+        if (clear(result)) {
+            Printer.showClear();
+            return;
+        } else {
+            startRound(answer);
+        }
+    }
+
     private static int getInputNums() {
         showRequestInput();
         int nums = 0;
