@@ -16,13 +16,13 @@ public class View {
         int strikeCnt = results[STRIKE_IDX];
         int ballCnt = results[BALL_IDX];
         if (strikeCnt == 0 && ballCnt == 0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING);
         } else if (strikeCnt == 0 && ballCnt > 0) {
-            System.out.println(ballCnt + "볼");
+            System.out.println(ballCnt + BALL);
         } else if (ballCnt == 0 && strikeCnt > 0) {
-            System.out.println(strikeCnt + "스트라이크");
+            System.out.println(strikeCnt + STRIKE);
         } else if (strikeCnt > 0 && ballCnt > 0) {
-            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
+            System.out.println(ballCnt + BALL + BLANK + strikeCnt + STRIKE);
         }
     }
 
