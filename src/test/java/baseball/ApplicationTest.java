@@ -1,7 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -19,7 +22,6 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
-
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -31,5 +33,25 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+    // 추가 테스트
+    @Test
+    @DisplayName("입력의 길이가 3이 아닌 경우 ")
+    public void inputLenNot3() throws Exception{
+        assertThatThrownBy(()-> Application.validationAndConvert("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    @DisplayName("서로 다른 3개의 수가 아닌 경우")
+    public void duplicationNumber() throws Exception{
+        assertThatThrownBy(()-> Application.validationAndConvert("133"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    @DisplayName("수가 아닌 입력이 있는 경우")
+    public void NotNumber() throws Exception{
+        assertThatThrownBy(()->Application.validationAndConvert("a12"))
+                .isInstanceOf(IllegalArgumentException.class);
+
     }
 }
