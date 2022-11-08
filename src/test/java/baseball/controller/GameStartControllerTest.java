@@ -35,10 +35,12 @@ class GameStartControllerTest {
 	@Test
 	void check_makeAnswerNumber() {
 		List<Integer> answerNumber = gameStartController.initGame();
+		int answerNumberLength = answerNumber.size();
 		long validNumberCount = answerNumber.stream()
 			.filter(number -> (number >= 1) && (number <= 9))
 			.count();
 		Assertions.assertAll(
+			() -> assertThat(answerNumberLength).isEqualTo(3),
 			() -> assertThat(validNumberCount).isEqualTo(3)
 		);
 	}
