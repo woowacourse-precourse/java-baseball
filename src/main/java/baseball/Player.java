@@ -37,7 +37,15 @@ public class Player {
         return true;
     }
 
-    boolean continueGame() {
+    public boolean continueGame() {
+        final String CONTINUE_GAME = "1";
+        String input = input();
+        if (!validContinueGame(input)) {
+            throw new IllegalArgumentException();
+        }
+        if (input.equals("1")) {
+            return true;
+        }
         return false;
     }
 
