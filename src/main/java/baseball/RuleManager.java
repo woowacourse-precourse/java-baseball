@@ -46,4 +46,12 @@ public class RuleManager {
             }
         }
     }
+
+    public static void compareStrike(User user, List<Long> computerNumbers) {
+        if (countStrike(user, computerNumbers) > ZERO_STRIKE_NUMBER) {
+            if (countStrike(user, computerNumbers) < THREE_STRIKE_NUMBER && countBall(user, computerNumbers) == ZERO_BALL_NUMBER) {
+                Output.printStrike(countStrike(user, computerNumbers));
+            }
+        }
+    }
 }
