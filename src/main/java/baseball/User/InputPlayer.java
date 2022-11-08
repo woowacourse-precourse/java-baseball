@@ -3,16 +3,22 @@ package baseball.User;
 import static baseball.User.Game.InputSt;
 
 public class InputPlayer {
+
+
     public int[] enterAnswer() {
         String strNumber;
+
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             strNumber = InputSt();
             if (strNumber.length() != 3) {
+
                 throw new IllegalArgumentException();
 
+
             }
-            break;
+
+                break;
         }
 
 
