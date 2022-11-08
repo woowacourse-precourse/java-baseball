@@ -18,5 +18,18 @@ public class GamePlay {
         }
         return computer;
     }
+    public static boolean provideHintMessage(List<Integer> answer, List<Integer> userInput){
+        boolean isAnswer = false;
+        int ball = 0;
+        int strike = 0;
+
+        for(int userChar : userInput){
+            // TODO: 2022/11/08 answer과 userChar비교해 ball, strike 여부 판단하는 함수 : 리턴값에 따라 ball이나 strike 증가
+        }
+
+
+
+        return isAnswer;
+    }
 
 }
