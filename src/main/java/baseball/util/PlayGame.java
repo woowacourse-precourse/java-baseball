@@ -6,7 +6,6 @@ import java.util.List;
 public class PlayGame {
 
     public boolean playWithComputer(List<Integer> player, List<Integer> com) {
-        List<Integer> result = new ArrayList<>();
         int strikeCnt = 0;
         int ballCnt = 0;
 
