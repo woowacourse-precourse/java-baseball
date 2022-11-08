@@ -11,5 +11,4 @@ public enum GameRules {
 		return code;
 	}
 
-	/*public abstract int getValue();*/
 }
