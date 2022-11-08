@@ -22,12 +22,12 @@ public class Game {
         this.computer = computer;
     }
 
-    public PlayResult playGame(String[] input) throws IllegalAccessException {
+    public PlayResult playGame(String[] input) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         // 사용자가 잘못된 값을 입력할 경우
         if (input.length != 3) {
-            throw new IllegalAccessException();
+            throw new IllegalArgumentException();
         }
 
         List<Integer> user = new ArrayList<>();
