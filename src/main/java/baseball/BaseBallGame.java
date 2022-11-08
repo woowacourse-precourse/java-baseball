@@ -12,16 +12,21 @@ public class BaseBallGame {
     private List<Integer> user;
     private String answer;
 
+    private final int LENGTH = 3;
+    private final int STARTRANGE = 1;
+    private final int FINISHRANGE = 9;
+
+
     public List<Integer> randomNumbers() {
         computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < LENGTH) {
+            int randomNum = Randoms.pickNumberInRange(STARTRANGE, FINISHRANGE);
             computer = isContainNumber(computer, randomNum);
         }
         return computer;
     }
 
-    public List<Integer> isContainNumber(List<Integer> computer, int randomNum){
+    public List<Integer> isContainNumber(List<Integer> computer, int randomNum) {
         if (!computer.contains(randomNum)) {
             computer.add(randomNum);
         }
@@ -31,29 +36,31 @@ public class BaseBallGame {
     public List<Integer> inputNumbers(String userNum) {
         user = new ArrayList<>();
         String[] nums = userNum.split("");
-
         lengthInCorrectException(nums.length);
 
         for (String num : nums) {
-            int numInt = Integer.parseInt(num);
+            int numInt = isNumberic(num);
             isContainNumberException(user, numInt);
             user.add(numInt);
         }
         return user;
     }
 
-    public void lengthInCorrectException(int length){
-        if(length != 3){
+    public void lengthInCorrectException(int length) {
+        if (length != 3) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void isContainNumberException(List<Integer> nums, int num){
-        if(nums.contains(num)){
+    public void isContainNumberException(List<Integer> nums, int num) {
+        if (nums.contains(num)) {
             throw new IllegalArgumentException();
         }
     }
 
+    public int isNumberic(String num) throws IllegalArgumentException {
+        return Integer.parseInt(num);
+    }
 
 
     public List<Integer> findNumber(List<Integer> computer, List<Integer> user) {
@@ -73,7 +80,6 @@ public class BaseBallGame {
         strikeAndBall.add(ball);
         return strikeAndBall;
     }
-
 
 
     public String numberToString(List<Integer> strikeAndBall) {
