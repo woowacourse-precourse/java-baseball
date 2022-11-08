@@ -17,7 +17,7 @@ public class OneDigitNumbersTest {
     }
 
     @Nested
-    class 숫자_길이_확인{
+    class 숫자_길이_확인 {
         @Test
         void 중복_제거() {
             List<Integer> numbers = List.of(9,8,8);
