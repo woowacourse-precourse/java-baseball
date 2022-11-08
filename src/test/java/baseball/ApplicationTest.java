@@ -85,6 +85,17 @@ class ApplicationTest extends NsTest {
         assertThat(result).containsExactly(0, 0);
     }
 
+    @Test
+    void printResults_테스트() {
+        Application.printResults(0, 0);
+        Application.printResults(3, 0);
+        Application.printResults(0, 1);
+        Application.printResults(2, 1);
+        Application.printResults(0, 3);
+        assertThat(output()).contains("낫싱", "3볼", "1스트라이크", "2볼 1스트라이크",
+                "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
