@@ -21,7 +21,6 @@ public class Score {
         Score.totalScore.put(BALL, getBall());
     }
     public void computerNumbers(List<Integer> computers) {
-        System.out.println("이번에 뽑은 숫자는: " + computers.get(0) + ": " + computers.get(1) + ": " + computers.get(2));
         Score.computerNumbers = computers;
     }
 

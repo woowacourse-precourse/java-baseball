@@ -10,7 +10,6 @@ public class Decision {
     private static boolean playing = true;
 
     public static void call() {
-        //Score score = new Score();
         Score.makeScore();
         if (Score.threeStrikeOut()) {
             Message.onlyStrikeCount();
