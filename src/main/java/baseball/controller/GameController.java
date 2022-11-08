@@ -27,7 +27,7 @@ public class GameController {
         View view = new PickThreeDigitNumberView();
         view.show();
 
-        return view.getResponseToString();
+        return view.getResponse();
     }
 
     public boolean showSelectNumberResult(String input) {
@@ -52,7 +52,7 @@ public class GameController {
         View view = new SelectPlayGameAgainView();
         view.show();
 
-        return view.getResponseToString();
+        return view.getResponse();
     }
 
     public boolean getPlayGameAgainResult(String input) {

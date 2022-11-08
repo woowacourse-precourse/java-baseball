@@ -9,7 +9,7 @@ public class PickThreeDigitNumberView extends View{
     }
 
     @Override
-    public String getResponseToString() {
+    public String getResponse() {
         return this.response;
     }
 }
