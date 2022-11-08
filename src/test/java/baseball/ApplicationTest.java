@@ -113,7 +113,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void userInput이_숫자가_아닐경우() {
+    void userInput이_숫자가_아닐경우_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("가나다라"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -121,7 +121,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void userInput이_중복일_경우() {
+    void userInput이_중복일_경우_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("112"))
                         .isInstanceOf(IllegalArgumentException.class)
