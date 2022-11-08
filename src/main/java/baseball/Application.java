@@ -20,6 +20,10 @@ class Node {
 
 public class Application {
 
+
+    static boolean restartGameYn = false;
+    static boolean exitGameYn = false;
+
     public static String makeTargetNum() {
 
         List<Integer> target = new ArrayList<>();
@@ -87,6 +91,20 @@ public class Application {
         return node;
     }
 
+    public static void restartOrExit(String str) {
+
+        if (str.equals("2")) {
+            exitGameYn = true;
+
+        }
+
+        if (str.equals("1")) {
+            restartGameYn = true;
+
+        }
+
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -99,27 +117,17 @@ public class Application {
         // 3
         while (true) {
 
-            System.out.println("숫자를 입력해주세요 :  ");
+            System.out.println("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             isValidate(input);
             Node node = baseball(target, input);
 
-            if (node.strike + node.ball == 0) {
-                System.out.println("낫싱");
-
-            } else {
-
-                if (node.ball == 0) {
-                    System.out.printf("%d스트라이크 %n", node.strike);
-
-                } else if (node.strike == 0) {
-                    System.out.printf("%d볼 %n", node.ball, node.strike);
-
-                } else {
-                    System.out.printf("%d볼 %d스트라이크 %n", node.ball, node.strike);
-
-                }
-
+            if (exitGameYn) {
+                break;
+            }
+            if (restartGameYn) {
+                restartGameYn = false;  //  초기화
+                target = makeTargetNum();
             }
 
 
