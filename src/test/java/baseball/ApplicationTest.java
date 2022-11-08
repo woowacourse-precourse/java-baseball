@@ -38,8 +38,27 @@ class ApplicationTest extends NsTest {
         assertThat(set.size()).isEqualTo(3);
 
     }
+    @Test
+    void 입력값_유효성_검증_성공(){
+        boolean valid = Application.validationOfInput("123");
+        assertThat(valid).isTrue();
+    }
+    @Test
+    void 입력값_유효성_검증_실패_중복값(){
+        boolean valid = Application.validationOfInput("111");
+        assertThat(valid).isFalse();
+    }
+    @Test
+    void 입력값_유효성_검증_실패_길이(){
+        boolean valid = Application.validationOfInput("1234");
+        assertThat(valid).isFalse();
+    }
 
-
+    @Test
+    void 입력값_유효성_검증_실패_숫자이외의값(){
+        boolean valid = Application.validationOfInput("asd");
+        assertThat(valid).isFalse();
+    }
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
