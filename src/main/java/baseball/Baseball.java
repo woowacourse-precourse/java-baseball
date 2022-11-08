@@ -44,12 +44,17 @@ public class Baseball {
     }
 
     private void readNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
         input = Console.readLine();
     }
 
-    public void gameStart() {
+    public void gameStart() throws Exception {
         printInit();
         getRandomNumbers();
+        readNumbers();
+        if (!isValidNumber()) {
+            throw new IllegalArgumentException("");
+        }
     }
 
 
