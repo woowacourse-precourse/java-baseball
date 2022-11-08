@@ -118,6 +118,40 @@ class ApplicationTest extends NsTest {
         assertThat(hint.ball).isZero();
     }
 
+    @Test
+    void 결과출력테스트() {
+        Game game = new Game();
+        List<Integer> gameAnswer = game.getGameAnswer();
+        // Ball : 2
+        List<Integer> guessOneCorrect = new ArrayList<>();
+        // Ball : 0 (정답과 같으므로)
+        List<Integer> pseudoAnswer = new ArrayList<>();
+
+        for (int number = 0; number < gameAnswer.size(); number++) {
+            // 모든 3자리 숫자가 똑같다.
+            pseudoAnswer.add(gameAnswer.get(number));
+            // 가운데 숫자만 똑같다. (역순)
+            guessOneCorrect.add(gameAnswer.get(2 - number));
+        }
+
+        Hint hint = new Hint();
+        // 1스트라이크 2볼
+        game.guessNumber = guessOneCorrect;
+        hint.compareAnswer(game);
+        assertThat(hint.getResult()).isEqualTo("2볼 1스트라이크");
+        hint.showResult();
+
+        // 이전 결과 초기화
+        hint.strike = 0;
+        hint.ball = 0;
+
+        // 3스트라이크
+        game.guessNumber = pseudoAnswer;
+        hint.compareAnswer(game);
+        assertThat(hint.getResult()).isEqualTo("3스트라이크");
+        hint.showResult();
+    }
+
 
     @Override
     public void runMain() {

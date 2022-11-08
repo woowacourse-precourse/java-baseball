@@ -83,6 +83,30 @@ class Hint {
         }
     }
 
+    // 유저에게 Strike와 Ball 값을 출력해주는 매서드.
+    public String getResult() {
+        String result = "";
+        if (this.ball != 0) {
+            result += this.ball + "볼";
+        }
+        if (this.strike != 0) {
+            // 볼이 있으면 띄어쓰기 하기
+            if (this.ball != 0) {
+                result += " ";
+            }
+            result += this.strike + "스트라이크";
+        }
+        if (result.equals("")) {
+            result = "낫싱";
+        }
+
+        return result;
+    }
+
+    public void showResult() {
+        System.out.println(getResult());
+    }
+
     private void addStrikeCount() {
         this.strike++;
     }
