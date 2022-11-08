@@ -8,9 +8,11 @@ public enum Messages {
     REQUEST_RESTART_GAME_INPUT("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
 
     private final String message;
+
     Messages(String message) {
         this.message = message;
     }
+
     public String message() {
         return message;
     }

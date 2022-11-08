@@ -2,8 +2,6 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.domain.Game;
-import baseball.domain.ValidityChecker;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -27,7 +25,7 @@ public class GameTest {
 
     private static ByteArrayOutputStream outContent;
     private static PrintStream originalOut;
-    private ValidityChecker checker = new ValidityChecker();
+    private InputValidityChecker checker = new InputValidityChecker();
 
     @BeforeEach
     void setUp() {

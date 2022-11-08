@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class ValidityChecker {
+public class InputValidityChecker {
 
     public void validateNumberInput(String input, final int MAX_LEN) {
         validLength(input, MAX_LEN);

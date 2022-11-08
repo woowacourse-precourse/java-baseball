@@ -2,7 +2,6 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.domain.ValidityChecker;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
@@ -16,14 +15,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 import baseball.ui.ConsoleInput;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class ValidityCheckerTest {
+class InputValidityCheckerTest {
 
     private ConsoleInput input;
-    private ValidityChecker checker;
+    private InputValidityChecker checker;
 
     @BeforeEach
     void setUp() {
-        checker = new ValidityChecker();
+        checker = new InputValidityChecker();
     }
 //    String 상태로 내가 넣어준 테스트용 input을 바이트 코드로 바꾸어 준다.
     public static InputStream generateUserInput(String input) {

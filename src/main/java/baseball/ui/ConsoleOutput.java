@@ -3,7 +3,7 @@ package baseball.ui;
 import baseball.domain.GameResultConverter;
 import java.util.List;
 
-public class ConsoleOutput implements Output{
+public class ConsoleOutput implements Output {
 
     @Override
     public void printOut(String message) {
@@ -14,6 +14,6 @@ public class ConsoleOutput implements Output{
     public void printOutAfterConversion(List<Integer> judgement) {
         GameResultConverter converter = new GameResultConverter();
         String buffer = converter.convertGameResult(judgement);
-        printOut(buffer+"\n");
+        printOut(buffer + "\n");
     }
 }
