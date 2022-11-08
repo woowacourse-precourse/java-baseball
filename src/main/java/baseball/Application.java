@@ -14,7 +14,6 @@ public class Application {
     public static int strikeNum;
     public static int ballNum;
 
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -67,10 +66,11 @@ public class Application {
     public static boolean checkSuccesssAndPrintResult(){
         String result = "";
         if (strikeNum==3){
+            System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
-        else{
+        else if(strikeNum>0){
             result += Integer.toString(strikeNum) + "스트라이크";
         }
         if(ballNum>0){
