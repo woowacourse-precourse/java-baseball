@@ -97,39 +97,52 @@ public class Application {
         return hint.toString();
     }
 
-    public static void predictNumber(ArrayList<Integer> answer) {
+    public static String getConsoleInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return Console.readLine();
+    }
+
+    public static void playOneGame() {
+        ArrayList<Integer> answer = generateAnswer();
         ArrayList<Integer> prediction = new ArrayList<>();
         String consoleInput;
         while (!answer.equals(prediction)) {
-            System.out.print("숫자를 입력해주세요 : ");
-            consoleInput = Console.readLine();
+            consoleInput = getConsoleInput();
             validateInput(consoleInput);
 
-            int inputNumber = Integer.parseInt(consoleInput);
-            prediction = separateDigit(inputNumber);
+            int inputInInteger = Integer.parseInt(consoleInput);
+            prediction = separateDigit(inputInInteger);
             String hint = giveHint(answer, prediction);
             System.out.println(hint);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public static void validateCode(String executionCode) {
-        if (!executionCode.equals("1") && !executionCode.equals("2"))
-            throw new IllegalArgumentException("Execution code must be 1 or 2");
+    public static void announceStart() { System.out.println("숫자 야구 게임을 시작합니다."); }
+
+    public static void announceEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    static class ExecutionCode {
+        String code;
+        ExecutionCode() { this.code = "1"; }
+        void get() { this.code = Console.readLine(); }
+
+        void validate() {
+            if (!this.code.equals("1") && !this.code.equals("2"))
+                throw new IllegalArgumentException("Execution code must be 1 or 2");
+        }
     }
 
     public static void main(String[] args) {
-        String executionCode = "1";
-        ArrayList<Integer> answer = new ArrayList<>();
-        while (executionCode.equals("1")) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            answer = generateAnswer();
-
-            predictNumber(answer);
-
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            executionCode = Console.readLine();
-            validateCode(executionCode);
+        ExecutionCode executionCode = new ExecutionCode();
+        while (executionCode.code.equals("1")) {
+            announceStart();
+            playOneGame();
+            announceEnd();
+            executionCode.get();
+            executionCode.validate();
         }
     }
 }
