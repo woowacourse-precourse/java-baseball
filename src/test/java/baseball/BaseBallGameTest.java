@@ -42,4 +42,13 @@ public class BaseBallGameTest {
         int actual = baseBallGame.countStrike(computer, inputNumbers);
         assertThat(actual).isEqualTo(2);
     }
+
+    @DisplayName("볼 개수를 반환한다.")
+    @Test
+    void countBall() {
+        List<Integer> computer = Arrays.asList(1,2,3);
+        List<Integer> inputNumbers = Arrays.asList(3,2,1);
+        int actual = baseBallGame.countBall(computer, inputNumbers);
+        assertThat(actual).isEqualTo(2);
+    }
 }
