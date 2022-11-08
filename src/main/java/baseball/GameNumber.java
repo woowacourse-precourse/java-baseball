@@ -89,24 +89,19 @@ public class GameNumber {
     public BallStrikeResult compareTo(GameNumber oth) {
         BallStrikeResult result = new BallStrikeResult();
         for(int i = 0; i < this.numberListByDigit.size(); i++) {
-            for(int j = 0; j < oth.numberListByDigit.size(); j++) {
-                countBallOrStrike(
-                        result,
-                        this.numberListByDigit.get(i),
-                        oth.numberListByDigit.get(j),
-                        i == j
-                );
-            }
+            countBallStrikeOnIdx(result, oth, i);
         }
         return result;
     }
 
-    private void countBallOrStrike(BallStrikeResult result, int digit1, int digit2, boolean isStrike) {
-        if(digit1 == digit2) {
-            if(isStrike) {
-                result.addStrikeCount();
-                return;
-            }
+    private void countBallStrikeOnIdx(BallStrikeResult result, GameNumber oth, int idx) {
+        int currentDigit = this.numberListByDigit.get(idx);
+
+        if(currentDigit == oth.numberListByDigit.get(idx)) {
+            result.addStrikeCount();
+            return;
+        }
+        if(oth.numberListByDigit.contains(currentDigit)) {
             result.addBallCount();
         }
     }
