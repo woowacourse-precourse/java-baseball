@@ -3,19 +3,19 @@ package baseball;
 
 public class Application {
 
-    private static final int RESTART = 1;
+    private static final String RESTART = "1";
 
 
     public static void main(String[] args) {
         Game game = new Game();
-
+        String isRestart;
 
         do {
-            game.play();
+            isRestart = game.play();
 
 
 
-        } while (RESTART == 2);
+        } while (isRestart == RESTART);
 
     }
 }

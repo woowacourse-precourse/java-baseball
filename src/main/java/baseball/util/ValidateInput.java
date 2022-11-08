@@ -13,13 +13,9 @@ public class ValidateInput {
     public List<Integer> validateInput() {
         String input = Console.readLine();
         isValidateNumber(input);
-        System.out.println(1);
         isValidateSize(input);
-        System.out.println(2);
         List<Integer> inputList = inputToList(input);
-        System.out.println(3);
         isValidateDuplicate(inputList);
-        System.out.println(4);
         System.out.println("숫자를 입력해주세요 : "+input);
         return inputList;
     }
