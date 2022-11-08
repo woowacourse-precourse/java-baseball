@@ -70,4 +70,23 @@ public class Baseball {
         }
 
     }
+    public void startBaseball(){
+        do{
+            setUserNumber();
+            compareAnswerUserNum();
+
+        }while (compareResult!=answerResult);
+    }
+    public void checkContinue(){
+        gameState = Integer.parseInt(Console.readLine());
+    }
+
+    public void startGame(){
+        while (gameState==1){
+            setAnswerNumber();
+            startBaseball();
+            checkContinue();
+        }
+        System.out.println("게임 종료");
+    }
 }
