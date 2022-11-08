@@ -94,23 +94,13 @@ class BaseBallGame {
 
     public boolean getSolveResult(int strike, int ball) {
         if (strike == GOAL) {
-            Display.strike(GOAL);
+            Display.printHint(ball, strike);
             Display.answerCorrect();
 
             return true;
         }
 
-        if (ball == ZERO && strike == ZERO) {
-            Display.nothing();
-        } else {
-            if (ball == ZERO) {
-                Display.strike(strike);
-            } else if (strike == ZERO) {
-                Display.ball(ball);
-            } else {
-                Display.ballAndStrike(ball, strike);
-            }
-        }
+        Display.printHint(ball, strike);
 
         return false;
     }
