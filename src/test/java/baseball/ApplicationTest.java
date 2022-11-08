@@ -11,6 +11,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -39,7 +40,15 @@ class ApplicationTest extends NsTest {
 
         List<Integer> splitedList = Application.splitStrNumberToList(number);
 
-        Assertions.assertThat(numberList).isEqualTo(splitedList);
+        assertThat(numberList).isEqualTo(splitedList);
+    }
+
+    @Test
+    void 중복된_숫자로_구성된_야구숫자_예외_테스트() {
+        String baseballNumber = "112";
+
+        assertThrows(IllegalArgumentException.class,
+                () -> Application.validateDuplicateBaseballNumber(baseballNumber));
     }
 
     @Override
