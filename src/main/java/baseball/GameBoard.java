@@ -46,7 +46,24 @@ public class GameBoard {
     public String processReadline(String readline) {
         BaseballNumbers inputBaseballNumbers = new BaseballNumbers();
 
+        if (!inputBaseballNumbers.createBaseballNumbers(readline)) {
+            return showRecords();
+        }
         return showBallCount(inputBaseballNumbers);
+    }
+
+    public String showRecords() {
+        StringBuilder records = new StringBuilder(BALL_COUNTS_ALERT);
+
+        if (checkRecordsInformation()) {
+            ballCounts.forEach(record -> records.append(record.toStringRecords()).append("\r\n"));
+            return records.toString();
+        }
+        return NON_BALL_COUNTS_ALERT;
+    }
+
+    public boolean checkRecordsInformation() {
+        return ballCounts.size() > 0;
     }
 
     public String showBallCount(BaseballNumbers inputBaseballNumbers) {
