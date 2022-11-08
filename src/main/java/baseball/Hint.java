@@ -1,10 +1,14 @@
 package baseball;
 
 public class Hint {
+    static final String BALL = "볼";
+    static final String STRIKE = "스트라이크";
+    static final String NOTHING = "낫싱";
+
     int ball;
     int strike;
 
-    public String toString(){
+    public String toString() {
         return "ball: " + this.ball + ", strike: " + this.strike;
     }
 
@@ -19,7 +23,7 @@ public class Hint {
     void checkAnswer(Game userAnswer, Game computerAnswer){
         int nowNumber;
 
-        for(int i=0; i<3; i++){
+        for(int i = 0; i < Game.NUMBER_TOTAL; i++){
             nowNumber = userAnswer.number[i];
 
             if(!Function.checkArrayContain(computerAnswer.number, nowNumber)){
@@ -36,16 +40,16 @@ public class Hint {
     void showHint() {
         String hint = "";
         if(this.ball !=0) {
-            hint += this.ball + "볼";
+            hint += this.ball + BALL;
         }
         if(this.strike != 0){
             if(this.ball != 0){
                 hint += " ";
             }
-            hint += this.strike + "스트라이크";
+            hint += this.strike + STRIKE;
         }
         if (hint.equals("")){
-            hint = "낫싱";
+            hint = NOTHING;
         }
         System.out.println(hint);
     }

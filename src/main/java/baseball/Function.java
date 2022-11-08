@@ -22,15 +22,15 @@ public class Function {
     static char[] getCharArrayToString(String str){
         char[] Array = new char[str.length()];
 
-        for (int i=0; i<str.length(); i++){
+        for (int i = 0; i < str.length(); i++){
             Array[i] = str.charAt(i);
         }
         return Array;
     }
 
     public static int checkStrike(int[] array, int number) {
-        for(int i=0; i<3; i++){
-            if(array[i]==number){
+        for(int i = 0; i < 3; i++){
+            if(array[i] == number){
                 return i;
             }
         }
