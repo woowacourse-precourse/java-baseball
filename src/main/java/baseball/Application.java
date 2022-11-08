@@ -8,7 +8,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args){
         List<Integer> numbers;
-        int strike, ball;//, nothing=0;
+        int strike, ball;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -16,10 +16,6 @@ public class Application {
 
             // 1. 3자리 수 랜덤 생성 - Randoms의 pickNumberInRange()사용
             numbers = generateRandomNumber();
-
-            for(int i=0; i<numbers.size(); i++)
-                System.out.println("랜덤 넘버: "+numbers.get(i));
-
 
             while(true){
 
@@ -33,8 +29,6 @@ public class Application {
                 List<Integer> ballList = strikeBallNothing(numbers, player);
                 ball = ballList.get(0);
                 strike = ballList.get(1);
-
-                //System.out.println("ball: "+ball+", "+"strike: "+strike+", "+ "nothing: "+ nothing);
 
                 // 출력과 종료 조건 메소드 분리
                 printBallCount(ball, strike);           // 출력
@@ -104,7 +98,7 @@ public class Application {
         for(int i=0; i<numbers.size(); i++)
             baseballList.add(0);
 
-        int ball=baseballList.get(0), strike=baseballList.get(1);//, nothing= baseballList.get(2);
+        int ball=baseballList.get(0), strike=baseballList.get(1);
 
         for(int i=0; i<numbers.size(); i++){
 
