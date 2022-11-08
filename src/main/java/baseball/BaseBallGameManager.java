@@ -16,7 +16,7 @@ public class BaseBallGameManager {
     beforeGameStart();
     do {
       startGame();
-    } while (doRetryOrExit());
+    } while (doRetry());
   }
 
   private void beforeGameStart() {
@@ -32,10 +32,9 @@ public class BaseBallGameManager {
     printGameOverMessage();
   }
 
-  private boolean doRetryOrExit() {
+  private boolean doRetry() {
     printRetryOrExitMessage();
-
-    if (player.selectRetryOrExit() == 1) {
+    if (player.selectRetryOrExit()) {
       computer.resetAnswer();
       return true;
     }

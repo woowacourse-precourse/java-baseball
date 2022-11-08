@@ -13,10 +13,10 @@ public class Player {
     this.inputReader = inputReader;
   }
 
-  public int selectRetryOrExit() {
+  public boolean selectRetryOrExit() {
     String inputMenu = inputReader.readLine();
     validateInputMenu(inputMenu);
-    return inputMenu.charAt(0) - '0';
+    return inputMenu.equals("1");
   }
 
   public List<Integer> guessNumber() {

@@ -2,6 +2,8 @@ package baseball;
 
 import baseball.generator.RandomNumberGenerator;
 import java.util.List;
+import java.util.function.IntPredicate;
+import java.util.stream.IntStream;
 
 public class Computer {
 
@@ -51,34 +53,30 @@ public class Computer {
   }
 
   private int checkStrike(List<Integer> guessedNumber) {
-    int strikes = 0;
-    for (int pos = 0; pos < guessedNumber.size(); pos++) {
-      if (isStrike(guessedNumber, pos)) {
-        strikes++;
-      }
-    }
-    return strikes;
+    return checkScore(guessedNumber, pos -> isStrike(guessedNumber, pos));
   }
 
   private int checkBall(List<Integer> guessedNumber) {
-    int balls = 0;
-    for (int guessedPos = 0; guessedPos < guessedNumber.size(); guessedPos++) {
-      for (int answerPos = 0; answerPos < this.answer.size(); answerPos++) {
-        if (isBall(guessedNumber, guessedPos, answerPos)) {
-          balls++;
-          break;
-        }
-      }
-    }
-    return balls;
+    return checkScore(guessedNumber, pos -> isBall(guessedNumber, pos));
+  }
+
+  private int checkScore(List<Integer> guessedNumber, IntPredicate scoreCondition) {
+    return (int) IntStream
+            .range(0, guessedNumber.size())
+            .filter(scoreCondition)
+            .count();
   }
 
   private boolean isStrike(List<Integer> guessedNumber, int pos) {
     return guessedNumber.get(pos).equals(this.answer.get(pos));
   }
 
-  private boolean isBall(List<Integer> guessedNumber, int guessedPos, int answerPos) {
-    return guessedPos != answerPos
-            && guessedNumber.get(guessedPos).equals(this.answer.get(answerPos));
+  private boolean isBall(List<Integer> guessedNumber, int guessedPos) {
+    return IntStream
+            .range(0, this.answer.size())
+            .anyMatch(answerPos ->
+                    answerPos != guessedPos
+                            && guessedNumber.get(guessedPos).equals(this.answer.get(answerPos))
+            );
   }
 }
