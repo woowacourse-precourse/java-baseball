@@ -107,7 +107,14 @@ public class Application {
     }
 
     public static void moreGame() {
-        return;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String gameNum = readLine();
+        char overGame = gameNum.charAt(0);
+        if (overGame == '1'){
+            startGame();
+        } else {
+            game = false;
+        }
     }
 
     public static Integer isStrike() {
