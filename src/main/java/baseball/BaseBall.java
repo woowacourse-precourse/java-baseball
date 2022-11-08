@@ -93,7 +93,7 @@ public class BaseBall {
 	}
 
 	private void printCelebrateStatus() {
-		System.out.println(Constants.CELEBREATE_MESSAGE);
+		System.out.println(Constants.CELEBRATE_MESSAGE);
 	}
 
 	private boolean isCompleteGoal() {
