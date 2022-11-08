@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -31,10 +30,6 @@ public class Game {
     public void startGame() {
         computerNumber.makeRandomNumber();
         randomComputerNumber = computerNumber.getComputerNumber();
-        for (Integer integer : randomComputerNumber) {
-            System.out.print("computerValue = " + integer + " ");
-        }
-        System.out.println();
         do {
             userNumber.makeUserNumber();
             inputUserNumber = userNumber.getUserNumber();
@@ -47,9 +42,6 @@ public class Game {
         System.out.println(SystemMessage.GAME_CONTINUE_MESSAGE);
         String inputNumber = Console.readLine();
         restartGameException.isRestartNumber(inputNumber);
-//        if (inputNumber == 1) {
-//            return true;
-//        }
         if (Integer.parseInt(inputNumber) == GAME_END) {
             isRestart = false;
         }

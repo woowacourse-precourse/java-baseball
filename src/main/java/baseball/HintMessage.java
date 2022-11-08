@@ -1,14 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import camp.nextstep.edu.missionutils.Console;
-
-import baseball.Application;
-
 public class HintMessage {
     private int strike_Score = 0;
     private int ball_Score = 0;
