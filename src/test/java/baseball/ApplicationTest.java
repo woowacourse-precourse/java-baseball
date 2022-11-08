@@ -80,21 +80,21 @@ class ApplicationTest extends NsTest {
     class NumberToListTest {
         @Test
         @DisplayName("입력받은 서로다른 숫자를 리스트로 정상 변환해주는지 테스트")
-        void NumberToIntegerList_NormalNumber_Passed() {
+        void numberToIntegerList_NormalNumber_Passed() {
             List<Integer> result = List.of(1, 2, 3);
             assertThat(Application.NumberToIntegerList(123)).isEqualTo(result);
         }
 
         @Test
         @DisplayName("같은 값이 포함된 숫자를 리스트로 정상 변환해주는지 테스트")
-        void NumberToIntegerList_IncludingSameNumber_Passed() {
+        void numberToIntegerList_IncludingSameNumber_Passed() {
             List<Integer> result = List.of(9, 4, 9);
             assertThat(Application.NumberToIntegerList(949)).isEqualTo(result);
         }
 
         @Test
         @DisplayName("0이 포함된 숫자를 리스트로 정상 변환해주는지 테스트")
-        void NumberToIntegerList_IncludingZero_Passed() {
+        void numberToIntegerList_IncludingZero_Passed() {
             List<Integer> result = List.of(1, 0, 2);
             assertThat(Application.NumberToIntegerList(102)).isEqualTo(result);
         }
