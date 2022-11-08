@@ -46,20 +46,20 @@ public class Balls {
         return otherBall.equals(balls.get(position));
     }
 
-    public Optional<Judgement> play(int position, Ball ball) {
+    public Judgement play(int position, Ball ball) {
         if (hasSameValue(ball)) {
             if (inSamePosition(position, ball)) {
-                return Optional.of(Judgement.STRIKE);
+                return Judgement.STRIKE;
             }
-            return Optional.of(Judgement.BALL);
+            return Judgement.BALL;
         }
-        return Optional.empty();
+        return Judgement.NOTHING;
     }
 
     public Result play(Balls playerBalls) {
         Result result = new Result();
         for (int i=0; i<3; i++) {
-            result.report(play(i,playerBalls.ballOf(i)).orElse(Judgement.NOTHING));
+            result.report(play(i,playerBalls.ballOf(i)));
         }
         return result;
     }
