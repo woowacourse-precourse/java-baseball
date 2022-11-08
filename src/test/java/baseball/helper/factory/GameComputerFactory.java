@@ -18,20 +18,17 @@ public final class GameComputerFactory {
         GameComputer computer = new GameComputer();
         GameNumbers computerAnswer = new GameNumbers(computerNumberString);
 
-        Field answer = ReflectionFieldUtils.processReflectionField(GameComputer.class, ANSWER_FIELD_NAME);
-
-        try {
-            answer.set(computer, computerAnswer);
-            return computer;
-        } catch (Exception e) {
-            throw new CannotReflectionException(e);
-        }
+        return reflectionGameComputer(computer, computerAnswer);
     }
 
     public static GameComputer createStubGameComputer(long returnStrike, long returnBall) {
         GameComputer computer = new GameComputer();
-        GameNumbers computerAnswer = new StubGameNumbers(returnStrike, returnBall);
+        GameNumbers stubComputerAnswer = new StubGameNumbers(returnStrike, returnBall);
 
+        return reflectionGameComputer(computer, stubComputerAnswer);
+    }
+
+    private static GameComputer reflectionGameComputer(GameComputer computer, GameNumbers computerAnswer) {
         Field answer = ReflectionFieldUtils.processReflectionField(GameComputer.class, ANSWER_FIELD_NAME);
 
         try {
