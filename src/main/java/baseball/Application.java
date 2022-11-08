@@ -32,6 +32,9 @@ public class Application {
                 }
                 // 볼 개수 확인
                 int ball = checkTheNumberOfBall(user,computer);
+                // 사용자에게 볼과 스트라이크 개수 출력
+                outputTheNumberOfBallAndStrikes(strike,ball);
+
 
             }
         }
@@ -87,5 +90,16 @@ public class Application {
             }
         }
         return ball;
+    }
+    // 사용자에게 볼과 스트라이크 개수 출력
+    public static void outputTheNumberOfBallAndStrikes(int strike, int ball){
+        if (ball == 0 && strike == 0)
+            System.out.println("낫싱");
+        else if (ball == 0)
+            System.out.println(strike + "스트라이크");
+        else if (strike == 0)
+            System.out.println(ball + "볼 ");
+        else
+            System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 }
