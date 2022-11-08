@@ -18,7 +18,7 @@ public class User {
         return userNumber;
     }
 
-    public static void validate(String inputNumbers) {
+    public void validate(String inputNumbers) {
         ArrayList<Character> userValidNumber = new ArrayList<>();
 
         if (inputNumbers.length() != MAX_SIZE) {
