@@ -48,7 +48,9 @@ public class baseballGame {
     private void countStrikeAndBall(String inputNumber, int index) {
         if ((inputNumber.charAt(index) - '0') == computer.get(index)) {
             strikeCount += 1;
-        } else if (randomNumberSet.contains((inputNumber.charAt(index) - '0'))) {
+            return;
+        }
+        if (randomNumberSet.contains((inputNumber.charAt(index) - '0'))) {
             ballCount += 1;
         }
     }
@@ -57,7 +59,8 @@ public class baseballGame {
         if (strikeCount == 0 && ballCount == 0) {
             System.out.println("낫싱");
             return;
-        } else if (strikeCount == 3) {
+        }
+        if (strikeCount == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");

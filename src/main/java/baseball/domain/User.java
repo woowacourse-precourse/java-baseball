@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.exception.Exception.validateInputNumber;
+import static baseball.exception.Exception.validateInputRestart;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
@@ -28,13 +30,12 @@ public class User {
 
     public void inputNumber() {
         number = readLine();
-        if (number.length() != 3) {
-            throw new IllegalArgumentException("세 자릿수를 입력해주세요.");
-        }
+        validateInputNumber(number);
     }
 
     public void inputRestart() {
         restart = Integer.parseInt(readLine());
+        validateInputRestart(Integer.toString(restart));
         if (restart != 1 && restart != 2) {
             throw new IllegalArgumentException("1(재시작) 또는 2(종료)를 입력해주세요.");
         }
