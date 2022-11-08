@@ -54,4 +54,12 @@ public class Settings {
 
         return userInput;
     }
+
+        public static int restartExcetion(int game) {
+            if (game != 1 && game != 2) {
+                System.out.println("1 또는 2만 입력하세요. ");
+                game = Integer.parseInt(Console.readLine());
+            }
+            return game;
+        }
 }
