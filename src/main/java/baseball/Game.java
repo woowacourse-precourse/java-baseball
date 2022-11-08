@@ -24,22 +24,22 @@ public class Game {
         System.out.print("숫자를 입력해주세요: ");
     }
 
-    public void checkNothing(ArrayList<Integer> computer, ArrayList<Character> user) {
-
+    public void countSameNumber(ArrayList<Integer> computer, ArrayList<Character> user) {
         for (int i = 0; i < 3; i++) {
             if (computer.contains(user.get(i) - '0')) {
                 this.nothing = false;
                 sameNumber++;
             }
         }
+    }
 
+    public void checkNothing() {
         if (this.nothing) {
             System.out.println("낫싱");
         }
     }
 
     public void countStrike(ArrayList<Integer> computer, ArrayList<Character> user) {
-
         for (int i = 0; i < 3; i++) {
             if (computer.get(i) == user.get(i) - '0') { // 같은 자리에 있는 경우
                 this.strike++;
@@ -52,20 +52,16 @@ public class Game {
     }
 
     public void printResult() {
-
         if (this.strike != 0 && this.ball != 0) {
             System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
         } else if (this.strike == 0) {
             System.out.println(this.ball + "볼");
         } else if (this.ball == 0) {
             System.out.println(this.strike + "스트라이크");
-
             if (this.strike == 3) {
                 end();
             }
-
         }
-
     }
 
     public void resetCount() {
