@@ -24,7 +24,7 @@ public class Player {
 
         ArrayList<Character> exist = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
-            if (!(isDigit(input.charAt(i)) && input.charAt(i) != '0') && !exist.contains(input.charAt(i))) {
+            if (!(isDigit(input.charAt(i)) && input.charAt(i) != '0') || exist.contains(input.charAt(i))) {
                 throw new IllegalArgumentException("Your input is wrong.");
             }
             exist.add(input.charAt(i));
