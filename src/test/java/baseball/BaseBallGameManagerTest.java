@@ -44,7 +44,7 @@ public class BaseBallGameManagerTest {
         gameManager.runGame();
 
         String[] outputLines = outputStreamCaptor.toString().split("\\R");
-        assertThat(outputLines[2]).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        assertThat(outputLines[3]).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class BaseBallGameManagerTest {
         gameManager.runGame();
 
         String[] outputLines = outputStreamCaptor.toString().split("\\R");
-        assertThat(outputLines[3]).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        assertThat(outputLines[4]).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     @Test
@@ -66,7 +66,7 @@ public class BaseBallGameManagerTest {
         gameManager.runGame();
 
         String[] outputLines = outputStreamCaptor.toString().split("\\R");
-        assertThat(outputLines[4]).startsWith("숫자를 입력해주세요 : ");
+        assertThat(outputLines[6]).isEqualTo("숫자를 입력해주세요 : ");
     }
 
     @Test
@@ -77,6 +77,6 @@ public class BaseBallGameManagerTest {
         gameManager.runGame();
 
         String[] outputLines = outputStreamCaptor.toString().split("\\R");
-        assertThat(outputLines.length).isEqualTo(4);
+        assertThat(outputLines.length).isEqualTo(5);
     }
 }

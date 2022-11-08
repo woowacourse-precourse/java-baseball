@@ -11,6 +11,7 @@ public class MockInputReader implements InputReader {
 
     @Override
     public String readLine() {
+        System.out.println();
         return this.mockInput[index++];
     }
 }
