@@ -11,17 +11,20 @@ public class Application{
     	String answer = makeRandomNumber();
     	String input;
     	int strikeCount = 0;
+    	String keepGoing = "1";
     	
     	System.out.println("숫자 야구 게임을 시작합니다.");
     	
-    	while(strikeCount!=3) {
+    	while(keepGoing.equals("1")) {
         	System.out.print("숫자를 입력해주세요 : ");
         	input = Console.readLine();
         	
         	strikeCount = comparison(answer,input);
         	
-        	if(strikeCount==3) 
+        	if(strikeCount == 3) {
         		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        		keepGoing = Console.readLine();
+        	}  	
     	}
  
     	return;
