@@ -21,8 +21,26 @@ public class Game {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
+        while (start()) ;
+    }
+
+    private boolean start() {
         this.computer = Input.generateNumbers();
-        while (precede()) ;
+
+        boolean isContinue = true;
+        while (isContinue) {
+            isContinue = precede();
+        }
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return isRestarted();
+    }
+
+    private boolean isRestarted() {
+        String willingToRestart = Console.readLine();
+        if (willingToRestart.equals("1"))
+            return true;
+        return false;
     }
 
     private boolean precede() {
