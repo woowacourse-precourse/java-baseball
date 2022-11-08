@@ -8,6 +8,10 @@ import java.util.*;
 public class Application {
     static List<Integer> computer = new ArrayList<>();
     static List<Integer> player = new ArrayList<>();
+    static HashMap<String, Integer> judgment = new HashMap<>(){{
+        put("strike", 0);
+        put("ball", 0);
+    }};
 
     private static void computerNumber(List<Integer> list){
         while(list.size() < 3){
@@ -32,6 +36,24 @@ public class Application {
         }
     }
 
+    private static void findNumber(){
+        for(int j = 0;j<player.size();j++){
+            for(int i=0;i<computer.size();i++) {
+                numberCompare(i, j);
+            }
+        }
+    }
+
+    private static void numberCompare(int i, int j){
+        if (Objects.equals(player.get(j), computer.get(i))) {
+            if (j == i) {
+                judgment.put("strike", judgment.get("strike")+1);
+            } else {
+                judgment.put("ball", judgment.get("ball")+1);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -39,8 +61,13 @@ public class Application {
         computer.clear();
         computerNumber(computer);
 
+        judgment.put("strike", 0);
+        judgment.put("ball", 0);
+
         player.clear();
         playerNumber(player);
+
+        findNumber();
 
         System.out.println("게임 종료");
     }
