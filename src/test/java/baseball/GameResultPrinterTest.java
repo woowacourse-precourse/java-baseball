@@ -2,6 +2,7 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import domain.GameResultConverter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class GameResultConverterTest {
+class GameResultPrinterTest {
     private GameResultConverter converter;
 
     @BeforeEach
