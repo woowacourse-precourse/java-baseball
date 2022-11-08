@@ -35,8 +35,9 @@ public final class NumberScanner {
     }
 
     private void validateOneOrTwo(String inputValue) {
+        final String ERROR_MESSAGE = "1 또는 2를 입력해주세요. (게임 재시작 : 1 / 게임 종료 : 2)";
         if (!(inputValue.equals("1") || inputValue.equals("2"))) {
-            throw new IllegalArgumentException("1 또는 2를 입력해주세요. (게임 재시작 : 1 / 게임 종료 : 2)");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 }

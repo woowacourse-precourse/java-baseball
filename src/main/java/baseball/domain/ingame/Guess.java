@@ -38,7 +38,7 @@ public final class Guess {
     }
 
     private void validateDuplicate(String inputValue) {
-        long count = IntStream.range(0, 3)
+        long count = IntStream.rangeClosed(0, 2)
                 .mapToObj(inputValue::charAt)
                 .distinct()
                 .count();
