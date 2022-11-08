@@ -35,4 +35,15 @@ public class NumberBaseBallGame {
         }
         return strike;
     }
+
+    private int getBall(
+        List<String> userSelectedBalls,
+        List<String> computerSelectedBalls,
+        int strike
+    ) {
+        int countEqualBalls = (int) userSelectedBalls.stream()
+            .filter(computerSelectedBalls::contains)
+            .count();
+        return countEqualBalls - strike;
+    }
 }
