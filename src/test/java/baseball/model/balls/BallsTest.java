@@ -14,10 +14,10 @@ public class BallsTest {
     @Test
     void add_ball() {
         Balls balls = new Balls(List.of(3, 4, 5));
-        Ball ball3 = new Ball(BallNumber.createBallNumber(3));
+        Ball ball3 = new Ball(new BallNumber(3));
         assertThat(balls.contains(ball3)).isTrue();
 
-        Ball ball4 = new Ball(BallNumber.createBallNumber(4));
+        Ball ball4 = new Ball(new BallNumber(4));
         assertThat(balls.contains(ball4)).isTrue();
     }
 

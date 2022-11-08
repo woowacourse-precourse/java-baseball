@@ -11,12 +11,12 @@ public class BallNumberTest {
 
     @Test
     void ball_number_range() {
-        assertThatThrownBy(() -> BallNumber.createBallNumber(10)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> new BallNumber(10)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(BALL_NUMBER_ERROR);
-        assertThatThrownBy(() -> BallNumber.createBallNumber(0)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> new BallNumber(0)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(BALL_NUMBER_ERROR);
 
-        assertThatCode(() -> BallNumber.createBallNumber(9)).doesNotThrowAnyException();
+        assertThatCode(() ->new BallNumber(9)).doesNotThrowAnyException();
     }
 
     @Test

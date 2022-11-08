@@ -19,11 +19,6 @@ public class BallNumber {
         }
     }
 
-
-    public static BallNumber createBallNumber(int number) {
-        return new BallNumber(number);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
