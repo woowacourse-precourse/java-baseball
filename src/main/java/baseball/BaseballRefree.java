@@ -3,9 +3,11 @@ package baseball;
 public class BaseballRefree {
 
     private String answerNumber;
-    private boolean[] answerNumberFlags = new boolean[10];
+    private boolean[] answerNumberFlags;
+
 
     private void setAnswerNumberFlags() {
+        this.answerNumberFlags = new boolean[10];
         for (char ch : this.answerNumber.toCharArray()) {
             this.answerNumberFlags[Character.getNumericValue(ch)] = true;
         }
