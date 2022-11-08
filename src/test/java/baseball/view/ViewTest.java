@@ -66,9 +66,9 @@ public class ViewTest{
         String userInput = "1";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
-        String result = inputView.questionInput();
+        boolean result = inputView.questionInput();
         //then
-        Assertions.assertThat(result).isEqualTo(userInput);
+        Assertions.assertThat(result).isEqualTo(true);
     }
 
     @Test
