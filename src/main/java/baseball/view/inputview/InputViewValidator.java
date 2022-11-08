@@ -11,7 +11,9 @@ public class InputViewValidator {
     }
 
     public static boolean validateDifferenceNumber(String userInputNumber) {
-        return userInputNumber.length() == Arrays.stream(userInputNumber.split(SEPARATOR))
-                .distinct().count();
+        return userInputNumber.length() ==
+                Arrays.stream(userInputNumber.split(SEPARATOR))
+                        .distinct()
+                        .count();
     }
 }

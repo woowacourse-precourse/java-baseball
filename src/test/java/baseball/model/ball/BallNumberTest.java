@@ -16,7 +16,7 @@ public class BallNumberTest {
         assertThatThrownBy(() -> new BallNumber(0)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(BALL_NUMBER_ERROR);
 
-        assertThatCode(() ->new BallNumber(9)).doesNotThrowAnyException();
+        assertThatCode(() -> new BallNumber(9)).doesNotThrowAnyException();
     }
 
     @Test

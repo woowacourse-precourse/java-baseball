@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGame {
-
     private static final int MAX_SIZE = 3;
     public static final int START_INCLUSIVE = 1;
     public static final int END_INCLUSIVE = 9;

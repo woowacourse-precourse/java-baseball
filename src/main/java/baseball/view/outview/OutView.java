@@ -29,6 +29,5 @@ public class OutView {
         if (strikeCount != ZERO_COUNT) {
             System.out.println(strikeCount + STRIKE);
         }
-
     }
 }
