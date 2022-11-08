@@ -80,7 +80,7 @@ public class Game {
         return numberList;
     }
 
-    private List<Integer> getInputNumbers() {
+    public List<Integer> getInputNumbers() {
         System.out.printf("숫자를 입력해주세요 : ");
         String input = readLine();
         List<Integer> userNumbers = toIntList(input);
