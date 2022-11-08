@@ -11,9 +11,15 @@ public class Validator {
     public static final String DUPLICATE_ERROR_MESSAGE = "중복되는 숫자가 있습니다";
     public static final String INVALID_CHOICE_ERROR_MESSAGE = "1 또는 2를 입력해야 합니다";
     public static final boolean VALIDATE_SUCCESS = true;
+    public static final boolean VALIDATE_FAIL = false;
     public static final int LENGTH_LIMIT = 3;
     public static final String REGAME_CHOICE = "1";
     public static final String STOP_CHOICE = "2";
+    private String errorMessage;
+
+    public String getErrorMessage() {
+        return this.errorMessage;
+    }
 
     public boolean isThreeLetters(String userInput) {
         if (userInput.length() == LENGTH_LIMIT){
@@ -49,23 +55,30 @@ public class Validator {
 
     public boolean validateInput(String userInput) {
         if (!isThreeLetters(userInput)) {
-            throw new IllegalArgumentException(LENGTH_ERROR_MESSAGE);
+            this.errorMessage = LENGTH_ERROR_MESSAGE;
+            return VALIDATE_FAIL;
         }
         if (!isNumeric(userInput)) {
-            throw new IllegalArgumentException(NUMERIC_ERROR_MESSAGE);
+            this.errorMessage = NUMERIC_ERROR_MESSAGE;
+            return VALIDATE_FAIL;
+
         }
         if (ContainsZero(userInput)) {
-            throw new IllegalArgumentException(CONTAINS_ZERO_ERROR_MESSAGE);
+            this.errorMessage = CONTAINS_ZERO_ERROR_MESSAGE;
+            return VALIDATE_FAIL;
+
         }
         if (hasDuplicateNumber(userInput)) {
-            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
+            this.errorMessage = DUPLICATE_ERROR_MESSAGE;
+            return VALIDATE_FAIL;
         }
         return VALIDATE_SUCCESS;
     }
 
     public boolean validateChoice(String userChoice) {
         if (!userChoice.equals(REGAME_CHOICE) && !userChoice.equals(STOP_CHOICE)) {
-            throw new IllegalArgumentException(INVALID_CHOICE_ERROR_MESSAGE);
+            this.errorMessage = INVALID_CHOICE_ERROR_MESSAGE;
+            return VALIDATE_FAIL;
         }
         return VALIDATE_SUCCESS;
     }

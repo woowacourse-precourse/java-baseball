@@ -57,10 +57,12 @@ public class BaseBallGame {
     public void guessComputerNumbersUntilSuccess() {
         while (!this.success) {
             String userInput = getUserInput();
-            if (isValidInput(userInput)) {
-                setUserNumbers(userInput);
-                printGameResult();
+            if (!isValidInput(userInput)) {
+                String errorMessage = this.inputValidator.getErrorMessage();
+                throw new IllegalArgumentException(errorMessage);
             }
+            setUserNumbers(userInput);
+            printGameResult();
         }
     }
 
@@ -139,10 +141,11 @@ public class BaseBallGame {
 
     public int askStopOrRegame() {
         String userChoice = getUserChoice();
-        int stopOrRegame = STOP;
+        int stopOrRegame = Integer.parseInt(userChoice);
 
-        if (isValidChoice(userChoice)) {
-            stopOrRegame = Integer.parseInt(userChoice);
+        if (!isValidChoice(userChoice)) {
+            String errorMessage = this.inputValidator.getErrorMessage();
+            throw new IllegalArgumentException(errorMessage);
         }
 
         return stopOrRegame;
