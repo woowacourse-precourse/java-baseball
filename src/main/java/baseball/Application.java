@@ -53,6 +53,9 @@ public final class Application {
         while (this.playing) {
             this.playGame();
 
+            var restartMessage = this.player.restartMessage();
+            this.promptln(restartMessage);
+
             var command = Console.readLine();
             this.restartOrEnd(command);
         }
