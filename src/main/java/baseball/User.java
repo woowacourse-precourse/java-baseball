@@ -10,7 +10,7 @@ public class User {
     private String userBaseballNumber = "";
     private String userRestartNumber = "";
 
-    private String getUserBaseballNumber() {
+    public String getUserBaseballNumber() {
         return this.userBaseballNumber;
     }
 
