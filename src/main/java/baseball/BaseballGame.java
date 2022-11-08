@@ -13,6 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    public static int checkSame(List<Integer> computer, List<Integer> user) {
+        int ballNum = 0;
+        for (Integer integer : user) {
+            if (computer.contains(integer)) {
+                ballNum += 1;
+            }
+        }
+        return ballNum;
+    }
+
     public static int checkStrike(List<Integer> computer, List<Integer> user) {
         int strikeNum = 0;
         for (int i = 0; i < user.size(); i++) {
