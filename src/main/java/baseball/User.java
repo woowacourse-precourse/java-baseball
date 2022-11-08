@@ -59,11 +59,15 @@ public class User {
     static int getExitOrRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputStatus = Console.readLine();
+        checkStatusInput(inputStatus);
+        int inputStatusNumber = Integer.parseInt(inputStatus);
+        return inputStatusNumber;
+    }
+
+    static void checkStatusInput(String inputStatus){
         if (!inputStatus.equals("1") && !inputStatus.equals("2")) {
             throw new IllegalArgumentException();
         }
-        int inputStatusNumber = Integer.parseInt(inputStatus);
-        return inputStatusNumber;
     }
 
     public List<Integer> getValues() {
