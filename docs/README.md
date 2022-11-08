@@ -3,17 +3,13 @@
 
 ✏️ 구현할 기능 목록 정리
 
-1. Computer의 수를 pickNumberInRange()를 사용하여 만들기 (추후에 refactoring으로 따로 함수로 만들기)
+1. 랜덤 숫자 생성기 (Computer의 수를 pickNumberInRange()를 사용하여 만들기)
 
-2. readLine()은 처음 사용하는 것이기 때문에, 우선 자주 쓰던 scanner()로 먼저 User에게 숫자 받아오는 기능 만들기 (이것도 따로 함수로 추후에 만들기)
+2. 사용자 숫자 입력기 (readLine()은 처음 사용하는 것이기 때문에, 우선 자주 쓰던 scanner()로 먼저 User에게 숫자 받아오는 기능 만들기)
 
-3. User에게서 받은 숫자를 computer의 수와 비교하기
+3. 숫자 비교기 (User에게서 받은 숫자를 computer의 수와 비교하기, Strike와 Ball count 세기)
 
-4. Strike와 Ball count 세기
-
-5. Strike와 Ball 개수 혹은 Nothing에 대한 부분 출력
-
-6. 최종적으로 Strike가 3개가 되면, 다시 게임 시작하도록 만들기
+4. 결과 출력기 (Strike와 Ball 개수 혹은 Nothing에 대한 부분 출력, 최종적으로 Strike가 3개가 되면, 다시 게임 시작하도록 만들기)
 
 
 
