@@ -11,86 +11,69 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 class Game {
-    public final int RESTART = 1;
-    public final int END = 2;
-
-    private void restartGame(int userInputNum) {
-        if (userInputNum == RESTART)
-            System.out.println("게임시작함수");
-
-        if (userInputNum == END)
-            System.out.println("게임종료함수");
-    }
-
-    private void endGame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
-
     public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        // 컴퓨터 객체
+        Computer computer = new Computer();
+
+        // 플레이어 객체 생성
+        Player player = new Player();
+
+        // 컴퓨터 랜덤 숫자 생성 ->
+        computer.makeRandomNumber();
+        System.out.println("컴퓨터 랜덤숫자 : " + computer.myNumberList);
+
+
+        while (true) {
+            // 사용자로부터 숫자 입력받기
+            player.inputNumber();
+            System.out.println("사용자 핸덤숫자 : " + player.myInputNumber);
+
+            System.out.println("사용자 랜덤 숫자 무한 인풋...");
+            return;
+
+            // 숫자 비교하기
+
+
+            // 출력하기
+
+
+            // 출력 결과값이 다 맞췄다면 break;
+        }
+    }
+
+    public void compareNumbers(List<Integer> comNum, List<Integer> userNum) {
+
+    }
+
+    public void printCompareResult() {
+        System.out.println("test : 프린트함수 호출");
     }
 
 }
 
-
 class Computer {
-    public List<Integer> NumberList;
-    public List<String> result;
+    public List<Integer> myNumberList = new ArrayList<>();
 
-
-    public List<Integer> makeRandomNumber() {
-        List<Integer> randomNumberList = new ArrayList<>();
-        while (randomNumberList.size() < 3) {
+    public void makeRandomNumber() {
+        while (myNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumberList.contains(randomNumber)) {
-                randomNumberList.add(randomNumber);
+            if (!myNumberList.contains(randomNumber)) {
+                myNumberList.add(randomNumber);
             }
         }
-        return randomNumberList;
-    }
-
-    public boolean isEqualNumList(List<Integer> userNumList) {
-        for (int i = 0; i < 3; i++) {
-            if (userNumList.get(i) != NumberList.get(i))
-                return false;
-        }
-        return true;
-    }
-
-    public String strikeCheck(int index) {
-        return "스트라이크";
-    }
-
-    public void printResultAll(Map<String, Integer> result) {
-        System.out.println("결과출력");
-    }
-
-    public void printResult(List<Integer> userList) {
-        Map<String, Integer> result = new HashMap<>();
-        result.put("볼", 0);
-        result.put("스트라이크", 0);
-        result.put("낫싱", 0);
-
-        //각 자리를 보며 결과값을 모음
-        for (int i = 0; i < 3; i++) {
-            int indexNum = userList.get(i);
-            String indexNumResult = strikeCheck(indexNum);
-            result.put(indexNumResult, result.get(indexNumResult) + 1);
-        }
-
-        // 최종값 합쳐서 출력
-        printResultAll(result);
     }
 }
 
 class Player {
-    public List<Integer> myNumber = new ArrayList<>();
+    List<Integer> myInputNumber = new ArrayList<>();
 
     public void inputNumber() {
+        myInputNumber.clear();
+
         String inputNum = Console.readLine();
         for (int i = 0; i < 3; i++) {
-            int num = (int) inputNum.charAt(i);
-            myNumber.add(num);
+            int num = ((int) inputNum.charAt(i) % 10);
+            myInputNumber.add(num);
         }
     }
 
@@ -99,8 +82,23 @@ class Player {
 
 public class Application {
     public static void main(String[] args) {
+        boolean checkPlayGame = true;
+
         Game game = new Game();
-        game.startGame();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (checkPlayGame) {
+            // 게임 시작
+            game.startGame();
+
+            // 게임 종료 조건 확인
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartCheckNum = Console.readLine();
+            if (restartCheckNum == "2") {
+                checkPlayGame = false;
+            }
+        }
+
 
     }
 }
