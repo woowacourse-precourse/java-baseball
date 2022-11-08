@@ -8,6 +8,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+
 class ApplicationTest extends NsTest {
     @Test
     void 게임종료_후_재시작() {
@@ -25,6 +26,33 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임시_문자입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("da0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("숫자를 입력하세요")
+        );
+    }
+
+    @Test
+    void 게임시_숫자_영_포함여부_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1부터 9까지의 숫자를 입력하세요")
+        );
+    }
+    
+    @Test
+    void 게임시_같은_숫자_포함_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("서로 다른 숫자를 입력하세요")
         );
     }
 
