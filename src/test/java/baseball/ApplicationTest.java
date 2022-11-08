@@ -30,13 +30,27 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void generateThreeDigitNumberTest() {
+    void generateThreeDigitNumber() {
         Application.generateThreeDigitNumber();
         int[] threeDigitNumber = Application.randomNumber;
         for (int i = 0; i < 1000; i++) {
             assertThat(threeDigitNumber[0]).isGreaterThan(0).isLessThan(10);
             assertThat(threeDigitNumber[1]).isGreaterThan(-1).isLessThan(10);
             assertThat(threeDigitNumber[2]).isGreaterThan(-1).isLessThan(10);
+        }
+    }
+
+    @Test
+    void guessWithUser() {
+
+    }
+
+    @Test
+    void userInputValidation() {
+        String[] inputs = {"12.3", "abc", "1ab", "1232"};
+        for (String input : inputs) {
+            assertThatThrownBy(() -> Application.userInputValidation(input)).isInstanceOf(
+                    IllegalArgumentException.class);
         }
     }
 }
