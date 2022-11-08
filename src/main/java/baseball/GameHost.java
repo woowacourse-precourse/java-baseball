@@ -19,16 +19,14 @@ public class GameHost extends BaseballNumber {
     public String getHint() {
         StringJoiner hintToPlayer = new StringJoiner(" ");
         boolean isSameNum = false;
-        int ballValue = this.hint.get(BALL);
-        if (ballValue > 0) {
+        if (getBallScore() > 0) {
             isSameNum = true;
-            hintToPlayer.add(ballValue + BALL);
+            hintToPlayer.add(getBallScore() + BALL);
         }
 
-        int strikeValue = this.hint.get(STRIKE);
-        if (strikeValue > 0) {
+        if (getStrikeScore() > 0) {
             isSameNum = true;
-            hintToPlayer.add(strikeValue + STRIKE);
+            hintToPlayer.add(getStrikeScore() + STRIKE);
         }
 
         if (isSameNum) {
@@ -40,25 +38,44 @@ public class GameHost extends BaseballNumber {
 
     public void setHint(List<Integer> playerNumber) {
         setHintDefault();
-
         for (int i = 0; i < playerNumber.size(); i++) {
             int playerNum = playerNumber.get(i);
             int baseballNum = this.baseballNumber.get(i);
 
             if (playerNum == baseballNum) {
-                this.hint.put(STRIKE, this.hint.get(STRIKE) + 1);
+                setStrikeScore();
                 continue;
             }
             if (this.baseballNumber.contains(playerNum)) {
-                this.hint.put(BALL, this.hint.get(BALL) + 1);
+                setBallScore();
                 continue;
             }
-            this.hint.put(NOTHING, this.hint.get(NOTHING) + 1);
+            setNothingScore();
         }
     }
 
     public void setHintDefault() {
-        this.hint.replaceAll((key, value) -> value = 0);
+        hint.replaceAll((key, value) -> value = 0);
+    }
+
+    private void setStrikeScore() {
+        hint.put(STRIKE, hint.get(STRIKE) + 1);
+    }
+
+    private void setBallScore() {
+        hint.put(BALL, hint.get(BALL) + 1);
+    }
+
+    private void setNothingScore() {
+        hint.put(NOTHING, hint.get(NOTHING) + 1);
+    }
+
+    private Integer getStrikeScore() {
+        return hint.get(STRIKE);
+    }
+
+    private Integer getBallScore() {
+        return hint.get(BALL);
     }
 
     public void setBaseballNumber() {

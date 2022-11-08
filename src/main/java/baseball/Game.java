@@ -8,6 +8,7 @@ import utils.InputUtils;
 public class Game {
     private GameHost gamehost;
     private Player player;
+    final private int RESTART_NUMBER = 1;
 
     public void play() throws IllegalArgumentException {
         startGame();
@@ -19,7 +20,7 @@ public class Game {
 
     private boolean isGameRestart() throws IllegalArgumentException {
         int playerInput = isValidPlayerInput();
-        return playerInput == 1;
+        return playerInput == RESTART_NUMBER;
     }
 
     private Integer isValidPlayerInput() throws IllegalArgumentException {
@@ -52,7 +53,8 @@ public class Game {
     }
 
     private boolean isGameEnd() {
-        return gamehost.getHint().equals("3스트라이크");
+        final String ANSWER = "3스트라이크";
+        return gamehost.getHint().equals(ANSWER);
     }
 
     private void beingGame() throws IllegalArgumentException {
