@@ -126,6 +126,24 @@ public class ImplementTest extends NsTest{
         assertEquals(answer, captor.toString().trim());
     }
 
+    @Tag("게임 시작 및 종료시 기본 출력 테스트")
+    @Test
+    @DisplayName("게임 시작시 멘트 출력 테스트")
+    void printStartingMent_test() {
+        Output.printStartingMent();
+        String answer = "숫자 야구 게임을 시작합니다.";
+        assertEquals(answer, captor.toString().trim());
+    }
+
+    @Tag("게임 시작 및 종료시 기본 출력 테스트")
+    @Test
+    @DisplayName("게임 종료시 멘트 출력 테스트")
+    void printFinishingMent_test() {
+        Output.printFinishingMent();
+        String answer = "게임 종료";
+        assertEquals(answer, captor.toString().trim());
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
