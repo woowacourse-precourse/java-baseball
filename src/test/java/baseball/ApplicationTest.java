@@ -95,6 +95,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("숫자가 아닌 경우 테스트")
+    void validateTypeTest() {
+        String input = "asd";
+        assertThatThrownBy(() -> new UserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력한 값이 숫자가 아닙니다.");
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(() -> {
             run("246", "135", "1", "597", "589", "2");
