@@ -10,8 +10,20 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         startGame();
+        baseballProgram();
+    }
+
+    static void baseballProgram() {
         List<Integer> computerNumber = generateComputerNumber();
-        String userNumber = inputUserNumber();
+        ballCount result = new ballCount(0, 0);
+        do {
+            String userNumber = inputUserNumber();
+            result = calculateResult(computerNumber, userNumber);
+            printResult(result);
+        } while (isWrongAnswer(result));
+        clearGame();
+        if (continueGame())
+            baseballProgram();
     }
 
     static void startGame() {
@@ -31,6 +43,8 @@ public class Application {
 
     static String inputUserNumber() {
         String userNumber = Console.readLine();
+        if (!isValidate(userNumber))
+            throwException();
         return userNumber;
     }
 
@@ -57,9 +71,11 @@ public class Application {
 
         for (int digit = 0; digit < userNumber.length(); digit++) {
             int eachNumber = userNumber.charAt(digit) - '0';
-            if (computerNumber.indexOf(eachNumber) == digit)
+            if (computerNumber.indexOf(eachNumber) == digit) {
                 result.strike++;
-            else if (computerNumber.indexOf(eachNumber) >= 0)
+                continue;
+            }
+            if (computerNumber.indexOf(eachNumber) >= 0)
                 result.ball++;
         }
         return result;
@@ -96,9 +112,9 @@ public class Application {
     static boolean continueGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputMenu = Console.readLine();
-        if (inputMenu == "1")
+        if (inputMenu.equals("1"))
             return true;
-        if (inputMenu == "2")
+        if (inputMenu.equals("2"))
             return false;
         throwException();
         return false;
