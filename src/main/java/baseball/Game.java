@@ -39,6 +39,18 @@ public class Game {
 
     public String getResultCvtToStr(List<Integer> result) {
         String cvtResult = new String("");
+        if(result.get(1)!=0) {
+            cvtResult += result.get(1) + BALL_MESSAGE;
+        }
+        if(!cvtResult.equals("")) {
+            cvtResult += " ";
+        }
+        if(result.get(0)!=0) {
+            cvtResult += result.get(0) + STRIKE_MESSAGE;
+        }
+        if(cvtResult.equals("")) {
+            cvtResult += NOTHING_MESSAGE;
+        }
         return cvtResult;
     }
 
