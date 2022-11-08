@@ -4,6 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameChecker {
     boolean restartGame;
+
+    GameChecker(){
+        restartGame=true;
+    }
     public void startGame(){
         BaseballGame game=new BaseballGame();
         game.playing();
@@ -17,10 +21,7 @@ public class GameChecker {
         if(restart.equals("2")){
             this.restartGame =false;
         }
-        else if(restart.equals("1")){
-            this.restartGame =true;
-        }
-        else{
+        else if(!restart.equals("1")){
             IllegalArgumentException e=new IllegalArgumentException("재시작 입력 오류");
             throw e;
         }
