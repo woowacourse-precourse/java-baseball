@@ -15,7 +15,7 @@ public class RandomNumber {
     public int getNumberOfStrike(List<Integer> userNumberList){
         int numberOfStrike = 0;
         for (int digit = 0; digit < this.randomNumberList.size(); digit++){
-            if (this.randomNumberList.get(digit).equals(userNumberList.get(digit))){
+            if (this.randomNumberList.get(this.randomNumberList.size() - digit - 1).equals(userNumberList.get(digit))){
                 numberOfStrike += 1;
             }
         }
