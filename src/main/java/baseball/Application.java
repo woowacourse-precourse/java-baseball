@@ -9,7 +9,8 @@ import static camp.nextstep.edu.missionutils.Console.*;
 
 
 public class Application {
-
+    static final int gameRestart = 1;
+    static final int gameEnd = 2;
     public static List<Integer> createRandomNumber(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -36,7 +37,11 @@ public class Application {
         // TODO: 프로그램 구현
         List<Integer> computerCreateNumber = new ArrayList<>();
         List<Integer> userInputNumber = new ArrayList<>();
-
+        int gameContinue = gameRestart;
+        while(gameContinue != gameEnd) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            gameContinue = Integer.parseInt(readLine());
+        }
     }
 }
 
