@@ -94,5 +94,13 @@ class ApplicationTest extends NsTest {
 
             assertThat(Application.tokenizeString(input)).isEqualTo(result);
         }
+
+        @Test
+        void character_list_int_list로_변환() {
+            List<Character> input = List.of('1','2','3');
+            List<Integer> result = List.of(1,2,3);
+
+            assertThat(Application.convertCharListToIntList(input)).isEqualTo(result);
+        }
     }
 }

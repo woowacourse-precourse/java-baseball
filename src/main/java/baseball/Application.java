@@ -39,4 +39,12 @@ public class Application {
         return tokenizedResult;
     }
 
+    public static List<Integer> convertCharListToIntList(List<Character> charList) {
+        List<Integer> parseIntResultList = new ArrayList<>();
+        for(Character ch : charList){
+            parseIntResultList.add(Character.getNumericValue(ch));
+        }
+
+        return parseIntResultList;
+    }
 }
