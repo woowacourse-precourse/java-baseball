@@ -20,7 +20,7 @@ public class Player {
             int number = Integer.parseInt(s);
             list.add(number);
         }
-        baseballVaild();
+        baseballValid(list);
 
         return new BaseballNumberBundle(list);
     }
@@ -28,9 +28,10 @@ public class Player {
         String input = Console.readLine();  // 사용자로부터 1개의 숫자값을 입력받음
         input = removeSeparator(input);
         numberValid(input);
-        int number = Integer.parseInt(input);
 
-        progressVaild();
+        // 입력된 숫자를 GameProgress 형태로 반환
+        int number = Integer.parseInt(input);
+        progressValid(number);
         return GameProgress.values()[number - 1];
     }
 
@@ -39,11 +40,17 @@ public class Player {
     }
     public void numberValid(String input) {
         if(!input.matches("[1-9]+")) {
-            throw new IllegalArgumentException("범위 숫자가 아닌 입력이 들어왔습니다." + input);
+            throw new IllegalArgumentException();
         }
     }
-    public void baseballVaild(){
+    public void baseballValid(List<Integer> list){
+        if(list.size() > 3) {
+            throw new IllegalArgumentException();
+        }
     }
-    public void progressVaild() {
+    public void progressValid(int number) {
+        if(number != GameProgress.CONTINUE.getProgress() && number != GameProgress.STOP.getProgress()) {
+            throw new IllegalArgumentException();
+        }
     }
 }
