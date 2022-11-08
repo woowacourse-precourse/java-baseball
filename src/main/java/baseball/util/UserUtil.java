@@ -23,16 +23,6 @@ public class UserUtil {
         return userNumbers;
     }
 
-    private static void addInputToUserNumbers(List<Integer> userNumbers, String input) {
-        String[] digits = input.split("");
-
-        for (String digit : digits) {
-            int eachNumber = numberOf(digit);
-
-            userNumbers.add(eachNumber);
-        }
-    }
-
     private static String getInput() {
         return Console.readLine();
     }
@@ -56,6 +46,16 @@ public class UserUtil {
             return Integer.parseInt(digit);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("input should be integer", e);
+        }
+    }
+
+    private static void addInputToUserNumbers(List<Integer> userNumbers, String input) {
+        String[] digits = input.split("");
+
+        for (String digit : digits) {
+            int eachNumber = numberOf(digit);
+
+            userNumbers.add(eachNumber);
         }
     }
 
