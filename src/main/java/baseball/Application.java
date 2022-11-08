@@ -90,5 +90,19 @@ public class Application {
     }
 
     private static void printResults(Integer numberOfBalls, Integer numberOfStrikes) {
+        if (numberOfBalls == 0 && numberOfStrikes == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (numberOfBalls != 0) {
+            System.out.print(numberOfBalls + "볼 ");
+        }
+        if (numberOfStrikes != 0) {
+            System.out.print(numberOfStrikes + "스트라이크");
+        }
+        System.out.println();
+        if (numberOfStrikes == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 }
