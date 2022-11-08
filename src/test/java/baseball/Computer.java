@@ -6,12 +6,14 @@ import java.util.List;
 
 public class Computer {
   public List<Integer> answer = new ArrayList<>();
-  while(answer.size() < 3){
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if(!answer.contains(randomNumber)){
-      answer.add(randomNumber);
+
+  public Computer(){
+    while(answer.size() < 3){
+      int randomNumber = Randoms.pickNumberInRange(1, 9);
+      if(!answer.contains(randomNumber)){
+        answer.add(randomNumber);
+      }
     }
   }
-
 
 }
