@@ -80,15 +80,13 @@ public class Application {
         }
         return 1;
     }
-    public static int checkdupli(String num){
+    public static int checkdupli(String num){ //
         List<String> tmp = new ArrayList<>();
         for (int idx = 0;idx<3;idx++){
-            if(!tmp.contains(num.substring(idx,idx+1))){
-                tmp.add(num.substring(idx,idx+1));
-            }
-            else if(tmp.contains(num.substring(idx,idx+1))){
+            if(tmp.contains(num.substring(idx,idx+1))){
                 return 0;
             }
+            tmp.add(num.substring(idx,idx+1));
         }
         return 1;
     }
@@ -121,10 +119,6 @@ public class Application {
         if(checkInput(UserInput)==0) {
             throw new IllegalArgumentException();
         }
-        //예외처리
-        //3자리수를 입력했는지 체크
-        //만약에 사용자가 중복된 숫자를 입력하면 예외처리  (113) ~!!!
-        //ㄱㅏㄱ 자리수가 0보다 큰지 체크
         return UserInput;
     }
     public static int check(List<Integer> ComNum,List<Integer>  UserNum) {
@@ -151,9 +145,9 @@ public class Application {
     }
     public static List<Integer>  ConvertNum(String UserNum) { //사용자가 입력한 숫자의 자료형을 바꾸는 함수
         List<Integer> NewUserNum = new ArrayList<>();
-        Integer tmpUserNum = 0;  //자료형 Int 인지 Integer인지
+        Integer tmpUserNum = 0;
         for (int idx = 0; idx<UserNum.length();idx++){
-            tmpUserNum = Integer.valueOf(UserNum.substring(idx,idx+1));  //다시
+            tmpUserNum = Integer.valueOf(UserNum.substring(idx,idx+1));
             NewUserNum.add(tmpUserNum);
         }
         return  NewUserNum;
