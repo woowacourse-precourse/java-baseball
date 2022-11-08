@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -58,8 +59,8 @@ class ClientTest {
         @Test
         void 정상_입력은_에러를_던지지_않고_정상작동한다() {
             input("321");
-            int expected = 321;
-            int actual = Client.askPlayerGameNumber();
+            List<Integer> expected = List.of(3, 2, 1);
+            List<Integer> actual = Client.askPlayerNumberList();
             assertThat(output()).isEqualTo("숫자를 입력해주세요 : ");
             assertThat(actual).isEqualTo(expected);
         }
@@ -68,7 +69,7 @@ class ClientTest {
         void 입력이_문자라면_IllegalArgumentException이_발생한다() {
             input("간다스");
             assertThatThrownBy(
-                Client::askPlayerGameNumber
+                Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -76,7 +77,7 @@ class ClientTest {
         void 입력이_4글자_이상이면_IllegalArgumentException이_발생한다() {
             input("4321");
             assertThatThrownBy(
-                Client::askPlayerGameNumber
+                Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -84,7 +85,7 @@ class ClientTest {
         void 입력이_0글자_이하라면_IllegalArgumentException이_발생한다() {
             input("");
             assertThatThrownBy(
-                Client::askPlayerGameNumber
+                Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -92,7 +93,7 @@ class ClientTest {
         void 입력에_중복된_숫자가_있다면_IllegalArgumentException이_발생한다() {
             input("424");
             assertThatThrownBy(
-                Client::askPlayerGameNumber
+                Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -100,7 +101,7 @@ class ClientTest {
         void 공백문자만_입력되면_IllegalArgumentException이_발생한다() {
             input(" ");
             assertThatThrownBy(
-                Client::askPlayerGameNumber
+                Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -108,7 +109,7 @@ class ClientTest {
         void 숫자와_공백이_같이_입력되면_IllegalArgumentException이_발생한다() {
             input("123 ");
             assertThatThrownBy(
-                Client::askPlayerGameNumber
+                Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
     }

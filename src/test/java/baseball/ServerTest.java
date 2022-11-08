@@ -108,88 +108,66 @@ class ServerTest {
         @Test
         void 플레이어_숫자_판정결과는_2스트라이크가_맞습니다() {
             List<Integer> gameNumberList = List.of(2, 3, 9);
-            int playerInputNumber = 234;
+            List<Integer> playerNumberList = List.of(2, 3, 4);
 
             JudgedResultDto expectedDto = JudgedResultDto.makeNormalDto(0, 2);
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerInputNumber, gameNumberList);
+                new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
-            boolean expectedResult = true;
-            boolean actualResult = false;
-            if (actualDto.getCountBalls() == expectedDto.getCountBalls()
-                && actualDto.getCountStrikes() == expectedDto.getCountStrikes()) {
-                actualResult = true;
-            }
-
-            assertThat(actualResult).isEqualTo(expectedResult);
+            assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
         }
 
         @Test
         void 플레이어_숫자_판정결과는_3스트라이크가_맞습니다() {
             List<Integer> gameNumberList = List.of(4, 7, 9);
-            int playerInputNumber = 479;
+            List<Integer> playerNumberList = List.of(4, 7, 9);
 
             JudgedResultDto expectedDto = JudgedResultDto.make3StrikeDto();
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerInputNumber, gameNumberList);
+                new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
-            boolean expectedResult = true;
-            boolean actualResult =
-                actualDto.getCountBalls() == expectedDto.getCountBalls()
-                    && actualDto.getCountStrikes() == expectedDto.getCountStrikes();
-
-            assertThat(actualResult).isEqualTo(expectedResult);
+            assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
         }
 
         @Test
         void 플레이어_숫자_판정결과는_낫싱가_맞습니다() {
             List<Integer> gameNumberList = List.of(2, 3, 9);
-            int playerInputNumber = 186;
+            List<Integer> playerNumberList = List.of(1, 8, 6);
 
             JudgedResultDto expectedDto = JudgedResultDto.makeNothingDto();
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerInputNumber, gameNumberList);
+                new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
-            boolean expectedResult = true;
-            boolean actualResult =
-                actualDto.getCountBalls() == expectedDto.getCountBalls()
-                    && actualDto.getCountStrikes() == expectedDto.getCountStrikes();
-
-            assertThat(actualResult).isEqualTo(expectedResult);
+            assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
         }
 
         @Test
         void 플레이어_숫자_판정결과는_3볼이_맞습니다() {
             List<Integer> gameNumberList = List.of(2, 3, 9);
-            int playerInputNumber = 392;
+            List<Integer> playerNumberList = List.of(3, 9, 2);
 
             JudgedResultDto expectedDto = JudgedResultDto.makeNormalDto(3, 0);
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerInputNumber, gameNumberList);
+                new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
-            boolean expectedResult = true;
-            boolean actualResult =
-                actualDto.getCountBalls() == expectedDto.getCountBalls()
-                    && actualDto.getCountStrikes() == expectedDto.getCountStrikes();
-
-            assertThat(actualResult).isEqualTo(expectedResult);
+            assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
         }
 
         @Test
         void 플레이어_숫자_판정결과는_2볼_1스트라이크가_맞습니다() {
             List<Integer> gameNumberList = List.of(2, 3, 9);
-            int playerInputNumber = 329;
+            List<Integer> playerNumberList = List.of(3, 2, 9);
 
             JudgedResultDto expectedDto = JudgedResultDto.makeNormalDto(2, 1);
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerInputNumber, gameNumberList);
+                new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
-            boolean expectedResult = true;
-            boolean actualResult =
-                actualDto.getCountBalls() == expectedDto.getCountBalls()
-                    && actualDto.getCountStrikes() == expectedDto.getCountStrikes();
+            assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
+        }
 
-            assertThat(actualResult).isEqualTo(expectedResult);
+        boolean compareJudgedResultDto(JudgedResultDto dto1, JudgedResultDto dto2) {
+            return dto1.getCountStrikes() == dto2.getCountStrikes()
+                && dto1.getCountBalls() == dto2.getCountBalls();
         }
     }
 

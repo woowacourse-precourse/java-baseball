@@ -18,10 +18,10 @@ public class Server {
             List<Integer> computerNumberList = makeNewGameNumber();
             boolean isNotGameOver = true;
             while (isNotGameOver) {
-                int playerGameNumber = Client.askPlayerGameNumber();
+                List<Integer> playerNumberList = Client.askPlayerNumberList();
 
                 JudgedResultDto dto
-                    = judgeInputNumber(playerGameNumber, computerNumberList);
+                    = judgeInputNumber(playerNumberList, computerNumberList);
                 Client.showJudgedResult(dto);
                 isNotGameOver = dto.getCountStrikes() != 3;
             }
@@ -44,15 +44,18 @@ public class Server {
         return computerNumberList;
     }
 
-    public JudgedResultDto judgeInputNumber(int inputNumber,
+    public JudgedResultDto judgeInputNumber(List<Integer> playerNumberList,
         List<Integer> computerNumberList) {
+
         int countBalls = 0, countStrikes = 0;
 
-        String[] playerNumberString = Integer.toString(inputNumber).split("");
+        if (playerNumberList.equals(computerNumberList)) {
+            return JudgedResultDto.make3StrikeDto();
+        }
 
-        for (int index = 0; index < playerNumberString.length; ++index) {
-            int parsed = Integer.parseInt(playerNumberString[index]);
-            int matchIndex = computerNumberList.indexOf(parsed);
+        for (int index = 0; index < playerNumberList.size(); ++index) {
+            int playerNumberByIndex = playerNumberList.get(index);
+            int matchIndex = computerNumberList.indexOf(playerNumberByIndex);
             if (matchIndex == -1) {
                 continue;
             }
@@ -63,10 +66,9 @@ public class Server {
             ++countBalls;
         }
 
-        if(countBalls == 0 && countStrikes == 0)
+        if (countBalls == 0 && countStrikes == 0) {
             return JudgedResultDto.makeNothingDto();
-        if(countBalls == 0 && countStrikes == 3)
-            return JudgedResultDto.make3StrikeDto();
+        }
         return JudgedResultDto.makeNormalDto(countBalls, countStrikes);
     }
 }

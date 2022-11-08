@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 // 출력 메시지 및 입력 관리
@@ -24,7 +26,7 @@ public class Client {
         System.out.println(MSG_GAME_START);
     }
 
-    public static int askPlayerGameNumber() throws IllegalArgumentException {
+    public static List<Integer> askPlayerNumberList() throws IllegalArgumentException {
         System.out.print(MSG_ASK_PLAYER_GAME_NUMBER);
 
         String line;
@@ -34,25 +36,21 @@ public class Client {
             throw new IllegalArgumentException();
         }
 
-        int originalLength = line.length();
-        line = line.strip();
-        if (line.length() != 3 || line.length() != originalLength) {
+        if (line.length() != 3) {
             throw new IllegalArgumentException();
         }
 
-        int playerGameNumber = Integer.parseInt(line);
-        int tempNumber = playerGameNumber;
+        List<Integer> playerNumberList = new ArrayList<>();
 
-        int unit1 = tempNumber % 10;
-        tempNumber /= 10;
-        int unit100 = tempNumber / 10;
-        int unit10 = tempNumber % 10;
-
-        if (unit100 == unit10 || unit10 == unit1 || unit1 == unit100) {
-            throw new IllegalArgumentException();
+        for(String substring : line.split("")){
+            int degreeNumber = Integer.parseInt(substring);
+            if (playerNumberList.contains(degreeNumber)) {
+                throw new IllegalArgumentException();
+            }
+            playerNumberList.add(degreeNumber);
         }
 
-        return playerGameNumber;
+        return playerNumberList;
     }
 
     public static void showJudgedResult(JudgedResultDto dto) {
