@@ -1,10 +1,25 @@
 package baseball.game;
 
-import baseball.game.utils.InputValidator;
+import baseball.game.utils.IntegerValidator;
 import baseball.game.utils.StringConverter;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameManager {
+
+    public static boolean checkRestartGame() {
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int choice = StringConverter.toInteger(Console.readLine().strip());
+        IntegerValidator.validateRestartChoice(choice);
+        return checkChoice(choice);
+    }
+
+    private static boolean checkChoice(int choice) {
+        if (choice == 1) {
+            return true;
+        }
+        return false;
+    }
 
     public void startGame() {
 
@@ -17,20 +32,5 @@ public class GameManager {
 
             token = checkRestartGame();
         }
-    }
-
-    public static boolean checkRestartGame() {
-
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int choice = StringConverter.toInteger(Console.readLine().strip());
-        InputValidator.validateRestartChoice(choice);
-        return checkChoice(choice);
-    }
-
-    private static boolean checkChoice(int choice) {
-        if (choice == 1) {
-            return true;
-        }
-        return false;
     }
 }
