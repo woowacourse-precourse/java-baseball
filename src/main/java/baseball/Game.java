@@ -1,7 +1,9 @@
 package baseball;
 
 
+import static baseball.Application.end;
 import static baseball.Constant.GAME_END;
+import static baseball.Constant.GAME_OVER;
 import static baseball.Constant.STRIKE;
 import static baseball.Constant.VICTORY;
 
@@ -9,46 +11,40 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    public static Print print;
+    public static AppConfig baseball = new AppConfig();
 
 
-    static AppConfig baseball = new AppConfig();
 
-
-    public Game(Print print) {
-
-        this.print = print;
-    }
 
     // 게임 반복 기능
     public static String playGame() {
+        Player.createComputerNumber();
 
-        Print result = baseball.printResult();
-        System.out.println(result);
-
-        if (STRIKE.equals(result)) {
-            victory();
-            rebootGame();
-        }
-
-        Print resultAgain;
         do {
-            resultAgain = recursion();
+            recursionGame();
+        }
+        while ( !recursionGame() );
 
-        } while (!STRIKE.equals(resultAgain));
+        String result = baseball.printResult().toString();
 
-        return GAME_END;
+        System.out.println(result);
+        victory();
 
+        System.out.println(GAME_OVER);
+
+        return rebootGame();
     }
 
-    private static Print recursion() {
-        Print resultAgain;
-        Input.inputUserNumber(Console.readLine());
-        Hint.loopHint(Input.inputUserNumber(Console.readLine()), Player.createComputerNumber());
+    private static boolean recursionGame() {
 
-        resultAgain = baseball.printResult();
-        System.out.println(resultAgain);
-        return resultAgain;
+        String readLine = Console.readLine();
+
+        Hint.loopHint(Input.inputUserNumber(readLine), Player.createComputerNumber());
+        String result = Print.printResult().toString();
+        System.out.println(result);
+        boolean recursion = result.equals(STRIKE);
+
+        return recursion;
     }
 
     private static String rebootGame() {
@@ -64,7 +60,6 @@ public class Game {
     }
 
 
-
     // 게임 종료 기능 - 승리
     private static String victory() {
 
@@ -74,10 +69,4 @@ public class Game {
 
     }
 
-    public static String end() {
-
-        System.out.println(GAME_END);
-
-        return Constant.GAME_END;
-    }
 }
