@@ -7,6 +7,14 @@ import java.util.Set;
 
 public class UserException {
 
+    private static List<String> gameOverNumberList = List.of("1", "2");
+
+    public static void checkGameOverException(String gameOverNumber) {
+        if (!gameOverNumberList.contains(gameOverNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void checkUserInputException(String userInputNumber) {
         if (isDuplication(userInputNumber) || isNotLength3(userInputNumber) || isNotInt(userInputNumber) || isContainZero(userInputNumber)) {
             throw new IllegalArgumentException();
