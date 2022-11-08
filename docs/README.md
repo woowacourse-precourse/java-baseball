@@ -29,6 +29,7 @@
 - 추가 테스트 목록
   - 3자리 수보다 작은 수를 입력했을 경우 'IllegalArgumentException' 처리 되는지 확인하는 테스트
   - 빈 창을 입력했을 경우 'IllegalArgumentException' 처리 되는지 확인하는 테스트
+  - 사용자가 문자만 입력했을 경우 'IllegalArgumentException' 처리 되는지 확인하는 테스트
   - 게임 재시작 하는 숫자를 입력할 때, 1,2가 아닌 다른 수를 입력할 경우 'IllegalArgumentException' 처리 되는지 확인하는 테스트
   - 심판기능 스트라이크, 볼, 낫싱 기능 테스트
   - 
