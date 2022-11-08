@@ -5,13 +5,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ExecuteGame extends IllegalArgumentException {
-
-    // 입력한 값을 String 형태로 반환
-//    private String saveInput () {
-//        Scanner scanner = new Scanner(System.in);
-//        String input = scanner.next();
-//        return input;
-//    }
     private Scanner scanner;
     private PrintStream ps;
 
@@ -37,7 +30,6 @@ public class ExecuteGame extends IllegalArgumentException {
     // 잘못된 값을 입력했을 경우 에러 메시지 출력 후 `IllegalArgumentException`을 발생
     public String getUserValidInput() {
         try {
-            while (true) {
             ps.println("숫자를 입력해주세요: ");
             String userValidInput = scanner.nextLine();
             if (!InputValidator.isValidInput(userValidInput)) {
@@ -65,6 +57,5 @@ public class ExecuteGame extends IllegalArgumentException {
             }
         } while (true);
     }
-
 
 }
