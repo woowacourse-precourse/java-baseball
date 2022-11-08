@@ -31,6 +31,7 @@ public class Application {
         //게임 재시작시 입력 수를 1,2로 설정하 였기 때문에 예외처리시 필요한 수는 1이다.
 
         System.out.println(output.start);
+        output.setRandomNumber(computer, gameTypeNumber);
 
     }
 }
