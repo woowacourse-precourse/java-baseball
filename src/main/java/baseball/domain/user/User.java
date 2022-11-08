@@ -8,7 +8,7 @@ public class User {
 
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    String answer() throws IOException {
+    public String answer() throws IOException {
         return getReader().readLine();
     }
 
