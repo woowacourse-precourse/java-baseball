@@ -29,6 +29,8 @@ public class Game {
 
     private void playGame() {
         List<Integer> input = getInput();
+
+        getResult(input);
     }
 
     private List<Integer> getInput() {
@@ -43,5 +45,15 @@ public class Game {
             throw new IllegalArgumentException();
         }
         return input;
+    }
+
+    private void getResult(List<Integer> input) {
+        for (int i = 0; i < 3; i++) {
+            if (input.get(i).equals(answer.get(i))) {
+                strike++;
+            } else if (answer.contains(input.get(i))) {
+                ball++;
+            }
+        }
     }
 }
