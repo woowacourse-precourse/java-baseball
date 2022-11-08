@@ -32,8 +32,7 @@ public class GameController {
     void playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         computer.clearRandomNumbers();
-        if (!computer.isReady())
-            computer.initRandomNumbers();
+        if (!computer.isReady()) computer.initRandomNumbers();
         computer.getCounts();
         List<Integer> answer = null;
         while (!isClear(answer)) answer = user.inputUserAnswer();
