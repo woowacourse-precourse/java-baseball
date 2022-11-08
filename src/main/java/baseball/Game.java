@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,54 +23,54 @@ public class Game {
     private List<String> randomDigits;
     private List<String> userDigits;
     private boolean quit = false;
-    public String input;
-    public List<String> inputArrList;
+    public String quitInput;
     private Computer computer = new Computer();;
     private User user = new User();
 
 
     public Game() {
     }
-
-    // method for test code only
-    public void setInput(String input) {
-        this.input = input;
-        getValidation();
-    }
-
     public void play() {
         System.out.println(OUTPUT_START);
-
-        computer.setRandomNumber();
-        randomNumber = computer.getRandomNumber();
-
+        initializeRandomNumber();
+        
         while(!quit) {
-            user.setUserNumber();
-            userNumber = user.getUserNumber();
-
+            
+            initializeUserNumber();
             initializeBallCount();
-            setDigits();
+
+            seperateNumberToDigits();
             calculateBallCount();
-            printOutResult();
+            printBallCount();
 
             if(strike == NUMBER_LENGTH) {
                 System.out.println(OUTPUT_SUCCESS);
                 System.out.println(OUTPUT_RESTART_OR_QUIT);
-                setInput();
+                setQuitInput();
                 handleQuit();
                 handleRestart();
             }
         }
     }
 
+    private void initializeUserNumber() {
+        user.setUserNumber();
+        userNumber = user.getUserNumber();
+    }
+
+    private void initializeRandomNumber() {
+        computer.setRandomNumber();
+        randomNumber = computer.getRandomNumber();
+    }
+
     private void calculateBallCount() {
         for(int i=0; i<NUMBER_LENGTH; i++) {
-            calculateStrike(i);
-            calculateBall(i);
+            calculateStrikeByIndex(i);
+            calculateBallByIndex(i);
         }
     }
 
-    private void calculateBall(int index) {
+    private void calculateBallByIndex(int index) {
         for(int k=0; k<NUMBER_LENGTH; k++) {
             if(index != k && randomDigits.get(index).equals(userDigits.get(k))) {
                 ball++;
@@ -77,41 +78,38 @@ public class Game {
         }
     }
 
-    private void calculateStrike(int index) {
+    private void calculateStrikeByIndex(int index) {
         if(randomDigits.get(index).equals(userDigits.get(index))) {
             strike++;
         }
     }
 
     private void handleRestart() {
-        if(input.equals(INPUT_RESTART)) {
-            computer.setRandomNumber();
-            randomNumber = computer.getRandomNumber();
+        if(quitInput.equals(INPUT_RESTART)) {
+            initializeRandomNumber();
         }
     }
 
     private void handleQuit() {
-        if(input.equals(INPUT_QUIT)) {
+        if(quitInput.equals(INPUT_QUIT)) {
             quit = true;
         }
     }
 
-    private void setInput() {
-        input = Console.readLine();
-        getValidation();
+    private void setQuitInput() {
+        quitInput = Console.readLine();
+        validateQuitInput();
     }
 
-    private void getValidation() {
-        // validation
-        String[] inputArr = {"1","2"};
-        inputArrList = Arrays.asList(inputArr);
-        boolean inputValidation = inputArrList.contains(input);
+    private void validateQuitInput() {
+        List<String> inputList = new ArrayList<>(Arrays.asList(new String[]{"1", "2"}));
+        boolean inputValidation = inputList.contains(quitInput);
         if(!inputValidation) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void printOutResult() {
+    private void printBallCount() {
         String result = "";
         if (ball == 0 && strike == 0) {
             result = STRING_NOTHING;
@@ -125,7 +123,7 @@ public class Game {
         System.out.println(result);
     }
 
-    private void setDigits() {
+    private void seperateNumberToDigits() {
         randomDigits = getSplitList(randomNumber);
         userDigits = getSplitList(userNumber);
     }
