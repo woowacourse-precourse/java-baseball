@@ -16,11 +16,11 @@ public class InputService {
   public List<Integer> getPlayerNumbers() {
     System.out.print("숫자를 입력해주세요 : ");
     String playerInput = readLine();
-    checkValidatePlayerNumbers(playerInput);
+    checkPlayerNumbers(playerInput);
     return convertStringToIntegerList(playerInput);
   }
 
-  private void checkValidatePlayerNumbers(String input) {
+  private void checkPlayerNumbers(String input) {
     if (isValidateLength(input) || hasDuplicateNumbers(input) || hasInvalidRange(input)) {
       throw new IllegalArgumentException();
     }
@@ -53,7 +53,7 @@ public class InputService {
         .collect(Collectors.toList());
   }
 
-  public boolean DoesPlayerWantToRestart() {
+  public boolean doesPlayerWantToRestart() {
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     String playerInput = readLine();
     checkValidateGameStatus(playerInput);
