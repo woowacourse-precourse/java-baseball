@@ -12,7 +12,7 @@ public class Application {
     private static boolean checkRepeate(){
         boolean isRepeate = true;
 
-        System.out.println("Repeat game:1, End game:2 ");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String input = readLine();
 
@@ -36,7 +36,6 @@ public class Application {
         }
 
         String answer = answerList.toString().replaceAll("[^0-9]","");
-        System.out.println(answer);
         return answer;
     }
 
@@ -90,14 +89,14 @@ public class Application {
         String result = "";
 
         if (strike+ball == 0){
-            result = "nothing";
+            result = "낫싱";
         }
         else {
             if(ball>0){
-                result += ball + "ball ";
+                result += ball + "볼 ";
             }
             if(strike>0){
-                result += strike + "strike ";
+                result += strike + "스트라이크 ";
             }
         }
 
@@ -111,7 +110,7 @@ public class Application {
         int ball = 0;
 
         while(strike < 3){
-            System.out.print("Input number: ");
+            System.out.print("숫자를 입력해주세요 : ");
             input = readLine();
 
             checkException(input);
@@ -122,24 +121,24 @@ public class Application {
             printResult(strike, ball);
         }
 
-        System.out.println("You correct 3 numbers! ");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 
     public static void main(String[] args) {
         String answer;
 
-        System.out.println("Start Baseball Game!");
+        System.out.println("숫자 야구 게임을 시작합니다.");
         try{
             do {
                 answer = makeAnswer();
                 playBaseball(answer);
 
             } while(checkRepeate());
+            System.out.println("게임 종료");
 
         } catch(IllegalArgumentException e){
             System.out.println(e);
         }
-        System.out.println("게임 종료");
     }
 }
