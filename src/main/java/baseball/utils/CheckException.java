@@ -1,5 +1,7 @@
 package baseball.utils;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +37,13 @@ public class CheckException {
             throw new IllegalArgumentException();
         }
         return false;
+    }
+
+    public static int checkOption() throws IllegalArgumentException {
+        int option = Integer.parseInt(Console.readLine());
+        if (option != 1 && option != 2) {
+            throw new IllegalArgumentException();
+        }
+        return option;
     }
 }

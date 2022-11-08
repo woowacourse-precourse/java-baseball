@@ -15,14 +15,19 @@ public class GameService {
 
     public static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        int option = 0;
+
+        while (option != 2) {
+            playGame();
+            option = changeOption();
+        }
+    }
+
+    private static void playGame() {
         game = new Game();
         computer = new Computer();
         user = new User();
 
-        playGame();
-    }
-
-    private static void playGame() {
         while (game.getStrikeCount() != 3) {
             playOnePhase();
             printResultMessage(game.getBallCount(), game.getStrikeCount());
@@ -68,5 +73,10 @@ public class GameService {
         if (ball != 0 && strike != 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
+    }
+
+    private static int changeOption() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return CheckException.checkOption();
     }
 }
