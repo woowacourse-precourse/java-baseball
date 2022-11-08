@@ -30,4 +30,8 @@ public class BaseballNumbers {
             throw new IllegalArgumentException(INPUT_BASEBALL_NUMBERS_LENGTH_EXCEPTION_MESSAGE);
         }
     }
+
+    public List<BaseballNumber> getBaseballNumberList() {
+        return baseballNumberList;
+    }
 }
