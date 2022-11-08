@@ -26,6 +26,15 @@ class GameTest {
 
     @Test
     void checkingStrike() {
+        Game game = new Game();
+        ArrayList<Integer> randomNum = new ArrayList<>();
+        randomNum.add(1);
+        randomNum.add(2);
+        randomNum.add(3);
+        String inputNum = "123";
+        int ballCount = 0;
+        int answer = game.checkingStrike(randomNum, inputNum, ballCount);
+        assertEquals(3, answer);
     }
 
     @Test
