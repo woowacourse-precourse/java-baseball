@@ -1,6 +1,6 @@
 package baseball.view;
 
-public class SelectPlayGameAgain extends View {
+public class SelectPlayGameAgainView extends View {
     private String response = "";
 
     @Override

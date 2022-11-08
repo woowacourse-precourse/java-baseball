@@ -1,10 +1,10 @@
 package baseball.view;
 
-public class PlayGameAgainResult extends View {
+public class PlayGameAgainResultView extends View {
     private final int input;
     private boolean response = false;
 
-    public PlayGameAgainResult(int input) {
+    public PlayGameAgainResultView(int input) {
         this.input = input;
     }
 

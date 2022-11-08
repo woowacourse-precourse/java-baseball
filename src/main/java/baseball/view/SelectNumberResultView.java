@@ -3,11 +3,11 @@ package baseball.view;
 import baseball.service.GameService;
 import baseball.vo.Scoreboard;
 
-public class SelectNumberResult extends View {
+public class SelectNumberResultView extends View {
     private final int number;
     private Boolean response = false;
 
-    public SelectNumberResult(int number) {
+    public SelectNumberResultView(int number) {
         this.number = number;
     }
 

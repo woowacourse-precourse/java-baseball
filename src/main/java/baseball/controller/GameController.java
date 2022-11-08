@@ -19,14 +19,14 @@ public class GameController {
     public boolean showSelectNumberResult(String input) {
         validateInput("^[1-9]{3}$", input);
 
-        View view = new SelectNumberResult(parseInt(input));
+        View view = new SelectNumberResultView(parseInt(input));
         view.show();
 
         return view.getResponseToBoolean();
     }
 
     public String showSelectPlayGameAgain() {
-        View view = new SelectPlayGameAgain();
+        View view = new SelectPlayGameAgainView();
         view.show();
 
         return view.getResponseToString();
@@ -35,7 +35,7 @@ public class GameController {
     public boolean getPlayGameAgainResult(String input) {
         validateInput("^[1-2]{1}$", input);
 
-        View view = new PlayGameAgainResult(parseInt(input));
+        View view = new PlayGameAgainResultView(parseInt(input));
         view.show();
 
         return view.getResponseToBoolean();
