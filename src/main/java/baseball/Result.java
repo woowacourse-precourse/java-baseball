@@ -8,11 +8,11 @@ public class Result {
 
     private int ball;
 
-    public boolean countResult(List<Integer> baseball, List<Integer> input) {
+    public void countResult(List<Integer> baseball, List<Integer> input) {
         countStrike(baseball, input);
         countBall(baseball, input);
 
-        return false;
+        //return false;
     }
 
     public void countStrike(List<Integer> baseball, List<Integer> input) {
@@ -40,6 +40,23 @@ public class Result {
             }
         }
         return false;
+    }
+
+    public String printResult() {
+
+        String message = "";
+
+        if (strike == 0 && ball == 0) {
+            message = "낫싱";
+        } else {
+            if (ball != 0) {
+                message += Integer.toString(ball) + "볼 ";
+            }
+            if (strike != 0) {
+                message += Integer.toString(strike) + "스트라이크";
+            }
+        }
+        return message;
     }
 
     public int getStrike() {
