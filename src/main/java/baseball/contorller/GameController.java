@@ -22,5 +22,12 @@ public class GameController {
     public void start() {
         service.startGame();
         Views.INITIAL_VIEW.getView().view();
+
+            checkHint();
+    }
+
+    public void checkHint() {
+        Views.INPUT_VIEW.getView().view();
+    }
     }
 }
