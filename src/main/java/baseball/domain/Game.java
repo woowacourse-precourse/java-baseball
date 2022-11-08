@@ -16,13 +16,19 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         computer.createRandomNumber();
 
-        System.out.print("숫자를 입력해주세요 : ");
-        user.inputNumber();
-        user.validateNumber();
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            user.inputNumber();
+            user.validateNumber();
 
-        Hint hint = computer.getHint(user.getNumber());
-        String hintMessage = hint.getHintMessage();
-        System.out.println(hintMessage);
+            Hint hint = computer.getHint(user.getNumber());
+            String hintMessage = hint.getHintMessage();
+            System.out.println(hintMessage);
+
+            if (hint.isAllStrike()) {
+                break;
+            }
+        }
     }
 
 }
