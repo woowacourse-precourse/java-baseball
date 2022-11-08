@@ -59,4 +59,37 @@ public class Application {
         }
         return digitList;
     }
+
+    private static boolean score(List<Integer> answer, List<Integer> guess) {
+        Set<Integer> digitSet = new HashSet<>();
+        for (final Integer a: answer) {
+            digitSet.add(a);
+        }
+        for (final Integer g: guess) {
+            digitSet.add(g);
+        }
+        int balls = 6 - digitSet.size();
+        if (balls == 0) {
+            System.out.println("낫싱");
+            return false;
+        }
+        int strikes = 0;
+        for (int i = 0; i < 3; i++) {
+            if (answer.get(i).equals(guess.get(i)) {
+                strikes++;
+                balls--;
+            }
+        }
+        if (strikes == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        if (balls != 0) {
+            System.out.println(balls+"볼 ");
+        }
+        if (strikes != 0) {
+            System.out.println(strikes+"스트라이크");
+        }
+        return false;
+    }
 }
