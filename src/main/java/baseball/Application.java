@@ -72,4 +72,28 @@ public class Application {
         return userNumbers;
     }
 
+    public static List<Integer> compareComputerAndUser(List<Integer> computerNumberList,List<Integer> userNumberList){
+        List<Integer> ballAndStrike = new ArrayList<>();
+
+        ballAndStrike.add(0);
+        ballAndStrike.add(0);
+
+        int ballNum = 0;
+        int strikeNum =0;
+        // 어떻게 ball, strike 개수를 셀 지 만들기 -> 최적화 고민..
+        for(int i=0;i<3;i++) if(computerNumberList.get(i) == userNumberList.get(i)) strikeNum++;
+
+        if(computerNumberList.get(0) == userNumberList.get(1)) ballNum++;
+        if(computerNumberList.get(0) == userNumberList.get(2)) ballNum++;
+        if(computerNumberList.get(1) == userNumberList.get(0)) ballNum++;
+        if(computerNumberList.get(1) == userNumberList.get(2)) ballNum++;
+        if(computerNumberList.get(2) == userNumberList.get(0)) ballNum++;
+        if(computerNumberList.get(2) == userNumberList.get(1)) ballNum++;
+
+        ballAndStrike.set(0,ballNum);
+        ballAndStrike.set(1,strikeNum);
+        return ballAndStrike;
+    }
+
+    
 }
