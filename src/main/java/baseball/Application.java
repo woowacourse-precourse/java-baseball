@@ -111,8 +111,15 @@ public class Application {
     }
 
     public static Integer isStrike() {
-        return 0;
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computerNum.get(i) == myNum.get(i)) {
+                strike += 1;
+            }
+        }
+        return strike;
     }
+
 
     public static Integer isBall() {
         return 0;
