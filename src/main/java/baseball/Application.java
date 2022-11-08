@@ -17,7 +17,8 @@ public class Application {
             List<Integer> player = input_number();
             wrong_number(player);
 
-                strike = check_strike(computer,player);
+            strike = check_strike(computer,player);
+            int same = same(computer, player);
             }
         }
     }
@@ -56,6 +57,14 @@ public class Application {
             }
         }
         return strike;
+    }
+    public static int same(List<Integer> computer_number, List<Integer> player_number){
+        int result = 0;
+        for (int i = 0; i <player_number.size(); i++){
+            if(computer_number.contains(player_number.get(i)))
+                result += 1;
+        }
+        return result;
     }
     public static int check_ball(){
 
