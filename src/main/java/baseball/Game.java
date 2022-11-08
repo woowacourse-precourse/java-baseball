@@ -2,12 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Game {
     private static final int NUMBERS_SIZE = 3;
-    private static List<Integer> numbers;
+    private static Map<Integer, Integer> numbersMap;
     public static void start() {
         initialize();
     }
@@ -17,12 +17,13 @@ public class Game {
     }
 
     private static void generateNumbers() {
-        numbers = new ArrayList<>();
+        int index = 0;
+        numbersMap = new HashMap<>();
 
-        while (numbers.size() < NUMBERS_SIZE) {
+        while (numbersMap.size() < NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
+            if (!numbersMap.containsKey(randomNumber)) {
+                numbersMap.put(randomNumber, index++);
             }
         }
     }
