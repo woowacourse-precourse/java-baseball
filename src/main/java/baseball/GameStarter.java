@@ -29,6 +29,7 @@ public class GameStarter {
         }
     }
 
+    //게임 시작을 알림
     public void playGame(){
         System.out.println("숫자를 입력해주세요 : ");
         this.user = InputNum();
@@ -42,22 +43,21 @@ public class GameStarter {
         computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+            if (!computer.contains(randomNumber)) computer.add(randomNumber);
         }
     }
 
     //user에게 값을 받음
     public List<Integer> InputNum(){
-        user = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         String[] userInput = Console.readLine().split("");
         for(int i=0; i<userInput.length; i++){
-            user.add(Integer.parseInt(userInput[i]));
+            list.add(Integer.parseInt(userInput[i]));
         }
-        return user;
+        return list;
     }
 
+    //computer 와 user의 값을 비교한다.
     public void compare(){
         this.strike = 0;
         this.ball = 0;
@@ -66,24 +66,15 @@ public class GameStarter {
                 strike++;
                 continue;
             }
-            if (computer.contains(user.get(i))) {
-                ball++;
-            }
+            if (computer.contains(user.get(i))) ball++;
         }
     }
 
     //입력된 값과 정답이 일치하는지 확인
     public String solution(){
-        if(ball != 0 && strike == 0){
-            return (ball + "볼");
-        }
-        if(ball == 0 && strike != 0){
-            return (strike + "스트라이크");
-        }
-
-        if(ball != 0 && strike != 0){
-            return (ball + "볼 " + strike + "스트라이크");
-        }
+        if(ball != 0 && strike == 0) return (ball + "볼");
+        if(ball == 0 && strike != 0) return (strike + "스트라이크");
+        if(ball != 0 && strike != 0) return (ball + "볼 " + strike + "스트라이크");
         return ("낫싱");
     }
 
@@ -96,11 +87,11 @@ public class GameStarter {
                 RandomNum();
                 return true;
             }
-            if (res.equals("2")) {
-                return false;
-            }
+            if (res.equals("2")) return false;
             throw new IllegalArgumentException("올바른 숫자가 아닙니다. 1 또는 2를 입력하세요.");
         }
         return true;
     }
 }
+
+
