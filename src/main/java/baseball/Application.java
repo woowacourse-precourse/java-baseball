@@ -9,6 +9,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+        System.out.println(compareAns(makeAns(),getInput()).get(0));
     }
 
     static List<Integer> makeAns() {
@@ -24,7 +25,7 @@ public class Application {
     }
 
     static int[] getInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
 
         int[] userInput = new int[3];
         int idx = 2;
@@ -37,6 +38,26 @@ public class Application {
         }
         return userInput;
     }
+
+    static List<Integer> compareAns(List<Integer> computer, int[] userInput) {
+        List<Integer> ans = new ArrayList<>();
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(userInput[i])) {
+                ball += 1;
+            }
+            if (computer.get(i).equals(userInput[i])) {
+                strike += 1;
+            }
+        }
+        ball -= strike;
+        ans.add(ball);
+        ans.add(strike);
+        return ans;
+    }
+
+
 
 
 }
