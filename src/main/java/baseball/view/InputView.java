@@ -1,17 +1,20 @@
 package baseball.view;
 
 
+import baseball.domain.Constant;
+
 public class InputView {
     public static void askUserInputNumber() {
-        System.out.print("숫자를 입력해 주세요 : ");
+        System.out.print(Constant.INPUT_USER_NUMBER_MESSAGE);
     }
 
     public static void askRestartGameMessage() {
-        System.out.println("게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Constant.GAME_OPTION_MESSAGE);
     }
 
     public static void printFirstNumberBaseballGameMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Constant.START_NUMBER_BASEBALL_MESSAGE);
+        ;
     }
 
 
