@@ -66,6 +66,16 @@ class ApplicationTest extends NsTest {
         assertThat(Application.compareComputerAndUser(computer, user2)).isTrue();
     }
     @Test
+    void 볼의_개수_일치() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("513", "135", "2");
+                    assertThat(output()).contains("3볼");
+                },
+                1, 3, 5
+        );
+    }
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
