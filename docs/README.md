@@ -15,11 +15,14 @@
      - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
 3. 사용자에게 3개 숫자를 입력 받기
    - camp.nextstep.edu.missionutils.Console의 readLine()을 활용
-   - 서로 다른 3자리의 수 입력 받기
 4. 사용자가 잘못된 값을 입력하는 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료
    - 사용자가 잘못된 값을 입력하는 경우
-     - 게임 끝난 경우인데 1,2 이외의 값을 입력하는 경우
-     - 1을 입력한 후 0 ~ 9 가 아닌 값을 입력 (문자 혹은 한자리 숫자가 아닌 경우)
+     
+     (1) 입력 글자 수가 3개 이상일 때
+     
+     (2) 각각의 수가 1~9사이의 값이 아닐 때
+     
+     (3) 수의 중복이 있을 때
 5. 사용자의 세자리 수에 대한 결과 출력
    - 3개의 숫자 모두 맞추는 경우
      - 3스트라이크

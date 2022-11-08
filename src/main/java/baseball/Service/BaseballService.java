@@ -42,11 +42,11 @@ public class BaseballService {
 
         char[] inputs = input.toCharArray();
 
-        for(char inputChar : inputs){
-            user.add(inputChar-'0');
+        for (char inputChar : inputs) {
+            user.add(inputChar - '0');
         }
 
         return user;
     }
-
+    
 }
