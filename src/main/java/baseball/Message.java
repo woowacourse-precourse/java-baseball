@@ -10,4 +10,16 @@ public abstract class Message {
     public final static String STRIKE = "스트라이크";
     public final static String BALL = "볼";
     public final static String NOT_THING = "낫싱";
+
+    public static String ballMessage(int ball) {
+        return ball + BALL;
+    }
+
+    public static String strikeMessage(int strike) {
+        return strike + STRIKE;
+    }
+
+    public static String ballAndStrikeMessage(int ball, int strike) {
+        return ball + BALL + strike + STRIKE;
+    }
 }
