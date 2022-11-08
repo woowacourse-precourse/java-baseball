@@ -10,9 +10,9 @@ public class Controller {
 
     public static void run(Scanner scanner) throws ProcessException {
 
-        boolean restartStatus;
         Game game = new Game(scanner);
         GameOver gameOver = new GameOver(scanner);
+        boolean restartStatus;
 
         do {
             List<Integer> targetNumber = makeRandomWithoutDuplicate();

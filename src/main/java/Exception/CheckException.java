@@ -10,7 +10,6 @@ public class CheckException {
         if (!(restartStatus.equals("1")) && !(restartStatus.equals("2"))) {
             throw new ProcessException("재시작 입력값이 잘못 입력되었습니다. 게임을 종료합니다.");
         }
-
         return restartStatus;
     }
 
@@ -27,7 +26,6 @@ public class CheckException {
         if (!isDiffAllDigits(inputValue)) {
             throw new ProcessException("입력값에 중복이 있습니다. 게임을 종료합니다.");
         }
-
         return inputValue;
     }
 
@@ -41,13 +39,13 @@ public class CheckException {
         }
     }
 
-    private static boolean isDiffAllDigits(String inputValue) {
+    private static boolean isDiffAllDigits(String input) {
 
-        Set<Character> inputs = new HashSet<>();
+        Set<Character> notDuplicatedValue = new HashSet<>();
 
-        for (int index = 0; index < inputValue.length(); index++) {
-            inputs.add(inputValue.charAt(index));
+        for (int index = 0; index < input.length(); index++) {
+            notDuplicatedValue.add(input.charAt(index));
         }
-        return inputs.size() == inputValue.length();
+        return notDuplicatedValue.size() == input.length();
     }
 }

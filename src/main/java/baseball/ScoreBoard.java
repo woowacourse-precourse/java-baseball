@@ -20,6 +20,7 @@ public class ScoreBoard {
     public int getStrikeScore() {
 
         int strikeScore = 0;
+
         for (int index = 0; index < 3; index++) {
             if (Objects.equals(targetNumber.get(index), predictedNumber.get(index))) strikeScore++;
         }
@@ -28,11 +29,12 @@ public class ScoreBoard {
 
     private int getBallScore(int strikeScore) {
 
-        int sameValueCnt = 0;
+        int sameCnt = 0;
+
         for (int index = 0; index < 3; index++) {
-            if (targetNumber.contains(predictedNumber.get(index))) sameValueCnt++;
+            if (targetNumber.contains(predictedNumber.get(index))) sameCnt++;
         }
-        return sameValueCnt - strikeScore;
+        return sameCnt - strikeScore;
     }
 
     private void printScoreBoard(int strikeScore, int ballScore) {

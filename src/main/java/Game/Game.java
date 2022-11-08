@@ -22,13 +22,13 @@ public class Game {
         while (!isGameOver) {
             System.out.print("숫자를 입력해주세요 : ");
             String predictedValue = CheckException.inputGameValid(scanner.nextLine());
-            scoreBoard.action(targetNumber, convertToList(predictedValue));
-            isGameOver = checkCorrectAnswer(scoreBoard.getStrikeScore());
+            scoreBoard.action(targetNumber, convertStrToList(predictedValue));
+            isGameOver = isCorrectAnswer(scoreBoard.getStrikeScore());
         }
         return new Game(scanner);
     }
 
-    private List<Integer> convertToList(String predictedValue) {
+    private List<Integer> convertStrToList(String predictedValue) {
 
         List<Integer> predictedNumber = new ArrayList<>();
         for (int index = 0; index < predictedValue.length(); index++) {
@@ -37,7 +37,7 @@ public class Game {
         return predictedNumber;
     }
 
-    private boolean checkCorrectAnswer(int strikeScore) {
+    private boolean isCorrectAnswer(int strikeScore) {
 
         return strikeScore == 3;
     }
