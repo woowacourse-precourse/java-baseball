@@ -29,4 +29,8 @@ public class Game {
             System.out.println(strikeCount + "스트라이크");
         }
     }
+
+    private boolean numberResult(String userNumber, String computerNumber) {
+        return userNumber.equals(computerNumber);
+    }
 }
