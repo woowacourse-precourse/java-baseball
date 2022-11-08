@@ -28,13 +28,13 @@ public class Service {
         return numList;
     }
 
-    private List<Integer> getUserNumber(){
+    public List<Integer> getUserNumber(){
         String input = Console.readLine();
         List<Integer> currInput = parser(input);
         return currInput;
     }
 
-    private List<Integer> parser(String input) {
+    public List<Integer> parser(String input) {
         checkException(input);
         List<Integer> currInput = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
@@ -76,7 +76,7 @@ public class Service {
                 .count();
     }
 
-    private int hint(List<Integer> answerList, List<Integer> inputList) {
+    public int hint(List<Integer> answerList, List<Integer> inputList) {
         int strike = countStrike(answerList, inputList);
         int ball = countBall(answerList, inputList) - strike;
         if (ball == 0 && strike == 0) {
