@@ -2,13 +2,15 @@ package baseball.domain;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Balls {
 
 	private List<BallNumber> balls;
 
 	public Balls(String inputString) {
-		validateSize(inputString.length());
+		validateString(inputString);
 		List<Integer> numbers = mapToList(inputString);
 		validateBalls(numbers);
 		balls = mapToBalls(numbers);
@@ -36,6 +38,14 @@ public class Balls {
 	private void validateSize(int size) {
 		if (size != Constants.NUMBER_SIZE) {
 			throw new IllegalArgumentException("공은 서로 다른 3개의 수로 구성되어야 합니다.");
+		}
+	}
+
+	private void validateString(String inputNumbers) {
+		Pattern pattern = Pattern.compile(Constants.NUMBERS_REGEX);
+		Matcher matcher = pattern.matcher(inputNumbers);
+		if (!matcher.matches()) {
+			throw new IllegalArgumentException("서로 다른 3개의 수를 공백없이 입력해주세요. ex) 123");
 		}
 	}
 
