@@ -30,7 +30,7 @@ public class Input {
     public boolean isNumberDifferent(String userNumber) {
         Set<Character> numbers = new HashSet<>();
 
-        for(char number : userNumber.toCharArray()) {
+        for (char number : userNumber.toCharArray()) {
             numbers.add(number);
         }
 
@@ -38,8 +38,9 @@ public class Input {
     }
 
     public boolean isNumberRangeValid(String userNumber) {
-        for(int index = 0; index < userNumber.length(); index++) {
-            if(userNumber.charAt(index) < MIN_NUMBER || userNumber.charAt(index) > MAX_NUMBER) {
+        for (int index = 0; index < userNumber.length(); index++) {
+
+            if (userNumber.charAt(index) < MIN_NUMBER || userNumber.charAt(index) > MAX_NUMBER) {
                 return false;
             }
         }
@@ -47,9 +48,9 @@ public class Input {
     }
 
     public boolean isNumber(String userNumber) {
-        for(int index = 0; index < userNumber.length(); index++) {
+        for (int index = 0; index < userNumber.length(); index++) {
             char number = userNumber.charAt(index);
-            if(!Character.isDigit(number)) {
+            if (!Character.isDigit(number)) {
                 return false;
             }
         }
@@ -57,9 +58,9 @@ public class Input {
     }
 
     public void inputUserNumberValid(String userNumber) {
-        if(isNumberSizeThree(userNumber) && isNumberDifferent(userNumber)) {
+        if (isNumberSizeThree(userNumber) && isNumberDifferent(userNumber)) {
 
-            if(isNumberRangeValid(userNumber) && isNumber(userNumber)) {
+            if (isNumberRangeValid(userNumber) && isNumber(userNumber)) {
                 return;
             }
         }
@@ -74,7 +75,7 @@ public class Input {
     }
 
     public void inputRestartOrExitNumberValid(String inputNumber) {
-        if(!inputNumber.equals(RESTART) && !inputNumber.equals(EXIT)) {
+        if (!inputNumber.equals(RESTART) && !inputNumber.equals(EXIT)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
@@ -82,7 +83,7 @@ public class Input {
     public List<Integer> inputToList(String userNumber) {
         List<Integer> inputUserNumbers = new ArrayList<>();
 
-        for(int index = 0; index < NUMBER_SIZE; index++) {
+        for (int index = 0; index < NUMBER_SIZE; index++) {
             char number = userNumber.charAt(index);
             inputUserNumbers.add(Character.getNumericValue(number));
         }
