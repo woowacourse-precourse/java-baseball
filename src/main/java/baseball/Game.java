@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class Game {
     private static final int MAX_STRIKE = 3;
     private static final Computer computer = new Computer();
@@ -25,5 +27,31 @@ public class Game {
         isGameEnd = false;
         strike = 0;
         ball = 0;
+    }
+
+    private void checkComputerAndPlayer() {
+        strike = checkStrike(computer.getNumbers(), player.getNumbers());
+        ball = checkBall(computer.getNumbers(), player.getNumbers());
+        // 결과에 대한 출력
+    }
+
+    private int checkStrike(List<Integer> computers, List<Integer> players) {
+        int count = 0;
+        for (int i = 0; i < computers.size(); i++) {
+            if (computers.get(i).equals(players.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int checkBall(List<Integer> computers, List<Integer> players) {
+        int count = 0;
+        for (int i = 0; i < computers.size(); i++) {
+            if (computers.contains(players.get(i)) && !computers.get(i).equals(players.get(i))) {
+                count++;
+            }
+        }
+        return count;
     }
 }
