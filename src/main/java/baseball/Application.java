@@ -102,23 +102,24 @@ public class Application {
             result = checkBallStrike(gameAnswer, getUserAnswer());
         }
     }
-    public static boolean checkRestart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userAnswer = Console.readLine();
-        if (userAnswer.equals("1")) {
+    public static boolean checkRestart(String input) {
+        if (input.equals("1"))
             return true;
-        } else if (userAnswer.equals("2"))
+        else if (input.equals("2"))
             return false;
         throwIllegalArgumentException();
         return false;
     }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean newGame = true;
-        while (newGame) {
+        String restartInput;
+        do {
             List<Integer> answer = generateGameAnswer();
             playGame(answer);
-            newGame = checkRestart();
-        }
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            restartInput = Console.readLine();
+
+        } while (checkRestart(restartInput));
     }
 }
