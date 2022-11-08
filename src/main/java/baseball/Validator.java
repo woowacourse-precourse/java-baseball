@@ -32,4 +32,12 @@ public class Validator {
 		if (!isAllUnique(userInput))
 			throw (new IllegalArgumentException("입력의 각 자릿값은 서로 달라야 합니다."));
 	}
+
+	public static boolean doStatusValidation(String userInput) {
+		if ("1".equals(userInput))
+			return (true);
+		if ("2".equals(userInput))
+			return (false);
+		throw (new IllegalArgumentException("1 또는 2만 입력할 수 있습니다."));
+	}
 }
