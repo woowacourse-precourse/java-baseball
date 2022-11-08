@@ -61,6 +61,16 @@ class ApplicationTest extends NsTest {
 
         assertThat(isAnswerValid).isEqualTo(true);
     }
+
+    @Test
+    void 입력값_유효성_테스트2_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method isAnswerNumberValid = Application.class.getDeclaredMethod("isAnswerNumberValid", int.class);
+        isAnswerNumberValid.setAccessible(true);
+
+        boolean isAnswerValid = (boolean) isAnswerNumberValid.invoke(application,402);
+
+        assertThat(isAnswerValid).isEqualTo(false);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
