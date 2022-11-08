@@ -68,6 +68,22 @@ public class Application {
         }
     }
 
+    public static void baseBallValid(BaseBallCnt baseBallCnt, List<Integer> computer, String input) {
+        //4.야구 판별
+        //1) 각 자릿수 숫자로 랜덤 숫자 탐색
+        //만약 숫자와 자릿수 같으면 스트라이크 카운트
+        //만약 숫자만 같고 자릿수 다르면 볼 카운트
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (computer.get(j) == (input.charAt(i) - '0') && i == j) {
+                    baseBallCnt.strcnt++;
+                } else if (computer.get(j) == (input.charAt(i) - '0') && i != j) {
+                    baseBallCnt.ballcnt++;
+                }
+            }
+        }
+    }
+
     public static String userStart(boolean flag, String again, List<Integer> computer){
         //무한 반복
         while (true) {
