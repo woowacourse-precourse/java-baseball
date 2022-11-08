@@ -1,6 +1,5 @@
 package baseball.computer;
 
-import baseball.BallAndStrikeChecker;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

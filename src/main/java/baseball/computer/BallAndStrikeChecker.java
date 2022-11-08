@@ -1,4 +1,4 @@
-package baseball;
+package baseball.computer;
 
 import baseball.rule.*;
 
