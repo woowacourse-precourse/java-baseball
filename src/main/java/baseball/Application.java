@@ -82,6 +82,22 @@ public class Application {
             return ball + "볼" + strike + "스트라이크";
         }
     }
+    public static class Input {
+        // 사용자 입력 값
+        public List<Integer> playerNum() {
+            System.out.println("숫자 입력: ");
+            Scanner scanner = new Scanner(System.in);
+            List<Integer> playNum = new ArrayList<>();
+            String input = scanner.next();
+            checkSize(input);
+
+            for (String number : input.split("")) {
+                playNum.add(Integer.parseInt(number));
+            }
+            return playNum;
+        }
+    }
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
