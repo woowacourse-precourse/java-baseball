@@ -3,56 +3,57 @@ package baseball;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import static camp.nextstep.edu.missionutils.Console.*;
-import static camp.nextstep.edu.missionutils.Randoms.*;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
 
-    private int targetNumber;
+    public void startNewGame() {
 
-    void startNewGame() {
+        // 1. 컴퓨터가 서로 다른 세자리 수 생성하기
+        List<Integer> targetDigits = createTargetNumber();
 
-        // 1. 게임 시작
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        // 2. 사용자가 숫자를 모두 맞출때까지 계속 숫자 입력받기
+        List<Integer> userInputDigits;
 
-        // 2. 컴퓨터가 서로 다른 세자리 수 생성하기
         while (true) {
-            int targetNumber = createTargetNumber();
-            if (isValidNumber(targetNumber)) {
-                break;
-            }
-        }
 
-        // 3. 사용자가 숫자를 모두 맞출때까지 계속 숫자 입력받기
-        boolean gotAnswer = false;
-        int userInput;
+            // 2-1. 사용자로부터 서로 다른 세자리 수 받기
+            int userInput = getUserInput();
+            userInputDigits = decomposeNumber(userInput);
 
-        while (!gotAnswer) {
-
-            // 3-1. 사용자로부터 서로 다른 세자리 수 받기
-            userInput = getUserInput();
-            if (!isValidNumber(userInput)) {
+            if (!isValidNumber(userInputDigits)) {
                 throw new IllegalArgumentException();
             }
 
-            // 3-2. 받은 숫자의 스트라이크, 볼 개수 세기
-            int[] strikesAndBalls = countStrikesAndBalls(targetNumber, userInput);
+            // 2-2. 받은 숫자의 스트라이크, 볼 개수 세기
+            int[] strikesAndBalls = countStrikesAndBalls(targetDigits, userInputDigits);
             int strikes = strikesAndBalls[0];
             int balls = strikesAndBalls[1];
             System.out.println(makeInfoString(strikes, balls));
 
             if (strikes == 3) {
-                gotAnswer = true;
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
             }
         }
+    }
+
+    private List<Integer> createTargetNumber() {
+        Set<Integer> digitSet = new HashSet<>();
+        while (digitSet.size() < 3) {
+            digitSet.add(Randoms.pickNumberInRange(1, 9));
+        }
+        List<Integer> digitList = new ArrayList<>(digitSet);
+        return digitList;
     }
 
     boolean doesRestart() {
         boolean restartTF;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int answer = Integer.parseInt(readLine());
+        int answer = Integer.parseInt(Console.readLine());
         if (answer == 1) {
             restartTF = true;
         } else if (answer == 2) {
@@ -63,22 +64,14 @@ public class BaseballGame {
         return restartTF;
     }
 
-    private int createTargetNumber() {
-        int newTarget = pickNumberInRange(1, 999);
-        this.targetNumber = newTarget;
-        return newTarget;
-    }
-
     private int getUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
-        int inputNumber = Integer.parseInt(readLine());
+        int inputNumber = Integer.parseInt(Console.readLine());
         return inputNumber;
     }
 
-    private boolean isValidNumber(int num) {
+    private boolean isValidNumber(List<Integer> digitList) {
         boolean invalidTF = true;
-
-        List<Integer> digitList = decomposeNumber(num);
         HashSet<Integer> digitSet = new HashSet<>(digitList);
 
         // 입력받은 숫자가 세자리가 아니거나, 세자리 수여도 서로 다른 숫자들이 아닐 경우
@@ -88,10 +81,7 @@ public class BaseballGame {
         return invalidTF;
     }
 
-    private int[] countStrikesAndBalls(int targetNum, int inputNum) {
-
-        List<Integer> targetDigits = decomposeNumber(targetNum);
-        List<Integer> inputDigits = decomposeNumber(inputNum);
+    private int[] countStrikesAndBalls(List<Integer> targetDigits, List<Integer> inputDigits) {
 
         int[] strikesAndBalls = {0, 0};
         for (int i = 0; i < targetDigits.size(); i++) {
@@ -107,7 +97,7 @@ public class BaseballGame {
     private List<Integer> decomposeNumber(int num) {
         List<Integer> digitList = new ArrayList<>();
         while (num > 0) {
-            digitList.add(num % 10);
+              digitList.add(num % 10);
             num /= 10;
         }
         return digitList;
