@@ -163,6 +163,7 @@ while (computer.size() < 3) {
   - [x] 1~9 사이의 중복되지 않은 세 숫자 생성
   - [x] 조건 검사 : 잘못된 값일 경우 Illegal Argument Exception 
 - [] 사용자 임의의 수 입력
+  - [x] String to List<Integer>
   - [] 조건 검사 : 잘못된 값일 경우 IllegalArgumentException
 - [] 컴퓨터의 값과 사용자 값 비교
   - [] 스트라이크 : 같은수가 같은 자리에 위치
