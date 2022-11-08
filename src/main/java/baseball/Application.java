@@ -51,8 +51,6 @@ public class Application {
         for(int idx=0; idx<3; idx++) {
             int checkNumber = guessingNumber.get(idx);
 
-            System.out.println(computerNumber + " : " + checkNumber);
-
             if(computerNumber.contains(checkNumber) && checkNumber != computerNumber.get(idx)) {
                 ballCount += 1;
             }
