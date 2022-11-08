@@ -24,7 +24,12 @@ public class Application {
 
         playerDoing();
 
-        // 1이면 다시 시작, 2이면 종료료
+        // 1이면 다시 시작, 2이면 종료
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if(Integer.valueOf(input).equals(1)){
+            gameStart();
+        }
     }
 
     private static void playerDoing() {
