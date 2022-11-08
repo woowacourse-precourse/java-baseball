@@ -21,11 +21,33 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+    void 입력_글자_수_예외_테스트() {
+
+        assertThatThrownBy(() -> Application.isValidNumber("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.isValidNumber("21"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.isValidNumber("7"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.isValidNumber("774"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.isValidNumber("007"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.isValidNumber("1b3"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.isValidNumber(null))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> Application.isValidNumber("\n"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+
     }
 
     @Override

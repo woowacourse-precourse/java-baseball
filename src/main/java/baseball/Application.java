@@ -19,20 +19,22 @@ public class Application {
     }
 
     // 2. input들어온 수가 조건에 맞는가? (input String, output boolean)
-    public static boolean isValidNumber(String inputNumber){
-        List<String> tempList = Arrays.asList(inputNumber.split(""));
+    public static boolean isValidNumber(String inputNumberString){
+        List<String> tempList = Arrays.asList(inputNumberString.split(""));
         Set<String> tempSet = new HashSet<>(tempList);
 
         try{
             Exception e = new IllegalArgumentException();
-            Integer.parseInt(inputNumber);
-            if (inputNumber.contains("0")) {
+            if (!isDigit(inputNumberString)){
                 throw e;
             }
-            else if (inputNumber.length() != 3) {
+            else if (inputNumberString.contains("0")) {
                 throw e;
             }
-            else if (tempSet.size() != inputNumber.length()){
+            else if (inputNumberString.length() != 3) {
+                throw e;
+            }
+            else if (tempSet.size() != inputNumberString.length()){
                 throw e;
             }
             else {
@@ -43,6 +45,16 @@ public class Application {
             throw new IllegalArgumentException(e);
         }
     }
+
+    // +new 2-1. 들어온 수가 모두 정수인가?
+    public static boolean isDigit (String inputNumberString){
+        for (int i = 0; i < 3; i++) {
+            if(inputNumberString.charAt(i) >= '9' || inputNumberString.charAt(i) <= '0')
+                return false;
+        }
+        return true;
+    }
+
 
     // 3. input들어온 수를 List로 (input int, output List<Integer>)
     public static ArrayList<Integer> inputNumberMaker(int inputNumber){
@@ -103,7 +115,6 @@ public class Application {
     public static void main(String[] args) {
         ArrayList<Integer> computerNumber = computerNumberMaker();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println(computerNumber);
         while (isPlaying){
             System.out.print("숫자를 입력해주세요 : ");
             String tempStringInput = Console.readLine();
