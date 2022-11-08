@@ -25,7 +25,7 @@ public class BaseballGame {
 
         if (replayStr.equals(REPLAY)) {
             // 재시작
-            new BaseballGame().run();
+            run();
         }
         if (replayStr.equals(GAME_OVER)) {
             // 종료
