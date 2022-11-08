@@ -92,11 +92,14 @@ public class Application {
     static void chooseResetOrExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String s = Console.readLine();
+        resetOfExit(s);
+    }
 
+    static void resetOfExit(String s) {
         if (s.equals("1")) {
             startGame();
-            return;
-        } else if (s.equals("2")) {
+        }
+        if (s.equals("2")) {
             return;
         }
         throw new IllegalArgumentException();
