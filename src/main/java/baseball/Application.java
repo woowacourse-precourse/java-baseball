@@ -13,6 +13,19 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        while (run());
+    }
+
+    private static boolean run() throws IllegalArgumentException {
+        final List<Integer> answer = rand();
+        start();
+        while (true) {
+            List<Integer> guess = inputNumber();
+            if (score(answer, guess)) {
+                break;
+            }
+        }
+        return retry();
     }
 
     private static void start() {
