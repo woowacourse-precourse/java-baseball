@@ -19,6 +19,7 @@ public class GameManager {
         do {
             printNumberInputMessage();
             String userInput = user.inputUserNumber();
+            user.checkValidate(userInput);
             ballResult = countBall(userInput, computerNumberResult);
             strikeResult = countStrike(userInput, computerNumberResult);
             printResult(ballResult, strikeResult);
