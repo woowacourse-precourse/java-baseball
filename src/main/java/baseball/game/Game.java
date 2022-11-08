@@ -26,4 +26,9 @@ public class Game {
             strikeCount+=COUNT;
         }
     }
+    private void countBall(int playerNumber, int opponentNumber){
+        if(playerNumber!=opponentNumber && playerNumber!=NOT_FOUND){
+            ballCount+=COUNT;
+        }
+    }
 }
