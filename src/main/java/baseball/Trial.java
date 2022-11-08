@@ -4,23 +4,46 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Trial {
     private static final int NUMBERS_SIZE = 3;
+    private static final int STRIKE_SCORE = 10;
+    private static final int BALL_SCORE = 1;
     private static final String INVALID_INPUT = "잘못된 입력입니다.";
-    private static List<Integer> numbers;
 
-    public static void input() {
+    public static List<Integer> inputNumbers() {
         String numbersInput = Console.readLine();
 
         if (!isValidInput(numbersInput)) {
             throw new IllegalArgumentException(INVALID_INPUT);
         }
 
-        numbers = Arrays.stream(numbersInput.split(""))
+        return Arrays.stream(numbersInput.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public static int getScore(Map<Integer, Integer> numbersMap, List<Integer> inputNumbers) {
+        int score = 0;
+
+        for (int index = 0; index < NUMBERS_SIZE; index++) {
+            int number = inputNumbers.get(index);
+
+            if (!numbersMap.containsKey(number)) {
+                continue;
+            }
+
+            if (index == numbersMap.get(number)) {
+                score += STRIKE_SCORE;
+                continue;
+            }
+
+            score += BALL_SCORE;
+        }
+
+        return score;
     }
 
     private static boolean isValidInput(String numbersInput) {
