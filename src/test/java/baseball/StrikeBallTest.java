@@ -55,6 +55,50 @@ public class StrikeBallTest extends NsTest{
         assertThat(countBall.get("ball")).isEqualTo(3);
     }
 
+    @Test
+    void 스트라이크_개수_계산_테스트_0스트라이크(){
+        List<Integer> input = List.of(1,2,3);
+        List<Integer> answer = List.of(3,1,2);
+
+        Counter counter = new Counter(input, answer);
+        Map<String, Integer> countStrike = counter.countStrike();
+
+        assertThat(countStrike.get("strike")).isEqualTo(0);
+    }
+
+    @Test
+    void 스트라이크_개수_계산_테스트_1스트라이크(){
+        List<Integer> input = List.of(1,2,3);
+        List<Integer> answer = List.of(1,5,2);
+
+        Counter counter = new Counter(input, answer);
+        Map<String, Integer> countStrike = counter.countStrike();
+
+        assertThat(countStrike.get("strike")).isEqualTo(1);
+    }
+
+    @Test
+    void 스트라이크_개수_계산_테스트_2스트라이크(){
+        List<Integer> input = List.of(1,2,3);
+        List<Integer> answer = List.of(1,2,5);
+
+        Counter counter = new Counter(input, answer);
+        Map<String, Integer> countStrike = counter.countStrike();
+
+        assertThat(countStrike.get("strike")).isEqualTo(2);
+    }
+
+    @Test
+    void 스트라이크_개수_계산_테스트_3스트라이크(){
+        List<Integer> input = List.of(1,2,3);
+        List<Integer> answer = List.of(1,2,3);
+
+        Counter counter = new Counter(input, answer);
+        Map<String, Integer> countStrike = counter.countStrike();
+
+        assertThat(countStrike.get("strike")).isEqualTo(3);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
