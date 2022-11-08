@@ -32,8 +32,16 @@ class GamePlayTest {
 
     @Test
     void provideHintMessage_힌트메시지_출력과_정답여부반환_검증() {
-        List<Integer> temporaryAnswer = List.of(8, 7, 4);
-        List<Integer> temporaryUserAnswer = List.of(1, 2, 3);
-        assertThat(GamePlay.provideHintMessage(temporaryAnswer,temporaryUserAnswer)).isFalse();
+        List<Integer> temporaryAnswer1 = List.of(8, 7, 4);
+        List<Integer> temporaryUserAnswer1 = List.of(1, 2, 3);
+        assertThat(GamePlay.provideHintMessage(temporaryAnswer1,temporaryUserAnswer1)).isFalse();
+
+        List<Integer> temporaryAnswer2 = List.of(8, 7, 4);
+        List<Integer> temporaryUserAnswer2 = List.of(8, 7, 4);
+        assertThat(GamePlay.provideHintMessage(temporaryAnswer2,temporaryUserAnswer2)).isTrue();
+
+        List<Integer> temporaryAnswer3 = List.of(8, 7, 4);
+        List<Integer> temporaryUserAnswer3 = List.of(8, 7, 2);
+        assertThat(GamePlay.provideHintMessage(temporaryAnswer3,temporaryUserAnswer3)).isFalse();
     }
 }
