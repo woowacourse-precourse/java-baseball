@@ -1,12 +1,14 @@
 package baseball;
 
+import baseball.constant.MessageConst;
+import baseball.validation.InputValidation;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -27,6 +29,34 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    @DisplayName("사용자의 입력값 길이 테스트")
+    void 사용자_입력_길이_테스트() {
+        // given
+        InputValidation inputValidation = new InputValidation();
+
+        // when
+        String userCorrectInput = "123";
+        String userLessInput = "12";
+        String userMoreInput = "1234";
+
+        // then
+        assertThatCode(() ->
+                inputValidation.validateInputLength(userCorrectInput))
+                .doesNotThrowAnyException();
+
+        assertThatThrownBy(() ->
+                inputValidation.validateInputLength(userLessInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(MessageConst.INPUT_LENGTH_EXCEPTION_MSG);
+
+        assertThatThrownBy(() ->
+                inputValidation.validateInputLength(userMoreInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(MessageConst.INPUT_LENGTH_EXCEPTION_MSG);
+    }
+
 
     @Override
     public void runMain() {
