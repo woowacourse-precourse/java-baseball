@@ -13,6 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    public static int checkStrike(List<Integer> computer, List<Integer> user) {
+        int strikeNum = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                strikeNum += 1;
+            }
+        }
+        return strikeNum;
+    }
+
     public static List<Integer> initComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < GAME_INPUT_LENGTH) {
