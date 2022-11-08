@@ -23,6 +23,14 @@ class BallsTest {
                 .containsExactly(new Ball(0, 1), new Ball(1, 2), new Ball(2, 3));
     }
 
+    @DisplayName("숫자가 아닐 경우 예외가 발생한다.")
+    @Test
+    void validateNumbers() {
+        assertThatThrownBy(() -> {
+            new Balls("asd");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("중복된 값일 경우 예외가 발생한다.")
     @Test
     void validateDuplicateBalls() {
