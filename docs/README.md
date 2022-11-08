@@ -41,4 +41,33 @@
 
 ### 테스트
 
-- [ ] 위에서 정리한 기능 목록이 정상 동작함을 확인할 수 있도록 하는 기능
+- [X] 위에서 정리한 기능 목록이 정상 동작함을 확인할 수 있도록 하는 기능
+
+### 게임 실행 화면
+#### 최종 게임 플레이 화면
+<img src="https://user-images.githubusercontent.com/55132964/200545258-a46b3397-3ec5-4da8-8375-c228c909da51.png" width="50%" height="50%"/>
+<img src="https://user-images.githubusercontent.com/55132964/200546400-a5ecf47d-f8bc-465a-891c-4d661ae8b2aa.png" width="40%" height="40%"/>
+
+#### 예외 처리 화면
+- 사용자가 공백 입력한 경우
+
+<img src="https://user-images.githubusercontent.com/55132964/200548422-7b52ca5a-ca2f-47ef-8189-ce21b652a80f.png" width="50%" height="50%"/>
+
+- 사용자가 입력값에 숫자가 아닌 문자를 포함하여 입력한 경우
+
+<img src="https://user-images.githubusercontent.com/55132964/200548482-e0b1b452-3b69-47a6-b007-e43a3a7f3ce0.png" width="50%" height="50%"/>
+
+- 사용자의 입력값이 세 자릿수가 아닌 경우
+
+<img src="https://user-images.githubusercontent.com/55132964/200548544-45fe6d6b-384f-41c1-a7af-3a1a6e52d682.png" width="50%" height="50%"/>
+
+- 사용자의 입력값에 중복되는 수가 있는 경우
+
+<img src="https://user-images.githubusercontent.com/55132964/200548590-3ce73697-ede9-4795-90f7-53d2d31d571a.png" width="50%" height="50%"/>
+
+- 정답을 맞춘 후, 새게임을 할지 결정할때 입력하는 값이 1과 2가 아닌 경우
+
+<img src="https://user-images.githubusercontent.com/55132964/200548640-77a5ade8-f609-4b1f-adde-03c06eed4f4c.png" width="50%" height="50%"/>
+
+#### 테스팅 화면
+<img src="https://user-images.githubusercontent.com/55132964/200548856-6f3543c4-868f-4838-9983-a8f0f7d9dcbb.png" width="50%" height="50%"/>
