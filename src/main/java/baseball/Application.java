@@ -118,6 +118,7 @@ public class Application {
 	// 결과 출력 기능
 	public static void printresult(int ballCnt, int strikeCnt) {
 		if (strikeCnt == 3) {
+			System.out.println(strikeCnt + "스트라이크");
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			return;
 		}
