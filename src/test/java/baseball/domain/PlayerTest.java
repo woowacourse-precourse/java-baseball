@@ -17,5 +17,11 @@ class PlayerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void validateNumbersSizeTest() {
+        List<Integer> playerNumbers = Arrays.asList(10, 1);
+        assertThatThrownBy(() -> new Player(playerNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
