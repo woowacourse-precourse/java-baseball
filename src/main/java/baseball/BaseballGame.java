@@ -41,4 +41,33 @@ public class BaseballGame {
         return Console.readLine();
     }
 
+    public Map<String, Integer> gradeScore(String answer, String userInput) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            int pos = answer.indexOf(userInput.charAt(i));
+            if (pos == i) {
+                strike += 1;
+            } else if (pos >= 0) {
+                ball += 1;
+            }
+        }
+        Map<String, Integer> ret = new HashMap<>();
+        ret.put("strike", strike);
+        ret.put("ball", ball);
+        return ret;
+    }
+
+    public void printScore(int strike, int ball) {
+        if (ball >= 1 && strike >= 1) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        } else if (ball >= 1) {
+            System.out.println(ball + "볼");
+        } else if (strike >= 1) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println("낫싱");
+        }
+    }
+
 }
