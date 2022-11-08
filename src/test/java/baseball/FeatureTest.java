@@ -1,16 +1,15 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FeatureTest {
 
@@ -137,24 +136,56 @@ public class FeatureTest {
     }
 
     @Test
-    void enterNumber_user() {
+    void convertStrToList_user() {
+        String testStr = "321";
+        List<Integer> compare = new ArrayList<>(Arrays.asList(3, 2, 1));
+        List<Integer> result = user.convertStrToList(testStr);
 
+        assertThat(result).isEqualTo(compare);
     }
 
     @Test
-    void checkInvalid_user() {
+    void checkInvalid_length_user() {
+        String testStr = "1234";
+        assertThat(user.checkInvalid(testStr)).isEqualTo(true);
 
+        testStr = "123";
+        assertThat(user.checkInvalid(testStr)).isEqualTo(false);
+    }
+
+    @Test
+    void isDuplicate_user() {
+        assertThat(user.isDuplicate("123")).isEqualTo(false);
+        assertThat(user.isDuplicate("133")).isEqualTo(true);
+        assertThat(user.isDuplicate("331")).isEqualTo(true);
+        assertThat(user.isDuplicate("383")).isEqualTo(true);
+        assertThat(user.isDuplicate("333")).isEqualTo(true);
     }
 
     @Test
     void isDigitNumber_user() {
-
+        assertThat(user.isDigitNumber("123")).isEqualTo(true);
+        assertThat(user.isDigitNumber("1ab")).isEqualTo(false);
+        assertThat(user.isDigitNumber("abc")).isEqualTo(false);
+        assertThat(user.isDigitNumber("!23")).isEqualTo(false);
+        assertThat(user.isDigitNumber("%^%")).isEqualTo(false);
     }
 
     @Test
-    void convertStrToList_user() {
+    void enterNumber_예외처리_user() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1234".getBytes());
+        System.setIn(in);
 
+        assertThrows(IllegalArgumentException.class, ()-> user.enterNumber());
     }
 
+    @Test
+    void enterNumber_정상동작_user() {
+        ByteArrayInputStream in = new ByteArrayInputStream("123".getBytes());
+        System.setIn(in);
+
+        List<Integer> userNumber = user.enterNumber();
+        assertThat(userNumber).isEqualTo(Arrays.asList(1, 2, 3));
+    }
 
 }
