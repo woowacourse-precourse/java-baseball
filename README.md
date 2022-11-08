@@ -105,6 +105,15 @@ BUILD SUCCESSFUL in 0s
 ```
 
 ---
+## 구현할 기능 목록
+1. 컴퓨터가 숫자 3개를 선택하고 저장하는 메서드 
+2. 게임을 시작하고 threeStrike가 될때까지 반복(do-while)하는 메서드
+3. 유저의 input이 valid한 input인지 테스트(유저가 숫자 1~9 이외의 숫자나 문자를 입력할 경우 IllegalArgumentException 을 발생시키고 프로그램을 종료)하고 그 입력값을 리턴하는 메서드
+4. 컴퓨터와 유저의 input(숫자 3개)을 서로 비교하여 볼과 스트라이크의 개수를 count하여 리턴하는 메서드
+5. count한 볼과 스트라이크 개수를 print하는 메서드
+6. threeStrike( 숫자를 모두 맞춘 경우 )인지 아닌지를 boolean으로 리턴하는 메서드
+7. threeStrike 이후, 게임을 계속할지(input: 1) 아니면 그만할지(input: 2)를 유저로부터 입력받고 validity를 테스트(만약 input이 1 또는 2가 아닐 시 IllegalArgumentException 을 발생시키고 프로그램을 종료)하는 메서드
+8. 7번에서 입력받은 input(1 or 2)을 boolean으로 변환하는 메서드
 
 ## 🎯 프로그래밍 요구 사항
 
