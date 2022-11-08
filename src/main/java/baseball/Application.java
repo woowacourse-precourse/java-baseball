@@ -5,6 +5,7 @@ import static camp.nextstep.edu.missionutils.Console.*;
 
 import org.junit.jupiter.api.Test;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
@@ -35,7 +36,8 @@ public class Application {
         int duplicateCount=0;
         for(int comparison1=0;comparison1<num.length();comparison1++){
             for(int comparison2=comparison1+1;comparison2<num.length();comparison2++){
-                duplicateCount=duplicateCheck1(num,comparison1,comparison2);
+                duplicateCount+=duplicateCheck1(num,comparison1,comparison2);
+                System.out.println(duplicateCount);
             }
         }
         if (duplicateCount != 0){
@@ -93,5 +95,4 @@ public class Application {
             }
         }
     }
-
 }
