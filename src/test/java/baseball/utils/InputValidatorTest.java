@@ -54,4 +54,35 @@ public class InputValidatorTest {
         assertThatCode(() -> inputValidator.validateBallNumberString(input)).isInstanceOf(
                 IllegalArgumentException.class).hasMessage("입력한 숫자에 중복이 발생했습니다.");
     }
+
+    @Test
+    public void validateWhetherSuccessTest() throws Exception {
+        // given
+        String input1 = "1";
+        String input2 = "1";
+
+        // when
+
+        // then
+        assertThatCode(() -> inputValidator.validateWhether(input1)).doesNotThrowAnyException();
+        assertThatCode(() -> inputValidator.validateWhether(input2)).doesNotThrowAnyException();
+    }
+
+    @Test
+    public void validateWhetherFailTest() throws Exception {
+        // given
+        String input0 = "0";
+        String input12 = "12";
+        String input3 = "3";
+
+        // when
+
+        // then
+        assertThatCode(() -> inputValidator.validateWhether(input0)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1 또는 2을 입력해야합니다.");
+        assertThatCode(() -> inputValidator.validateWhether(input12)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1 또는 2을 입력해야합니다.");
+        assertThatCode(() -> inputValidator.validateWhether(input3)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1 또는 2을 입력해야합니다.");
+    }
 }
