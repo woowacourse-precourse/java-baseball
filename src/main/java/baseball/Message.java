@@ -13,6 +13,8 @@ public class Message {
     public static final String BALL_MESSAGE = "볼 ";
     public static final String NOTHING_MESSAGE = "낫싱 ";
 
+    public static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
     public static void printInitialGameStartMessage() {
         System.out.println(GAME_START_MESSAGE);
     }
@@ -31,5 +33,9 @@ public class Message {
 
     public static void printNothingMessage() {
         System.out.println(NOTHING_MESSAGE);
+    }
+
+    public static void printGameEndMessage() {
+        System.out.println(GAME_END_MESSAGE);
     }
 }

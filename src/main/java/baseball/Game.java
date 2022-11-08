@@ -27,5 +27,7 @@ public class Game {
 
             gameEnd = gameJudgement.judge(randomNumbers, playerInputNumbers);
         } while (!gameEnd);
+
+        Message.printGameEndMessage();
     }
 }
