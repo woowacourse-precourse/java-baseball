@@ -47,18 +47,18 @@ public class Computer {
         return count;
     }
 
-    public String getResultMessage(int strikeCnt, int ballCnt) {
-        if (strikeCnt == COMPUTER_BALLS_SIZE) {
+    public String getResultMessage(int strikeCount, int ballCount) {
+        if (strikeCount == COMPUTER_BALLS_SIZE) {
             return SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER;
         }
-        if (strikeCnt > 0 && ballCnt > 0) {
-            return ballCnt + SystemMessage.BALL + " " + strikeCnt + SystemMessage.STRIKE;
+        if (strikeCount > 0 && ballCount > 0) {
+            return ballCount + SystemMessage.BALL + " " + strikeCount + SystemMessage.STRIKE;
         }
-        if (strikeCnt == 0 && ballCnt > 0) {
-            return ballCnt + SystemMessage.BALL;
+        if (strikeCount == 0 && ballCount > 0) {
+            return ballCount + SystemMessage.BALL;
         }
-        if (strikeCnt > 0 && ballCnt == 0) {
-            return strikeCnt + SystemMessage.STRIKE;
+        if (strikeCount > 0 && ballCount == 0) {
+            return strikeCount + SystemMessage.STRIKE;
         }
         return SystemMessage.NOTHING;
     }
