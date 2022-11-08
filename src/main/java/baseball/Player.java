@@ -19,7 +19,13 @@ public class Player {
         if (inputNum.length() != 3) throw new IllegalArgumentException();
 
         for (int i = 0; i < 3; i++) {
-            int num = Character.getNumericValue(inputNum.charAt(i));
+            char charNum = inputNum.charAt(i);
+            int ascii = (int)charNum;
+
+            // 숫자가 아닐 경우 예외
+            if (ascii<48 || ascii>57) throw new IllegalArgumentException();
+
+            int num = Character.getNumericValue(charNum);
 
             // 중복된 숫자가 있을경우 예외
             if(myInputNumber.contains(num)) throw new IllegalArgumentException();
