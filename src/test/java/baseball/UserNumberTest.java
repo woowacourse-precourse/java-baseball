@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class UserNumberTest {
     @Test
     void 사용자_입력_유효성_검사_1() {
@@ -35,54 +33,41 @@ class UserNumberTest {
 
     @Test()
     void 사용자_입력_유효성_검사_3() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            UserNumber userNumber = new UserNumber();
-            String input = "112";
+        UserNumber userNumber = new UserNumber();
+        String input = "112";
 
-            userNumber.set(input);
-        });
-
-        Assertions.assertThat(exception.getMessage())
-                .isEqualTo("중복되지 않은 숫자를 입력해야 합니다.");
-
+        Assertions.assertThatThrownBy(() -> userNumber.set(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복되지 않은 숫자를 입력해야 합니다.");
     }
 
     @Test
     void 사용자_입력_유효성_검사_4() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            UserNumber userNumber = new UserNumber();
-            String input = "12";
+        UserNumber userNumber = new UserNumber();
+        String input = "12";
 
-            userNumber.set(input);
-        });
-
-        Assertions.assertThat(exception.getMessage())
-                .isEqualTo("3개의 숫자를 입력해야 합니다.");
+        Assertions.assertThatThrownBy(() -> userNumber.set(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3개의 숫자를 입력해야 합니다.");
     }
 
     @Test
     void 사용자_입력_유효성_검사_5() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            UserNumber userNumber = new UserNumber();
-            String input = "ㅁㅁㅁ";
+        UserNumber userNumber = new UserNumber();
+        String input = "ㅁㅁㅁ";
 
-            userNumber.set(input);
-        });
-
-        Assertions.assertThat(exception.getMessage())
-                .isEqualTo("0을 제외한 1~9 사이의 숫자를 입력해야 합니다.");
+        Assertions.assertThatThrownBy(() -> userNumber.set(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("0을 제외한 1~9 사이의 숫자를 입력해야 합니다.");
     }
 
     @Test
     void 사용자_입력_유효성_검사_6() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            UserNumber userNumber = new UserNumber();
-            String input = "12D";
+        UserNumber userNumber = new UserNumber();
+        String input = "120";
 
-            userNumber.set(input);
-        });
-
-        Assertions.assertThat(exception.getMessage())
-                .isEqualTo("0을 제외한 1~9 사이의 숫자를 입력해야 합니다.");
+        Assertions.assertThatThrownBy(() -> userNumber.set(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("0을 제외한 1~9 사이의 숫자를 입력해야 합니다.");
     }
 }
