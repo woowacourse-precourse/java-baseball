@@ -33,7 +33,6 @@ public class User {
     void checkUserInput(List<Integer> userNum) {
         checkInputLength();
         checkBeforeAdd(userNum);
-        addUserNum(userNum);
         Comparison comparison = new Comparison(computerNum, userNum);
     }
 
@@ -47,6 +46,7 @@ public class User {
             int userChar = userInput.charAt(i) - '0';
             checkInputRange(userChar);
             checkDuplicate(userNum, userChar);
+            userNum.add(userChar);
         }
     }
 
@@ -58,12 +58,5 @@ public class User {
     void checkDuplicate(List<Integer> userNum, int userChar) {
         if (userNum.contains(userChar))
             throw new IllegalArgumentException();
-    }
-
-    void addUserNum(List<Integer> userNum) {
-        for (int i = 0; i < userInput.length(); i++) {
-            int userChar = userInput.charAt(i) - '0';
-            userNum.add(userChar);
-        }
     }
 }
