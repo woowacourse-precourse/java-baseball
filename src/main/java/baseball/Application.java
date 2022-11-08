@@ -128,9 +128,16 @@ class Hint {
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
 
+        private void addBall() {
+        this.ball++;
+    }
+
+    private void addStrike() {
+        this.strike++;
+    }
+
     int[] hintResult(Game answer, Game rightAnswer) {
         int nowNumber;
-
 
         for (int i = 0; i < 3; i++) {
             nowNumber = answer.number[i];
@@ -139,10 +146,10 @@ class Hint {
                 continue;
             }
             if (i == Array.inputIndexValue(rightAnswer.number, nowNumber)) {
-                this.strike++;
+                addStrike();
                 continue;
             }
-            this.ball++;
+            addBall();
         }
         return new int[]{ball, strike};
     }
