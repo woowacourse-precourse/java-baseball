@@ -45,5 +45,7 @@ class ApplicationTest extends NsTest {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+        return;
+        //Application.main(new String[]{});
     }
 }
