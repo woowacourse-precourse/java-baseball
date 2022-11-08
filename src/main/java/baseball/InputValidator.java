@@ -29,7 +29,7 @@ public class InputValidator {
   public static boolean isNumber(String userNumber) {
     for (int i = 0; i < userNumber.length(); i++)
     {
-      if (!Character.isDigit(userNumber.charAt(i))) {
+      if (!Character.isDigit(userNumber.charAt(i)) || userNumber.contains("0")) {
         throw new IllegalArgumentException();
       }
     }
