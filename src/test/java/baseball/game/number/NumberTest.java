@@ -121,4 +121,27 @@ class NumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("서로 다른 3자리 수가 아닙니다.");
     }
+
+    @Test
+    public void 생성시_숫자가_같으면_동등하다() {
+        List<Integer> randomDigits = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        int convertedNumber = convertToNumber(randomDigits);
+
+        Number number1 = new Number(randomDigits);
+        Number number2 = new Number(convertedNumber);
+
+        assertThat(number2).isEqualTo(number1);
+    }
+
+    @Test
+    public void 생성시_숫자가_다르면_동등하지_않다() {
+        List<Integer> randomDigits = Randoms.pickUniqueNumbersInRange(1, 9, 6);
+        int firstConvertedNumber = convertToNumber(randomDigits.subList(0, 3));
+        int secondConvertedNumber = convertToNumber(randomDigits.subList(3, 6));
+
+        Number number1 = new Number(firstConvertedNumber);
+        Number number2 = new Number(secondConvertedNumber);
+
+        assertThat(number2).isNotEqualTo(number1);
+    }
 }
