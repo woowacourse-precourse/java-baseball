@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import baseball.domain.ComputerNumber;
 import baseball.service.JudgeGame;
+import baseball.util.ValidationUtil;
 import baseball.view.OutputView;
 
 public class GameController {
@@ -15,6 +16,9 @@ public class GameController {
 
         while (true){
             String input = OutputView.printRequestNumber();
+            if (!ValidationUtil.validateInputNumber(input)){
+                break;
+            }
             List<Integer> inputNumberList = JudgeGame.getInputNumberList(input);
 
             if (!JudgeGame.verifyAnswer(inputNumberList, computerNumberList)){
