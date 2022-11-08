@@ -26,30 +26,6 @@ public class GameManager {
         printGameSetMessage();
     }
 
-    private void printResult(int ball, int strike) {
-        if (ball == ZERO && strike == ZERO) {
-            System.out.println("낫싱");
-            return;
-        }
-        if (ball > ZERO) {
-            System.out.print(ball+ "볼 ");
-        }
-        if (strike > ZERO) {
-            System.out.print(strike+ "스트라이크 ");
-        }
-    }
-
-
-    public boolean retryGame() {
-        String reGameInput = Console.readLine();
-        if (reGameInput.equals("1")) {
-            return true;
-        }
-        if (reGameInput.equals("2")) {
-            return false;
-        }
-        throw new IllegalArgumentException(ILLEGAL_ERR_MSG);
-    }
 
     private int countStrike (String userInputNumber, String computerInputNumber) {
         return (int) IntStream.range(0,3)
@@ -66,5 +42,32 @@ public class GameManager {
                 .mapToObj(String::valueOf)
                 .filter(computerInputNumber::contains)
                 .count() - countStrike(userInputNumber,computerInputNumber);
+    }
+
+    private void printResult(int ball, int strike) {
+        if (ball == ZERO && strike == ZERO) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (ball > ZERO) {
+            System.out.print(ball+ "볼 ");
+        }
+        if (strike > ZERO) {
+            System.out.print(strike+ "스트라이크 ");
+        }
+    }
+    // 유저에게 게임을 다시할껀지 물어봄
+    public String inputReGameStartNumber() {
+        return Console.readLine();
+    }
+
+    public boolean checkRetryGame(String reGameInputNumber) {
+        if (reGameInputNumber.equals("1")) {
+            return true;
+        }
+        if (reGameInputNumber.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException(ILLEGAL_ERR_MSG);
     }
 }
