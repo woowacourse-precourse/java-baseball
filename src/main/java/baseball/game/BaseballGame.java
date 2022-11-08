@@ -31,14 +31,14 @@ public class BaseballGame {
         askRestartGame();
     }
 
-    public static void askRestartGame(){
+    private static void askRestartGame(){
         System.out.println(RESTART_MESSAGE);
         String restartNumber = Console.readLine();
         checkValidationRestartNumber(restartNumber);
         restartGame(restartNumber);
     }
 
-    public static void restartGame(String restartNumber){
+    private static void restartGame(String restartNumber){
         if (restartNumber.equals(RESTART)) playBaseballGame();
     }
 

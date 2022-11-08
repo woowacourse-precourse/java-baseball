@@ -38,15 +38,15 @@ public class CompareNumbers {
         ball=0;
     }
 
-    public static boolean includeSame(int userNumber){
+    private static boolean includeSame(int userNumber){
         return computerNumbers.contains(userNumber);
     }
 
-    public static void countStrike(int userNumber, int computerNumber){
+    private static void countStrike(int userNumber, int computerNumber){
         if (userNumber == computerNumber) strike++;
     }
 
-    public static void countBall(int userNumber, int computerNumber){
+    private static void countBall(int userNumber, int computerNumber){
         if (userNumber != computerNumber) ball++;
     }
 
