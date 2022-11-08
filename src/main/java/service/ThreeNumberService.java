@@ -138,4 +138,8 @@ public class ThreeNumberService {
             printStrike();
         }
     }
+
+    public void computerReset() {
+        computer.reset();
+    }
 }
