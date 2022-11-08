@@ -40,7 +40,7 @@ public class Application {
             throw new IllegalArgumentException("[Invalid] size of the number");
         }
 
-        for(int i = 0; i < (numbers.length() -1); ++i) {
+        for(int i = 0; i < (numbers.length() ); ++i) {
             if ( -1 != numbers.indexOf(numbers.charAt(i), i+1) ) {
                 throw new IllegalArgumentException("[Invalid] the same value");
             }
