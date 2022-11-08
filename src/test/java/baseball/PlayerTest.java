@@ -19,7 +19,7 @@ public class PlayerTest {
   }
 
   @ParameterizedTest
-  @DisplayName("잘못된 입력이 들어왔을 때 IllegalArgumentException예외 테스트")
+  @DisplayName("잘못된 입력이 들어왔을 때 IllegalArgumentException 예외 테스트")
   @ValueSource(strings = {"abc", "122", "a12", "133", "1224"})
   void testWithValueSource(String stringArg){
     Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -43,5 +43,14 @@ public class PlayerTest {
     assertThat(player.getNumbers().size())
             .as("숫자길이가 3이  아닙니다.")
             .isEqualTo(MAX_SIZE);
+  }
+
+  @ParameterizedTest
+  @DisplayName("플레이어가 게임 지속 여부에 대한 IllegalArgumentException 예외 테스트")
+  @ValueSource(strings = {"12", "a", "b", "!", "#", "3"})
+  void testWithGameStatusData(String stringArg){
+    Assertions.assertThrows(IllegalArgumentException.class, () -> {
+      player.validateGameStatusData(stringArg);
+    });
   }
 }
