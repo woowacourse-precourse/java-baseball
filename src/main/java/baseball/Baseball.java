@@ -5,17 +5,15 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.*;
 
 public class Baseball {
-
-    private List<Integer> computer;
-    private List<Integer> user;
-    private String input;
-    private GameInfo gameInfo;
+    static final int LEN = 3;
+    private final List<Integer> computer;
+    private final GameInfo gameInfo;
+    private String user;
 
     public Baseball() {
         computer = new ArrayList<>();
-        user = new ArrayList<>();
-        input = "";
         gameInfo = new GameInfo();
+        user = "";
     }
 
     private void printInit() {
@@ -23,7 +21,7 @@ public class Baseball {
     }
 
     private void getRandomNumbers() {
-        while (computer.size() < 3) {
+        while (computer.size() < LEN) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNum)) {
                 computer.add(randomNum);
@@ -32,11 +30,11 @@ public class Baseball {
     }
 
     private boolean isValidNumber() {
-        if (input.length() != 3) {
+        if (user.length() != LEN) {
             return false;
         }
-        for (int i = 0; i < input.length(); i++) {
-            if (!Character.isDigit(input.charAt(i))) {
+        for (int i = 0; i < user.length(); i++) {
+            if (!Character.isDigit(user.charAt(i))) {
                 return false;
             }
         }
@@ -45,16 +43,29 @@ public class Baseball {
 
     private void readNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
-        input = Console.readLine();
+        user = Console.readLine();
     }
 
-    public void gameStart() throws Exception {
+    private void compareNumber() {
+        for (int i = 0; i < LEN; i++) {
+            int loc = computer.indexOf(user.charAt(i) - '0');
+            if (loc == i) {
+                gameInfo.addStrike();
+            }
+            else if (loc > 0) {
+                gameInfo.addBall();
+            }
+        }
+    }
+
+    public void gameStart() {
         printInit();
         getRandomNumbers();
         readNumbers();
         if (!isValidNumber()) {
             throw new IllegalArgumentException("");
         }
+        compareNumber();
     }
 
 
