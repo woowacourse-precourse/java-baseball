@@ -28,11 +28,9 @@ public class Controller {
 
     private static void playOneGame() {
         List<Integer> computer = RandomNumber.setRandomNumber();
-        System.out.println("컴퓨터: " + computer);
         while (!isGameOver) {
             GameMessage.printInputNumberMessage();
             List<Integer> player = InputNumber.getValidNumberList();
-            //System.out.println("플레이어: " + player);
 
             String result = GameJudge.judgeGameResult(player, computer);
             GameResult.printGameResultMessage(result);
@@ -50,7 +48,6 @@ public class Controller {
 
         GameMessage.printRestartGameQuestionMessage();
         String restartGameInput = InputNumber.getValidChoice();
-        //System.out.println("restart?" + restartGameInput);
 
         if (restartGameInput.equals(RESTART_CHOICE)) {
             isGameOver = false;
