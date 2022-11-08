@@ -22,7 +22,7 @@ public class InputOutput {
         printRestartNumber();
         String line = getLine();
         // 예외처리 다 해주고
-
+        InputException.checkRestartNumberException(line);
         return charToInt(line.charAt(0));
     }
 

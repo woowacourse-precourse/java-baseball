@@ -9,4 +9,13 @@ public class InputException {
             throw new IllegalArgumentException("야구 게임의 입력은 중복 없이 3자리여야 합니다. [ex) 123]");
         }
     }
+
+    public static void checkRestartNumberException(String input) {
+        if (input.length() != 1){
+            throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
+        }
+        if (!(input.charAt(0) == '1' || input.charAt(0) == '2')){
+            throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
+        }
+    }
 }
