@@ -54,7 +54,7 @@ public class BaseBallGame {
             return false;
         }
 
-        if (isLong(inputValue)) {
+        if (!checkInputValueLength(inputValue)) {
             return false;
         }
 
@@ -72,8 +72,8 @@ public class BaseBallGame {
 
         return true;
     }
-    private boolean isLong(String inputValue) {
-        if (!(inputValue.length() > MAX_LENGTH)) {
+    private boolean checkInputValueLength(String inputValue) {
+        if ((inputValue.length() > MAX_LENGTH) || (inputValue.length() < MAX_LENGTH)) {
             return false;
         }
 
@@ -160,6 +160,14 @@ public class BaseBallGame {
         userInputValue = Console.readLine().trim();
 
         if (!isNumeric(userInputValue)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (isEmpty(userInputValue)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (userInputValue.length() > 1) {
             throw new IllegalArgumentException();
         }
 
