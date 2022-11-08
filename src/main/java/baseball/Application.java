@@ -41,26 +41,15 @@ public class Application {
     static int[] getInput() {
         System.out.println("숫자를 입력해주세요 : ");
         int[] userInput = new int[3];
-        int idx =2;
-
-        try{
-            int input = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
-            if (input > 999){
-                throw new IllegalArgumentException();
-            }
-
-            while (input > 0) {
-                userInput[idx] = input % 10;
-                input /= 10;
-                idx -= 1;
-            }
-
-        }catch (IllegalArgumentException e){
-            System.exit(0);
+        int idx = 2;
+        int input = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
+        while (input > 0) {
+            userInput[idx] = input % 10;
+            input /= 10;
+            idx -= 1;
         }
-        finally {
-            return userInput;
-        }
+        return userInput;
+
     }
 
     static List<Integer> compareAns(List<Integer> computer, int[] input) {
