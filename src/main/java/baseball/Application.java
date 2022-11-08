@@ -96,12 +96,15 @@ public class Application {
 
     public static void restart_game() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        if (Integer.parseInt(Console.readLine()) == 1) {
+        int InputNum = Integer.parseInt(Console.readLine());
+        if (InputNum == 1) {
             answer.clear();
             user_answer.clear();
             getRandomNum(answer, user_answer);
         }
-        else throw new IllegalArgumentException("잘못 입력하였습니다.");
+        else if (InputNum !=2) {
+            throw new IllegalArgumentException("잘못 입력하였습니다.");
+        }
     }
 
 }
