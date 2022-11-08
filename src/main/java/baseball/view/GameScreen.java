@@ -34,7 +34,7 @@ public class GameScreen {
         if (strike > 0) {
             print.append(strike).append(STRIKE);
         }
-        if (ball + strike == 0) {
+        if (gameResult.isNothing()) {
             print.append(NOTHING);
         }
         print.deleteCharAt(print.length() - 1);

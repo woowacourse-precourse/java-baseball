@@ -13,6 +13,10 @@ public class GameResult {
         return (strike == 3);
     }
 
+    public boolean isNothing() {
+        return (ball + strike == 0);
+    }
+
     public int getBall() {
         return ball;
     }
