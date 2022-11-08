@@ -1,32 +1,30 @@
 package baseball.controller;
 
-import baseball.model.UserNumber;
+import baseball.model.User;
 
 import java.util.ArrayList;
 
 public class CompareNumbers {
 
-    UserNumber userNumber = new UserNumber();
+    User user = new User();
 
     public CompareNumbers(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
-        countStrike(userNumberList, computerNumberList);
-        countBall(userNumberList, computerNumberList);
-    }
-
-    public void countStrike(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
         for (int i = 0; i < 3; i++) {
-            if (userNumberList.get(i) == computerNumberList.get(i)) {
-                userNumber.addStrike();
-            }
+            countStrike(userNumberList.get(i), computerNumberList.get(i));
+            countBall(userNumberList.get(i), computerNumberList.get(i), computerNumberList);
         }
     }
 
-    public void countBall(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
-        for (int i = 0; i < 3; i++) {
-            if (computerNumberList.contains(userNumberList.get(i))) {
-                if (userNumberList.get(i) != computerNumberList.get(i)) {
-                    userNumber.addBall();
-                }
+    public void countStrike(int userNumber, int computerNumber) {
+        if (userNumber == computerNumber) {
+            user.addStrike();
+        }
+    }
+
+    public void countBall(int userNumber, int computerNumber, ArrayList<Integer> computerNumberList) {
+        if (computerNumberList.contains(userNumber)) {
+            if (userNumber != computerNumber) {
+                user.addBall();
             }
         }
     }
