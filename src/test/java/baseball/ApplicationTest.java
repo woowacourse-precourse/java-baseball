@@ -100,12 +100,13 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 잘못된_게임_진행_옵션_입력에_대한_예외_테스트() {
+        final MockedStatic<Randoms> mock = mockStatic(Randoms.class);
+        mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+                .thenReturn(1, 3, 5);
         assertThatThrownBy(() -> {
-            final MockedStatic<Randoms> mock = mockStatic(Randoms.class);
-            mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                    .thenReturn(1, 3, 5);
             run("135", "3");
         }).isInstanceOf(IllegalArgumentException.class);
+        mock.close();
     }
 
     @Test
