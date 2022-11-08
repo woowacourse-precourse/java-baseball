@@ -40,8 +40,9 @@ public class Hint {
         }
         if(this.strike != 0){
             if(this.ball != 0){
-                hint += " " + this.strike + "스트라이크";
+                hint += " ";
             }
+            hint += this.strike + "스트라이크";
         }
         if (hint.equals("")){
             hint = "낫싱";
