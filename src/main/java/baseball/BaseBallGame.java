@@ -33,35 +33,6 @@ public class BaseBallGame {
         return computer;
     }
 
-    public List<Integer> inputNumbers(String userNum) {
-        user = new ArrayList<>();
-        String[] nums = userNum.split("");
-        lengthInCorrectException(nums.length);
-
-        for (String num : nums) {
-            int numInt = isNumberic(num);
-            isContainNumberException(user, numInt);
-            user.add(numInt);
-        }
-        return user;
-    }
-
-    public void lengthInCorrectException(int length) {
-        if (length != 3) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void isContainNumberException(List<Integer> nums, int num) {
-        if (nums.contains(num)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public int isNumberic(String num) throws IllegalArgumentException {
-        return Integer.parseInt(num);
-    }
-
     public void reStart(String userNum) {
         if (userNum.equals("1")) run();
         else if (userNum.equals("2")) return;
@@ -73,11 +44,13 @@ public class BaseBallGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         Game game = new Game(computerNumber);
+        UserInputNumber userInputNumber = new UserInputNumber();
+
         while (true) {
             System.out.printf("숫자를 입력해주세요 : ");
             String userNum = Console.readLine();
-            List<Integer> userNumber = inputNumbers(userNum);
 
+            List<Integer> userNumber = userInputNumber.inputNumbers(userNum);
             String answer = game.gameRun(userNumber);
 
             if (answer.equals("게임 종료")) break;
