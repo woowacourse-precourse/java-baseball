@@ -15,4 +15,13 @@ public class UserException {
         int length = userInputNumber.length();
         return length != 3;
     }
+
+    private static boolean isNotInt(String userInputNumber) {
+        try {
+            Integer.parseInt(userInputNumber);
+        } catch (NumberFormatException e) {
+            return true;
+        }
+        return false;
+    }
 }
