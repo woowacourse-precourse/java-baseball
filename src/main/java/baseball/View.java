@@ -16,7 +16,6 @@ public class View {
     public int inputInt() {
         int number;
         try {
-            System.out.println("숫자를 입력해주세요 : ");
             number = Integer.parseInt(Console.readLine());
             return number;
         } catch (IllegalArgumentException e) {
