@@ -30,20 +30,18 @@ public class Application {
     }
 
     public static void validateRestartNumber(String restartNumber) {
-        List<String> restartList = stringToStringList(restartNumber);
         validateDigit(restartNumber);
         validateSize(restartNumber, 1);
         validateRange(restartNumber, "^[1-2]*$");
     }
 
     public static List<Integer> validateUserNumber(String userNumbers) {
-        List<String> numberList = stringToStringList(userNumbers);
         validateDigit(userNumbers);
         validateSize(userNumbers, 3);
         validateRange(userNumbers, "^[1-9]*$");
         validateDuplication(userNumbers);
 
-        return numberList.stream().map(Integer::parseInt).collect(Collectors.toList());
+        return stringToIntegerList(userNumbers);
     }
 
     private static void validateRange(String numbers, String regex) {
@@ -84,9 +82,9 @@ public class Application {
         }
     }
 
-    private static List<String> stringToStringList(String numbers) {
+    private static List<Integer> stringToIntegerList(String numbers) {
         String[] arr = numbers.split("");
-        return Arrays.asList(arr);
+        return Arrays.stream(arr).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public static List<Integer> createComputerNumberList() {
