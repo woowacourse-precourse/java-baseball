@@ -25,9 +25,15 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             restartNumber = Console.readLine();
+            validateRestartNumber(restartNumber);
         } while (restartNumber.equals("1"));
+    }
 
-
+    public static void validateRestartNumber(String restartNumber) {
+        List<String> restartList = stringToStringList(restartNumber);
+        validateDigit(restartNumber);
+        validateSize(restartNumber, 1);
+        validateRange(restartNumber, "^[1-2]*$");
     }
 
     public static List<Integer> validateUserNumber(String userNumbers) {
