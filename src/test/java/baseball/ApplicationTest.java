@@ -60,26 +60,17 @@ class ApplicationTest extends NsTest {
     @DisplayName("1을 입력하면 게임 재시작 , 2는 종료")
     void restartOrEnd() throws Exception {
         String data = setSystemIn_1_or_2();
-
-        Application app= new Application();
-        Method endGame = app.getClass().getDeclaredMethod("endGame");
-        endGame.setAccessible(true);
+        boolean result = getResultEndGame();
 
         if(data.equals("1")){
-            Assertions.assertThat(endGame.invoke(app)).isEqualTo(false);
+            Assertions.assertThat(result).isEqualTo(false);
         }
         if(data.equals("2")){
-            Assertions.assertThat(endGame.invoke(app)).isEqualTo(true);
+            Assertions.assertThat(result).isEqualTo(true);
         }
 
     }
 
-    private String setSystemIn_1_or_2() {
-        String data = String.valueOf(Randoms.pickNumberInList(List.of(1,2)));
-        InputStream in = new ByteArrayInputStream(data.getBytes());
-        System.setIn(in);
-        return data;
-    }
 
     @Test
     @DisplayName("게임 재시작 혹은 종료시 입력값 검증")
@@ -136,5 +127,20 @@ class ApplicationTest extends NsTest {
         Method inputValidate = app.getClass().getDeclaredMethod("inputValidate", List.class);
         inputValidate.setAccessible(true);
         return inputValidate;
+    }
+
+
+    private boolean getResultEndGame() throws Exception {
+        Application app= new Application();
+        Method endGame = app.getClass().getDeclaredMethod("endGame");
+        endGame.setAccessible(true);
+        boolean result = (boolean) endGame.invoke(app);
+        return result;
+    }
+    private String setSystemIn_1_or_2() {
+        String data = String.valueOf(Randoms.pickNumberInList(List.of(1,2)));
+        InputStream in = new ByteArrayInputStream(data.getBytes());
+        System.setIn(in);
+        return data;
     }
 }
