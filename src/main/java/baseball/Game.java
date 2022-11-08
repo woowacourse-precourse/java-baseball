@@ -14,44 +14,46 @@ public class Game {
         this.printWindow = printWindow;
         this.computer = computer;
         this.validator = validator;
-
-
     }
 
     public void gamePlay(){
         printWindow.startPrint();
         List<Integer> playerNum = new ArrayList<>();
         List<Integer> comNum = computer.getNumber();
-        int strike = 0;
 
         while (true){
+            int strike = 0;
+            int ball = 0;
             printWindow.playerTurnPrint();
             String userinput = Console.readLine();
             validator.isValidNumber(userinput);
-            int ball = 0;
 
             for (int len = comNum.size(), i=0; i<len; i++){
-                int play = userinput.charAt(i);
+                int play = userinput.charAt(i)-'0';
 
+                if (comNum.indexOf(play) == -1){
+                    ball--;
+                }
                 if (comNum.indexOf(play) != i){
                     ball++;
                 }
                 if (comNum.indexOf(play)==i){
                     strike++;
                 }
-                if (comNum.indexOf(play) == -1){
-
-                }
             }
+            System.out.println(userinput);
+            System.out.println(comNum);
             if (ball==0 && strike==0){
                 printWindow.resultNothingPrint();
                 continue;
-            }if (strike==3){
+            }
+            if (strike==3){
                 printWindow.threeStrikePrint();
                 strike =0;
-            }else {
-                printWindow.gameResult(ball,strike);
+                break;
             }
+                printWindow.gameResult(ball,strike);
+
         }
     }
 }

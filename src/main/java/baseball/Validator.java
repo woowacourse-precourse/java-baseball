@@ -29,7 +29,7 @@ public final class Validator {
     }
     public static void isRestartGame(int command) throws IllegalArgumentException{
         if (command == 1 || command ==2){
-
+            return;
         }
         throw new IllegalArgumentException();
     }
