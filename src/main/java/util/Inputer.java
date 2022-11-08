@@ -10,7 +10,7 @@ public class Inputer {
     private boolean flag;
 
     public Inputer() {
-        this.flag = false;
+        this.flag = true;
     }
 
     public List<Integer> getInput() throws IllegalArgumentException{
