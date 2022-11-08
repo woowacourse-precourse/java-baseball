@@ -20,10 +20,9 @@ public class BaseballGame {
     private List<Integer> makeInputNumList(String inputNum) {
         String[] inputStringArray = inputNum.split("");
         List<String> inputStringList = new ArrayList<>(Arrays.asList(inputStringArray));
-        List<Integer> inputNumList = inputStringList.stream().map(s->Integer.parseInt(s)).collect(Collectors.toList());
+        List<Integer> inputNumList = inputStringList.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
         return inputNumList;
     }
-
 
 
     private void makeErrorCheckingInputSize(List<Integer> inputNumArray) {
@@ -45,6 +44,7 @@ public class BaseballGame {
             }
         }
     }
+
     // inp
     private int checkBall(List<Integer> inputNumList) {
         List<Integer> checkBallNumList = new ArrayList<>();
@@ -78,32 +78,49 @@ public class BaseballGame {
             makeComputerNumList();
     }
 
-    private void showGameResult(int strikeNum, int ballNum) {
-        if (strikeNum != 0 && ballNum != 0)
-            System.out.println(ballNum + "볼" + " " + strikeNum + "스트라이크");
-        if (strikeNum == 0 && ballNum != 0)
-            System.out.println(ballNum + "볼");
-        if (strikeNum == 3 && ballNum == 3)
-            System.out.println(strikeNum + "스트라이크");
-        if (strikeNum == 0 & ballNum == 0)
-            System.out.println("낫싱");
+    private void showBallResult(int ballNum) {
+        if (ballNum < 3 && ballNum > 0)
+            System.out.print(ballNum + "볼");
     }
 
-    public void startGame(){
+    private void showStrikeResult(int strikeNum) {
+        if (strikeNum != 0)
+            System.out.print(strikeNum + "스트라이크");
+    }
+
+    private void showNothingResult(int strikeNum, int ballNum) {
+        if (strikeNum == 0 && ballNum == 0)
+            System.out.print("낫싱");
+    }
+
+    private void showSpaceResult(int strikeNum, int ballNum) {
+        if (ballNum < 3 && ballNum > 0 && strikeNum != 0)
+            System.out.print(" ");
+    }
+
+    private void showGameResult(int strikeNum, int ballNum) {
+        showBallResult(ballNum);
+        showSpaceResult(strikeNum, ballNum);
+        showStrikeResult(strikeNum);
+        showNothingResult(strikeNum, ballNum);
+        System.out.println();
+    }
+
+    public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int checkBall;
         int checkStrike;
         String receiveInput;
         List<Integer> inputNumList;
         makeComputerNumList();
-        while(true){
+        while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             receiveInput = receiveInput();
             inputNumList = makeInputNumList(receiveInput);
             makeErrorCheckingInputSize(inputNumList);
             checkBall = checkBall(inputNumList);
             checkStrike = checkStrike(inputNumList);
-            showGameResult(checkStrike,checkBall);
+            showGameResult(checkStrike, checkBall);
             selectGameRestart(checkStrike);
         }
     }
