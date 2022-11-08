@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.controller.Game;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.lang.reflect.Method;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -21,6 +26,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 재시작_input_1() throws Exception {
+        Method regameMethod = Game.class.getDeclaredMethod("ReGame");
+        regameMethod.setAccessible(true);
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThat(regameMethod.equals(true));
+    }
+
+    @Test
+    void 재시작_input_2() throws Exception {
+        Method regameMethod = Game.class.getDeclaredMethod("ReGame");
+        regameMethod.setAccessible(true);
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThat(regameMethod.equals(false));
+    }
+
+    @Test
     void 예외_테스트_input_자리수() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
@@ -33,7 +60,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_input_1to9_숫자만(){
+    void 예외_테스트_input_1to9_숫자만() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("a12"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -45,7 +72,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_input_중복숫자(){
+    void 예외_테스트_input_중복숫자() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("112"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -59,7 +86,6 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
