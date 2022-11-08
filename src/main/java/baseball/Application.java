@@ -11,6 +11,7 @@ public class Application {
         controller.addComputerNumbersForTest();
 
         while(isPlayAgain) {
+            controller.addComputerNumber();
             executeGame(controller);
 
             String response = controller.showSelectPlayGameAgain();
@@ -22,8 +23,6 @@ public class Application {
         boolean gameResult = false;
 
         while (!gameResult) {
-            controller.addComputerNumber();
-
             String gameNumber = controller.showPickThreeDigitNumber();
             gameResult = controller.showSelectNumberResult(gameNumber);
         }
