@@ -32,15 +32,15 @@ public class Calculator {
         int strikeCount = ballAndStrike.getStrikeCount();
 
         if (ballCount == 0 && strikeCount == 0){
-            return NOTHING;
+            return NOTHING + "\n";
         }
         if (ballCount != 0 && strikeCount == 0){
-            return ballCount + BALL_SUFFIX;
+            return ballCount + BALL_SUFFIX + "\n";
         }
         if (ballCount == 0 && strikeCount != 0){
-            return strikeCount + STRIKE_SUFFIX;
+            return strikeCount + STRIKE_SUFFIX + "\n";
         }
-        return ballCount + BALL_SUFFIX + " " + strikeCount + STRIKE_SUFFIX;
+        return ballCount + BALL_SUFFIX + " " + strikeCount + STRIKE_SUFFIX + "\n";
     }
 
     private void count(int userNumber){
