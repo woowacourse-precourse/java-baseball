@@ -29,10 +29,10 @@ public class Baseballgame {
         do {
             printUserInputMessage();
             check = Checkout.checkBalls(makeUserBalls(), comBalls);
-            //print(check);
+            printResult(check);
 
 
-        } while (//3스트);
+        } while (!check.isAllStrikes());
 
         }
 
@@ -71,6 +71,7 @@ public class Baseballgame {
     }
 
     private void printResult(Checkout result) {
+        System.out.println(result.getResultMessage());
 
     }
 

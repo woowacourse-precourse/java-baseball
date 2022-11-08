@@ -72,4 +72,13 @@ public class Checkout {
         System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료%n", 3);
     }
 
+    public boolean isAllStrikes() {
+        if (strike == 3) {
+            printEndMessage();
+            return true;
+        }
+        return false;
+    }
+
+
 }
