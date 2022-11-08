@@ -123,17 +123,12 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        try {
-            boolean error = gameInputException(input);
+        boolean error = gameInputException(input);
 
-            if (error) {
-                throw new IllegalArgumentException();
-            } else {
-                userGuess = guessStringToList(input);
-            }
-
-        } catch (IllegalArgumentException e) {
-
+        if (error) {
+            throw new IllegalArgumentException();
+        } else {
+            userGuess = guessStringToList(input);
         }
 
         return userGuess;
