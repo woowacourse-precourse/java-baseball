@@ -31,6 +31,13 @@ public class Application {
         if(ball==0&&strike==0) System.out.print("낫싱");
         System.out.println();
     }
+
+    public boolean restart_or_end(int status){
+        boolean answer = true;
+        if(status == 2 || status == 1)answer = false;
+        return answer;
+    }
+
     public int compare_nums(ArrayList<Integer> my_num, ArrayList<Integer> com_num) {
         int status=3;
         boolean answer = true;
