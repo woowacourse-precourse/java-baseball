@@ -1,9 +1,6 @@
 package baseball.model;
 
 import baseball.BallInputException;
-import baseball.model.BallNumber;
-import baseball.model.BallNumbers;
-import baseball.model.BaseBallHitsType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -19,7 +16,7 @@ class BallNumbersTest {
         return Stream.of(
                 Arguments.of(List.of('1', '2', '2')),
                 Arguments.of(List.of('2', '3', '1', '4')),
-                Arguments.of(List.of('1','0','9'))
+                Arguments.of(List.of('1', '0', '9'))
         );
     }
 
@@ -29,9 +26,9 @@ class BallNumbersTest {
 
         BallNumbers ballNumbers = new BallNumbers(homeRun);
 
-        assertAll(() -> assertEquals(ballNumbers.roundResult(2, BallNumber.ballNumber('1')), BaseBallHitsType.BALL.getBallRules()),
-                () -> assertEquals(ballNumbers.roundResult(2, BallNumber.ballNumber('3')), BaseBallHitsType.STRIKE.getBallRules()),
-                () -> assertEquals(ballNumbers.roundResult(0, BallNumber.ballNumber('0')), BaseBallHitsType.NOTING.getBallRules())
+        assertAll(() -> assertEquals(ballNumbers.roundResult(2, new BallNumber('1')), BaseBallHitsType.BALL.getBallJudgement()),
+                () -> assertEquals(ballNumbers.roundResult(2, new BallNumber('3')), BaseBallHitsType.STRIKE.getBallJudgement()),
+                () -> assertEquals(ballNumbers.roundResult(0, new BallNumber('0')), BaseBallHitsType.NOTING.getBallJudgement())
         );
     }
 

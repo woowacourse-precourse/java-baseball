@@ -1,28 +1,31 @@
 package baseball.model;
 
-import baseball.model.*;
-
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class BaseBallGame {
 
-    public Map<BaseBallHitsType, Integer> baseBallHitsTypeMap(BallNumbers hits, BallNumbersCreateStrategy homeRunStrategy) {
-        return BaseBallHitsType.hitsTypeMap(homeRun(homeRunStrategy),hits);
+    public Map<BaseBallHitsType, Integer> baseBallHitsTypeMap(List<Character> tempHomeRun, BallNumbers hits) {
+        EnumMap<BaseBallHitsType, Integer> hitTypeResult = new EnumMap<>(BaseBallHitsType.class);
+        List<BaseBallHitsType> baseBallTypes = ballHitTypes(homeRun(tempHomeRun), hits);
+
+        for (BaseBallHitsType hitType : baseBallTypes) {
+            hitTypeResult.put(hitType, Collections.frequency(baseBallTypes, hitType));
+        }
+
+        return hitTypeResult;
     }
 
-    private BallNumbers homeRun(BallNumbersCreateStrategy homeRunStrategy) {
-       return new BallNumbers(createChars(homeRunStrategy));
+    private List<BaseBallHitsType> ballHitTypes(BallNumbers homeRun, BallNumbers hits) {
+        List<BaseBallHitsType> baseBallResultTypes = new ArrayList<>();
+
+        for (int i = 0; i < homeRun.size(); i++) {
+            baseBallResultTypes.add(BaseBallHitsType.findBallHitType(homeRun, hits, i));
+        }
+        return baseBallResultTypes;
     }
 
-    private List<Character> createChars(BallNumbersCreateStrategy homeRunStrategy) {
-        List<Integer> ballNumbers = homeRunStrategy.createBallNumbers();
-
-        return ballNumbers.stream()
-                .map(String::valueOf)
-                .map(stringNumber -> stringNumber.codePoints().mapToObj(string -> (char) string))
-                .flatMap(Stream::distinct)
-                .collect(Collectors.toList());
+    private BallNumbers homeRun(List<Character> ballNumbers) {
+        return new BallNumbers(ballNumbers);
     }
 }

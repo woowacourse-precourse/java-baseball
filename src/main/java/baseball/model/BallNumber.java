@@ -1,33 +1,11 @@
 package baseball.model;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class BallNumber {
-    private static final int MAX = 9;
-    private static final int MIN = 1;
-    private static final Map<Character, BallNumber> BALL_NUMBER_CHARACTER_MAP = new HashMap<>();
-
-    static {
-        IntStream.range(MIN, MAX)
-                .mapToObj(String::valueOf)
-                .collect(Collectors.toList())
-                .stream()
-                .map(s -> s.codePoints().mapToObj(c -> (char) c))
-                .flatMap(Stream::sorted)
-                .forEach(ballNum -> BALL_NUMBER_CHARACTER_MAP.put(ballNum, new BallNumber(ballNum)));
-    }
-
     private final char number;
-
-    private BallNumber(char number) {
+    public BallNumber(char number) {
         this.number = number;
-    }
-
-    public static BallNumber ballNumber(char number) {
-        return BALL_NUMBER_CHARACTER_MAP.get(number);
     }
 
     @Override

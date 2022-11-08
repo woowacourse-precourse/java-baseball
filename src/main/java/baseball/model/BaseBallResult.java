@@ -6,22 +6,35 @@ import java.util.stream.Collectors;
 
 public class BaseBallResult {
 
-    public static String result(Map<BaseBallHitsType, Integer> result) {
-        String strike = strike(result);
-
-        if (strike.isBlank()) {
-            return BaseBallHitsType.NOTING.getBallResultType();
-        }
-
-        return strike;
+    public static boolean end(Map<BaseBallHitsType, Integer> hitResult) {
+        return hitResult.entrySet().stream()
+                .filter(hitEntry -> hitEntry.getKey().equals(BaseBallHitsType.STRIKE))
+                .anyMatch(strikeEntry -> strikeEntry.getKey().getBallJudgement().equals(strikeEntry.getValue()));
     }
 
-    public static String strike(Map<BaseBallHitsType, Integer> result) {
-        return result.entrySet().stream()
+    public static String hitResult(Map<BaseBallHitsType, Integer> hitTypeResult) {
+
+        if (notHit(hitTypeResult)) {
+            return BaseBallHitsType.NOTING.hitType();
+        }
+
+        return hit(hitTypeResult);
+    }
+
+    private static String hit(Map<BaseBallHitsType, Integer> hitResult) {
+
+        return hitResult.entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
-                .filter(hitResult -> hitResult.getValue() != 0 && !hitResult.getKey().equals(BaseBallHitsType.NOTING))
-                .map(strike -> strike.getValue() + strike.getKey().getBallResultType() + " ")
+                .filter(hit -> hit.getValue() != 0 && !hit.getKey().equals(BaseBallHitsType.NOTING))
+                .map(hit -> hit.getValue() + hit.getKey().hitType())
                 .collect(Collectors.joining());
     }
 
+    private static boolean notHit(Map<BaseBallHitsType, Integer> hitResult) {
+
+        return hitResult.entrySet().stream()
+                .filter(hit -> hit.getValue() != 0 && !hit.getKey().equals(BaseBallHitsType.NOTING))
+                .findAny()
+                .isEmpty();
+    }
 }

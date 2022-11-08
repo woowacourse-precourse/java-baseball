@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class HomeRunStrategy implements BallNumbersCreateStrategy {
     private static final int MAX = 3;
@@ -11,7 +13,7 @@ public class HomeRunStrategy implements BallNumbersCreateStrategy {
     private static final int RANGE_MAX = 9;
 
     @Override
-    public List<Integer> createBallNumbers() {
+    public List<Character> createBallNumbers() {
         List<Integer> result = new ArrayList<>();
 
         while (result.size() < MAX) {
@@ -19,7 +21,7 @@ public class HomeRunStrategy implements BallNumbersCreateStrategy {
             addRandom(result, random);
         }
 
-        return result;
+        return createChars(result);
     }
 
     private static void addRandom(List<Integer> result, int random) {
@@ -30,5 +32,14 @@ public class HomeRunStrategy implements BallNumbersCreateStrategy {
 
     private static boolean duplicate(List<Integer> result, int random) {
         return result.contains(random);
+    }
+
+    private List<Character> createChars(List<Integer> ballNumbers) {
+
+        return ballNumbers.stream()
+                .map(String::valueOf)
+                .map(stringNumber -> stringNumber.codePoints().mapToObj(string -> (char) string))
+                .flatMap(Stream::distinct)
+                .collect(Collectors.toList());
     }
 }

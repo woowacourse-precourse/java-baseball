@@ -26,7 +26,7 @@ public class InputParameters {
         return input.codePoints().mapToObj(i -> (char) i).collect(Collectors.toList());
     }
 
-    public BallNumbers getParameters() {
+    public BallNumbers hits() {
         return parameters;
     }
 }

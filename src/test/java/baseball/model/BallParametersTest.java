@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import baseball.model.BallNumbers;
 import org.junit.jupiter.params.ParameterizedTest;

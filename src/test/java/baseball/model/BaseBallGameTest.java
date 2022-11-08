@@ -13,10 +13,10 @@ public class BaseBallGameTest {
     @Test
     void baseBallHitsTypeMap() {
         BallNumbers hits = new BallNumbers(List.of('1', '3', '4'));
-        BaseBallGame baseBallGame = new BaseBallGame();
         TestCreateStrategy testCreateStrategy = new TestCreateStrategy();
-
-        Map<BaseBallHitsType, Integer> baseBallHitsTypeMap = baseBallGame.baseBallHitsTypeMap(hits, testCreateStrategy);
+        List<Character> ballNumbers = testCreateStrategy.createBallNumbers();
+        BaseBallGame baseBallGame = new BaseBallGame();
+        Map<BaseBallHitsType, Integer> baseBallHitsTypeMap = baseBallGame.baseBallHitsTypeMap(ballNumbers,hits);
 
         assertAll(() -> assertEquals(baseBallHitsTypeMap.get(BaseBallHitsType.STRIKE), 1),
                 () -> assertEquals(baseBallHitsTypeMap.get(BaseBallHitsType.BALL), 1),

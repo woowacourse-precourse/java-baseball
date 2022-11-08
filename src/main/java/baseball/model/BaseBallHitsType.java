@@ -3,52 +3,32 @@ package baseball.model;
 import java.util.*;
 
 public enum BaseBallHitsType {
-    BALL("볼", 1),
-    STRIKE("스트라이크", 0),
-    NOTING("낫싱", -1);
+    BALL("볼 ", 1),
+    STRIKE("스트라이크 ", 3),
+    NOTING("낫싱 ", -1);
 
     private final String ballResultType;
 
-    private final Integer ballRules;
+    private final Integer ballJudgement;
 
-    BaseBallHitsType(String ballResultType, Integer ballRules) {
+    BaseBallHitsType(String ballResultType, Integer ballJudgement) {
         this.ballResultType = ballResultType;
-        this.ballRules = ballRules;
-    }
-
-    public static Map<BaseBallHitsType, Integer> hitsTypeMap(BallNumbers homeRun, BallNumbers hits) {
-        EnumMap<BaseBallHitsType, Integer> countResult = new EnumMap<>(BaseBallHitsType.class);
-        List<BaseBallHitsType> baseBallTypes = ballHitTypes(homeRun, hits);
-
-        for (BaseBallHitsType hitType : baseBallTypes) {
-            countResult.put(hitType, Collections.frequency(baseBallTypes, hitType));
-        }
-
-        return countResult;
-    }
-
-    private static List<BaseBallHitsType> ballHitTypes(BallNumbers homeRun, BallNumbers hits) {
-        List<BaseBallHitsType> baseBallResultTypes = new ArrayList<>();
-
-        for (int i = 0; i < homeRun.size(); i++) {
-            baseBallResultTypes.add(BaseBallHitsType.findBallHitType(homeRun, hits, i));
-        }
-        return baseBallResultTypes;
+        this.ballJudgement = ballJudgement;
     }
 
     public static BaseBallHitsType findBallHitType(BallNumbers homeRun, BallNumbers hits, int round) {
         return Arrays.stream(values())
-                .filter(baseBallType -> baseBallType.ballRules == homeRun.roundResult(round, hits.roundNumber(round)))
+                .filter(baseBallType -> baseBallType.getBallJudgement() == homeRun.roundResult(round, hits.roundNumber(round)))
                 .findAny()
                 .orElseThrow();
     }
 
-    public String getBallResultType() {
+    public String hitType() {
         return ballResultType;
     }
 
-    public Integer getBallRules() {
-        return ballRules;
+    public Integer getBallJudgement() {
+        return ballJudgement;
     }
 
 }
