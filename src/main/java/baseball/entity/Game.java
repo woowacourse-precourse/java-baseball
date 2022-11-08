@@ -1,5 +1,7 @@
 package baseball.entity;
 
+import baseball.constant.Message;
+
 public class Game {
 
     // 스트라이크 개수, 볼 개수를 관리하는 객체 Score
@@ -15,7 +17,7 @@ public class Game {
     private int GAME_STATE = START;
 
     // init(): Computer측 랜덤 숫자 생성
-    public void init() {
+    public void init(){
         computer.createRandomNumber();
     }
 
@@ -28,7 +30,11 @@ public class Game {
         // 게임 진행 상태 갱신
         // 결과 문구 출력
 
+
     // input(): 유저에게 입력 받기
+    private void input() {
+        player.enterInput();
+    }
 
     // updateScore(): 볼 개수와 스트라이크 개수
 }
