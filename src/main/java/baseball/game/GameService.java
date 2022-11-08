@@ -4,10 +4,29 @@ import baseball.entity.Computer;
 import baseball.entity.User;
 import baseball.number.NumberJudgment;
 
+import java.util.List;
+
 public class GameService {
     private Computer computer = new Computer();
     private User user = new User();
     private NumberJudgment numberJudgment = new NumberJudgment();
+
+    private int proceed() {
+        List<Integer> userNumberList = user.getUserNumberList();
+        List<Integer> computerNumberList = computer.getComputerNumberList();
+
+        int strikeCount = 0;
+        int sameNumberCount = numberJudgment.getSameNumberCount(computerNumberList, userNumberList);
+
+        if (sameNumberCount == 0) {
+            printHint();
+        } else {
+            strikeCount = numberJudgment.getSameIndexCount(userNumberList);
+            int ballCount = sameNumberCount - strikeCount;
+            printHint(ballCount, strikeCount);
+        }
+        return strikeCount;
+    }
 
     private void printHint() {
         System.out.println(Hint.NOTHING.getName());
