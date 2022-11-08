@@ -34,9 +34,13 @@ public class Game {
     }
 
     private void savePlayerNumberToReferee(Player player, Referee referee) {
+        savePlayerNumber(player);
+        referee.receivePlayerNumbers(player.getNumbers());
+    }
+
+    private void savePlayerNumber(Player player) {
         String pushNumber = pushBaseballNumber();
         player.sayNumbers(stringNumberToList(pushNumber));
-        referee.receivePlayerNumbers(player.getNumbers());
     }
 
     private String pushBaseballNumber() {
