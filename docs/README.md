@@ -62,3 +62,8 @@ Console.readLine();
 		1. 유저의 입력 받는 화면을 보여주고, 입력 받는다.
 		2. 유저가 맞춘 결과를 보여준다.
 		3. allstike라면 더할지 말지 화면을 보여주고 입력 받는다.
+
+### 입력 예외 처리
+- 1. 받은 숫자 길이가 3이 맞는지(checkNumbersLength)
+- 2. 중복되는 숫자가 있는지(checkDuplicateNumbers)
+- 3. 중간에 숫자외 문자가 들어와있는지(checkOnlyNumbers)
