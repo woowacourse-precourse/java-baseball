@@ -45,14 +45,14 @@ public class Game {
 
     public boolean checkRestartGame() {
         System.out.println(SystemMessage.GAME_CONTINUE_MESSAGE);
-        int inputNumber = Integer.parseInt(Console.readLine());
+        String inputNumber = Console.readLine();
         if (restartGameException.isRestartNumber(inputNumber)) {
             throw new IllegalArgumentException();
         }
 //        if (inputNumber == 1) {
 //            return true;
 //        }
-        if (inputNumber == GAME_END) {
+        if (Integer.parseInt(inputNumber) == GAME_END) {
             isRestart = false;
         }
         return isRestart;
