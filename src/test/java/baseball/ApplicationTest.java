@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,6 +29,20 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 컴퓨터랜덤값_입력값_매치_결과() {
+        List<Integer> result = Application.matchResult("123", "132");
+        assertThat(result).containsExactly(1, 2);
+        result = Application.matchResult("479", "149");
+        assertThat(result).containsExactly(1, 1);
+        result = Application.matchResult("745", "123");
+        assertThat(result).containsExactly(0, 0);
+        result = Application.matchResult("912", "291");
+        assertThat(result).containsExactly(0, 3);
+        result = Application.matchResult("456", "513");
+        assertThat(result).containsExactly(0, 1);
     }
 
     @Test

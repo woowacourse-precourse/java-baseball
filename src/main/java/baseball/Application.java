@@ -1,8 +1,27 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
+    }
+
+    // 컴퓨터가 생성한 랜덤값과 사용자가 입력한 값을 비교하여 List의 첫 번째 index에는 스트라이크를, 두 번째 index에는 볼의 개수
+    public static List<Integer> matchResult(String computerRandomNumber, String inputNumber) {
+        int[] strikeBall = new int[2];
+        for (int compIdx = 0; compIdx <= 2; ++compIdx) {
+            for (int inputIdx = 0; inputIdx <= 2; ++inputIdx) {
+                addStrikeBall(computerRandomNumber.charAt(compIdx), inputNumber.charAt(inputIdx),
+                        compIdx, inputIdx, strikeBall);
+            }
+        }
+        List<Integer> ret = new ArrayList<>();
+        for (int x : strikeBall) {
+            ret.add(x);
+        }
+        return ret;
     }
 
     public static void addStrikeBall(char computerRandomNumberElement, char inputNumberElement,
