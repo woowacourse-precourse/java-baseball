@@ -24,7 +24,8 @@ public class BaseballGame {
             User userService = new User();
             //User 입력
             System.out.println(USER_INPUT_MESSAGE);
-            String user = userService.userInput(); // ->List<Integer> 형태로 바꿔야함
+            String userStr = userService.userInput();
+            List<Integer> userNumber = userService.getUserNumber(userStr);
 
             //Computer User 비교
 
