@@ -31,7 +31,10 @@ public class Controller {
         System.out.println(sysNum[0] + "" + sysNum[1] + "" + sysNum[2]);
 
         int strike = 0;
-        while (strike != 3) {
+
+        do {
+            System.out.print("숫자 야구 게임을 시작합니다.");
+        } while (strike != 3) ; {
             int userNum [] = getUserInput();
             int[] scoreTable = baseballSystem.score(sysNum, userNum, NUM_LEN);
             user.UserOutput(scoreTable[0], scoreTable[1]);
