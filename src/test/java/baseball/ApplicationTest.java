@@ -10,7 +10,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -38,11 +37,20 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
+    // ----- ComputerUtilTest -----
+
     @Test
     void computerNumbers_가_서로_다른_수로_구성() {
         List<Integer> computerNumbers = ComputerUtil.getComputerNumbers();
 
         assertThat(computerNumbers).doesNotHaveDuplicates();
+    }
+
+    @RepeatedTest(100)
+    void pickNumberInRange_메서드로_1과9_사이_값을_반환() {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+        assertThat(randomNumber).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
     }
 
     @Test
@@ -51,6 +59,8 @@ class ApplicationTest extends NsTest {
 
         assertThat(computerNumbers.size()).isEqualTo(3);
     }
+
+    // ----- UserUtilTest -----
 
     @Test
     void 정수가_아닌_입력_주어지면_예외발생() {
@@ -66,12 +76,5 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("101"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
-    }
-
-    @RepeatedTest(100)
-    void pickNumberInRange_메서드로_1과9_사이_값을_반환() {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-        assertThat(randomNumber).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
     }
 }
