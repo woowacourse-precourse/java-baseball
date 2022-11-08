@@ -1,46 +1,42 @@
 package controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import domain.BaseballNumbers;
 import domain.Command;
-import domain.Game;
 import domain.RoundResult;
 import view.GameView;
 
 public class GameController {
-    private Game game;
+    private BaseballNumbers computerNumbers;
+    private BaseballNumbers userNumbers;
 
-    public GameController(){
-        this.game = new Game();
-    }
+    public GameController(){}
 
     public void startGame(){
         GameView.printStartMessage();
         do{
-            game.createComputerNumbers();
+            createComputerNumbers();
             runRound();
             GameView.printEndMessage();
-            Command userCommand = inputUserCommand();
-            if(userCommand.isExit()){
-                break;
-            }
-        }while(true);
+        }while(inputUserCommand().isRestart());
     }
 
     private void runRound(){
+        RoundResult roundResult = null;
         do{
             GameView.printInputMessage();
-            game.setUserNumbers(inputUserNumbers());
-            RoundResult roundResult = game.getRoundResult();
+            roundResult = computerNumbers.compareTo(inputUserNumbers());
             GameView.printRoundResultMessage(roundResult);
-            if(roundResult.isWin()){
-                GameView.printWinMessage();
-                break;
-            }
-        }while(true);
+        }while(!roundResult.isWin());
+        GameView.printWinMessage();
     }
 
-    private String inputUserNumbers(){
-        return Console.readLine();
+    private void createComputerNumbers(){
+        this.computerNumbers = BaseballNumbers.getComputerNumbers();
+    }
+
+    private BaseballNumbers inputUserNumbers(){
+        return BaseballNumbers.getUserNumbers(Console.readLine());
     }
 
     public static Command inputUserCommand(){
