@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    private static final String EMPTY_SPLIT = "";
     private static final String INVALID_INPUT_TYPE_MESSAGE = "숫자만 입력이 가능합니다.";
 
     public Balls generatePlayerBalls(String inputValue) {
@@ -12,7 +13,7 @@ public class Player {
 
     private List<Ball> convertInputToBallList(String playerInput) {
         validateParseStringToInteger(playerInput);
-        String[] inputSplits = playerInput.split("");
+        String[] inputSplits = playerInput.split(EMPTY_SPLIT);
 
         List<Ball> playerValues = new ArrayList<>();
         for (String inputSplit : inputSplits) {
