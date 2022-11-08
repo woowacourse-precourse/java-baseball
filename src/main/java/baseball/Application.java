@@ -22,7 +22,7 @@ public class Application {
         do {
             playerGuess = Player.guessAnswerOfGame();
 
-            List<Integer> ballStrikeCnt = game.getBallStrikeCnt(playerGuess);
+            List<Integer> ballStrikeCnt = game.getBallStrikeResult(playerGuess);
             ball = ballStrikeCnt.get(BALL_INDEX);
             strike = ballStrikeCnt.get(STRIKE_INDEX);
 

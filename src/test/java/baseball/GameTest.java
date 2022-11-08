@@ -74,7 +74,7 @@ public class GameTest {
         );
 
         List<List<Integer>> realOutput = playerInput.stream()
-                .map(input -> game.getBallStrikeCnt(input))
+                .map(input -> game.getBallStrikeResult(input))
                 .collect(Collectors.toList());
 
         assertThat(expectedOutput).isEqualTo(realOutput);

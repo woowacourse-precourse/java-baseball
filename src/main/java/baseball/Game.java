@@ -30,7 +30,7 @@ public class Game {
         return selectedNums;
     }
 
-    public List<Integer> getBallStrikeCnt(List<Integer> playerGuess){
+    public List<Integer> getBallStrikeResult(List<Integer> playerGuess){
         int strike = countStrike(playerGuess);
         int ball = countNumbersContainedInAnswer(playerGuess) - strike;
 
