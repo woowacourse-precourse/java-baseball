@@ -14,14 +14,14 @@ public class GameRuleDetail implements GameRule {
      * @param answer
      */
     @Override
-    public void processComparing(String answer) {
+    public void playByGameRule(String answer) {
         do {
             GameFormatter.gameInputMessage();
             String player = Console.readLine();
             validateLength(player);
             validateNumericValue(player);
             validateUniqueNumber(player);
-            boolean hasHit = compareByRule(answer, player);
+            boolean hasHit = isStopCondition(answer, player);
 
             if (hasHit) {
                 break;
@@ -30,7 +30,7 @@ public class GameRuleDetail implements GameRule {
     }
 
     @Override
-    public boolean compareByRule(String answer, String player) {
+    public boolean isStopCondition(String answer, String player) {
         int strike = getStrike(answer, player);
         int ball = getBall(answer, player);
         boolean isHit = strike == answer.length();

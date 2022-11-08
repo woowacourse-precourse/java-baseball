@@ -26,7 +26,7 @@ public class Application {
             GameStatusUtil.validateExceptionStatus(status);
             GameFormatter.gameStartMessage();
             String answer = initComputerAnswer();
-            gameRule.processComparing(answer);
+            gameRule.playByGameRule(answer);
             GameFormatter.gameEndMessage();
             status = GameStatusUtil.setGameStatus(Console.readLine());
         } while (true);
