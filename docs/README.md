@@ -15,8 +15,8 @@
 
 사용자로부터 숫자를 입력받아 검사하는 기능
 
-- [ ] 입력받은 숫자는 3자리이어야 한다.
-- [ ] 사용자가 잘못된 값을 입력할 경우, `IllegalArgumentException`을 발생시켜야 한다.
+- [x] 입력받은 숫자는 3자리이어야 한다.
+- [x] 사용자가 잘못된 값을 입력할 경우, `IllegalArgumentException`을 발생시켜야 한다.
 
 
 ### feat_3. compareInputAndRandomNumber()
