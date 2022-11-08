@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.test.Assertions;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -55,6 +56,14 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("102"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+    @Test
+    void 컴퓨터_유저_비교_테스트() {
+        List<Integer> user = List.of(1,2,3);
+        List<Integer> computer = List.of(1,2,3);
+        List<Integer> user2 = List.of(1,2,4);
+        assertThat(Application.compareComputerAndUser(computer, user)).isFalse();
+        assertThat(Application.compareComputerAndUser(computer, user2)).isTrue();
     }
     @Test
     void 예외_테스트() {
