@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -8,24 +8,20 @@ import java.util.List;
 public class Answer {
     private List<Integer> answer;
 
-    protected Answer(){
-        this.answer = generateRandomAnswer();
+    public List<Integer> getAnswer(){
+        return this.answer;
     }
 
-    protected List<Integer> getAnswer(){
-        return answer;
-    }
-
-    protected List<Integer> generateRandomAnswer(){
+    public void generateRandomAnswer(){
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             addIfUnique(answer, randomNumber);
         }
-        return answer;
+        this.answer = answer;
     }
 
-    protected void addIfUnique(List<Integer> answer, int randomNumber){
+    private void addIfUnique(List<Integer> answer, int randomNumber){
         if (!answer.contains(randomNumber)) {
             answer.add(randomNumber);
         }

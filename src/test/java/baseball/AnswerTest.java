@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.Answer;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,7 @@ class AnswerTest extends NsTest {
     @Test
     void 랜덤_정답생성_데이터형_테스트(){
         Answer answer = new Answer();
+        answer.generateRandomAnswer();
         List<Integer> myAnswer = answer.getAnswer();
 
         boolean isOnlyInteger = false;
@@ -27,6 +29,7 @@ class AnswerTest extends NsTest {
     @Test
     void 랜덤_정답생성_중복_테스트(){
         Answer answer = new Answer();
+        answer.generateRandomAnswer();
         List<Integer> myAnswer = answer.getAnswer();
 
         int filteredSize = myAnswer.stream()

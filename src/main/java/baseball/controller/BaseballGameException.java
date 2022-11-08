@@ -1,12 +1,11 @@
-package baseball;
+package baseball.controller;
 
 import java.lang.IllegalArgumentException;
 import java.util.List;
-import java.util.function.Predicate;
 
-public class Exception {
+public class BaseballGameException {
 
-    protected void chkUserGuessInputValid(List<Integer> input){
+    public void chkUserGuessInputValid(List<Integer> input){
         if(input.size() != 3) {
             throw new IllegalArgumentException("세자리 수를 입력하세요.");
         }
@@ -28,7 +27,7 @@ public class Exception {
         }
     }
 
-    protected void chkUserTerminateInputValid(Integer input){
+    public void chkUserTerminateInputValid(Integer input){
         if(!(input.equals(1) || input.equals(2))){
             throw new IllegalArgumentException("1,2 가 아닌 수를 입력하였습니다.");
         }

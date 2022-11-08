@@ -1,7 +1,9 @@
 package baseball;
 
+import baseball.model.StrikeBall;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.w3c.dom.css.Counter;
 
 import java.util.List;
 import java.util.Map;
@@ -16,10 +18,12 @@ public class StrikeBallTest extends NsTest{
         List<Integer> input = List.of(1,2,3);
         List<Integer> answer = List.of(4,5,6);
 
-        Counter counter = new Counter(input, answer);
-        Map<String, Integer> countBall = counter.countBall();
+        StrikeBall strikeBall = new StrikeBall(input, answer);
+        strikeBall.countBall();
+        strikeBall.countStrike();
+        int ballCount = strikeBall.getBallCount();
 
-        assertThat(countBall.get("ball")).isEqualTo(0);
+        assertThat(ballCount).isEqualTo(0);
     }
 
     @Test
@@ -27,10 +31,12 @@ public class StrikeBallTest extends NsTest{
         List<Integer> input = List.of(1,2,3);
         List<Integer> answer = List.of(3,5,6);
 
-        Counter counter = new Counter(input, answer);
-        Map<String, Integer> countBall = counter.countBall();
+        StrikeBall strikeBall = new StrikeBall(input, answer);
+        strikeBall.countBall();
+        strikeBall.countStrike();
+        int ballCount = strikeBall.getBallCount();
 
-        assertThat(countBall.get("ball")).isEqualTo(1);
+        assertThat(ballCount).isEqualTo(1);
     }
 
     @Test
@@ -38,10 +44,12 @@ public class StrikeBallTest extends NsTest{
         List<Integer> input = List.of(1,2,3);
         List<Integer> answer = List.of(3,5,2);
 
-        Counter counter = new Counter(input, answer);
-        Map<String, Integer> countBall = counter.countBall();
+        StrikeBall strikeBall = new StrikeBall(input, answer);
+        strikeBall.countBall();
+        strikeBall.countStrike();
+        int ballCount = strikeBall.getBallCount();
 
-        assertThat(countBall.get("ball")).isEqualTo(2);
+        assertThat(ballCount).isEqualTo(2);
     }
 
     @Test
@@ -49,10 +57,12 @@ public class StrikeBallTest extends NsTest{
         List<Integer> input = List.of(1,2,3);
         List<Integer> answer = List.of(3,1,2);
 
-        Counter counter = new Counter(input, answer);
-        Map<String, Integer> countBall = counter.countBall();
+        StrikeBall strikeBall = new StrikeBall(input, answer);
+        strikeBall.countBall();
+        strikeBall.countStrike();
+        int ballCount = strikeBall.getBallCount();
 
-        assertThat(countBall.get("ball")).isEqualTo(3);
+        assertThat(ballCount).isEqualTo(3);
     }
 
     @Test
@@ -60,10 +70,12 @@ public class StrikeBallTest extends NsTest{
         List<Integer> input = List.of(1,2,3);
         List<Integer> answer = List.of(3,1,2);
 
-        Counter counter = new Counter(input, answer);
-        Map<String, Integer> countStrike = counter.countStrike();
+        StrikeBall strikeBall = new StrikeBall(input, answer);
+        strikeBall.countBall();
+        strikeBall.countStrike();
+        int strikeCount = strikeBall.getStrikeCount();
 
-        assertThat(countStrike.get("strike")).isEqualTo(0);
+        assertThat(strikeCount).isEqualTo(0);
     }
 
     @Test
@@ -71,10 +83,12 @@ public class StrikeBallTest extends NsTest{
         List<Integer> input = List.of(1,2,3);
         List<Integer> answer = List.of(1,5,2);
 
-        Counter counter = new Counter(input, answer);
-        Map<String, Integer> countStrike = counter.countStrike();
+        StrikeBall strikeBall = new StrikeBall(input, answer);
+        strikeBall.countBall();
+        strikeBall.countStrike();
+        int strikeCount = strikeBall.getStrikeCount();
 
-        assertThat(countStrike.get("strike")).isEqualTo(1);
+        assertThat(strikeCount).isEqualTo(1);
     }
 
     @Test
@@ -82,10 +96,12 @@ public class StrikeBallTest extends NsTest{
         List<Integer> input = List.of(1,2,3);
         List<Integer> answer = List.of(1,2,5);
 
-        Counter counter = new Counter(input, answer);
-        Map<String, Integer> countStrike = counter.countStrike();
+        StrikeBall strikeBall = new StrikeBall(input, answer);
+        strikeBall.countBall();
+        strikeBall.countStrike();
+        int strikeCount = strikeBall.getStrikeCount();
 
-        assertThat(countStrike.get("strike")).isEqualTo(2);
+        assertThat(strikeCount).isEqualTo(2);
     }
 
     @Test
@@ -93,10 +109,12 @@ public class StrikeBallTest extends NsTest{
         List<Integer> input = List.of(1,2,3);
         List<Integer> answer = List.of(1,2,3);
 
-        Counter counter = new Counter(input, answer);
-        Map<String, Integer> countStrike = counter.countStrike();
+        StrikeBall strikeBall = new StrikeBall(input, answer);
+        strikeBall.countBall();
+        strikeBall.countStrike();
+        int strikeCount = strikeBall.getStrikeCount();
 
-        assertThat(countStrike.get("strike")).isEqualTo(3);
+        assertThat(strikeCount).isEqualTo(3);
     }
 
     @Test
@@ -104,14 +122,19 @@ public class StrikeBallTest extends NsTest{
         List<Integer> input = List.of(1,2,3);
         List<Integer> answer = List.of(1,5,2);
 
-        Counter counter = new Counter(input, answer);
-        Map<String, Integer> countBall = counter.countBall();
-        assertThat(countBall.get("ball")).isEqualTo(2);
 
-        Map<String, Integer> countStrike = counter.countStrike();
+        StrikeBall strikeBall = new StrikeBall(input, answer);
+        strikeBall.countBall();
+        int ballCount1 = strikeBall.getBallCount();
 
-        assertThat(countStrike.get("strike")).isEqualTo(1);
-        assertThat(countStrike.get("ball")).isEqualTo(1);
+        strikeBall.countStrike();
+        int ballCount2 = strikeBall.getBallCount();
+        int strikeCount = strikeBall.getStrikeCount();
+
+        assertThat(ballCount1).isEqualTo(2);
+
+        assertThat(ballCount2).isEqualTo(1);
+        assertThat(strikeCount).isEqualTo(1);
     }
 
 

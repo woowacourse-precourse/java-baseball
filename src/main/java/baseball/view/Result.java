@@ -1,16 +1,15 @@
-package baseball;
+package baseball.view;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Result {
-    private Map<String, Integer> count = new HashMap<>();
+    private Map<String, Integer> count;
 
-    protected Result(Map<String, Integer> count){
+    public Result(Map<String, Integer> count){
         this.count = count;
     }
 
-    protected boolean computeResult(){
+    public boolean showResult(){
         Integer strike = count.get("strike");
         Integer ball = count.get("ball");
         if(strike.equals(3)){

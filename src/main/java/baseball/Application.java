@@ -1,8 +1,10 @@
 package baseball;
 
+import baseball.controller.GameSystem;
+
 public class Application {
     public static void main(String[] args) {
-        Game game = new Game();
-        game.GameProcess();
+        GameSystem gameSystem = new GameSystem();
+        gameSystem.GameProcess();
     }
 }
