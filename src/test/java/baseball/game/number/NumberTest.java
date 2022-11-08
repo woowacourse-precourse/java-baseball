@@ -15,9 +15,11 @@ class NumberTest {
     @BeforeEach
     public void setUp() {
         digitNumbers = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        while(digitNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            digitNumbers.add(randomNumber);
+            if (!digitNumbers.contains(randomNumber)) {
+                digitNumbers.add(randomNumber);
+            }
         }
     }
 
