@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO : 힌트가 잘 출력되는지 테스트
+        // TODO : 반복해서 3개의 숫자를 모두 맞히면 “3개의 숫자를 모두 맞히셨습니다! 게임 종료” 라는 말과 함께 종료
         List<Integer> computer = makeRandomNumberList();
         List<String> player = inputPlayerAnswerList();
         String hint = checkAnswerAndGiveHint(computer, player);
@@ -52,7 +52,15 @@ public class Application {
         int nothing = (3 - strike - ball);
 
         if (nothing != 3){
+            if (ball == 0) {
+                return (strike + "스트라이크");
+            }
+            else if (strike == 0) {
+                return (ball + "볼 ");
+            }
+            else {
             return (ball + "볼 " + strike + "스트라이크");
+            }
         }
         else {
            return ("낫싱");
