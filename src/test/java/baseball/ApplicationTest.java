@@ -86,6 +86,28 @@ class ApplicationTest extends NsTest {
         assertThat(result.getStrike()).isEqualTo(0);
     }
 
+    @Test
+    void check_ball() {
+        Result result = new Result();
+        List<Integer> baseball = List.of(1,2,3);
+        List<Integer> input1 = List.of(3,1,2);
+        List<Integer> input2 = List.of(3,2,1);
+        List<Integer> input3 = List.of(2,4,5);
+        List<Integer> input4 = List.of(4,5,6);
+
+        result.countBall(baseball, input1);
+        assertThat(result.getBall()).isEqualTo(3);
+
+        result.countBall(baseball, input2);
+        assertThat(result.getBall()).isEqualTo(2);
+
+        result.countBall(baseball, input3);
+        assertThat(result.getBall()).isEqualTo(1);
+
+        result.countBall(baseball, input4);
+        assertThat(result.getBall()).isEqualTo(0);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
