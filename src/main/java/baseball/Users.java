@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Users {
     private static final int INPUT_LENGTH = 3;
@@ -25,9 +26,8 @@ public class Users {
     }
 
     private void CheckRange(String input) {
-        for (int i = 0; i < 3; i += 1) {
-            if (input.charAt(i) < '1' || input.charAt(i) > '9') throw new IllegalArgumentException();
-        }
+        String pattern = "^[1-9]*$";
+        if (!Pattern.matches(pattern, input)) throw new IllegalArgumentException();
     }
 
     private void CheckLength(String input) {
