@@ -37,18 +37,20 @@ public class Game {
         }
         System.out.println();
 
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        if (strike == Constants.NUMBER_LENGTH) {
+            System.out.println(Constants.NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 " + Constants.GAME_RESTART_NUMBER + ", 종료하려면 " + Constants.GAME_END_NUMBER
+                    + "를 입력하세요.");
 
             String restartInput = Console.readLine();
-            if (!restartInput.equals("1") && !restartInput.equals("2")) {
+            if (!restartInput.equals(Constants.GAME_RESTART_NUMBER) && !restartInput.equals(
+                    Constants.GAME_END_NUMBER)) {
                 throw new IllegalArgumentException("올바르지 않은 입력입니다.");
             }
-            if (restartInput.equals("1")) {
+            if (restartInput.equals(Constants.GAME_RESTART_NUMBER)) {
                 hitter.makeNumber();
             }
-            if (restartInput.equals("2")) {
+            if (restartInput.equals(Constants.GAME_END_NUMBER)) {
                 stopFlag = true;
             }
         }

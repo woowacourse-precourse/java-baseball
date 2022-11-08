@@ -24,8 +24,8 @@ public class Hitter {
 
     private void generateNumber() {
         Map<Integer, Integer> map = new HashMap<>();
-        while (map.keySet().size() < 3) {
-            int oneNum = Randoms.pickNumberInRange(1, 9);
+        while (map.keySet().size() < Constants.NUMBER_LENGTH) {
+            int oneNum = Randoms.pickNumberInRange(Constants.NUMBER_RANGE_MIN, Constants.NUMBER_RANGE_MAX);
             if (map.containsKey(oneNum)) {
                 continue;
             }

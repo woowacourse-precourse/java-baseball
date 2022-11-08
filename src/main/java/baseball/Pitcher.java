@@ -28,7 +28,7 @@ public class Pitcher {
     }
 
     public void validateInputSize(String input) {
-        if (input.length() != 3) {
+        if (input.length() != Constants.NUMBER_LENGTH) {
             throw new IllegalArgumentException("입력 갯수가 틀립니다.");
         }
     }
@@ -45,7 +45,7 @@ public class Pitcher {
     public void validateInputUnique(String input) {
         Set<String> set = Arrays.stream(input.split(""))
                 .collect(Collectors.toSet());
-        if (set.size() < 3) {
+        if (set.size() < Constants.NUMBER_LENGTH) {
             throw new IllegalArgumentException("입력중 같은 문자가 있습니다.");
         }
     }
