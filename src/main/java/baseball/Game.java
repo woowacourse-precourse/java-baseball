@@ -46,20 +46,19 @@ public class Game {
         }
     }
 
-    public boolean replay() {
+    public boolean replay() throws IllegalArgumentException {
         String input = getUserInput();
-        if (input.length() != 1) {
-            System.out.println("INPUT ERROR!");
-            return true;
+
+        // Exception: 한자리 숫자가 아니거나, 1 or 2를 입력하지 않았을 경우
+        if (input.length() != 1 || "12".contains(input)) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요");
         }
 
-        if (input.charAt(0) == '1') {
-            return false;
-        } else if (input.charAt(0) == '2') {
-            return true;
+        if (input.charAt(0) == '2') {
+            setFinished();
         }
 
-        return true;
+        return finished;
     }
 
     private void setFinished(){
