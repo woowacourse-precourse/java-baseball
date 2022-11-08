@@ -13,15 +13,13 @@ public class Application {
 
     private static void playBall() {
         List<Integer> computer = Play.getRandomNumber();
-        boolean strikeOut = false;
-        while (!strikeOut) {
+        do {
             System.out.print(Message.PROMPT_FOR_NUMBER);
             String input = Console.readLine();
             List<Integer> user = Play.getNumberFrom(input);
             Score.SCORE.of(user, computer);
             Score.SCORE.print();
-            strikeOut = Score.SCORE.strikeOut();
-        }
+        } while (!Score.SCORE.strikeOut());
         System.out.println(Message.CONGRATULATIONS);
     }
 
