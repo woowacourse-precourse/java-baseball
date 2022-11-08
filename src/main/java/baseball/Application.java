@@ -9,6 +9,7 @@ import java.util.List;
 public class Application {
 
     public static boolean game_over = false;
+    public static boolean oneGameFinished = false;
 
     public static void makeGame(List<Integer> computer){
         computer.clear();
@@ -21,6 +22,17 @@ public class Application {
         System.out.print("숫자 야구 게임을 시작합니다.");
         System.out.println();
     }
+
+
+    public static void playGame(List<Integer> computer, List<Integer> user){
+        while(true){
+            getNumber(user);
+            judgement(computer,user);
+            System.out.println();
+            if(oneGameFinished) break;
+        }
+    }
+
 
     public static void main(String[] args) {
         List<Integer> computer = new ArrayList<>();
