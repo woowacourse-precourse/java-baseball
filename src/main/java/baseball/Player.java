@@ -3,7 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
-    private Validator validator = new Validator();
+    private Validator validator;
+
+    public Player(){
+        this.validator = new Validator();
+    }
 
     public String getNumberInput() {
         System.out.print(Message.INPUT_NUMBER.message());
