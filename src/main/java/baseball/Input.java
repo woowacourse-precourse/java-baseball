@@ -18,7 +18,7 @@ public class Input {
    * @return list of integer if input is validated.
    */
   public static List<Integer> answer() {
-    System.out.print("숫자를 입력해주세요: ");
+    System.out.print("숫자를 입력해주세요 : ");
     String userInput = readLine();
 
     if (!validateAnswerFormat(userInput)) {
@@ -36,7 +36,7 @@ public class Input {
    * @exception IllegalArgumentException if input is not in 1 or 2.
    */
   public static boolean restart() {
-    System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     String input = readLine();
 
     if (input.equals("1")) {
