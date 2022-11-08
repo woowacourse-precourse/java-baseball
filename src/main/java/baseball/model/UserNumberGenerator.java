@@ -20,4 +20,10 @@ public class UserNumberGenerator {
         throw new IllegalArgumentException();
 
     }
+
+    private static boolean isValid(List<Integer> numbers) {
+        return numbers.size() == ValidateNumber.NUMBER_LENGTH.getNumber()
+                && NumberValidator.isValidRange(numbers)
+                && NumberValidator.checkIfIsNotDuplicatedNum(numbers);
+    }
 }
