@@ -9,9 +9,9 @@ import java.util.Set;
 
 public class Computer {
 
-    private static final Integer MIN_VALUE = 1;
-    private static final Integer MAX_VALUE = 9;
-    private static final Integer MAX_LENGTH = 3;
+    private static final int MIN_VALUE = 1;
+    private static final int MAX_VALUE = 9;
+    private static final int MAX_LENGTH = 3;
 
     private List<Integer> answer;
 
@@ -21,7 +21,7 @@ public class Computer {
 
     public void reset() {
         Set<Integer> answerSet = new HashSet<>();
-        while (answerSet.size() <= 2) {
+        while (answerSet.size() < MAX_LENGTH) {
             int nextAnswer = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
             answerSet.add(nextAnswer);
         }
@@ -46,7 +46,7 @@ public class Computer {
 
     private void validateAnswer(List<Integer> answer) {
         if (answer.size() != MAX_LENGTH) {
-            throw new IllegalArgumentException("3자리 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException("입력 가능한 최대 자릿수를 초과했습니다.");
         }
 
         Set<Integer> answerSet = new HashSet<>(answer);
@@ -56,7 +56,7 @@ public class Computer {
 
         for (Integer ans : answer) {
             if (ans < MIN_VALUE || ans > MAX_VALUE) {
-                throw new IllegalArgumentException("각 자리수는 1부터 9까지의 숫자만 입력 가능합니다.");
+                throw new IllegalArgumentException("각 자리수의 입력 가능한 값 범위를 벗어났습니다.");
             }
         }
     }
