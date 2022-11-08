@@ -18,14 +18,20 @@ public class AnswerNumber {
     }
 
     public void RandomNumber(){
-            String [] number = new String[3];
-            for(int i=0; i<number.length; i++){
-                String num = String.valueOf(pickNumberInRange(1,9));
-                if(!num.equals(number[i])) {
-                    number[i] = num;
-                    answerNumber.add(num);
-                }
+        HashSet<String> numbers = new HashSet<>();
+        while (numbers.size() < 4){
+            String num = String.valueOf(pickNumberInRange(1,9));
+            numbers.add(num);
+            if(restartNumberValidator()){
+                answerNumberList = new ArrayList<>(numbers);
             }
-            saveAnswerNumber.add(answerNumber.toString());
+        }
+    }
+
+    public boolean restartNumberValidator(){
+        String numbers = answerNumberList.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        return saveAnswerNumber.contains(numbers);
     }
 }
