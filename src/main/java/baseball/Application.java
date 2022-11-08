@@ -48,6 +48,7 @@ public class Application {
             allStrike = !compareBall();
         }
     }
+
     static void readUser() {
         String strArray[];
 
@@ -55,16 +56,28 @@ public class Application {
         setUser(strArray);
     }
 
-    static boolean playNewGame() {
-    }
-
-
-
     static String[] getUser() {
+        System.out.print("숫자를 입력해 주세요 : ");
+        String readStr = Console.readLine();
+        System.out.println(readStr);
+        String str[] = readStr.split("");
+        return str;
     }
 
     static void setUser(String str[]) throws IllegalArgumentException {
+        if (str.length != 3) {
+            System.out.println("Illegal Argument Exception");
+            throw new IllegalArgumentException();
+        }
+        user.clear();
+        for (int i = 0; i < 3; i++) {
+            user.add(Integer.parseInt(str[i]));
+        }
     }
+
+    static boolean playNewGame() {
+    }
+
 
     static boolean compareBall() {
     }
