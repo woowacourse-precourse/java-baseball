@@ -2,20 +2,16 @@ package baseball.Game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-
 public class Number {
-    public Number() {
+    final static int NUM_LEN = 3;
 
-    }
-    public int[] getRandomNum(final int len, final int MIN_NUM, final int MAX_NUM) {
-        int [] arrNum = new int[2];
+    public static int [] getRandomNum(final int len, final int MIN_NUM, final int MAX_NUM) {
+        int[] num = new int[NUM_LEN];
 
         for (int i = 0; i < len; i++){
-            arrNum[i] = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
+            num[i] = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
         }
-
-        return arrNum;
+        return num;
     }
 
 }
