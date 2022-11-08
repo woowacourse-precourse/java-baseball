@@ -10,21 +10,130 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void 게임종료_후_재시작() {
+    void should_Success_When_GameRestart() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    run("123", "1", "589", "2");
+                    assertThat(output()).contains("3스트라이크", "3스트라이크", "게임 종료");
                 },
-                1, 3, 5, 5, 8, 9
+                1, 2, 3, 5, 8, 9
         );
     }
 
     @Test
-    void 예외_테스트() {
+    void should_PrintResult_When_BallStrike() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("142", "321", "123", "2");
+                    assertThat(output()).contains("1볼 1스트라이크", "2볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
+    @Test
+    void should_PrintResult_When_OnlyBall() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("312", "345", "315", "123", "2");
+                    assertThat(output()).contains("3볼", "1볼", "2볼", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
+    @Test
+    void should_PrintResult_When_OnlyStrike() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("145", "128", "123", "2");
+                    assertThat(output()).contains("1스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
+    @Test
+    void should_PrintResult_When_ZeroMatchNumber() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("678", "891", "123", "2");
+                    assertThat(output()).contains("낫싱", "낫싱", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
+    @Test
+    void should_Success_When_ComputerDuplicate() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "2");
+                    assertThat(output()).contains("3스트라이크", "게임 종료");
+                },
+                1, 2, 2, 2, 2, 2, 3
+        );
+    }
+
+    @Test
+    void should_ThrowException_When_UserLessThan3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("14"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_ThrowException_When_UserMoreThan3() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_ThrowException_When_UserHaveZero() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_ThrowException_When_UserIsDigitFalse() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_ThrowException_When_UserDuplicate() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_ThrowException_When_RestartNumFalse() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("123", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 2, 3
+        );
+    }
+
+    @Test
+    void should_ThrowException_When_RestartIsDigitFalse() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("123", "a"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 2, 3
         );
     }
 
