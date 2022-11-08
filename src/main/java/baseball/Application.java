@@ -40,15 +40,18 @@ public class Application {
             inGame = true;
         }
     }
+
     public int randomPickNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
+
     public boolean uniqueNumber(int computerRanNum, List<Integer> computerRanNumList) {
         if (computerRanNumList.contains((computerRanNum))) {
             return false;
         }
         return true;
     }
+
     public List<Integer> computerNumberList() {
         List<Integer> computerRanNumList = new ArrayList<>();
         while (computerRanNumList.size() < 3) {
@@ -56,11 +59,13 @@ public class Application {
         }
         return computerRanNumList;
     }
+
     private void checkToInput(int computerRanNum, List<Integer> computerRanNumList) {
         if (uniqueNumber(computerRanNum, computerRanNumList)) {
             computerRanNumList.add(computerRanNum);
         }
     }
+    
     public String playerInputNumber() {
         return Console.readLine();
     }
