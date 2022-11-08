@@ -24,5 +24,20 @@ public class Application {
     }
 
     private static void validateNumber(String inputData) {
+        try {
+            Integer.parseInt(inputData);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("the input only allows integer");
+        }
+
+        if (inputData.length() != 3) {
+            throw new IllegalArgumentException("the input only allows three-digit numbers");
+        }
+
+        for (char digit : inputData.toCharArray()) {
+            if (digit == '0') {
+                throw new IllegalArgumentException("each digit only allows 1~9");
+            }
+        }
     }
 }
