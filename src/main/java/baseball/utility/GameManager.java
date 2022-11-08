@@ -40,4 +40,9 @@ public class GameManager {
 
         return computerNumberBuilder.toString();
     }
+
+    private void setComputerNumber(String computerNumber) {
+        this.computerNumber = computerNumber;
+    }
+
 }
