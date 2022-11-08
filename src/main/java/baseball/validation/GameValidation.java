@@ -19,7 +19,7 @@ public final class GameValidation {
     private void ConvertUserInputToList() {
         this.userInputList = new ArrayList<>();
 
-        for(int i = 0; i < this.userInput.length(); i++) {
+        for (int i = 0; i < this.userInput.length(); i++) {
             this.userInputList.add(this.userInput.charAt(i));
         }
     }
@@ -42,7 +42,7 @@ public final class GameValidation {
 
     private boolean isAllCorrectNumber() {
         userInputList.forEach(str -> {
-            if (!(GameValue.START_NUMBER <= str  && str <= GameValue.END_NUMBER)) {
+            if (!(GameValue.START_NUMBER <= str && str <= GameValue.END_NUMBER)) {
                 throw new IllegalArgumentException();
             }
         });
