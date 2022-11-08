@@ -24,14 +24,9 @@ public class BaseballGameController implements GameController {
         this.flag = true;
     }
     @Override
-    public void doGame() {
+    public void doGame() throws IllegalArgumentException{
         System.out.println("숫자 야구 게임을 시작합니다.");
-        try{
-            playGame();
-
-        } catch(IllegalArgumentException e){
-            e.printStackTrace();
-        }
+        playGame();
     }
 
     private void playGame() throws IllegalArgumentException{

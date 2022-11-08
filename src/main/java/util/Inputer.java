@@ -35,7 +35,7 @@ public class Inputer {
             return List.of(2);
         }
         else {
-            throw new IllegalArgumentException("Please input right arguments!");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -43,7 +43,7 @@ public class Inputer {
         List<String> preResult = List.of(input.split(""));
         ArrayList<Integer> result = new ArrayList<>();
         if(input.length() > 3 || input.length() < 1 || !isNum(input)) {
-            throw new IllegalArgumentException("Please input right arguments!");
+            throw new IllegalArgumentException();
         }
         for(int i = 0 ; i < 3 ; i++) {
             result.add(Integer.parseInt(preResult.get(i)));
