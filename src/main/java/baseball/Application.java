@@ -82,6 +82,10 @@ public class Application {
     }
 
     public static void toInteger(String inputNum) {
+        myNum = new ArrayList<>();
+        myNum.add(inputNum.charAt(0) - '0');
+        myNum.add(inputNum.charAt(1) - '0');
+        myNum.add(inputNum.charAt(2) - '0');
     }
     public static void StrikeOrBall() {
         return ;
