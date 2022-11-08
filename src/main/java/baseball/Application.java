@@ -26,7 +26,7 @@ public class Application {
     public static void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         selectNumber();
-        System.out.println(computer);
+
         while (!result) {
             System.out.print("숫자를 입력해 주세요 : ");
             inputNumber();
