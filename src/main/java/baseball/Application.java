@@ -45,32 +45,6 @@ public class Application {
         return randomNum;
     }
 
-    //입력한 숫자를 체크하는 메서드
-    private static void checkNum(String inputNum) throws IllegalArgumentException
-    {
-        String regex = "[1-9]\\d{0,3}";
-        if(inputNum.matches(regex))
-            throw new IllegalArgumentException();
-
-        char[] inputNumArray = inputNum.toCharArray();
-        int k = 0;
-        for(int i = 0; i < inputNumArray.length; i++)
-        {
-            int comparenum1 = inputNumArray[k];
-            int comparenum2 = 0;
-            if(k == 2)
-                comparenum2 = inputNumArray[0];
-            else
-                comparenum2 = inputNumArray[k+1];
-
-
-            if(comparenum1 == comparenum2)
-                throw new IllegalArgumentException();
-
-            k++;
-        }
-    }
-
     //게임이 시작되며, 계산 후 결과를 출력해주는 메서드
     private static void startGame(String randomNum)
     {
@@ -87,6 +61,31 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
+        }
+    }
+
+    //입력한 숫자를 체크하는 메서드
+    public static void checkNum(String inputNum)
+    {
+        String regex = "[1-9]{3}";
+        if(!inputNum.matches(regex))
+            throw new IllegalArgumentException("Invalid Num");
+
+        char[] inputNumArray = inputNum.toCharArray();
+        int k = 0;
+        for(int i = 0; i < inputNumArray.length; i++)
+        {
+            int comparenum1 = inputNumArray[k];
+            int comparenum2 = 0;
+            if(k == 2)
+                comparenum2 = inputNumArray[0];
+            else
+                comparenum2 = inputNumArray[k+1];
+
+            if(comparenum1 == comparenum2)
+                throw new IllegalArgumentException("Invalid Num");
+
+            k++;
         }
     }
 
