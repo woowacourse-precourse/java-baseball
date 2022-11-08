@@ -66,9 +66,10 @@ public class InGame {
     }
 
     private void afterGameEnded() {
+        refreshBallStrike();
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if(Validity.checkEndInput(input)==1){
+        if(Validity.checkEndInput(input)){
             gameLoop();
         }
     }

@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -24,10 +25,9 @@ public class User {
 
     private List<Integer> setUserNumberList(String inputNumber) {
 
-        char[] charArray = Revert.revertStringToCharArray(inputNumber);
-        int[] intArray = Revert.revertCharArrToIntArr(charArray);
+        Validity valid = new Validity();
+        valid.isNumberValid(inputNumber);
 
-        Validity.isInputNumberValid(charArray);
-        return Revert.revertIntArrayToList(intArray);
+        return Revert.revertStringToList(inputNumber);
     }
 }

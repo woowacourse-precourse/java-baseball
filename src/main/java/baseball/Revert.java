@@ -1,17 +1,16 @@
 package baseball;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Revert {
 
-    public static char[] revertStringToCharArray(String input) {
+    public static char[] revertStringToCharArray(String inputString) {
 
-        return input.toCharArray();
+        return inputString.toCharArray();
     }
 
-    public int[] revertCharArrayToAsciiArray(char[] charArray) {
+    public static int[] revertCharArrayToAsciiArray(char[] charArray) {
         int[] asciiArray = new int[charArray.length];
 
         for (int i = 0; i < charArray.length; i++) {
@@ -20,17 +19,12 @@ public class Revert {
         return asciiArray;
     }
 
-    public static int[] revertCharArrToIntArr(char[] charArr) {
-        int[] intArr = new int[charArr.length];
-        for (int i = 0; i < charArr.length; i++) {
-            intArr[i] = Integer.parseInt(String.valueOf(charArr[i]));
+    public static List<Integer> revertStringToList(String inputString){
+        List<Integer> inputList = new ArrayList<Integer>();
+        for(String number: inputString.split("")){
+            inputList.add(Integer.parseInt(number));
         }
-        return intArr;
-    }
 
-    public static List<Integer> revertIntArrayToList(int[] array){
-        return Arrays.stream(array)
-                .boxed()
-                .collect(Collectors.toList());
+        return inputList;
     }
 }
