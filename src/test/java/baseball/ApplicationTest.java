@@ -68,7 +68,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void checkBallTest() {
+    void checkBallTest1() {
         List<Integer> answer = List.of(3,1,2);
         List<Integer> userInput = List.of(1,7,5);
         int result = 1;
@@ -76,7 +76,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void checkStrikeTest() {
+    void checkBallTest2() {
+        List<Integer> answer = List.of(6,3,5);
+        List<Integer> userInput = List.of(3,4,5);
+        int result = 2;
+        assertEquals(result,checkBall(answer,userInput));
+    }
+
+    @Test
+    void checkStrikeTest1() {
         List<Integer> answer = List.of(5,7,8);
         List<Integer> userInput = List.of(5,4,8);
         int result = 2;
@@ -84,7 +92,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void printStrikeAndBallTest() {
+    void checkStrikeTest2() {
+        List<Integer> answer = List.of(1,6,2);
+        List<Integer> userInput = List.of(2,1,6);
+        int result = 0;
+        assertEquals(result,checkStrike(answer,userInput));
+    }
+
+    @Test
+    void printStrikeAndBallTest1() {
         int ball = 2;
         int strike = 1;
         init();
@@ -94,22 +110,80 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void returnAnswerTest() {
-        int strike = 3;
+    void printStrikeAndBallTest2() {
+        int ball = 0;
+        int strike = 1;
+        init();
+        printStrikeAndBall(ball,strike);
+        String result  = output();
+        assertEquals("1스트라이크",result);
+    }
+
+    @Test
+    void printStrikeAndBallTest3() {
+        int ball = 3;
+        int strike = 0;
+        init();
+        printStrikeAndBall(ball,strike);
+        String result  = output();
+        assertEquals("3볼",result);
+    }
+
+    @Test
+    void printStrikeAndBallTest4() {
+        int ball = 0;
+        int strike = 0;
+        init();
+        printStrikeAndBall(ball,strike);
+        String result  = output();
+        assertEquals("낫싱",result);
+    }
+
+    @Test
+    void returnAnswerTest1() {
         boolean result = true;
         List<Integer> answer = List.of(1,2,3);
         List<Integer> userInput = List.of(1,2,3);
         assertEquals(result,returnAnswer(answer,userInput));
     }
 
+    @Test
+    void returnAnswerTest2() {
+        boolean result = false;
+        List<Integer> answer = List.of(1,2,3);
+        List<Integer> userInput = List.of(1,2,4);
+        assertEquals(result,returnAnswer(answer,userInput));
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"2"})
-    void endGameTest(String input) {
+    void endGameTest1(String input) {
         InputStream in = generateUserInput(input);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
         boolean result = true;
         assertEquals(result,endGame());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1"})
+    void endGameTest2(String input) {
+        InputStream in = generateUserInput(input);
+        System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
+        boolean result = false;
+        assertEquals(result,endGame());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"3"})
+    void endGameTest3(String input) {
+        InputStream in = generateUserInput(input);
+        System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            checkEndGameInput(input);
+        });
     }
 
     @Test
