@@ -30,7 +30,7 @@ public class RoundTest {
     @BeforeAll
     static void beforeAll() {
         computer = Computer.getComputer();
-        computer.pickNewRandomNumbers();
+        computer.pickRandomNumbers();
         //컴퓨터가 선택한 숫자
         computerNumbers = 0;
         computerNumber1 = computer.findComputerNumber(0).getNumber();
@@ -51,7 +51,9 @@ public class RoundTest {
 
     @BeforeEach
     void beforeEach() {
-        round = Round.getRound();
+        Computer computer = Computer.getComputer();
+        User user = User.getUser();
+        round = Round.getRound(computer, user);
     }
 
     @DisplayName(value = "라운드 시작 시 입력 숫자 Numbers에 담기는지 테스트")
@@ -61,16 +63,16 @@ public class RoundTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        round.startNewRound(computer);
+        round.startNewRound();
 
-        Field field = Round.class.getDeclaredField("numbers");
+        Field field = Round.class.getDeclaredField("user");
         field.setAccessible(true);
-        Object numbers = field.get(round);
+        User user = (User) field.get(round);
 
-        System.out.println("computerNumbers = " + computerNumbers);
-        assertThat(numbers)
-                .isNotNull()
-                .isInstanceOf(Numbers.class);
+        for (int i = 0; i < 3; i++) {
+            assertThat(user.findUserNumber(i).getNumber())
+                    .isEqualTo((i + 1));
+        }
     }
 
     @DisplayName("라운드 시작 시 예외 발생 테스트")
@@ -80,7 +82,7 @@ public class RoundTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(() -> round.startNewRound(computer))
+        assertThatThrownBy(() -> round.startNewRound())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -91,7 +93,7 @@ public class RoundTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        round.startNewRound(computer);
+        round.startNewRound();
 
         Field field = Round.class.getDeclaredField("hints");
         field.setAccessible(true);
@@ -110,7 +112,7 @@ public class RoundTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        round.startNewRound(computer);
+        round.startNewRound();
 
         Field field = Round.class.getDeclaredField("hints");
         field.setAccessible(true);
