@@ -21,9 +21,17 @@ public class Application {
     //[플레이어] 서로 다른 3개의 숫자 입력
     public static List<Integer> input(List<Integer> inputNumber){
         String input = Console.readLine();
-        if (input.length() > 3) { //예외처리
+
+        //[예외처리]
+        if (input.length() > 3) { //3자리 이상 숫자 입력 시
+            System.out.println("3자리 이상의 숫자를 입력하셨습니다.");
+            throw new IllegalArgumentException();
+        } else if (input.isBlank()) { //아무것도 입력하지 않았을 시
+            System.out.println("아무것도 입력하지 않았습니다.");
             throw new IllegalArgumentException();
         }
+        
+        //정상 입력 시
         for(int i=0; i<input.length(); i++){
             inputNumber.add(Integer.parseInt(String.valueOf(input.charAt(i))));
         }
@@ -92,4 +100,5 @@ public class Application {
             }
         }
     }
+
 }
