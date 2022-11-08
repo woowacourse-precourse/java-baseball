@@ -16,6 +16,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(run != 0){
             executionGame();
+            run = continueGame();
         }
     }
     public static void executionGame(){
@@ -31,7 +32,13 @@ public class Application {
             Integer strike =calculationStrike(computerOutput, userInput);
 
             String result =currentSituation(ball, strike);
+
             System.out.println(result);
+
+            if(isCorrect(result)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
     public static List<Integer> decideComputerNumber(){
@@ -77,5 +84,14 @@ public class Application {
         else if(ball == 0) return strike + "스트라이크";
         else if(strike == 0) return ball + "볼";
         else return ball + "볼" + " " + strike + "스트라이크";
+    }
+    public static Integer continueGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        if(Console.readLine().equals("2")) return 0;
+        else return 1;
+    }
+    public static Boolean isCorrect(String result){
+        if(result.equals("3스트라이크")) return true;
+        else return false;
     }
 }
