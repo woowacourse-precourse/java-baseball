@@ -8,6 +8,7 @@ import java.util.List;
 
 import static baseball.Player.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTest {
     @Test
@@ -28,5 +29,20 @@ public class PlayerTest {
         List<Integer> result = List.of(1,2,3);
 
         assertThat(list).isEqualTo(result);
+    }
+
+    @Test
+    void getAnswer_메소드로_Player_숫자_입력값_validation_length(){
+        String input = "12";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        boolean exceptionCatched = false;
+        try {
+            getAnswer();
+        } catch (IllegalArgumentException e) {
+            exceptionCatched = true;
+        }
+        assertTrue(exceptionCatched);
     }
 }
