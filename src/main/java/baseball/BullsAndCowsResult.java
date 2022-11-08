@@ -1,5 +1,8 @@
 package baseball;
 
+import static baseball.message.Message.END_MESSAGE;
+import static baseball.message.Message.NOTHING_MESSAGE;
+
 public class BullsAndCowsResult {
 
     private int ballCount;
@@ -33,10 +36,10 @@ public class BullsAndCowsResult {
 
     public void printResult() {
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING_MESSAGE);
         } else if (isFinish()) {
             System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(END_MESSAGE);
         } else if (ballCount == 0) {
             System.out.println(strikeCount + "스트라이크");
         } else if (strikeCount == 0) {
