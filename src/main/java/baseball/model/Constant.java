@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 public class Constant {
     public static final String RESTART = "1";
