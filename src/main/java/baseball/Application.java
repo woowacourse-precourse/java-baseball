@@ -14,6 +14,11 @@ public class Application {
         while (true) {
             List<Integer> computer = createRandomNumbers();
 
+            boolean startOrEnd = checkContinue();
+
+            if (startOrEnd == false) {
+                break;
+            }
         }
 
     }
@@ -46,6 +51,22 @@ public class Application {
             }
         }
     }
+
+    private static boolean checkContinue() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputNumber = Console.readLine();
+
+        int inputStartOrEnd = Integer.parseInt(inputNumber);
+
+        if (inputStartOrEnd == 2) {
+            return false;
+        } else if (inputStartOrEnd == 1) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
 
     private static void printMessage(int ball, int strike) {
         if (ball == 0 && strike == 0) {
