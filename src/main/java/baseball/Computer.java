@@ -9,7 +9,7 @@ class Computer {
 
 	static void getThreeRandomNumber() {
 		numberList = new ArrayList<>();
-		while (numberList.size() < 3) {
+		while (numberList.size() < Game.SIZE) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
 			if (!numberList.contains(randomNumber)) {
 				numberList.add(randomNumber);
