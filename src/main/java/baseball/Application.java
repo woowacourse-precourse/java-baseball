@@ -14,7 +14,16 @@ class Validation{
         }
     }
 }
-
+class ConvertStringtoList{
+    public static List ConverStringtoList(String input){
+        List <Integer> userInput = new ArrayList();
+        for (int i = 0; i < input.length(); i++) {
+            System.out.println(Character.getNumericValue(input.charAt(i)));
+            userInput.add(Character.getNumericValue(input.charAt(i)));
+        }
+        return userInput;
+    }
+}
 // userInput의 볼, 스트라이크를 검사
 class CheckNumber {
     // 스트라이크, 볼 변수 선언
@@ -74,9 +83,9 @@ public class Application {
         List<Integer> userInput = new ArrayList();
         String result = "";
         Judge judge = new Judge();
-        int status = 1;
+        String status = "1";
 
-        while (status == 1) {
+        while (status.equals("1")) {
             result = "";
             // 1. 시작 멘트
             System.out.println("숫자 야구 게임을 시작합니다.");
@@ -95,23 +104,24 @@ public class Application {
                 String input = Console.readLine();
 
                 // 3.1 사용자 입력 검증하기
-                //validation(input);
+
+                // 3.2 사용자 입력을 list로 변환
                 for (int i = 0; i < input.length(); i++) {
-                    System.out.println(Character.getNumericValue(input.charAt(i)));
+                    //System.out.println(Character.getNumericValue(input.charAt(i)));
                     userInput.add(Character.getNumericValue(input.charAt(i)));
                 }
-                System.out.println(userInput);
+                //System.out.println(userInput);
                 // 4. 숫자검사
                 result = judge.judgement(computer, userInput);
                 System.out.println(result);
-                System.out.println(computer);
-
+                //System.out.println(computer);
             }
             // 5. 새로 시작 or 종료
-            Scanner sc2 = new Scanner(System.in);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            status = Integer.valueOf(sc2.next());
-
+            status=Console.readLine();
         }
+
+        System.out.println("게임 종료");
     }
+
 }
