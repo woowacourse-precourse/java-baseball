@@ -92,7 +92,7 @@ public class Application {
 
     public static void checkLengthAndDuplication(String userString) {
         Set<Object> numberSet = new HashSet<>();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < userString.length(); i++)
             numberSet.add(userString.charAt(i));
 
         if (numberSet.size() != 3 || userString.length() > 3)
