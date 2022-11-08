@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Map;
@@ -14,24 +13,21 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         computerNumber = createComputerNumber();
-        try {
-            do {
-                List<Integer> userInput = getUserInput();
-                if (!isValidNumber(userInput)) {
-                    throw new IllegalArgumentException();
-                }
-                List<Integer> playerNumber = userInput; //유효하지 않으면 예외 발생
+        do {
+            List<Integer> userInput = getUserInput();
+            if (!isValidNumber(userInput)) {
+                throw new IllegalArgumentException();
+            }
+            List<Integer> playerNumber = userInput; //유효하지 않으면 예외 발생
 
-                System.out.println(playerNumber);
-                Map<String, Integer> resultMap = checkAnswer(computerNumber, playerNumber);
-                System.out.println(giveHint(resultMap)); //힌트 출력
-                //정답인지 확인하기
-                if (isAnswer(resultMap)) {
-                    askKeepPlaying(); //예외발생할 수 있음
-                }
-            } while (isPlaying);
-        }catch (IllegalArgumentException e){
-        }
+            System.out.println(playerNumber);
+            Map<String, Integer> resultMap = checkAnswer(computerNumber, playerNumber);
+            System.out.println(giveHint(resultMap)); //힌트 출력
+            //정답인지 확인하기
+            if (isAnswer(resultMap)) {
+                askKeepPlaying(); //예외발생할 수 있음
+            }
+        } while (isPlaying);
     }
 
     //1. 컴퓨터 수 생성하기
