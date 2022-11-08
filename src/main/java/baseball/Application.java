@@ -53,7 +53,7 @@ public class Application {
         return result;
     }
 
-    static boolean checkDupllication(String strNumber) {
+    static boolean checkDuplication(String strNumber) {
         boolean result = true;
         try {
             if (strNumber.charAt(0) == strNumber.charAt(1) || strNumber.charAt(0) == strNumber.charAt(2)
@@ -79,7 +79,7 @@ public class Application {
                 return null;
             }
         }
-        if (!checkDupllication(strNumber)) {
+        if (!checkDuplication(strNumber)) {
             return null;
         }
         return strNumber;
