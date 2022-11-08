@@ -9,19 +9,9 @@ import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO : 반복시행 함수화
+        // TODO : 정답이면 잘 종료되는지 테스트
         List<Integer> computer = makeRandomNumberList();
-        boolean flag = true;
-        while (flag){
-            List<String> player = inputPlayerAnswerList();
-            String hint = checkAnswerAndGiveHint(computer, player);
-            if (hint == null){
-                flag = false;
-            }
-            else {
-                System.out.println(hint);
-            }
-        }
+        repeatGame(computer);
     }
 
 
@@ -77,4 +67,17 @@ public class Application {
         }
     }
 
+    public static void repeatGame(List<Integer> computer) {
+        boolean flag = true;
+        while (flag){
+            List<String> player = inputPlayerAnswerList();
+            String hint = checkAnswerAndGiveHint(computer, player);
+            if (hint == null){
+                flag = false;
+            }
+            else {
+                System.out.println(hint);
+            }
+        }
+    }
 }
