@@ -45,10 +45,10 @@ public class BaseballGame {
             }
         }
     }
-
+    // inp
     private int checkBall(List<Integer> inputNumList) {
         List<Integer> checkBallNumList = new ArrayList<>();
-        checkBallNumList = inputNumList;
+        checkBallNumList.addAll(inputNumList);
         checkBallNumList.retainAll(computerNumList);
         return checkBallNumList.size();
     }
