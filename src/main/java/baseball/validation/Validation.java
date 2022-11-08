@@ -27,4 +27,12 @@ public class Validation {
             }
         }
     }
+
+    // 1과 2 이외의 숫자가 입력되었는지 확인
+    public int validationRestartOrShutDown(String answer) {
+        if(!oneOrTwo.contains(answer)){
+            throw new IllegalArgumentException("1(시작) 또는 2(종료) 가 제대로 입력이 되었는지 확인해주세요.");
+        }
+        return Integer.parseInt(answer);
+    }
 }
