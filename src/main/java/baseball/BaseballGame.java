@@ -17,15 +17,24 @@ public class BaseballGame {
 
     }
 
+    public void run() {
+        int start = 1;
+        while(start!=2){
+            start = GameStart();
+        }
+    }
 
     public int GameStart(){
         view.viewMessage(START_MESSAGE);
         HashMap<Character, Integer> computer = generator.Generator();
+
         while(gameFunction.Homerun()) {
             String userInput = view.userRequestNumber();
             view.viewMessage(gameFunction.GameFunction(userInput, computer));
         }
+
         view.viewMessage(CORRECT_MESSAGE);
+
         return view.restOrExit();
     }
 }

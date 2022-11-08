@@ -57,6 +57,4 @@ public class GameFunction {
         }
         else return true;
     }
-
-
 }

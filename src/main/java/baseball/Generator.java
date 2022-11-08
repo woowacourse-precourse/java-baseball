@@ -8,6 +8,7 @@ public class Generator {
     public static HashMap<Character,Integer> computer;
     private static StringBuilder sb;
 
+    //해쉬맵에 각자리의 숫자와 인덱스 위치를 저장하여 나중에 힌트를 구할 때 편리하게 사용
     public HashMap<Character,Integer> Generator(){
 
         computer = new HashMap<>();

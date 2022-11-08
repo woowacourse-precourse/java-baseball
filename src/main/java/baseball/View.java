@@ -24,6 +24,7 @@ public class View {
         }
     }
 
+    // 문자열 1 or 2 이외에는 전부다 예외처리
     public boolean resetOrExitException(String input){
         if(input.equals("1")||input.equals("2"))return true;
         else return false;
@@ -47,6 +48,7 @@ public class View {
         System.out.println(message);
     }
 
+    //해쉬 셋을 이용하여 중복된 값이 못들어오게 설정한 후 사이즈가 3이 되지 않으면 중복된 값 존재로 파악
     private boolean userInputException(String input){
 
         HashSet<Character> overlapCheck = new HashSet<>();
