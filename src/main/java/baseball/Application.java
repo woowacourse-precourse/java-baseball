@@ -15,7 +15,7 @@ class BaseballGame {
     int strikeCount;
     int myNum;
     int reStart;
-    int end;
+    int end = -1;
 
     public BaseballGame() {
         makeNumList();
@@ -33,8 +33,8 @@ class BaseballGame {
 
     // ball과 strike count를 0으로 초기화
     public void initalizeBall() {
-        int ballCount = 0;
-        int strikeCount = 0;
+        ballCount = 0;
+        strikeCount = 0;
     }
 
     // 3자리 수 입력
