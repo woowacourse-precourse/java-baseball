@@ -16,7 +16,19 @@ public class Baseball {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    private void getRandomNumbers() {
+        while (computer.size() < 3) {
+            int randomNum = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNum)) {
+                computer.add(randomNum);
+            }
+        }
+    }
+
     public void gameStart() {
         printInit();
+        getRandomNumbers();
     }
+
+
 }
