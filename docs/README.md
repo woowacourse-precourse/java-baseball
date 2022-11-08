@@ -13,7 +13,9 @@
   - 길이가 3인가? => check_user_input_len()
   - 숫자인가? => check_user_input_isnum()
   - 같은 숫자가 있는가? => check_user_input_isEqualExist()
-- 게임을 새로 시작하려면 1, 종료하려면 2 입력 부분
+5. 게임을 새로 시작할 지 종료할 지를 입력받는 부분의 예외 처리 구현 => check_new_game()
+- 숫자인가? 
+- 값이 1혹은 2인가? 
 
 
 

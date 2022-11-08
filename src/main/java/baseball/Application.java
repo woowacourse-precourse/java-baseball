@@ -100,6 +100,18 @@ class Game{
         }
         return true;
     }
+    int check_new_game(String input){
+        int input_num;
+        try{
+            input_num=Integer.parseInt(input);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        if(input_num!=1 && input_num!=2){
+            throw new IllegalArgumentException();
+        }
+        return input_num;
+    }
     void check_user_num(String input){
         if(!check_user_input_len(input)){
             throw new IllegalArgumentException();
@@ -134,7 +146,9 @@ class Game{
         ball_and_strike_print(ball_num,strike_num);
         if(game_clear==1){
             System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int game_flag=Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
+            String user_game_flag=camp.nextstep.edu.missionutils.Console.readLine();
+            int game_flag=check_new_game(user_game_flag);
+
             if(game_flag==2){
                 continue_game=0;
             }
