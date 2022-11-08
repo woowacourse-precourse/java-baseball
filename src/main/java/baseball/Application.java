@@ -25,7 +25,7 @@ public class Application {
         }
     }
 
-    private static void playGame() {
+    public static void playGame() {
         ArrayList<Integer> targetNumbers = pickRandomNumbers();
         while (true) {
             ArrayList<Integer> playerNumbers = getPlayerNumbers();
@@ -37,7 +37,7 @@ public class Application {
         }
     }
 
-    private static ArrayList<Integer> pickRandomNumbers() {
+    public static ArrayList<Integer> pickRandomNumbers() {
         ArrayList<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -48,7 +48,7 @@ public class Application {
         return randomNumbers;
     }
 
-    private static ArrayList<Integer> getPlayerNumbers() {
+    public static ArrayList<Integer> getPlayerNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String playerInput = Console.readLine();
 
@@ -63,7 +63,7 @@ public class Application {
         return playerNumbers;
     }
 
-    private static boolean isValid(String playerInput) {
+    public static boolean isValid(String playerInput) {
         if (!playerInput.matches("^[1-9]{3}$")) {
             return false;
         }
@@ -73,7 +73,7 @@ public class Application {
         return number1 != number2 && number1 != number3 && number2 != number3;
     }
 
-    private static ArrayList<Integer> calculateResults(
+    public static ArrayList<Integer> calculateResults(
             ArrayList<Integer> targetNumbers, ArrayList<Integer> playerNumbers) {
         int numberOfBalls = 0;
         int numberOfStrikes = 0;
@@ -88,7 +88,7 @@ public class Application {
         return new ArrayList<>(Arrays.asList(numberOfBalls, numberOfStrikes));
     }
 
-    private static void printResults(Integer numberOfBalls, Integer numberOfStrikes) {
+    public static void printResults(Integer numberOfBalls, Integer numberOfStrikes) {
         if (numberOfBalls == 0 && numberOfStrikes == 0) {
             System.out.println("낫싱");
             return;
