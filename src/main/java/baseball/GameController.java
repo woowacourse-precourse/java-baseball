@@ -5,23 +5,21 @@ import static baseball.constant.Message.FINISH_GAME;
 import static baseball.constant.Message.INPUT_NUMBER;
 import static baseball.constant.Message.RESTART_GAME;
 import static baseball.constant.Message.START_GAME;
+import static baseball.util.RandomUtil.generateComputerNumber;
 
 import baseball.constant.Finish;
 import baseball.hint.Hint;
 import baseball.hint.HintCalculator;
-import baseball.number.NumberGenerator;
 import baseball.view.View;
 import java.util.List;
 
 public class GameController {
 
-    private final NumberGenerator numberGenerator;
     private final HintCalculator hintCalculator;
     private final View view;
 
-    public GameController(NumberGenerator numberGenerator, HintCalculator hintCalculator,
+    public GameController(HintCalculator hintCalculator,
             View view) {
-        this.numberGenerator = numberGenerator;
         this.hintCalculator = hintCalculator;
         this.view = view;
     }
@@ -36,7 +34,7 @@ public class GameController {
     }
 
     private void playGame() {
-        List<Integer> computer = numberGenerator.generateComputerNumber();
+        List<Integer> computer = generateComputerNumber();
         do {
             view.printInlineMessage(INPUT_NUMBER);
             List<Integer> user = view.inputIntegerList();

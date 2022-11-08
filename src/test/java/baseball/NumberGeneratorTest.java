@@ -3,22 +3,13 @@ package baseball;
 import static baseball.constant.Rules.END_INCLUSIVE;
 import static baseball.constant.Rules.NUMBER_LENGTH;
 import static baseball.constant.Rules.START_INCLUSIVE;
+import static baseball.util.RandomUtil.generateComputerNumber;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.number.NumberGenerator;
-import baseball.number.RandomNumberGenerator;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
 public class NumberGeneratorTest {
-
-    NumberGenerator numberGenerator;
-
-    @BeforeEach
-    public void beforeEach() {
-        numberGenerator = new RandomNumberGenerator();
-    }
 
     @RepeatedTest(10)
     void 컴퓨터숫자는_1부터_9로만_이루어져야함() {
@@ -41,6 +32,6 @@ public class NumberGeneratorTest {
     }
 
     private List<Integer> generateNumber() {
-        return numberGenerator.generateComputerNumber();
+        return generateComputerNumber();
     }
 }
