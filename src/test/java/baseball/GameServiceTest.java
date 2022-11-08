@@ -66,6 +66,12 @@ class GameServiceTest {
     }
 
     @Test
+    @DisplayName("게임성공 테스트")
+    void gameSuccess() {
+        assertThat(new GameResult(3, 0).isClear()).isTrue();
+    }
+
+    @Test
     @DisplayName("게임 시작 or 게임 종료 선택")
     void isRetryGame() {
 
