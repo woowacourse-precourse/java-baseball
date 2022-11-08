@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import baseball.GameProgressLine;
+import baseball.InputException;
 
 public class PlayNumberBaseballGame {
     List<Integer> computerRandomNumbers = new ArrayList<>();
@@ -50,7 +52,7 @@ public class PlayNumberBaseballGame {
 
     public List<Integer> getInputNumbersOfPlayer(){
         String inputLine = Console.readLine();
-        //Exception
+        InputException.inputNotThreeNumberException(inputLine);
 
         List<Integer> player = new ArrayList<>();
         for(int location = 0; location<inputLine.length(); location++){
@@ -127,14 +129,11 @@ public class PlayNumberBaseballGame {
 
     private boolean isRetry(){
         String inputLine = Console.readLine();
+        InputException.inputNotOneOrTwoException(inputLine);
+
         if(inputLine.equals("1")) {
             return true;
-        } else if(inputLine.equals("2")){
-            return false;
         }
-        else {
-            //throwException
-            return false;
-        }
+        return false;
     }
 }
