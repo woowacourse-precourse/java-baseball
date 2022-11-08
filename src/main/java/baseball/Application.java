@@ -13,47 +13,90 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 
-class Generate_Answer_test{
+class Generate_Answer_test {
     Practice p;
 
     @BeforeEach
-    void Setup(){
+    void Setup() {
         p = new Practice();
     }
 
 
     @Test
-    void Generate_Answer_test(){
+    void Generate_Answer_test() {
         List<Integer> result = p.Generate_Answer();
 
         assertThat(result).size().isEqualTo(3);
         assertThat(result.get(0)).isNotEqualTo(result.get(1)).isNotEqualTo(result.get(2));
         assertThat(result.get(1)).isNotEqualTo(result.get(2));
 
-        for (int i = 0; i>3; i++){
-            assertThat(result.get(i)).isBetween(1,9);
+        for (int i = 0; i > 3; i++) {
+            assertThat(result.get(i)).isBetween(1, 9);
         }
     }
 }
 
-class Input_test{
+class Input_test {
     Practice p;
 
     @BeforeEach
-    void Setup(){
+    void Setup() {
         p = new Practice();
     }
 
     @Test
-    void IllegalArgumentException_test () {
-        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException("12"); });
-        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException("133"); });
-        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException(""); });
-        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException(" "); });
-        assertThatIllegalArgumentException().isThrownBy(() -> { throw new IllegalArgumentException("j"); });
+    void IllegalArgumentException_test() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            throw new IllegalArgumentException("12");
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            throw new IllegalArgumentException("133");
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            throw new IllegalArgumentException("");
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            throw new IllegalArgumentException(" ");
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            throw new IllegalArgumentException("j");
+        });
     }
 
 }
+
+
+class Strike_Or_Ball_Judge_test {
+    Practice p;
+
+    @BeforeEach
+    void Setup() {
+        p = new Practice();
+
+    }
+
+    @Test
+    void Strike_Or_Ball_Judge_test() {
+        List<Integer> Answer = new ArrayList<>();
+        Answer.add(1);
+        Answer.add(2);
+        Answer.add(3);
+        List<Integer> Input = new ArrayList<>();
+        Input.add(2);
+        Input.add(3);
+        Input.add(4);
+
+        HashMap result = p.Strike_or_Ball_Judge(Input, Answer);
+
+        HashMap<String, Integer> Strike_or_Ball = new HashMap<>();
+        Strike_or_Ball.put("스트라이크", 0);
+        Strike_or_Ball.put("볼", 2);
+
+        assertThat(result).isEqualTo(Strike_or_Ball);
+    }
+
+}
+
 
 public class Application {
 
@@ -64,6 +107,7 @@ public class Application {
         Generate_Answer();
         Input();
     }
+
     public void Generate_Answer() {
         if (Answer_Numbers.size() != 0) {
             Answer_Numbers.clear();
