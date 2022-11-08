@@ -8,6 +8,12 @@ public class BaseballGame {
     Output output = new Output();
     Decision decision = new Decision();
 
+    public void start() {
+        do {
+            play();
+        } while (!exit());
+    }
+
     public void play() {
         output.printStartingMessage();
 
