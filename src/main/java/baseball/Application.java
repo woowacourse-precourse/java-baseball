@@ -64,7 +64,7 @@ public class Application {
         LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap = new LinkedHashMap<>();
 
         // 스트라이크의 수를 계산하고, 틀린 숫자는 index를 기록한다.
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             boolean equalsResult = playerNumberArrayList.get(i).equals(answerNumberArrayList.get(i));
 
             if (equalsResult) {
@@ -135,11 +135,11 @@ public class Application {
         if (strikes == 0 && balls == 0) {
             System.out.println("낫싱");
         } else if (strikes == 0 && balls != 0) {
-            System.out.println(balls+"볼");
+            System.out.println(balls + "볼");
         } else if (strikes != 0 && balls == 0) {
-            System.out.println(strikes+"스트라이크");
+            System.out.println(strikes + "스트라이크");
         } else if (strikes != 0 && balls != 0) {
-            System.out.println(balls+"볼 "+strikes+"스트라이크");
+            System.out.println(balls + "볼 " + strikes + "스트라이크");
         }
     }
 
@@ -187,7 +187,7 @@ public class Application {
             // 게임 플레이어가 입력한 숫자를 분석한다.
             LinkedHashMap<String, Integer> analyzedResult = AnalyzePlayerNumber
                     (playerNumberArrayList,
-                    answerNumberArrayList);
+                            answerNumberArrayList);
 
             // 분석한 결과를 출력한다.
             PrintResult(analyzedResult);
@@ -197,7 +197,8 @@ public class Application {
         }
 
         // 게임이 끝난 경우 재시작과 종료를 게임 플레이어에게 묻는다.
-        return PlayAgain();
+        int keepPlaying = PlayAgain();
+        return keepPlaying;
     }
 
     private static void Solution() {
