@@ -1,82 +1,123 @@
+
+
+
 # 구현할 기능 목록
 
 ## 메소드 목록
 
-- [ ]  **1에서 9까지 서로 다른 임의의 수 3개인지 확인하는 메소드**
-    - [ ]  Set에 넣었을 때의 크기가 3이 아니거나
-    - [ ]  Set.contains(0)
-    - [ ]  게임 플레이어가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
-    - [ ]  return Boolean
+### **1에서 9까지 서로 다른 임의의 수 3개인지 검증하는 메소드(`CheckPlayerNumberValidation`)**
 
-- [ ]  **게임 플레이어에게 숫자 3개를 입력 받는 메소드**
-    - [ ]  ArrayList<Integer> 입력 받기
-    - [ ]  **1에서 9까지 서로 다른 임의의 수 3개인지 확인하는 메소드**
-    - [ ]  return 사용자가 입력한 숫자 ArrayList
+- [x]  집합에 게임 플레이어가 입력한 숫자를 넣는다.
+- [x]  집합의 크기가 3이 아니거나(중복되는 숫자가 있거나) 숫자 0을 포함하면 예외를 발생한다.
+    - [x]  게임 플레이어가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
-- [ ]  **정답 숫자 3개를 생성하는 메소드**
-    - [ ]  컴퓨터는 **1에서 9까지** **서로 다른 임의의 수 3개**를 생성한다.
-    - [ ]  return ArrayList
+----------------------------
 
-- [ ]  **스트라이크의 개수를 계산하는 메소드(playerNumberArray, answerNumberArray)**
-    - [ ]  strikeCount = 0;
-    - [ ]  wrongNumberIndexArray
-    - [ ]  for int i=0; i≤3; i++
-        - [ ]  playerNumberArray[i] == answerNumberArray[i]
-            - [ ]  strikeCount = strikeCount + 1;
-        - [ ]  playerNumberArray[i] != answerNumberArray[i]
-            - [ ]  wrongNumberIndexArray.add(i);
-    - [ ]  LinkedHashMap
-        - [ ]  strikeCount: strikeCount
-        - [ ]  wrongNumberIndexArray: wrongNumberIndexArray
-    - [ ]  return LinkedHashMap;
+### **게임 플레이어에게 숫자 3개를 입력 받는 메소드(`GetPlayerNumber`)**
 
-- [ ]  **볼의 개수를 계산하는 메소드(playerNumberArray, answerNumberArray, strikeResult)**
-    - [ ]  wrongPlayerNumberSet
-    - [ ]  answerNumberSet
-    - [ ]  for int i : strikeResult.wrongNumberIndexArray
-        - [ ]  wrongPlayerNumberSet.add(**playerNumberArray[i])**
-        - [ ]  answerNumberSet.add(**answerNumberArray[i])**
-        - [ ]  교집합의 개수
-    - [ ]  return 볼의 개수
+- [x]  Console API를 사용하여 게임 플레이어에게 숫자를 입력 받는다.
+- [x]  게임 플레이어가 입력한 숫자가 유효하지 않으면 예외를 발생
+- [x]  게임 플레이어가 입력한 숫자를 ArrayList로 return 한다.
 
-- [ ]  **게임 플레이어가 입력한 숫자 3개를 판단하는 메소드**
-    - [ ]  strikeResult = **스트라이크의 개수를 계산하는 메소드(playerNumberArray, answerNumberArray)**
-    - [ ]  **볼의 개수를 계산하는 메소드(playerNumberArray, answerNumberArray, strikeResult)**
-    - 123을 제시한 경우 : 1스트라이크
-    - 456을 제시한 경우 : 1볼 1스트라이크
-    - 789를 제시한 경우 : 낫싱
-    - [ ]  return LinkedHashMap
+----------------------------
 
-- [ ]  **게임 플레이어가 맞춘 결과를 출력하는 메소드(decisionResult)**
+### **1에서 9까지 서로 다른 임의의 수 3개의 정답 숫자를 생성하는 메소드(`CreateAnswerNumber()`)**
 
-- [ ]  **게임이 끝났는지 확인하는 메소드(decisionResult)**
-    - [ ]  if (decisionResult.strikeResult.strikeCount == 3)
-        - [ ]  finishResult = true;
-    - [ ]  else if (decisionResult.strikeResult.strikeCount < 3)
-        - [ ]  finishResult = false;
+- [x]  컴퓨터는 **1에서 9까지** **서로 다른 임의의 수 3개**를 생성한다.
+- [x]  정답 숫자를 ArrayList로 return 한다.
 
-- [ ]  **게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수를 입력 받는 메소드**
-    - [ ]  게임 플레이어에게 입력 받고
-    - [ ]  return 1 or 2
+----------------------------
 
-- [ ]  **게임 진행 메소드(정답 숫자 ArrayList)**
-    - [ ]  finishResult = false;
-    - [ ]  while (finishResult == false) {
-        - [ ]  **게임 플레이어에게 숫자 3개를 입력 받는 메소드**
-        - [ ]  decisionResult = **게임 플레이어가 입력한 숫자 3개를 판단하는 메소드**
-        - [ ]  **게임 플레이어가 맞춘 결과를 출력하는 메소드(decisionResult)**
-        - [ ]  finishResult = **게임이 끝났는지 확인하는 메소드(decisionResult)**
-    - [ ]  **게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수를 입력 받는 메소드**
+### **스트라이크의 개수를 계산하고 틀린 숫자의 index를 기록하는 메소드(`CountStrikes`)**
 
-- [ ]  **solution 메소드**
+- [x]  스트라이크의 수를 계산하고, 틀린 숫자의 index를 기록한다.
+- [x]  스트라이크의 개수와 틀린 숫자의 index를 LinkedHashMap으로 return 한다.
 
-  int keepPlaying = 1;
+----------------------------
 
-  while (keepPlaying == 1) {
+### **볼의 개수를 계산하는 메소드(`CountBalls`)**
 
-    - [ ]  정답 숫자 3개를 생성하는 메소드
-    - [ ]  **게임 진행 메소드(정답 숫자 ArrayList)**
+- [x]  플레이어가 틀린 숫자의 집합과 정답 숫자의 집합을 만든다.
+- [x]  두 집합의 교집합을 구한다.
+- [x]  볼의 개수를 int로 return 한다.
+
+----------------------------
+
+### **게임 플레이어가 입력한 숫자를 CountStrikes와 CountBalls 메소드를 이용해 분석하는 메소드(`AnalyzePlayerNumber`)**
+
+- [x]  스트라이크의 개수와 볼의 개수를 LinkedHashMap으로 return 한다.
+
+----------------------------
+
+### **스트라이크의 개수와 볼의 개수를 출력하는 메소드(`PrintResult`)**
+
+- 입력한 수에 대한 결과를 볼, 스트라이크 개수로 표시
+
+```
+1볼 1스트라이크
+
+```
+
+- 하나도 없는 경우
+
+```
+낫싱
+
+```
+
+- 3개의 숫자를 모두 맞힐 경우
+
+```
+3스트라이크
+3개의 숫자를 모두 맞히셨습니다! 게임 종료
+
+```
+
+- 게임 시작 문구 출력
+
+```
+숫자 야구 게임을 시작합니다.
+
+```
+
+----------------------------
+
+### **게임이 끝났는지 확인하는 메소드(`IsGameFinished`)**
+
+- [x]  스트라이크의 개수가 3이면 게임 종료
+- [x]  게임 종료 결과를 Boolean으로 return 한다.
+
+----------------------------
+
+### **게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수를 입력 받는 메소드(`PlayAgain`)**
+
+- [x]  게임 반복 의사를 묻는 출력
+- [x]  게임 플레이어가 입력한 숫자가 1 또는 2가 아니면 입력을 다시 받는다.
+- [x]  게임을 새로 시작하려면 1, 종료하려면 2를 int로 return 한다.
+
+----------------------------
+
+### **게임을 진행하는 메소드(`PlayGame`)**
+
+- [x]  게임이 끝나지 않았으면 게임을 반복한다.
+    - [x]  게임 플레이어에게 숫자를 입력 받는다.
+    - [x]  게임 플레이어가 입력한 숫자를 분석한다.
+    - [x]  분석한 결과를 출력한다.
+    - [x]  게임이 끝났는지 확인한다.
+- [x]  게임이 끝난 경우 재시작과 종료를 게임 플레이어에게 묻는다.
+- [x]  게임을 새로 시작하려면 1, 종료하려면 2를 int로 return 한다.
+
+----------------------------
+
+### **게임 플레이어가 종료를 원하기 전까지 게임을 반복하는 메소드(`Solution`)**
+
+- [x]  숫자 야구 게임 시작을 알리는 출력
+- [x]  게임 플레이어가 종료를 원하기 전까지 게임을 반복
+
+----------------------------
 
 ## 테스트 목록
 
-- [ ]  규정에 맞지 않는 숫자 넣어서 예외 발생 시키는 경우 테스트
+### 다른 정답 숫자와 입력 숫자에 대해서 작동하는지 테스트
+
+### 규정에 맞지 않는 숫자 넣어서 예외 발생 시키는 경우 테스트
