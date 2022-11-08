@@ -8,7 +8,7 @@ public class User {
 
     public List<String> stringConvertToStringList(String inputValue) {
         List<String> inputValueList = List.of(inputValue.split(""));
-        UserInputValueValidator.getInstance().validate(inputValueList);
+        UserInputValueValidator.getInstance().validateInGamingInputValue(inputValueList);
         return inputValueList;
     }
 }
