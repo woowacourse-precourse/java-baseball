@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class TargetTest {
@@ -16,6 +17,7 @@ public class TargetTest {
         target.setTargetIntoZeroList();
     }
 
+    @DisplayName("타겟을 리셋")
     @Test
     void reset() {
         target.reset();
@@ -24,12 +26,14 @@ public class TargetTest {
                 .doesNotContain(0);
     }
 
+    @DisplayName("타겟 값 반환")
     @Test
     void get() {
         List<Integer> result = Arrays.asList(0, 0, 0);
         assertThat(target.get()).isEqualTo(result);
     }
 
+    @DisplayName("타겟을 0의 값만 가진 리스트로 설정")
     @Test
     void setTargetIntoZeroList() {
         target.reset();
@@ -38,6 +42,7 @@ public class TargetTest {
         assertThat(target.get()).isEqualTo(result);
     }
 
+    @DisplayName("타겟의 특정 인덱스에 해당하는 숫자를 랜덤으로 설정")
     @Test
     void setOneNumber() {
         target.setOneNumber(1);
@@ -46,6 +51,7 @@ public class TargetTest {
         assertThat(targetNumberList.get(0)).isEqualTo(0);
     }
 
+    @DisplayName("숫자가 타겟에 이미 들어있는지 확인")
     @Test
     void checkIsNumberInTargetList() {
         target.reset();
