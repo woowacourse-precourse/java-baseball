@@ -16,4 +16,6 @@ public class Constant {
     public static final String LENGTH_ERROR_MESSAGE = "length error";
     public static final String DUPLICATE_ERROR_MESSAGE = "duplicate error";
     public static final String INPUT_ERROR_MESSAGE = "input error";
+    public static final String RESTART_ERROR_MESSAGE = "1 또는 2만 입력 가능합니다.";
+
 }

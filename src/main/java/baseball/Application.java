@@ -18,7 +18,7 @@ public class Application {
         } else if (s.equals(QUIT_APP)) {
             return false;
         } else {
-            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+            throw new IllegalArgumentException(RESTART_ERROR_MESSAGE);
         }
     }
 }
