@@ -13,5 +13,19 @@ public class Game {
     private final String STRIKE_MESSAGE = "스트라이크";
     private final String NOTHING_MESSAGE = "낫싱";
     private final String END_CONDITION = "3스트라이크";
-    
+
+    public void run() {
+        List<Integer> input = new ArrayList<>(), result = new ArrayList<>();
+        String cvtResult = new String();
+
+        start();
+    }
+
+    public void start() {
+        System.out.println(GAME_START_MESSAGE);
+        user = new User();
+        computer = new Computer();
+        computer.generateNewRandomAnswer();
+    }
+
 }
