@@ -12,22 +12,22 @@ public class BaseballComputer {
     GameMessage gameMessage = new GameMessage();
     FindingException findingException = new FindingException();
 
-    private String userInputNumberInGame(){
+    private String userInputNumberInGame() {
         return Console.readLine();
     }
 
-    public void start(){
+    public void start() {
         createRandomNumber();
         runGame();
     }
 
-    private void runGame(){
-        while (true){
+    private void runGame() {
+        while (true) {
             gameMessage.printInputNumberToComputerMessage();
             String answer = userInputNumberInGame();
             findingException.checkOutOfInputNumber(answer);
 
-            if(!checkHitNumber(answer)){
+            if (!checkHitNumber(answer)) {
                 continue;
             }
             break;
@@ -35,7 +35,7 @@ public class BaseballComputer {
         gameMessage.printRestartOrEndMessage();
         int choice = findingException.checkOutOfChoiceNumber(inputRestartOrEnd());
 
-        if(choice == 1){
+        if (choice == 1) {
             start();
         }
     }
@@ -44,29 +44,29 @@ public class BaseballComputer {
         computerNumber.clear();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!computerNumber.contains(randomNumber)){
+            if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
         }
     }
 
     private boolean checkHitNumber(String answer) {
-        String [] splitWord = answer.split("");
-        int [] splitNumber = changeType.StringArrToIntArr(splitWord);
+        String[] splitWord = answer.split("");
+        int[] splitNumber = changeType.StringArrToIntArr(splitWord);
         List<Integer> checkHitNumber = new ArrayList<>();
         int strike = 0;
         int ball = 0;
 
         //strike
-        for(int i = 0; i < splitNumber.length; i++){
-            if(splitNumber[i] == computerNumber.get(i)){
+        for (int i = 0; i < splitNumber.length; i++) {
+            if (splitNumber[i] == computerNumber.get(i)) {
                 strike++;
             }
         }
 
         //ball
-        for(int i = 0; i < splitNumber.length; i++){
-            if(splitNumber[i] != computerNumber.get(i) && computerNumber.contains(splitNumber[i])){
+        for (int i = 0; i < splitNumber.length; i++) {
+            if (splitNumber[i] != computerNumber.get(i) && computerNumber.contains(splitNumber[i])) {
                 ball++;
             }
         }
@@ -78,7 +78,7 @@ public class BaseballComputer {
         gameMessage.printHintMessage(checkHitNumber);
 
         // 게임 승리
-        if(strike == 3){
+        if (strike == 3) {
             gameMessage.printEndGameMessage();
             return true;
         }
@@ -86,7 +86,7 @@ public class BaseballComputer {
         return false;
     }
 
-    private int inputRestartOrEnd(){
+    private int inputRestartOrEnd() {
         String beforeIntChange = Console.readLine();
         return changeType.StringToInt(beforeIntChange);
     }
