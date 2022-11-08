@@ -1,7 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -18,6 +21,16 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test
+    @DisplayName("중복없이 랜덤숫자 3개 뽑기")
+    void 중복없이_랜덤숫자_3개_뽑기() {
+        int count = 3;
+        Numbers numbers = new NumbersGenerator().generate(count);
+        List<Integer> answer = numbers.getNumbers();
+
+        assertThat(answer.stream().distinct().count()).isEqualTo(count);
     }
 
     @Test

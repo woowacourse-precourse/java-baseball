@@ -333,6 +333,10 @@ class Numbers {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public Numbers parseToNumbers(String inputString) {
         List<Integer> numbers = inputString.chars()
                 .map(Character::getNumericValue)
