@@ -44,7 +44,7 @@ public class Client {
 
         for (String substring : line.split("")) {
             int degreeNumber = Integer.parseInt(substring);
-            if (playerNumberList.contains(degreeNumber)) {
+            if (degreeNumber == 0 || playerNumberList.contains(degreeNumber)) {
                 throw new IllegalArgumentException();
             }
             playerNumberList.add(degreeNumber);
