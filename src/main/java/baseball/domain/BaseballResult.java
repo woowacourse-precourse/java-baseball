@@ -27,7 +27,7 @@ public class BaseballResult {
     }
 
     public String getBallMessage() {
-        return getStrike() + GameMessage.GAME_BALL;
+        return getBall() + GameMessage.GAME_BALL;
     }
 
     public boolean isThreeStrike() {
