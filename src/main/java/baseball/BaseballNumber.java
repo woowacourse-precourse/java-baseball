@@ -43,19 +43,16 @@ public class BaseballNumber {
         return count;
     }
 
-    public static void printMessage(int strike, int ball) {
+    public static String getMessage(int strike, int ball) {
         if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-            return;
+            return "낫싱";
         }
         if (strike == 0) {
-            System.out.println(ball+"볼");
-            return;
+            return ball + "볼";
         }
         if (ball == 0) {
-            System.out.println(strike+"스트라이크");
-            return;
+            return strike + "스트라이크";
         }
-        System.out.println(ball + "볼 " + strike + "스트라이크");
+        return ball + "볼 " + strike + "스트라이크";
     }
 }
