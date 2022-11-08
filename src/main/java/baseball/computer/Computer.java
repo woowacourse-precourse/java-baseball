@@ -11,6 +11,10 @@ public class Computer {
     private final List<Character> baseballNumber = new ArrayList<>();
     private final BallAndStrikeCounter ballAndStrikeCounter = new BallAndStrikeCounter();
 
+    public List<Character> getBaseballNumber() {
+        return baseballNumber;
+    }
+
     public void makeRandomNumber() {
         baseballNumber.clear();
         while (baseballNumber.size() < DIGIT_MAX) {
