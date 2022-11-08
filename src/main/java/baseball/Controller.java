@@ -10,9 +10,11 @@ public class Controller {
     private Model computer;
     private Model user;
 
-    public Controller(Model computer, Model user) {
-        this.computer = computer;
-        this.user = user;
+    public Controller() {
+        this.view = new View();
+        String randomNumber = String.valueOf(Randoms.pickNumberInRange(111, 999));
+        this.computer = new Model(randomNumber);
+        this.user = new Model();
     }
 
     public void setNumber(Model model, String number) {
@@ -44,29 +46,36 @@ public class Controller {
     }
 
     public void runGame() {
-        String randomNumber = String.valueOf(Randoms.pickNumberInRange(111, 999));
-        computer = new Model(randomNumber);
-
         view.printLine("숫자 야구 게임을 시작합니다.");
         while (true) {
             view.print("숫자를 입력해주세요 : ");
             String userNumber = view.inputInt();
-            user = new Model(userNumber);
+            user.setNumber(userNumber);
 
             int[] results = compareNumber(computer.getNumber(), user.getNumber());
 
             view.printResult(results[0], results[1]);
 
-            if (results[1] == 3) {
-                view.printLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                view.printLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String checkNumber = view.inputInt();
-                if (checkNumber.equals("1")) {
-                    continue;
-                } else if (checkNumber.equals("2")) {
-                    break;
-                }
+            if(terminateGame(results[1])){
+                return;
             }
         }
+    }
+
+    public boolean terminateGame(int strike) {
+        String checkNumber = "";
+
+        if (strike == 3) {
+            view.printLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            view.printLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            checkNumber = view.inputInt();
+
+            if (checkNumber.equals("1")) {
+                return false;
+            } else if (checkNumber.equals("2")) {
+                return true;
+            }
+        }
+        return false;
     }
 }
