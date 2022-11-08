@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Game {
-    static int strike = 0;
+    static int strike =0;
     static int ball = 0;
     static int [] result = new int[2];
-    public static int[] start(int randomNumber, int inputNumber){
+    public static int[] getScore(int randomNumber, int inputNumber){
         int [] answer = new int[3];
         int [] userNumber = new int [3];
         answer[0] = randomNumber/100;
@@ -30,6 +30,7 @@ public class Game {
     }
 
     private static int getBall(int[] answer, int[] userNumber) {
+        ball =0;
         if(answer[0]==userNumber[1] || answer[0]==userNumber[2]){
             ball++;
         }
@@ -43,8 +44,9 @@ public class Game {
     }
 
     private static int getStrike(int [] answer, int [] userNumber){
+        strike =0;
         for (int i = 0; i < 3; i++) {
-            if(answer[i] == userNumber[i]){
+            if(answer[i]==userNumber[i]){
                 strike++;
             }
         }
