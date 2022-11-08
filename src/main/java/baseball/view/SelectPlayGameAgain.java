@@ -9,7 +9,7 @@ public class SelectPlayGameAgain extends View {
     }
 
     @Override
-    public String getResponse() {
+    public String getResponseToString() {
         return this.response;
     }
 }
