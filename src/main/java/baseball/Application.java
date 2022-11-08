@@ -7,7 +7,6 @@ import baseball.game.StringParser;
 import baseball.game.PlayerNumberInput;
 import baseball.printer.PrintData;
 import baseball.printer.ResultPrint;
-
 import java.util.List;
 
 public class Application {

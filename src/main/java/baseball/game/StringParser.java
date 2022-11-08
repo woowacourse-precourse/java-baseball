@@ -1,7 +1,6 @@
 package baseball.game;
 
 import baseball.data.GameData;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

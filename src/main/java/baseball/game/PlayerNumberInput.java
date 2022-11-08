@@ -1,7 +1,6 @@
 package baseball.game;
 
 import baseball.printer.PrintData;
-
 import camp.nextstep.edu.missionutils.Console;
 
 /**
