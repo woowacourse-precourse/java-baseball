@@ -49,10 +49,17 @@ public class Application {
         return computer;
     }
 
-    public static List<Integer> myNumber() {
-        return myNum;
+    public static void myNumber() {
+        System.out.println("숫자를 입력하세요");
+        String inputNum = readLine();
+        validNumber(inputNum);
+        toInteger(inputNum);
     }
+    public static void validNumber(String inputNum) {
 
+    }
+    public static void toInteger(String inputNum) {
+    }
     public static void StrikeOrBall() {
         return ;
     }
