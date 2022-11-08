@@ -31,15 +31,19 @@ public class OutputView {
         final List<String> ballStatusDisplay = List.of(BALL_DISPLAY, STRIKE_DISPLAY);
         
         if (isNothing(scores)) {
-            System.out.println(NOTHING_DISPLAY);
+            printNothingDisplay();
             return;
         }
-        System.out.println(parsePlayResults(scores, ballStatusDisplay));
+        printPlayResultDisplay(parsePlayResults(scores, ballStatusDisplay));
     }
     
     private static boolean isNothing(final List<Integer> scores) {
         return scores.stream()
                 .noneMatch(Predicate.not(OutputView::isScoreZero));
+    }
+    
+    private static void printNothingDisplay() {
+        System.out.println(NOTHING_DISPLAY);
     }
     
     private static String parsePlayResults(final List<Integer> scores, final List<String> ballStatusDisplay) {
@@ -55,6 +59,10 @@ public class OutputView {
     
     private static boolean isScoreZero(final List<Integer> scores, final int resultIndex) {
         return scores.get(resultIndex) == MIN_SCORES_INDEX;
+    }
+    
+    private static void printPlayResultDisplay(final String playResult) {
+        System.out.println(playResult);
     }
     
     public static void printBaseBallGameEndMessage() {
