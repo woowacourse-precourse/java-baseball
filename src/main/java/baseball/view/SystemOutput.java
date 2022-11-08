@@ -21,7 +21,9 @@ public class SystemOutput {
 
     public static void printThreeStrikeMessage(){
 
-        System.out.println(Message.GAME_CLEAR_MESSAGE);
+        System.out.println(Message.THREE_STRIKE_MESSAGE);
+        System.out.println(Message.GAME_CLEAR_MESSAGE + Message.Game_END_MESSAGE);
+        System.out.println(Message.ASK_TO_USER);
     }
 
     public static String printUserInput(){
