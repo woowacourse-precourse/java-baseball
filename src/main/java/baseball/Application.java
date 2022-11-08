@@ -62,6 +62,16 @@ public class Application {
         return count;
     }
 
+    public static int countStrike(List<Integer> computerNumber, List<Integer> userNumber) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computerNumber.get(i) == userNumber.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
