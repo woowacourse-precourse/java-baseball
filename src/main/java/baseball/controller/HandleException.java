@@ -12,7 +12,7 @@ public class HandleException {
         }
     }
 
-    static void handleUserInputDuplicationException(String userInput) {
+    public void handleUserInputDuplicationException(String userInput) {
         for (int i = 0; i < userInput.length(); i++) {
             if (i != userInput.indexOf(userInput.charAt(i))) {
                 throw new IllegalArgumentException("중복된 값을 입력하였습니다. 게임을 종료합니다.");
