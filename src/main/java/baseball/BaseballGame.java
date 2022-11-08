@@ -2,6 +2,8 @@ package baseball;
 
 import baseball.resource.AskRestartValue;
 import baseball.resource.GameMessage;
+import baseball.validation.AskValidation;
+import baseball.validation.GameValidation;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
