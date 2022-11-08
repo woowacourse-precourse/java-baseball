@@ -1,5 +1,7 @@
 package baseball.model;
 
+import static baseball.util.InputUtility.readLine;
+
 import baseball.util.GameCode;
 
 public class Game {
@@ -18,6 +20,14 @@ public class Game {
 
     public static Game start() {
         return new Game();
+    }
+
+    private void attack() {
+        judge.setAttack(player.attack(askAttackNumber()));
+    }
+    private String askAttackNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return readLine(GameCode.ATTACK.getValue());
     }
 
 
