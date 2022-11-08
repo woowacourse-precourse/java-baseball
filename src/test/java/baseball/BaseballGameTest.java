@@ -60,25 +60,25 @@ public class BaseballGameTest {
 
         @Test
         void printResult_메서드가_스트라이크_볼_출력() {
-            game.printResult(computer.new GameResult(1, 2));
+            System.out.println(computer.new GameResult(1, 2));
             assertThat(captor.toString().trim()).isEqualTo("2볼 1스트라이크");
         }
 
         @Test
         void printResult_메서드가_스트라이크만_출력() {
-            game.printResult(computer.new GameResult(3, 0));
+            System.out.println(computer.new GameResult(3, 0));
             assertThat(captor.toString().trim()).isEqualTo("3스트라이크");
         }
 
         @Test
         void printResult_메서드가_볼만_출력() {
-            game.printResult(computer.new GameResult(0, 2));
+            System.out.println(computer.new GameResult(0, 2));
             assertThat(captor.toString().trim()).isEqualTo("2볼");
         }
 
         @Test
         void printResult_메서드가_낫싱_출력() {
-            game.printResult(computer.new GameResult(0, 0));
+            System.out.println(computer.new GameResult(0, 0));
             assertThat(captor.toString().trim()).isEqualTo("낫싱");
         }
 

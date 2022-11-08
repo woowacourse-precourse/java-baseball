@@ -17,15 +17,11 @@ public class BaseballGame {
             System.out.print("숫자를 입력해주세요. : ");
             List<Integer> userNumber = checkUserNumber(Console.readLine());
             result = computer.compare(userNumber);
-            printResult(result);
+            System.out.println(result);
         } while (nextTurn(result));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return checkUserAnswer(Console.readLine());
-    }
-
-    public void printResult(Computer.GameResult result) {
-        System.out.println(result);
     }
 
     public List<Integer> checkUserNumber(String userInput) throws IllegalArgumentException {
