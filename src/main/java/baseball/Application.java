@@ -28,7 +28,7 @@ public class Application {
     private static boolean playOn() {
         System.out.println(Message.PROMPT_PLAY_ON);
         String input = Console.readLine();
-        if (!input.matches("^[12]$")) {
+        if (input == null || !input.matches("^[12]$")) {
             throw new IllegalArgumentException();
         }
         return input.equals("1");
