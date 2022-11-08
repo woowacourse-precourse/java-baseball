@@ -7,6 +7,11 @@ import domain.Number;
 import java.util.ArrayList;
 import java.util.List;
 
+class Judgement {
+    int strike;
+    int ball;
+}
+
 public class BaseballGame {
     public static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
@@ -52,43 +57,38 @@ public class BaseballGame {
     }
 
     public void makeResult(Number number, List<Integer> computerNumber) {
-        int strike = 0;
-        int ball = 0;
+        Judgement judgement = new Judgement();
+        judge(number, computerNumber, judgement);
 
-        strike = judgeStrike(number, computerNumber, strike);
-        ball = judgeBall(number, computerNumber, ball);
-
-        if (ball > 0) {
-            System.out.print(ball + BALL + " ");
+        if (judgement.ball > 0) {
+            System.out.print(judgement.ball + BALL + " ");
         }
-        if (strike > 0) {
-            System.out.print(strike + STRIKE);
+        if (judgement.strike > 0) {
+            System.out.print(judgement.strike + STRIKE);
         }
-        if (strike == 3) {
+        if (judgement.strike == 3) {
             System.out.print("\n" + GAME_END);
             restartNumber++;
         }
-        if (strike == 0 && ball == 0) {
+        if (judgement.strike == 0 && judgement.ball == 0) {
             System.out.print(NOTHING);
         }
         System.out.print("\n");
     }
 
-    public int judgeStrike(Number number, List<Integer> computerNumber,  int strike) {
-        for (int digit = 0; digit < 3; digit++) {
-            if (computerNumber.get(digit).equals(number.getDigit(digit))) {
-                strike++;
-            }
-        }
-        return strike;
-    }
+    public void judge(Number number, List<Integer> computerNumber,  Judgement judgement) {
+        int computerDigit, myDigit;
 
-    public int judgeBall(Number number, List<Integer> computerNumber, int ball) {
-        for (int digit = 0; digit < 3; digit++) {
-            if (computerNumber.contains(number.getDigit(digit)) && !(computerNumber.get(digit).equals(number.getDigit(digit)))) {
-                ball++;
+        for (int index = 0; index < 3; index++) {
+            computerDigit = computerNumber.get(index);
+            myDigit = number.getDigit(index);
+
+            if (computerDigit == myDigit) {
+                judgement.strike += 1;
+            }
+            if (computerNumber.contains(myDigit) && computerDigit != myDigit) {
+                judgement.ball += 1;
             }
         }
-        return ball;
     }
 }
