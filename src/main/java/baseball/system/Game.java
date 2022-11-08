@@ -28,12 +28,12 @@ public class Game {
         System.out.println(GAME_START_MSG);
         do {
             computer.createProblem();
-            userPlay();
+            playUser();
         } while (checkReplay());
     }
 
     //한 판에서 플레이어가 게임을 진행하는 기능
-    public void userPlay() {
+    public void playUser() {
         do {
             strikeCnt = 0;
             ballCnt = 0;
