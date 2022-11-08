@@ -18,6 +18,9 @@ public class OutputView {
         if (result.getBall() != 0 && result.getStrike() == 0) {
             System.out.println(result.getBall() + BALL);
         }
+        if(result.getStrike()==3){
+            System.out.println(THREE+STRIKE);
+        }
         if (result.getBall() == 0 && result.getStrike() != 0) {
             System.out.println(result.getStrike() + STRIKE);
         }

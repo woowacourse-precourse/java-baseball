@@ -33,6 +33,8 @@
 * Game
     * 3개의 숫자를 모두 맞힙면 게임 종료
     * 게임을 다시 시작하거나 종료
+* Result
+  * Ball, Strike의 개수를 관리
 * View
     * InputView
         * 숫자를 입력해주세요.

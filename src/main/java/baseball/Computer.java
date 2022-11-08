@@ -19,7 +19,7 @@ public class Computer {
         return new Ball(randomNumber);
     }
 
-    private Balls createComputerBalls() {
+    public Balls createComputerBalls() {
         while (!computerBalls.validateBallsSize()) {
             Ball candidateBall = createComputerBall();
             if (!computerBalls.hasBall(candidateBall)) {
