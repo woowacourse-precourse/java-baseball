@@ -8,9 +8,8 @@ import java.util.stream.IntStream;
 
 public class Computer {
     private static final Integer BASEBALL_LIST_SIZE = 3;
-    private BaseballList baseballList;
-
-    public void setComputerBaseballList(){
+    private final BaseballList baseballList;
+    public Computer(){
         List<Integer> computerBaseballList = new ArrayList<>();
         while (computerBaseballList.size() < BASEBALL_LIST_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

@@ -17,7 +17,6 @@ public class Game {
         Message.GameMessage.printGameStart();
         while(gamePower) {
             Computer computer = new Computer();
-            computer.setComputerBaseballList();
             runStage(computer);
             restartGame();
         }
