@@ -1,19 +1,14 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 
 public class GameTest {
@@ -218,6 +213,6 @@ public class GameTest {
                 checkUserInputMethod.invoke(game, secretString);
             }
         }
-
+    }
     }
 }
