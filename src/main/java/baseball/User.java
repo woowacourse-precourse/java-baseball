@@ -41,10 +41,10 @@ public class User {
     }
 
 
-    public List<Integer> tolistUser(String user){
+    public List<Integer> tolistUser(String userIn){
 
         List<Integer> toList = new ArrayList<>();
-        String[] splitone = user.split("");
+        String[] splitone = userIn.split("");
 
         for(String i : splitone){
             toList.add(Integer.valueOf(i));
