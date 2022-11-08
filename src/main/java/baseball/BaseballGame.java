@@ -64,6 +64,7 @@ public class BaseballGame {
             System.out.println(ball + "볼");
         else if(ball == 0 && strike > 0) {
             if(strike == 3) {
+                System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
             else
@@ -99,14 +100,13 @@ public class BaseballGame {
         }
     }
 
-    public void play(){
+    public void play() throws IllegalArgumentException{
         String input, retry;
         int strike, ball;
         boolean win = false;
         List<Integer> inputList;
 
         while(!win){
-            try{
                 System.out.print("숫자를 입력해주세요 : ");
                 input = Console.readLine();
                 if(!isNumeric(input))
@@ -115,11 +115,6 @@ public class BaseballGame {
                 if(sizeNotThree(inputList) || numberIsZero(inputList) || isDuplicate(inputList)) {
                     throw new IllegalArgumentException();
                 }
-            }
-            catch(IllegalArgumentException e){
-                e.printStackTrace();
-                return;
-            }
             strike = countBallAndStrike(computerNumber, inputList).get(0);
             ball = countBallAndStrike(computerNumber, inputList).get(1);
             printResult(strike, ball);
@@ -127,7 +122,7 @@ public class BaseballGame {
             if(strike == 3){
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 retry = Console.readLine();
-                try{
+
                     if(retry.equals("1")) {
                         win = false;
                         randomize();
@@ -136,11 +131,7 @@ public class BaseballGame {
                         win = true;
                     else
                         throw new IllegalArgumentException();
-                }
-                catch(IllegalArgumentException e){
-                    e.printStackTrace();
-                    return;
-                }
+
             }
         }
     }
