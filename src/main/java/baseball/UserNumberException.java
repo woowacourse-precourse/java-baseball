@@ -25,7 +25,7 @@ public class UserNumberException {
 
     public boolean isNumber(String numbers) {
         for (int i = 0; i < SystemMessage.NUMBER_SIZE; i++) {
-            if (!('1' <= numbers.charAt(i) && numbers.charAt(i) <= '9')) {
+            if (!(ComputerNumber.MIN_NUMBER <= numbers.charAt(i) - '0' && numbers.charAt(i) - '0' <= ComputerNumber.MAX_NUMBER)) {
                 System.out.println("numbers11111 = " + numbers.charAt(i));
                 return true;
             }
