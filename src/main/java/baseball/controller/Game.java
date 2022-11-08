@@ -15,7 +15,7 @@ public class Game {
     public Game(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.computerNumbers = Numbers.randomized();
+        this.computerNumbers = Numbers.createRandomized();
     }
 
     public void play() {

@@ -23,10 +23,10 @@ public class Numbers {
                 .collect(Collectors.toList()));
     }
 
-    public static Numbers randomized() {
+    public static Numbers createRandomized() {
         Set<PositiveDigit> randomNumbers = new LinkedHashSet<>();
         while (randomNumbers.size() != DIGITS_LENGTH) {
-            randomNumbers.add(PositiveDigit.randomized());
+            randomNumbers.add(PositiveDigit.createRandomized());
         }
         return new Numbers(new ArrayList<>(randomNumbers));
     }

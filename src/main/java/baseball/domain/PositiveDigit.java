@@ -14,7 +14,7 @@ public class PositiveDigit {
         this.digit = digit;
     }
 
-    public static PositiveDigit randomized() {
+    public static PositiveDigit createRandomized() {
         return new PositiveDigit(pickNumberInRange(MINIMUM, MAXIMUM));
     }
 
