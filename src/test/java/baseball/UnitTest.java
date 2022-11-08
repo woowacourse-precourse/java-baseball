@@ -34,4 +34,18 @@ public class UnitTest {
 
         Assertions.assertThat(count).isEqualTo(3);
     }
+
+    // 6. Get score of the current turn
+    @Test
+    void getScoreOfTheCurrentTurnTest() {
+        String scoreOne = Application.getScoreOfTheCurrentTurn("123", "456");
+        String scoreTwo = Application.getScoreOfTheCurrentTurn("123", "123");
+        String scoreThree = Application.getScoreOfTheCurrentTurn("143", "351");
+
+        Assertions.assertThat(scoreOne).isEqualTo("0 0");
+        Assertions.assertThat(scoreTwo).isEqualTo("0 3");
+        Assertions.assertThat(scoreThree).isEqualTo("2 0");
+    }
+
+
 }
