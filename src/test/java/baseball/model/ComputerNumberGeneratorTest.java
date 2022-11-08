@@ -3,11 +3,11 @@ package baseball.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 class ComputerNumberGeneratorTest {
 
@@ -18,8 +18,9 @@ class ComputerNumberGeneratorTest {
         List<Integer> validated_num = computerNumberGenerator.VALIDATED_NUM;
 
         List<Integer> collect = validated_num.stream().distinct().collect(Collectors.toList());
-
-        assertIterableEquals(validated_num, collect);
+        
+        assertEquals(3, validated_num.size(), "3개의 수를 생성하는지 테스트");
+        assertIterableEquals(validated_num, collect, "중복 없는 수를 생성하는지 테스트");
     }
 
 }
