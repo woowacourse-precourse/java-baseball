@@ -12,5 +12,11 @@ public class BaseBallGame {
 
         System.out.println(GAME_START_MENT);
         computer.createNumList();
+
+        try {
+            user.createNumList();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
