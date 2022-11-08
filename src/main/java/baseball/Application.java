@@ -78,10 +78,7 @@ public class Application {
 
         for (int digit = 0; digit < inputPlayerNum.length(); digit++) {
             int digitNum = inputPlayerNum.charAt(digit) - '0';
-            if(digit == 0 && digitNum == 0)
-                return false;
-
-            if(0 > digitNum || digitNum > 9)
+            if(1 > digitNum || digitNum > 9)
                 return false;
         }
         return true;
