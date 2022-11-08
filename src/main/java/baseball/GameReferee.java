@@ -20,4 +20,13 @@ public class GameReferee {
 
         return checkStrike;
     }
+
+    private int countStrike(boolean checkNothing, boolean checkStrike) {
+        int count = 0;
+        if (checkNothing && checkStrike) {
+            count = 1;
+        }
+        return count;
+    }
+
 }
