@@ -120,7 +120,7 @@ class Game {
 
 class ErrorChecking {
     public static boolean errorChecking(String inputNum) {
-        return checkingInputNum(inputNum) && checkingContaingZero(inputNum) && checkingDigit(inputNum);
+        return checkingInputNum(inputNum) && checkingContainingZero(inputNum) && checkingDigit(inputNum);
     }
 
     // 1. 참여자 입력 숫자 점검
@@ -150,7 +150,7 @@ class ErrorChecking {
     }
 
     // 3. 참여자가 입력한 숫자가 0을 포함하는지 확인하는 메서드
-    public static boolean checkingContaingZero(String inputNum) {
+    public static boolean checkingContainingZero(String inputNum) {
         if (inputNum.contains("0")) {
             try {
                 throw new IllegalArgumentException("각 자릿수에는 0이 들어가지 않습니다.");
