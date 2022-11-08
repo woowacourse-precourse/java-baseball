@@ -1,5 +1,8 @@
 # 미션 - 숫자 야구
 
+- 우아한테크코스 웹 백엔드 프리코스 1주차 미션 프로젝트입니다.
+- 기능 목록은 [docs/README.md](https://github.com/HASEUNGHEEE/java-baseball/blob/HASEUNGHEEE/docs/README.md)에서 확인하실 수 있습니다!
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -42,7 +45,8 @@ BUILD SUCCESSFUL in 0s
         - 123을 제시한 경우 : 1스트라이크
         - 456을 제시한 경우 : 1볼 1스트라이크
         - 789를 제시한 경우 : 낫싱
-- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한
+- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한
+  숫자에 대한
   결과를 출력한다.
 - 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
@@ -135,13 +139,13 @@ BUILD SUCCESSFUL in 0s
 #### 사용 예시
 
 ```java
-List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
+List<Integer> computer=new ArrayList<>();
+        while(computer.size()< 3){
+        int randomNumber=Randoms.pickNumberInRange(1,9);
+        if(!computer.contains(randomNumber)){
         computer.add(randomNumber);
-    }
-}
+        }
+        }
 ```
 
 ---
