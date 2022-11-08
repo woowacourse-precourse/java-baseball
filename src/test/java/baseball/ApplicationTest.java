@@ -12,82 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-
-    @Nested
-    class StrikeTest {
-
-        @Test
-        void 스트라이크_테스트_한자리_숫자() {
-            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
-            List<String> userInput = List.of("1");
-            assertThat(baseballGame.countStrike(userInput)).isEqualTo(1);
-        }
-
-        @Test
-        void 스트라이크_테스트_인풋_세개일_때() {
-            BaseballGame baseballGame = new BaseballGame(List.of("1", "3", "5"));
-            List<String> userInput = List.of("1", "3", "2");
-            assertThat(baseballGame.countStrike(userInput)).isEqualTo(2);
-        }
-    }
-
-    @Nested
-    class BallTest{
-
-        @Test
-        void 볼_테스트_인풋_한자리_숫자() {
-            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
-            List<String> userInput = List.of("3");
-            assertThat(baseballGame.countBall(userInput)).isEqualTo(1);
-        }
-
-        @Test
-        void 볼_테스트_인픗_세자리_숫자() {
-            BaseballGame baseballGame = new BaseballGame(List.of("1", "3", "5"));
-            List<String> userInput = List.of("5", "1", "3");
-            assertThat(baseballGame.countBall(userInput)).isEqualTo(3);
-        }
-    }
-
-    @Nested
-    class 결과_테스트 {
-
-        @Test
-        void 스트라이크1() {
-            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
-            List<String> userInput = List.of("1", "4", "5");
-            baseballGame.showResult(userInput);
-        }
-
-        @Test
-        void 스트라이크2볼1() {
-            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
-            List<String> userInput = List.of("1", "2", "2");
-            baseballGame.showResult(userInput);
-        }
-        //
-        @Test
-        void 스트라이크3() {
-            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
-            List<String> userInput = List.of("1", "2", "3");
-            baseballGame.showResult(userInput);
-        }
-        //
-        @Test
-        void 볼3() {
-            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
-            List<String> userInput = List.of("2", "3", "1");
-            baseballGame.showResult(userInput);
-        }
-
-        @Test
-        void 낫싱() {
-            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
-            List<String> userInput = List.of("4", "5", "6");
-            baseballGame.showResult(userInput);
-        }
-    }
-
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -110,5 +34,81 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Nested
+    class StrikeTest {
+
+
+        @Test
+        void 스트라이크_테스트_한자리_숫자() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1");
+            assertThat(baseballGame.countStrike(userInput)).isEqualTo(1);
+        }
+        @Test
+        void 스트라이크_테스트_인풋_세개일_때() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "3", "5"));
+            List<String> userInput = List.of("1", "3", "2");
+            assertThat(baseballGame.countStrike(userInput)).isEqualTo(2);
+        }
+
+    }
+    @Nested
+    class BallTest{
+
+
+        @Test
+        void 볼_테스트_인풋_한자리_숫자() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("3");
+            assertThat(baseballGame.countBall(userInput)).isEqualTo(1);
+        }
+        @Test
+        void 볼_테스트_인픗_세자리_숫자() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "3", "5"));
+            List<String> userInput = List.of("5", "1", "3");
+            assertThat(baseballGame.countBall(userInput)).isEqualTo(3);
+        }
+
+    }
+    @Nested
+    class 결과_테스트 {
+
+
+        @Test
+        void 스트라이크1() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1", "4", "5");
+            baseballGame.showResult(userInput);
+        }
+        @Test
+        void 스트라이크2볼1() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1", "2", "2");
+            baseballGame.showResult(userInput);
+        }
+        //
+        @Test
+        void 스트라이크3() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1", "2", "3");
+            baseballGame.showResult(userInput);
+        }
+        //
+
+        @Test
+        void 볼3() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("2", "3", "1");
+            baseballGame.showResult(userInput);
+        }
+        @Test
+        void 낫싱() {
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("4", "5", "6");
+            baseballGame.showResult(userInput);
+        }
+
     }
 }
