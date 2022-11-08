@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.model.dto.Balls;
+import baseball.view.Output;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -10,11 +11,9 @@ public class Player {
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String INVALID_INPUT_TYPE_MESSAGE = "숫자만 입력이 가능합니다.";
 
-    public Balls generatePlayerBalls() {
-        System.out.print(INPUT_NUMBER_MESSAGE);
-        String playerInput = Console.readLine();
-
-        return new Balls(convertInputToBallList(playerInput));
+    public Balls generatePlayerBalls(String inputValue) {
+        Output.print(INPUT_NUMBER_MESSAGE);
+        return new Balls(convertInputToBallList(inputValue));
     }
 
     private List<Integer> convertInputToBallList(String playerInput) {
