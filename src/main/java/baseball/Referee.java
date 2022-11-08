@@ -9,8 +9,8 @@ public class Referee {
     private static final String RESULT_NOTHING = "낫싱";
     private static final String RESULT_STRIKE = "스트라이크";
     private static final String RESULT_BALL = "볼";
-    
-    private void setBallandStrike(List<Integer> targetNum, List<Integer> userInput) {
+
+    public void setBallandStrike(List<Integer> targetNum, List<Integer> userInput) {
         initBallAndStrike();
         for (int i = 0; i < targetNum.size(); i++) {
             if (targetNum.get(i).equals(userInput.get(i))) {
@@ -27,7 +27,10 @@ public class Referee {
         this.strike = 0;
     }
 
-    private String resultMessage() {
+    public int getStrike() {
+        return this.strike;
+    }
+    public String resultMessage() {
         String result = "";
         if (ball == 0 && strike == 0) {
             result += RESULT_NOTHING;
@@ -40,4 +43,6 @@ public class Referee {
         }
         return result;
     }
+
+
 }

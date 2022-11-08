@@ -14,6 +14,7 @@ public class Computer {
     private List<Integer> targetNumList = new ArrayList<>();
 
     public Computer() {
+        TargetNumberGenerator();
     }
 
     public void TargetNumberGenerator() {
