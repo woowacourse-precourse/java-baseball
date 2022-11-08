@@ -17,4 +17,10 @@ public class GameImpl implements Game{
     System.out.println(INIT_MESSAGE);
   }
 
+  @Override
+  public void GameReady() {
+    computerPlayer = new Computer();
+    userPlayer = new User();
+  }
+
 }
