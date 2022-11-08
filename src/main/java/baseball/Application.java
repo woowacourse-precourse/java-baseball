@@ -30,7 +30,7 @@ public class Application {
             resetorend();
         }
         if(strikecount==0&&ballcount==0){
-            System.out.println("낫씽");
+            System.out.println("낫싱");
             enternumber();
         }
         if(strikecount==0){
@@ -46,7 +46,7 @@ public class Application {
     }
 
     public static void enternumber(){
-        System.out.println("숫자를 입력해 주세요 : ");
+        System.out.print("숫자를 입력해 주세요 : ");
         List<Integer> playernumber=new ArrayList<>();
         String number=readLine();
         for(int i=0;i<3;i++){
