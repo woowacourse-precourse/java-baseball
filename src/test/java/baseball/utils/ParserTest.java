@@ -1,6 +1,5 @@
 package baseball.utils;
 
-import baseball.domain.Player;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -31,5 +30,12 @@ class ParserTest {
         String input = "!";
         assertThatThrownBy(() -> parser.parseInt(input))
                 .isInstanceOf(NumberFormatException.class);
+    }
+
+    @Test
+    void validateOneOrTwoTest() {
+        String input = "3";
+        assertThatThrownBy(() -> parser.parseInt(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
