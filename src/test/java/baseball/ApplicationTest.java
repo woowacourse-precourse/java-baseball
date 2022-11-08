@@ -28,11 +28,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 랜덤_정답생성_테스트(){
-
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
