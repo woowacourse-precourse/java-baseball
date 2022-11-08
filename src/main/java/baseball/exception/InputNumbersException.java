@@ -32,13 +32,20 @@ public class InputNumbersException {
         for (int i = 0; i < numberTypeOfString.length(); i++) {
             numSet.add(numberTypeOfString.charAt(i) - '0');
         }
-        if (numSet.size() != REQUIRE_NUMBER_SIZE) {
+        if (!isNumSetSizeEqualsPermittedSize(numSet)) {
             throw new IllegalArgumentException("중복되지 않은 수를 입력해주세요.");
         }
     }
 
     public boolean isUserInputContainsOnlyNumber(String numberTypeOfString) {
         if (numberTypeOfString.matches(ONLY_NUMBER_REGEX)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isNumSetSizeEqualsPermittedSize(Set<Integer> numSet) {
+        if (numSet.size() == REQUIRE_NUMBER_SIZE) {
             return true;
         }
         return false;
