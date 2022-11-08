@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Application {
-    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String GAME_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_LENGTH_ERROR_MESSAGE = "입력한 값이 3자리가 아닙니다.";
@@ -41,13 +41,12 @@ public class Application {
         boolean playBaseball = true;
         while (playBaseball) {
             String stringUserInput = getUserInput(InputType.BASEBALL_NUMBER);
-            int[] userInput;
             isValidInput(stringUserInput, InputType.BASEBALL_NUMBER);
-            userInput = stringToIntegerArray(stringUserInput);
+            int[] userInput = stringToIntegerArray(stringUserInput);
             int ball = countBalls(userInput, computerNumber);
             int strike = countStrikes(userInput, computerNumber);
             printResult(ball, strike);
-            if(isThreeStrike(strike)) {
+            if (isThreeStrike(strike)) {
                 System.out.println(THREE_STRIKE_MESSAGE);
                 playBaseball = false;
             }
@@ -56,9 +55,9 @@ public class Application {
 
     static int[] initializeComputerNumber() {
         List<Integer> computerNumberList = new ArrayList<>();
-        while (computerNumberList.size() < 3){
+        while (computerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumberList.contains(randomNumber)){
+            if (!computerNumberList.contains(randomNumber)) {
                 computerNumberList.add(randomNumber);
             }
         }
@@ -69,9 +68,8 @@ public class Application {
 
     static String getUserInput(InputType inputType) {
         if (inputType == InputType.BASEBALL_NUMBER) {
-            System.out.print(INPUT_MESSAGE);
-        }
-        else if (inputType == InputType.WHETHER_REPLAY) {
+            System.out.print(GAME_INPUT_MESSAGE);
+        } else if (inputType == InputType.WILL_REPLAY) {
             System.out.println(REPLAY_MESSAGE);
         }
         String userInput = Console.readLine();
@@ -90,7 +88,7 @@ public class Application {
             if (hasDuplicatedNumber(userInput)) {
                 throw new IllegalArgumentException(INPUT_DUPLICATED_ERROR_MESSAGE);
             }
-        } else if (inputType == InputType.WHETHER_REPLAY) {
+        } else if (inputType == InputType.WILL_REPLAY) {
             if (userInput.length() != INPUT_REPLAY_LENGTH) {
                 throw new IllegalArgumentException(INPUT_REPLAY_ERROR_MESSAGE);
             }
@@ -130,7 +128,7 @@ public class Application {
 
     static int[] stringToIntegerArray(String stringUserInput) {
         int[] input = new int[3];
-        for(int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
+        for (int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
             input[i] = Integer.parseInt(String.valueOf(stringUserInput.charAt(i)));
         }
 
@@ -139,8 +137,8 @@ public class Application {
 
     static int countBalls(int[] userInput, int[] computerNumber) {
         int count = 0;
-        for(int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
-            if(isBall(userInput[i], i, computerNumber)) {
+        for (int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
+            if (isBall(userInput[i], i, computerNumber)) {
                 count += 1;
             }
         }
@@ -149,11 +147,11 @@ public class Application {
     }
 
     static boolean isBall(int userInput, int index, int[] computerNumber) {
-        for(int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
-            if(i == index) {
+        for (int i = 0; i < INPUT_BASEBALL_LENGTH; ++i) {
+            if (i == index) {
                 continue;
             }
-            if(userInput == computerNumber[i]) {
+            if (userInput == computerNumber[i]) {
                 return true;
             }
         }
@@ -201,8 +199,8 @@ public class Application {
     static boolean willReplay() {
         boolean replay = false;
         String playOrNot = "";
-        playOrNot = getUserInput(InputType.WHETHER_REPLAY);
-        isValidInput(playOrNot, InputType.WHETHER_REPLAY);
+        playOrNot = getUserInput(InputType.WILL_REPLAY);
+        isValidInput(playOrNot, InputType.WILL_REPLAY);
         if (playOrNot.charAt(0) == REPLAY) {
             replay = true;
         }
@@ -213,5 +211,5 @@ public class Application {
 
 enum InputType {
     BASEBALL_NUMBER,
-    WHETHER_REPLAY
+    WILL_REPLAY
 }
