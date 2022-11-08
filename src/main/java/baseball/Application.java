@@ -11,15 +11,13 @@ import java.util.Set;
 public class Application {
     static List<Integer> computerRandomNumber;
     static List<Integer> playerInputNumber;
+    static boolean restartFlag = true;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         gameStart();
-        boolean restartCheck = gameRestart();
-        if(restartCheck){
-            gameStart();
-        }
+        gameRestart();
     }
 
     private static void gameStart() {
@@ -29,7 +27,11 @@ public class Application {
         playerDoing();
     }
 
-    private static boolean gameRestart() {
+    private static void gameRestart() {
+        if(!restartFlag){
+            return;
+        }
+
         boolean check = false;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
@@ -40,7 +42,10 @@ public class Application {
         if(Integer.valueOf(input).equals(2)){
             check = false;
         }
-        return check;
+
+        if(check){
+            gameStart();
+        }
     }
 
     private static void playerDoing() {
@@ -48,6 +53,7 @@ public class Application {
 //        System.out.println("playerInputNumber 의 isNumberAvailable : " + isNumberAvailable);
         // 입력한 값이 잘못된 값이면 종료함
         if (!isNumberAvailable) {
+            restartFlag = false;
             return;
         }
 
@@ -162,7 +168,7 @@ public class Application {
         try {
             Integer.valueOf(input);
             return true;
-        } catch (IllegalArgumentException e) {
+        } catch (NumberFormatException e) {
 //            System.out.println("숫자가 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
             e.printStackTrace();
             return false;
