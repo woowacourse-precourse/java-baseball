@@ -23,13 +23,16 @@ public class Application {
                 exceptionIfNumberIsNotThreeDigits(user_number.length());
                 // 사용자가 입력한 숫자를 사용자 리스트에 추가
                 List<Integer> user = addTheNumberEnteredByTheUserList(user_number);
-                // 스트라이크 개수 확인스트라이크 개수 확인
-                int strike = CheckTheNumberOfStrikes(user, computer);
+                // 스트라이크 개수 확인
+                int strike = checkTheNumberOfStrikes(user, computer);
                 // 3스트라이크 시 1게임 종료
                 if (strike == 3) {
                     System.out.println("3스트라이크");
                     break;
                 }
+                // 볼 개수 확인
+                int ball = checkTheNumberOfBall(user,computer);
+
             }
         }
     }
@@ -64,7 +67,8 @@ public class Application {
         }
         return user;
     }
-    public static int CheckTheNumberOfStrikes(List<Integer> user, List<Integer> computer){
+    // 스트라이크 개수 확인
+    public static int checkTheNumberOfStrikes(List<Integer> user, List<Integer> computer){
         int strike = 0;
         for (int i = 0; i < user.size(); i++) {
             if (user.get(i) == computer.get(i)) {
@@ -72,5 +76,16 @@ public class Application {
             }
         }
         return strike;
+    }
+    // 볼 개수 확인
+    public static int checkTheNumberOfBall(List<Integer> user, List<Integer> computer){
+        int ball = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if (user.get(i) != computer.get(i)) {
+                if (computer.indexOf(user.get(i)) != -1)
+                    ball++;
+            }
+        }
+        return ball;
     }
 }
