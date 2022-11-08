@@ -11,6 +11,10 @@ public class Application {
         Solution();
     }
 
+    /**
+     * 게임 플레이어가 입력한 숫자의 유효성을 검증해준다.
+     * @param playerNumberArrayList
+     */
     private static void CheckPlayerNumberValidation(ArrayList<Integer> playerNumberArrayList) {
         HashSet<Integer> playerNumberSet = new HashSet<>();
 
@@ -25,6 +29,10 @@ public class Application {
         }
     }
 
+    /**
+     * Console API를 사용하여 게임 플레이어에게 숫자를 입력 받는다.
+     * @return 게임 플레이어가 입력한 숫자를 ArrayList로 return한다.
+     */
     private static ArrayList<Integer> GetPlayerNumber() {
         String playerString = Console.readLine();
         ArrayList<Integer> playerNumberArrayList = new ArrayList<>();
@@ -44,6 +52,10 @@ public class Application {
         return playerNumberArrayList;
     }
 
+    /**
+     * 1에서 9까지 서로 다른 임의의 수 3개의 정답 숫자를 생성한다.
+     * @return 정답 숫자를 ArrayList로 return한다.
+     */
     private static ArrayList<Integer> CreateAnswerNumber() {
         ArrayList<Integer> answerNumberArrayList = new ArrayList<>();
 
@@ -58,6 +70,12 @@ public class Application {
         return answerNumberArrayList;
     }
 
+    /**
+     * 스트라이크의 개수를 계산하고 틀린 숫자의 index를 기록한다.
+     * @param playerNumberArrayList 게임 플레이어가 입력한 숫자 ArrayList
+     * @param answerNumberArrayList 컴퓨터가 생성한 정답 숫자 ArrayList
+     * @return 스트라이크의 개수와 틀린 숫자의 index를 LinkedHashMap으로 return 한다.
+     */
     private static LinkedHashMap<String, ArrayList<Integer>> CountStrikes
             (ArrayList<Integer> playerNumberArrayList,
              ArrayList<Integer> answerNumberArrayList) {
@@ -66,7 +84,7 @@ public class Application {
         ArrayList<Integer> wrongNumberIndexArrayList = new ArrayList<>();
         LinkedHashMap<String, ArrayList<Integer>> strikeResultLinkedHashMap = new LinkedHashMap<>();
 
-        // 스트라이크의 수를 계산하고, 틀린 숫자는 index를 기록한다.
+        // 스트라이크의 수를 계산하고, 틀린 숫자의 index를 기록한다.
         for (int i = 0; i < 3; i++) {
             boolean equalsResult = playerNumberArrayList.get(i).equals(answerNumberArrayList.get(i));
 
@@ -85,6 +103,13 @@ public class Application {
         return strikeResultLinkedHashMap;
     }
 
+    /**
+     * 볼의 개수를 계산한다.
+     * @param playerNumberArrayList 게임 플레이어가 입력한 숫자 ArrayList
+     * @param answerNumberArrayList 컴퓨터가 생성한 정답 숫자 ArrayList
+     * @param strikeResultLinkedHashMap 스트라이크의 개수와 틀린 숫자의 index가 담긴 LinkedHashMap
+     * @return 볼의 개수를 int로 return 한다.
+     */
     private static int CountBalls
             (ArrayList<Integer> playerNumberArrayList,
              ArrayList<Integer> answerNumberArrayList,
@@ -108,6 +133,12 @@ public class Application {
         return ballCount;
     }
 
+    /**
+     * 게임 플레이어가 입력한 숫자를 CountStrikes와 CountBalls 메소드를 이용해 분석한다.
+     * @param playerNumberArrayList 게임 플레이어가 입력한 숫자 ArrayList
+     * @param answerNumberArrayList 컴퓨터가 생성한 정답 숫자 ArrayList
+     * @return 스트라이크의 개수와 볼의 개수를 LinkedHashMap으로 return 한다.
+     */
     private static LinkedHashMap<String, Integer> AnalyzePlayerNumber
             (ArrayList<Integer> playerNumberArrayList,
              ArrayList<Integer> answerNumberArrayList) {
@@ -130,6 +161,10 @@ public class Application {
         return finalResult;
     }
 
+    /**
+     * 스트라이크의 개수와 볼의 개수를 출력한다.
+     * @param finalResult 스트라이크의 개수와 볼의 개수가 담긴 LinkedHashMap
+     */
     private static void PrintResult(LinkedHashMap<String, Integer> finalResult) {
         int strikes = finalResult.get("strikes");
         int balls = finalResult.get("balls");
@@ -146,11 +181,16 @@ public class Application {
         }
     }
 
+    /**
+     * 스트라이크의 개수가 3이면 게임을 종료한다.
+     * @param finalResult 스트라이크의 개수와 볼의 개수가 담긴 LinkedHashMap
+     * @return 게임 종료 결과를 Boolean으로 return 한다.
+     */
     private static Boolean IsGameFinished(LinkedHashMap<String, Integer> finalResult) {
         int strikes = finalResult.get("strikes");
         boolean result = false;
 
-        // 스트라이크의 수가 3이면 끝
+        // 스트라이크의 개수가 3이면 끝
         if (strikes == 3) {
             result = true;
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -161,6 +201,10 @@ public class Application {
         return result;
     }
 
+    /**
+     * 게임 반복 의사를 묻고 게임을 새로 시작하려면 1, 종료하려면 2를 입력받는다.
+     * @return 게임을 새로 시작하려면 1, 종료하려면 2를 int로 return 한다.
+     */
     private static int PlayAgain() {
         int result = 0;
 
@@ -181,6 +225,11 @@ public class Application {
         return result;
     }
 
+    /**
+     * 게임 종료 전까지 게임을 반복하고, 게임이 끝난 경우 PlayAgain 메소드를 이용해 게임 재시작과 종료를 게임 플레이어에게 묻는다.
+     * @param answerNumberArrayList 컴퓨터가 생성한 정답 숫자 ArrayList
+     * @return 게임을 새로 시작하려면 1, 종료하려면 2를 int로 return 한다.
+     */
     private static int PlayGame(ArrayList<Integer> answerNumberArrayList) {
         Boolean finishResult = false;
 
@@ -207,6 +256,9 @@ public class Application {
         return keepPlaying;
     }
 
+    /**
+     * 게임 플레이어가 종료를 원하기 전까지 게임을 반복한다.
+     */
     private static void Solution() {
         int keepPlaying = 1;
 
