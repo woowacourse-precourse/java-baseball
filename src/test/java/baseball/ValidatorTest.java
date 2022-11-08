@@ -56,4 +56,27 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("서로 다른 숫자를 입력해주세요.");
     }
+
+    @Test
+    void 정상_재시작_입력_태스트() {
+        String input = "1";
+
+        assertThatNoException().isThrownBy(() -> validator.checkValidRestartOrQuitInput(input));
+    }
+
+    @Test
+    void 정상_종료_입력_테스트() {
+        String input = "2";
+
+        assertThatNoException().isThrownBy(() -> validator.checkValidRestartOrQuitInput(input));
+    }
+
+    @Test
+    void 재시작_종료_외_입력_테스트() {
+        String input = "3";
+
+        assertThatThrownBy(() -> validator.checkValidRestartOrQuitInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1,2 중 하나의 수를 입력해주세요.");
+    }
 }
