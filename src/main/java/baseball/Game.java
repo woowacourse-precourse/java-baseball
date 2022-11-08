@@ -83,7 +83,7 @@ public class Game {
             readLine = Console.readLine();
 
             while (parseInt(readLine) == 2) {
-                System.out.println(GAME_END);
+                System.out.println(GAME_OVER);
                 break;
             }
 
