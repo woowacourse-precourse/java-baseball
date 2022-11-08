@@ -80,12 +80,9 @@ public class Application {
     }
 
     public static List<Integer> parseGuessedNumber(String input) {
-        int guessedNumber = Integer.parseInt(input);
-        int ones = guessedNumber % 10;
-        guessedNumber /= 10;
-        int tens = guessedNumber % 10;
-        guessedNumber /= 10;
-        int hundreds = guessedNumber;
+        int hundreds = input.charAt(0) - '0';
+        int tens = input.charAt(1) - '0';
+        int ones = input.charAt(2) - '0';
 
         return List.of(hundreds, tens, ones);
     }
