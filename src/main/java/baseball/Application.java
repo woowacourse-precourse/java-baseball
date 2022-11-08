@@ -19,13 +19,14 @@ public class Application {
     }
     public static List<Integer> input(){
         List<Integer> inputNumber = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         //세자리 숫자 이외의 입력 시
-        if (input.length() > 3 || input.length() < 3){ //3자리 숫자 외 입력 시
-            System.out.println("3자리 숫자를 입력하시오.");
-            throw new IllegalArgumentException();
-        } else if (input.isBlank()) { //아무것도 입력하지 않았을 시
+        if (input.isBlank()) {
             System.out.println("아무것도 입력하지 않았습니다.");
+            throw new IllegalArgumentException();
+        } else if (input.length() != 3) {
+            System.out.println("3자리 숫자를 입력하시오.");
             throw new IllegalArgumentException();
         }
         //세자리 숫자 입력 시
@@ -81,7 +82,6 @@ public class Application {
 
             makeNumber(computer);
 
-            System.out.print("숫자를 입력해주세요 : ");
             inputNumber = input();
 
             gameResult = caseCheck(computer, inputNumber);
