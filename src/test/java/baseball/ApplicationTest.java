@@ -18,12 +18,48 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("912", "129", "123", "2");
+                    assertThat(output()).contains("2볼", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                1,2,3
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("456", "987", "367", "321", "123", "2");
+                    assertThat(output()).contains("낫싱", "낫싱", "1볼", "2볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1,2,3
+        );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("ㄱ12"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
