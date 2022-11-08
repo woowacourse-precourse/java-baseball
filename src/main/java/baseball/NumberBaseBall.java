@@ -10,6 +10,20 @@ public class NumberBaseBall {
             int playerNum = Integer.parseInt(Console.readLine());
 
             /**
+             *  다시 시작(1)하거나 완전히 종료(2) */
+            if (playerNum == 2) {
+                System.out.println(playerNum);
+                return false;
+            } else if (playerNum == 1) {
+                System.out.println(playerNum);
+                return true;
+            } else {
+                System.out.print("숫자를 입력해주세요 : ");
+                System.out.println(playerNum);
+            }
+
+
+            /**
              * 자릿수 나누기 */
             List<Integer> playerNumList = numberDigits(playerNum);
             /**
