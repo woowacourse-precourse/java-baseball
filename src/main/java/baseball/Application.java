@@ -77,11 +77,6 @@ public class Application {
         }
         if (ballCnt == 0 && strikeCnt == 0) {
             System.out.println("낫싱");
-            System.out.print("숫자를 입력해주세요 : ");
-            userInputNumber = bf.readLine();
-            verifyUserNumber(userInputNumber);
-            userNumberListMethodList = List.of(userInputNumber.split(""));
-            CntBallAndStrike(computer, userNumberListMethodList);
         }
         if (ballCnt > 0 || strikeCnt > 0) {
             if (strikeCnt == 0) {
@@ -93,12 +88,12 @@ public class Application {
             if (ballCnt > 0 && strikeCnt > 0) {
                 System.out.println(ballCntStr + " " + strikeCntStr);
             }
-            System.out.print("숫자를 입력해주세요 : ");
-            userInputNumber = bf.readLine();
-            verifyUserNumber(userInputNumber);
-            userNumberListMethodList = List.of(userInputNumber.split(""));
-            CntBallAndStrike(computer, userNumberListMethodList);
         }
+        System.out.print("숫자를 입력해주세요 : ");
+        userInputNumber = bf.readLine();
+        verifyUserNumber(userInputNumber);
+        userNumberListMethodList = List.of(userInputNumber.split(""));
+        CntBallAndStrike(computer, userNumberListMethodList);
     }
 
     public static String verifyUserNumber(String number) {
