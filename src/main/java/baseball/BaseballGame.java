@@ -58,6 +58,10 @@ public class BaseballGame {
     }
 
     private void validateAnswer(String answer) {
+        if (answer.length() == 0) {
+            throw new IllegalArgumentException("값이 입력되지 않았습니다.");
+        }
+
         for (char c : answer.toCharArray()) {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException("숫자만 입력될 수 있습니다.");
