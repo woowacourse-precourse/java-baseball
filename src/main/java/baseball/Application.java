@@ -10,12 +10,17 @@ public class Application {
         while (true) {
             Game game = new Game();
             game.play();
+
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String repeatOption = Console.readLine();
-            GameRepeatInputException.verify(repeatOption);
-            if (repeatOption.equals(QUIT_GAME_CONDITION)) {
+            if (getRepeatOption().equals(QUIT_GAME_CONDITION)) {
                 break;
             }
         }
+    }
+
+    private static String getRepeatOption() {
+        String repeatOption = Console.readLine();
+        GameRepeatInputException.verify(repeatOption);
+        return repeatOption;
     }
 }

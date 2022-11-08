@@ -15,7 +15,7 @@ public class Game {
 
     Game() {
         this.computer = new Computer();
-        this.computerNumbers = computer.getRandomNumbers();
+        this.computerNumbers = computer.getStringRandomNumbers();
     }
 
     public void play() {
@@ -23,6 +23,7 @@ public class Game {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String playerNumbers = getGamePlayerInput();
+
             String result = getResult(playerNumbers);
             System.out.println(result);
             if (result.contains(WIN_CONDITION)) {
@@ -56,8 +57,7 @@ public class Game {
         }
         if (result.get(STRIKE) > 0) {
             resultMessage = resultMessage
-                    .concat(Integer.toString(result.get(STRIKE))
-                            .concat("스트라이크"));
+                    .concat(Integer.toString(result.get(STRIKE)).concat("스트라이크"));
         }
         if (resultMessage.length() == 0) {
             resultMessage = "낫싱";
