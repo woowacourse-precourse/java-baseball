@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class OutputManager {
     public static void notifyStart() {
-        System.out.print(Text.NOTIFY_START);
+        System.out.println(Text.NOTIFY_START);
     }
 
     public static void requestPlayerNumber() {

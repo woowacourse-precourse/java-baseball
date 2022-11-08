@@ -66,6 +66,7 @@ public class GameManager {
     }
 
     public void startPlay() {
+        OutputManager.notifyStart();
         generateComputerNumber();
 
         while (!playerChoice.equals(Text.END.toString())) {
