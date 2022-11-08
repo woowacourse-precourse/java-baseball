@@ -94,6 +94,7 @@ public class BaseballGameController {
 	}
 
 	public static void start() {
+		UserOutputView.printGameStart();
 		do {
 			Balls ballsPickedByComputer = pickComputerBalls();
 			BaseballGameResult result;
