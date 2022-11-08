@@ -2,7 +2,8 @@ package baseball.util;
 
 public enum ProcessCode {
 
-    RESTART("1") , FINISH("2");
+    RESTART("1"),
+    FINISH("2");
 
     private final String value;
 
