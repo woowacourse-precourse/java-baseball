@@ -17,14 +17,14 @@ public class BaseballGameStarter {
                 .score(score)
                 .build();
 
-        String gameFlag = CONTINUE_GAME_FLAG;
-        while (gameFlag.equals(CONTINUE_GAME_FLAG)) {
+        String gameFlag;
+        do {
             baseballGame.init();
             baseballGame.play();
             printNewGameMessage();
             gameFlag = readLine();
             validateGameFlag(gameFlag);
-        }
+        } while (gameFlag.equals(CONTINUE_GAME_FLAG));
     }
 
     private static void validateGameFlag(String gameFlag) {
