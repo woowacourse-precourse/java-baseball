@@ -48,8 +48,7 @@ public class InputService {
 
   private static List<Integer> convertStringToIntegerList(String playerInput) {
     return Stream.of(playerInput.split(""))
-        .mapToInt(Integer::parseInt)
-        .boxed()
+        .map(Integer::parseInt)
         .collect(Collectors.toList());
   }
 
