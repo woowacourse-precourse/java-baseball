@@ -11,6 +11,9 @@ public class Constraint {
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
 
+    public static final String CONTINUE = "1";
+    public static final String STOP = "2";
+
     public Constraint() {
     }
 }

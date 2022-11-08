@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.Constraint.ASK_CONTINUE_MENT;
 import static baseball.Constraint.CLOSING_MENT;
+import static baseball.Constraint.CONTINUE;
 import static baseball.Constraint.NOTHING;
 import static baseball.Constraint.OPENING_MENT;
 
@@ -58,6 +59,6 @@ public class Game {
 
     public boolean askContinue() {
         System.out.println(ASK_CONTINUE_MENT);
-        return Console.readLine().equals("1");
+        return Console.readLine().equals(CONTINUE);
     }
 }
