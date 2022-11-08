@@ -16,8 +16,8 @@ public class Game {
 
     public void calculateStrike(ArrayList<Integer> userNumber) {
         strike = 0;
-        for(int index = 0; index < 3; index++) {
-            if(answerNumber.get(index) == userNumber.get(index)) {
+        for (int index = 0; index < 3; index++) {
+            if (answerNumber.get(index) == userNumber.get(index)) {
                 strike++;
             }
         }
@@ -25,8 +25,8 @@ public class Game {
 
     public void calculateBall(ArrayList<Integer> userNumber) {
         ball = 0;
-        for(int index = 0; index < 3; index++) {
-            if(answerNumber.contains(userNumber.get(index)) && answerNumber.get(index) != userNumber.get(index)) {
+        for (int index = 0; index < 3; index++) {
+            if (answerNumber.contains(userNumber.get(index)) && answerNumber.get(index) != userNumber.get(index)) {
                 ball++;
             }
         }
