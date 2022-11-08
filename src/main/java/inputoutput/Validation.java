@@ -26,4 +26,14 @@ public class Validation {
                         Collections.frequency(number, num) == 1);
     }
 
+    public boolean checkPlayerChoice(String playerChoice) {
+        return checkPlayerChoiceFormat(playerChoice);
+    }
+
+    private boolean checkPlayerChoiceFormat(String playerChoice) {
+        Format format = Format.PLAYER_CHOICE;
+
+        return Pattern.matches(format.getRegex(), playerChoice);
+    }
+
 }

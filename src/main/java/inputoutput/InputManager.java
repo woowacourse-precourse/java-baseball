@@ -24,6 +24,10 @@ public class InputManager {
         OutputManager.requestPlayerChoice();
         String playerChoice = Console.readLine();
 
-        return playerChoice;
+        if (validator.checkPlayerChoice(playerChoice)) {
+            return playerChoice;
+        }
+        
+        throw new IllegalArgumentException();
     }
 }
