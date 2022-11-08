@@ -1,7 +1,5 @@
 package baseball;
 
-import utils.InputUtils;
-
 import java.util.*;
 
 public class GameHost extends BaseballNumber {
