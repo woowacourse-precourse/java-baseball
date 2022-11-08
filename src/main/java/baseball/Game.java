@@ -12,18 +12,22 @@ public class Game {
         while(isStartStatus()){
             result.initialize();
             problemMaker.makeProblem(Settings.SIZE_OF_NUMBERS);
-            printMessage(Settings.START_MESSAGE);
+            printlnMessage(Settings.START_MESSAGE);
             while(result.isWrongAnswer()){
                 requestAnswer();
                 checkAnswer();
             }
-            printMessage(Settings.SUCCESS_MESSAGE);
+            printlnMessage(Settings.SUCCESS_MESSAGE);
             setStatusByProblemSolver();
         }
 
     }
 
     public void printMessage(String message){
+        System.out.print(message);
+    }
+
+    public void printlnMessage(String message){
         System.out.println(message);
     }
 
@@ -39,7 +43,7 @@ public class Game {
     public void checkAnswer(){
         result.initialize();
         countResult();
-        printMessage(result.createResultMessage());
+        printlnMessage(result.createResultMessage());
     }
 
     public void countResult(){
@@ -57,7 +61,7 @@ public class Game {
     }
 
     public void setStatusByProblemSolver(){
-        printMessage(Settings.RESTART_REQUEST_MESSAGE);
+        printlnMessage(Settings.RESTART_REQUEST_MESSAGE);
         status = problemSolver.chooseToRestart();
     }
 
