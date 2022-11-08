@@ -30,15 +30,7 @@ public class GameResult {
   }
 
   public boolean isAnswer() {
-    return strikeCount == 3;
-  }
-
-  public int getStrikeCount() {
-    return strikeCount;
-  }
-
-  public int getBallCount() {
-    return ballCount;
+    return strikeCount == GameNumber.NUMBER_DIGIT;
   }
 
   private void calculateResult(List<Integer> answerNumberList, List<Integer> gameNumberList) {
