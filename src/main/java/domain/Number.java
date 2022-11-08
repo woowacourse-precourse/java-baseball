@@ -1,6 +1,9 @@
 package domain;
 
 public class Number {
+    private static final int MAX_NUMBER = 9;
+    private static final int MIN_NUMBER = 1;
+
     private int number;
 
     public Number(int number) {
@@ -22,10 +25,10 @@ public class Number {
     }
 
     private boolean numberRangeValidationTest(int checkNumber) {
-        if (checkNumber < 1) {
+        if (checkNumber < MIN_NUMBER) {
             throw new IllegalArgumentException("숫자의 범위가 1 미만입니다.");
         }
-        if (9 < checkNumber) {
+        if (MAX_NUMBER < checkNumber) {
             throw new IllegalArgumentException("숫자의 범위가 9를 초과합니다.");
         }
         return true;
