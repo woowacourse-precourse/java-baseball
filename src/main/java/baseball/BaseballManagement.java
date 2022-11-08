@@ -12,7 +12,6 @@ public class BaseballManagement {
         boolean isRestart = true;
         while (isRestart) {
             List<Integer> computerRandomNumber = ComputerNumber.generateRandomNumber();
-            System.out.println(computerRandomNumber);
             boolean isThreeStrike = true;
             while (isThreeStrike) {
                 NumberCheck numberCheck = new NumberCheck();
