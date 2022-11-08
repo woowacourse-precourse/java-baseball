@@ -12,7 +12,6 @@ public class BaseballTest {
     private Hint hint;
     private List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
 
-    @Test
     void 힌트_테스트(String userInput, String message){
         hint = new Hint();
         List<Integer> userAnswer = Validator.convertor(userInput);
@@ -56,7 +55,6 @@ public class BaseballTest {
     }
 
 
-    @Test
     void 예외_테스트(String userInput) {
         assertThatThrownBy(() -> Validator.convertor(userInput))
                 .isInstanceOf(IllegalArgumentException.class);
