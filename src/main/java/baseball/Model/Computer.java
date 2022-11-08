@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import static baseball.Utils.Constant.*;
 
 public class Computer {
-    Balls answer = new Balls();
+    public Balls answer = new Balls();
     public int strikeCount, ballCount;
 
     public void randNumber() {
