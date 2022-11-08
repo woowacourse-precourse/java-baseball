@@ -18,7 +18,7 @@ public abstract class View {
     }
 
     public static String readLine(String message) {
-        print(message + " : ");
+        printLine(message + " : ");
         String readLine = Console.readLine();
         //printLine("");
 
