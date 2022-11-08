@@ -7,19 +7,21 @@ import java.util.List;
 public class InputUserNumber {
 
     public static List<Integer> playerNumber(){
+        ExcepetionCase exception = new ExcepetionCase();
 
 
-        int playerNumString = Integer.parseInt(Console.readLine());
+        int playerNum = Integer.parseInt(Console.readLine());
 
-        if
-
+        if (exception.ThreeNumberException(playerNum)){
+            throw new IllegalArgumentException();
+        }
 
 
         List<Integer> userNumber = new ArrayList<>();
 
         for (int i = 0; i < 3 ; i++) {
-            userNumber.add(playerNumString%10);
-            playerNumString /= 10;
+            userNumber.add(playerNum %10);
+            playerNum /= 10;
         }
 
         return userNumber;
