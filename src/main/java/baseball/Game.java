@@ -31,6 +31,10 @@ public class Game {
         List<Integer> input = getInput();
 
         getResult(input);
+
+        if (strike == 3) {
+            // 정답으로 판단, 문구 출력
+        }
     }
 
     private List<Integer> getInput() {
