@@ -22,5 +22,11 @@ class InputViewTest {
     assertEquals(exception.getMessage(), INCORRECT_INPUT.getErrorMessage());
   }
 
+  @Test
+  @DisplayName("게임 재시작 입력 테스트")
+  void 재시작_입력값_테스트(){
+    Exception exception = assertThrows(IllegalArgumentException.class,()-> inputView.validateMenu("3"));
+    assertEquals(exception.getMessage(), INCORRECT_MENU_NUMBER.getErrorMessage());
+  }
 
 }
