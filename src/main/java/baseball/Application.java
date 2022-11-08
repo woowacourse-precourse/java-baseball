@@ -146,6 +146,7 @@ public class Application {
     // 입력한 숫자에 대한 결과와 모두 맞혔는지 여부를 출력하는 메서드
     public static boolean outputFinalResultAndWhetherAllMatches(int numberOfStrikes, int numberOfBalls) {
         if (numberOfStrikes == 3) {
+            System.out.printf("%d스트라이크\n", numberOfStrikes);
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else if (numberOfStrikes == 0 && numberOfBalls == 0) {
