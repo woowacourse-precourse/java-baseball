@@ -1,3 +1,5 @@
+package baseball;
+
 import baseball.Player;
 import baseball.Result;
 import baseball.ball.Ball;
@@ -10,21 +12,15 @@ public class Judge {
     private List<Ball> computerBalls;
     private Result result;
 
-    public Judge(List<Ball> computerBalls) {
+    public Judge(List<Ball> computerBalls,Result result) {
         this.computerBalls = computerBalls;
-        result=new Result();
+        this.result=result;
     }
 
-    private List<Ball> settingPlayerBalls(Player player){
-        Balls playerBalls = player.createBalls();
-        return playerBalls.getBalls();
-    }
-
-    public void compareComputerAndPlayer(Player player) {
-        List<Ball>playBalls=settingPlayerBalls(player);
+    public void compareComputerAndPlayer(List<Ball>playerBalls) {
         for (int i = 0; i < 3; i++) {
-            computerBalls.contains(playBalls.get(i));
-            calculateStrikeAndBall(computerBalls,playBalls,i);
+            computerBalls.contains(playerBalls.get(i));
+            calculateStrikeAndBall(computerBalls,playerBalls,i);
         }
         printGameResult();
     }
