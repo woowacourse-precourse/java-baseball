@@ -2,14 +2,11 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
-
-import static baseball.Application.makeComputerNum;
+import static baseball.Application.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static baseball.Application.makeRandomNum;
 
 public class TestCode {
 
