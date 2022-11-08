@@ -1,7 +1,7 @@
 package baseball.service;
 
-import baseball.ballnumber.InputBallNumber;
-import baseball.ballnumber.RandomBallNumber;
+import baseball.number.InputNumber;
+import baseball.number.RandomNumber;
 import baseball.dto.Result;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -12,27 +12,27 @@ import static baseball.Const.RESTART_GAME;
 
 public class GameService {
 
-    private final InputBallNumber inputBallNumber;
-    private final RandomBallNumber randomBallNumber;
+    private final InputNumber inputNumber;
+    private final RandomNumber randomNumber;
 
-    public GameService(InputBallNumber inputBallNumber, RandomBallNumber randomBallNumber) {
-        this.inputBallNumber = inputBallNumber;
-        this.randomBallNumber = randomBallNumber;
+    public GameService(InputNumber inputNumber, RandomNumber randomNumber) {
+        this.inputNumber = inputNumber;
+        this.randomNumber = randomNumber;
     }
 
     public Result checkStrikeAndBall() {
-        List<String> randomNumbers = randomBallNumber.createRandomNumber();
-        String inputNumber = inputBallNumber.inputBallNumber();
+        List<String> randomNumbers = randomNumber.createRandomNumber();
+        String inputNumbers = inputNumber.inputBallNumber();
 
         int strike = 0;
         int ball = 0;
-        for (int ballNumber = 0; ballNumber < inputNumber.length(); ballNumber++) {
-            String randomNumber = randomNumbers.get(ballNumber);
-            if (isEqualNumber(randomNumber, inputNumber, ballNumber)) {
+        for (int number = 0; number < inputNumbers.length(); number++) {
+            String randomNumber = randomNumbers.get(number);
+            if (isEqualNumber(randomNumber, inputNumbers, number)) {
                 strike++;
                 continue;
             }
-            if (existNumber(randomNumber, inputNumber)) {
+            if (existNumber(randomNumber, inputNumbers)) {
                 ball++;
             }
         }
@@ -40,7 +40,7 @@ public class GameService {
     }
 
     public void clearRandomBallNumber() {
-        randomBallNumber.createRandomNumber().clear();
+        randomNumber.createRandomNumber().clear();
     }
 
     public String inputOneOrTwo() {
