@@ -38,26 +38,37 @@ class ApplicationTest extends NsTest {
         assertThat(set.size()).isEqualTo(3);
 
     }
+
     @Test
-    void 입력값_유효성_검증_성공(){
+    void 입력값_유효성_검증_성공() {
         boolean valid = Application.validationOfInput("123");
         assertThat(valid).isTrue();
     }
+
     @Test
-    void 입력값_유효성_검증_실패_중복값(){
+    void 입력값_유효성_검증_실패_중복값() {
         boolean valid = Application.validationOfInput("111");
         assertThat(valid).isFalse();
     }
+
     @Test
-    void 입력값_유효성_검증_실패_길이(){
+    void 입력값_유효성_검증_실패_길이() {
         boolean valid = Application.validationOfInput("1234");
         assertThat(valid).isFalse();
     }
 
     @Test
-    void 입력값_유효성_검증_실패_숫자이외의값(){
+    void 입력값_유효성_검증_실패_숫자이외의값() {
         boolean valid = Application.validationOfInput("asd");
         assertThat(valid).isFalse();
+    }
+
+    @Test
+    void 숫자를_배열로_바꾸기() {
+        int[] intToArr = Application.getIntToArr(432);
+        assertThat(intToArr[4]).isEqualTo(3);
+        assertThat(intToArr[3]).isEqualTo(2);
+        assertThat(intToArr[2]).isEqualTo(1);
     }
 
     @Test
