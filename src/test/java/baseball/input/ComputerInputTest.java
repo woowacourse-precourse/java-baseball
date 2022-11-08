@@ -12,7 +12,7 @@ class ComputerInputTest {
         ComputerInput computerInput = new ComputerInput();
 
         @Test
-        @DisplayName("컴퓨터 랜덤 숫자 사이즈 검증")
+        @DisplayName("컴퓨터 랜덤 숫자 사이즈(3) 검증")
         void 컴퓨터_랜덤_숫자_사이즈_검증(){
             List<Integer> numberList = computerInput.getNumberList();
             assertThat(numberList.size()).isEqualTo(3);

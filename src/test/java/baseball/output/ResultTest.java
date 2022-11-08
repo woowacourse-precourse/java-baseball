@@ -14,7 +14,7 @@ class ResultTest {
     public Result result = new Result();
 
     @Nested
-    @DisplayName("3스트라이크")
+    @DisplayName("3스트라이크 input")
     class three_strike{
 
         @BeforeEach
@@ -29,14 +29,14 @@ class ResultTest {
         }
 
         @Test
-        @DisplayName("정답여부")
+        @DisplayName("정답여부 - 정답")
         void 정답여부(){
-            assertThat(result.getIsCorrect()).isTrue();
+            assertThat(result.getCorrect()).isTrue();
         }
     }
 
     @Nested
-    @DisplayName("2스트라이크")
+    @DisplayName("2스트라이크 input")
     class two_strike{
 
         @BeforeEach
@@ -51,14 +51,14 @@ class ResultTest {
         }
 
         @Test
-        @DisplayName("정답여부")
+        @DisplayName("정답여부 - 오답")
         void 정답여부(){
-            assertThat(result.getIsCorrect()).isFalse();
+            assertThat(result.getCorrect()).isFalse();
         }
     }
 
     @Nested
-    @DisplayName("1스트라이크")
+    @DisplayName("1스트라이크 input")
     class one_strike{
 
         @BeforeEach
@@ -73,14 +73,14 @@ class ResultTest {
         }
 
         @Test
-        @DisplayName("정답여부")
+        @DisplayName("정답여부 - 오답")
         void 정답여부(){
-            assertThat(result.getIsCorrect()).isFalse();
+            assertThat(result.getCorrect()).isFalse();
         }
     }
 
     @Nested
-    @DisplayName("1볼 1스트라이크")
+    @DisplayName("1볼 1스트라이크 input")
     class one_ball_one_strike{
 
         @BeforeEach
@@ -95,15 +95,15 @@ class ResultTest {
         }
 
         @Test
-        @DisplayName("정답여부")
+        @DisplayName("정답여부 - 오답")
         void 정답여부(){
-            assertThat(result.getIsCorrect()).isFalse();
+            assertThat(result.getCorrect()).isFalse();
         }
     }
 
 
     @Nested
-    @DisplayName("2볼 1스트라이크")
+    @DisplayName("2볼 1스트라이크 input")
     class two_ball_one_strike{
 
         @BeforeEach
@@ -118,14 +118,14 @@ class ResultTest {
         }
 
         @Test
-        @DisplayName("정답여부")
+        @DisplayName("정답여부 - 오답")
         void 정답여부(){
-            assertThat(result.getIsCorrect()).isFalse();
+            assertThat(result.getCorrect()).isFalse();
         }
     }
 
     @Nested
-    @DisplayName("3볼")
+    @DisplayName("3볼 input")
     class three_ball{
 
         @BeforeEach
@@ -140,14 +140,14 @@ class ResultTest {
         }
 
         @Test
-        @DisplayName("정답여부")
+        @DisplayName("정답여부 - 오답")
         void 정답여부(){
-            assertThat(result.getIsCorrect()).isFalse();
+            assertThat(result.getCorrect()).isFalse();
         }
     }
 
     @Nested
-    @DisplayName("2볼")
+    @DisplayName("2볼 input")
     class two_ball{
 
         @BeforeEach
@@ -162,14 +162,14 @@ class ResultTest {
         }
 
         @Test
-        @DisplayName("정답여부")
+        @DisplayName("정답여부 - 오답")
         void 정답여부(){
-            assertThat(result.getIsCorrect()).isFalse();
+            assertThat(result.getCorrect()).isFalse();
         }
     }
 
     @Nested
-    @DisplayName("1볼")
+    @DisplayName("1볼 input")
     class one_ball{
 
         @BeforeEach
@@ -184,14 +184,14 @@ class ResultTest {
         }
 
         @Test
-        @DisplayName("정답여부")
+        @DisplayName("정답여부 - 오답")
         void 정답여부(){
-            assertThat(result.getIsCorrect()).isFalse();
+            assertThat(result.getCorrect()).isFalse();
         }
     }
 
     @Nested
-    @DisplayName("낫싱")
+    @DisplayName("낫싱 input")
     class nothing{
 
         @BeforeEach
@@ -206,9 +206,9 @@ class ResultTest {
         }
 
         @Test
-        @DisplayName("정답여부")
+        @DisplayName("정답여부 - 오답")
         void 정답여부(){
-            assertThat(result.getIsCorrect()).isFalse();
+            assertThat(result.getCorrect()).isFalse();
         }
     }
 }

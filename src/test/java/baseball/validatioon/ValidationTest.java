@@ -77,7 +77,7 @@ class ValidationTest {
     @DisplayName("validateOption 검증")
     class ValidateOption{
         @Test
-        @DisplayName("틀린 옵션")
+        @DisplayName("잘못된 옵션")
         void 틀린_옵션(){
             assertThatThrownBy(() -> Validation.validateOption(9))
                     .isInstanceOf(IllegalArgumentException.class);
@@ -89,7 +89,7 @@ class ValidationTest {
     @DisplayName("validateSize 검증")
     class ValidateSize{
         @Test
-        @DisplayName("사이즈 다름")
+        @DisplayName("사이즈(1) 다름")
         void 사이즈_다름(){
             assertThatThrownBy(() -> Validation.validateSize("123",2))
                     .isInstanceOf(IllegalArgumentException.class);
