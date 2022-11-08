@@ -20,7 +20,7 @@ public class UserInput {
                 userInputList.add(number);
             }
         }
+        return userInputList;
     }
-
 
 }
