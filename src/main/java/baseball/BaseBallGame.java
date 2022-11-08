@@ -123,7 +123,6 @@ class BaseBallGame {
     }
 
     public boolean is3DigitNumber(String inputStr) {
-        int x = 3;
         String inputNumberRegex = "^[1-9]{3}$";
 
         return inputStr.matches(inputNumberRegex);
