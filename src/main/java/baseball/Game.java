@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Game {
@@ -38,9 +40,18 @@ public class Game {
         }
 
         Print.checkGameEnd();
+        playAgainOrEnd(Console.readLine());
     }
 
     private boolean checkThreeStrike(String result) {
         return result.equals(THREE_STRIKE);
+    }
+
+    private void playAgainOrEnd(String input) {
+        InputValidation.checkGameEndChoiceNumber(input);
+
+        if (input.equals("1")) {
+            playGameAgain();
+        }
     }
 }
