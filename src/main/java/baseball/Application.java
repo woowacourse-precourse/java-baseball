@@ -116,4 +116,10 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
     }
+
+    // 게임이 끝났는지 검증하는 기능
+    public static boolean checkGameFinished(List<Integer> result) {
+        int strike = result.get(1);
+        return strike != 3;
+    }
 }
