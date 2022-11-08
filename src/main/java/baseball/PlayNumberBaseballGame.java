@@ -4,9 +4,38 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import baseball.GameProgressLine;
 
 public class PlayNumberBaseballGame {
+    List<Integer> computerRandomNumbers = new ArrayList<>();
+    List<Integer> playerInputNumbers = new ArrayList<>();
+    private boolean isCorrect=false;
+
+    PlayNumberBaseballGame(){
+        playNumberBaseballOneGame();
+    }
+
+    public void playNumberBaseballOneGame(){
+        isCorrect=false;
+        computerRandomNumbers=createRandomNumberOfComputer();
+        System.out.println(GameProgressLine.START_LINE.getLine());
+
+        while (!isCorrect) {
+            playerInputNumbers = getInputNumbersOfPlayer();
+            String outputResultLine = compareNumbersBetweenComputerAndPlayer(computerRandomNumbers, playerInputNumbers);
+            System.out.println(outputResultLine);
+            playerInputNumbers.clear();
+        }
+        computerRandomNumbers.clear();
+
+        System.out.println(GameProgressLine.ASK_RETRY_LINE.getLine());
+        boolean retry = isRetry();
+        if(retry){
+           playNumberBaseballOneGame();
+        }
+    }
 
     public List<Integer> createRandomNumberOfComputer() {
         List<Integer> computer = new ArrayList<>();
@@ -17,6 +46,18 @@ public class PlayNumberBaseballGame {
             }
         }
         return computer;
+    }
+
+    public List<Integer> getInputNumbersOfPlayer(){
+        String inputLine = Console.readLine();
+        //Exception
+
+        List<Integer> player = new ArrayList<>();
+        for(int location = 0; location<inputLine.length(); location++){
+            player.add(inputLine.charAt(location)-'0');
+        }
+
+        return  player;
     }
 
     public String compareNumbersBetweenComputerAndPlayer(List<Integer> computer, List<Integer> player) {
@@ -42,31 +83,32 @@ public class PlayNumberBaseballGame {
         return compareResult;
     }
 
-    public boolean isThreeStrike(List<Integer> computer, List<Integer> player) {
+    private boolean isThreeStrike(List<Integer> computer, List<Integer> player) {
         if (Arrays.equals(computer.toArray(), player.toArray())) {
             return true;
         }
         return false;
     }
 
-    public boolean isStrike(int computerNum, int playerNum){
+    private boolean isStrike(int computerNum, int playerNum){
         if(computerNum==playerNum){
             return true;
         }
         return false;
     }
 
-    public boolean isBall(List<Integer> computer, int playerNum){
+    private boolean isBall(List<Integer> computer, int playerNum){
         if(computer.contains(playerNum)){
             return true;
         }
         return false;
     }
 
-    public String outputResultComparisonOfNumbers(int strike, int ball){
+    private String outputResultComparisonOfNumbers(int strike, int ball){
         String result="";
 
         if(strike==3){
+            isCorrect=true;
             result = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
         else if(ball==0 && strike==0){
@@ -83,10 +125,16 @@ public class PlayNumberBaseballGame {
         return result;
     }
 
-    public boolean isRetry(int playerAnswer){
-        if(playerAnswer==1) {
+    private boolean isRetry(){
+        String inputLine = Console.readLine();
+        if(inputLine.equals("1")) {
             return true;
+        } else if(inputLine.equals("2")){
+            return false;
         }
-        return false;
+        else {
+            //throwException
+            return false;
+        }
     }
 }
