@@ -1,12 +1,14 @@
 ## 🏏 숫자 야구 게임 
 
 ### 기능 목록
-1. 컴퓨터가 1~9까지 서로 다른 수로 이루어진 3자리의 수를 랜덤으로 선택하는 기능 
-2. 플레이어로부터 3개의 서로 다른 3개의 숫자를 입력받는 기능  
-3. 플레이어가 입력한 값에 예외가 있는지 확인하는 기능 
-4. 입력한 숫자에 대한 strike와 ball의 결과를 계산하는 기능 
-5. 입력한 숫자에 대한 결과를 출력하는 기능 
-6. 플레이어로부터 재시작 여부를 1 또는 2로 입력받는 기능 
-7. 플레이어가 입력한 restartNumber에 예외가 있는지 확인하는 기능 
-8. 재시작 여부를 결정하는 기능
+1. 컴퓨터가 1~9까지 서로 다른 수로 이루어진 3자리의 수를 랜덤으로 선택하는 기능  getComputerNumber
+2. 플레이어로부터 3개의 서로 다른 3개의 숫자를 입력받는 기능  getPlayerNumber
+3. 플레이어가 입력한 값에 예외가 있는지 확인하는 기능 isPlayerNumberException
+4. 입력한 숫자에 대한 strike와 ball의 결과를 계산하는 기능 calculateStrikeAndBall
+5. 입력한 숫자에 대한 결과를 출력하는 기능 printResultMessage
+6. 플레이어로부터 재시작 여부를 1 또는 2로 입력받는 기능  getRestartNumber
+7. 플레이어가 입력한 restartNumber에 예외가 있는지 확인하는 기능 isRestartNumberException
+8. 재시작 여부를 결정하는 기능 judgeRestart 
+
+
 
