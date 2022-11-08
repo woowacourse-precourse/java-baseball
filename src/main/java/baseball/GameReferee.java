@@ -50,4 +50,16 @@ public class GameReferee {
         return countStrike;
     }
 
+    public int Ball(List<Integer> myList, List<Integer> computerList) {
+        int countBall = 0;
+        for (int i = 0; i < myList.size(); i++) {
+            boolean ischeckNothing = checkNothing(myList, computerList, i);
+            boolean ischeckStrike = checkStrike(myList, computerList, i);
+
+            countBall += countBall(ischeckNothing, ischeckStrike);
+        }
+        return countBall;
+
+    }
+
 }
