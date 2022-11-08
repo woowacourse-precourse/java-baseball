@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import java.util.EnumMap;
 import java.util.Map;

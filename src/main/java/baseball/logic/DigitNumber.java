@@ -1,5 +1,6 @@
-package baseball;
+package baseball.logic;
 
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;

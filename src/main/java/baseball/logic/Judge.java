@@ -1,5 +1,7 @@
-package baseball;
+package baseball.logic;
 
+import baseball.domain.Result;
+import baseball.domain.ResultType;
 import java.util.Map;
 
 public class Judge {

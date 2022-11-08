@@ -1,4 +1,6 @@
-package baseball;
+package baseball.util;
+
+import baseball.Application;
 
 public final class Validator {
 

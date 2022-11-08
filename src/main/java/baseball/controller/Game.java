@@ -1,5 +1,10 @@
-package baseball;
+package baseball.controller;
 
+import baseball.domain.Result;
+import baseball.domain.ResultType;
+import baseball.logic.DigitNumber;
+import baseball.logic.Judge;
+import baseball.presentation.View;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Map;
 

@@ -1,4 +1,6 @@
-package baseball;
+package baseball.presentation;
+
+import baseball.domain.ResultType;
 
 public class View {
 
