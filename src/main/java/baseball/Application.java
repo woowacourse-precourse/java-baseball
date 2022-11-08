@@ -32,6 +32,8 @@ public class Application{
         	
         	if(!(keepGoing.equals("1")||keepGoing.equals("2")))
         		throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
+        	
+        	answer = makeRandomNumber();
     	}
  
     	return;
