@@ -37,19 +37,20 @@ class ApplicationTest extends NsTest {
     }
     @Nested
     class 게임준비기능_테스트 {
+        @BeforeEach
+        void 게임준비시키기() {
+            testGame.prepareGame();
+        }
         @Test
         void 게임시작하면_성공여부가_초기화되는지_확인() {
-            testGame.prepareGame();
             assertThat(testGame.success).isEqualTo(false);
         }
         @Test
         void 게임시작하면_설정되는_수가_3개인지_확인() {
-            testGame.setComputerNumbers();
             assertThat(testGame.computerNumbers.size()).isEqualTo(COMPUTER_NUMBERS_SIZE);
         }
         @Test
         void 게임시작하면_설정되는_수가_서로_다른지_확인() {
-            testGame.setComputerNumbers();
             // 만약 중복되는 수가 있다면 hashSet으로 변환했을 때 길이가 줄어든다
             HashSet<Integer> computerNumbers = new HashSet<>(testGame.computerNumbers);
             assertThat(computerNumbers.size()).isEqualTo(COMPUTER_NUMBERS_SIZE);
