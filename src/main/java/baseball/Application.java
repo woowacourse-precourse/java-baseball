@@ -20,24 +20,25 @@ public class Application {
             if (inGame) {
                 inGame = false;
                 computerRanNumList = main.computerNumberList();
-//                System.out.println("computer" + computerRanNumList);
-
+                System.out.println("computer" + computerRanNumList);
+            }
             System.out.println("숫자를 입력해주세요 : ");
             String inputNumber = main.playerInputNumber();
             List<Integer> inputNumList = main.inputNumberList(inputNumber);
+
+            int strike = main.strikeCnt(computerRanNumList, inputNumList);
+            int inList = main.inListCnt(computerRanNumList, inputNumList);
+
+            int ball = inList - strike;
+            main.printScore(ball, strike);
+
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String inputAgainNumber = main.playerInputNumber();
+                again = main.checkAgainNumber(inputAgainNumber);
+                inGame = true;
             }
-        }
-        int strike = main.strikeCnt(computerRanNumList, inputNumList);
-        int inList = main.inListCnt(computerRanNumList, inputNumList);
-
-        int ball = inList - strike;
-        main.printScore(ball, strike);
-
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            String inputAgainNumber = main.playerInputNumber();
-            again = main.checkAgainNumber(inputAgainNumber);
-            inGame = true;
         }
     }
 
@@ -65,7 +66,7 @@ public class Application {
             computerRanNumList.add(computerRanNum);
         }
     }
-    
+
     public String playerInputNumber() {
         return Console.readLine();
     }
