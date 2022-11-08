@@ -13,6 +13,7 @@ class BaseballGame {
     List<Integer> my_list = new ArrayList<>();
     int ballCount;
     int strikeCount;
+    int myNum;
 
     public BaseballGame() {
         makeNumList();
@@ -37,7 +38,7 @@ class BaseballGame {
     // 3자리 수 입력
     public void writeMyNumList() {
         System.out.print("숫자를 입력해주세요 : ");
-        int myNum = Integer.parseInt(Console.readLine());
+        myNum = Integer.parseInt(Console.readLine());
         if(myNum >= 1000)
             throw new IllegalArgumentException(); // 사용자가 잘못된 값을 입력할 경우
         makeMyNumList(); // 사용자로부터 입력받은 값을 리스트로 변환
@@ -53,7 +54,13 @@ class BaseballGame {
 
     // 사용자로부터 입력받은 값을 리스트로 변환
      public void makeMyNumList() {
+         if(my_list.size()>0){
+             my_list.clear();
+         }
 
+         my_list.add(myNum/100);
+         my_list.add((myNum%100)/10);
+         my_list.add(myNum%10);
      }
 
 }
