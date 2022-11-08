@@ -17,7 +17,7 @@ public class Application {
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> userBall = StringToIntList(Console.readLine());
+            List<Integer> userBall = getStringToIntList(Console.readLine());
             String result = compareBall(computerBall, userBall);
 
             if (!result.equals("3스트라이크")) {
@@ -51,7 +51,7 @@ public class Application {
         return computerBall;
     }
 
-    public static List<Integer> StringToIntList(String user) {
+    public static List<Integer> getStringToIntList(String user) {
         isNumber(user);
         List<Integer> userBall = new ArrayList<>();
 

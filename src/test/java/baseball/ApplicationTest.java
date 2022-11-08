@@ -35,7 +35,7 @@ class ApplicationTest extends NsTest {
         String input = "123";
         Integer result = 1;
 
-        assertThat(StringToIntList(input).get(0)).isEqualTo(result);
+        assertThat(getStringToIntList(input).get(0)).isEqualTo(result);
     }
 
     @Test
