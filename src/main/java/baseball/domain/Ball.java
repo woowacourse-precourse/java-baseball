@@ -1,8 +1,10 @@
 package baseball.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Ball {
 
-    private int getRandomNumber() {
-        return 0;
+    public int getRandomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
     }
 }
