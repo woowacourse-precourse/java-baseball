@@ -1,4 +1,4 @@
-package baseball;
+package domain;
 
 import domain.RandomBallsGenerator;
 import org.junit.jupiter.api.BeforeEach;
