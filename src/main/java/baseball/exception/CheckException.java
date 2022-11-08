@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class CheckException {
 
-    public void validateInputLength(String[] inputArray){
+    public static void validateInputLength(String[] inputArray){
         if(inputArray.length!=3){
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요");
         }
@@ -18,7 +18,6 @@ public class CheckException {
             sb.append(str);
         }
         String inputString = sb.toString();
-        System.out.println(inputString);
         String pattern = "^[1-9]*$";
         boolean match = Pattern.matches(pattern, inputString);
         if(match==false) {
