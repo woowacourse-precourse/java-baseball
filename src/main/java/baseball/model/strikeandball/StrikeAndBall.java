@@ -15,4 +15,9 @@ public class StrikeAndBall {
     public int getBall() {
         return ball;
     }
+
+    public boolean isThreeStrike() {
+        if (strike == 3 && ball == 0) return true;
+        else return false;
+    }
 }
