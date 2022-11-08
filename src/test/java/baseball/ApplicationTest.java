@@ -63,6 +63,31 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo(true);
     }
 
+    @Test
+    void 볼_스크라이크_점수_계산(){
+        String num = "123";
+        String computer ="321";
+        Hint hint = new Hint();
+        Game answer = new Game(num);
+        Game com = new Game(computer);
+        int[] result = hint.hintResult(com,answer);
+        assertThat(result[0]).isEqualTo(2);
+        assertThat(result[1]).isEqualTo(1);
+
+    }
+
+    @Test
+    void 모두_스크라이크_점수_계산(){
+        String num = "123";
+        String computer = "123";
+        Game answer = new Game(num);
+        Game com = new Game(computer);
+        Hint hint = new Hint();
+        int[] result = hint.hintResult(com,answer);
+        assertThat(result[0]).isEqualTo(0);
+        assertThat(result[1]).isEqualTo(3);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
