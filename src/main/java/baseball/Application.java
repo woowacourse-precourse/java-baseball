@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         Baseball baseball = new Baseball();
         String optionNumber;
         boolean option;
@@ -49,10 +48,8 @@ class Baseball {
             BufferedReader br = new BufferedReader(ir);
             System.out.print("숫자를 입력해주세요 :");
             getPlayerNumber = br.readLine();
-            if (playerNumberOverLength(getPlayerNumber) || playerNumberGetChar(getPlayerNumber)) {
-                throw new IllegalAccessError();
-            }
-        } catch (Exception | IllegalAccessError e) {
+            getPlayerNumberError(getPlayerNumber);
+        } catch (Exception e) {
         }
         playerNumberList(getPlayerNumber);
     }
@@ -61,6 +58,14 @@ class Baseball {
         for (int i = 0; i < 3; i++) {
             playerNumber.set(i, (playerNum % 10));
             playerNum /= 10;
+        }
+    }
+
+    public void getPlayerNumberError(String getPlayerNumber) {
+        if (playerNumberOverLength(getPlayerNumber)) {
+            throw new IllegalArgumentException("입력값이 세자리 수가 아닙니다.");
+        } else if (playerNumberGetChar(getPlayerNumber)) {
+            throw new IllegalArgumentException("입력값에 숫자가 아닌 문자가 포함되어 있습니다.");
         }
     }
     public boolean playerNumberOverLength (String getPlayerNumber) {
@@ -141,9 +146,7 @@ class Baseball {
         } else if (optionNumber.equals("2")) {
             option = false;
         } else {
-            System.out.println("옵션값이 아닙니다.");
-            optionNumber = gameRestartOrEnd();
-            option = optionRestartOrEnd(optionNumber);
+            throw new IllegalArgumentException("옵션값이 아닙니다.");
         }
         return option;
     }
