@@ -12,15 +12,15 @@ import org.junit.jupiter.api.RepeatedTest;
 import baseball.domain.Balls;
 
 @DisplayNameGeneration(
-	DisplayNameGenerator.ReplaceUnderscores.class
+    DisplayNameGenerator.ReplaceUnderscores.class
 )
 public class NumberGeneratorTest {
 
-	@DisplayName("중복되지 않은 3자리 숫자 생성 테스트")
-	@RepeatedTest(50)
-	void createNonDuplicateNumbers_중복되지_않은_3자리_숫자_생성() {
-		List<Integer> numbers
-			= NumberGenerator.createNonDuplicateNumbers();
-		assertDoesNotThrow(() -> new Balls(numbers));
-	}
+    @DisplayName("중복되지 않은 3자리 숫자 생성 테스트")
+    @RepeatedTest(50)
+    void createNonDuplicateNumbers_중복되지_않은_3자리_숫자_생성() {
+        List<Integer> numbers
+            = NumberGenerator.createNonDuplicateNumbers();
+        assertDoesNotThrow(() -> new Balls(numbers));
+    }
 }
