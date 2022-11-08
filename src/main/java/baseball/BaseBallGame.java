@@ -8,6 +8,8 @@ public class BaseBallGame {
     public static final int COMPUTER_NUMBERS_SIZE = 3;
     public static final int COMPUTER_NUMBER_MIN = 1;
     public static final int COMPUTER_NUMBER_MAX = 9;
+    public static final String STRIKE = "strike";
+    public static final String BALL = "ball";
     public static final int REGAME = 1;
     public static final int STOP = 2;
 
@@ -123,12 +125,12 @@ public class BaseBallGame {
     }
 
     public void setCountResult(Map<String, Integer> gameResult, int ballCount, int strikeCount) {
-        gameResult.put("ball", ballCount);
-        gameResult.put("strike", strikeCount);
+        gameResult.put(BALL, ballCount);
+        gameResult.put(STRIKE, strikeCount);
     }
 
     public boolean isSuccess(Map<String, Integer> gameResult) {
-        int strikeCount = gameResult.get("strike");
+        int strikeCount = gameResult.get(STRIKE);
         if (strikeCount == COMPUTER_NUMBERS_SIZE) {
             return true;
         }
