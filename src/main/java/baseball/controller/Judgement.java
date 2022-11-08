@@ -8,17 +8,19 @@ import java.util.List;
 import baseball.view.View;
 
 public class Judgement {
-  private final String STRIKE = "strike";
-  private final String BALL = "ball";
   private final int MAX_NUMBER_SIZE = 3;
-  private final HashMap<String, Integer> STRIKE_AND_BALL;
+  private int strikeCount;
+  private int ballCount;
+  private static final int INIT_COUNT = 0;
+  //private final HashMap<String, Integer> STRIKE_AND_BALL;
 
   Judgement() {
-    STRIKE_AND_BALL = new HashMap<>();
+    init();
   }
 
   private void init() {
-    STRIKE_AND_BALL.clear();
+    strikeCount = INIT_COUNT;
+    ballCount = INIT_COUNT;
   }
 
   private List<Integer> sortList(List<Integer> list) {
@@ -43,43 +45,36 @@ public class Judgement {
     return false;
   }
 
-  private void putStrike() {
-    STRIKE_AND_BALL.put(STRIKE, STRIKE_AND_BALL.getOrDefault(STRIKE, 0) + 1);
-  }
-
-  private void putBall() {
-    STRIKE_AND_BALL.put(BALL, STRIKE_AND_BALL.getOrDefault(BALL, 0) + 1);
-  }
-
   public void judgeStrikeAndBall(List<Integer> myNumbers, List<Integer> computerNumbers) {
     init();
     List<Integer> sameNumbers = getSameNumbers(sortList(myNumbers), sortList(computerNumbers));
     for (int sameNumber : sameNumbers) {
       if (isStrike(sameNumber, myNumbers, computerNumbers)) {
-        putStrike();
-      } else {
-        putBall();
+        strikeCount++;
+      }
+      if (!isStrike(sameNumber, myNumbers, computerNumbers)) {
+        ballCount++;
       }
     }
     printStrikeAndBall();
   }
 
   public boolean isThreeStrike() {
-    if (STRIKE_AND_BALL.get(STRIKE) == MAX_NUMBER_SIZE) {
+    if (strikeCount == MAX_NUMBER_SIZE) {
       return true;
     }
     return false;
   }
 
   private void printStrikeAndBall() {
-    if (STRIKE_AND_BALL.isEmpty()) {
+    if (strikeCount == 0 && ballCount == 0) {
       View.printNothing();
-    } else if (STRIKE_AND_BALL.get(STRIKE) == 0) {
-      View.printBall(STRIKE_AND_BALL.get(BALL));
-    } else if (STRIKE_AND_BALL.get(BALL) == 0) {
-      View.printStrike(STRIKE_AND_BALL.get(STRIKE));
+    } else if (strikeCount == INIT_COUNT) {
+      View.printBall(ballCount);
+    } else if (ballCount == 0) {
+      View.printStrike(strikeCount);
     } else {
-      View.printStrikeAndBall(STRIKE_AND_BALL.get(BALL), STRIKE_AND_BALL.get(STRIKE));
+      View.printStrikeAndBall(ballCount, strikeCount);
     }
   }
 }
