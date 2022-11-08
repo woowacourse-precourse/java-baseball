@@ -37,10 +37,28 @@ public class Application {
         return user;
     }
 
+    public static Boolean checkAnswer(){
+        int ball = 0;
+        int strike = 0;
+        for(int i = 0 ; i < 3 ; i++){
+            if(user.get(i) == computer.get(i))
+                strike ++;
+            else if(computer.contains(user.get(i))){
+                ball++;
+            }
+        }
+        //결과 출력
+        if(strike == 3)
+            return true;
+        else
+            return false;
+    }
+
     public static void main(String[] args) {
         computer = chooseNumByComputer();
         while (true) {
             user = getUserInput();
+            if (checkAnswer()) break;
         }
     }
 }
