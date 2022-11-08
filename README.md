@@ -153,3 +153,89 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+--- 
+## 도메인 모델링
+
+### BallNumber
+
+- 상태
+    - BallNumber은 위치와 숫자를 식별자로 가진다.
+        - 숫자는 문자열 타입이나 정수형 타입으로 변환이 가능해야한다.
+        - 위치는 숫자 야구 게임의 자리수의 길이 안에서 순차적으로 쌓이며 0~2 사이의 정숫값이다.
+        - 숫자는 1~9까지의 정숫값 중 하나이다.
+- 행위
+    - BallNumber 유효성 검사
+        - 입력 받은 숫자가 형변환으로 정수형 타입이 되지 않을 때 `IllegalArgumentException` 예외가 발생한다.
+        - 입력 받은 숫자가 1~9 사이의 정수값이 아니라면 `IllegalArgumentException` 예외가 발생한다.
+        - 인덱스의 범위를 초과하는 경우 `IllegalArgumentException` 예외가 발생한다.
+    - BallNumber을 비교한다.
+        - 위치값과 숫자값이 같은 경우에는 BallStatus.STRIKE를 반환한다.
+        - 숫자만 같은 경우에는 BallStatus.BALL를 반환한다.
+        - 그렇지 않은 경우에는 BallStatus.NOTHING을 반환한다.
+
+
+### BallNumbers
+
+- 상태
+    - BallNumbers는 1급 컬렉션으로 List<BallNumber>를 식별자로 가진다.
+        - BallNumbers의 각 BallNumber 객체의 숫자값은 중복되지 않아야한다.
+        - BallNumbers의 각 BallNumber 객체의 인덱스 값은 중복되지 않아야한다.
+        - BallNumbers의 각 BallNumber 객체의 길이는 3이여야한다.
+- 행위
+    - BallNumbers 유효성 검사
+        - BallNumber 객체들의 숫자값 중복이 있을 경우 `IllegalArgumentException` 예외가 발생한다.
+        - BallNumber 객체들의 인덱스 값 중복이 있을 경우 `IllegalArgumentException` 예외가 발생한다.
+        - BallNumber 객체들의 길이가 3이 아닌 경우 `IllegalArgumentException` 예외가 발생한다.
+    - BallNumbers와 BallNumber를 비교한다.
+        - BallNumbers에 있는 각 객체의 인덱스와 숫자값을 BallNumber와 비교하여 STRIKE, BALL, NOTHING으로 BallStatus enum객체로 반환한다.
+    - BallNumbers와 BallNumbers를 비교한다.
+        - BallNumbers에 있는 각 객체의 인덱스와 숫자값을 BallNumbers와 비교하여 나온 STRIKE, BALL, NOTHING의 개수를 GameResult 객체로 반환한다.
+
+### BallStatus
+
+- 상태
+    - BallStatus는 STRIKE, BALL, NOTHING의 enum 타입을 식별자로 가진다.
+- 행위
+    - NOTHING이 아닌지 체크한다.
+
+### GameResult
+
+- 상태
+    - BallStatus는 strike와 ball의 개수를 의미하는 정수형 타입과 출력 메시지를 의미하는 문자열 타입을 식별자를 가진다.
+- 행위
+    - 변수로 들어오는 BallStatus를 기준으로 strike, ball의 개수를 올려준다.
+    - strike, ball의 개수를 바탕으로 출력할 게임 결과 메시지를 생성한다.
+    - 숫자 야구 게임의 결과 메시지를 출력한다.
+    - strike가 3일 경우에는 게임을 종료할 수 있는 boolean 값을 반환한다.
+
+### User
+
+- 행위
+    - `camp.nextstep.edu.missionutils.Console` API를 통해서 숫자 야구 게임에 대한 사용자의 입력값을 받는다.
+        - 이를 BallNumber를 mapping하고 List형태로 collect한다.
+    - `camp.nextstep.edu.missionutils.Console` API를 통해서 게임 재시작 여부에 대한 사용자의 입력값을 받는다.
+        - 사용자의 입력값으로 1, 2가 아닌 다른 숫자 혹은 문자가 들어왔을 경우에는 `IllegalArgumentException` 예외가 발생한다.
+
+
+### RandomBallNumbersGenerator
+
+- 행위
+    - `camp.nextstep.edu.missionutils.Randoms` API를 통해서 숫자 야구 게임에 대한 1부터 9까지의 서로 다른 임의의 3가지 랜덤한 숫자를 생성한다.
+        - 이를 BallNumber를 mapping하고 List형태로 collect한다.
+
+### Game
+
+- 행위
+    - 숫자 야구 게임을 진행한다.
+        - RandomBallNumbersGenerator를 통해 만들어진 서로 다른 임의의 3가지 랜덤한 숫자와 사용자가 입력한 값을 비교한다.
+        - 비교한 값을 출력하고 3strike가 되었을 때 숫자 야구 게임을 종료한다.
+    - 게임을 재시작한다
+        - 게임의 재시작 여부를 유저에게 요청한다.
+
+### Application
+
+- 행위
+    - RandomBallNumbersGenerator 객체에게 서로 다른 임의의 3가지 랜덤한 숫자를 생성하도록 요청한다.
+    - RandomBallNumbersGenerator 객체에서 만들어진 다른 임의의 3가지 랜덤한 숫자를 기준으로 게임에게 숫자 야구 게임 시작을 요청한다.
+    - 사용자의 게임 재시작 여부를 바탕으로 게임을 다시 시작, 종료한다.
