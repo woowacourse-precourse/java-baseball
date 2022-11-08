@@ -39,6 +39,7 @@ public class Application {
             player = numberParser.parsePlayerNumber(input);
             strike = numberReferee.checkStrike(player, computer);
             ball = numberReferee.checkBall(player, computer);
+
             resultPrint.printGuessResult(strike, ball);
         }
     }

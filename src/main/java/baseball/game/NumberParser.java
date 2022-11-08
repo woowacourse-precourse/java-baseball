@@ -85,7 +85,7 @@ public class NumberParser {
             throw new IllegalArgumentException("한 글자만 입력해주세요.");
         }else if(!(playerRestartString.equals(BaseballData.RESTART)) &&
             !(playerRestartString.equals(BaseballData.GAME_OVER))){
-            throw new IllegalArgumentException("1과 2의 입력만 허용 됩니다.");
+                throw new IllegalArgumentException("1과 2의 입력만 허용 됩니다.");
         }
     }
 
