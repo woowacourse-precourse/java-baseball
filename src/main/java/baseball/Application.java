@@ -8,13 +8,21 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
-        CreateRandomNum();
-        playerNum();
+        boolean again = true;
 
-
+        while(again){
+            List<Integer> computer = createRandomNum();
+            String result = "";
+            while(!result.equals("3스트라이크")){
+                result = judge(computer, playerNum());
+                System.out.println(result);
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            again = playAgainOrNot();
+        }
     }
 
-    public static List<Integer> CreateRandomNum(){
+    public static List<Integer> createRandomNum(){
         List<Integer> computerNum = new ArrayList<>();
         while(computerNum.size() < 3){
             int randomNum = pickNumberInRange(1, 9);
@@ -65,8 +73,6 @@ public class Application {
             return ball + "볼";
         } else if (ball == 0) {
             return strike + "스트라이크";
-        } else if (strike == 3) {
-            return "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
         return ball + "볼 " + strike + "스트라이크";
     }
