@@ -84,7 +84,6 @@ public class Application {
                 countBall ++;
             }
         }
-
         String strikeMent = "";
         String ballMent = "";
         if(countStrike > 0)

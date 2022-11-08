@@ -74,7 +74,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-    @Test
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
