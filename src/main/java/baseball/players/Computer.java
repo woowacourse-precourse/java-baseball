@@ -13,16 +13,20 @@ public class Computer {
 
         while (digits.size() < NUMBER_OF_DIGITS) {
             addNewDigit(digits);
+            List<Integer> digitsToBeChecked = digits.stream()
+                    .distinct()
+                    .collect(Collectors.toList());
+            if (digitsToBeChecked.size() != NUMBER_OF_DIGITS) {
+                digits = new ArrayList<>();
+            }
         }
         return digits;
     }
 
     public static void addNewDigit(List<Integer> digits) {
-        int newDigit = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-
-        digits.add(newDigit);
-        digits.stream()
-                .distinct()
-                .collect(Collectors.toList());
+        for (int num = 1; num <= NUMBER_OF_DIGITS; num++) {
+            Integer newDigit = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+            digits.add(newDigit);
+        }
     }
 }
