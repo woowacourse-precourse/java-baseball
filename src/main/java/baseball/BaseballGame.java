@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BaseballGame {
 
-    private List<Integer>;
+    private List<Integer> userThreeDifferentNumber;
     Computer computer;
 
     public void gameStart(){
