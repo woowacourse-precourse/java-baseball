@@ -75,7 +75,7 @@ class ApplicationTest extends NsTest {
                             .hasMessageContaining("입력된 수가 3자리 미만입니다")
             );
         }
-
+    }
 
 
 
