@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrepareGame {
-    public List<Integer> setComputerNumber(){
+    public List<Integer> setComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1,9);
-            if(!isEachDigit(computer, randomNumber)){
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!isEachDigit(computer, randomNumber)) {
                 computer.add(randomNumber);
             }
         }
@@ -22,47 +22,47 @@ public class PrepareGame {
         return digitList.contains(digitNumber);
     }
 
-    public String setUserNumber(){
+    public String setUserNumber() {
         String userNumber = Console.readLine();
-        if(!isNumber(userNumber) || !isThreeDigitNumber(userNumber)){
+        if (!isNumber(userNumber) || !isThreeDigitNumber(userNumber)) {
             throw new IllegalArgumentException("Please enter the correct value");
         }
         return userNumber;
     }
 
-    public String setUserNumberForTest(String userNumber){
-        if(!isNumber(userNumber) || !isThreeDigitNumber(userNumber)){
+    public String setUserNumberForTest(String userNumber) {
+        if (!isNumber(userNumber) || !isThreeDigitNumber(userNumber)) {
             throw new IllegalArgumentException("Please enter the correct value");
         }
         return userNumber;
     }
 
-    private Boolean isNumber(String number){
+    private Boolean isNumber(String number) {
         return number.matches("-?\\d+");
     }
 
-    private Boolean isThreeDigitNumber(String number){
+    private Boolean isThreeDigitNumber(String number) {
         return number.length() == 3;
     }
 
-    public List<Integer> userNumberToList(String userNumber){
+    public List<Integer> userNumberToList(String userNumber) {
         List<Integer> userNumberList = new ArrayList<>();
-        for(int index = 0; index < userNumber.length(); index++){
+        for (int index = 0; index < userNumber.length(); index++) {
             userNumberList.add(userNumber.charAt(index) - '0');
         }
         return userNumberList;
     }
 
-    public Boolean isGameExit(){
+    public Boolean isGameExit() {
         String gameOver = Console.readLine();
-        if(gameOver.equals("1")){
+        if (gameOver.equals("1")) {
             return true;
         }
         return false;
     }
 
-    public Boolean isGameExitForTest(String gameOver){
-        if(gameOver.equals("1")){
+    public Boolean isGameExitForTest(String gameOver) {
+        if (gameOver.equals("1")) {
             return true;
         }
         return false;
