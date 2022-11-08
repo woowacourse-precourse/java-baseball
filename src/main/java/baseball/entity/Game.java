@@ -61,7 +61,7 @@ public class Game {
         System.out.println(resultMessage);
     }
 
-    public boolean checkStopGame() {
+    public boolean stopGame() {
         if (GAME_STATE == STOP) {
             return true;
         }

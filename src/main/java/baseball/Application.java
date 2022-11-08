@@ -10,7 +10,7 @@ public class Application {
 
         System.out.println(Message.START_MESSAGE);
 
-        while (game.checkStopGame()) {
+        while (!game.stopGame()) {
             game.init();
             game.start();
         }
