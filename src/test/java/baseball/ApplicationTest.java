@@ -62,23 +62,23 @@ class ApplicationTest extends NsTest {
 //        }
 //    }
 //
-//    @Test
-//    void 랜덤_숫자_생성() {
-//        Computer computer = new Computer();
-//        computer.setNumber();
-//        assertThat(Operator.isCorrectNumber(computer.getNumber())).isEqualTo(true);
-//    }
-//
-//    @Test
-//    void 사용자에게_숫자_입력받기() {
-//        Player player = new Player();
-//        String input = "123";
-//        InputStream in = new ByteArrayInputStream(input.getBytes());
-//        System.setIn(in);
-//        player.inputNumber();
-//        List<Integer> result = List.of(1, 2, 3);
-//        assertThat(player.getNumber()).isEqualTo(result);
-//    }
+    @Test
+    void 랜덤_숫자_생성() {
+        Computer computer = new Computer();
+        computer.setNumber();
+        assertThat(Operator.isCorrectNumber(computer.getNumber())).isEqualTo(true);
+    }
+
+    @Test
+    void 사용자에게_숫자_입력받기() {
+        Player player = new Player();
+        String input = "123";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        player.inputNumber();
+        List<Integer> result = List.of(1, 2, 3);
+        assertThat(player.getNumber()).isEqualTo(result);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
