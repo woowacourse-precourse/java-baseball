@@ -23,6 +23,45 @@ enum BaseballResult {
     }
 }
 
+class DecimalNumber {
+    int value;
+    private static final int START_CRITERIA = 1;
+    private static final int END_CRITERIA = 9;
+
+    public DecimalNumber(int value) {
+        validateDecimalNumber(value);
+        this.value = value;
+    }
+
+    private static void validateDecimalNumber(int value) {
+        if (!isValidateRange(value)) {
+            throw new IllegalArgumentException(String.format("%d - %d 사이의 올바른 범위의 수를 입력해주세요.\n", START_CRITERIA, END_CRITERIA));
+        }
+    }
+
+    private static boolean isValidateRange(int value) {
+        return (value >= START_CRITERIA) && (value <= END_CRITERIA);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DecimalNumber that = (DecimalNumber) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return "{" + value + '}';
+    }
+}
+
 public class Application {
 
     private static final int MAX_DIGIT = 3;
