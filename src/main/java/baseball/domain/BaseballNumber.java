@@ -23,7 +23,7 @@ public class BaseballNumber {
         return new BaseballNumber(generateRandomNumbers());
     }
 
-    public static BaseballNumber createByUserInput(String userInput) {
+    public static BaseballNumber createByUserInput(String userInput) throws IllegalArgumentException {
         validateInput(userInput);
         return new BaseballNumber(convertStringToIntegerList(userInput));
     }
