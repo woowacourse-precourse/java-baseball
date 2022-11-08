@@ -4,6 +4,7 @@ import baseball.domain.BaseballNumber;
 import baseball.domain.BaseballNumbers;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,12 +24,21 @@ public class InputView {
 
     private static BaseballNumbers stringToBaseballNumbers(String inputString) {
 
-        List<BaseballNumber> baseballNumbers = Arrays.stream(inputString.split(""))
-                .map(Integer::parseInt)// 숫자가 아닌 문자가 inputString에 있는경우 예외발생생
-                .map(BaseballNumber::new)
-                .collect(Collectors.toList());
+        List<BaseballNumber> baseballNumbers = new ArrayList<>();
+
+        for(int i=0; i<inputString.length();i++){// BaseballNumberList 형태로 변환
+            BaseballNumber baseballNumber = new BaseballNumber(Character.getNumericValue(inputString.charAt(i)));
+            baseballNumbers.add(baseballNumber);
+        }
 
         return new BaseballNumbers(baseballNumbers);
+    }
+
+    public static int inputUserRestartOrStop() {
+        System.out.println(INPUT_RESTART_OR_STOP_REQUEST_MESSAGE);
+        String userRestartOrStopInput = Console.readLine();
+
+        return Integer.valueOf(userRestartOrStopInput);
     }
 
     private static void validateInputStringisNumbers(String inputString) {
