@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static baseball.controller.GameFlag.END;
+import static baseball.controller.GameFlag.START;
+
 public class ConsoleInputReader {
     public static List<Integer> getUserNumberList() {
         String userInputNumber = Console.readLine();
@@ -15,7 +18,18 @@ public class ConsoleInputReader {
     }
 
     public static GameFlag getUserOpinion() {
-        return GameFlag.START;
+        String userOpinion = Console.readLine();
+        validateFlag(userOpinion);
+
+        int flag = Integer.parseInt(userOpinion);
+        return convertGameFlag(flag);
+    }
+
+    public static GameFlag convertGameFlag(int flag) {
+        if (flag == START.getFlagValue()) {
+            return START;
+        }
+        return END;
     }
 
     public static List<Integer> convertToIntegerList(final String numberString) {
@@ -46,4 +60,9 @@ public class ConsoleInputReader {
         }
     }
 
+    public static void validateFlag(final String userFlag) {
+        if (!userFlag.equals("1") && !userFlag.equals("2")) {
+            throw new IllegalArgumentException("Flag must be 1 or 2");
+        }
+    }
 }
