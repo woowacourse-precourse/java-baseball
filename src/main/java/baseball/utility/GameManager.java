@@ -1,6 +1,11 @@
 package baseball.utility;
 
+import baseball.constant.GameConstant;
 import baseball.constant.GameStatus;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public class GameManager {
     private static GameManager gameManager;
@@ -21,5 +26,18 @@ public class GameManager {
 
     private boolean isGamePlaying() {
         return this.gameStatus == GameStatus.PLAYING;
+    }
+
+    private String generateComputerNumber() {
+        HashSet<Integer> hashSet = new LinkedHashSet<>();
+
+        while (hashSet.size() < GameConstant.VALID_NUMBER_LENGTH.getValue()) {
+            hashSet.add(Randoms.pickNumberInRange(1, 9));
+        }
+
+        StringBuilder computerNumberBuilder = new StringBuilder();
+        hashSet.forEach(computerNumberBuilder::append);
+
+        return computerNumberBuilder.toString();
     }
 }
