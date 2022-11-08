@@ -64,6 +64,15 @@ public class FunctionTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("아무 숫자도 입력하지 않았을 때 \"IllegalArgumentException\"을 반환하는지 확인")
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
