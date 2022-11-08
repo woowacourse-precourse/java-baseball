@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -44,6 +45,24 @@ public class Application {
         return userNumbers;
     }
 
+    public static String getMatchResult(String computerNumbers, String userNumbers) {
+
+        return "";
+    }
+
+    public static String countStrikeBall(String computerNumbers, String userNumbers) {
+        List<Integer> matchedNumbers = new ArrayList<Integer>(Arrays.asList(0,0));
+
+        for (int i = 0; i < computerNumbers.length(); i++) {
+            if (computerNumbers.charAt(i) == userNumbers.charAt(i)) {
+                matchedNumbers.set(0, matchedNumbers.get(0) + 1);
+            } else if (computerNumbers.contains(String.valueOf(userNumbers.charAt(i)))) {
+                matchedNumbers.set(1, matchedNumbers.get(1) + 1);
+            }
+        }
+        return matchedNumbers.toString().replaceAll("[^0-9]","");
+    }
 
 }
+
 

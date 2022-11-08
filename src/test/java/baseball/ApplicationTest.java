@@ -39,9 +39,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능2_사용자넘버_테스트 () {
+    void 기능3_사용자넘버_테스트 () {
         assertThatThrownBy(() -> Application.checkUserNumbersValidation("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 기능4_StrikeBall_테스트 () {
+        assertThat(Application.countStrikeBall("123", "312")).isEqualTo("03");
+        assertThat(Application.countStrikeBall("123", "412")).isEqualTo("02");
+        assertThat(Application.countStrikeBall("123", "123")).isEqualTo("30");
     }
 
     @Override
