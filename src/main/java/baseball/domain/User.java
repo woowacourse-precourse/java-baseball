@@ -15,4 +15,16 @@ public class User {
         return Integer.parseInt(input);
     }
 
+    public List<Integer> numbersToList (int num){
+
+        List<Integer> user = new ArrayList<>();
+
+        while(num > 0){
+            user.add(num % 10);
+            num /= 10;
+        }
+
+        return user;
+    }
+
 }
