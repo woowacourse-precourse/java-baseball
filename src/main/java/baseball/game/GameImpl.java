@@ -29,4 +29,10 @@ public class GameImpl implements Game{
     System.out.print(START_MESSAGE);
     userPlayer.createUserInput();
   }
+
+  @Override
+  public void GameScore() {
+    score = new Score();
+    score.compareTwoNumber(computerPlayer.getComputerNumberList(), userPlayer.getUserNumberList());
+  }
 }
