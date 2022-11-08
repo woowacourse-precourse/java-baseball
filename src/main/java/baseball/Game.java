@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Game {
     public void startGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (true) {
             //게임에 필요한 객체 생성
             Computer computer = new Computer();
