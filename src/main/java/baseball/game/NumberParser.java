@@ -62,7 +62,7 @@ public class NumberParser {
     }
 
     public void checkPlayerStringException(String playerNumberString){
-        checkIsDigitPlayerString(playerNumberString);
+        checkIsDigitPlayerNumberString(playerNumberString);
         if(playerNumberString.length() > BaseballData.GAME_SIZE){
             throw new IllegalArgumentException("너무 많은 글자를 입력했습니다.");
         } else if(playerNumberString.length() < BaseballData.GAME_SIZE){
@@ -70,7 +70,7 @@ public class NumberParser {
         }
     }
 
-    public void checkIsDigitPlayerString(String playerNumberString){
+    public void checkIsDigitPlayerNumberString(String playerNumberString){
         char oneCharacter;
         for(int index = 0; index < playerNumberString.length(); index ++ ){
             oneCharacter = playerNumberString.charAt(index);
@@ -78,5 +78,21 @@ public class NumberParser {
                 throw new IllegalArgumentException("숫자만 입력해주세요.");
             }
         }
+    }
+
+    public void checkExceptionsPlayerRestartString(String playerRestartString){
+        if(playerRestartString.length() != BaseballData.RESTART_SIZE){
+            throw new IllegalArgumentException("한 글자만 입력해주세요.");
+        }else if(!(playerRestartString.equals(BaseballData.RESTART)) &&
+            !(playerRestartString.equals(BaseballData.GAME_OVER))){
+            throw new IllegalArgumentException("1과 2의 입력만 허용 됩니다.");
+        }
+    }
+
+    public boolean checkPlayerRestartString(String playerRestartString){
+        if(playerRestartString.equals(BaseballData.RESTART)){
+            return true;
+        }
+        return false;
     }
 }

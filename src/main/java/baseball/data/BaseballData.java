@@ -3,6 +3,7 @@ package baseball.data;
 public class BaseballData {
     //게임 시작 설정
     public static final int GAME_SIZE = 3;
+    public static final int RESTART_SIZE = 1;
     public static final int MINIMUM_NUMBER = 1;
     public static final int MAXIMUM_NUMBER = 9;
 
