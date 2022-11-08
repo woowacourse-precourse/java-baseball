@@ -17,10 +17,10 @@ public class BaseballGameController implements GameController {
     private Inputer inputer;
     private boolean flag;
 
-    public BaseballGameController(RandNumVO randnumVO, Comparator comparator) {
+    public BaseballGameController(RandNumVO randnumVO, Comparator comparator, Inputer inputer) {
         this.randnumVO = randnumVO;
         this.comparator = comparator;
-        this.inputer = new Inputer();
+        this.inputer = inputer;
         this.flag = true;
     }
 
