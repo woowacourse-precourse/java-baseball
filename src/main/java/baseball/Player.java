@@ -13,7 +13,7 @@ public class Player {
         numbers.clear();
         System.out.print("숫자를 입력해주세요 : ");
         String playerNumberStr = Console.readLine();
-        // 올바르게 입력했는지 체크하기
+        checkPlayerNumberStr(playerNumberStr);
         playerNumberStr.chars()
                 .mapToObj(c -> c - '0')
                 .forEach(numbers::add);
