@@ -1,11 +1,7 @@
 package baseball.view;
 
-import baseball.model.User;
-
 public class OutputView {
     private String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
-    User user = new User();
 
     public static void printHint(int ball, int strike) {
 
