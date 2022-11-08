@@ -20,6 +20,10 @@ public class IOTopClass {
         output.printStrikeBall(strikeBalls);
     }
 
+    public void printGuide(String guide) {
+        System.out.print(guide);
+    }
+
     public Integer endOrReOneOrTwo() {
         return input.endOrReNum();
     }
