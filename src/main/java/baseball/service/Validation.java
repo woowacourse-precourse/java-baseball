@@ -1,5 +1,8 @@
 package baseball.service;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Validation {
 
     public static boolean isValidNumber(String input) {
@@ -10,6 +13,10 @@ public class Validation {
             throw new IllegalArgumentException();
         }
         if (!checkRange(input, 0, 10)) {
+            throw new IllegalArgumentException();
+        }
+
+        if(!checkDup(input)) {
             throw new IllegalArgumentException();
         }
 
@@ -26,8 +33,16 @@ public class Validation {
                 .allMatch(number -> (number - '0') > startRange && (number - '0') < endRange);
     }
 
+    public static boolean checkDup(String input) {
+       long dupCount = input.chars()
+               .distinct()
+               .count();
+
+       return input.length() == dupCount;
+    }
+
     public static boolean isValidReStart(String input) {
-        if (input.contains(" ") || input.length() != 2) {
+        if (input.contains(" ") || input.length() != 1) {
             throw new IllegalArgumentException();
         }
 
