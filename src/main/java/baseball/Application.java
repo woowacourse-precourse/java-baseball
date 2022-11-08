@@ -31,6 +31,7 @@ public class Application {
             // 게임 종료 조건 확인
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restartCheckNum = Console.readLine();
+            System.out.println(restartCheckNum);
             if (restartCheckNum.equals("2")) {
                 checkPlayGame = false;
             }

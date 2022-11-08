@@ -17,12 +17,11 @@ public class Player {
 
         // 3자리 숫자가 아닌경우 예외
         if (inputNum.length() != 3) throw new IllegalArgumentException();
-
         for (int i = 0; i < 3; i++) {
             char charNum = inputNum.charAt(i);
-            int ascii = (int)charNum;
 
             // 숫자가 아닐 경우 예외
+            int ascii = (int)charNum;
             if (ascii<48 || ascii>57) throw new IllegalArgumentException();
 
             int num = Character.getNumericValue(charNum);

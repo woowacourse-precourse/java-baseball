@@ -14,41 +14,30 @@ public class Game {
     }
 
     public void startGame() throws IllegalArgumentException{
-        // 컴퓨터 객체
         Computer computer = new Computer();
-
-        // 플레이어 객체 생성
         Player player = new Player();
 
-        // 컴퓨터 랜덤 숫자 생성 ->
         computer.makeRandomNumber();
-        System.out.println("컴퓨터 랜덤숫자 : " + computer.myNumberList);
 
         while (true) {
             // result 초기화
             resetResult();
 
-            // 사용자로부터 숫자 입력받기
+            // 사용자로부터 숫자 입력받기(입력 받는 값에 따라 예외 처리)
             try {
                 player.inputNumber();
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException();
             }
-            //System.out.println("사용자 랜덤숫자 : " + player.myInputNumber);
 
-            // 숫자 비교하기
             compareNumbers(computer.myNumberList, player.myInputNumber);
-            //System.out.println("숫자 비교" + result);
 
-            // 출력하기
             String printResult = printCompareResult();
 
-            // 출력 결과값이 다 맞췄다면 break;
             if (printResult.equals("3스트라이크")) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
-
         }
     }
 
@@ -58,7 +47,6 @@ public class Game {
     }
 
     public void compareNumbers(List<Integer> comNum, List<Integer> userNum) {
-        //System.out.println("비교 : " + comNum + " " + userNum);
         for (int i = 0; i < 3; i++) {
             int eachUserNum = userNum.get(i);
             int eachComNum = comNum.get(i);
@@ -74,8 +62,6 @@ public class Game {
                 result.replace("ball", result.get("ball") + 1);
                 continue;
             }
-
-            //System.out.println("낫싱");
         }
     }
 
