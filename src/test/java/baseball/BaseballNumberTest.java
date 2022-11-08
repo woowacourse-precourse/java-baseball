@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BaseballNumberTest {
     @Test
-    public void testConstructor(){
+    public void constructorTest(){
         BaseballNumber baseballNumber = new BaseballNumber();
         String createdNumber = baseballNumber.getNumber();
 
@@ -20,4 +20,5 @@ class BaseballNumberTest {
         }
         Assertions.assertThat(Integer.parseInt(createdNumber)).isInstanceOf(Integer.class);
     }
+
 }

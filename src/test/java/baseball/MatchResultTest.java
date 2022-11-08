@@ -7,6 +7,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 class MatchResultTest {
@@ -26,6 +28,10 @@ class MatchResultTest {
 
         new MatchResult(3,0).print();
         Assertions.assertThat(out.toString()).isEqualTo("3볼"+System.lineSeparator());
+        out.reset();
+
+        new MatchResult(0,0).print();
+        Assertions.assertThat(out.toString()).isEqualTo("낫싱"+System.lineSeparator());
         out.reset();
     }
 

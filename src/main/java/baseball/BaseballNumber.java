@@ -28,8 +28,19 @@ public class BaseballNumber {
     }
 
     public MatchResult match(String guessNumber){
+        int ball = 0;
+        int strike = 0;
+        for(int i = 0; i < 3; i++){
+            if(guessNumber.charAt(i) == computerNumber.charAt(i)){
+                strike++;
+                continue;
+            }
+            if(computerNumber.contains(guessNumber.substring(i,i+1))){
+                ball++;
+            }
+        }
 
-        MatchResult matchResult = new MatchResult(0,0);
+        MatchResult matchResult = new MatchResult(ball,strike);
         return matchResult;
     }
 }
