@@ -9,7 +9,7 @@ import java.util.List;
 public class Computer {
     public List<Integer> randomNumber;
 
-    public Computer(){
+    public Computer() {
         randomNumber = new ArrayList<>();
     }
     public void makeRandomNumber() {

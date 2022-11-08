@@ -76,7 +76,7 @@ public class Application {
             return false;
         }
     }
-    public boolean choiceRestartGame(){
+    public boolean choiceRestartGame() {
         System.out.println(CLEAR_GAME + CHOICE_ONE_OR_TWO);
         return gamer.inputRestartNumber();
     }

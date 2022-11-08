@@ -30,7 +30,7 @@ public class Gamer {
     }
     public boolean inputRestartNumber() {
         String restartNumber = Console.readLine();
-        if(restartNumber.equals(RESTART_BUTTON)) {
+        if (restartNumber.equals(RESTART_BUTTON)) {
             return false;
         } else if (restartNumber.equals(FINISH_BUTTON)) {
             return true;
