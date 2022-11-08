@@ -7,11 +7,8 @@ import java.util.Set;
 public class ScoreDetect {
 
     /**
+     * 숫자 리스트를 받아 스트라이크 점수 판정
      * get strike count by number
-     *
-     * @param answer
-     * @param numbers
-     * @return
      */
     public static int getStrikeCount(
             List<Integer> answer,
@@ -35,6 +32,11 @@ public class ScoreDetect {
         return count;
     }
 
+
+    /**
+     * 숫자 리스트를 받아 볼 점수 판정
+     * get ball count by number
+     */
     public static int getBallCount(
             List<Integer> answer,
             List<Integer> numbers
@@ -49,7 +51,7 @@ public class ScoreDetect {
         int count = 0;
 
         for (int i = 0; i < answer.size(); i++) {
-            if (answer.get(i) == numbers.get(i))
+            if (answer.get(i) == numbers.get(i)) // 스트라이크인 경우 패스
                 continue;
             if (answer.contains(numbers.get(i)))
                 count++;
