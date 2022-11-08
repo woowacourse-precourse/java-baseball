@@ -55,12 +55,14 @@ public class Application {
         validNumber(inputNum);
         toInteger(inputNum);
     }
+
     public static void validNumber(String inputNum) {
 
         validLength(inputNum);
         validDuplication(inputNum);
         validNotNumber(inputNum);
     }
+
     public static void validLength(String inputNum) {
         if (inputNum.length() > 3) {
             throw new IllegalArgumentException();
@@ -87,10 +89,32 @@ public class Application {
         myNum.add(inputNum.charAt(1) - '0');
         myNum.add(inputNum.charAt(2) - '0');
     }
+
     public static void StrikeOrBall() {
-        return ;
+        int strike = isStrike();
+        int ball = isBall();
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isNot3Strike = false;
+        } else if ((strike == 0) && (ball == 0)) {
+            System.out.println("낫싱");
+        } else if ((strike == 0) && (ball != 0)) {
+            System.out.println(ball + "볼");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
     }
+
     public static void moreGame() {
-        return ;
+        return;
+    }
+
+    public static Integer isStrike() {
+        return 0;
+    }
+
+    public static Integer isBall() {
+        return 0;
     }
 }
