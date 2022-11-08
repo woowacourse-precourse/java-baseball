@@ -21,8 +21,7 @@ public class PlayingGameView extends GameView {
             outputBuilder(strike, OUTPUT_STRIKE);
         }
         if (strike == ZERO && ball == ZERO) {
-            outputBuilder(OUTPUT_NOTHING);
-            return;//흠 고민
+            output.append(OUTPUT_NOTHING);
         }
         newLine();
         print();

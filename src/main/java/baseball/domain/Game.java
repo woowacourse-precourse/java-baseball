@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Game {
     private static final int MAX_STRIKE_SIZE = 3;
+    private static final int ONE = 1;
     private static final boolean SUCCESS = false;
     private static final boolean FAIL = true;
     private int strike;
@@ -23,22 +24,26 @@ public class Game {
     }
 
     public void addBall() {
-        this.ball += 1;
+        this.ball += ONE;
     }
 
     public void addStrike() {
-        this.strike += 1;
-        this.ball -= 1;
+        this.strike += ONE;
+        this.ball -= ONE;
     }
 
-    public void checkBallStrike(List<Integer> computerAnswer, List<Integer> UserAnswer) {
+    public void checkBall(List<Integer> computerAnswer, List<Integer> UserAnswer) {
         for (int aLetter : UserAnswer) {
             if (letterIncludeAnswerCheck(computerAnswer, aLetter)) {
                 addBall();
-                if (computerAnswer.indexOf(aLetter) == UserAnswer.indexOf(aLetter)) {
-                    addStrike();
-                }
+                checkStrike(computerAnswer, UserAnswer, aLetter);
             }
+        }
+    }
+
+    public void checkStrike(List<Integer> computerAnswer, List<Integer> UserAnswer, int aLetter) {
+        if (computerAnswer.indexOf(aLetter) == UserAnswer.indexOf(aLetter)) {
+            addStrike();
         }
     }
 

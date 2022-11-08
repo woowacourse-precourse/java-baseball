@@ -13,7 +13,7 @@ public class GameController {
             playingGameView.enterNumberPrint();
             User user = new User(playingGameView.inputToQuestion());
             game = new Game();
-            game.checkBallStrike(computer.getComputerAnswer(), user.getUserAnswer());
+            game.checkBall(computer.getComputerAnswer(), user.getUserAnswer());
             playingGameView.gameResultPrint(game.getStrike(), game.getBall());
         } while (game.ThreeStrikeCheck());
     }
