@@ -155,8 +155,4 @@ while (computer.size() < 3) {
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
 
-## ✏ 구현할 기능 목록
-- 라이브러리 함수 사용 입력 받기
-- 예외처리 함수 
-- 게임종료 재시작 
 
