@@ -21,6 +21,8 @@ public class BaseballGameConsole {
             playSingleGame(pitcher);
             replay = askReplaying(pitcher);
         }
+
+        emcee.showEndingGuide();
     }
 
     private void playSingleGame(Pitcher pitcher) {

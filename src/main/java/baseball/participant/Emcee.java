@@ -26,4 +26,11 @@ public class Emcee {
             System.out.println("낫싱");
         }
     }
+
+    public void showEndingGuide() {
+        String guide = "숫자 야구 게임을 종료합니다!\n" +
+                "투수는 마운드에서 퇴장해주세요.\n" +
+                "플레이 해주셔서 감사합니다!";
+        System.out.println(guide);
+    }
 }
