@@ -29,7 +29,7 @@ public class Application {
             while(true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
-                if(input.length()!=3) throw new IllegalArgumentException();
+                if(!correctInput(input)) throw new IllegalArgumentException();
 
                 List<Integer> inputNum = toInputNum(input);
 
@@ -39,6 +39,18 @@ public class Application {
                 int ballCnt = ball(inputNum);
                 if (resultPrint(ballCnt, strikeCnt)) return true;
             }
+        }
+        public boolean correctInput(String in) {
+            if (in.length() != 3) return false;
+
+            int[] check = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+            for (int i = 0; i < 3; i++) {
+                int num = in.charAt(i) - '0';
+                check[num]++;
+                if (check[num] > 1) return false;
+            }
+
+            return true;
         }
 
         public List<Integer> makeComputerNum() {
