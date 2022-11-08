@@ -52,7 +52,29 @@ class ApplicationTest extends NsTest {
 
         int strikeCheck = (int)strike.invoke(application, computer, user);
 
-        assertThat(strike).isEqualTo(2);
+        assertThat(strikeCheck).isEqualTo(2);
+    }
+
+    @Test
+    void 볼_확인_테스트() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Application application = new Application();
+        List<Integer> computer = new ArrayList<>();
+        List<Integer> user = new ArrayList<>();
+
+        computer.add(1);
+        computer.add(2);
+        computer.add(3);
+
+        user.add(1);
+        user.add(4);
+        user.add(2);
+
+        Method ball = application.getClass().getDeclaredMethod("ball", List.class, List.class);
+        ball.setAccessible(true);
+
+        int ballCheck = (int)ball.invoke(application, computer, user);
+
+        assertThat(ballCheck).isEqualTo(1);
     }
 
     @Override
