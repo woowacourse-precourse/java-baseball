@@ -1,9 +1,5 @@
 package baseball.domain;
 
-import baseball.domain.BaseballNumber;
-import baseball.domain.Score;
-import baseball.domain.ScoreCalculator;
-
 import java.util.List;
 
 public class ScoreManager {
