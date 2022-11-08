@@ -29,8 +29,12 @@ public class Computer {
         return new ArrayList<>();
     }
 
-    private int checkSameNumbersCount() {
-        return 0;
+    public int checkSameNumbersCount(List<Integer> computerList, List<Integer> playerList) {
+        int cnt = 0;
+
+        for (Integer number : computerList) if (playerList.contains(number)) cnt++;
+
+        return cnt;
     }
 
     private boolean checkSameNumberOfDigit() {
