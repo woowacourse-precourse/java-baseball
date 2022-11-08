@@ -51,17 +51,17 @@ public class GamePlay {
         int ball = 0;
         int strike = 0;
 
-        for(int i = 0; i< answer.size();i++){
-            int userChar =userInput.get(i);
-            int judgement = judgeBallOrStrike(answer,userChar,i);
-            if(judgement==JUDGEMENT_IS_STRIKE){
+        for (int i = 0; i < ANSWER_LENGTH; i++) {
+            int userChar = userInput.get(i);
+            int judgement = judgeBallOrStrike(answer, userChar, i);
+            if (judgement == JUDGEMENT_IS_STRIKE) {
                 strike++;
-            } else if (judgement==JUDGEMENT_IS_BALL) {
+            } else if (judgement == JUDGEMENT_IS_BALL) {
                 ball++;
             }
         }
-        printHintMessage(ball,strike);
-        if(strike==ANSWER_LENGTH){
+        printHintMessage(ball, strike);
+        if (strike == ANSWER_LENGTH) {
             isAnswer = true;
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
