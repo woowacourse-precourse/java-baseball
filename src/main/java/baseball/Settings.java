@@ -24,24 +24,11 @@ public class Settings {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        if(input.length() !=3){
-            throw new IllegalArgumentException("3자리 숫자를 입력하세요");
-        }
-
-        if(input.contains("0")){
-            throw new IllegalArgumentException("1~9만 입력하세요");
-        }
-
-        for(int duplicate=0; duplicate<input.length(); duplicate++){
-            if(input.indexOf(input.charAt(duplicate)) != duplicate){
-                throw new IllegalArgumentException("서로 다른 수를 입력하세요");
-            }
-        }
-
+        inputException(input);
         return Integer.parseInt(input);
     }
 
-    // 사용자가 입력한 수 ArrayList에 저장
+    // 사용자가 입력한 수 리스트에 저장
     public static ArrayList<Integer> userNumber(){
         int user = inputUser();
 
@@ -55,7 +42,24 @@ public class Settings {
         return userInput;
     }
 
-        public static int restartExcetion(int game) {
+
+    public static void inputException(String input){
+        if(input.length() !=3){
+            throw new IllegalArgumentException("3자리 숫자를 입력하세요");
+        }
+
+        if(input.contains("0")){
+            throw new IllegalArgumentException("1~9만 입력하세요");
+        }
+
+        for(int duplicate=0; duplicate<input.length(); duplicate++){
+            if(input.indexOf(input.charAt(duplicate)) != duplicate){
+                throw new IllegalArgumentException("서로 다른 수를 입력하세요");
+            }
+        }
+    }
+
+        public static int restartException(int game) {
             if (game != 1 && game != 2) {
                 System.out.println("1 또는 2만 입력하세요.");
                 game = Integer.parseInt(Console.readLine());

@@ -13,7 +13,7 @@ public class Application {
             Play.playGame(computer);
             System.out.println("게임을 새로 시작하려면 1, 게임을 종료하려면 2를 입력하세요. ");
             game = Integer.parseInt(Console.readLine());
-            game = Settings.restartExcetion(game);
+            game = Settings.restartException(game);
         } while(game==1);
 
         Settings.exitMessage(game);
