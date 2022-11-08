@@ -43,4 +43,18 @@ public class GameBoard {
         }
     }
 
+    public String processReadline(String readline) {
+        BaseballNumbers inputBaseballNumbers = new BaseballNumbers();
+
+        return showBallCount(inputBaseballNumbers);
+    }
+
+    public String showBallCount(BaseballNumbers inputBaseballNumbers) {
+        BallCount ballCount = new BallCount();
+
+        ballCount.validateBallCount(randomNumbers, inputBaseballNumbers);
+        ballCounts.add(ballCount);
+        return ballCount.toString();
+    }
+
 }
