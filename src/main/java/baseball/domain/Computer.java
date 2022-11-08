@@ -8,9 +8,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Computer {
     private List<Integer> ballCounts = new ArrayList<>();
 
-    public Computer() {
-    }
-
     void initRandomNumbers() {
         while (this.ballCounts.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -26,8 +23,7 @@ public class Computer {
 
     // Computer 랜덤 넘버가 준비되었는지 확인하는 메소드
     boolean isReady() {
-        if (this.ballCounts.size() < 3)
-            return false;
+        if (this.ballCounts.size() < 3) return false;
         return true;
     }
 

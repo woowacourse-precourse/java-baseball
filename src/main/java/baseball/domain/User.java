@@ -8,10 +8,6 @@ import java.util.List;
 
 public class User {
 
-    User() {
-
-    }
-
     public List<Integer> inputUserAnswer() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine().trim();
