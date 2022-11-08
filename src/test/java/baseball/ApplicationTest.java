@@ -3,16 +3,11 @@ package baseball;
 import baseball.service.GameService;
 import baseball.service.NeedForGameService;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
-import static baseball.service.GameService.RANDOMBALL;
-import static baseball.service.GameService.errorCheck;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,26 +28,26 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 랜덤수_중복유무_체크() {
-        List<Integer> randomballs;
-        boolean doublecheck = true;
-        randomballs = GameService.makeRandomBall();
+        List<Integer> randomBalls;
+        boolean doubleCheck = true;
+        randomBalls = GameService.makeRandomBall();
 
-        if (randomballs.get(0).equals(randomballs.get(1))) doublecheck = false;
-        if (randomballs.get(1).equals(randomballs.get(2))) doublecheck = false;
-        if (randomballs.get(0).equals(randomballs.get(2))) doublecheck = false;
+        if (randomBalls.get(0).equals(randomBalls.get(1))) doubleCheck = false;
+        if (randomBalls.get(1).equals(randomBalls.get(2))) doubleCheck = false;
+        if (randomBalls.get(0).equals(randomBalls.get(2))) doubleCheck = false;
 
-        assertThat(true).isEqualTo(doublecheck);
+        assertThat(true).isEqualTo(doubleCheck);
     }
     @Test
     void 랜덤수_자릿수_체크() {
-        int checkindex = 0;
-        List<Integer> checksize;
-        checksize = GameService.makeRandomBall();
+        int checkIndex = 0;
+        List<Integer> checkSize;
+        checkSize = GameService.makeRandomBall();
 
-        for(int i : checksize) {
-            checkindex++;
+        for(int i : checkSize) {
+            checkIndex++;
         }
-        assertThat(checksize.size()).isEqualTo(checkindex);
+        assertThat(checkSize.size()).isEqualTo(checkIndex);
     }
     @Test
     void 게임종료_후_재시작() {
@@ -64,7 +59,6 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
-
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -72,7 +66,6 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
