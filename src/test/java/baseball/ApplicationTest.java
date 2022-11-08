@@ -157,4 +157,23 @@ class ApplicationTest extends NsTest {
 
         assertThat(output()).contains("2스트라이크");
     }
+    
+    // 낫싱 테스트
+    @Test
+    void 낫싱_테스트() {
+        List comList = new ArrayList<>();
+        List userList = new ArrayList<>();
+
+        comList.add(1);
+        comList.add(2);
+        comList.add(3);
+
+        userList.add(4);
+        userList.add(5);
+        userList.add(6);
+
+        Application.score(comList, userList);
+
+        assertThat(output()).contains("낫싱");
+    }
 }
