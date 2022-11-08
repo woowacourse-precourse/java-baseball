@@ -67,7 +67,7 @@ public class Application {
         return result;
     }
 
-    private static void repeatCorrect(List<Integer> computer) {
+    public static void repeatCorrect(List<Integer> computer) {
         boolean correct = false;
         List<Integer> user;
         List<Integer> count;
@@ -82,5 +82,14 @@ public class Application {
 
             correct = count.equals(List.of(3, 0, 0));
         }
+    }
+
+    public static boolean isRestart(String input) throws IllegalArgumentException{
+        if (input.equals("1"))
+            return true;
+        else if (input.equals("2"))
+            return false;
+
+        throw new IllegalArgumentException("1, 2 이외의 값을 입력했습니다.");
     }
 }
