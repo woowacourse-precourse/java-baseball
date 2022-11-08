@@ -42,8 +42,15 @@ class Game {
     public String inputNum(){
         return Console.readLine();
     }
+
+}
+
+class ErrorChecking{
+    public static boolean errorChecking(String inputNum){
+        return checkingInputNum(inputNum) && checkingContaingZero(inputNum) && checkingDigit(inputNum);
+    }
     // 2. 참여자 입력 숫자 점검
-    public boolean checkingInputNum(String inputNum) {
+    public static boolean checkingInputNum(String inputNum) {
         try {
             Integer.parseInt(inputNum);
         } catch (Exception e) {
@@ -57,7 +64,7 @@ class Game {
     }
 
     // 3. 참여자가 입력 숫자가 세 자리 숫자인지 확인하는 메서드
-    public boolean checkingDigit(String inputNum){
+    public static boolean checkingDigit(String inputNum){
         if(inputNum.length() !=3){
             try {
                 throw new IllegalArgumentException("세 자리 정수를 입력해주세요");
@@ -68,7 +75,7 @@ class Game {
         return true;
     }
 
-    public boolean checkingContaingZero(String inputNum){
+    public static boolean checkingContaingZero(String inputNum){
         if(inputNum.contains("0")){
             try {
                 throw new IllegalArgumentException("각 자릿수에는 0이 들어가지 않습니다.");
