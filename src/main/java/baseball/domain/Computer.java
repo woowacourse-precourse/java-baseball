@@ -30,14 +30,22 @@ public class Computer {
     }
 
     public int checkSameNumbersCount(List<Integer> computerList, List<Integer> playerList) {
-        int cnt = 0;
+        int sameNumbersCnt = 0;
 
-        for (Integer number : computerList) if (playerList.contains(number)) cnt++;
+        for (Integer number : computerList) {
+            if (playerList.contains(number)) sameNumbersCnt++;
+        }
 
-        return cnt;
+        return sameNumbersCnt;
     }
 
-    private boolean checkSameNumberOfDigit() {
-        return true;
+    public int checkSameNumberOfDigit(List<Integer> computerList, List<Integer> playerList) {
+        int numberOfDigitCnt = 0;
+
+        for (int idx = 0; idx < 3; idx++) {
+            if (computerList.get(idx) == playerList.get(idx)) numberOfDigitCnt++;
+        }
+
+        return numberOfDigitCnt;
     }
 }
