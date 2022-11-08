@@ -15,30 +15,7 @@ public class InputUserNumber {
     private int[] eachdigit;
 
 
-
-
-
-    public static List<Integer> playerNumber(){
-        ExcepetionCase exception = new ExcepetionCase();
-
-
-        int playerNum = Integer.parseInt(Console.readLine());
-
-        if (exception.ThreeNumberException(playerNum)){
-            throw new IllegalArgumentException();
-        }
-
-
-        List<Integer> userNumber = new ArrayList<>();
-
-        for (int i = 0; i < 3 ; i++) {
-            userNumber.add(playerNum %10);
-            playerNum /= 10;
-        }
-
-        return userNumber;
-    }
-
+    ExcepetionCase exception = new ExcepetionCase();
 
 
     public void UserInputValue(String str) {
@@ -57,7 +34,7 @@ public class InputUserNumber {
     private void setDigits(String input) {
 
 
-        if(!isValidString(input)) {
+        if(!exception.ThreeNumberException(input)) {
             throw new IllegalArgumentException();
         }
 
@@ -68,30 +45,6 @@ public class InputUserNumber {
 
 
 
-
-    private boolean isValidString(String str) {
-        if(!isRightLength(str) || !isMinToMax(str) || !isNotDuplicate(str)) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isRightLength(String input) {
-        return input.length() == NUMBER;
-    }
-
-    private boolean isMinToMax(String input) {
-        Pattern numberPattern = Pattern.compile(regax);
-        return numberPattern.matcher(input).matches();
-    }
-
-    private boolean isNotDuplicate(String input) {
-        Set<Character> set = new HashSet<>();
-        for(char s: input.toCharArray()) {
-            set.add(s);
-        }
-        return input.length() == set.size();
-    }
 
 
 }

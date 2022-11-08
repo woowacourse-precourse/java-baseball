@@ -6,12 +6,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class ExcepetionCase {
-    private boolean ThreeNumberException(String playerNum) {
+    public boolean ThreeNumberException(String playerNum) {
         if( !OnlyNumber(playerNum) || !NotDuplicate(playerNum) || !ThreeLength(playerNum) ) {
             return false;
         }
         return true;
-
     }
 
 
