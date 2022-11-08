@@ -21,6 +21,7 @@ public class BallStrikeResult {
         return (this.strikeCount == GameNumber.GAME_NUMBER_LENGTH);
     }
 
+    @Override
     public String toString() {
         if(ballCount == 0 && strikeCount == 0) {
             return "낫싱";
