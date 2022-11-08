@@ -1,5 +1,6 @@
 package baseball;
 
+
 public class MatchResult {
 
     int ball;

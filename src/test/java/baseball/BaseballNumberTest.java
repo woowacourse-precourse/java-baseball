@@ -9,6 +9,7 @@ class BaseballNumberTest {
     @Test
     public void constructorTest(){
         BaseballNumber baseballNumber = new BaseballNumber();
+        baseballNumber.makeRandomNumber();
         String createdNumber = baseballNumber.getNumber();
 
         Assertions.assertThat(createdNumber.length()).isEqualTo(3);

@@ -1,6 +1,5 @@
 package baseball;
 import camp.nextstep.edu.missionutils.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,15 @@ public class BaseballNumber {
 
     private String computerNumber;
 
-    public BaseballNumber() {
+    public String getNumber() {
+        return computerNumber;
+    }
+
+    public void setNumber(String number) {
+        this.computerNumber = number;
+    }
+
+    public void makeRandomNumber() {
         String number = "";
         while (number.length() < 3) {
             String randomDigit = Integer.toString(Randoms.pickNumberInRange(1, 9));
@@ -17,14 +24,6 @@ public class BaseballNumber {
             }
         }
         computerNumber = number;
-    }
-
-    public String getNumber() {
-        return computerNumber;
-    }
-
-    public void setNumber(String number) {
-        this.computerNumber = number;
     }
 
     public MatchResult match(String guessNumber){
