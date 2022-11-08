@@ -4,13 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class Application {
-    private static int[] pcNum;
+    private static int[] pcNum = new int[3];
     private static int[] playerNum = new int[3];
     private static int[] judgement;
     private static String hint;
@@ -28,13 +26,12 @@ public class Application {
         System.out.println("게임을 종료합니다.");
     }
     private static int[] genPcNum() {
-        int[] pcNum = new int[3];
-        pcNum[0] = pickNumberInRange(1, 9);
+        pcNum[0] = Randoms.pickNumberInRange(1, 9);
         do {
-            pcNum[1] = pickNumberInRange(1, 9);
+            pcNum[1] = Randoms.pickNumberInRange(1, 9);
         } while (pcNum[1] == pcNum[0]);
         do {
-            pcNum[2] = pickNumberInRange(1, 9);
+            pcNum[2] = Randoms.pickNumberInRange(1, 9);
         } while (pcNum[0] == pcNum[2] || pcNum[1] == pcNum[2]);
         return pcNum;
     }
@@ -50,12 +47,11 @@ public class Application {
         return judgement;
     }
     private static String getHint(int[] judgement) {
-        String hint;
         if (judgement[0] + judgement[1] == 0) {
             hint = "낫싱";
         } else if (judgement[0] == 0) {
             hint = String.valueOf(judgement[1]) + "스트라이크";
-        } else if (judgement[0] == 0) {
+        } else if (judgement[1] == 0) {
             hint = String.valueOf(judgement[0]) + "볼";
         } else {
             hint = String.valueOf(judgement[0]) + "볼 " + String.valueOf(judgement[1]) + "스트라이크";
@@ -105,7 +101,7 @@ public class Application {
             try {
                 playerNum[i] = Integer.parseInt(playerInput[i]);
             } catch (Exception e) {
-                throw new IllegalArgumentException("Input should be integers.")
+                throw new IllegalArgumentException("Input should be integers.");
             }
         }
         boolean playerNumValidity = isPlayerNumValid(playerNum); // 유효성 검사
