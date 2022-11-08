@@ -62,12 +62,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void compareTest() {
+    void getStrikeAndBallTest() {
         String[] computer = {"987", "123"};
         String[] user = {"987", "321"};
         int[][] results = {{3, 0}, {1, 2}};
         for (int iter = 0; iter < 2; iter++) {
-            assertThat(compare(computer[iter], user[iter]).equals(results[iter]));
+            assertThat(getStrikeAndBall(computer[iter], user[iter]).equals(results[iter]));
         }
     }
 }

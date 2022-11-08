@@ -14,7 +14,7 @@ public class Application {
         do {
             playGame();
             View.printRestartOrEndMsg();
-        } while (restart());
+        } while (restartGame());
     }
 
     public static void playGame() {
@@ -22,10 +22,10 @@ public class Application {
         String computer = getRandomNumber();
         while (true) {
             String userInput = Console.readLine();
-            validateNum(userInput);
-            int[] results = compare(computer, userInput);
-            View.printHintMsg(results);
-            if (results[STRIKE_IDX] == NUM_OF_DIGIT) {
+            validateNumber(userInput);
+            int[] counts = getStrikeAndBall(computer, userInput);
+            View.printHintMsg(counts);
+            if (counts[STRIKE_IDX] == NUM_OF_DIGIT) {
                 View.printEndMsg();
                 break;
             }
@@ -43,7 +43,7 @@ public class Application {
         return String.join("", computer);
     }
 
-    private static void validateNum(String userInput) throws IllegalArgumentException {
+    private static void validateNumber(String userInput) throws IllegalArgumentException {
         if (userInput.length() != NUM_OF_DIGIT) {
             throw new IllegalArgumentException("3자리 수를 입력해주세요");
         }
@@ -78,21 +78,21 @@ public class Application {
         return false;
     }
 
-    public static int[] compare(String computer, String user) {
-        int[] results = new int[2];
+    public static int[] getStrikeAndBall(String computer, String user) {
+        int[] counts = new int[2];
         for (int iter = 0; iter < NUM_OF_DIGIT; iter++) {
             if (computer.charAt(iter) == user.charAt(iter)) {
-                results[STRIKE_IDX]++;
+                counts[STRIKE_IDX]++;
                 continue;
             }
             if (computer.contains(String.valueOf(user.charAt(iter)))) {
-                results[BALL_IDX]++;
+                counts[BALL_IDX]++;
             }
         }
-        return results;
+        return counts;
     }
 
-    private static boolean restart() {
+    private static boolean restartGame() {
         String userInput = Console.readLine();
         validateRestartOrEnd(userInput);
         if (userInput.equals("1")) {
