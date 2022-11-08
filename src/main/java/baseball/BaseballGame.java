@@ -86,7 +86,9 @@ public class BaseballGame {
             return strike;
         }
 
-    }
+        void setIsGameEnd(boolean toSet) {
+            isGameEnd = toSet;
+        }
 
 		boolean isGameEnd() {
 			return false;
