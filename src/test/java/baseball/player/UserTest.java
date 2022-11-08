@@ -35,6 +35,16 @@ class UserTest {
             .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void selectBalls_공을_3개_보다_적게_고른_경우_예외_발생() {
+        String input = "12";
+
+        input(input);
+
+        assertThatThrownBy(() -> user.selectBalls())
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
     private void input(String input) {
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
