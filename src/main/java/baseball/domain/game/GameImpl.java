@@ -1,5 +1,7 @@
 package baseball.domain.game;
 
+import static baseball.domain.player.Computer.COMPUTER_NUMBER_SIZE;
+
 import baseball.domain.player.Computer;
 import baseball.domain.player.User;
 import baseball.domain.score.Result;
@@ -60,6 +62,6 @@ public class GameImpl implements Game{
 
   @Override
   public boolean isStrike(){
-    return this.score.getStrikeCount() == 3;
+    return this.score.getStrikeCount().equals(COMPUTER_NUMBER_SIZE);
   }
 }
