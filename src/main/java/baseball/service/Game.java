@@ -32,19 +32,20 @@ public class Game {
     }
 
     private boolean isCorrect() {
-        int strike = countStrike();
-        int ball = countBall();
+        String number = user.getNumber();
+        String answer = computer.getAnswer();
+
+        int strike = countStrike(number, answer);
+        int ball = countBall(number, answer);
         Output.print(ball, strike);
+
         if (strike == 3) {
             return true;
         }
         return false;
     }
 
-    private int countBall() {
-        String number = user.getNumber();
-        String answer = computer.getAnswer();
-
+    private int countBall(String number, String answer) {
         HashSet<Character> set = new HashSet<>();
         for (char c : answer.toCharArray()) {
             set.add(c);
@@ -58,9 +59,7 @@ public class Game {
         return ballCount;
     }
 
-    private int countStrike() {
-        String number = user.getNumber();
-        String answer = computer.getAnswer();
+    private int countStrike(String number, String answer) {
         if (number.equals(answer)) {
             return 3;
         }
