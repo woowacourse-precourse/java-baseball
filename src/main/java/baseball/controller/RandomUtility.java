@@ -24,7 +24,6 @@ public class RandomUtility {
         while (true) {
             int randomNumber = Randoms.pickNumberInRange(BASEBALL_GAME_RANDOM_RANGE_START,
                     BASEBALL_GAME_RANDOM_RANGE_END);
-            System.out.println("randomNumber : " + randomNumber);
 
             if (isDifferentNumber(randomNumbers, randomNumber)) {
                 return randomNumber;
