@@ -14,6 +14,8 @@ class BaseballGame {
     int ballCount;
     int strikeCount;
     int myNum;
+    int reStart;
+    int end;
 
     public BaseballGame() {
         makeNumList();
@@ -63,7 +65,11 @@ class BaseballGame {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하시려면 1, 종료하려면 2를 입력하세요.");
-            // 사용자로부터 게임 재시작 유무 입력받기
+            reStart = Integer.parseInt(Console.readLine());
+            if(reStart == 1)
+                this.end = 0;
+            else
+                this.end = 1;
         }
         else {
             if(ballCount == 0) {
@@ -103,6 +109,12 @@ public class Application {
                 baseballGame.writeMyNumList();
                 baseballGame.strikeBall();
                 baseballGame.message();
+                if(baseballGame.end == 0)
+                    break;
+                else if(baseballGame.end == 1) {
+                    System.out.println("게임 종료");
+                    break loop;
+                }
             }
         }
 
