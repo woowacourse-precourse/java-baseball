@@ -52,7 +52,7 @@ public class Application {
         }
     }
 
-    public ArrayList<Integer> getNumber() {
+    private ArrayList<Integer> getNumber() {
         ArrayList<Integer> askNumber;
         try {
             String answer = readLine().replace(" ", "");
@@ -62,7 +62,6 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-
         return askNumber;
     }
 
@@ -133,20 +132,19 @@ public class Application {
     }
 
     private boolean askRetry() {
-        int value;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        try {
-            String answer = readLine().replace(" ", "");
-            value = Integer.parseInt(answer);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+        String answer = readLine().replace(" ", "");
+        return checkValue(answer);
+    }
+
+    private boolean checkValue(String answer) {
+        boolean[] retryOrExit = {true, false};
+        String retry = "1";
+        String exit = "2";
+        if (answer.equals(retry) || answer.equals(exit)) {
+            int answerIdx = answer.charAt(0) - '0' - 1;
+            return retryOrExit[answerIdx];
         }
-        if (value == 1) {
-            return true;
-        } else if (value == 2) {
-            return false;
-        } else {
-            throw new IllegalArgumentException();
-        }
+        throw new IllegalArgumentException();
     }
 }
