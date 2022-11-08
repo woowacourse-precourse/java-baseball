@@ -1,9 +1,8 @@
 package baseball;
 
-import baseball.exception.ExceptionCode;
 import baseball.exception.GameException;
-import baseball.gameComponents.MainFunctions;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.gameComponents.GameComponent;
+import baseball.gameComponents.Validator;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -13,7 +12,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
 public class RestartOrEndGameTest {
-    private MainFunctions mainFunctions = new MainFunctions();
+    private Validator validator = new Validator();
+    private GameComponent gameComponent = new GameComponent(validator);
     @Test
     void 예외_테스트() {
         //given
@@ -56,6 +56,6 @@ public class RestartOrEndGameTest {
     }
 
     public boolean restartOrEndGame() {
-        return mainFunctions.restartOrEndGame();
+        return gameComponent.restartOrEndGame();
     }
 }

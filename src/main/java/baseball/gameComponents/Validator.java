@@ -3,13 +3,11 @@ package baseball.gameComponents;
 import baseball.exception.ExceptionCode;
 import baseball.exception.GameException;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class SubUtils {
+public class Validator {
 
     public void validateNumber(List<Integer> number) {
         if(number.size() != 3) {
@@ -37,13 +35,14 @@ public class SubUtils {
             throw new GameException(ExceptionCode.NUMBER_NOT_IN_RANGE_FROM_1_TO_9);
         }
     }
+    public void validateBallsAndStrike(int[] ballsAndStrikes) {
+        int balls = ballsAndStrikes[0];
+        int strikes = ballsAndStrikes[1];
 
-
-    public List<Integer> convertStringToList(String input) {
-        List<Integer> list = Arrays.asList(input.split("")).stream()
-                .mapToInt(str -> Integer.parseInt(str))
-                .boxed()
-                .collect(Collectors.toList());
-        return list;
+        if(ballsAndStrikes.length != 2
+                || balls < 0 || balls > 3
+                || strikes < 0 || strikes > 3|| balls + strikes > 3) {
+            throw new GameException(ExceptionCode.BALLS_AND_STRIKES_NOT_VALID);
+        }
     }
 }

@@ -9,11 +9,9 @@ public enum ExceptionCode{
     BALLS_AND_STRIKES_NOT_VALID("볼 스크라이크 개수가 유효하지 않습니다.");
 
     private String message;
-
     ExceptionCode(String message) {
         this.message = message;
     }
-
     public String getMessage() {
         return message;
     }

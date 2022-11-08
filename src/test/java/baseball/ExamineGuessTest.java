@@ -1,6 +1,7 @@
 package baseball;
 
-import baseball.gameComponents.MainFunctions;
+import baseball.gameComponents.GameComponent;
+import baseball.gameComponents.Validator;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,14 +9,15 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class ExamineGuessTest {
-    private MainFunctions mainFunctions = new MainFunctions();
+    private Validator validator = new Validator();
+    private GameComponent gameComponent = new GameComponent(validator);
     @Test
     void 정답인_경우() {
         //given
         List<Integer> guess = List.of(1, 2, 3);
         List<Integer> answer = List.of(1, 2, 3);
         //when
-        int[] actual = mainFunctions.examineGuess(guess, answer);
+        int[] actual = gameComponent.examineGuess(guess, answer);
         //then
         assertThat(actual)
                 .isEqualTo(new int[] {0, 3});
@@ -27,7 +29,7 @@ public class ExamineGuessTest {
         List<Integer> guess = List.of(1, 2, 0);
         List<Integer> answer = List.of(1, 2, 3);
         //when
-        int[] actual = mainFunctions.examineGuess(guess, answer);
+        int[] actual = gameComponent.examineGuess(guess, answer);
         //then
         assertThat(actual)
                 .isEqualTo(new int[] {0, 2});
@@ -39,7 +41,7 @@ public class ExamineGuessTest {
         List<Integer> guess = List.of(1, 2, 0);
         List<Integer> answer = List.of(2, 0, 1);
         //when
-        int[] actual = mainFunctions.examineGuess(guess, answer);
+        int[] actual = gameComponent.examineGuess(guess, answer);
         //then
         assertThat(actual)
                 .isEqualTo(new int[] {3, 0});
@@ -51,7 +53,7 @@ public class ExamineGuessTest {
         List<Integer> guess = List.of(1, 2, 0);
         List<Integer> answer = List.of(2, 6, 1);
         //when
-        int[] actual = mainFunctions.examineGuess(guess, answer);
+        int[] actual = gameComponent.examineGuess(guess, answer);
         //then
         assertThat(actual)
                 .isEqualTo(new int[] {2, 0});
@@ -62,7 +64,7 @@ public class ExamineGuessTest {
         List<Integer> guess = List.of(2, 1, 6);
         List<Integer> answer = List.of(2, 6, 1);
         //when
-        int[] actual = mainFunctions.examineGuess(guess, answer);
+        int[] actual = gameComponent.examineGuess(guess, answer);
         //then
         assertThat(actual)
                 .isEqualTo(new int[]{2, 1});

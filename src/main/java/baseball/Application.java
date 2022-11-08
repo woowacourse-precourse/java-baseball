@@ -1,16 +1,15 @@
 package baseball;
 
 import baseball.gameComponents.GameManager;
-import baseball.gameComponents.MainFunctions;
-import baseball.gameComponents.SubUtils;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.gameComponents.GameComponent;
+import baseball.gameComponents.Validator;
 
 public class Application {
 
     public static void main(String[] args) {
-        MainFunctions mainFunctions = new MainFunctions();
-        SubUtils subUtils = new SubUtils();
-        GameManager gameManager = new GameManager(mainFunctions, subUtils);
+        Validator validator = new Validator();
+        GameComponent gameComponent = new GameComponent(validator);
+        GameManager gameManager = new GameManager(gameComponent, validator);
 
         gameManager.gameStart();
     }

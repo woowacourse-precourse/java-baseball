@@ -6,9 +6,15 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class MainFunctions {
+public class GameComponent {
+    private Validator validator;
+    public GameComponent(Validator validator) {
+        this.validator = validator;
+    }
     public List<Integer> generateRandomNumber() {
         boolean[] isPicked = new boolean[10];
         List<Integer> randomNumber = new ArrayList<>();
@@ -23,7 +29,6 @@ public class MainFunctions {
         }
         return randomNumber;
     }
-
     public int[] examineGuess(List<Integer> guess, List<Integer> answer) {
         //0번째 값 : ball;
         //1번째 값 : strike;
@@ -50,9 +55,8 @@ public class MainFunctions {
             isPicked[input] = true;
         }
     }
-
     public boolean examineResultAndPrint(int[] ballsAndStrikes) {
-        validateBallsAndStrike(ballsAndStrikes);
+        validator.validateBallsAndStrike(ballsAndStrikes);
         //하나도 맞추지 못한 경우
         if(ballsAndStrikes[0] == 0 && ballsAndStrikes[1] == 0) {
             System.out.println("낫싱");
@@ -70,17 +74,6 @@ public class MainFunctions {
         }
     }
 
-    private void validateBallsAndStrike(int[] ballsAndStrikes) {
-        int balls = ballsAndStrikes[0];
-        int strikes = ballsAndStrikes[1];
-
-        if(ballsAndStrikes.length != 2
-            || balls < 0 || balls > 3
-            || strikes < 0 || strikes > 3|| balls + strikes > 3) {
-            throw new GameException(ExceptionCode.BALLS_AND_STRIKES_NOT_VALID);
-        }
-    }
-
     public boolean restartOrEndGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
@@ -92,5 +85,13 @@ public class MainFunctions {
         } else {
             throw new GameException(ExceptionCode.ONLY_1_OR_2_POSSIBLE);
         }
+    }
+
+    public List<Integer> convertStringToList(String input) {
+        List<Integer> list = Arrays.asList(input.split("")).stream()
+                .mapToInt(str -> Integer.parseInt(str))
+                .boxed()
+                .collect(Collectors.toList());
+        return list;
     }
 }

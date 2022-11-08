@@ -2,7 +2,8 @@ package baseball;
 
 
 import baseball.exception.GameException;
-import baseball.gameComponents.MainFunctions;
+import baseball.gameComponents.GameComponent;
+import baseball.gameComponents.Validator;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -11,7 +12,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
 public class ExamineResultAndPrintTest {
-    private MainFunctions mainFunctions = new MainFunctions();
+    private Validator validator = new Validator();
+    private GameComponent gameComponent = new GameComponent(validator);
 
 
     @Test
@@ -89,7 +91,7 @@ public class ExamineResultAndPrintTest {
     //[0] : ball
     //[1] : strike
     public boolean printExamineResult(int[] ballsAnsStrikes) {
-        return mainFunctions.examineResultAndPrint(ballsAnsStrikes);
+        return gameComponent.examineResultAndPrint(ballsAnsStrikes);
     }
 
 }
