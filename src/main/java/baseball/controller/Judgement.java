@@ -1,8 +1,6 @@
 package baseball.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 import baseball.view.View;
@@ -12,7 +10,6 @@ public class Judgement {
   private int strikeCount;
   private int ballCount;
   private static final int INIT_COUNT = 0;
-  //private final HashMap<String, Integer> STRIKE_AND_BALL;
 
   Judgement() {
     init();
@@ -23,15 +20,10 @@ public class Judgement {
     ballCount = INIT_COUNT;
   }
 
-  private List<Integer> sortList(List<Integer> list) {
-    Collections.sort(list);
-    return list;
-  }
-
   private List<Integer> getSameNumbers(List<Integer> myNumbers, List<Integer> computerNumbers) {
     List<Integer> sameNumberList = new ArrayList<>();
     for (int numberIndex = 0; numberIndex < MAX_NUMBER_SIZE; numberIndex++) {
-      if (myNumbers.get(numberIndex).equals(computerNumbers.get(numberIndex))) {
+      if (computerNumbers.contains(myNumbers.get(numberIndex))) {
         sameNumberList.add(myNumbers.get(numberIndex));
       }
     }
@@ -47,7 +39,7 @@ public class Judgement {
 
   public void judgeStrikeAndBall(List<Integer> myNumbers, List<Integer> computerNumbers) {
     init();
-    List<Integer> sameNumbers = getSameNumbers(sortList(myNumbers), sortList(computerNumbers));
+    List<Integer> sameNumbers = getSameNumbers(myNumbers, computerNumbers);
     for (int sameNumber : sameNumbers) {
       if (isStrike(sameNumber, myNumbers, computerNumbers)) {
         strikeCount++;
