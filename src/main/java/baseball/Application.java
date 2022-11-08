@@ -16,10 +16,6 @@ public class Application {
         }
         return computer;
     }
-    public static List<Integer> initGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        return generateGameAnswer();
-    }
     public static void throwIllegalArgumentException() {
         throw new IllegalArgumentException("입력 값이 유효하지 않아 프로그램이 종료됩니다.");
     }
@@ -117,9 +113,11 @@ public class Application {
         return false;
     }
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         boolean newGame = true;
         while (newGame) {
-            playGame(initGame());
+            List<Integer> answer = generateGameAnswer();
+            playGame(answer);
             newGame = checkRestart();
         }
     }
