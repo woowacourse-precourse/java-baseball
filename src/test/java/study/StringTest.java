@@ -47,4 +47,11 @@ public class StringTest {
                 .hasMessageContaining("String index out of range: 5");
     }
 
+//    @Test
+//    void 입력값이_3보다_작거나_큰_경우_예외_발생(){
+//        String input = "1234";
+//
+//        assertThatThrownBy(input.length()).isNotEqualTo(4);
+//    }
+
 }
