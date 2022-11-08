@@ -47,7 +47,7 @@ public class Application {
         return count;
     }
 
-    public static List<Integer> stringToList (String input){
+    public static List<Integer> stringToList (String input) {
         int integerInput = Integer.parseInt(input);
         List<Integer> listInput = new ArrayList<>();
         while(integerInput > 0){
@@ -55,10 +55,11 @@ public class Application {
             integerInput /= 10;
         }
         Collections.reverse(listInput);
+
         return listInput;
     }
 
-    public static void runBaseballGame (){
+    public static void runBaseballGame() throws IllegalArgumentException{
         List<Integer> standardNumber = new ArrayList<>(generateRandomNumber());
         int strikeCount = 0;
         int ballCount;
@@ -67,10 +68,34 @@ public class Application {
             System.out.print("숫자를 입력해 주세요 : ");
 
             String userString = Console.readLine();
-            List<Integer> userNumber =stringToList(userString);
-            List<Integer> strikeIndex =checkStrike(standardNumber, userNumber);
+
+            if(userString.length() != 3){
+                throw new IllegalArgumentException("3자리 숫자 입력이 필요합니다");
+            }
+
+            List<Integer> userNumber = stringToList(userString);
+
+            int duplication = 0;
+            if(userNumber.get(0).equals(userNumber.get(1))){
+                duplication += 1;
+            }
+            if(userNumber.get(0).equals(userNumber.get(2))){
+                duplication += 1;
+            }
+            if(userNumber.get(1).equals(userNumber.get(3))){
+                duplication += 1;
+            }
+            if(duplication>0){
+                throw new IllegalArgumentException("중복되지 않는 3자리 숫자 입력이 필요합니다");
+            }
+
+            if(userNumber.contains(0)){
+                throw new IllegalArgumentException("0을 포함하지 않는 숫자 입력이 필요합니다");
+            }
+
+            List<Integer> strikeIndex = checkStrike(standardNumber, userNumber);
             strikeCount = strikeIndex.size();
-            ballCount =checkBall(standardNumber, userNumber, strikeIndex);
+            ballCount = checkBall(standardNumber, userNumber, strikeIndex);
 
             if((strikeCount == 0) && (ballCount == 0)){
                 System.out.println("낫싱");
@@ -102,10 +127,13 @@ public class Application {
         int gameStatus = 1;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (gameStatus == 1){
+        while (gameStatus == 1) {
             runBaseballGame();
             String userStatus = Console.readLine();
             gameStatus = Integer.parseInt(userStatus);
+            if((gameStatus!=1) && (gameStatus!=2)){
+                throw new IllegalArgumentException("1또는 2를 입력하여야 합니다");
+            }
         }
     }
 }
