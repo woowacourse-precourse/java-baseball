@@ -13,7 +13,7 @@ public class BaseballService {
     private static final int RESTART=1;
     private static final int END=2;
 
-    //랜덤 숫자 생성
+
     public List<String> createRandomNumber(){
 
         List<String> computerNumber = new ArrayList<>();
@@ -27,14 +27,14 @@ public class BaseballService {
         return computerNumber;
     }
 
-    //입력받은 숫자의 리스트 크기가 3이 아닐 경우 예외처리
+
     public void isValidInputSize(List<String> inputNumber) {
         if (inputNumber.size()!=NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
-    //입력받은 숫자의 리스트에 1~9까지의 숫자가 아닌 그 외의 범위의 숫자가 존재할 경우 예외처리
+
     public void isValidInputRange(List<String> inputNumber) {
         for(String input: inputNumber) {
             int number = Integer.parseInt(input);
@@ -44,14 +44,14 @@ public class BaseballService {
         }
     }
 
-    //입력받은 숫자의 리스트에 중복이 존재할 경우 예외처리
+
     public void isDuplicate(List<String> inputNumber, String number) {
         if (inputNumber.contains(number)) {
             throw new IllegalArgumentException();
         }
     }
 
-    //프로그램 종료시 재시작/종료를 구분하는 수 입력받았을 때 1or2가 아니면 예외처리
+
     public void isValidNumber(int number) {
         if (number!=RESTART && number!=END) {
             throw new IllegalArgumentException();

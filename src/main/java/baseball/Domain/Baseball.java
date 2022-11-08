@@ -18,8 +18,8 @@ public class Baseball {
     }
 
     public void initBaseballGame() {
-        this.strike=0;
-        this.ball=0;
+        strike=0;
+        ball=0;
     }
 
     public List<String> getComputerNumber() {
@@ -43,7 +43,7 @@ public class Baseball {
     }
 
     public void setStrike(int strikeNum) {
-        this.strike = strikeNum;
+        strike = strikeNum;
     }
 
     public int getBall() {
@@ -51,7 +51,7 @@ public class Baseball {
     }
 
     public void setBall(int ballNum) {
-        this.ball = ballNum;
+        ball = ballNum;
     }
 
 }
