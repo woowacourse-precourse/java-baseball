@@ -16,7 +16,6 @@ public class Application {
             // 게임 시작
             startGame(computerNumber);
 
-
             // 게임 재개 판단
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -39,18 +38,9 @@ public class Application {
 
      */
     static boolean checkExit(String userInput) {
-        // userInput이 null 이라면 -> 예외발생
-        if (userInput == null) {
-            throw new IllegalArgumentException();
-        }
 
-        // 입력 값의 길이가 1이 아니라면 예외 발생
-        if (userInput.length() != 1) {
-            throw new IllegalArgumentException();
-        }
-
-        // 1 or 2 의 문자가 아니라면 -> 예외 발생
-        if (!(userInput.charAt(0) == '1' || userInput.charAt(0) == '2')) {
+        // 입력값이 올바르지 않으면 -> 오류 발생
+        if (!isCorrectExitInput(userInput)) {
             throw new IllegalArgumentException();
         }
 
@@ -66,6 +56,29 @@ public class Application {
             return true;
         }
 
+        // 1도 아니고 2도 아니면 -> 오류 발생
+        throw new IllegalArgumentException();
+    }
+
+    /*
+    게임 종료 사용자 입력이 올바른 입력값인지 체크
+     */
+    static boolean isCorrectExitInput(String userInput) {
+        // userInput이 null 이라면 -> 예외발생
+        if (userInput == null) {
+            return false;
+        }
+
+        // 입력 값의 길이가 1이 아니라면 예외 발생
+        if (userInput.length() != 1) {
+            return false;
+        }
+
+        // 1 or 2 의 문자가 아니라면 -> 예외 발생
+        if (!(userInput.charAt(0) == '1' || userInput.charAt(0) == '2')) {
+            return false;
+        }
+
         return true;
     }
 
@@ -77,6 +90,7 @@ public class Application {
      */
     static List<Integer> generateNumber() {
         List<Integer> computer = new ArrayList<>();
+
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -96,6 +110,7 @@ public class Application {
     static void startGame(List<Integer> computerNumber) {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
+
             // 사용자로 부터 입력을 받는다.
             String userInput = Console.readLine();
 
@@ -156,6 +171,12 @@ public class Application {
     static List<Integer> generateUserNumber(String userInput) {
         // 반환할 값 초기화
         List<Integer> userNumber = new ArrayList<>();
+
+        // TODO 예외 발생 메소드 추가
+        // 1. 숫자인지
+        // 2. 1~9 숫자인지
+        // 3. 3개인지
+        // 4. 모두 다른 숫자인지
 
         // userInput이 null 이라면 -> 예외발생
         if (userInput == null) {
