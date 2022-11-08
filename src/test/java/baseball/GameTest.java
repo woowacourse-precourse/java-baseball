@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,10 +8,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class GameTest {
+public class GameTest extends NsTest {
 
     private BaseballGame baseballGame;
 
@@ -67,6 +69,22 @@ public class GameTest {
         List<Integer> user = Arrays.asList(5, 4, 2);
 
         assertThat(baseballGame.countBall(computer, user)).isEqualTo(1);
+    }
+
+    @Test
+    void 게임_재시작_여부_확인하기() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run( "532", "2");
+                    assertThat(output()).contains("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", "게임을 완전히 종료합니다.");
+                },
+                5, 3, 2
+        );
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 
 }
