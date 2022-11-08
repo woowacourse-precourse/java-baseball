@@ -105,16 +105,7 @@ public class Application {
                 newGame = 0;
             }
 
-
-
-
-
-
         }
-
-
-
-
 
 
 
