@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static baseball.utils.ExceptionMessage.*;
 
@@ -14,12 +16,12 @@ public class InputView {
     private final static String END = "2";
     private final static String PATTERN = "^[0-9]{3}$";
 
-    public String requestInput(){
+    public List<Integer> requestInput(){
         String userInput = Console.readLine();
         if (validateUserInputIsNumber(userInput) && validateUserInputIsDuplicated(userInput)){
-            return userInput;
+            return convertStringToIntegerList(userInput);
         }
-        return "";
+        return null;
     }
 
     public String questionInput(){
@@ -50,5 +52,11 @@ public class InputView {
             return true;
         }
         throw new IllegalArgumentException(USER_INPUT_END_EXCEPTION);
+    }
+
+    private List<Integer> convertStringToIntegerList(String userInput){
+        return Stream.of(userInput.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
