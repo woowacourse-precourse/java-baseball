@@ -76,9 +76,17 @@ class BaseballGame {
         }
         return continueGame;
     }
-
-    private boolean checkResult() {
+    private boolean checkThreeStrike(Map<HitStatus, Integer> result,List<String> resultForPlayer){
         final int THREE_STRIKE=3;
+        boolean threeStrike=false;
+        if (result.get(STRIKE) == THREE_STRIKE) {
+            threeStrike = true;
+            resultForPlayer.add("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        return threeStrike;
+    }
+    private boolean checkResult() {
+
         boolean threeStrike = false;
         List<String> resultForPlayer = new ArrayList<>();
         Map<HitStatus, Integer> result = countAllHitStatus();
@@ -88,10 +96,7 @@ class BaseballGame {
         }
         if (result.get(STRIKE) != 0) {
             resultForPlayer.add(result.get(STRIKE) + STRIKE.getName());
-            if (result.get(STRIKE) == THREE_STRIKE) {
-                threeStrike = true;
-                resultForPlayer.add("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            }
+            threeStrike=checkThreeStrike(result,resultForPlayer);
         }
         if (result.get(NOTHING) == 3) {
             resultForPlayer.add(NOTHING.getName());
