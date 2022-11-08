@@ -1,5 +1,9 @@
 package baseball.service;
 
+import baseball.controller.GameController;
+import baseball.util.ValidationUtil;
+import baseball.view.OutputView;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,6 +41,19 @@ public class JudgeGame {
             }
         }
         return ballCount;
+    }
+
+    public static boolean verifyRestart(int strikeCounter){
+        if (strikeCounter != 3){
+            return true;
+        }
+
+        OutputView.printGameClear();
+        String input = OutputView.printAskingRestart();
+
+        ValidationUtil.validateInputRestart(input);
+        return false;
+        }
     }
 
 }
