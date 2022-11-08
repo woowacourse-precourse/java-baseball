@@ -21,7 +21,7 @@ public class Application {
 
 
     public static int gameStart() {
-        List<Integer> computer = new ArrayList<>();
+        List<Integer> computer;
 
         int answer;
 
@@ -43,7 +43,7 @@ public class Application {
     }
 
 
-    public static List<Integer> randomNumber(int numberLength){
+    public static List<Integer> randomNumber(int numberLength) {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < numberLength) {
@@ -54,7 +54,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-
         return computer;
     }
 
@@ -119,7 +118,7 @@ public class Application {
 
         ball = user.size();
 
-        if (strike == 0 && ball == 0) {
+        if ((strike == 0) && (ball == 0)) {
 
             result = result.concat("낫싱");
 
@@ -139,7 +138,6 @@ public class Application {
 
         return strike;
     }
-
 
 
     public static List<Integer> splitNumber(int number) {
