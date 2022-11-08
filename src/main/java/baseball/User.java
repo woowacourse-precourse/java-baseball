@@ -33,7 +33,7 @@ public class User {
      */
     public void getUserGuessInput() {
         System.out.print("숫자를 입력해주세요 : ");
-        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+        String userInput = Console.readLine();
         if (validateUserGuessInput(userInput)) {
             convertGuessInputToList(userInput);
         }
