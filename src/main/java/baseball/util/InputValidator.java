@@ -10,10 +10,10 @@ public class InputValidator {
     private static final String CANNOT_INPUT_DUPLICATE_NUMBER = "중복된 값을 입력할 수 없습니다.";
     private static final String INPUT_THREE_NUMBERS = "3자리의 숫자를 입력해주세요.";
     private static final String CANNOT_INPUT_ZERO = "숫자 0은 입력할 수 없습니다.";
-    public static final char ZERO = '0';
-    public static final String NUMBER_REGEX = "^[0-9]+$";
-    public static final String CANNOT_INPUT_EXCEPT_NUMBER = "입력은 숫자 이외의 다른 문자가 포함될 수 없습니다.";
-    public static final String INPUT_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
+    private static final char ZERO = '0';
+    private static final String NUMBER_REGEX = "^[0-9]+$";
+    private static final String CANNOT_INPUT_EXCEPT_NUMBER = "입력은 숫자 이외의 다른 문자가 포함될 수 없습니다.";
+    private static final String INPUT_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
 
     private static Set<Character> duplicateChecker;
 

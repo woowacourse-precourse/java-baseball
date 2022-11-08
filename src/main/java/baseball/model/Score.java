@@ -6,9 +6,9 @@ import static baseball.model.BaseBall.MAX_BASEBALL_SIZE;
 
 public class Score {
     private static final String STRIKE_AND_BALL_CANNOT_BE_OVER_THREE = "스트라이크와 볼의 합이 3초과 일수는 없습니다.";
-    public static final String SPACE = " ";
-    public static final int INITIAL_BALL = 0;
-    public static final int INITIAL_STRIKE = 0;
+    private static final String SPACE = " ";
+    private static final int INITIAL_BALL = 0;
+    private static final int INITIAL_STRIKE = 0;
 
     private final int strike;
     private final int ball;

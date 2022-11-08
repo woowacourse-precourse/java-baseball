@@ -10,7 +10,8 @@ import java.util.Objects;
 
 public class BaseBallController {
 
-    public static final String CONTINUE_COMMAND = "1";
+    private static final String CONTINUE_COMMAND = "1";
+
     private final BaseBallService baseBallService;
 
     public BaseBallController(BaseBallService baseBallService) {

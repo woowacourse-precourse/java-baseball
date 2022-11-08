@@ -9,8 +9,9 @@ import java.util.Set;
 
 public class BaseBall extends RandomMaker {
     public static final int MAX_BASEBALL_SIZE = 3;
-    public static final int MIN_RANDOM_PICK = 1;
-    public static final int MAX_RANDOM_PICK = 9;
+
+    private static final int MIN_RANDOM_PICK = 1;
+    private static final int MAX_RANDOM_PICK = 9;
 
     private static List<Integer> answer = new ArrayList<>();
 
