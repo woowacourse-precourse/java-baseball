@@ -1,5 +1,7 @@
 package baseball.player.playerMember;
 
+import baseball.uitls.Hints;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -61,8 +63,8 @@ public class PlayerNumbers {
 
     }
 
-    public List<Integer> makeHints(PlayerNumbers playerNumbers) {
-        ArrayList<Integer> hints = new ArrayList<>(List.of(HINT_INITIAL_VALUE, HINT_INITIAL_VALUE));
+    public Hints makeHints(PlayerNumbers playerNumbers) {
+        List<Integer> hints = new ArrayList<>(List.of(HINT_INITIAL_VALUE, HINT_INITIAL_VALUE));
 
         List<PlayerNumber> containPlayerNumber = filterContainPlayerNumber(playerNumbers);
         List<PlayerNumber> basePlayerNumber = this.playerNumbers;
@@ -77,9 +79,8 @@ public class PlayerNumbers {
             }
         }
 
-        return hints;
+        return new Hints(hints);
     }
-
     private List<PlayerNumber> filterContainPlayerNumber(PlayerNumbers playerNumbers) {
         ArrayList<PlayerNumber> filteredPlayerNumber = new ArrayList<>();
         List<PlayerNumber> basePlayerNumber = this.playerNumbers;
