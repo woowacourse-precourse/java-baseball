@@ -73,9 +73,9 @@ public class NumberBaseBallManager {
     }
 
     public void start() throws IOException {
-        while (status!=GameStatus.FINISHED) {
-            System.out.println(selectMessage());
+        System.out.println(selectMessage());
 
+        while (status!=GameStatus.FINISHED) {
             Computer computer = initComputer();
 
             playGame(computer);
@@ -120,7 +120,7 @@ public class NumberBaseBallManager {
 
     public void determineToContinue(int response) {
         if( response == 1 ) {
-            status=GameStatus.RESTART;
+            status=GameStatus.IN_GAME;
             return;
         }
         status=GameStatus.FINISHED;
@@ -136,8 +136,7 @@ public class NumberBaseBallManager {
         if (getStatus() == GameStatus.PENDING) {
             return GameMessage.QUESTION_TO_CONTINUE.getValue();
         }
-
-        return null;
+        return "";
     }
 
     public String selectResultOutput(BallCount result) {
