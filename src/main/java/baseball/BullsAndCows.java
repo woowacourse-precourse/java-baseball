@@ -34,7 +34,7 @@ class BullsAndCows {
         computerNumber = creatRandomNumber();
     }
 
-    public void start() {
+    public void startGame() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         List<Integer> userInputNumber = checkExceptionAndInputToList(userInput);
