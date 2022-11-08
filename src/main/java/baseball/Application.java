@@ -1,43 +1,23 @@
 package baseball;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.*;
-import camp.nextstep.edu.missionutils.*;
 
 
 public class Application {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean restart;
         BaseballGame Game = new BaseballGame();
-        List<Integer> computerNumberList = Game.makeRandomNumber();
-        System.out.println(computerNumberList);
-        System.out.println("-----------------");
-        while (true) {
-
-            List<Integer> resultList = new ArrayList<>();
-            List<Integer> userNumberList = new ArrayList<>();
-
-            int number = sc.nextInt();
-            resultList.add(number);
-
-            if(Game.switchGameStatus(number)) break;
-            if(Game.checkErrorNumber(number)) break;
-
-            userNumberList = Game.splitNumber(number);
-
-            System.out.println(userNumberList);
-
-            List<Integer> checkList =Game.compareList(computerNumberList,userNumberList);
-            Game.printResult(checkList);
-
-        }
+        Scanner sc = new Scanner(System.in);
+        do {
+            List<Integer> computerNumberList = makeRandomNumber();
+            restart = Game.GameStart(sc, computerNumberList);
+        } while (restart);
     }
 
-}
-
-class BaseballGame {
-
-    void GameStart();
-    //숫자 3개를 임의로 추출 하고 컴퓨터에 해당하는 변수에 할당하는 기능
-    List<Integer> makeRandomNumber() {
+    static List<Integer> makeRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -47,25 +27,17 @@ class BaseballGame {
         }
         return computer;
     }
+}
 
-    boolean switchGameStatus(int number){
-        if (number == 2) {
-            return true;
-        } else {
-            return false;
-        }
+
+class BaseballGame {
+    //숫자 3개를 임의로 추출 하고 컴퓨터에 해당하는 변수에 할당하는 기능
+
+
+    boolean checkErrorNumber(List<Integer> list) {
+        return list.size() <= 3;
     }
 
-    boolean checkErrorNumber(int number){
-        try{
-            if(number/10>100){
-                throw new IllegalArgumentException();
-            }
-        }catch(IllegalArgumentException e){
-            return true;
-        }
-        return false;
-    }
 
     List<Integer> splitNumber(int number) {
         List<Integer> list = new ArrayList<>();
@@ -86,8 +58,8 @@ class BaseballGame {
 
         strikeCount += countStrike(strikeCount, computerNumberList, userNumberList);
 
-        for (int computerIdx = 0; computerIdx<computerNumberList.size(); computerIdx++) {
-            ballCount += countBall(computerIdx,ballCount, computerNumberList, userNumberList);
+        for (int computerIdx = 0; computerIdx < computerNumberList.size(); computerIdx++) {
+            ballCount += countBall(computerIdx, ballCount, computerNumberList, userNumberList);
         }
 
         checkList.add(strikeCount);
@@ -97,10 +69,10 @@ class BaseballGame {
     }
 
 
-    int countStrike(int strikeCount, List<Integer> computerNumberList, List<Integer>userNumberList){
+    int countStrike(int strikeCount, List<Integer> computerNumberList, List<Integer> userNumberList) {
         int idx = 0;
-        while(idx<computerNumberList.size()){
-            if(computerNumberList.get(idx) == userNumberList.get(idx)){
+        while (idx < computerNumberList.size()) {
+            if (Objects.equals(computerNumberList.get(idx), userNumberList.get(idx))) {
                 strikeCount++;
             }
             idx++;
@@ -108,18 +80,70 @@ class BaseballGame {
         return strikeCount;
     }
 
-    int countBall(int computerIdx,int ballCount,List<Integer> computerNumberList,List<Integer>userNumberList){
-        for(int userIdx = 0; userIdx<userNumberList.size();userIdx++){
-            if(computerIdx != userIdx && computerNumberList.get(computerIdx) == userNumberList.get(userIdx)){
+    int countBall(int computerIdx, int ballCount, List<Integer> computerNumberList, List<Integer> userNumberList) {
+        for (int userIdx = 0; userIdx < userNumberList.size(); userIdx++) {
+            if (computerIdx != userIdx && Objects.equals(computerNumberList.get(computerIdx), userNumberList.get(userIdx))) {
                 ballCount++;
             }
         }
         return ballCount;
     }
 
-    void printResult(List<Integer>checkList){
-        System.out.printf("%d볼 %d스트라이크",checkList.get(0),checkList.get(1));
+    void printResult(List<Integer> checkList) {
+        if (checkList.get(0) > 0 && checkList.get(1) > 0) {
+            String result = checkList.get(1) + "볼 " + "" + checkList.get(0) + "스트라이크";
+            System.out.println(result);
+        } else if (checkList.get(0) == 0 && checkList.get(1) > 0) {
+            String result = checkList.get(1) + "볼 ";
+            System.out.println(result);
+        } else if (checkList.get(0) > 0 && checkList.get(1) == 0) {
+            String result = checkList.get(0) + "스트라이크";
+            System.out.println(result);
+        } else {
+            System.out.println("낫싱");
+        }
+    }
+
+    boolean GameStart(Scanner sc, List<Integer> computerNumberList) {
+        while (true) {
+            List<Integer> userNumberList;
+
+            String strNumber = sc.next();
+            int number;
+            number = Integer.parseInt(strNumber);
+
+            if (number == 2) {
+                System.out.println(number);
+                return false;
+            } else if (number == 1) {
+                System.out.println(number);
+                return true;
+            } else {
+                System.out.print("숫자를 입력해주세요 : ");
+                System.out.println(number);
+            }
+
+            userNumberList = splitNumber(number);
+
+            if (!checkErrorNumber(userNumberList)) {
+                throw new IllegalArgumentException();
+            }
+
+            List<Integer> checkList = compareList(computerNumberList, userNumberList);
+            printResult(checkList);
+            if (checkList.get(0) == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            }
+        }
     }
 }
+
+
+
+
+
+
+
 
 
