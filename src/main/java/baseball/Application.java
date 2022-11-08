@@ -19,6 +19,10 @@ public class Application {
             guessResult = tryGuess(answerNumbers);
         } while (guessResult.equals("wrong"));
 
+        if (guessResult.equals("error")) {
+            return;
+        }
+
         boolean newGame = askNewGame();
 
         if (newGame) baseballGame();
