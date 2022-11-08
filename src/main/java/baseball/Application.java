@@ -37,7 +37,7 @@ class Input {
     static final String EXCEPTION_NOT_1_OR_2 = "입력 값이 1이나 2가 아닙니다.";
 
 
-    static void validInputinGame(String inputString) throws IllegalArgumentException {
+    static void validInputInGame(String inputString) throws IllegalArgumentException {
         HashSet<Character> isRepeated = Utils.StringToCharSet(inputString);
 
         if (isRepeated.size() < 3) {
@@ -66,10 +66,10 @@ class Input {
         }
     }
 
-    static List<Character> getInputinGame() {
+    static List<Character> getInputInGame() {
         System.out.print(GAME_GET_NUMBER);
         String input = Console.readLine();
-        Input.validInputinGame(input);
+        Input.validInputInGame(input);
         return Utils.StringToCharList(input);
     }
 
@@ -177,7 +177,7 @@ class Game {
 
     static boolean userGotAnswer(List<Character> answer) {
         boolean userGotAnswer;
-        HashMap<String, Integer> comparedMap = Compare.compareWithAnswer(answer, Input.getInputinGame());
+        HashMap<String, Integer> comparedMap = Compare.compareWithAnswer(answer, Input.getInputInGame());
         Game.printResult(comparedMap);
         if (Compare.inputEqualsAnswer(comparedMap)) {
             System.out.println(GAME_CORRECT_ANSWER);
