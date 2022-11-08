@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,13 +55,18 @@ public class Application {
     public static void StartGame(){
         GetRandomNumber();
         boolean continueGame = true;
+
         while(continueGame){
             List<Integer> userNumber = GetInputNumber();
-            if(userNumber == null) return;
+            if(userNumber == null)
+                return;
+
             BaseBall baseBall = new BaseBall(userNumber);
             OutputString(baseBall.result,true);
-            continueGame = !CheckGameEnd(baseBall);
+
+            continueGame = CheckGameContinue(baseBall);
         }
+
         CheckGameRestart();
     }
 
@@ -70,13 +76,13 @@ public class Application {
             StartGame();
     }
 
-    private static boolean CheckGameEnd(BaseBall baseBall) {
+    private static boolean CheckGameContinue(BaseBall baseBall) {
         if(baseBall.strike == 3){
             OutputString("3개의 숫자를 모두 맞히셨습니다! 게임 종료",true);
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     public static void OutputString(String str, boolean isLineBreak){
@@ -106,7 +112,7 @@ public class Application {
 
     public static String GetUserInput(String str, boolean lineBreak){
         OutputString(str, lineBreak);
-        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+        String userInput = Console.readLine();
         return userInput;
     }
 
@@ -139,9 +145,8 @@ public class Application {
         randomNumber = new ArrayList<>();
         while (randomNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!Application.randomNumber.contains(randomNumber)) {
+            if (!Application.randomNumber.contains(randomNumber))
                 Application.randomNumber.add(randomNumber);
-            }
         }
     }
 }
