@@ -18,6 +18,10 @@ public class Count {
         return this;
     }
 
+    public void addBall() {
+        this.ball += 1;
+    }
+
     public int getStrike() {
         return strike;
     }
@@ -25,5 +29,9 @@ public class Count {
     public Count setStrike(int strike) {
         this.strike = strike;
         return this;
+    }
+
+    public void addStrike() {
+        this.strike += 1;
     }
 }
