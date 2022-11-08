@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -81,6 +82,15 @@ class ApplicationTest extends NsTest {
 
         assertThat(isAnswerValid).isEqualTo(false);
     }
+
+    @Test
+    void 랜덤_숫자_생성_테스트_type() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method makeAnswerNumber = Application.class.getDeclaredMethod("makeAnswerNumber");
+        makeAnswerNumber.setAccessible(true);
+
+        assertThat(makeAnswerNumber.invoke(application)).isInstanceOf(List.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
