@@ -1,13 +1,19 @@
 package baseball;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
-
+    private static Game game;
+    @BeforeAll
+    static void initAll(){
+        game = new Game();
+    }
     @Test
     void gameInit() {
     }
@@ -26,7 +32,6 @@ class GameTest {
 
     @Test
     void checkingStrike() {
-        Game game = new Game();
         ArrayList<Integer> randomNum = new ArrayList<>();
         randomNum.add(1);
         randomNum.add(2);
@@ -39,7 +44,6 @@ class GameTest {
 
     @Test
     void checkingBall() {
-        Game game = new Game();
         ArrayList<Integer> randomNum = new ArrayList<>();
         randomNum.add(1);
         randomNum.add(2);
@@ -52,5 +56,25 @@ class GameTest {
 
     @Test
     void keepGoing() {
+        String input = "1";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertTrue(game.keepGoing());
+
+        String inputF = "2";
+        OutputStream outF = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outF));
+        InputStream inF = new ByteArrayInputStream(inputF.getBytes());
+        System.setIn(inF);
+        assertFalse(game.keepGoing());
+
+        String inputFF = "2r";
+        OutputStream outFF = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outFF));
+        InputStream inFF = new ByteArrayInputStream(inputFF.getBytes());
+        System.setIn(inFF);
+        assertFalse(game.keepGoing());
     }
 }
