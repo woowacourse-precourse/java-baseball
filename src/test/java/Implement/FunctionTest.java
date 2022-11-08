@@ -25,4 +25,20 @@ public class FunctionTest{
         assertNotEquals(randomNumber.get(0), randomNumber.get(2));
         assertNotEquals(randomNumber.get(1), randomNumber.get(2));
     }
+
+    @Test
+    void 힌트_출력_여부_낫싱_제외() {
+        List<Integer> computer = List.of(1, 2, 3);
+        List<String> player = List.of("1", "3", "4");
+        String giveHint = Application.checkAnswerAndGiveHint(computer,player);
+        assertThat(giveHint).isEqualTo("1볼 1스트라이크");
+    }
+
+    @Test
+    void 힌트_출력_여부_낫싱() {
+        List<Integer> computer = List.of(1, 2, 3);
+        List<String> player = List.of("4", "5", "6");
+        String giveHint = Application.checkAnswerAndGiveHint(computer,player);
+        assertThat(giveHint).isEqualTo("낫싱");
+    }
 }
