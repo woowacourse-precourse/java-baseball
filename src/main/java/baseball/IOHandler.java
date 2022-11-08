@@ -27,4 +27,8 @@ public class IOHandler {
 		else if (strike == 0 && ball == 0)
 			System.out.println("낫싱");
 	}
+
+	public static String readInput() {
+		return (camp.nextstep.edu.missionutils.Console.readLine());
+	}
 }
