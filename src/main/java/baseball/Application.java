@@ -12,10 +12,11 @@ public class Application {
 
     public static void main(String[] args) throws IOException {
 
-        String numbers = Console.readLine();
+        String playerNumbers = Console.readLine();
+        isValidLength(playerNumbers);
 
-        List result = RandomNum();
-        System.out.println(result);
+        List computerNumbers = RandomNum();
+        System.out.println("computerNumbers::"+computerNumbers);
 
 
     }
@@ -30,16 +31,13 @@ public class Application {
                 } else if (!numList.contains(num)) {
                     numList.add(num);
                 }
-
         }
         return numList;
     }
 
-    public static boolean checkNumber (int test) {
-
-        if(test > threeDigits) {
-            return false;
+    public static void isValidLength(String playerNumber) {
+        if(playerNumber.length() != 3) {
+            throw new IllegalArgumentException("사용자의 숫자가 세자리보다 크거나 작다.");
         }
-        return true;
     }
 }
