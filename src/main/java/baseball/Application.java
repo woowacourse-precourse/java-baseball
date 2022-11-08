@@ -37,6 +37,8 @@ class Game
             // 컴퓨터 정답 생성
             computer = setComputerAnswer(computer);
 
+            // 게임 시작 - 입력받는 루프 돌 예정
+            playBaseballGame();
         }
     }
 
@@ -55,5 +57,20 @@ class Game
             }
         }
         return computer;
+    }
+
+    void playBaseballGame() {
+        System.out.print("숫자 야구 게임을 시작합니다\n");
+
+        // 입력받을 변수
+        String input;
+
+        // 정답을 다 맞출 때까지 무한 루프를 돈다.
+        while(true) {
+            // implement
+            break;
+        }
+        // 만약 3개의 숫자를 다 맞췄다면 : while 루프를 break
+        System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
     }
 }
