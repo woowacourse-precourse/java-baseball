@@ -6,8 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    // 1.상대 숫자 생성
+    static  void getSettingComputerNumber(List<Integer> computerNumber) {
+
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
+        List<Integer> computerNumber = new ArrayList<>();
+        
+        // 상대 숫자 생성 함수 호출
+        getSettingComputerNumber(computerNumber);
     }
 }
 
