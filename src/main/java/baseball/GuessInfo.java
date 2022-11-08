@@ -9,6 +9,14 @@ public class GuessInfo {
         this.ball = ball;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof GuessInfo) {
+            return strike == ((GuessInfo) obj).strike && ball == ((GuessInfo) obj).ball;
+        }
+        return false;
+    }
+
     public void show() {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");

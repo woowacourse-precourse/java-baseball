@@ -17,6 +17,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 스트라이크_볼_검사() {
+        assertThat(Application.makeGuessInfo("123", "135")).isEqualTo(new GuessInfo(1, 1));
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
