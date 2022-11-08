@@ -38,6 +38,11 @@ class ApplicationTest extends NsTest {
     @Nested
     class 게임준비기능_테스트 {
         @Test
+        void 게임시작하면_성공여부가_초기화되는지_확인() {
+            testGame.prepareGame();
+            assertThat(testGame.success).isEqualTo(false);
+        }
+        @Test
         void 게임시작하면_설정되는_수가_3개인지_확인() {
             testGame.setComputerNumbers();
             assertThat(testGame.computerNumbers.size()).isEqualTo(COMPUTER_NUMBERS_SIZE);
