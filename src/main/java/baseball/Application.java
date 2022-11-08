@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Application {
     public static List<Integer> generateGameAnswer() {
@@ -48,15 +49,16 @@ public class Application {
             return false;
         return true;
     }
+    public static List<Integer> convertInputToList(String input) {
+        return Arrays.stream(input.split(""))
+                .map(s->Integer.valueOf(s))
+                .collect(Collectors.toList());
+    }
     public static List<Integer> getUserAnswer() {
-        List<Integer> userAnswer = new ArrayList<>();
         String input = Console.readLine();
         if (!validateGameInput(input))
             throwIllegalArgumentException();
-        for (int index = 0; index < input.length(); index++) {
-            int temp = input.charAt(index) - '0';
-            userAnswer.add(temp);
-        }
+        List<Integer> userAnswer = convertInputToList(input);
         return userAnswer;
     }
     public static boolean checkBallStrike(List<Integer> gameAnswer, List<Integer> input) {
