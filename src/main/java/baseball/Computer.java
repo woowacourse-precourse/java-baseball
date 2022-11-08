@@ -9,6 +9,7 @@ public class Computer {
   static String STRIKE = "%d스트라이크";
   static String BALL = "%d볼";
   static String NOTHING = "낫싱";
+  static String GAMEOVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
   public Computer(){
     while(answer.size() < 3){
@@ -32,6 +33,9 @@ public class Computer {
         result += " ";
       }
       result += String.format(STRIKE, getStrikeCount(input));
+    }
+    if(isGameOver(input)){
+      result += '\n' + GAMEOVER;
     }
 
     return result;
@@ -84,7 +88,7 @@ public class Computer {
 
   public boolean isGameOver(String input){
     for(int i = 0; i<answer.size(); i++){
-      if(answer.get(i) != input.charAt(i)){
+      if(answer.get(i) != input.charAt(i) - '0'){
         return false;
       }
     }

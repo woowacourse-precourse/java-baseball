@@ -6,6 +6,8 @@ public class User {
 
   public String input;
   static String INPUT_ASKING = "숫자를 입력해주세요 :";
+  static String NOTICE_RESTART = "게임을 새로 시작하려면 1, "
+                                + "종료하려면 2를 입력하세요.";
 
   public void inputFortheGame(){
     System.out.println(INPUT_ASKING);
@@ -24,4 +26,14 @@ public class User {
     }
   }
 
+  public void inputRestartOption(){
+    System.out.println(NOTICE_RESTART);
+    this.input = readLine();
+  }
+
+  public void optionThrowsException(){
+    if(!input.equals("1") && !input.equals("2")){
+      throw new IllegalArgumentException();
+    }
+  }
 }
