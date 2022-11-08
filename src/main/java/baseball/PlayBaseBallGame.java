@@ -16,9 +16,9 @@ public class PlayBaseBallGame {
             exception.checkInputException(number.userBaseBallNumber);
             countBaseBall.countBallNumber(number.computerBaseBallNumber, number.userBaseBallNumber);
             countBaseBall.countStrikeNumber(number.computerBaseBallNumber, number.userBaseBallNumber);
-            message.printHint(countBaseBall.numberOfStrik, countBaseBall.numberOfBall);
+            message.printHint(countBaseBall.numberOfStrike, countBaseBall.numberOfBall);
 
-            if (countBaseBall.numberOfStrik == 3) {
+            if (countBaseBall.numberOfStrike == 3) {
                 message.printCorrectAnswer();
                 message.printReGame();
                 break;
