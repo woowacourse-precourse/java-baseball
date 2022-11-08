@@ -17,7 +17,7 @@ public class Application {
 		while (true){
 			if (restartOrEnd==1) computer=new Computer();
 			System.out.print("숫자를 입력해주세요 : ");
-			User user = new User();
+			User user = new User(Console.readLine());
 
 			Match match = new Match(computer,user);
 			restartOrEnd = match.play();

@@ -8,9 +8,8 @@ import java.util.List;
 class User {
 	private List<Integer> numbers;
 
-	public User() {
+	public User(String stringNumbers) {
 		numbers = new ArrayList<>();
-		String stringNumbers = Console.readLine();
 
 		generateNumbers(stringNumbers);
 		validationNumbersLength();    //길이가 3인지 확인
