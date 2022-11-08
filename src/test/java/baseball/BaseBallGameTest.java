@@ -27,6 +27,14 @@ public class BaseBallGameTest {
         assertThatThrownBy(() -> {
             bg.submitAnswer("예외발생");
         }).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> {
+            bg.submitAnswer("76");
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage("입력 값이 잘못되었습니다");
+
+        assertThatThrownBy(() -> {
+            bg.submitAnswer("555");
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage("중복된 수가 입력되었습니다");
     }
 
     @Test
@@ -42,9 +50,9 @@ public class BaseBallGameTest {
         firstGame.useCustomAnswer(testAnswer);
 
         //then
-        assertThat(gc.printResult(firstGame.matchAnswer("713"))).isEqualTo("3볼 ");
-        assertThat(gc.printResult(firstGame.matchAnswer("731"))).isEqualTo("2볼 1스트라이크 ");
-        assertThat(gc.printResult(firstGame.matchAnswer("986"))).isEqualTo("낫싱");
-        assertThat(gc.printResult(firstGame.matchAnswer("137"))).isEqualTo("3스트라이크 ");
+        assertThat(gc.printResult(firstGame.submitAnswer("713"))).isEqualTo("3볼 ");
+        assertThat(gc.printResult(firstGame.submitAnswer("731"))).isEqualTo("2볼 1스트라이크 ");
+        assertThat(gc.printResult(firstGame.submitAnswer("986"))).isEqualTo("낫싱");
+        assertThat(gc.printResult(firstGame.submitAnswer("137"))).isEqualTo("3스트라이크 ");
     }
 }

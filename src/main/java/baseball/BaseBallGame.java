@@ -40,12 +40,21 @@ public class BaseBallGame {
         return baseballGameAnswer;
     }
 
-    public String submitAnswer(String number){
-        String regex = "^[0-9]{4}";
-        if(!Pattern.matches(regex,number)){
+    public BaseballGameResultDto submitAnswer(String number) {
+        String regex = "^[0-9]{" + answerLength + "}";
+        if (!Pattern.matches(regex, number)) {
             throw new IllegalArgumentException("입력 값이 잘못되었습니다");
         }
-        return number;
+        boolean[] isExists = new boolean[10];
+
+        for (int i = 0; i < number.length(); i++) {
+            if (isExists[number.charAt(i) - '0']) {
+                throw new IllegalArgumentException("중복된 수가 입력되었습니다");
+            }
+            isExists[number.charAt(i) - '0'] = true;
+        }
+
+        return matchAnswer(number);
     }
 
     public BaseballGameResultDto matchAnswer(String userAnswer) {
