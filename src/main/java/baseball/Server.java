@@ -15,13 +15,13 @@ public class Server {
     public void run() {
         Client.showGameStartMessage();
         while (true) {
-            List<Integer> gameNumberList = makeNewGameNumber();
+            List<Integer> computerNumberList = makeNewGameNumber();
             boolean isNotGameOver = true;
             while (isNotGameOver) {
                 int playerGameNumber = Client.askPlayerGameNumber();
 
                 JudgedResultDto dto
-                    = judgeInputNumber(playerGameNumber, gameNumberList);
+                    = judgeInputNumber(playerGameNumber, computerNumberList);
                 Client.showJudgedResult(dto);
                 isNotGameOver = dto.getCountStrikes() != 3;
             }
@@ -33,26 +33,26 @@ public class Server {
     }
 
     public List<Integer> makeNewGameNumber() {
-        List<Integer> gameNumberList = new ArrayList<Integer>(COUNT_GAME_NUMBER);
-        while (gameNumberList.size() < COUNT_GAME_NUMBER) {
+        List<Integer> computerNumberList = new ArrayList<Integer>(COUNT_GAME_NUMBER);
+        while (computerNumberList.size() < COUNT_GAME_NUMBER) {
             int randomNumber = pickNumberInRange(GAME_NUMBER_RANGE_MIN, GAME_NUMBER_RANGE_MAX);
-            if (gameNumberList.contains(randomNumber)) {
+            if (computerNumberList.contains(randomNumber)) {
                 continue;
             }
-            gameNumberList.add(randomNumber);
+            computerNumberList.add(randomNumber);
         }
-        return gameNumberList;
+        return computerNumberList;
     }
 
     public JudgedResultDto judgeInputNumber(int inputNumber,
-        List<Integer> gameNumberList) {
+        List<Integer> computerNumberList) {
         int countBalls = 0, countStrikes = 0;
 
         String[] playerNumberString = Integer.toString(inputNumber).split("");
 
         for (int index = 0; index < playerNumberString.length; ++index) {
             int parsed = Integer.parseInt(playerNumberString[index]);
-            int matchIndex = gameNumberList.indexOf(parsed);
+            int matchIndex = computerNumberList.indexOf(parsed);
             if (matchIndex == -1) {
                 continue;
             }

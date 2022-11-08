@@ -26,12 +26,8 @@ public class Client {
 
     public static int askPlayerGameNumber() throws IllegalArgumentException {
         System.out.print(MSG_ASK_PLAYER_GAME_NUMBER);
-        String line;
-        try {
-            line = Console.readLine();
-        } catch (NoSuchElementException e) {
-            throw new IllegalArgumentException();
-        }
+
+        String line = Console.readLine();
 
         int originalLength = line.length();
         line = line.strip();
@@ -54,9 +50,9 @@ public class Client {
         return playerGameNumber;
     }
 
-    public static void showJudgedResult(JudgedResultDto judgedResultDto) {
-        int countStrikes = judgedResultDto.getCountStrikes();
-        int countBalls = judgedResultDto.getCountBalls();
+    public static void showJudgedResult(JudgedResultDto dto) {
+        int countStrikes = dto.getCountStrikes();
+        int countBalls = dto.getCountBalls();
 
         if (countBalls == 0 && countStrikes == 0) {
             System.out.println(MSG_JUDGED_RESULT_NOTHING);
@@ -80,12 +76,8 @@ public class Client {
 
     public static boolean askMoreGame() throws IllegalArgumentException {
         System.out.println(MSG_ASK_MORE_GAME);
-        String line;
-        try {
-            line = Console.readLine();
-        } catch (NoSuchElementException e) {
-            throw new IllegalArgumentException();
-        }
+
+        String line = Console.readLine();
 
         if (line.equals(ANSWER_ONE_MORE_GAME)) {
             return true;
