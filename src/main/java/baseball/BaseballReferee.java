@@ -21,6 +21,10 @@ public class BaseballReferee {
         ball = this.countBall();
         strike = this.countStrike();
 
+        printResult();
+    }
+
+    public void printResult() {
         if (ball != 0) System.out.print(ball + "볼 ");
         if (strike != 0) System.out.print(strike + "스트라이크");
         System.out.println();
