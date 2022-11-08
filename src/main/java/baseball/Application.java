@@ -21,7 +21,6 @@ public class Application {
                 System.out.println(inspector.result);
                 user.pass(inspector.result);
             }
-
             baseball.end();
         }
 
