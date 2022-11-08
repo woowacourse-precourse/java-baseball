@@ -46,6 +46,7 @@ class ApplicationTest extends NsTest {
             List<String> userInput = List.of("1");
             assertThat(baseballGame.countStrike(userInput)).isEqualTo(1);
         }
+
         @Test
         void 스트라이크_테스트_인풋_세개일_때() {
             BaseballGame baseballGame = new BaseballGame(List.of("1", "3", "5"));
