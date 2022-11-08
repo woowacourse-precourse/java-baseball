@@ -25,4 +25,8 @@ public class BaseballGame {
         return ANSWER_THREE_STRIKE.equals(ballCount);
     }
 
+    public static boolean chooseYesOrNo(String yesOrNo) {
+        return yesOrNo.equals(DO_RESTART_GAME);
+    }
+
 }
