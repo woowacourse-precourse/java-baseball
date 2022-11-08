@@ -33,6 +33,8 @@ public class Application {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             int exitCode = Integer.parseInt(Console.readLine());
+            checkExitCode(exitCode);
+
             if (exitCode == 2) {
                 break;
             }
@@ -49,6 +51,12 @@ public class Application {
         }
 
         return createdNumber;
+    }
+
+    static void checkExitCode(int exitCode) {
+        if (exitCode != 1 || exitCode != 2) {
+            throw new IllegalArgumentException();
+        }
     }
 
     static void checkInputCondition(String inputNumber) {
