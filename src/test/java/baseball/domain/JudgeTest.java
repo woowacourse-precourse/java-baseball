@@ -35,4 +35,24 @@ public class JudgeTest {
         //then
         assertThat(strikeCount).isEqualTo(1);
     }
+
+    @Test
+    void getUserInputScore_실행시_Score_객체_반환() {
+        //given
+        List<Integer> tempNums = List.of(1, 2, 3);
+        Answer testAnswer = new Answer(tempNums);
+        Judge testJudge = new Judge(testAnswer);
+        List<Integer> userInput = List.of(1, 2, 3);
+
+        //when
+        Score score = testJudge.getUserInputScore(userInput);
+        CountStatus countStatus = score.getCountStatus();
+
+        // 임의로 생성한 Score 객체
+        Score testScore = new Score(0, 3);
+        CountStatus testCountStatus = testScore.getCountStatus();
+
+        //then
+        assertThat(countStatus).isEqualTo(testCountStatus);
+    }
 }
