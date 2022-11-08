@@ -35,9 +35,13 @@ public class BaseballNumber {
         if (input.length() != DIGIT) {
             throw new IllegalArgumentException("입력값의 자릿수가 3이 아닙니다.");
         }
-        if (input.chars().distinct().count() != input.length()) {
+        if (checkDuplicate(input)) {
             throw new IllegalArgumentException("입력된 숫자 중 중복된 숫자가 존재합니다.");
         }
+    }
+
+    private static boolean checkDuplicate(String input) {
+        return input.chars().distinct().count() != input.length();
     }
 
     private static List<Integer> generateRandomNumbers() {
