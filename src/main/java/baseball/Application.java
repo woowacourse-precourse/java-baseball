@@ -97,4 +97,17 @@ public class Application {
         }
         return message;
     }
+
+    public static int getChoice(String str) {
+        int choice;
+        if (str.equals("1")) {
+            choice = 1;
+        } else if (str.equals("2")) {
+            choice = 2;
+        }
+        else {
+            throw new IllegalArgumentException("잘못된 입력!");
+        }
+        return choice;
+    }
 }
