@@ -10,10 +10,10 @@ public class Player {
         return new ArrayList<>();
     }
 
-    private boolean checkWrongInput(String input) {
+    public boolean checkWrongInput(String input) {
         if (input.length() != 3) return true;
 
-        HashSet<String> duplicateCheckSet = new HashSet<>(List.of(input));
+        HashSet<String> duplicateCheckSet = new HashSet<>(List.of(input.split("")));
         if (duplicateCheckSet.size() != 3) return true;
 
         return false;
