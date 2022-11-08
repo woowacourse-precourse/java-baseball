@@ -24,7 +24,7 @@ public class Game {
         while (GAME_STATE != STOP) {
             run();
         }
-        GAME_STATE = player.enterAnswer();
+        checkRestart();
     }
 
     private void run() {
@@ -53,6 +53,7 @@ public class Game {
         }
         if (score.getStrike() == 3) {
             System.out.println(score.getStrike() + Message.STRIKE);
+            System.out.println(Message.END_MESSAGE);
             GAME_STATE = STOP;
             return;
         }
@@ -65,6 +66,11 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    public void checkRestart() {
+        System.out.println(Message.RESTART_MESSAGE);
+        GAME_STATE = player.enterAnswer();
     }
 
 }
