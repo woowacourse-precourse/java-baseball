@@ -29,7 +29,7 @@ public class Game {
 
     private void run() {
         GAME_STATE = RUNNING;
-        System.out.println(Message.INPUT_MESSAGE);
+        System.out.print(Message.INPUT_MESSAGE);
         input();
         updateScore();
         printResult();
