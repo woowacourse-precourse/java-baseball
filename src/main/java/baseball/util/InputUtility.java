@@ -6,6 +6,18 @@ import java.util.List;
 
 public class InputUtility {
 
+    private static void validationTest(String input, int type) {
+
+        if (type == GameCode.ATTACK.getValue()) {
+            isValidAttack(input);
+        }
+
+        if (type == GameCode.CONTINUE.getValue()) {
+            isValidProcess(input);
+        }
+
+    }
+
     private static void isValidProcess(String input) {
         List<String> validProcess = Arrays.asList("1", "2");
         if (!validProcess.contains(input)) {
