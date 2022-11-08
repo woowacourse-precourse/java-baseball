@@ -89,7 +89,7 @@ class ConsoleInputReaderTest {
             System.setIn(in);
 
             //when
-            GameFlag gameFlag = ConsoleInputReader.getUserOpinion();
+            GameFlag gameFlag = ConsoleInputReader.getUserFlag();
 
             //then
             assertThat(gameFlag).isEqualTo(GameFlag.START);
@@ -104,7 +104,7 @@ class ConsoleInputReaderTest {
             System.setIn(in);
 
             //when
-            GameFlag gameFlag = ConsoleInputReader.getUserOpinion();
+            GameFlag gameFlag = ConsoleInputReader.getUserFlag();
 
             //then
             assertThat(gameFlag).isEqualTo(GameFlag.END);
@@ -119,7 +119,7 @@ class ConsoleInputReaderTest {
             System.setIn(in);
 
             //then
-            assertThrows(IllegalArgumentException.class, ConsoleInputReader::getUserOpinion);
+            assertThrows(IllegalArgumentException.class, ConsoleInputReader::getUserFlag);
         }
 
         @DisplayName("'1', '2' 이외의 값을 입력할 경우 예외가 발생한다")
@@ -131,7 +131,7 @@ class ConsoleInputReaderTest {
             System.setIn(in);
 
             //then
-            assertThrows(IllegalArgumentException.class, ConsoleInputReader::getUserOpinion);
+            assertThrows(IllegalArgumentException.class, ConsoleInputReader::getUserFlag);
         }
     }
 }
