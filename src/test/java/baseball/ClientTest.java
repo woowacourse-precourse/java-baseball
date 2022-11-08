@@ -119,9 +119,7 @@ class ClientTest {
 
         @Test
         void 결과가_3스트라이크로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto();
-            judgedResultDto.countBalls = 0;
-            judgedResultDto.countStrikes = 3;
+            JudgedResultDto judgedResultDto = new JudgedResultDto(0, 3);
 
             Client.showJudgedResult(judgedResultDto);
 
@@ -130,9 +128,7 @@ class ClientTest {
 
         @Test
         void 결과가_2스트라이크로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto();
-            judgedResultDto.countBalls = 0;
-            judgedResultDto.countStrikes = 2;
+            JudgedResultDto judgedResultDto = new JudgedResultDto(0, 2);
 
             Client.showJudgedResult(judgedResultDto);
 
@@ -141,9 +137,7 @@ class ClientTest {
 
         @Test
         void 결과가_2볼_1스트라이크로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto();
-            judgedResultDto.countBalls = 2;
-            judgedResultDto.countStrikes = 1;
+            JudgedResultDto judgedResultDto = new JudgedResultDto(2, 1);
 
             Client.showJudgedResult(judgedResultDto);
 
@@ -152,9 +146,7 @@ class ClientTest {
 
         @Test
         void 결과가_3볼로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto();
-            judgedResultDto.countBalls = 3;
-            judgedResultDto.countStrikes = 0;
+            JudgedResultDto judgedResultDto = new JudgedResultDto(3, 0);
 
             Client.showJudgedResult(judgedResultDto);
 
@@ -163,9 +155,7 @@ class ClientTest {
 
         @Test
         void 결과가_낫싱으로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto();
-            judgedResultDto.countBalls = 0;
-            judgedResultDto.countStrikes = 0;
+            JudgedResultDto judgedResultDto = new JudgedResultDto(0, 0);
 
             Client.showJudgedResult(judgedResultDto);
 

@@ -117,8 +117,8 @@ class ServerTest {
 
             boolean expectedResult = true;
             boolean actualResult = false;
-            if (actualJudgedResultDto.countBalls == expectCountBalls
-                && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            if (actualJudgedResultDto.getCountBalls() == expectCountBalls
+                && actualJudgedResultDto.getCountStrikes() == expectCountStrikes) {
                 actualResult = true;
             }
 
@@ -137,8 +137,8 @@ class ServerTest {
 
             boolean expectedResult = true;
             boolean actualResult = false;
-            if (actualJudgedResultDto.countBalls == expectCountBalls
-                && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            if (actualJudgedResultDto.getCountBalls() == expectCountBalls
+                && actualJudgedResultDto.getCountStrikes() == expectCountStrikes) {
                 actualResult = true;
             }
 
@@ -157,8 +157,8 @@ class ServerTest {
 
             boolean expectedResult = true;
             boolean actualResult = false;
-            if (actualJudgedResultDto.countBalls == expectCountBalls
-                && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            if (actualJudgedResultDto.getCountBalls() == expectCountBalls
+                && actualJudgedResultDto.getCountStrikes() == expectCountStrikes) {
                 actualResult = true;
             }
 
@@ -177,8 +177,8 @@ class ServerTest {
 
             boolean expectedResult = true;
             boolean actualResult = false;
-            if (actualJudgedResultDto.countBalls == expectCountBalls
-                && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            if (actualJudgedResultDto.getCountBalls() == expectCountBalls
+                && actualJudgedResultDto.getCountStrikes() == expectCountStrikes) {
                 actualResult = true;
             }
 
@@ -197,8 +197,8 @@ class ServerTest {
 
             boolean expectedResult = true;
             boolean actualResult = false;
-            if (actualJudgedResultDto.countBalls == expectCountBalls
-                && actualJudgedResultDto.countStrikes == expectCountStrikes) {
+            if (actualJudgedResultDto.getCountBalls() == expectCountBalls
+                && actualJudgedResultDto.getCountStrikes() == expectCountStrikes) {
                 actualResult = true;
             }
 

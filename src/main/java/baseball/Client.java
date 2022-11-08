@@ -55,8 +55,8 @@ public class Client {
     }
 
     public static void showJudgedResult(JudgedResultDto judgedResultDto) {
-        int countStrikes = judgedResultDto.countStrikes;
-        int countBalls = judgedResultDto.countBalls;
+        int countStrikes = judgedResultDto.getCountStrikes();
+        int countBalls = judgedResultDto.getCountBalls();
 
         if (countBalls == 0 && countStrikes == 0) {
             System.out.println(MSG_JUDGED_RESULT_NOTHING);

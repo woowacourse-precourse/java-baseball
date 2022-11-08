@@ -24,7 +24,7 @@ public class Server {
                 JudgedResultDto dto
                     = judgeInputNumber(playerGameNumber, gameNumberList);
                 Client.showJudgedResult(dto);
-                isNotGameOver = dto.countStrikes != 3;
+                isNotGameOver = dto.getCountStrikes() != 3;
             }
             Client.showGameEndMessage();
             if (!Client.askMoreGame()) {
@@ -64,9 +64,6 @@ public class Server {
             ++countBalls;
         }
 
-        JudgedResultDto judgedResultDto = new JudgedResultDto();
-        judgedResultDto.countBalls = countBalls;
-        judgedResultDto.countStrikes = countStrikes;
-        return judgedResultDto;
+        return new JudgedResultDto(countBalls, countStrikes);
     }
 }
