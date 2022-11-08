@@ -1,5 +1,6 @@
 package study;
 
+import baseball.RestartGameException;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -46,5 +47,25 @@ public class StringTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
     }
+
+    @Test
+    void test() {
+        String name= "Fortune";
+        int index = 10;
+
+        assertThatThrownBy(() -> {
+            name.charAt(index);
+        }).isInstanceOf(IndexOutOfBoundsException.class);
+    }
+
+//    @Test
+//    void test2() {
+//
+//
+//        String testStr = "hi";
+//        assertThatThrownBy(() -> {
+//            restartGameException.testException(testStr);
+//        }).isInstanceOf(IllegalArgumentException.class);
+//    }
 
 }

@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -26,6 +27,65 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    @DisplayName("1~9숫자가 아닌 경우")
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("숫자 말고 다른 문자를 넣은 경우")
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("23b"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+    }
+
+    @Test
+    @DisplayName("길이가 3이 아닌 경우 (length 2)")
+    void 예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+    }
+
+    @Test
+    @DisplayName("길이가 3이 아닌 경우 (length 1)")
+    void 예외_테스트5() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    @DisplayName("중복된 숫자가 들어간 경우")
+    void 예외_테스트6() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("121"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("게임 재시작할 때 1or2가 아닐 때 예외")
+    void 예외_테스트7() {
+        //given
+        RestartGameException restartGameException = new RestartGameException();
+        String missType = "asdasd ";
+
+        //when
+
+        //then
+        assertThatThrownBy(() -> {
+            restartGameException.isRestartNumber(missType);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
