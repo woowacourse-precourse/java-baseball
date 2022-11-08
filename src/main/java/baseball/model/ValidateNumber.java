@@ -1,15 +1,17 @@
 package baseball.model;
 
 public enum ValidateNumber {
+    FIRST_NUMBER(1),
+    LAST_NUMBER(9),
     NUMBER_LENGTH(3);
 
-    private final int code;
+    private final int number;
 
-    ValidateNumber(int code) {
-        this.code = code;
+    ValidateNumber(int number) {
+        this.number = number;
     }
 
     public int getNumber() {
-        return this.code;
+        return this.number;
     }
 }
