@@ -71,4 +71,12 @@ public class Computer {
         }
         System.out.println(result);
     }
+
+    public boolean endGame() // 게임이 끝났는지 확인
+    {
+        if(strikeCount==3){
+            return true;
+        }
+        return false;
+    }
 }
