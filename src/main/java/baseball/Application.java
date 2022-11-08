@@ -66,18 +66,26 @@ public class Application {
 
     private static void printComparisonResult(int strikeCount, int ballCount) {
         String printText = "";
-        String ballCountText = "";
-        String strikeCountText = "";
+        List<String> printTextList = new ArrayList<>();
+
         if (strikeCount == 0 && ballCount == 0) {
-            printText = "낫싱";
+            printTextList.add("낫싱");
         }
         if (ballCount != 0) {
-            ballCountText = Integer.toString(ballCount) + "볼";
+            printTextList.add(Integer.toString(ballCount) + "볼");
         }
-        if (strikeCount != 0 && strikeCount != 3) {
-            strikeCountText = Integer.toString(ballCount) + "스트라이크";
+        if (strikeCount != 0) {
+            printTextList.add(Integer.toString(strikeCount) + "스트라이크");
         }
-        printText = printText + ballCountText + " " + strikeCountText;
+
+        for (int i = 0; i < printTextList.size(); i++) {
+            if (printText != "") {
+                printText += " " + printTextList.get(i);
+            } else {
+                printText += printTextList.get(i);
+            }
+        }
+
         System.out.println(printText);
     }
 }
