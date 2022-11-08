@@ -5,6 +5,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 숫자 야구 게임의 진행을 안내합니다.
+ */
 public class SportsCaster {
     private final String PLAY_AGAIN = "1";
     private final String TERMINATE = "2";

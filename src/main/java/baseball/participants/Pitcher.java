@@ -2,6 +2,9 @@ package baseball.participants;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+/**
+ * 숫자를 맞추기 위한 게이머의 콘솔 입력을 받습니다.
+ */
 public class Pitcher {
     public StrikeZone pitchZone;
 

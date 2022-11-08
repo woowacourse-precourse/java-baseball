@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * 숫자 야구 게임의 세 자리 숫자 문자열 포장
+ */
 public class StrikeZone {
     private String zone;
 

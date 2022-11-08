@@ -3,6 +3,9 @@ package baseball.participants;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 투수(게이머)와 타자(컴퓨터)의 게임 결과를 판단합니다.
+ */
 public class Referee {
     final private int WIN_CONDITION = 3;
     private boolean winsGame;

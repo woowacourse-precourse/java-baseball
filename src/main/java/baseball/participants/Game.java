@@ -1,5 +1,8 @@
 package baseball.participants;
 
+/**
+ * 숫자 야구 게임을 진행합니다.
+ */
 public class Game {
     Referee referee;
     Pitcher pitcher;
