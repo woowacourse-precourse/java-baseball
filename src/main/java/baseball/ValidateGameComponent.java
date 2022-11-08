@@ -28,6 +28,13 @@ public class ValidateGameComponent {
         return validResult;
     }
 
+    public static boolean validNumberNotNull(String baseballNumber) {
+        if (baseballNumber == null) {
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
+
     public static boolean validNumberLength(String baseballNumber) {
         if (baseballNumber.length() != 3) {
             throw new IllegalArgumentException();
