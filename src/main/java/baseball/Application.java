@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
@@ -44,5 +45,13 @@ public class Application {
             return false;
         }
         return true;
+    }
+    static int getInputValue(){
+        String input = Console.readLine();
+        boolean valid = validationOfInput(input);
+        if (!valid) {
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(input);
     }
 }
