@@ -12,7 +12,7 @@ public class Application {
         gameStart();
     }
 
-    private static void gameStart() {
+    public static void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean continueGame = true;
         while (continueGame) {
@@ -24,7 +24,7 @@ public class Application {
         }
     }
 
-    private static void playGame(List<Integer> randomValue) {
+    public static void playGame(List<Integer> randomValue) {
         boolean success = true;
         while (success) {
             System.out.println("숫자를 입력해주세요 : ");
@@ -40,7 +40,7 @@ public class Application {
         }
     }
 
-    private static boolean continueOrEnd() {
+    public static boolean continueOrEnd() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int newGame = Integer.parseInt(readLine());
         validateContinueEnd(newGame);
@@ -51,7 +51,7 @@ public class Application {
         return true;
     }
 
-    private static void validateThreeDifferentDigits(String input) {
+    public static void validateThreeDifferentDigits(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
@@ -64,13 +64,13 @@ public class Application {
         }
     }
 
-    private static void validateContinueEnd(int newGame) {
+    public static void validateContinueEnd(int newGame) {
         if (newGame !=1 && newGame !=2){
             throw new IllegalArgumentException();
         }
     }
 
-    private static boolean printPoint(HashMap<String, Integer> ballStrikeNum) {
+    public static boolean printPoint(HashMap<String, Integer> ballStrikeNum) {
         if (ballStrikeNum.get("ballNum") == 0 && ballStrikeNum.get("strikeNum") == 0) {
             System.out.println("낫싱");
             return true;
@@ -90,7 +90,7 @@ public class Application {
         return true;
     }
 
-    private static void findPoint(List<Integer> randomValue, String input, HashMap<String, Integer> ballStrikeNum) {
+    public static void findPoint(List<Integer> randomValue, String input, HashMap<String, Integer> ballStrikeNum) {
         for (int i = 0; i < 3; i++) {
             char charNum = input.charAt(i);
             if (randomValue.indexOf(Character.getNumericValue(charNum)) == i) {
@@ -101,14 +101,14 @@ public class Application {
         }
     }
 
-    private static HashMap<String, Integer> initializeBallStrikePoint() {
+    public static HashMap<String, Integer> initializeBallStrikePoint() {
         HashMap<String, Integer> ballStrikeNum = new HashMap<>();
         ballStrikeNum.put("ballNum", 0);
         ballStrikeNum.put("strikeNum", 0);
         return ballStrikeNum;
     }
 
-    private static List<Integer> getRandomValue() {
+    public static List<Integer> getRandomValue() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
