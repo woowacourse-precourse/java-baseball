@@ -1,0 +1,11 @@
+## 기능목록
+- [X] StateCode: Game State Code를 정의
+- [X] StateCode: Input Error Code를 정의
+- [X] InputOutput: 게임 종료할지 지속할지를 입력받아 return 하는 함수
+- [X] InputOutput: 유저의 3개의 공을 입력받아 List<int>로 return 하는 함수
+- [X] InputOutput: strike, ball의 숫자에 따라 결과를 출력하는 함수- [ ] Player: InputOutput의 유저 공으로 초기화하는 함수(생성자)
+- [X] Player: computer의 숫자 3개를 랜덤으로 생성하는 함수(생성자)
+- [X] Player: strike와 ball의 수를 두 객체를 비교해 반환하는 함수
+- [X] Game: Game을 시작하는 함수
+- [X] Game: Game을 지속할지 입력받는 함수
+- [X] Game: 1개의 match에서 컴퓨터의 3공을 맞출때 까지 계속 입력받는 함수
