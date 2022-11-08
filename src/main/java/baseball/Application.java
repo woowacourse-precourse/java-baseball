@@ -54,16 +54,22 @@ public class Application {
         private boolean newGameCheck() {
             String order = confirmNextAction();
 
-            if (verifyOrder(order)) {
-
-            } else {
-                throw new IllegalArgumentException();
+            if (!verifyOrder(order)) {
+               throw new IllegalArgumentException();
             }
 
-            if (order.equals(1)) {
+            if (order.equals("1")) {
                 return GAME_START;
-            } else if(order.equals(2)){
+            } else if(order.equals("2")){
                 return GAME_EXIT;
+            }
+        }
+
+        private boolean verifyOrder(String order) {
+            if (order.equals("1") || order.equals("2")) {
+                return VERIFY;
+            } else {
+                return NOT_VERIFY;
             }
         }
 
