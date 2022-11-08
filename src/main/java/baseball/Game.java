@@ -39,6 +39,11 @@ public class Game {
         } while (this.strike != 3);
     }
 
+    private void resetCount() {
+        this.strike = 0;
+        this.ball = 0;
+    }
+
     void calculateCount(List<Integer> computerNum, List<Integer> userNum) {
         String computerNumString = computerNum.stream()
                 .map(String::valueOf)
@@ -82,10 +87,5 @@ public class Game {
         } else {
             System.out.printf(SOME_CORRECT, ball, strike);
         }
-    }
-
-    private void resetCount() {
-        this.strike = 0;
-        this.ball = 0;
     }
 }

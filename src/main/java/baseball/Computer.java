@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Computer {
-
     static final int FIRST_NUM = 1;
     static final int LAST_NUM = 9;
     static final int NUMBER_LENGTH = 3;
