@@ -26,13 +26,13 @@ public class HintMessage {
         return true;
     }
 
-    public void checkStrike(List<Integer> user, List<Integer> com) {
+    public void checkStrike(List<Integer> userNumbers, List<Integer> comNumbers) {
         for (int i = 0; i < SystemMessage.NUMBER_SIZE; i++) {
-            if (user.get(i) == com.get(i)) {
+            if (userNumbers.get(i) == comNumbers.get(i)) {
                 strike_Score++;
-            } else if (user.get(i) != com.get(i)) {
-                int number = user.get(i);
-                ball_Score = checkBall(number, com);
+            } else if (userNumbers.get(i) != comNumbers.get(i)) {
+                int number = userNumbers.get(i);
+                ball_Score = checkBall(number, comNumbers);
             }
         }
     }
