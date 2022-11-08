@@ -50,8 +50,21 @@ public class Application{
         }
     }
 
-    public void playGame() {
+    public boolean playGame() {
+        int ball = 0;
+        int strike = 0;
+        this.answer.clear();
 
+        while(true){
+            if(true)
+                break;
+        }
+
+        readLine(false);
+        if (input_text.equals("1"))
+            return true;
+        else
+            return false;
     }
 
     public static void main(String[] args) {
@@ -59,9 +72,7 @@ public class Application{
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         try {
-            while (true) {
-                app.playGame();
-            }
+            while (app.playGame());
         }
         catch (IllegalArgumentException ex) {
             System.out.println("Invalid Input.");
