@@ -20,4 +20,12 @@ public class Score {
     public int getStrike() {
         return strike;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Score)) return false;
+        Score that = (Score)o;
+        return strike == that.strike && ball == that.ball;
+    }
 }
