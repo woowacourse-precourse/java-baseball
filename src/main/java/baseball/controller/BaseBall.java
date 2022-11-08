@@ -50,10 +50,12 @@ public class BaseBall {
     }
     
     private Referee playResult(final BaseBallGame baseBallGame) {
+        return baseBallGame.play(userNumbers());
+    }
+    
+    private String userNumbers() {
         final UserNumbersDTO userNumbersDTO = inputUserBalls();
-        final String userNumbers = userNumbersDTO.getUserNumbers();
-        
-        return baseBallGame.play(userNumbers);
+        return userNumbersDTO.getUserNumbers();
     }
     
     private UserNumbersDTO inputUserBalls() {
