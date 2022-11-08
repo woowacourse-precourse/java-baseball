@@ -14,16 +14,15 @@ class PlayingBaseball {
         this.numberOfPlayer = numberPlayer;
     }
 
-    int countStrikes () {
+    void countStrikes () {
         for (int i = 0; i < LENGTH; i++) {
             if (numberOfComputer.charAt(i) == numberOfPlayer.charAt(i)) {
                 strike += 1;
             }
         }
-        return strike;
     }
 
-    int countBalls () {
+    void countBalls () {
         for (int i = 0; i < LENGTH; i++) {
             String temp = String.valueOf(numberOfPlayer.charAt(i));
             if (numberOfComputer.contains(temp)) {
@@ -33,7 +32,6 @@ class PlayingBaseball {
                 ball -= 1;
             }
         }
-        return ball;
     }
 
     void printResult () {

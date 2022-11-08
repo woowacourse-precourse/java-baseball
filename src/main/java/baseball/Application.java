@@ -23,8 +23,8 @@ public class Application {
 
 
                 PlayingBaseball round = new PlayingBaseball(numberComputer, numberPlayer);
-                System.out.println(round.countStrikes());
-                System.out.println(round.countBalls());
+                round.countStrikes();
+                round.countBalls();
                 round.printResult();
                 notThreeStrikes = !round.has3Strikes();
             } while (notThreeStrikes);
