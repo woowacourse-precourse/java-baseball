@@ -1,5 +1,7 @@
 package baseball;
 
+import static mathUtils.Digit.findDigitNumber;
+
 public class RoutineForOneInput {
     private int random_number;
     private InputNumber input_number;
@@ -42,14 +44,14 @@ public class RoutineForOneInput {
         }
     }
 
-    private int findDigitNumber(int number, int where) {
-        int digit = (int) Math.pow(10, where);
-        int digit_under = (int) Math.pow(10, where - 1);
-
-        int digit_number = (number % digit) / digit_under;
-
-        return digit_number;
-    }
+//    private int findDigitNumber(int number, int where) {
+//        int digit = (int) Math.pow(10, where);
+//        int digit_under = (int) Math.pow(10, where - 1);
+//
+//        int digit_number = (number % digit) / digit_under;
+//
+//        return digit_number;
+//    }
 
     private boolean isStrike(int where) {
         int random_digit_number = findDigitNumber(random_number, where);
