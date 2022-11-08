@@ -57,12 +57,13 @@ public class Application {
         }
     }
 
-
     public static void repeatBaseBallGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         int repeat =0;
         while (repeat==0){
-            List<Integer> computerIntegerList = reComputerNumber();
+            Computer computer = new Computer();
+            computer.reComputerNumber();
+            List<Integer> computerIntegerList = computer.integerList;
             repeat = getRepeat(computerIntegerList);
         }
     }
