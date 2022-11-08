@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,8 +38,7 @@ public class Game {
         answerNumber.RandomNumber();
         answerNumberList = answerNumber.getAnswerNumberList();
         do{
-            inputNumber.userInputBallNumber();
-            inputNumberList.add(inputNumber.getUserNumber());
+            inputNumberList = inputNumber.userInputNumber();
             strike = 0;
             ball = 0;
             getScore();
@@ -46,7 +46,7 @@ public class Game {
             inputNumberList.clear();
         }while(!getWin());
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다!. 게임 종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 
@@ -79,6 +79,7 @@ public class Game {
             System.out.println("낫싱");
         }
         System.out.println();
+
     }
 
     public boolean getWin(){

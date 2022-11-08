@@ -39,24 +39,4 @@ public class InputNumber {
         return userNumber;
     }
 
-    public void userChoiceRestartOrEnd(){
-        userInputNumber();
-        userNumber = restartOrEndNumberCheck();
-    }
-
-
-    public String inputNumberCheck(){
-        if(!InputNumberValidator.inputNumberTotalCheck(userNumber)){
-            throw new IllegalArgumentException();
-        }
-        return userNumber;
-    }
-
-    public String restartOrEndNumberCheck(){
-        if(!InputNumberValidator.restartOrEndNumberCheck(userNumber)){
-            throw new IllegalArgumentException();
-        }
-        return userNumber;
-    }
-
 }

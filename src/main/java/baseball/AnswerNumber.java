@@ -1,15 +1,15 @@
+
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.*;
 
 public class AnswerNumber {
     private List<Integer> answerNumberList;
 
     public AnswerNumber(){
-        answerNumber = new ArrayList<>();
+        this.answerNumberList = new ArrayList<>();
     }
 
     public List<Integer> getAnswerNumberList(){
@@ -21,16 +21,9 @@ public class AnswerNumber {
         while (numbers.size() < Game.BALLSIZE){
             int num = Randoms.pickNumberInRange(1,9);
             numbers.add(num);
-            if(restartNumberValidator()){
-                numbers.clear();
-            }
+
         }
+        answerNumberList = new ArrayList<>(numbers);
     }
 
-    public boolean restartNumberValidator(){
-        String numbers = answerNumberList.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining());
-        return saveAnswerNumber.contains(numbers);
-    }
 }
