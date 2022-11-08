@@ -49,8 +49,6 @@ public class BaseballController {
     public void gamePrepare() throws IllegalArgumentException{
         printGameStartMessage();
         computerNumberItem = numberService.createComputerNumber();
-        //todo delete
-        System.out.println("computerNumberItem.getNumber() = " + computerNumberItem.getNumber());
     }
 
     public void gamePlay() throws IllegalArgumentException{
@@ -72,7 +70,6 @@ public class BaseballController {
     public int gameRestart() throws IllegalArgumentException{
         int returnValue;
         String restart = Console.readLine();
-        //todo update
         if (restart.equals("1")) {
             returnValue = GAME_RESTART;
         }

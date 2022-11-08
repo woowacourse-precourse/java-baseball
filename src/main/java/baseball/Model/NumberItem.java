@@ -8,10 +8,6 @@ public class NumberItem {
     public NumberItem() {
     }
 
-    public NumberItem(List<Integer> number) {
-        this.number = number;
-    }
-
     public List<Integer> getNumber() {
         return number;
     }

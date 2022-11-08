@@ -2,7 +2,9 @@ package baseball.Service.impl;
 
 
 import baseball.Model.BallCountItem;
+
 import baseball.Model.NumberItem;
+
 import baseball.Service.interfaces.CompareService;
 
 import static baseball.View.PrintInformationView.printResultMessage;
@@ -27,12 +29,10 @@ public class CompareServiceImpl implements CompareService {
         for( int index = 0; index < userNumber.size() ; index++){
             if(userNumber.get(index).equals(computerNumber.get(index))) {
                 ballCountItem.setStrike(ballCountItem.getStrike() + 1);
-                System.out.println("strike count = " + ballCountItem.getStrike());
                 continue;
             }
             if(computerNumber.contains(userNumber.get(index))){
                 ballCountItem.setBall(ballCountItem.getBall()+1);
-                System.out.println("ball count = " + ballCountItem.getBall());
             }
         }
 
