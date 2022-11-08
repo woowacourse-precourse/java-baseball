@@ -33,11 +33,18 @@ public class Application {
         char num3 = num.charAt(2);
         return (num1 == num2 || num2 == num3 || num1 == num3);
     }
+
+    public static boolean IsNotNum(String num){
+        for (int i = 0; i < 3; i++){
+            if (num.charAt(i) < '0' || num.charAt(i) > '9') return true;
+        }
+        return  false;
+    }
     public static boolean InvalidInput(String num){
-        return (num.length() != 3) || DuplicateInput(num);
+        return (num.length() != 3) || DuplicateInput(num) || IsNotNum(num);
     }
     public static String CompareNum(ArrayList<Integer> answer, ArrayList<Integer> playerNum){
-        String result = "";
+        String result;
         int strikeNum = Strike(answer, playerNum);
         int ballNum = Ball(answer, playerNum, strikeNum);
 
