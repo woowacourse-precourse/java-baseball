@@ -11,10 +11,17 @@ import static baseball.GameStatus.*;
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        game();
+    }
 
+    /**
+     * 게임을 한다.
+     */
+    private static void game() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> answer = null;
         GameStatus now = START;
+
         while (!now.equals(END)) {
             if (now.equals(START)) {
                 answer = getRandomNumber();
@@ -27,14 +34,21 @@ public class Application {
             // 정답인 경우
             if (ballAndStrike.get(1) == 3) {
                 printSuccess();
-                String nextStatus = Console.readLine();
-                now = Arrays.stream(GameStatus.values())
-                        .filter(gameStatus -> gameStatus.getNumber().equals(nextStatus))
-                        .findFirst()
-                        .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다."));
+                now = getNextStatus();
             }
         }
+    }
 
+    /**
+     * 게임 종료 시, 재시작 or 종료 여부 받는다.
+     * @throws IllegalArgumentException 1(START), 2(END) 외의 입력이 들어온 경우
+     */
+    private static GameStatus getNextStatus() throws IllegalArgumentException {
+        String nextStatus = Console.readLine();
+        return Arrays.stream(GameStatus.values())
+                .filter(gameStatus -> gameStatus.getNumber().equals(nextStatus))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다."));
     }
 
     /**
