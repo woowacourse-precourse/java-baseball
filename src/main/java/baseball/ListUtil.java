@@ -11,7 +11,7 @@ public class ListUtil {
         int number;
 
         do {
-            number = Randoms.pickNumberInList(1, 9);
+            number = Randoms.pickNumberInRange(1, 9);
         } while (answer.contains(number));
 
         return number;

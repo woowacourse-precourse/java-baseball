@@ -38,7 +38,7 @@ public class Game {
         return false;
     }
 
-    public boolean getGameResultOfJudge(List<Integer> ballStrikeCount) {
+    public boolean getGameResultOfJudge(List<Integer> result) {
         int ballCount = result.get(0);
         int strikeCount = result.get(1);
 
