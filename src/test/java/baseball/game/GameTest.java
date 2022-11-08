@@ -24,7 +24,6 @@ public class GameTest extends NsTest {
     void 게임시작시_시작메세지가_출력되어야한다() {
         assertSimpleTest(
                 () -> {
-                    runMain();
                     assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.");
                 }
         );
