@@ -24,6 +24,8 @@ public class Application {
             exceptionIfNumberIsNotThreeDigits(user_number.length());
             // 사용자가 입력한 숫자를 사용자 리스트에 추가
             List<Integer> user = addTheNumberEnteredByTheUserList(user_number);
+            // 스트라이크 개수 확인
+            int strike = CheckTheNumberOfStrikes(user,computer);
         }
     }
 
@@ -56,5 +58,14 @@ public class Application {
             user.add(user_number.charAt(i) - '0');
         }
         return user;
+    }
+    public static int CheckTheNumberOfStrikes(List<Integer> user, List<Integer> computer){
+        int strike = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if (user.get(i) == computer.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
     }
 }
