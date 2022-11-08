@@ -19,7 +19,10 @@ public class BaseballController {
 
     public boolean restart() {
         String choice = inputView.controllGame();
+        validateRestart(choice);
+
         boolean startFlag = true;
+
         if (choice.equals("1")) {
             baseBallService.resetGame();
         }
@@ -55,5 +58,11 @@ public class BaseballController {
     public void initGame() {
         outputView.printInitGameMessage();
         baseBallService.initGame();
+    }
+
+    public void validateRestart(String choice) throws IllegalArgumentException {
+        if (!choice.equals("1") && !choice.equals("2")) {
+            throw new IllegalArgumentException("입력은 1 또는 2만 가능합니다.");
+        }
     }
 }
