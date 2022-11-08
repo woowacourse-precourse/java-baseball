@@ -60,4 +60,15 @@ public class GameService {
         return false;
     }
 
+    public Boolean restartOrExit() {
+        String userInput = Console.readLine();
+        requestMessage.requestRestartOrExit();
+
+        if (userInput.equals("1")) {
+            return true;
+        }
+
+        return false;
+    }
+
 }
