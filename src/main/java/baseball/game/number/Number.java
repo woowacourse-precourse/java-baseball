@@ -29,6 +29,24 @@ public class Number {
         third = new Digit(separatedDigits.get(THIRD_IDX));
     }
 
+    public Number(String numberString) {
+        int number;
+        try {
+            number = Integer.parseInt(numberString);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
+        isInputValidRange(number);
+
+        List<Integer> separatedDigits = separateToDigits(number);
+        areInputDigitsUnique(separatedDigits);
+
+        first = new Digit(separatedDigits.get(FIRST_IDX));
+        second = new Digit(separatedDigits.get(SECOND_IDX));
+        third = new Digit(separatedDigits.get(THIRD_IDX));
+
+    }
+
     public boolean contains(Digit digit) {
         return first.equals(digit) || second.equals(digit) || third.equals(digit);
     }
