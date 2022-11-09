@@ -4,27 +4,19 @@ import baseball.domain.CompareResult;
 
 public class GameStatus {
 
-    private static final boolean GAME_END = true;
-
-    private static final boolean GAME_CONTINUE = false;
-
-    private boolean status;
-
-    public GameStatus() {
-        this.status = GAME_CONTINUE;
-    }
+    private boolean isGameEnd;
 
     public void setStatus(final CompareResult compareResult) {
         if (compareResult.isAllStrikes()) {
-            status = GAME_END;
+            isGameEnd = true;
         }
     }
 
     public boolean isGameEnd() {
-        return this.status == GAME_END;
+        return this.isGameEnd;
     }
 
     public void initStatus() {
-        this.status = GAME_CONTINUE;
+        isGameEnd = false;
     }
 }
