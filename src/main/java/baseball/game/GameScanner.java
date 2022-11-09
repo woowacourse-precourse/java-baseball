@@ -6,13 +6,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameScanner {
     public Number readPlayerNumber() {
-        String line = Console.readLine();
-        int input = Integer.parseInt(line);
-        return new Number(input);
+        String numberString = Console.readLine();
+        return new Number(numberString);
     }
 
     public FinishInput readFinishInput() {
-        int inputNumber = Integer.parseInt(Console.readLine());
-        return FinishInput.numberOf(inputNumber);
+        String finishInputString = Console.readLine();
+        return FinishInput.numberOf(finishInputString);
     }
 }
