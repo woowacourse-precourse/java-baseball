@@ -5,8 +5,14 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.advice.Exception;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ArgumentsSources;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ValidatorTest {
     private Validator validator;
@@ -16,7 +22,14 @@ public class ValidatorTest {
         validator = new Validator();
     }
 
-    @Test
+    static Stream<Arguments> arguments = Stream.of(
+            Arguments.of("122", Exception.DUPLICATE_ERROR_MESSAGE), // null strings should be considered blank
+            Arguments.of("1234", Exception.SIZE_ERROR_MESSAGE),
+            Arguments.of("  210", Exception.CONTAIN_ZERO_ERROR_MESSAGE)
+    );
+
+    @ParameterizedTest
+    @VariableSource("arguments")
     void 유효하지_않은_숫자_검증() {
         String num1 = "   122   ";
         assertThatThrownBy(() -> validator.isValidate(num1)).isInstanceOf(IllegalArgumentException.class)
