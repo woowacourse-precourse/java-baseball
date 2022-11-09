@@ -13,6 +13,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Service {
+	
 	static ServiceVO vo = new ServiceVO();
 	static IllegalException exception = new IllegalException();
 	static Message message = new Message();	
@@ -21,7 +22,7 @@ public class Service {
 	public static void gameStart(List<Integer> comNumber) {
 
 		System.out.println(message.getGameStart());
-		Map<String, Integer> userScore = new HashMap<>(); // ?
+		Map<String, Integer> userScore = new HashMap<>();
 
 		while (vo.isGameSet()) {
 			userScore = controller.getGameScore(comNumber);
