@@ -24,8 +24,12 @@ public class Referee {
             return "낫싱";
         }
 
-        if (ball > 0) {
+        if (ball > 0 && strike > 0) {
             sb.append(ball +"볼 ");
+        }
+
+        if (ball > 0 && strike == 0) {
+            sb.append(ball +"볼");
         }
 
         if (strike > 0) {
