@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class NumberTest {
@@ -61,6 +62,14 @@ class NumberTest {
         assertThatThrownBy(() -> new Number(invalidNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 수가 아닙니다.");
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 문자를 인자로 받으면 예외를 던진다.")
+    public void throwExceptionWhenStringContainsNaN() {
+        assertThatThrownBy(() -> new Number("abc"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자만 입력해주세요.");
     }
 
     private int convertToNumber(List<Integer> digitNumbers) {
@@ -144,4 +153,6 @@ class NumberTest {
 
         assertThat(number2).isNotEqualTo(number1);
     }
+
+
 }
