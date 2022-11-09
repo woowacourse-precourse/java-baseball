@@ -112,33 +112,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
-    @Test
-    void makeGradeMessage_0볼_0스트라이크() {
-        Grade grade = new Grade(0, 0);
+    @ParameterizedTest
+    @MethodSource("provideBallAndStrikeAndExpected")
+    void makeGradeMessage_여러경우(int ball, int strike, String expected) {
+        Grade grade = new Grade(ball, strike);
         String message = Application.makeGradeMessage(grade);
-        assertThat(message).isEqualTo("낫싱");
+        assertThat(message).isEqualTo(expected);
     }
-
-    @Test
-    void makeGradeMessage_1볼_0스트라이크() {
-        Grade grade = new Grade(1, 0);
-        String message = Application.makeGradeMessage(grade);
-        assertThat(message).isEqualTo("1볼");
-    }
-
-    @Test
-    void makeGradeMessage_0볼_1스트라이크() {
-        Grade grade = new Grade(0, 1);
-        String message = Application.makeGradeMessage(grade);
-        assertThat(message).isEqualTo("1스트라이크");
-    }
-
-    @Test
-    void makeGradeMessage_1볼_1스트라이크() {
-        Grade grade = new Grade(1, 1);
-        String message = Application.makeGradeMessage(grade);
-        assertThat(message).isEqualTo("1볼 1스트라이크");
+    private static Stream<Arguments> provideBallAndStrikeAndExpected() {
+        return Stream.of(
+                Arguments.of(0, 0, "낫싱"),
+                Arguments.of(1, 0, "1볼"),
+                Arguments.of(0, 1, "1스트라이크"),
+                Arguments.of(1, 1, "1볼 1스트라이크")
+        );
     }
 
     @Test
