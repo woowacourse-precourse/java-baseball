@@ -15,17 +15,17 @@ public class GameResult {
   }
 
   public String getResultString() {
-    if (strikeCount + ballCount == 0) return "낫싱";
+    if (strikeCount + ballCount == 0) return ResultMessage.NOTHING.getMessage();
     return getBallString() + getStrikeString();
   }
 
   private String getStrikeString() {
-    if (strikeCount != 0) return strikeCount + "스트라이크";
+    if (strikeCount != 0) return ResultMessage.STRIKE.getMessage(strikeCount);
     else return "";
   }
 
   private String getBallString() {
-    if (ballCount != 0) return ballCount + "볼 ";
+    if (ballCount != 0) return ResultMessage.BALL.getMessage(ballCount);
     else return "";
   }
 
@@ -34,19 +34,21 @@ public class GameResult {
   }
 
   private void calculateResult(List<Integer> answerNumberList, List<Integer> gameNumberList) {
+    // 각 자리수를 비교해서 순서와 숫자가 같으면 Strike, 숫자만 같으면 Ball
     for (int i = 0; i < answerNumberList.size(); i++) {
       for (int j = 0; j < gameNumberList.size(); j++) {
-        if (updateCount(answerNumberList.get(i), gameNumberList.get(j), i == j)) break;
+        boolean isUpdated = updateCount(isSame(answerNumberList.get(i), gameNumberList.get(j)), isSame(i, j));
+
       }
     }
   }
 
-  private boolean updateCount(int number1, int number2, boolean isSameIndex) {
-    if (number1 == number2) {
-      if (isSameIndex) strikeCount++;
-      else ballCount++;
-      return true;
-    }
-    return false;
+  private boolean isSame(int num1, int num2){
+    return num1 == num2;
+  }
+
+  private void updateCount(boolean isSameNumber, boolean isSameIndex) {
+    if (isSameIndex) strikeCount++;
+    else ballCount++;
   }
 }
