@@ -37,18 +37,19 @@ public class GameResult {
     // 각 자리수를 비교해서 순서와 숫자가 같으면 Strike, 숫자만 같으면 Ball 증가
     for (int i = 0; i < answerNumberList.size(); i++) {
       for (int j = 0; j < gameNumberList.size(); j++) {
-        boolean isUpdated = updateCount(isSame(answerNumberList.get(i), gameNumberList.get(j)), isSame(i, j));
+        boolean isUpdated =
+            updateCount(isSame(answerNumberList.get(i), gameNumberList.get(j)), isSame(i, j));
         if (isUpdated) break;
       }
     }
   }
 
-  private boolean isSame(int num1, int num2){
+  private boolean isSame(int num1, int num2) {
     return num1 == num2;
   }
 
   private boolean updateCount(boolean isSameNumber, boolean isSameIndex) {
-    if(isSameNumber){
+    if (isSameNumber) {
       if (isSameIndex) strikeCount++;
       else ballCount++;
       return true;
