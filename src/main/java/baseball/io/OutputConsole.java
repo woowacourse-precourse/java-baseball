@@ -10,12 +10,12 @@ public class OutputConsole implements Output{
     }
 
     @Override
-    public void printBallCount(BallCount ballCount) {
+    public void print(BallCount ballCount) {
         System.out.println(ballCount.toString());
     }
 
     @Override
-    public void printEndMessage(int count) {
+    public void print(int count) {
         System.out.print(count + Message.CORRECT.getMessage());
     }
 }

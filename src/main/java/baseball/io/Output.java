@@ -6,7 +6,7 @@ public interface Output {
 
     void print(Message message);
 
-    void printBallCount(BallCount ballCount);
+    void print(BallCount ballCount);
 
-    void printEndMessage(int count);
+    void print(int count);
 }
