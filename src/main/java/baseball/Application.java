@@ -11,25 +11,36 @@ import baseball.domain.Judgement;
 import baseball.domain.NumberGenerator;
 import baseball.domain.Refree;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        /*NumberGenerator generator = new NumberGenerator();
-        List<Integer> numbers = generator.createRandomNumber();
-        System.out.println(numbers);
+        NumberGenerator generator = new NumberGenerator();
+        List<Integer> computer = generator.createRandomNumber();
 
-        Judgement judgement = new Judgement();
-        final int count = judgement.correctCount(Arrays.asList(1, 2, 3), Arrays.asList(6, 8, 9));
-        System.out.print(count);
+        Refree refree = new Refree();
 
-       final boolean place=judgement.hasPlace(Arrays.asList(7,8,9),0,8);
-        System.out.println(place);*/
-        Refree refree=new Refree();
-        String result=refree.compare(Arrays.asList(1,2,3),Arrays.asList(8,5,9));
-        System.out.println(result);
+        String result="";
+        while(!result.equals("0볼 3스트라이크")) {
+            result = refree.compare(computer, askNumbers());
 
+            System.out.println(result);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 
+    public static List<Integer> askNumbers() {
+        System.out.print("숫자를 입력해 주세요 : ");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.next();
+
+        List<Integer> numbers = new ArrayList<>();
+        for (String number : input.split("")) {
+            numbers.add(Integer.valueOf(number));
+        }
+        return numbers;
     }
 }
