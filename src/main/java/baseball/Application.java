@@ -21,11 +21,11 @@ public class Application {
         String endGame = Console.readLine();
         if (endGame.equals("1")) {
             return true;
-        } else if (endGame.equals("2")) {
-            return false;
-        } else {
-            throw new IllegalArgumentException();
         }
+        if (endGame.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 
     static void playSmallGame() {
