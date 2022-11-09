@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import baseball.config.AppConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 
 public class RefereeTest {
@@ -37,12 +39,9 @@ public class RefereeTest {
         assertThat(computer).isNotEqualTo(referee.getComputer());
     }
 
-    @Test
-    void 재시작_검증_테스트() {
-        String restartMessage = "1";
-        assertThat(referee.judgeRestart(restartMessage)).isTrue();
-
-        String quitMessage = "2";
-        assertThat(referee.judgeRestart(quitMessage)).isFalse();
+    @ParameterizedTest
+    @CsvSource({"1,true", "2,false"})
+    void 재시작_검증_테스트(String message, boolean result) {
+        assertThat(referee.judgeRestart(message)).isEqualTo(result);
     }
 }
