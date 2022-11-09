@@ -10,14 +10,18 @@ public class Computer {
 
   public void setAnswerNumber() {
     gameNumber = new GameNumber();
+    List<Integer> randomNumberList = createRandomNumberList();
+    gameNumber.setGameNumberByList(randomNumberList);
+  }
+
+  private List<Integer> createRandomNumberList(){
     List<Integer> numList = new ArrayList<>();
     while (numList.size() < GameNumber.NUMBER_DIGIT) {
       int randomNumber = Randoms.pickNumberInRange(1, 9);
-      if (!numList.contains(randomNumber)) {
-        numList.add(randomNumber);
-      }
+      boolean isUniqueNumber = !numList.contains(randomNumber);
+      if (isUniqueNumber) numList.add(randomNumber);
     }
-    gameNumber.setGameNumberByList(numList);
+    return numList;
   }
 
   public GameNumber getAnswerNumber() {
