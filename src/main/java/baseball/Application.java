@@ -42,6 +42,10 @@ public class Application {
         String input = Console.readLine();
         List<Integer> numbers = new ArrayList<>();
 
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
         for (String number : input.split("")) {
             numbers.add(Integer.valueOf(number));
         }
