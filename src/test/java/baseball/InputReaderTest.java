@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 class InputReaderTest {
@@ -32,7 +34,7 @@ class InputReaderTest {
     void readNumber() {
         InputStream in = new ByteArrayInputStream("123".getBytes());
         System.setIn(in);
-        Assertions.assertThat(InputReader.readNumber()).isEqualTo("123");
+        Assertions.assertThat(InputReader.readNumber()).isEqualTo(new ArrayList<>(Arrays.asList("1", "2", "3")));
 
         in = new ByteArrayInputStream("abc".getBytes());
         System.setIn(in);

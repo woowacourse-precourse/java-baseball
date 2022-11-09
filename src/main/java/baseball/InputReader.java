@@ -2,6 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+
 public class InputReader {
 
     public static boolean readGameStatus() throws IllegalArgumentException {
@@ -12,7 +17,7 @@ public class InputReader {
         return inputString.equals("1");
     }
 
-    public static String readNumber() throws IllegalArgumentException {
+    public static List<String> readNumber() throws IllegalArgumentException {
         String inputString = Console.readLine();
         try {
             Integer.parseInt(inputString);
@@ -20,14 +25,15 @@ public class InputReader {
             throw new IllegalArgumentException("숫자만 입력해야 합니다.");
         }
 
-        if (inputString.length() != 3) {
-            throw new IllegalArgumentException("숫자의 길이는 3이여야 합니다.");
+        if (inputString.length() != BaseballNumber.numberLength) {
+            throw new IllegalArgumentException("숫자의 길이는 " + BaseballNumber.numberLength + "이여야 합니다.");
         }
-        if (inputString.charAt(0) == inputString.charAt(1) &&
-                inputString.charAt(1) == inputString.charAt(2) && inputString.charAt(0) == inputString.charAt(2)) {
-            throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력해야 합니다.");
+        List<String> inputNumber = new ArrayList<String>(Arrays.asList(inputString.split("")));
+
+        if (new HashSet<String>(inputNumber).size() != BaseballNumber.numberLength) {
+            throw new IllegalArgumentException("서로 다른 " + BaseballNumber.numberLength + "자리 숫자를 입력해야 합니다.");
         }
 
-        return inputString;
+        return inputNumber;
     }
 }

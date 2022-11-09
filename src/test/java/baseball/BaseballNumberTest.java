@@ -3,30 +3,33 @@ package baseball;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BaseballNumberTest {
     @Test
-    public void constructorTest(){
+    public void makeRandomNumber() {
         BaseballNumber baseballNumber = new BaseballNumber();
         baseballNumber.makeRandomNumber();
-        String createdNumber = baseballNumber.getNumber();
+        List<String> createdNumber = baseballNumber.getNumber();
 
-        Assertions.assertThat(createdNumber.length()).isEqualTo(3);
+        Assertions.assertThat(createdNumber.size()).isEqualTo(BaseballNumber.numberLength);
 
-        for(int i = 0; i < 3; i++){
-            for(int j = i+1; j <3; j++){
-                Assertions.assertThat(createdNumber.charAt(i)).isNotEqualTo(createdNumber.charAt(j));
+        for (int i = 0; i < BaseballNumber.numberLength; i++) {
+            for (int j = i + 1; j < BaseballNumber.numberLength; j++) {
+                Assertions.assertThat(createdNumber.get(i)).isNotEqualTo(createdNumber.get(j));
             }
         }
-        Assertions.assertThat(Integer.parseInt(createdNumber)).isInstanceOf(Integer.class);
     }
 
     @Test
-    public void matchTest(){
+    public void matchTest() {
         BaseballNumber baseballNumber = new BaseballNumber();
-        baseballNumber.setNumber("123");
-        MatchResult matchResult = baseballNumber.match("137");
+        baseballNumber.setNumber(new ArrayList<>(Arrays.asList("1", "2", "3")));
+        MatchResult matchResult = baseballNumber.match(new ArrayList<>(Arrays.asList("1", "3", "7")));
         Assertions.assertThat(matchResult.getBall()).isEqualTo(1);
         Assertions.assertThat(matchResult.getStrike()).isEqualTo(1);
     }

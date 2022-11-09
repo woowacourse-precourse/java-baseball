@@ -3,6 +3,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.*;
 
+import java.util.List;
+
 
 public class Application {
 
@@ -19,14 +21,14 @@ public class Application {
     public static boolean runGame() {
         BaseballNumber baseballNumber = new BaseballNumber();
         baseballNumber.makeRandomNumber();
-        String inputString;
+        List<String> inputNumber;
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
-            inputString = InputReader.readNumber();
-            MatchResult matchResult = baseballNumber.match(inputString);
+            inputNumber = InputReader.readNumber();
+            MatchResult matchResult = baseballNumber.match(inputNumber);
             matchResult.print();
             if (matchResult.isCorrect()) {
-                System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
+                System.out.print(BaseballNumber.numberLength + "개의 숫자를 모두 맞히셨습니다! ");
                 break;
             }
         }

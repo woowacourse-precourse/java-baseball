@@ -6,37 +6,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumber {
+    final static int numberLength = 3;
+    private List<String> computer = new ArrayList<String>();
 
-    private String computerNumber;
-
-    public String getNumber() {
-        return this.computerNumber;
+    public List<String> getNumber() {
+        return this.computer;
     }
 
-    public void setNumber(String number) {
-        this.computerNumber = number;
+    public void setNumber(List<String> number) {
+        this.computer = number;
     }
 
     public void makeRandomNumber() {
-        StringBuilder number = new StringBuilder();
-        while (number.length() < 3) {
+        while (computer.size() < numberLength) {
             String randomDigit = Integer.toString(Randoms.pickNumberInRange(1, 9));
-            if (!number.toString().contains(randomDigit)) {
-                number.append(randomDigit);
+            if (!computer.contains(randomDigit)) {
+                computer.add(randomDigit);
             }
         }
-        this.computerNumber = number.toString();
     }
 
-    public MatchResult match(String guessNumber) {
+    public MatchResult match(List<String> guessNumber) {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < 3; i++) {
-            if (guessNumber.charAt(i) == this.computerNumber.charAt(i)) {
+            if (guessNumber.get(i).equals(this.computer.get(i))) {
                 strike++;
                 continue;
             }
-            if (this.computerNumber.contains(guessNumber.substring(i, i + 1))) {
+            if (this.computer.contains(guessNumber.get(i))) {
                 ball++;
             }
         }

@@ -36,6 +36,6 @@ public class MatchResult {
     }
 
     public boolean isCorrect() {
-        return (this.strike == 3);
+        return (this.strike == BaseballNumber.numberLength);
     }
 }
