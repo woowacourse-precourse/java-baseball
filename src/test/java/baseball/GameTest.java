@@ -41,6 +41,7 @@ class GameTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void Exception_Test_ThreeNumberInput_LengthInput2() {
         assertSimpleTest(() ->
@@ -138,6 +139,7 @@ class GameTest extends NsTest {
                 4, 8, 6
         );
     }
+
     @Test
     void Exception_Test_RestartInput4() {
         assertRandomNumberInRangeTest(
@@ -148,8 +150,6 @@ class GameTest extends NsTest {
                 4, 8, 6
         );
     }
-
-
 
 
     @Override
