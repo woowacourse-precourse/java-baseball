@@ -24,6 +24,7 @@ public class BaseBallGame {
                 + GameNumber.NUMBER_DIGIT
                 + GameMessage.GAME_FINISH_MESSAGE.getMessage());
         isGameOver = !checkRestart();
+        if (!isGameOver) gameInit();
       }
     }
   }
@@ -33,15 +34,9 @@ public class BaseBallGame {
     System.out.println(GameMessage.CHECK_RESTART_MESSAGE.getMessage());
     while (true) {
       String input = Console.readLine();
-      switch (input) {
-        case "1":
-          gameInit();
-          return true;
-        case "2":
-          return false;
-        default:
-          System.out.println(GameMessage.IS_INVALID_VALUE.getMessage());
-      }
+      if (input == "1") return true;
+      if (input == "2") return false;
+      System.out.println(GameMessage.IS_INVALID_VALUE.getMessage());
     }
   }
 
