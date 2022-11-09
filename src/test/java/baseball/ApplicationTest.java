@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,30 +45,38 @@ class ApplicationTest extends NsTest {
         assertThat(Application.getInputInt("123")).isEqualTo(123);
     }
     
-    @Test
-    void validateInput_길이_3미만() {
-        assertThatThrownBy(() -> Application.validateInput("12"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("잘못된 입력!");
-    }
+//    @Test
+//    void validateInput_길이_3미만() {
+//        assertThatThrownBy(() -> Application.validateInput("12"))
+//                .isInstanceOf(IllegalArgumentException.class)
+//                .hasMessageContaining("잘못된 입력!");
+//    }
+//
+//    @Test
+//    void validateInput_길이_3초과() {
+//        assertThatThrownBy(() -> Application.validateInput("1234"))
+//                .isInstanceOf(IllegalArgumentException.class)
+//                .hasMessageContaining("잘못된 입력!");
+//    }
+//
+//    @Test
+//    void validateInput_입력범위_초과() {
+//        assertThatThrownBy(() -> Application.validateInput("Abc"))
+//                .isInstanceOf(IllegalArgumentException.class)
+//                .hasMessageContaining("잘못된 입력!");
+//    }
+//
+//    @Test
+//    void validateInput_중복숫자_입력() {
+//        assertThatThrownBy(() -> Application.validateInput("112"))
+//                .isInstanceOf(IllegalArgumentException.class)
+//                .hasMessageContaining("잘못된 입력!");
+//    }
 
-    @Test
-    void validateInput_길이_3초과() {
-        assertThatThrownBy(() -> Application.validateInput("1234"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("잘못된 입력!");
-    }
-
-    @Test
-    void validateInput_입력범위_초과() {
-        assertThatThrownBy(() -> Application.validateInput("Abc"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("잘못된 입력!");
-    }
-
-    @Test
-    void validateInput_중복숫자_입력() {
-        assertThatThrownBy(() -> Application.validateInput("112"))
+    @ParameterizedTest
+    @ValueSource(strings = {"12", "1234", "Abc", "112"})
+    void validateInput_길이제한_잘못된문자_중복숫자(String input) {
+        assertThatThrownBy(() -> Application.validateInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("잘못된 입력!");
     }
