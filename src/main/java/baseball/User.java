@@ -33,7 +33,7 @@ public class User {
 
     // validate input length
     public static void validateLen(String userStr) {
-        if (userStr.length() != 3) {
+        if (userStr.length() != Application.length) {
             throw new IllegalArgumentException();
         }
     }

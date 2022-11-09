@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
         String userAns = Integer.toString(3);
         assertThatThrownBy(()->Checker.validateUserAns(userAns)).isInstanceOf(IllegalArgumentException.class);
     }
-    
+
     @Test
     void num_test() {
         assertRandomNumberInRangeTest(

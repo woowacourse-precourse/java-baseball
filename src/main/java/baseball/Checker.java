@@ -7,6 +7,8 @@ import java.util.*;
 public class Checker {
     static int strike = 0;
     static int ball = 0;
+    static final int restart = 1;
+    static final int finish = 2;
 
     private Checker() {
 
@@ -60,7 +62,7 @@ public class Checker {
     }
 
     public static void validateUserAns(String userAns) {
-        if (Integer.valueOf(userAns) != 1 && Integer.valueOf(userAns) != 2) {
+        if (Integer.valueOf(userAns) != restart && Integer.valueOf(userAns) != finish) {
             throw new IllegalArgumentException();
         }
     }
@@ -69,7 +71,7 @@ public class Checker {
         String userAns = Console.readLine();
         validateUserAns(userAns);
 
-        if (Integer.valueOf(userAns) == 1) {
+        if (Integer.valueOf(userAns) == restart) {
             Application.startGame();
             // initialize
             strike = 0;
