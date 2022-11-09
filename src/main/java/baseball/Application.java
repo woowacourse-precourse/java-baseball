@@ -17,19 +17,24 @@ import java.util.List;
 */
 public class Application {
     public static void main(String[] args) {
-        NumberGenerator generator = new NumberGenerator();
-        List<Integer> computer = generator.createRandomNumbers();
+        boolean reGame = true;
 
-        Referee referee = new Referee();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        String result = "";
+        while (reGame) {
+            NumberGenerator generator = new NumberGenerator();
+            List<Integer> computer = generator.createRandomNumbers();
+            Referee referee = new Referee();
+            String result = "";
 
-        while (!result.equals("0볼 3스트라이크")) {
-            result = referee.compare(computer, askNumbers());
-            System.out.println(result);
+            while (!result.equals("3스트라이크")) {
+                result = referee.compare(computer, askNumbers());
+                System.out.println(result);
+            }
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            reGame = reStart();
         }
-
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static List<Integer> askNumbers() {
@@ -42,5 +47,16 @@ public class Application {
         }
 
         return numbers;
+    }
+
+    public static boolean reStart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+
+        if (input.contentEquals("1")) {
+            return true;
+        }
+
+        return false;
     }
 }
