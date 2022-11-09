@@ -41,7 +41,6 @@ public class ScoreService {
                 .filter(index -> isStrikeByIndex(index, userInput.get(index)))
                 .forEach(i -> strikeCount++);
 
-        IntStream.range(0, userInput.size()).filter(i -> userInput.get(i) == 0).forEach(i -> strikeCount++);
         return strikeCount;
     }
 

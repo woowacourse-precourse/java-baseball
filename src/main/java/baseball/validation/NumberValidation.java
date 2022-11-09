@@ -8,11 +8,7 @@ import static baseball.util.GameCode.*;
 import static baseball.util.RegexCode.*;
 
 public class NumberValidation {
-
-    public NumberValidation() {
-
-    }
-
+    
     public void validateUserInput(String input) {
         validateIsNumber(input);
         validateLength(input);
