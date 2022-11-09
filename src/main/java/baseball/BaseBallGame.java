@@ -14,7 +14,7 @@ public class BaseBallGame {
     boolean isGameOver = false;
     while (!isGameOver) {
       tryCount++;
-      gameNumber = getUserNumberInput();
+      gameNumber = getGameNumberByUserInput();
       result.setResultByGameNumber(computer.getAnswerNumber(), gameNumber);
       System.out.println(result.getResultString());
       if (result.isAnswer()) {
@@ -45,7 +45,7 @@ public class BaseBallGame {
     tryCount = 0;
   }
 
-  private GameNumber getUserNumberInput() {
+  private GameNumber getGameNumberByUserInput() {
     System.out.print(GameMessage.START_INPUT_MESSAGE.getMessage());
     return createGameNumber(Console.readLine());
   }
