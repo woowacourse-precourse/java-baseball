@@ -18,11 +18,7 @@ public class BaseBallGame {
       result.setResultByGameNumber(computer.getAnswerNumber(), gameNumber);
       System.out.println(result.getResultString());
       if (result.isAnswer()) {
-        System.out.println(
-            tryCount
-                + "번의 시도끝에 "
-                + GameNumber.NUMBER_DIGIT
-                + GameMessage.GAME_FINISH_MESSAGE.getMessage());
+        System.out.println(GameMessage.getFinishMessage(tryCount, GameNumber.NUMBER_DIGIT));
         isGameOver = !checkRestart();
         if (!isGameOver) gameInit();
       }
@@ -34,8 +30,8 @@ public class BaseBallGame {
     System.out.println(GameMessage.CHECK_RESTART_MESSAGE.getMessage());
     while (true) {
       String input = Console.readLine();
-      if (input == "1") return true;
-      if (input == "2") return false;
+      if (input.equals("1")) return true;
+      if (input.equals("2")) return false;
       System.out.println(GameMessage.IS_INVALID_VALUE.getMessage());
     }
   }
