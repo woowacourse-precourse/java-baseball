@@ -68,8 +68,12 @@ public class Application {
         }
 
         for (int i = 0; i < 3; i++) {
-            int digit = Integer.parseInt(userNum.substring(i, i + 1));
-            userNumbers.add(digit);
+            try {
+                int digit = Integer.parseInt(userNum.substring(i, i + 1));
+                userNumbers.add(digit);
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException();
+            }
         }
 
         int a = userNumbers.get(0);
