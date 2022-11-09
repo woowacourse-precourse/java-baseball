@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -14,6 +15,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    List<Integer> randomInt = new ArrayList<>();
+
+    @BeforeEach
+    void randomInt_값추가() {
+        randomInt.add(1);
+        randomInt.add(2);
+        randomInt.add(3);
+    }
     
     @Test
     void 게임종료_후_재시작() {
@@ -85,10 +95,6 @@ class ApplicationTest extends NsTest {
 
     @Test
     void grading_낫싱() {
-        List<Integer> randomInt = new ArrayList<>();
-        randomInt.add(1);
-        randomInt.add(2);
-        randomInt.add(3);
         Grade grade = new Grade(0, 0);
         Grade output = Application.grading(randomInt, 456);
         assertThat(grade).isEqualTo(output);
@@ -96,10 +102,6 @@ class ApplicationTest extends NsTest {
 
     @Test
     void grading_3볼() {
-        List<Integer> randomInt = new ArrayList<>();
-        randomInt.add(1);
-        randomInt.add(2);
-        randomInt.add(3);
         Grade grade = new Grade(3, 0);
         Grade output = Application.grading(randomInt, 312);
         assertThat(grade).isEqualTo(output);
@@ -107,10 +109,6 @@ class ApplicationTest extends NsTest {
 
     @Test
     void grading_1볼_1스트라이크() {
-        List<Integer> randomInt = new ArrayList<>();
-        randomInt.add(1);
-        randomInt.add(2);
-        randomInt.add(3);
         Grade grade = new Grade(1, 1);
         Grade output = Application.grading(randomInt, 134);
         assertThat(grade).isEqualTo(output);
@@ -118,10 +116,6 @@ class ApplicationTest extends NsTest {
 
     @Test
     void grading_3스트라이크() {
-        List<Integer> randomInt = new ArrayList<>();
-        randomInt.add(1);
-        randomInt.add(2);
-        randomInt.add(3);
         Grade grade = new Grade(0, 3);
         Grade output = Application.grading(randomInt, 123);
         assertThat(grade).isEqualTo(output);
