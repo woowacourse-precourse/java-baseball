@@ -3,19 +3,17 @@ package baseball.game;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.game.number.Number;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class GameResultCalculatorTest {
-    private GameResultCalculator gameResultCalculator;
+class GameJudgeTest {
+    private GameJudge gameJudge;
 
     @BeforeEach
     public void setUp() {
-        gameResultCalculator = new GameResultCalculator();
+        gameJudge = new GameJudge();
     }
 
     @Nested
@@ -26,7 +24,7 @@ class GameResultCalculatorTest {
             Number mockRandomNumber = new Number(425);
             Number mockPlayerInput = new Number(123);
 
-            GameResult result = gameResultCalculator.makeGameResult(mockRandomNumber, mockPlayerInput);
+            GameResult result = gameJudge.countAndMakeResult(mockRandomNumber, mockPlayerInput);
 
             assertThat(result).isEqualTo(new GameResult(0, 1));
         }
@@ -36,7 +34,7 @@ class GameResultCalculatorTest {
             Number mockRandomNumber = new Number(425);
             Number mockPlayerInput = new Number(456);
 
-            GameResult result = gameResultCalculator.makeGameResult(mockRandomNumber, mockPlayerInput);
+            GameResult result = gameJudge.countAndMakeResult(mockRandomNumber, mockPlayerInput);
 
             assertThat(result).isEqualTo(new GameResult(1, 1));
         }
@@ -46,7 +44,7 @@ class GameResultCalculatorTest {
             Number mockRandomNumber = new Number(425);
             Number mockPlayerInput = new Number(789);
 
-            GameResult result = gameResultCalculator.makeGameResult(mockRandomNumber, mockPlayerInput);
+            GameResult result = gameJudge.countAndMakeResult(mockRandomNumber, mockPlayerInput);
 
             assertThat(result).isEqualTo(new GameResult(0, 0));
         }
@@ -60,7 +58,7 @@ class GameResultCalculatorTest {
             Number mockRandomNumber = new Number(789);
             Number mockPlayerInput = new Number(789);
 
-            boolean isThreeStrike = gameResultCalculator.isThreeStrike(mockRandomNumber, mockPlayerInput);
+            boolean isThreeStrike = gameJudge.isThreeStrike(mockRandomNumber, mockPlayerInput);
 
             assertThat(isThreeStrike).isTrue();
         }
@@ -70,7 +68,7 @@ class GameResultCalculatorTest {
             Number mockRandomNumber = new Number(789);
             Number mockPlayerInput = new Number(127);
 
-            boolean isThreeStrike = gameResultCalculator.isThreeStrike(mockRandomNumber, mockPlayerInput);
+            boolean isThreeStrike = gameJudge.isThreeStrike(mockRandomNumber, mockPlayerInput);
 
             assertThat(isThreeStrike).isFalse();
         }

@@ -4,7 +4,7 @@ import baseball.game.number.Digit;
 import baseball.game.number.Number;
 import java.util.List;
 
-public class GameResultCalculator {
+public class GameJudge {
     public boolean isThreeStrike(Number computer, Number player) {
         return player.equals(computer);
     }
@@ -48,7 +48,7 @@ public class GameResultCalculator {
         return ballCount;
     }
 
-    public GameResult makeGameResult(Number answerNumber, Number playerInputNumber) {
+    public GameResult countAndMakeResult(Number answerNumber, Number playerInputNumber) {
         int ballCount = countBall(answerNumber, playerInputNumber);
         int strikeCount = countStrike(answerNumber, playerInputNumber);
         return new GameResult(ballCount, strikeCount);

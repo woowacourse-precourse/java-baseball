@@ -24,7 +24,7 @@ public class BaseballGameTest {
         @DisplayName("3자리수가 생성된다.")
         public void generateThreeDigitNumber() {
             // when
-            game.start();
+            game.initialize();
 
             Digit first = game.answerNumber.first;
             Digit second = game.answerNumber.second;
@@ -41,7 +41,7 @@ public class BaseballGameTest {
         @DisplayName("각 자릿수가 다른 3자리수가 생성된다.")
         public void generateUniqueDigits() {
             // when
-            game.start();
+            game.initialize();
 
             Digit first = game.answerNumber.first;
             Digit second = game.answerNumber.second;

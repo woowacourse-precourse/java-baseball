@@ -9,57 +9,70 @@ import java.util.List;
 public class BaseballGame {
     private final GamePrinter printer;
     private final GameScanner scanner;
-    private final GameResultCalculator calculator;
+    private final GameJudge judge;
     protected Number answerNumber;
+    private Number playerInputNumber;
     private GameState gameState;
 
     public BaseballGame() {
         printer = new GamePrinter();
         scanner = new GameScanner();
-        calculator = new GameResultCalculator();
+        judge = new GameJudge();
     }
 
-    public void start() {
+    public void initialize() {
         generateRandomNumber();
 
         printer.printStartMessage();
-        gameState = GameState.START;
+        gameState = GameState.INITIALIZED;
     }
 
-    public void play() {
-        Number playerInputNumber;
+    public void repeatRoundUntilThreeStrikes() {
         do {
-            printer.printInputPrompt();
-            playerInputNumber = scanner.readPlayerNumber();
-            GameResult result = calculator.makeGameResult(answerNumber, playerInputNumber);
-            printer.printResult(result);
-        } while (!calculator.isThreeStrike(answerNumber, playerInputNumber));
+            scanPlayerInputAndJudge();
+        } while (isThreeStrike());
     }
 
-    public void pause() {
+    public void pauseAndAskIfPlayerFinishOrNot() {
         printer.printPauseMessage();
-        gameState = GameState.PAUSE;
+        gameState = GameState.PAUSED;
 
         if (scanner.readFinishInput() == FinishInput.QUIT_GAME) {
-            end();
+            finish();
         }
     }
 
-    public boolean isEnd() {
-        return gameState == GameState.END;
+    public boolean isNotFinished() {
+        return gameState != GameState.FINISHED;
     }
 
-    private void end() {
-        gameState = GameState.END;
+    private boolean isThreeStrike() {
+        return !judge.isThreeStrike(playerInputNumber, answerNumber);
+    }
+
+    private void scanPlayerInputAndJudge() {
+        printer.printInputPrompt();
+        playerInputNumber = scanner.readPlayerNumber();
+        GameResult result = judge.countAndMakeResult(answerNumber, playerInputNumber);
+        printer.printResult(result);
+    }
+
+    private void finish() {
+        gameState = GameState.FINISHED;
         printer.printEndMessage();
     }
 
     private void generateRandomNumber() {
+        List<Integer> digits = generateDigitsForNumber();
+        answerNumber = new Number(digits);
+    }
+
+    private List<Integer> generateDigitsForNumber() {
         List<Integer> digits = new ArrayList<>();
         while (digits.size() < Number.FULL_SIZE) {
             addUniqueRandomDigit(digits);
         }
-        answerNumber = new Number(digits);
+        return digits;
     }
 
     private void addUniqueRandomDigit(List<Integer> digits) {
