@@ -1,14 +1,16 @@
 package baseball;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class ComputerTest {
 
-  @Test
+  @DisplayName("컴퓨터가 생성하는 값이 유효한 값인가")
   @RepeatedTest(100)
-  void 컴퓨터가_생성하는_값이_유효한값인가() {
+  void computerCanCreateValidAnswer() {
     Computer computer = new Computer();
-    computer.setAnswerNumber();
+    assertDoesNotThrow(() -> computer.setAnswerNumber());
   }
 }

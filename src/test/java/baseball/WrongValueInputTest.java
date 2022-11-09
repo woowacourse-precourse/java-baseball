@@ -1,32 +1,37 @@
 package baseball;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class WrongValueInputTest {
-  @ParameterizedTest
+  @DisplayName("문자열 입력시 예외 발생")
+  @ParameterizedTest(name ="{index} {displayName} message={0} ")
   @ValueSource(strings = {"가나다", "hello"})
-  void 문자열입력시_예외발생(String input) {
+  void canNotInputString(String input) {
     checkWrongValueInput(input);
   }
 
-  @ParameterizedTest
+  @DisplayName("잘못된 자리수 입력시 예외 발생")
+  @ParameterizedTest(name ="{index} {displayName} message={0} ")
   @ValueSource(strings = {"1234", "1"})
-  void 잘못된_자리수_입력시_예외발생(String input) {
+  void canNotInputWrongDigit(String input) {
     checkWrongValueInput(input);
   }
 
-  @ParameterizedTest
+  @DisplayName("범위를 벗어나는 수 입력시 예외 발생")
+  @ParameterizedTest(name ="{index} {displayName} message={0} ")
   @ValueSource(strings = {"102", "013", "120"})
-  void 범위를_벗어나는_수_입력시_예외발생(String input) {
+  void canNotInputOutOfRange(String input) {
     checkWrongValueInput(input);
   }
 
-  @ParameterizedTest
+  @DisplayName("중복되는 숫자 입력시 예외 발생")
+  @ParameterizedTest(name ="{index} {displayName} message={0} ")
   @ValueSource(strings = {"121", "211", "112"})
-  void 중복되는_숫자_입력시_예외발생(String input) {
+  void canNotInputDuplicateNumber(String input) {
     checkWrongValueInput(input);
   }
 
