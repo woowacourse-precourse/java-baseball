@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -128,17 +129,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void getChoice_1입력() {
-        int choice = Application.getChoice("1");
-        assertThat(choice).isEqualTo(1);
+    @ParameterizedTest
+    @CsvSource(value = {"1,1", "2,2"}, delimiter = ',')
+    void getChoice_여러입력(String str, int expected) {
+        int choice = Application.getChoice(str);
+        assertThat(choice).isEqualTo(expected);
     }
 
-    @Test
-    void getChoice_2입력() {
-        int choice = Application.getChoice("2");
-        assertThat(choice).isEqualTo(2);
-    }
 
     @Test
     void getChoice_예외입력() {
