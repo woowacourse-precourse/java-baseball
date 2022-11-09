@@ -34,11 +34,11 @@ public class GameResult {
   }
 
   private void calculateResult(List<Integer> answerNumberList, List<Integer> gameNumberList) {
-    // 각 자리수를 비교해서 순서와 숫자가 같으면 Strike, 숫자만 같으면 Ball
+    // 각 자리수를 비교해서 순서와 숫자가 같으면 Strike, 숫자만 같으면 Ball 증가
     for (int i = 0; i < answerNumberList.size(); i++) {
       for (int j = 0; j < gameNumberList.size(); j++) {
         boolean isUpdated = updateCount(isSame(answerNumberList.get(i), gameNumberList.get(j)), isSame(i, j));
-
+        if (isUpdated) break;
       }
     }
   }
@@ -47,8 +47,12 @@ public class GameResult {
     return num1 == num2;
   }
 
-  private void updateCount(boolean isSameNumber, boolean isSameIndex) {
-    if (isSameIndex) strikeCount++;
-    else ballCount++;
+  private boolean updateCount(boolean isSameNumber, boolean isSameIndex) {
+    if(isSameNumber){
+      if (isSameIndex) strikeCount++;
+      else ballCount++;
+      return true;
+    }
+    return false;
   }
 }
