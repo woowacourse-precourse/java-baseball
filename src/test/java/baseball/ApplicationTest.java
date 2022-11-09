@@ -21,13 +21,23 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임종료_후_재시작_예외값입력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("123", "345", "1", "456", "789", "12"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                3, 4, 5, 7, 8, 9
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
