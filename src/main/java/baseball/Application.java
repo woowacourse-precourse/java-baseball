@@ -9,21 +9,27 @@ package baseball;
 
 import baseball.domain.Judgement;
 import baseball.domain.NumberGenerator;
+import baseball.domain.Refree;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        //NumberGenerator generator = new NumberGenerator();
-        //List<Integer> numbers = generator.createRandomNumber();
-        // System.out.println(numbers);
+        /*NumberGenerator generator = new NumberGenerator();
+        List<Integer> numbers = generator.createRandomNumber();
+        System.out.println(numbers);
 
         Judgement judgement = new Judgement();
- /*       final int count = judgement.correctCount(Arrays.asList(1, 2, 3), Arrays.asList(6, 8, 9));
-        System.out.print(count);*/
+        final int count = judgement.correctCount(Arrays.asList(1, 2, 3), Arrays.asList(6, 8, 9));
+        System.out.print(count);
 
-        final boolean place=judgement.hasPlace(Arrays.asList(7,8,9),0,8);
-        System.out.println(place);
+       final boolean place=judgement.hasPlace(Arrays.asList(7,8,9),0,8);
+        System.out.println(place);*/
+        Refree refree=new Refree();
+        String result=refree.compare(Arrays.asList(1,2,3),Arrays.asList(3,2,9));
+        System.out.println(result);
+
+
     }
 }
