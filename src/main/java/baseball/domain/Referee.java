@@ -19,7 +19,7 @@ public class Referee {
 
         int ball = correctCount - strike;
 
-        if(strike == 0 && ball ==0) {
+        if(correctCount == 0) {
             return "낫싱";
         }
 
