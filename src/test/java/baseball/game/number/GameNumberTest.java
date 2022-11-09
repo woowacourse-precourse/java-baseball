@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class NumberTest {
+class GameNumberTest {
     private List<Integer> digitNumbers;
 
     @BeforeEach
@@ -28,7 +28,7 @@ class NumberTest {
     public void digits_배열로_생성했을_때_첫번째_숫자가_일치한다() {
         Digit firstDigit = new Digit(digitNumbers.get(0));
 
-        Number number = new Number(digitNumbers);
+        GameNumber number = new GameNumber(digitNumbers);
         assertThat(number.first).isEqualTo(firstDigit);
     }
 
@@ -36,7 +36,7 @@ class NumberTest {
     public void digits_배열로_생성했을_때_두번째_숫자가_일치한다() {
         Digit secondDigit = new Digit(digitNumbers.get(1));
 
-        Number number = new Number(digitNumbers);
+        GameNumber number = new GameNumber(digitNumbers);
         assertThat(number.second).isEqualTo(secondDigit);
     }
 
@@ -44,14 +44,14 @@ class NumberTest {
     public void digits_배열로_생성했을_때_세번째_숫자가_일치한다() {
         Digit thirdDigit = new Digit(digitNumbers.get(2));
 
-        Number number = new Number(digitNumbers);
+        GameNumber number = new GameNumber(digitNumbers);
         assertThat(number.third).isEqualTo(thirdDigit);
     }
 
     @Test
     public void 백보다_작은_수가_들어오면_예외를_던진다() {
         int invalidNumber = Randoms.pickNumberInRange(0, 99);
-        assertThatThrownBy(() -> new Number(invalidNumber))
+        assertThatThrownBy(() -> new GameNumber(invalidNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 수가 아닙니다.");
     }
@@ -59,7 +59,7 @@ class NumberTest {
     @Test
     public void 네자릿_수가_들어오면_예외를_던진다() {
         int invalidNumber = Randoms.pickNumberInRange(1000, 9999);
-        assertThatThrownBy(() -> new Number(invalidNumber))
+        assertThatThrownBy(() -> new GameNumber(invalidNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 수가 아닙니다.");
     }
@@ -67,7 +67,7 @@ class NumberTest {
     @Test
     @DisplayName("숫자가 아닌 문자를 인자로 받으면 예외를 던진다.")
     public void throwExceptionWhenStringContainsNaN() {
-        assertThatThrownBy(() -> new Number("abc"))
+        assertThatThrownBy(() -> new GameNumber("abc"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자만 입력해주세요.");
     }
@@ -79,7 +79,7 @@ class NumberTest {
     @Test
     public void 세자리_수로_생성했을_때_첫번째_숫자가_일치한다() {
         int randomDigitNumber = convertToNumber(digitNumbers);
-        Number number = new Number(randomDigitNumber);
+        GameNumber number = new GameNumber(randomDigitNumber);
 
         Digit firstDigit = new Digit(digitNumbers.get(0));
         assertThat(number.first).isEqualTo(firstDigit);
@@ -88,7 +88,7 @@ class NumberTest {
     @Test
     public void 세자리_수로_생성했을_때_두번째_숫자가_일치한다() {
         int randomDigitNumber = convertToNumber(digitNumbers);
-        Number number = new Number(randomDigitNumber);
+        GameNumber number = new GameNumber(randomDigitNumber);
 
         Digit secondDigit = new Digit(digitNumbers.get(1));
         assertThat(number.second).isEqualTo(secondDigit);
@@ -97,7 +97,7 @@ class NumberTest {
     @Test
     public void 세자리_수로_생성했을_때_세번째_숫자가_일치한다() {
         int randomDigitNumber = convertToNumber(digitNumbers);
-        Number number = new Number(randomDigitNumber);
+        GameNumber number = new GameNumber(randomDigitNumber);
 
         Digit thirdDigit = new Digit(digitNumbers.get(2));
         assertThat(number.third).isEqualTo(thirdDigit);
@@ -106,7 +106,7 @@ class NumberTest {
     @Test
     public void 범위보다_작은_수가_들어오면_예외를_던진다() {
         int numberlessThanRange = Randoms.pickNumberInRange(1, 99);
-        assertThatThrownBy(()-> new Number(numberlessThanRange))
+        assertThatThrownBy(()-> new GameNumber(numberlessThanRange))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 수가 아닙니다.");
     }
@@ -114,7 +114,7 @@ class NumberTest {
     @Test
     public void 범위보다_큰_수가_들어오면_예외를_던진다() {
         int numberlessThanRange = Randoms.pickNumberInRange(1000, 9999);
-        assertThatThrownBy(()-> new Number(numberlessThanRange))
+        assertThatThrownBy(()-> new GameNumber(numberlessThanRange))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 수가 아닙니다.");
     }
@@ -126,7 +126,7 @@ class NumberTest {
     @Test
     public void 같은_수가_포함된_수가_들어오면_예외를_던진다() {
         int randomButNotUniqueDigitNumber = convertDuplicateDigitNumber(digitNumbers);
-        assertThatThrownBy(()-> new Number(randomButNotUniqueDigitNumber))
+        assertThatThrownBy(()-> new GameNumber(randomButNotUniqueDigitNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("서로 다른 3자리 수가 아닙니다.");
     }
@@ -136,8 +136,8 @@ class NumberTest {
         List<Integer> randomDigits = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         int convertedNumber = convertToNumber(randomDigits);
 
-        Number number1 = new Number(randomDigits);
-        Number number2 = new Number(convertedNumber);
+        GameNumber number1 = new GameNumber(randomDigits);
+        GameNumber number2 = new GameNumber(convertedNumber);
 
         assertThat(number2).isEqualTo(number1);
     }
@@ -148,8 +148,8 @@ class NumberTest {
         int firstConvertedNumber = convertToNumber(randomDigits.subList(0, 3));
         int secondConvertedNumber = convertToNumber(randomDigits.subList(3, 6));
 
-        Number number1 = new Number(firstConvertedNumber);
-        Number number2 = new Number(secondConvertedNumber);
+        GameNumber number1 = new GameNumber(firstConvertedNumber);
+        GameNumber number2 = new GameNumber(secondConvertedNumber);
 
         assertThat(number2).isNotEqualTo(number1);
     }

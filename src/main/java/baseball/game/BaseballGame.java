@@ -1,7 +1,7 @@
 package baseball.game;
 
 import baseball.game.input.FinishInput;
-import baseball.game.number.Number;
+import baseball.game.number.GameNumber;
 import baseball.game.number.RandomNumberGenerator;
 
 public class BaseballGame {
@@ -9,8 +9,8 @@ public class BaseballGame {
     private final GameScanner scanner;
     private final RandomNumberGenerator randomNumberGenerator;
     private final GameJudge judge;
-    protected Number answerNumber;
-    private Number playerInputNumber;
+    protected GameNumber answer;
+    private GameNumber playerInput;
     private GameState gameState;
 
     public BaseballGame() {
@@ -21,7 +21,7 @@ public class BaseballGame {
     }
 
     public void initialize() {
-        answerNumber = randomNumberGenerator.generate();
+        answer = randomNumberGenerator.generate();
 
         printer.printStartMessage();
         gameState = GameState.INITIALIZED;
@@ -47,13 +47,13 @@ public class BaseballGame {
     }
 
     private boolean isThreeStrike() {
-        return !judge.isThreeStrike(playerInputNumber, answerNumber);
+        return !judge.isThreeStrike(playerInput, answer);
     }
 
     private void scanPlayerInputAndJudge() {
         printer.printInputPrompt();
-        playerInputNumber = scanner.readPlayerNumber();
-        GameResult result = judge.countAndMakeResult(answerNumber, playerInputNumber);
+        playerInput = scanner.readPlayerNumber();
+        GameResult result = judge.countAndMakeResult(answer, playerInput);
         printer.printResult(result);
     }
 

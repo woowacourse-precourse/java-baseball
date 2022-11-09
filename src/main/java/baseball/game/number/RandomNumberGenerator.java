@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberGenerator {
-    public Number generate() {
+    public GameNumber generate() {
         List<Integer> digits = generateDigitsForNumber();
-        return new Number(digits);
+        return new GameNumber(digits);
     }
 
     private List<Integer> generateDigitsForNumber() {
         List<Integer> digits = new ArrayList<>();
-        while (digits.size() < Number.FULL_SIZE) {
+        while (digits.size() < GameNumber.FULL_SIZE) {
             addUniqueRandomDigit(digits);
         }
         return digits;

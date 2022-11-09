@@ -3,7 +3,7 @@ package baseball.game.number;
 import java.util.List;
 import java.util.Objects;
 
-public class Number {
+public class GameNumber {
     public final Digit first;
     public final Digit second;
     public final Digit third;
@@ -12,13 +12,13 @@ public class Number {
     private final int SECOND_IDX = 1;
     private final int THIRD_IDX = 2;
 
-    public Number(List<Integer> digits) {
+    public GameNumber(List<Integer> digits) {
         this.first = new Digit(digits.get(FIRST_IDX));
         this.second = new Digit(digits.get(SECOND_IDX));
         this.third = new Digit(digits.get(THIRD_IDX));
     }
 
-    public Number(int num) {
+    public GameNumber(int num) {
         isInputValidRange(num);
 
         List<Integer> separatedDigits = separateToDigits(num);
@@ -29,7 +29,7 @@ public class Number {
         third = new Digit(separatedDigits.get(THIRD_IDX));
     }
 
-    public Number(String numberString) {
+    public GameNumber(String numberString) {
         int number;
         try {
             number = Integer.parseInt(numberString);
@@ -82,7 +82,7 @@ public class Number {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Number number = (Number) o;
+        GameNumber number = (GameNumber) o;
         return Objects.equals(first, number.first) && Objects.equals(second, number.second)
                 && Objects.equals(third, number.third);
     }

@@ -2,7 +2,7 @@ package baseball.game;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.game.number.Number;
+import baseball.game.number.GameNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -21,8 +21,8 @@ class GameJudgeTest {
     class CountExactly {
         @Test
         public void 컴_425_플레이어_123() {
-            Number mockRandomNumber = new Number(425);
-            Number mockPlayerInput = new Number(123);
+            GameNumber mockRandomNumber = new GameNumber(425);
+            GameNumber mockPlayerInput = new GameNumber(123);
 
             GameResult result = gameJudge.countAndMakeResult(mockRandomNumber, mockPlayerInput);
 
@@ -31,8 +31,8 @@ class GameJudgeTest {
 
         @Test
         public void 컴_425_플레이어_456() {
-            Number mockRandomNumber = new Number(425);
-            Number mockPlayerInput = new Number(456);
+            GameNumber mockRandomNumber = new GameNumber(425);
+            GameNumber mockPlayerInput = new GameNumber(456);
 
             GameResult result = gameJudge.countAndMakeResult(mockRandomNumber, mockPlayerInput);
 
@@ -41,8 +41,8 @@ class GameJudgeTest {
 
         @Test
         public void 컴_425_플레이어_789() {
-            Number mockRandomNumber = new Number(425);
-            Number mockPlayerInput = new Number(789);
+            GameNumber mockRandomNumber = new GameNumber(425);
+            GameNumber mockPlayerInput = new GameNumber(789);
 
             GameResult result = gameJudge.countAndMakeResult(mockRandomNumber, mockPlayerInput);
 
@@ -55,8 +55,8 @@ class GameJudgeTest {
     class IsThreeStrike {
         @Test
         public void 모두_스트라이크_일때_true를_반환한다() {
-            Number mockRandomNumber = new Number(789);
-            Number mockPlayerInput = new Number(789);
+            GameNumber mockRandomNumber = new GameNumber(789);
+            GameNumber mockPlayerInput = new GameNumber(789);
 
             boolean isThreeStrike = gameJudge.isThreeStrike(mockRandomNumber, mockPlayerInput);
 
@@ -65,8 +65,8 @@ class GameJudgeTest {
 
         @Test
         public void 모두_스트라이크가_아니면_false를_반환한다() {
-            Number mockRandomNumber = new Number(789);
-            Number mockPlayerInput = new Number(127);
+            GameNumber mockRandomNumber = new GameNumber(789);
+            GameNumber mockPlayerInput = new GameNumber(127);
 
             boolean isThreeStrike = gameJudge.isThreeStrike(mockRandomNumber, mockPlayerInput);
 

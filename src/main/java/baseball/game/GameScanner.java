@@ -1,13 +1,13 @@
 package baseball.game;
 
 import baseball.game.input.FinishInput;
-import baseball.game.number.Number;
+import baseball.game.number.GameNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameScanner {
-    public Number readPlayerNumber() {
+    public GameNumber readPlayerNumber() {
         String numberString = Console.readLine();
-        return new Number(numberString);
+        return new GameNumber(numberString);
     }
 
     public FinishInput readFinishInput() {

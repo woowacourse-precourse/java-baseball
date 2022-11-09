@@ -1,15 +1,14 @@
 package baseball.game;
 
 import baseball.game.number.Digit;
-import baseball.game.number.Number;
-import java.util.List;
+import baseball.game.number.GameNumber;
 
 public class GameJudge {
-    public boolean isThreeStrike(Number computer, Number player) {
+    public boolean isThreeStrike(GameNumber computer, GameNumber player) {
         return player.equals(computer);
     }
 
-    private int countStrike(Number randomNumber, Number playerInput) {
+    private int countStrike(GameNumber randomNumber, GameNumber playerInput) {
         int strikeCount = 0;
 
         if (randomNumber.first.equals(playerInput.first)) {
@@ -24,7 +23,7 @@ public class GameJudge {
         return strikeCount;
     }
 
-    private int countBall(Number randomNumber, Number playerInput) {
+    private int countBall(GameNumber randomNumber, GameNumber playerInput) {
         int ballCount = 0;
 
         Digit firstInput = playerInput.first;
@@ -48,7 +47,7 @@ public class GameJudge {
         return ballCount;
     }
 
-    public GameResult countAndMakeResult(Number answerNumber, Number playerInputNumber) {
+    public GameResult countAndMakeResult(GameNumber answerNumber, GameNumber playerInputNumber) {
         int ballCount = countBall(answerNumber, playerInputNumber);
         int strikeCount = countStrike(answerNumber, playerInputNumber);
         return new GameResult(ballCount, strikeCount);

@@ -26,9 +26,9 @@ public class BaseballGameTest {
             // when
             game.initialize();
 
-            Digit first = game.answerNumber.first;
-            Digit second = game.answerNumber.second;
-            Digit third = game.answerNumber.third;
+            Digit first = game.answer.first;
+            Digit second = game.answer.second;
+            Digit third = game.answer.third;
 
             // then
             assertThat(first).isNotNull();
@@ -43,9 +43,9 @@ public class BaseballGameTest {
             // when
             game.initialize();
 
-            Digit first = game.answerNumber.first;
-            Digit second = game.answerNumber.second;
-            Digit third = game.answerNumber.third;
+            Digit first = game.answer.first;
+            Digit second = game.answer.second;
+            Digit third = game.answer.third;
 
             // then
             assertThat(first).isNotEqualTo(second);

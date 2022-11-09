@@ -1,6 +1,5 @@
 package baseball.game;
 
-import baseball.game.number.Number;
 import java.util.Objects;
 
 public class GameResult {
