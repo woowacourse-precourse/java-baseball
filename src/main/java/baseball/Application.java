@@ -33,7 +33,7 @@ public class Application {
     }
 
     public static List<Integer> askNumbers() {
-        System.out.println("숫자를 입력해 주세요 : ");
+        System.out.print("숫자를 입력해 주세요 : ");
         String input = Console.readLine();
         List<Integer> numbers = new ArrayList<>();
 

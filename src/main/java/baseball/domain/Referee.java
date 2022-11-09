@@ -10,6 +10,7 @@ public class Referee {
         final Judgment judgment = new Judgment();
         int correctCount = judgment.correctCount(computer, player);
         int strike = 0;
+        StringBuilder sb = new StringBuilder();
 
         for (int placeIndex=0; placeIndex<player.size(); placeIndex++) {
             if (judgment.hasPlace(computer, placeIndex, player.get(placeIndex))) {
@@ -23,6 +24,14 @@ public class Referee {
             return "낫싱";
         }
 
-        return ball +"볼 " +strike +"스트라이크";
+        if (ball > 0) {
+            sb.append(ball +"볼 ");
+        }
+
+        if (strike > 0) {
+            sb.append(strike +"스트라이크");
+        }
+
+        return sb.toString();
     }
 }
