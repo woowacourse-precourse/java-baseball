@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Validator {
     public static final int CNT = 3;
-    private static final List<Integer> restartCode = new ArrayList<>(Arrays.asList(1, 2));
+    private final List<Integer> restartCode = new ArrayList<>(Arrays.asList(1, 2));
 
     public void isValidate(String number) {
         number = number.trim();
