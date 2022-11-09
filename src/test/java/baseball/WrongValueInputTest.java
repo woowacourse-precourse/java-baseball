@@ -1,34 +1,33 @@
 package baseball;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class WrongValueInputTest {
-  @Test
-  void 문자열입력시_예외발생() {
-    checkWrongValueInput("가나다");
-    checkWrongValueInput("hello");
+  @ParameterizedTest
+  @ValueSource(strings = {"가나다", "hello"})
+  void 문자열입력시_예외발생(String input) {
+    checkWrongValueInput(input);
   }
 
-  @Test
-  void 잘못된_자리수_입력시_예외발생() {
-    checkWrongValueInput("1234");
-    checkWrongValueInput("1");
+  @ParameterizedTest
+  @ValueSource(strings = {"1234", "1"})
+  void 잘못된_자리수_입력시_예외발생(String input) {
+    checkWrongValueInput(input);
   }
 
-  @Test
-  void 범위를_벗어나는_수_입력시_예외발생() {
-    checkWrongValueInput("102");
-    checkWrongValueInput("013");
-    checkWrongValueInput("120");
+  @ParameterizedTest
+  @ValueSource(strings = {"102", "013", "120"})
+  void 범위를_벗어나는_수_입력시_예외발생(String input) {
+    checkWrongValueInput(input);
   }
 
-  @Test
-  void 중복되는_숫자_입력시_예외발생() {
-    checkWrongValueInput("121");
-    checkWrongValueInput("211");
-    checkWrongValueInput("112");
+  @ParameterizedTest
+  @ValueSource(strings = {"121", "211", "112"})
+  void 중복되는_숫자_입력시_예외발생(String input) {
+    checkWrongValueInput(input);
   }
 
   private void checkWrongValueInput(String inputString) {
