@@ -1,9 +1,10 @@
 package baseball.io;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class UserInputTest {
@@ -15,11 +16,11 @@ class UserInputTest {
 
         // when & then
         assertAll(
-                () -> Assertions.assertThatCode(() -> new UserInput("123"))
+                () -> assertThatCode(() -> new UserInput("123"))
                         .doesNotThrowAnyException(),
-                () -> Assertions.assertThatCode(() -> new UserInput("521"))
+                () -> assertThatCode(() -> new UserInput("521"))
                         .doesNotThrowAnyException(),
-                () -> Assertions.assertThatCode(() -> new UserInput("547"))
+                () -> assertThatCode(() -> new UserInput("547"))
                         .doesNotThrowAnyException()
         );
     }
@@ -31,15 +32,15 @@ class UserInputTest {
 
         // when & then
         assertAll(
-                () -> Assertions.assertThatThrownBy(() -> new UserInput("113"))
+                () -> assertThatThrownBy(() -> new UserInput("113"))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> Assertions.assertThatThrownBy(() -> new UserInput("103"))
+                () -> assertThatThrownBy(() -> new UserInput("103"))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> Assertions.assertThatThrownBy(() -> new UserInput("4e1"))
+                () -> assertThatThrownBy(() -> new UserInput("4e1"))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> Assertions.assertThatThrownBy(() -> new UserInput("erq"))
+                () -> assertThatThrownBy(() -> new UserInput("erq"))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> Assertions.assertThatThrownBy(() -> new UserInput("1234"))
+                () -> assertThatThrownBy(() -> new UserInput("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

@@ -1,11 +1,12 @@
 package baseball.computer;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest {
 
@@ -20,8 +21,8 @@ public class ComputerTest {
         List<Integer> computerHoldNumbers = computer.getComputerHoldNumbers();
 
         // then
-        Assertions.assertThat(computerHoldNumbers).hasSize(3);
-        Assertions.assertThat(
+        assertThat(computerHoldNumbers).hasSize(3);
+        assertThat(
                 computerHoldNumbers.stream().collect(Collectors.toSet())
         ).hasSize(3);
     }

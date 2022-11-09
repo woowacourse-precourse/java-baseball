@@ -1,10 +1,10 @@
 package baseball.game;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class ResultTest {
 
@@ -21,9 +21,9 @@ class ResultTest {
 
         // then
         assertAll(
-                () -> Assertions.assertThat(threeStrike).isEqualTo(GameResult.THREE_STRIKE),
-                () -> Assertions.assertThat(nothing).isEqualTo(GameResult.NOTHING),
-                () -> Assertions.assertThat(etc).isEqualTo(GameResult.ETC)
+                () -> assertThat(threeStrike).isEqualTo(GameResult.THREE_STRIKE),
+                () -> assertThat(nothing).isEqualTo(GameResult.NOTHING),
+                () -> assertThat(etc).isEqualTo(GameResult.ETC)
         );
     }
 }
