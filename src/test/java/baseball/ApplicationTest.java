@@ -3,11 +3,15 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -90,36 +94,24 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("잘못된 입력!");
     }
-    
-    
 
-    @Test
-    void grading_낫싱() {
-        Grade grade = new Grade(0, 0);
-        Grade output = Application.grading(randomInt, 456);
+    @ParameterizedTest
+    @MethodSource("provideBallAndStrike")
+    void grading_여러(int ball, int strike, int inputInt) {
+        Grade grade = new Grade(ball, strike);
+        Grade output = Application.grading(randomInt, inputInt);
         assertThat(grade).isEqualTo(output);
     }
 
-    @Test
-    void grading_3볼() {
-        Grade grade = new Grade(3, 0);
-        Grade output = Application.grading(randomInt, 312);
-        assertThat(grade).isEqualTo(output);
+    private static Stream<Arguments> provideBallAndStrike() {
+        return Stream.of(
+                Arguments.of(0, 0, 456),
+                Arguments.of(3, 0, 312),
+                Arguments.of(1, 1, 134),
+                Arguments.of(0, 3, 123)
+        );
     }
 
-    @Test
-    void grading_1볼_1스트라이크() {
-        Grade grade = new Grade(1, 1);
-        Grade output = Application.grading(randomInt, 134);
-        assertThat(grade).isEqualTo(output);
-    }
-
-    @Test
-    void grading_3스트라이크() {
-        Grade grade = new Grade(0, 3);
-        Grade output = Application.grading(randomInt, 123);
-        assertThat(grade).isEqualTo(output);
-    }
 
     @Test
     void makeGradeMessage_0볼_0스트라이크() {
