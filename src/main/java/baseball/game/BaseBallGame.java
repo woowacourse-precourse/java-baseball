@@ -7,7 +7,6 @@ import baseball.game.model.BallCount;
 import baseball.game.generator.NumberGenerator;
 import baseball.game.model.TargetNumber;
 
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BaseBallGame implements Runnable {
@@ -26,45 +25,40 @@ public class BaseBallGame implements Runnable {
 
     @Override
     public void run() {
-        TargetNumber targetNumber = generator.createTargetNumber(COUNT_OF_NUMBERS);
+        TargetNumber generatedNumber = generator.createTargetNumber(COUNT_OF_NUMBERS);
         Flag flag = Flag.CONTINUE;
         output.print(Message.START);
 
         while (flag.isAgain()) {
             output.print(Message.INPUT);
-            String inputString = input.scan();
+            String inputNumber = this.input.scan();
+            TargetNumber targetNumber = validateNumber(inputNumber);
 
-            Optional<TargetNumber> inputNumber = validateNumber(inputString);
-
-            if (inputNumber.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-
-            BallCount ballCount = new BallCount(targetNumber, inputNumber.get());
-            output.printBallCount(ballCount);
+            BallCount ballCount = new BallCount(generatedNumber, targetNumber);
+            output.print(ballCount);
 
             if (ballCount.isCorrect(COUNT_OF_NUMBERS)) {
-                output.printEndMessage(COUNT_OF_NUMBERS);
+                output.print(COUNT_OF_NUMBERS);
                 output.print(Message.END);
                 output.print(Message.RESTART);
 
-                String inputFlag = input.scan();
+                String inputFlag = this.input.scan();
                 flag = Flag.findByNumber(inputFlag);
 
-                targetNumber = regenerate(targetNumber, flag);
+                generatedNumber = regenerate(generatedNumber, flag);
             }
         }
         output.print(Message.END);
     }
 
-    private TargetNumber regenerate(TargetNumber targetNumber, Flag flag) {
+    private TargetNumber regenerate(TargetNumber generatedNumber, Flag flag) {
         if (flag.isAgain()) {
-            targetNumber = generator.createTargetNumber(COUNT_OF_NUMBERS);
+            generatedNumber = generator.createTargetNumber(COUNT_OF_NUMBERS);
         }
-        return targetNumber;
+        return generatedNumber;
     }
 
-    private Optional<TargetNumber> validateNumber(String input) {
+    private TargetNumber validateNumber(String input) {
 
         long count = input.chars()
                 .filter(Character::isDigit)
@@ -74,14 +68,13 @@ public class BaseBallGame implements Runnable {
                 .count();
 
         if (count != COUNT_OF_NUMBERS) {
-            return Optional.empty();
+            throw new IllegalArgumentException();
         }
 
-        return Optional.of(
-                new TargetNumber(input.chars()
-                        .map(Character::getNumericValue)
-                        .boxed()
-                        .collect(Collectors.toList())
-        ));
+        return new TargetNumber(input.chars()
+                .map(Character::getNumericValue)
+                .boxed()
+                .collect(Collectors.toList())
+        );
     }
 }
