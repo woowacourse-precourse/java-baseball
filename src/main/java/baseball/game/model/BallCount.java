@@ -1,29 +1,22 @@
 package baseball.game.model;
 
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class BallCount {
     private int strike;
     private int ball;
 
     public BallCount(TargetNumber answer, TargetNumber input) {
-        AtomicInteger strike = new AtomicInteger();
-        AtomicInteger ball = new AtomicInteger();
-
         answer.indexedForEach((a, i) -> input.indexedForEach((n, j) -> {
             if (!a.equals(n)) {
                 return;
             }
             if (i.equals(j)) {
-                strike.addAndGet(1);
+                this.strike++;
             } else {
-                ball.addAndGet(1);
+                this.ball++;
             }
         }));
-
-        this.strike = strike.get();
-        this.ball = ball.get();
     }
 
     private String getStrike() {
@@ -45,11 +38,15 @@ public class BallCount {
         String ballString = getBall();
         String strikeString = getStrike();
 
-        if (Objects.equals(ballString, "") && Objects.equals(strikeString, "")) {
+        if (isNothing(ballString, strikeString)) {
             return "낫싱";
         }
 
         return ballString + strikeString;
+    }
+
+    private static boolean isNothing(String ballString, String strikeString) {
+        return Objects.equals(ballString, "") && Objects.equals(strikeString, "");
     }
 
     public boolean isCorrect(int count) {
