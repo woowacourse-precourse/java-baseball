@@ -7,8 +7,8 @@ public class Calculator {
     List<String> computerAnswer;
     List<String> userAnswer;
     int size;
-    public int ballResult;
-    public int strikeResult;
+    int ballResult;
+    int strikeResult;
 
     public Calculator(List<String> computerAnswer, List<String> userAnswer) {
         this.computerAnswer = computerAnswer;
@@ -16,6 +16,15 @@ public class Calculator {
         this.size = Computer.COMPUTER_NUMBER_SIZE;
         calculate();
     }
+
+    public int getBallResult() {
+        return ballResult;
+    }
+
+    public int getStrikeResult() {
+        return strikeResult;
+    }
+
 
     public void calculate() {
         for (int i = 0; i < size; i++) {
