@@ -14,17 +14,17 @@ public class GameResult {
     calculateResult(answerNumberList, gameNumberList);
   }
 
-  public String getResultString(){
+  public String getResultString() {
     if (strikeCount + ballCount == 0) return "낫싱";
     return getBallString() + getStrikeString();
   }
 
-  private String getStrikeString(){
+  private String getStrikeString() {
     if (strikeCount != 0) return strikeCount + "스트라이크";
     else return "";
   }
 
-  private String getBallString(){
+  private String getBallString() {
     if (ballCount != 0) return ballCount + "볼 ";
     else return "";
   }
@@ -36,12 +36,17 @@ public class GameResult {
   private void calculateResult(List<Integer> answerNumberList, List<Integer> gameNumberList) {
     for (int i = 0; i < answerNumberList.size(); i++) {
       for (int j = 0; j < gameNumberList.size(); j++) {
-        if (answerNumberList.get(i) == gameNumberList.get(j)) {
-          if (i == j) strikeCount++;
-          else ballCount++;
-          break;
-        }
+        if (updateCount(answerNumberList.get(i), gameNumberList.get(j), i == j)) break;
       }
     }
+  }
+
+  private boolean updateCount(int number1, int number2, boolean isSameIndex) {
+    if (number1 == number2) {
+      if (isSameIndex) strikeCount++;
+      else ballCount++;
+      return true;
+    }
+    return false;
   }
 }
