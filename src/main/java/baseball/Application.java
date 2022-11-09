@@ -27,7 +27,7 @@ public class Application {
        final boolean place=judgement.hasPlace(Arrays.asList(7,8,9),0,8);
         System.out.println(place);*/
         Refree refree=new Refree();
-        String result=refree.compare(Arrays.asList(1,2,3),Arrays.asList(3,2,9));
+        String result=refree.compare(Arrays.asList(1,2,3),Arrays.asList(8,5,9));
         System.out.println(result);
 
 
