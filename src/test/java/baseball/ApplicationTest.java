@@ -160,7 +160,7 @@ class ApplicationTest extends NsTest {
             List<String> computerAnswerList = List.of("1", "2", "3");
             List<String> userAnswerList = List.of("3", "2", "1");
             Calculator calculator = new Calculator(computerAnswerList, userAnswerList);
-            int ballCount = calculator.ballResult;
+            int ballCount = calculator.getBallResult();
             assertThat(ballCount).isEqualTo(2);
         }
 
@@ -170,7 +170,7 @@ class ApplicationTest extends NsTest {
             List<String> computerAnswerList = List.of("1", "2", "3");
             List<String> userAnswerList = List.of("1", "2", "4");
             Calculator calculator = new Calculator(computerAnswerList, userAnswerList);
-            int strikeCount = calculator.strikeResult;
+            int strikeCount = calculator.getStrikeResult();
             assertThat(strikeCount).isEqualTo(2);
         }
 
