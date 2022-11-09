@@ -20,7 +20,7 @@ class RefereeTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1,2,3,0볼 3스트라이크", "7,8,9,낫싱", "2,3,1,3볼 0스트라이크", "1,3,2,2볼 1스트라이크"})
+    @CsvSource({"1,2,3,3스트라이크", "7,8,9,낫싱", "2,3,1,3볼", "1,3,2,2볼 1스트라이크"})
     public void compare(int number1, int number2, int number3, String expected) {
         String actual = referee.compare(ANSWER, Arrays.asList(number1, number2, number3));
         assertThat(actual).isEqualTo(expected);
