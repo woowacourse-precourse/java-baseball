@@ -4,10 +4,10 @@ public enum FinishInput {
     RESTART_GAME,
     QUIT_GAME;
 
-    public static final int RESTART_GAME_INPUT = 1;
-    public static final int QUIT_GAME_INPUT = 2;
+    public static final String RESTART_GAME_INPUT = "1";
+    public static final String QUIT_GAME_INPUT = "2";
 
-    public static FinishInput numberOf(int input) {
+    public static FinishInput numberOf(String input) {
         switch (input) {
             case RESTART_GAME_INPUT:
                 return FinishInput.RESTART_GAME;
