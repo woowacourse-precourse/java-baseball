@@ -6,11 +6,15 @@ package baseball;
         // 2. 필요한 기능을 (역할에 맞는) 각 인스턴스가 수행하게 한다. (의인화)
         // 3. 각 결과를 종합한다.
  */
-*/
- */
-public class Application{
-    public static void main(String[] args){
 
+import baseball.domain.NumberGenerator;
 
+import java.util.List;
+
+public class Application {
+    public static void main(String[] args) {
+        NumberGenerator generator = new NumberGenerator();
+        List<Integer> numbers = generator.createRandomNumber();
+        System.out.println(numbers);
     }
 }
