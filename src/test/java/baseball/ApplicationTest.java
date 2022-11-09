@@ -1,7 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +30,45 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 문자_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12d"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자_0_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 랜덤리스트_길이_테스트() {
+        BaseballGame baseballGame = new BaseballGame();
+        List<Integer> randomList = baseballGame.getRandomList();
+
+        assertThat(randomList.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 게임_리셋_메소드_테스트() {
+        BaseballGame baseballGame = new BaseballGame();
+        List<Integer> randomList = new ArrayList<>();
+        List<Integer> temp = baseballGame.getRandomList();
+        for (int t:temp) {
+            randomList.add(t);
+        }
+
+        baseballGame.resetGame();
+        List<Integer> randomListAfterReset = baseballGame.getRandomList();
+
+        assertThat(randomList).isNotEqualTo(randomListAfterReset);
     }
 
     @Override
