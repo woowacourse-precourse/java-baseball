@@ -12,33 +12,31 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
-    private final int MAX_NUMBER_SIZE = 3;
-    private final int MIN_NUMBER = 1;
-    private final int MAX_NUMBER = 9;
     private final String RESTART = "1";
     private final String NO_RESTART = "2";
 
-    String answer = "";
     int tryCount = 0;
 
     GameInput gameInput = GameInput.getInstance();
     GameOutput gameOutput = GameOutput.getInstance();
     User user = new User();
+    Computer computer = new Computer();
     Referee referee = Referee.getInstance();
     DB database = DB.getInstance();
 
     public void startGame() throws IllegalArgumentException {
         gameOutput.printStartLog();
-        answer = generateAnswer();
+        computer.generateAnswer();
 
         boolean isContinue = true;
         while (isContinue) {
-            user.setInput(gameInput.getInput());
+            String input = gameInput.getInput();
+            user.setInput(input);
             gameInput.isLegalInput(user.getNumber());
 
             tryCount++;
 
-            String judgement = referee.judge(user.getNumber(), answer);
+            String judgement = referee.judge(user.getNumber(), computer.getAnswer());
             gameOutput.printResult(judgement);
 
             if (referee.isThreeStrike(judgement)) {
@@ -48,19 +46,6 @@ public class Application {
         } // end of While
 
         finishGame();
-    }
-
-    public String generateAnswer() {
-        String answer = "";
-
-        while (answer.length() < MAX_NUMBER_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            String numberString = gameInput.convertIntToString(randomNumber);
-            if (!answer.contains(numberString)) {
-                answer += numberString;
-            }
-        }
-        return answer;
     }
 
     public boolean isFinishGame() {
@@ -79,7 +64,7 @@ public class Application {
     }
 
     public void resetGame() {
-        answer = generateAnswer();
+        computer.generateAnswer();
         database.addData(new Data(LocalDateTime.now(), tryCount));
         tryCount = 0;
     }

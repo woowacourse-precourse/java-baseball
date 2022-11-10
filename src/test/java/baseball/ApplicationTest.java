@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
 
-    Application application = new Application();
     GameInput gameInput = GameInput.getInstance();
     Referee referee = new Referee();
+    Computer computer = new Computer();
 
     @Test
     void 게임종료_후_재시작() {
@@ -36,7 +36,8 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 정답생성_후_유효성_검증() {
-        String answer = application.generateAnswer();
+        computer.generateAnswer();
+        String answer = computer.getAnswer();
 
         try {
             gameInput.isLegalInput(answer);
