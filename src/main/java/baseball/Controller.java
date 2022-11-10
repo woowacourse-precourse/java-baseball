@@ -18,6 +18,9 @@ public class Controller {
 
     public int[] sysNum;
 
+    public void start() {
+        System.out.print("숫자 야구 게임을 시작합니다.");
+    }
     public void run() {
         setGame();
         startGame();
@@ -31,7 +34,7 @@ public class Controller {
         System.out.println(sysNum[0] + "" + sysNum[1] + "" + sysNum[2]);
 
         int strike = 0;
-        System.out.print("숫자 야구 게임을 시작합니다.");
+
         do {
             int userNum [] = getUserInput();
             int[] scoreTable = baseballSystem.score(sysNum, userNum, NUM_LEN);
@@ -40,16 +43,20 @@ public class Controller {
         } while (strike != 3) ;
 
         user.correctAnsMsg();
+
+        /* 게임 종료 여부 묻기 */
         user.retryMsg();
+
         String input = Console.readLine();
-
         int inputNum = Integer.parseInt(input);
-
         if (inputNum == 0 || inputNum > 2) {
             throw new IllegalArgumentException();
         }
+
         if (inputNum == 1) {
             run();
+        } else if (inputNum == 2) {
+            System.out.println("게임 종료");
         }
 
     }
