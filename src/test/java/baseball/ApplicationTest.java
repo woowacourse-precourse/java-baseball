@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.Computer;
+import baseball.domain.Referee;
 import baseball.util.GameInput;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Fail;
