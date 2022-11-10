@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public interface ElementListMaker<T> {
-    List<T> makeElementList(int listLength);
-    List<T> convertToElementList(String stringNumber);
+public interface ElementsMaker<T> {
+    List<T> makeElements(int listLength);
+    List<T> convertToElements(String number);
 }

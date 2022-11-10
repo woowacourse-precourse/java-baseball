@@ -8,15 +8,15 @@ import java.util.List;
 import static baseball.InGameMessage.*;
 
 public class BaseballGameManager {
-    private List<Integer> baseballNumberList;
-    private ElementListMaker<Integer> elementListMaker;
+    private List<Integer> baseballNumbers;
+    private ElementsMaker<Integer> elementsMaker;
     private UserInputTimer inputTimer;
     private int numberCount;
 
-    public BaseballGameManager(List<Integer> baseballNumberList, ElementListMaker<Integer> elementListMaker) {
-        this.baseballNumberList = baseballNumberList;
-        this.elementListMaker = elementListMaker;
-        this.numberCount = baseballNumberList.size();
+    public BaseballGameManager(List<Integer> baseballNumbers, ElementsMaker<Integer> elementsMaker) {
+        this.baseballNumbers = baseballNumbers;
+        this.elementsMaker = elementsMaker;
+        this.numberCount = baseballNumbers.size();
     }
 
     public void executeGame() {
@@ -25,7 +25,7 @@ public class BaseballGameManager {
             System.out.println(BASEBALL_GAME_GET_USER_INPUT_MESSAGE.getMessage());
 
             String userInput = this.getValidInput();
-            List<Integer> userInputElementList = elementListMaker.convertToElementList(userInput);
+            List<Integer> userInputElementList = elementsMaker.convertToElements(userInput);
 
             BaseballScore baseballScore = this.calculateBaseballScore(userInputElementList);
             this.printBaseballScore(baseballScore);
@@ -78,7 +78,7 @@ public class BaseballGameManager {
         for (int inputNumber : inputNumberList) {
 
             int indexInOriginalList = inputNumberList.indexOf(inputNumber);
-            int indexInBaseballNumberList = baseballNumberList.indexOf(inputNumber);
+            int indexInBaseballNumberList = baseballNumbers.indexOf(inputNumber);
 
             // baseballNumberList에 inputNumber의 element가 없는 경우
             if (indexInBaseballNumberList == -1) {
@@ -114,7 +114,7 @@ public class BaseballGameManager {
     }
 
     private boolean hasDuplicateNumberElement(String userInput) {
-        int userInputSetSize = new HashSet<>(elementListMaker.convertToElementList(userInput)).size();
+        int userInputSetSize = new HashSet<>(elementsMaker.convertToElements(userInput)).size();
 
         if (userInputSetSize < numberCount) {
             return true;

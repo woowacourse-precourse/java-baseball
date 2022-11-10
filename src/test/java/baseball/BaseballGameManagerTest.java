@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BaseballGameManagerTest {
 
     BaseballGameManager manager;
-    DividedRandomNumberElementListMaker listMaker = new DividedRandomNumberElementListMaker();
+    DividedRandomNumberElementsMaker listMaker = new DividedRandomNumberElementsMaker();
 
     final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     final PrintStream standardOut = System.out;

@@ -5,43 +5,43 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DividedRandomNumberElementListMaker implements ElementListMaker<Integer>{
+public class DividedRandomNumberElementsMaker implements ElementsMaker<Integer> {
     private final int MIN_NUMBER = 1;
     private final int MAX_NUMBER = 9;
 
     @Override
-    public List<Integer> makeElementList(int listLength) {
-        List<Integer> randomNumberList = new ArrayList<>();
+    public List<Integer> makeElements(int listLength) {
+        List<Integer> randomNumbers = new ArrayList<>();
 
-        while (randomNumberList.size() < listLength) {
+        while (randomNumbers.size() < listLength) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
-            if (isNumberStrangerOnNumberList(randomNumber, randomNumberList)) {
-                randomNumberList.add(randomNumber);
+            if (!isNumberContained(randomNumber, randomNumbers)) {
+                randomNumbers.add(randomNumber);
             }
         }
 
-        return randomNumberList;
+        return randomNumbers;
     }
 
-    public boolean isNumberStrangerOnNumberList(int randomNumber, List<Integer> randomNumberList) {
-        if (randomNumberList.contains(randomNumber)) {
-            return false;
+    public boolean isNumberContained(int randomNumber, List<Integer> randomNumbers) {
+        if (randomNumbers.contains(randomNumber)) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     @Override
-    public List<Integer> convertToElementList(String stringNumber) {
-        List<Integer> integerElementList = new ArrayList<>();
+    public List<Integer> convertToElements(String number) {
+        List<Integer> integerElements = new ArrayList<>();
 
-        for (int userInputIndex = 0; userInputIndex < stringNumber.length(); userInputIndex++) {
-            int integerElement = Integer.parseInt(stringNumber.substring(userInputIndex, userInputIndex + 1));
-            integerElementList.add(integerElement);
+        for (int userInputIndex = 0; userInputIndex < number.length(); userInputIndex++) {
+            int integerElement = Integer.parseInt(number.substring(userInputIndex, userInputIndex + 1));
+            integerElements.add(integerElement);
         }
 
-        return integerElementList;
+        return integerElements;
     }
 
 

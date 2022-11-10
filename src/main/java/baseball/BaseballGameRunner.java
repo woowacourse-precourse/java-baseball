@@ -11,13 +11,13 @@ public class BaseballGameRunner {
     private static final int BASEBALL_GAME_RESTART = 1;
     private static final int BASEBALL_GAME_EXIT = 2;
 
-    private ElementListMaker<Integer> numberElementListMaker;
-    private List<Integer> randomNumberList;
+    private ElementsMaker<Integer> numberElementsMaker;
+    private List<Integer> randomNumbers;
     private BaseballGameManager gameManager;
     private UserInputTimer inputTimer;
 
-    public BaseballGameRunner(ElementListMaker<Integer> numberElementListMaker) {
-        this.numberElementListMaker = numberElementListMaker;
+    public BaseballGameRunner(ElementsMaker<Integer> numberElementsMaker) {
+        this.numberElementsMaker = numberElementsMaker;
     }
 
     public void runGame() {
@@ -35,9 +35,9 @@ public class BaseballGameRunner {
     }
 
     private void initializeGameSettings() {
-        randomNumberList = numberElementListMaker.makeElementList(NUMBER_LIST_LENGTH);
+        randomNumbers = numberElementsMaker.makeElements(NUMBER_LIST_LENGTH);
 
-        gameManager = new BaseballGameManager(randomNumberList, numberElementListMaker);
+        gameManager = new BaseballGameManager(randomNumbers, numberElementsMaker);
     }
 
 
