@@ -18,12 +18,12 @@ public class Application {
     private final String RESTART = "1";
     private final String NO_RESTART = "2";
 
-    String userInput = "";
     String answer = "";
     int tryCount = 0;
 
     GameInput gameInput = GameInput.getInstance();
     GameOutput gameOutput = GameOutput.getInstance();
+    User user = new User();
     Referee referee = Referee.getInstance();
     DB database = DB.getInstance();
 
@@ -33,12 +33,12 @@ public class Application {
 
         boolean isContinue = true;
         while (isContinue) {
-            userInput = gameInput.getInput();
-            gameInput.isLegalInput(userInput);
+            user.setInput(gameInput.getInput());
+            gameInput.isLegalInput(user.getNumber());
 
             tryCount++;
 
-            String judgement = referee.judge(userInput, answer);
+            String judgement = referee.judge(user.getNumber(), answer);
             gameOutput.printResult(judgement);
 
             if (referee.isThreeStrike(judgement)) {
