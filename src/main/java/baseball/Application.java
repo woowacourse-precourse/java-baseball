@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Application {
     private static final int DIGITS = 3;
@@ -84,11 +85,7 @@ public class Application {
     }
 
     public static List<Integer> parseGuessedNumber(String input) {
-        ArrayList<Integer> guessedNumber = new ArrayList<>();
-        for (int i = 0; i < DIGITS; i++) {
-            guessedNumber.add(input.charAt(i) - '0');
-        }
-        return guessedNumber;
+        return input.chars().map(c -> c - '0').boxed().collect(Collectors.toList());
     }
 
     public static int calculateStrike(List<Integer> targetNumber, List<Integer> guessedNumber) {
