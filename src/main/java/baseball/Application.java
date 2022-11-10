@@ -53,15 +53,6 @@ public class Application {
                 break;
             }
         }
-        System.out.println(RESTART_MESSAGE);
-
-        String input = Console.readLine();
-        validateRestartNumber(input);
-        int restartNumber = Integer.parseInt(input);
-
-        if (restartNumber == RESTART) {
-            playGame();
-        }
     }
 
     public static List<Integer> createTargetNumber() {
@@ -127,6 +118,16 @@ public class Application {
             return;
         }
         System.out.println(numberOfBall + BALL_MESSAGE + " " + numberOfStrike + STRIKE_MESSAGE);
+    }
+
+    public static boolean isEnd() {
+        System.out.println(RESTART_MESSAGE);
+
+        String input = Console.readLine();
+        validateRestartNumber(input);
+        int restartNumber = Integer.parseInt(input);
+
+        return restartNumber == QUIT;
     }
 
     public static void validateRestartNumber(String input) {
