@@ -66,7 +66,7 @@ public class Application {
 
     public static int createTensDifferentFrom(int hundreds) {
         while (true) {
-            int tens = Randoms.pickNumberInRange(1, 9);
+            int tens = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
             if (hundreds != tens) {
                 return tens;
             }
