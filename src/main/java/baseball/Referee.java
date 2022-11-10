@@ -1,15 +1,13 @@
 package baseball;
 
+import baseball.util.CompareResult;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Referee {
 
     private final int MAX_NUMBER_SIZE = 3;
-    private final String STRIKE = "스트라이크";
-    private final String BALL = "볼";
-    private final String NOTHING = "낫싱";
-    static final String THREE_STRIKE = "3스트라이크";
 
     private static Referee instance;
 
@@ -60,21 +58,21 @@ public class Referee {
 
     public String createJudgement(int strike, int ball) {
         if (strike == 0 && ball == 0) {
-            return NOTHING;
+            return CompareResult.NOTHING.getValue();
         }
         if (strike == MAX_NUMBER_SIZE) {
-            return THREE_STRIKE;
+            return CompareResult.THREE_STRIKE.getValue();
         }
         if (strike == 0 && ball != 0) {
-            return ball + BALL;
+            return ball + CompareResult.BALL.getValue();
         }
         if (strike != 0 && ball == 0) {
-            return strike + STRIKE;
+            return strike + CompareResult.STRIKE.getValue();
         }
-        return ball + BALL + " " + strike + STRIKE;
+        return ball + CompareResult.BALL.getValue() + " " + strike + CompareResult.STRIKE.getValue();
     }
 
     public boolean isThreeStrike(String judgement) {
-        return (judgement == THREE_STRIKE);
+        return (judgement == CompareResult.THREE_STRIKE.getValue());
     }
 }
