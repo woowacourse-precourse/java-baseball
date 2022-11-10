@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -58,29 +59,15 @@ public class Application {
     }
 
     public static List<Integer> createTargetNumber() {
-        int hundreds = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
-        int tens = createTensDifferentFrom(hundreds);
-        int ones = createOnesDifferentFrom(hundreds, tens);
+        ArrayList<Integer> targetNumber = new ArrayList<>();
+        while (targetNumber.size() < DIGITS) {
+            int digit = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
 
-        return List.of(hundreds, tens, ones);
-    }
-
-    public static int createTensDifferentFrom(int hundreds) {
-        while (true) {
-            int tens = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
-            if (hundreds != tens) {
-                return tens;
+            if (!targetNumber.contains(digit)) {
+                targetNumber.add(digit);
             }
         }
-    }
-
-    public static int createOnesDifferentFrom(int hundreds, int tens) {
-        while (true) {
-            int ones = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
-            if (hundreds != ones && tens != ones) {
-                return ones;
-            }
-        }
+        return targetNumber;
     }
 
     public static void validateGuessedNumber(String input) {
