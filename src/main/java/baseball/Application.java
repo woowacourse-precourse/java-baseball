@@ -125,11 +125,10 @@ public class Application {
     public static boolean isEnd() {
         System.out.println(RESTART_MESSAGE);
 
-        String input = Console.readLine();
-        validateRestartNumber(input);
-        int restartNumber = Integer.parseInt(input);
+        String restartNumber = Console.readLine();
+        validateRestartNumber(restartNumber);
 
-        return restartNumber == END;
+        return restartNumber.equals(END);
     }
 
     public static void validateRestartNumber(String input) {
