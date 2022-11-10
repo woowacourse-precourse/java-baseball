@@ -1,7 +1,5 @@
 package baseball.view;
 
-import java.sql.SQLOutput;
-
 public class OutputView {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -10,18 +8,18 @@ public class OutputView {
     private static final String NOTHING_NESSAGE = "낫싱";
     private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final int THREE_COUNT = 3;
+    private static final String EXIT_MESSAGE = "게임종료";
 
     public static void printStartMessage() {
         System.out.println(START_MESSAGE);
     }
 
-    public static void printOnlyStrikeMessage() {
-        System.out.println(THREE_COUNT + STRIKE_MESSAGE);
+    public static void printOnlyStrikeMessage(int strike) {
+        System.out.println(strike + STRIKE_MESSAGE);
     }
 
-    public static void printOnlyBallMessage() {
-        System.out.println(THREE_COUNT + BALL_MESSAGE);
+    public static void printOnlyBallMessage(int ball) {
+        System.out.println(ball + BALL_MESSAGE);
     }
 
     public static void printHintMessage(int strike, int ball) {
@@ -42,5 +40,9 @@ public class OutputView {
 
     public static void printInputMessage() {
         System.out.print(INPUT_MESSAGE);
+    }
+
+    public static void printExitMessage() {
+        System.out.println(EXIT_MESSAGE);
     }
 }
