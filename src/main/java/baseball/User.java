@@ -8,10 +8,6 @@ public class User {
         this.number = "";
     }
 
-    public User(String number) {
-        this.number = number;
-    }
-
     public String getNumber() {
         return this.number;
     }
