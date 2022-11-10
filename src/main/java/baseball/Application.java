@@ -1,7 +1,11 @@
 package baseball;
 
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        ElementsMaker elementListMaker = new DividedRandomNumberElementsMaker();
+
+        BaseballGameRunner baseballGameRunner = new BaseballGameRunner(elementListMaker);
+        baseballGameRunner.runGame();
     }
 }
