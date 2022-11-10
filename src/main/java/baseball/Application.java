@@ -106,7 +106,7 @@ public class Application {
 
     public static int calculateStrike(List<Integer> targetNumber, List<Integer> guessedNumber) {
         int numberOfStrike = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < DIGITS; i++) {
             if (targetNumber.get(i).equals(guessedNumber.get(i))) {
                 numberOfStrike++;
             }
