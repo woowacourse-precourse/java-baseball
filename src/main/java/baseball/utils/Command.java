@@ -4,10 +4,10 @@ public enum Command {
     CONTINUE("1"),
     STOP("2");
 
-    private final String commandString;
+    private final String commandKey;
 
-    Command(String commandString) {
-        this.commandString = commandString;
+    Command(String commandKey) {
+        this.commandKey = commandKey;
     }
 
     public static Command of(String input) {
@@ -21,6 +21,6 @@ public enum Command {
     }
 
     private static boolean checkCommand(Command command, String input) {
-        return command.commandString.equals(input);
+        return command.commandKey.equals(input);
     }
 }
