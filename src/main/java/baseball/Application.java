@@ -84,7 +84,7 @@ public class Application {
     }
 
     public static void validateGuessedNumber(String input) {
-        if (!Pattern.matches("[1-9]{3}", input)) {
+        if (!Pattern.matches(GUESSED_NUMBER_REGEX, input)) {
             throw new IllegalArgumentException();
         }
         char hundreds = input.charAt(0);
