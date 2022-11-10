@@ -104,14 +104,14 @@ public class Application {
 
     public static int calculateBall(List<Integer> targetNumber, List<Integer> guessedNumber) {
         int numberOfBall = 0;
-        if (targetNumber.get(0).equals(guessedNumber.get(1)) || targetNumber.get(0).equals(guessedNumber.get(2))) {
-            numberOfBall++;
-        }
-        if (targetNumber.get(1).equals(guessedNumber.get(2)) || targetNumber.get(1).equals(guessedNumber.get(0))) {
-            numberOfBall++;
-        }
-        if (targetNumber.get(2).equals(guessedNumber.get(0)) || targetNumber.get(2).equals(guessedNumber.get(1))) {
-            numberOfBall++;
+
+        for (int i = 0; i < DIGITS; i++) {
+            if (targetNumber.get(i).equals(guessedNumber.get(i))) {
+                continue;
+            }
+            if (guessedNumber.contains(targetNumber.get(i))) {
+                numberOfBall++;
+            }
         }
         return numberOfBall;
     }
