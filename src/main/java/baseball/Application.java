@@ -1,9 +1,9 @@
 package baseball;
 
-import baseball.DB.DB;
-import baseball.DB.Data;
-import baseball.Util.GameInput;
-import baseball.Util.GameOutput;
+import baseball.db.DB;
+import baseball.db.Data;
+import baseball.util.GameInput;
+import baseball.util.GameOutput;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.time.LocalDateTime;

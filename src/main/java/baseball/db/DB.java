@@ -1,4 +1,4 @@
-package baseball.DB;
+package baseball.db;
 
 import java.util.ArrayList;
 import java.util.List;

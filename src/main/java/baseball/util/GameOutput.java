@@ -1,4 +1,4 @@
-package baseball.Util;
+package baseball.util;
 
 public class GameOutput {
 

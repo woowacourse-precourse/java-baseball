@@ -1,4 +1,4 @@
-package baseball.DB;
+package baseball.db;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

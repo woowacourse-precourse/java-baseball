@@ -1,4 +1,4 @@
-package baseball.Util;
+package baseball.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.Util.GameInput;
+import baseball.util.GameInput;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Fail;
 import org.junit.jupiter.api.Test;
