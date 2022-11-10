@@ -145,7 +145,7 @@ public class Application {
     }
 
     public static void validateRestartNumber(String input) {
-        if (!Pattern.matches("[1-2]", input)) {
+        if (!Pattern.matches(RESTART_NUMBER_REGEX, input)) {
             throw new IllegalArgumentException();
         }
     }
