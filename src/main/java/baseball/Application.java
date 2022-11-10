@@ -39,7 +39,8 @@ public class Application {
     public static void playGame() {
         List<Integer> targetNumber = createTargetNumber();
 
-        while (true) {
+        boolean isGameOver = false;
+        while (!isGameOver) {
             System.out.print(INPUT_MESSAGE);
 
             String input = Console.readLine();
@@ -50,12 +51,9 @@ public class Application {
             int numberOfBall = calculateBall(targetNumber, guessedNumber);
 
             printResult(numberOfStrike, numberOfBall);
-
-            if (numberOfStrike == DIGITS) {
-                System.out.println(GAME_OVER_MESSAGE);
-                break;
-            }
+            isGameOver = (numberOfStrike == DIGITS);
         }
+        System.out.println(GAME_OVER_MESSAGE);
     }
 
     public static List<Integer> createTargetNumber() {
