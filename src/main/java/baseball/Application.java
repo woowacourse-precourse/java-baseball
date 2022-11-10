@@ -71,6 +71,7 @@ public class Application {
 
         String input = Console.readLine();
         validateGuessedNumber(input);
+
         return parseGuessedNumber(input);
     }
 
