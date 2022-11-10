@@ -12,23 +12,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void 백의_자리_숫자와_다른_십의_자리_숫자_생성() {
-        for (int hundreds = 1; hundreds <= 9; hundreds++) {
-            int tens = Application.createTensDifferentFrom(hundreds);
-            assertThat(hundreds).isNotEqualTo(tens);
-        }
-    }
-
-    @Test
-    void 백의_자리_숫자_및_십의_자리_숫자와_다른_일의_자리_숫자_생성() {
-        int hundreds = 1;
-        int tens = 2;
-        int ones = Application.createOnesDifferentFrom(hundreds, tens);
-
-        assertThat(ones).isNotEqualTo(tens).isNotEqualTo(hundreds);
-    }
-
-    @Test
     void 각_자리가_모두_다른_세_자리_수_생성() {
         List<Integer> targetNumber = Application.createTargetNumber();
         int hundreds = targetNumber.get(0);
