@@ -92,17 +92,10 @@ public class Application {
     }
 
     public static int calculateBall(List<Integer> targetNumber, List<Integer> guessedNumber) {
-        int numberOfBall = 0;
-
-        for (int i = 0; i < DIGITS; i++) {
-            if (targetNumber.get(i).equals(guessedNumber.get(i))) {
-                continue;
-            }
-            if (guessedNumber.contains(targetNumber.get(i))) {
-                numberOfBall++;
-            }
-        }
-        return numberOfBall;
+        return (int) IntStream.range(0, DIGITS)
+                .filter(index -> !targetNumber.get(index).equals(guessedNumber.get(index)))
+                .filter(index -> targetNumber.contains(guessedNumber.get(index)))
+                .count();
     }
 
     public static void printResult(int numberOfStrike, int numberOfBall) {
