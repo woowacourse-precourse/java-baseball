@@ -54,6 +54,7 @@ public class Application {
 
     public static List<Integer> createTargetNumber() {
         ArrayList<Integer> targetNumber = new ArrayList<>();
+
         while (targetNumber.size() < DIGITS) {
             int digit = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
 
