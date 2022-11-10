@@ -85,11 +85,11 @@ public class Application {
     }
 
     public static List<Integer> parseGuessedNumber(String input) {
-        int hundreds = input.charAt(0) - '0';
-        int tens = input.charAt(1) - '0';
-        int ones = input.charAt(2) - '0';
-
-        return List.of(hundreds, tens, ones);
+        ArrayList<Integer> guessedNumber = new ArrayList<>();
+        for (int i = 0; i < DIGITS; i++) {
+            guessedNumber.add(input.charAt(i) - '0');
+        }
+        return guessedNumber;
     }
 
     public static int calculateStrike(List<Integer> targetNumber, List<Integer> guessedNumber) {
