@@ -75,7 +75,7 @@ public class Application {
 
     public static int createOnesDifferentFrom(int hundreds, int tens) {
         while (true) {
-            int ones = Randoms.pickNumberInRange(1, 9);
+            int ones = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
             if (hundreds != ones && tens != ones) {
                 return ones;
             }
