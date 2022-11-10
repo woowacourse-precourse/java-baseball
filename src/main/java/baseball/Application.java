@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Application {
     private static final int DIGITS = 3;
@@ -54,6 +55,7 @@ public class Application {
 
     public static List<Integer> createTargetNumber() {
         ArrayList<Integer> targetNumber = new ArrayList<>();
+
         while (targetNumber.size() < DIGITS) {
             int digit = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
 
