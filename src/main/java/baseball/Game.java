@@ -36,18 +36,16 @@ public class Game {
             compareDigits(target, answer);
             displayResult();
         }
-        if (strike == 3)
-            displayResult();
-    }
-
-    public static void displayResult() {
         if (strike == 3) {
             System.out.println(strike + STRIKE_MESSAGE);
             System.out.println(SUCCESS_MESSAGE);
             System.out.println(RESTART_MESSAGE);
             restartGame();
         }
-        else if (strike == 0 && ball == 0)
+    }
+
+    public static void displayResult() {
+        if (strike == 0 && ball == 0)
             System.out.println(NOTHING_MESSAGE);
         else if (strike == 0)
             System.out.println(ball + BALL_MESSAGE);
@@ -93,8 +91,9 @@ public class Game {
     }
 
     public static void validateNewGameInput(List<Integer> input) {
-        if (!input.equals(1) && !input.equals(2))
+        if (!input.get(0).equals(1) && !input.get(0).equals(2)) {
             throw new IllegalArgumentException();
+        }
     }
 
     public static List<Integer> UserInput() {
