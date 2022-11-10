@@ -1,5 +1,11 @@
 package baseball.input;
 
+import static baseball.input.InputFilter.convertToNumbers;
+import static baseball.input.InputFilter.splitToLetters;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -7,12 +13,6 @@ import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
-
-import static baseball.input.InputFilter.convertToNumbers;
-import static baseball.input.InputFilter.splitToLetters;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputFilterTest {
 

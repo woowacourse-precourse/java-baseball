@@ -1,11 +1,11 @@
 package baseball;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.domain.Balls;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
