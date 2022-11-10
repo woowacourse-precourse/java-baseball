@@ -122,18 +122,18 @@ public class Application {
 
     public static void printResult(int numberOfStrike, int numberOfBall) {
         if (numberOfStrike == 0 && numberOfBall == 0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING_MESSAGE);
             return;
         }
         if (numberOfStrike == 0) {
-            System.out.println(numberOfBall + "볼");
+            System.out.println(numberOfBall + BALL_MESSAGE);
             return;
         }
         if (numberOfBall == 0) {
-            System.out.println(numberOfStrike + "스트라이크");
+            System.out.println(numberOfStrike + STRIKE_MESSAGE);
             return;
         }
-        System.out.println(numberOfBall + "볼 " + numberOfStrike + "스트라이크");
+        System.out.println(numberOfBall + BALL_MESSAGE + " " + numberOfStrike + STRIKE_MESSAGE);
     }
 
     public static void validateRestartNumber(String input) {
