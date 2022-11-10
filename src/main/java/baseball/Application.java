@@ -18,6 +18,10 @@ public class Application {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_OVER_MESSAGE = String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", DIGITS);
     private static final String RESTART_MESSAGE = String.format("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.", RESTART, QUIT);
+    private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String BALL_MESSAGE = "볼";
+
 
     private static final String GUESSED_NUMBER_REGEX = String.format("[%d-%d]{%d}", MIN_DIGIT, MAX_DIGIT, DIGITS);
     private static final String RESTART_NUMBER_REGEX = String.format("[%d%d]", RESTART, QUIT);
