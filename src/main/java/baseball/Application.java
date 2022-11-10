@@ -40,7 +40,7 @@ public class Application {
 
             printResult(numberOfStrike, numberOfBall);
 
-            if (numberOfStrike == 3) {
+            if (numberOfStrike == DIGITS) {
                 System.out.println(GAME_OVER_MESSAGE);
                 break;
             }
@@ -51,7 +51,7 @@ public class Application {
         validateRestartNumber(input);
         int restartNumber = Integer.parseInt(input);
 
-        if (restartNumber == 1) {
+        if (restartNumber == RESTART) {
             playGame();
         }
     }
