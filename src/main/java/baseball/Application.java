@@ -7,8 +7,14 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Application {
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_MESSAGE);
         playGame();
     }
 
@@ -16,7 +22,7 @@ public class Application {
         List<Integer> targetNumber = createTargetNumber();
 
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(INPUT_MESSAGE);
 
             String input = Console.readLine();
             validateGuessedNumber(input);
@@ -28,11 +34,11 @@ public class Application {
             printResult(numberOfStrike, numberOfBall);
 
             if (numberOfStrike == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println(GAME_OVER_MESSAGE);
                 break;
             }
         }
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_MESSAGE);
 
         String input = Console.readLine();
         validateRestartNumber(input);
