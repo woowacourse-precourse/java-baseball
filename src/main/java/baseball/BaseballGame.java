@@ -35,7 +35,10 @@ class BaseballGame {
         player = new ArrayList<>(Arrays.asList(0, 0, 0));
     }
 
-    private void initCommand(){System.out.println("숫자 야구 게임을 시작합니다.");}
+    private void initCommand() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
     private void initGame() {
         initComputer();
         initPlayer();
@@ -76,27 +79,28 @@ class BaseballGame {
         }
         return continueGame;
     }
-    private boolean checkThreeStrike(Map<HitStatus, Integer> result,List<String> resultForPlayer){
-        final int THREE_STRIKE=3;
-        boolean threeStrike=false;
+
+    private boolean checkThreeStrike(Map<HitStatus, Integer> result, List<String> resultForPlayer) {
+        final int THREE_STRIKE = 3;
+        boolean threeStrike = false;
         if (result.get(STRIKE) == THREE_STRIKE) {
             threeStrike = true;
             resultForPlayer.add("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
         return threeStrike;
     }
-    private boolean checkResult() {
 
+    private boolean checkResult() {
         boolean threeStrike = false;
-        List<String> resultForPlayer = new ArrayList<>();
         Map<HitStatus, Integer> result = countAllHitStatus();
+        List<String> resultForPlayer = new ArrayList<>();
         // 결과확인
         if (result.get(BALL) != 0) {
             resultForPlayer.add(result.get(BALL) + BALL.getName());
         }
         if (result.get(STRIKE) != 0) {
             resultForPlayer.add(result.get(STRIKE) + STRIKE.getName());
-            threeStrike=checkThreeStrike(result,resultForPlayer);
+            threeStrike = checkThreeStrike(result, resultForPlayer);
         }
         if (result.get(NOTHING) == 3) {
             resultForPlayer.add(NOTHING.getName());
