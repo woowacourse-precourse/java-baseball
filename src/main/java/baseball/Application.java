@@ -57,7 +57,7 @@ public class Application {
     }
 
     public static List<Integer> createTargetNumber() {
-        int hundreds = Randoms.pickNumberInRange(1, 9);
+        int hundreds = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
         int tens = createTensDifferentFrom(hundreds);
         int ones = createOnesDifferentFrom(hundreds, tens);
 
