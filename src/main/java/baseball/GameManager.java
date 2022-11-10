@@ -5,10 +5,10 @@ import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.domain.Result;
 import baseball.input.InputReader;
-import baseball.message.Message;
+import baseball.output.OutputViewer;
 import baseball.utils.Command;
 
-import static baseball.message.Message.*;
+import static baseball.output.OutputViewer.*;
 
 public class GameManager {
 
@@ -36,7 +36,7 @@ public class GameManager {
         Balls computerBalls = computer.createBalls();
 
         while (!isGameOver) {
-            printLineMessage(MESSAGE_FOR_START);
+            printLine(MESSAGE_FOR_START);
             Balls playerBalls = player.createBalls();
 
             Result result = computerBalls.makeResult(playerBalls);
@@ -45,15 +45,15 @@ public class GameManager {
             isGameOver = result.checkGameOver();
         }
 
-        printLineMessage(MESSAGE_FOR_GAME_OVER);
+        printLine(MESSAGE_FOR_GAME_OVER);
     }
 
     private void displayResult(Result result) {
-        Message.printLineMessage(result.toString());
+        OutputViewer.printLine(result.toString());
     }
 
     private Command checkGameContinue() {
-        printMessage(MESSAGE_FOR_CONTINUE);
+        print(MESSAGE_FOR_CONTINUE);
         return Command.of(inputReader.read());
     }
 }

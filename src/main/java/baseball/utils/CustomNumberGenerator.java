@@ -1,15 +1,15 @@
 package baseball.utils;
 
 import static baseball.input.InputFilter.*;
-import static baseball.message.Message.printMessage;
+import static baseball.output.OutputViewer.print;
 
-import baseball.message.Message;
+import baseball.output.OutputViewer;
 
 import java.util.List;
 
 public class CustomNumberGenerator {
     public List<Integer> generate() {
-        printMessage(Message.INPUT_MESSAGE_FOR_PLAYER_NUMBERS);
+        print(OutputViewer.INPUT_MESSAGE_FOR_PLAYER_NUMBERS);
         return convertToNumbers(splitToLetters(readLine()));
     }
 }
