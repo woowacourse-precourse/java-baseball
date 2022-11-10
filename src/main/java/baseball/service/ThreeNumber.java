@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class ThreeNumber {
     private List<Integer> number;
@@ -13,12 +12,12 @@ public class ThreeNumber {
         this.number = new ArrayList<>();
     }
 
-    public List<Integer> getNumber() {
-        return number;
+    public int getNumber(int index) {
+        return number.get(index);
     }
 
-    public Stream<Integer> getStream() {
-        return number.stream();
+    public List<Integer> getThreeNumber() {
+        return number;
     }
 
     public void setNumber(String input) {

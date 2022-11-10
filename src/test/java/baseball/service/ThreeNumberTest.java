@@ -19,7 +19,7 @@ class ThreeNumberTest {
         //when
         number.generate();
         //then
-        assertThat(number.getNumber())
+        assertThat(number.getThreeNumber())
                 .doesNotHaveDuplicates();
     }
 }

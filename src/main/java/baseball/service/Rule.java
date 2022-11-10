@@ -2,58 +2,42 @@ package baseball.service;
 
 import baseball.view.InputView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Rule {
-    private static final String STRIKE = "STRIKE";
-    private static final String BALL = "BALL";
     private static final int SIZE = 3;
 
-    private final Player player;
-    private final Computer computer;
-
-    public Rule() {
-        this.player = new Player();
-        this.computer = new Computer();
-    }
-
-    public void generateRandomNumber() {
+    public void generateRandomNumber(Computer computer) {
         computer.generateRandomNumber();
     }
 
-    public List<Integer> decideStrikeOrBall() {
-        List<Integer> result = new ArrayList<>();
-        int ball = countBall();
-        int strike = countStrike();
+    public BallStatus decideStrikeOrBall(ThreeNumber playerNumber, ThreeNumber computerNumber) {
+        int ball = countBall(playerNumber, computerNumber);
+        int strike = countStrike(playerNumber, computerNumber);
         ball = ball - strike;
-        result.add(strike);
-        result.add(ball);
 
-        return result;
+        return new BallStatus(strike, ball);
     }
 
-    private int countStrike() {
+    private int countStrike(ThreeNumber playerNumber, ThreeNumber computerNumber) {
         int strike = 0;
         for (int position = 0; position < SIZE; position++) {
-            if(computer.getNumber(position) == player.getNumber(position)) {
+            if(computerNumber.getNumber(position) == playerNumber.getNumber(position)) {
                 strike++;
             }
         }
         return strike;
     }
 
-    private int countBall() {
+    private int countBall(ThreeNumber playerNumber, ThreeNumber computerNumber) {
         int ball = 0;
         for (int position = 0; position < SIZE; position++) {
-            if(computer.getThreeNumber().contains(player.getNumber(position))) {
+            if(computerNumber.getThreeNumber().contains(playerNumber.getNumber(position))) {
                 ball++;
             }
         }
         return ball;
     }
 
-    public void getNumberByPlayer() {
+    public void getNumberByPlayer(Player player) {
         String input = InputView.read();
         if(Validation.isValidNumber(input)) {
             player.setNumber(input);
