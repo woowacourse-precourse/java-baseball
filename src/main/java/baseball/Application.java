@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Application {
+    private static final int MIN_DIGIT = 1;
+    private static final int MAX_DIGIT = 9;
     private static final int DIGITS = 3;
     private static final String RESTART = "1";
     private static final String END = "2";
-    private static final int MIN_DIGIT = 1;
-    private static final int MAX_DIGIT = 9;
 
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
