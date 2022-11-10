@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
 import java.util.regex.Pattern;
 
 public class Application {
@@ -74,12 +75,12 @@ public class Application {
         if (!Pattern.matches(GUESSED_NUMBER_REGEX, input)) {
             throw new IllegalArgumentException();
         }
-        char hundreds = input.charAt(0);
-        char tens = input.charAt(1);
-        char ones = input.charAt(2);
-
-        if (hundreds == tens || tens == ones || ones == hundreds) {
-            throw new IllegalArgumentException();
+        HashSet<Character> hashSet = new HashSet<>();
+        for (int i = 0; i < DIGITS; i++) {
+            if (hashSet.contains(input.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+            hashSet.add(input.charAt(i));
         }
     }
 
