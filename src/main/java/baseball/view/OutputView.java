@@ -23,7 +23,7 @@ public class OutputView {
     }
 
     public static void printHintMessage(int strike, int ball) {
-        System.out.println(strike + STRIKE_MESSAGE + " " + ball + BALL_MESSAGE);
+        System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
     }
 
     public static void printNothingMessage() {
