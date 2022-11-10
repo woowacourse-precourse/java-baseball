@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Application {
     private static final int DIGITS = 3;
@@ -83,13 +84,9 @@ public class Application {
     }
 
     public static int calculateStrike(List<Integer> targetNumber, List<Integer> guessedNumber) {
-        int numberOfStrike = 0;
-        for (int i = 0; i < DIGITS; i++) {
-            if (targetNumber.get(i).equals(guessedNumber.get(i))) {
-                numberOfStrike++;
-            }
-        }
-        return numberOfStrike;
+        return (int) IntStream.range(0, DIGITS)
+                .filter(index -> targetNumber.get(index).equals(guessedNumber.get(index)))
+                .count();
     }
 
     public static int calculateBall(List<Integer> targetNumber, List<Integer> guessedNumber) {
