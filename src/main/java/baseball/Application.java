@@ -41,11 +41,7 @@ public class Application {
 
         boolean isGameOver = false;
         while (!isGameOver) {
-            System.out.print(INPUT_MESSAGE);
-
-            String input = Console.readLine();
-            validateGuessedNumber(input);
-            List<Integer> guessedNumber = parseGuessedNumber(input);
+            List<Integer> guessedNumber = readInput();
 
             int numberOfStrike = calculateStrike(targetNumber, guessedNumber);
             int numberOfBall = calculateBall(targetNumber, guessedNumber);
@@ -66,6 +62,14 @@ public class Application {
             }
         }
         return targetNumber;
+    }
+
+    public static List<Integer> readInput() {
+        System.out.print(INPUT_MESSAGE);
+
+        String input = Console.readLine();
+        validateGuessedNumber(input);
+        return parseGuessedNumber(input);
     }
 
     public static void validateGuessedNumber(String input) {
