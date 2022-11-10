@@ -4,12 +4,12 @@ import java.util.List;
 
 public class Referee {
     public String compare(List<Integer> computer, List<Integer> player){
-        final Judgement judgement = new Judgement();
+        Judgement judgement = new Judgement();
         int correctCount = judgement.correctCount(computer, player);
 
         int strike = 0;
         for (int placeIndex = 0; placeIndex < player.size(); placeIndex++) {
-            if(judgement.hasPlace(player, placeIndex, player.get(placeIndex))){
+            if(judgement.hasPlace(computer, placeIndex, player.get(placeIndex))){
                 strike++;
             }
         }
@@ -19,6 +19,6 @@ public class Referee {
             return "아웃";
         }
 
-        return ball + "볼 " + strike + " 스트라이크";
+        return ball + " 볼 " + strike + " 스트라이크";
     }
 }
