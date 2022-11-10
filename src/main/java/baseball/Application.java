@@ -32,7 +32,7 @@ public class Application {
         System.out.println(START_MESSAGE);
         do {
             playGame();
-        } while (isEnd());
+        } while (!isEnd());
     }
 
     public static void playGame() {
