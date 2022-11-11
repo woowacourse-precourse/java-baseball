@@ -41,7 +41,7 @@ public class ResultGenerator {
     }
 
 
-    private void inputExit() {
+    public void inputExit() {
         ExcepetionCase exception = new ExcepetionCase();
         System.out.println(AGAIN);
         String input = Console.readLine();

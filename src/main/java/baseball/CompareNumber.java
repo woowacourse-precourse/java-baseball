@@ -12,24 +12,45 @@ public class CompareNumber {
 
     private int strike = 0;
     private int ball = 0;
-
+    private boolean exit = false;
     ArrayList<Integer> playerLists = new ArrayList<>();
     ArrayList<Integer> computerLists = new ArrayList<>();
 
 
-    public void startGames() {
+    public void startGame() {
+        ResultGenerator result = new ResultGenerator();
+
+
         GenerateRandomNumber computerNumber = new GenerateRandomNumber();
         computerNumber.setRandomNumber();
         computer = computerNumber.getDigits();
 
         InputUserNumber userNumber = new InputUserNumber();
-        userNumber.setDigits();
-        player = userNumber.getDigits();
+
+        do {
+            userNumber.setDigits();
+            player = userNumber.getDigits();
+
+
+
+
+
 
         resetScore();
         count();
+        result.printResult();
+
+            if (strike == 3) {
+                result.inputExit();
+                computerNumber.setRandomNumber();
+                computer = computerNumber.getDigits();
+            }
+
+
+        } while (!exit);
 
     }
+
 
 
     private void resetScore() {
@@ -59,6 +80,9 @@ public class CompareNumber {
         }
 
     }
+
+    //Test code
+
     public List<Integer> countTest(List<Integer> computerLists, List<Integer> playerLists) {
 
         for (int position = 0; position < 3; position++) {
