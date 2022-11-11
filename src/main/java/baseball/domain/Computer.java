@@ -14,11 +14,13 @@ public final class Computer {
     private Balls balls;
 
     public Computer() {
-        this.balls = new Balls(createRandomNumber());
+        List<Integer> randomNumber = createRandomNumber();
+        this.balls = Balls.createBall(randomNumber);
     }
 
     public void generateNewBalls() {
-        this.balls = new Balls(createRandomNumber());
+        List<Integer> randomNumber = createRandomNumber();
+        this.balls = Balls.createBall(randomNumber);
     }
 
     private List<Integer> createRandomNumber() {
