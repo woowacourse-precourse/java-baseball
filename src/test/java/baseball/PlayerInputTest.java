@@ -28,8 +28,8 @@ public class PlayerInputTest {
         // 띄어쓰기는 setInputString()에서 처리해주므로, 이 테스트만 gameNumber에 저장해 사용
         String playerInput = "1 2 3";
         List<Integer> playerList = Arrays.asList(1, 2, 3);
-        gameNumber.setInputString(playerInput);
-        assertThat(numberValidator.toValidateData(gameNumber.getInputString())).isEqualTo(playerList);
+        gameNumber.setPlayerInput(playerInput);
+        assertThat(numberValidator.toValidateData(gameNumber.getPlayerInput())).isEqualTo(playerList);
     }
 
     @Test

@@ -3,16 +3,16 @@ package baseball.model;
 import java.util.List;
 
 public class GameNumber {
-    private String inputString;
+    private String playerInput;
     private List<Integer> playerNumbers;
     private List<Integer> computerNumbers;
 
-    public void setInputString(String inputString) {
-        this.inputString = inputString.replaceAll(" ", "");
+    public void setPlayerInput(String inputString) {
+        this.playerInput = inputString.replaceAll(" ", "");
     }
 
-    public String getInputString() {
-        return inputString;
+    public String getPlayerInput() {
+        return playerInput;
     }
 
     public void setPlayerNumbers(List<Integer> playerNumbers) {

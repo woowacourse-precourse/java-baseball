@@ -38,8 +38,8 @@ public class GameController {
     }
 
     private void setAndSavePlayerNumbers() {
-        gameNumber.setInputString(inputView.enterGameNumber());
-        List<Integer> playerNumbers = numberValidator.toValidateData(gameNumber.getInputString());
+        gameNumber.setPlayerInput(inputView.enterGameNumber());
+        List<Integer> playerNumbers = numberValidator.toValidateData(gameNumber.getPlayerInput());
         gameNumber.setPlayerNumbers(playerNumbers);
     }
 
