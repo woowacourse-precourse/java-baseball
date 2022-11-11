@@ -26,7 +26,7 @@ public class NumberExceptionTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             NumberValidator.isThreeDigits(number);
         });
-        assertThat(exception.getMessage()).isEqualTo(INPUT_INVALID_DIGIT_EXCEPTION.message());
+        assertThat(exception.getMessage()).isEqualTo(INPUT_INVALID_DIGIT_LENGTH_EXCEPTION.message());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class NumberExceptionTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             NumberValidator.isPositiveDigits(number);
         });
-        assertThat(exception.getMessage()).isEqualTo(INPUT_NEGATIVE_DIGIT_EXCEPTION.message());
+        assertThat(exception.getMessage()).isEqualTo(INPUT_INVALID_DIGIT_EXCEPTION.message());
     }
 
     @Test
@@ -44,9 +44,9 @@ public class NumberExceptionTest {
     void 특수문자_예외_테스트() {
         String number = "ㄱㄴㄷ@";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NumberValidator.isDigits(number);
+            NumberValidator.isPositiveDigits(number);
         });
-        assertThat(exception.getMessage()).isEqualTo(INPUT_INVALID_CHARACTER_EXCEPTION.message());
+        assertThat(exception.getMessage()).isEqualTo(INPUT_INVALID_DIGIT_EXCEPTION.message());
     }
 
     @Test

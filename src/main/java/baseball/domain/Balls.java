@@ -27,7 +27,6 @@ public final class Balls {
     }
 
     private static void validateBall(String number) {
-        NumberValidator.isDigits(number);
         NumberValidator.isPositiveDigits(number);
         NumberValidator.isThreeDigits(number);
         NumberValidator.isNotDuplicateDigits(number);

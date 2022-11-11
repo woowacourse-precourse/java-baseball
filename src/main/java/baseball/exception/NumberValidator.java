@@ -2,7 +2,7 @@ package baseball.exception;
 
 import baseball.domain.GameStatus;
 
-import static baseball.common.Constant.DIGITS;
+import static baseball.common.Constant.REG_EXP_DIGITS;
 import static baseball.exception.NumberExceptionMessage.*;
 
 public class NumberValidator {
@@ -15,19 +15,13 @@ public class NumberValidator {
 
     public static void isThreeDigits(String number) {
         if (number.length() != 3) {
-            throw new IllegalArgumentException(INPUT_INVALID_DIGIT_EXCEPTION.message());
+            throw new IllegalArgumentException(INPUT_INVALID_DIGIT_LENGTH_EXCEPTION.message());
         }
     }
 
     public static void isPositiveDigits(String number) {
-        if (Integer.parseInt(number) <= 0) {
-            throw new IllegalArgumentException(INPUT_NEGATIVE_DIGIT_EXCEPTION.message());
-        }
-    }
-
-    public static void isDigits(String number) {
-        if (!number.matches(DIGITS)) {
-            throw new IllegalArgumentException(INPUT_INVALID_CHARACTER_EXCEPTION.message());
+        if (!number.matches(REG_EXP_DIGITS)) {
+            throw new IllegalArgumentException(INPUT_INVALID_DIGIT_EXCEPTION.message());
         }
     }
 
