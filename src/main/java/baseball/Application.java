@@ -3,26 +3,26 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
+import java.util.function.Consumer;
 
 public class Application {
 
     public static void main(String[] args) {
-        boolean run = true;
-        boolean finish = true;
+        boolean isRunning = true;
+        boolean isFinished = true;
         Output.printStartingMent();
-        while (run && finish) {
-            finish = false;
-            GameManager game = new GameManager();
+        while (isRunning && isFinished) {
+            isFinished = false;
             Database data = new Database();
             data.setAnswer(GameManager.createAnswer());
-            while (!finish) {
+            while (!isFinished) {
                 data.setUserInput(Input.whileRunning());
                 ExceptionChecker.checkGuessingInput(data.getUserInput());
-                data.setBall(Referee.judge(data.getUserInput(), data.getAnswer())[0]);
-                data.setStrike(Referee.judge(data.getUserInput(), data.getAnswer())[1]);
-                Output.printResult(data.getStrike(), data.getBall());
-                finish = game.isFinish(data.getStrike());
-                run = game.isAgain(finish);
+                data.setBallCount(Referee.judge(data.getUserInput(), data.getAnswer())[0]);
+                data.setStrikeCount(Referee.judge(data.getUserInput(), data.getAnswer())[1]);
+                Output.printResult(data.getStrikeCount(), data.getBallCount());
+                isFinished = GameManager.isFinish(data.getStrikeCount());
+                isRunning = GameManager.isAgain(isFinished);
             }
         }
         Output.printFinishingMent();
@@ -46,25 +46,30 @@ class GameManager {
     }
 
     public static boolean isFinish(int strike) {
-        if (strike == 3) {
-            return true;
-        }
-        return false;
+        return strike == 3;
     }
 
-    public static boolean isAgain(boolean finish) {
+    public static boolean isAgain(boolean isFinished) {
         int userInput = -1;
-        if (finish == true) {
+        if (isFinished) {
             userInput = Integer.parseInt(Console.readLine());
             ExceptionChecker.checkAfterGameInput(userInput);
         }
-        if (userInput == restart) {
+        if (isRestart(userInput)) {
             return true;
         }
-        if (userInput == terminate) {
+        if (isTerminate(userInput)) {
             return false;
         }
         return true;
+    }
+
+    public static boolean isRestart(int userInput) {
+        return userInput == restart;
+    }
+
+    public static boolean isTerminate(int userInput) {
+        return userInput == terminate;
     }
 }
 
@@ -131,7 +136,7 @@ class Referee {
     }
 }
 
-class ExceptionChecker extends Exception {
+class ExceptionChecker {
 
     static int numberSize = 3;
 
@@ -159,12 +164,19 @@ class ExceptionChecker extends Exception {
 
 class Database {
 
-    private static List<Integer> answer = new ArrayList<>();
-    private List<Integer> userInput = new ArrayList<>();
-    private int strike = 0;
-    private int ball = 0;
+    private List<Integer> answer;
+    private List<Integer> userInput;
+    private int strikeCount;
+    private int ballCount;
 
-    public static void setAnswer(List<Integer> randomNumber) {
+    public Database() {
+        answer = new ArrayList<>();
+        userInput = new ArrayList<>();
+        strikeCount = 0;
+        ballCount = 0;
+    }
+
+    public void setAnswer(List<Integer> randomNumber) {
         answer = randomNumber;
     }
 
@@ -180,19 +192,19 @@ class Database {
         return this.userInput;
     }
 
-    public void setStrike(int strike) {
-        this.strike = strike;
+    public void setStrikeCount(int strikeCount) {
+        this.strikeCount = strikeCount;
     }
 
-    public int getStrike() {
-        return this.strike;
+    public int getStrikeCount() {
+        return this.strikeCount;
     }
 
-    public void setBall(int ball) {
-        this.ball = ball;
+    public void setBallCount(int ballCount) {
+        this.ballCount = ballCount;
     }
 
-    public int getBall() {
-        return this.ball;
+    public int getBallCount() {
+        return this.ballCount;
     }
 }
