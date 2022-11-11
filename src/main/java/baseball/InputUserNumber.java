@@ -1,31 +1,26 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Pattern;
+
 
 public class InputUserNumber {
-    private static final int NUMBER = 3;
+    private static final int SIZE = 3;
     private static final int MAXNumber = 9;
     private static final int MINNumber = 1;
     private static final String INPUT_SENTENCE = "숫자를 입력해주세요 : ";
     private int[] eachdigit;
-
+    private static String input;
 
     ExcepetionCase exception = new ExcepetionCase();
 
 
-    public void UserInputValue(String str) {
-        setDigits(str);
-    }
-    public void UserInputValue() {
+
+    private String UserInputValue() {
         System.out.print(INPUT_SENTENCE);
         String input = Console.readLine();
-        setDigits(input);
+        return input;
+
     }
 
     public int[] getDigits() {
@@ -37,8 +32,9 @@ public class InputUserNumber {
 
 
 
-    private void setDigits(String input) {
+    public void setDigits() {
 
+        this.input = UserInputValue();
 
         if(!exception.ThreeNumberException(input)) {
             throw new IllegalArgumentException();
