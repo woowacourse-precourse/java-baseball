@@ -2,19 +2,20 @@ package baseball.exception;
 
 import baseball.domain.GameStatus;
 
+import static baseball.common.Constant.BALL_SIZE;
 import static baseball.common.Constant.REG_EXP_DIGITS;
 import static baseball.exception.NumberExceptionMessage.*;
 
 public class NumberValidator {
 
     public static void isNotDuplicateDigits(String number) {
-        if (number.chars().distinct().count() != 3) {
+        if (number.chars().distinct().count() != BALL_SIZE) {
             throw new IllegalArgumentException(INPUT_DUPLICATE_DIGIT_EXCEPTION.message());
         }
     }
 
     public static void isThreeDigits(String number) {
-        if (number.length() != 3) {
+        if (number.length() != BALL_SIZE) {
             throw new IllegalArgumentException(INPUT_INVALID_DIGIT_LENGTH_EXCEPTION.message());
         }
     }
