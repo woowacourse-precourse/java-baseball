@@ -1,9 +1,5 @@
 package baseball.model;
 
-import baseball.controller.NumberValidator;
-import baseball.controller.RandomUtility;
-
-import java.util.Arrays;
 import java.util.List;
 
 public class GameNumber {

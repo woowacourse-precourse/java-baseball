@@ -4,7 +4,6 @@ import baseball.controller.ComputerController;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.List;
 
