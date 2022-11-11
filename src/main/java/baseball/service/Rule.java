@@ -37,8 +37,7 @@ public class Rule {
         return ball;
     }
 
-    public void getNumberByPlayer(Player player) {
-        String input = InputView.read();
+    public void getNumberByPlayer(Player player, String input) {
         if(Validation.isValidNumber(input)) {
             player.setNumber(input);
         }

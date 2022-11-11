@@ -35,7 +35,7 @@ public class Game {
             //입력메세지 출력
             OutputView.printInputMessage();
             //번호입력 및유효성 검증
-            rule.getNumberByPlayer(player);
+            rule.getNumberByPlayer(player, InputView.read());
             //결과처리
             BallStatus result = rule.decideStrikeOrBall(player.getThreeNumber(), computer.getThreeNumber());
             //결과에 따른 메세지 출력
