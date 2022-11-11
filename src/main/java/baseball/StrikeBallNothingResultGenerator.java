@@ -2,9 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class StrikeBallNothingResultGenerator {
 
@@ -30,7 +27,7 @@ public class StrikeBallNothingResultGenerator {
 
     public void startGame() {
         GenerateRandomNumber computerNumber = new GenerateRandomNumber();
-        computerNumber.setRandomNumber();
+        computerNumber.setDigits();
         computer = computerNumber.getDigits();
         InputUserNumber playerNumber = new InputUserNumber();
 
@@ -59,7 +56,7 @@ public class StrikeBallNothingResultGenerator {
 
         if(strike == 3) {
             inputExit();
-            computerNumber.setRandomNumber();
+            computerNumber.setDigits();
             computer = computerNumber.getDigits();
         }
 

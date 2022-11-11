@@ -29,6 +29,7 @@ public class InputUserNumber {
     }
 
     public int[] getDigits() {
+
         return this.eachdigit;
     }
 
@@ -36,7 +37,7 @@ public class InputUserNumber {
 
 
 
-    private void setDigits(String input) {
+    public void setDigits(String input) {
 
 
         if(!exception.ThreeNumberException(input)) {
@@ -47,9 +48,5 @@ public class InputUserNumber {
                 .mapToInt(Integer::parseInt)
                 .toArray();
     }
-
-
-
-
 
 }
