@@ -2,10 +2,7 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static baseball.common.Constant.*;
 
@@ -24,7 +21,7 @@ public final class Computer {
     }
 
     private static List<Integer> createRandomNumber() {
-        Set<Integer> answer = new HashSet<>();
+        Set<Integer> answer = new LinkedHashSet<>();
         while (answer.size() < BALL_SIZE) {
             int num = Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
             answer.add(num);
