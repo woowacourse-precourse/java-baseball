@@ -9,7 +9,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameController {
 
     private final Game game;
-    private Player player;
     private Computer computer;
 
     public GameController(Game game, Computer computer) {
@@ -32,7 +31,7 @@ public class GameController {
 
     public void playGame() {
         OutputView.printInput();
-        player = Player.create();
+        Player player = Player.create();
         game.playBaseBall(player, computer);
         OutputView.printGameResult(game);
     }
