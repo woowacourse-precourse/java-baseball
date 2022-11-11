@@ -27,8 +27,8 @@ public final class Game {
     }
 
     public void playBaseBall(Player player, Computer computer) {
-        strike = Referee.getStrikeCount(player.getBalls(), computer.getBalls());
-        ball = Referee.getBallCount(player.getBalls(), computer.getBalls());
+        strike = Referee.findStrikeCount(player.getBalls(), computer.getBalls());
+        ball = Referee.findBallCount(player.getBalls(), computer.getBalls());
     }
 
     public void clearResult() {
