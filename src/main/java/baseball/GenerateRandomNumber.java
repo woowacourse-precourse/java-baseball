@@ -10,8 +10,9 @@ public class GenerateRandomNumber {
     private static final int SIZE = 3;
     private static final int MAX = 9;
     private static final int MIN = 1;
-    private int[] eachdigit;
-    public int[] getDigits() {
+    private List<Integer> eachdigit;
+
+    public List<Integer> getDigits() {
 
         return this.eachdigit;
     }
@@ -25,18 +26,8 @@ public class GenerateRandomNumber {
             }
         }
 
-        this.eachdigit = convertListToIntArray(computerNumber);
+        this.eachdigit = computerNumber;
     }
-
-    private int[] convertListToIntArray (List<Integer> list) {
-        return list.stream()
-                .mapToInt(i -> i)
-                .toArray();
-    }
-
-
-
-
 
 
 }

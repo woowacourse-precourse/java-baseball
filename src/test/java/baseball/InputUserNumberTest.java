@@ -2,6 +2,8 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class InputUserNumberTest {
@@ -43,9 +45,11 @@ class InputUserNumberTest {
 
         user.setDigits("324");
 
-        int[] digits = user.getDigits();
+        List<Integer> digits = user.getDigits();
 
-        assertArrayEquals(digits, new int[]{3, 2, 4});
+        List<Integer> list2 = Arrays.asList(3,2,4);
+
+        assertEquals(digits, list2);
 
 
     }

@@ -2,6 +2,7 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class GenerateRandomNumberTest {
@@ -18,25 +19,25 @@ class GenerateRandomNumberTest {
     @Test
     public void length() {
         random.setRandomNumber();
-        int[] digit = random.getDigits();
-        assertEquals(digit.length, SIZE); // int 배열의 길이가 3인지 확인
+        List<Integer> digit = random.getDigits();
+        assertEquals(digit.size(), SIZE); // int 배열의 길이가 3인지 확인
     }
 
     @Test
     public void differnt() {
         random.setRandomNumber();
-        int[] digit = random.getDigits();
+        List<Integer> digit = random.getDigits();
         random.setRandomNumber();
-        int[] digitCompare = random.getDigits();
-        assertArrayEquals(digit, digitCompare); // 랜덤 배열인지 확인
+        List<Integer> digitCompare = random.getDigits();
+        assertEquals(digit, digitCompare); // 랜덤 배열인지 확인
     }
 
     @Test
     public void range() {
         random.setRandomNumber();
-        int[] digit = random.getDigits();
-        for (int i = 0; i < digit.length; i++) {
-            assertTrue(MIN <= digit[i] && digit[i] <= MAX); // 범위안에 있는지 확인
+        List<Integer> digit = random.getDigits();
+        for (int i = 0; i < digit.size(); i++) {
+            assertTrue(MIN <= digit.get(i) && digit.get(i) <= MAX); // 범위안에 있는지 확인
         }
     }
 }
