@@ -11,7 +11,7 @@ class ssTest {
     @Test
     void 비교기_테스트(){
 
-        ss compare = new ss();
+        CompareNumber compare = new CompareNumber();
 
         List<Integer> computer = new ArrayList<>(); // 3,1,2
         computer.add(3);

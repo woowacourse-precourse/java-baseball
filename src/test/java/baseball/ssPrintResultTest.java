@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class ssPrintResultTest {
 
-    public static ssPrintResult print = new ssPrintResult();
+    public static ResultGenerator print = new ResultGenerator();
     private static final String FINAL = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     @Test

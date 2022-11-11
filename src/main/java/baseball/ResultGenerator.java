@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 
-public class ssPrintResult {
+public class ResultGenerator {
 
 
     private static final String BALL_STR = "볼";
