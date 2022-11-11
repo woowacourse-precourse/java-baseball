@@ -61,7 +61,7 @@ public class ss {
         }
 
     }
-    private List<Integer> countTest(List<Integer> computerLists, List<Integer> playerLists) {
+    public List<Integer> countTest(List<Integer> computerLists, List<Integer> playerLists) {
 
         for (int position = 0; position < 3; position++) {
 
