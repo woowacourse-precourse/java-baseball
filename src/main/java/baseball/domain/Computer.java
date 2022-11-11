@@ -11,19 +11,19 @@ import static baseball.common.Constant.*;
 
 public final class Computer {
 
-    private Balls balls;
+    private final Balls balls;
 
-    public Computer() {
-        List<Integer> randomNumber = createRandomNumber();
-        this.balls = Balls.createBall(randomNumber);
+    private Computer(Balls balls) {
+        this.balls = balls;
     }
 
-    public void generateNewBalls() {
+    public static Computer createComputer() {
         List<Integer> randomNumber = createRandomNumber();
-        this.balls = Balls.createBall(randomNumber);
+        Balls balls = Balls.createBall(randomNumber);
+        return new Computer(balls);
     }
 
-    private List<Integer> createRandomNumber() {
+    private static List<Integer> createRandomNumber() {
         Set<Integer> answer = new HashSet<>();
         while (answer.size() < BALL_SIZE) {
             int num = Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM);

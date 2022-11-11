@@ -8,7 +8,7 @@ public class GameController {
 
     private final Game game;
     private final Player player;
-    private final Computer computer;
+    private Computer computer;
 
     public GameController(Game game, Player player, Computer computer) {
         this.game = game;
@@ -60,7 +60,7 @@ public class GameController {
 
     private void isRestartGenerateNewComputer(String command) {
         if (GameStatus.isRestart(command)) {
-            computer.generateNewBalls();
+            computer = Computer.createComputer();
         }
     }
 

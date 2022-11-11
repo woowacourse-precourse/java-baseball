@@ -17,7 +17,7 @@ public class GameControllerTest {
     void 재시작과_종료_동작_테스트() {
         Game game = new Game();
         Player player = new Player();
-        Computer computer = new Computer();
+        Computer computer = Computer.createComputer();
         GameController gameController = new GameController(game, player, computer);
         List<Integer> answerBall = computer.getBalls();
 

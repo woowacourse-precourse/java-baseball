@@ -43,7 +43,7 @@ public class GameTest {
     @Test
     @DisplayName("중복되지 않는 세자리 정답을 랜덤으로 생성할 수 있다.")
     void 난수_생성() {
-        Computer computer = new Computer();
+        Computer computer = Computer.createComputer();
         List<Integer> balls = computer.getBalls();
         assertThat(balls.size()).isEqualTo(Constant.MAX_STRIKE_SIZE);
         assertThat(balls.stream().distinct().count()).isEqualTo(3);

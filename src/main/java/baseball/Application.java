@@ -10,7 +10,7 @@ import baseball.domain.Player;
 public class Application {
 
     public static void main(String[] args) {
-        GameController gameController = new GameController(new Game(), new Player(), new Computer());
+        GameController gameController = new GameController(new Game(), new Player(), Computer.createComputer());
         gameController.run();
     }
 }
