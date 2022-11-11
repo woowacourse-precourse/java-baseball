@@ -31,14 +31,8 @@ public class GameController {
     public void playGame() {
         OutputView.printInput();
         player = Player.create();
-        playBaseBall();
+        game.playBaseBall(player, computer);
         OutputView.printGameResult(game);
-    }
-
-    private void playBaseBall() {
-        int strikeCount = Referee.getStrikeCount(player.getBalls(), computer.getBalls());
-        int ballCount = Referee.getBallCount(player.getBalls(), computer.getBalls());
-        game.setGameResult(strikeCount, ballCount);
     }
 
     public String checkRestartWhenMaxStrike() {

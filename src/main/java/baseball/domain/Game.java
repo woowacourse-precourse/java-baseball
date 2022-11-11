@@ -26,18 +26,18 @@ public final class Game {
         return strike == MAX_STRIKE_SIZE;
     }
 
-    public void setGameResult(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
-    }
-
-    public void setExitStatus(){
-        this.gameStatus = EXIT;
+    public void playBaseBall(Player player, Computer computer) {
+        strike = Referee.getStrikeCount(player.getBalls(), computer.getBalls());
+        ball = Referee.getBallCount(player.getBalls(), computer.getBalls());
     }
 
     public void clearResult() {
         strike = 0;
         ball = 0;
+    }
+
+    public void setExitStatus(){
+        this.gameStatus = EXIT;
     }
 
     @Override
