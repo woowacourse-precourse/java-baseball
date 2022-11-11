@@ -1,18 +1,16 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 public class ExcepetionCase {
     public boolean ThreeNumberException(String playerNum) {
-        if( !OnlyNumber(playerNum) || !NotDuplicate(playerNum) || !ThreeLength(playerNum) ) {
+        if (!OnlyNumber(playerNum) || !NotDuplicate(playerNum) || !ThreeLength(playerNum)) {
             return false;
         }
         return true;
     }
-
 
 
     public boolean ThreeLength(String playerNum) {
@@ -22,6 +20,7 @@ public class ExcepetionCase {
         }
         return true;
     }
+
     public boolean OnlyNumber(String playerNum) {
 
         for (int i = 0; i < playerNum.length(); i++) {
@@ -46,13 +45,12 @@ public class ExcepetionCase {
                 return false;
             }
 
-
             listDuplicateCheck.add(ASCII);
 
         }
-        for (int i = 0; i < listDuplicateCheck.size() ;i ++){
+        for (int i = 0; i < listDuplicateCheck.size(); i++) {
 
-            if(Collections.frequency(listDuplicateCheck,listDuplicateCheck.get(i)) != 1){
+            if (Collections.frequency(listDuplicateCheck, listDuplicateCheck.get(i)) != 1) {
 
                 return false;
 
@@ -61,14 +59,12 @@ public class ExcepetionCase {
 
         }
 
-
-
         return true;
 
     }
 
     public boolean oneOrTwo(String player) {
-        if( player == "1" || player == "2" ) {
+        if (player == "1" || player == "2") {
             return true;
         }
         return false;

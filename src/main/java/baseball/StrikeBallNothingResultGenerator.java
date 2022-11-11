@@ -36,7 +36,7 @@ public class StrikeBallNothingResultGenerator {
 
 
     do{
-        playerNumber.UserInputValue();
+        playerNumber.setDigits();
         player = playerNumber.getDigits();
 
 
