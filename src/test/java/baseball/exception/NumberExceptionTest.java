@@ -3,7 +3,7 @@ package baseball.exception;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static baseball.exception.ExceptionMessage.*;
+import static baseball.exception.NumberExceptionMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -16,7 +16,7 @@ public class NumberExceptionTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             NumberValidator.isNotDuplicateDigits(number);
         });
-        assertThat(exception.getMessage()).isEqualTo(DUPLICATE_DIGIT_EXCEPTION.message());
+        assertThat(exception.getMessage()).isEqualTo(INPUT_DUPLICATE_DIGIT_EXCEPTION.message());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class NumberExceptionTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             NumberValidator.isThreeDigits(number);
         });
-        assertThat(exception.getMessage()).isEqualTo(INVALID_DIGIT_EXCEPTION.message());
+        assertThat(exception.getMessage()).isEqualTo(INPUT_INVALID_DIGIT_EXCEPTION.message());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class NumberExceptionTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             NumberValidator.isPositiveDigits(number);
         });
-        assertThat(exception.getMessage()).isEqualTo(NEGATIVE_DIGIT_EXCEPTION.message());
+        assertThat(exception.getMessage()).isEqualTo(INPUT_NEGATIVE_DIGIT_EXCEPTION.message());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class NumberExceptionTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             NumberValidator.isDigits(number);
         });
-        assertThat(exception.getMessage()).isEqualTo(INVALID_CHARACTER_EXCEPTION.message());
+        assertThat(exception.getMessage()).isEqualTo(INPUT_INVALID_CHARACTER_EXCEPTION.message());
     }
 
     @Test
@@ -56,6 +56,6 @@ public class NumberExceptionTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             NumberValidator.isValidCommandDigit(number);
         });
-        assertThat(exception.getMessage()).isEqualTo(INVALID_COMMAND_DIGIT_EXCEPTION.message());
+        assertThat(exception.getMessage()).isEqualTo(INPUT_COMMAND_DIGIT_EXCEPTION.message());
     }
 }
