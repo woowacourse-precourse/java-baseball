@@ -14,7 +14,7 @@ public class NumberExceptionTest {
     void 중복_숫자_예외_테스트() {
         String number = "323";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NumberValidator.isNotDuplicateDigits(number);
+            NumberValidator.hasNotDuplicateDigits(number);
         });
         assertThat(exception.getMessage()).isEqualTo(INPUT_DUPLICATE_DIGIT_EXCEPTION.message());
     }

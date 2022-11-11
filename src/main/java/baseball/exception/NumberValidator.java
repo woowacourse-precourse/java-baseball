@@ -8,7 +8,7 @@ import static baseball.exception.NumberExceptionMessage.*;
 
 public class NumberValidator {
 
-    public static void isNotDuplicateDigits(String number) {
+    public static void hasNotDuplicateDigits(String number) {
         if (number.chars().distinct().count() != BALL_SIZE) {
             throw new IllegalArgumentException(INPUT_DUPLICATE_DIGIT_EXCEPTION.message());
         }
