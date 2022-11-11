@@ -35,8 +35,7 @@ public class GameTest {
     @DisplayName("입력받은 문자열을 정수 리스트로 반환할 수 있다.")
     void 사용자_입력() {
         System.setIn(generateUserInput("135"));
-        Player player = new Player();
-        player.setInputBalls();
+        Player player = Player.create();
         assertThat(player.getBalls()).isEqualTo(Arrays.asList(1,3,5));
     }
 

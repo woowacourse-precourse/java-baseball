@@ -7,11 +7,15 @@ import java.util.List;
 
 public final class Player {
 
-    private Balls balls;
+    private final Balls balls;
 
-    public void setInputBalls() {
+    private Player(Balls balls) {
+        this.balls = balls;
+    }
+
+    public static Player create() {
         String number = Console.readLine();
-        balls = Balls.valueOf(number);
+        return new Player(Balls.valueOf(number));
     }
 
     public String getRestartResponse() {

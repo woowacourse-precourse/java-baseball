@@ -7,12 +7,11 @@ import baseball.view.OutputView;
 public class GameController {
 
     private final Game game;
-    private final Player player;
+    private Player player;
     private Computer computer;
 
-    public GameController(Game game, Player player, Computer computer) {
+    public GameController(Game game, Computer computer) {
         this.game = game;
-        this.player = player;
         this.computer = computer;
     }
 
@@ -31,8 +30,7 @@ public class GameController {
 
     public void playGame() {
         OutputView.printInput();
-        player.setInputBalls();
-
+        player = Player.create();
         playBaseBall();
         OutputView.printGameResult(game);
     }
