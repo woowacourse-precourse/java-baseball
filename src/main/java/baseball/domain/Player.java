@@ -18,12 +18,6 @@ public final class Player {
         return new Player(Balls.valueOf(number));
     }
 
-    public String getRestartResponse() {
-        String command = Console.readLine();
-        NumberValidator.isValidCommandDigit(command);
-        return command;
-    }
-
     public List<Integer> getBalls() {
         return balls.asList();
     }
