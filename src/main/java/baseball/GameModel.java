@@ -1,14 +1,12 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import static baseball.GameRule.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static baseball.GameRule.DIGITS;
-import static baseball.GameRule.RANDOM_MIN;
-import static baseball.GameRule.RANDOM_MAX;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameModel {
 	public static List<Integer> createComputerNumber() {
