@@ -16,18 +16,18 @@ public class Application {
 
     public static void startGame() {
         // Computer creates random number
-        List computerList = Computer.getComputerNum();
+        List computerRandom = Computer.getComputerNum();
         // System.out.println(computerList);
 
-        getUserInput(computerList);
+        getUserInput(computerRandom);
     }
 
-    public static void getUserInput(List computerList) {
+    public static void getUserInput(List computerRandom) {
         System.out.print("숫자를 입력해주세요 : ");
 
         // Get and validate user input
-        List userList = User.getUserNum();
+        List userRandom = User.getUserNum();
         // System.out.println(userList);
-        Checker.getResult(computerList, userList);
+        Checker.getResult(computerRandom, userRandom);
     }
 }

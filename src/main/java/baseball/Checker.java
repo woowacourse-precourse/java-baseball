@@ -14,25 +14,25 @@ public class Checker {
 
     }
 
-    public static void getResult(List computerList, List userList) {
+    public static void getResult(List computerRandom, List userRandom) {
 
-        if (computerList.equals(userList)) {
+        if (computerRandom.equals(userRandom)) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             restartGame();
         } else {
-            listNotEqual(computerList, userList);
-            Application.getUserInput(computerList);
+            listNotEqual(computerRandom, userRandom);
+            Application.getUserInput(computerRandom);
         }
     }
 
 
-    public static void listNotEqual(List computerList, List userList) {
-        for (int i = 0; i < computerList.size(); i++) {
-            for (int j = 0; j < userList.size(); j++) {
-                getBallStrike(computerList, userList, i, j);
+    public static void listNotEqual(List computerRandom, List userRandom) {
+        for (int i = 0; i < computerRandom.size(); i++) {
+            for (int j = 0; j < userRandom.size(); j++) {
+                getBallStrike(computerRandom, userRandom, i, j);
             }
         }
 
@@ -53,10 +53,10 @@ public class Checker {
         ball = 0;
     }
 
-    public static void getBallStrike(List computerList, List userList, int i, int j) {
-        if (i == j && computerList.get(i) == userList.get(j)) {
+    public static void getBallStrike(List computerRandom, List userRandom, int i, int j) {
+        if (i == j && computerRandom.get(i) == userRandom.get(j)) {
             Checker.strike++;
-        } else if (i != j && computerList.get(i) == userList.get(j)) {
+        } else if (i != j && computerRandom.get(i) == userRandom.get(j)) {
             Checker.ball++;
         }
     }

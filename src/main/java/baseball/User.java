@@ -13,27 +13,27 @@ public class User {
     }
 
     public static List getUserNum() {
-        String userStr = Console.readLine();
-        validateInt(userStr);
-        validateLen(userStr);
-        List<String> userStrList = new ArrayList<>(Arrays.asList(userStr.split("")));
-        List<Integer> user = userStrList.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+        String userAns = Console.readLine();
+        validateInt(userAns);
+        validateLen(userAns);
+        List<String> userAnswers = new ArrayList<>(Arrays.asList(userAns.split("")));
+        List<Integer> user = userAnswers.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
         validateDup(user);
         return user;
     }
 
     // validate type of input
-    public static void validateInt(String userStr) {
+    public static void validateInt(String userAns) {
         try {
-            Integer.valueOf(userStr);
+            Integer.valueOf(userAns);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
     }
 
     // validate input length
-    public static void validateLen(String userStr) {
-        if (userStr.length() != Application.length) {
+    public static void validateLen(String userAns) {
+        if (userAns.length() != Application.length) {
             throw new IllegalArgumentException();
         }
     }
