@@ -1,15 +1,16 @@
 package baseball;
 
+import static baseball.GameRule.COMMAND_END;
+import static baseball.GameRule.COMMAND_RESTART;
+import static baseball.GameRule.DIGITS;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static baseball.GameRule.DIGITS;
-import static baseball.GameRule.COMMAND_RESTART;
-import static baseball.GameRule.COMMAND_END;
-
 public class GameController {
+
 	private List<Integer> computerNumber;
 	private boolean isPlaying = true;
 
@@ -37,7 +38,8 @@ public class GameController {
 		} while (isPlaying);
 	}
 
-	public Map<String, Integer> checkAnswer(List<Integer> computerNumber, List<Integer> playerNumber) {
+	public Map<String, Integer> checkAnswer(List<Integer> computerNumber,
+		List<Integer> playerNumber) {
 		Map<String, Integer> resultMap = new HashMap<>();
 
 		for (int i = 0; i < DIGITS; i++) {
@@ -55,7 +57,8 @@ public class GameController {
 	}
 
 	//볼인지 스트라이크인지 확인하기
-	public void checkBallOrStrike(Integer computerNum, Integer playerNum, Map<String, Integer> resultMap) {
+	public void checkBallOrStrike(Integer computerNum, Integer playerNum,
+		Map<String, Integer> resultMap) {
 
 		if (computerNum.equals(playerNum)) {
 			int oldValue = resultMap.getOrDefault(STRIKE, 0);

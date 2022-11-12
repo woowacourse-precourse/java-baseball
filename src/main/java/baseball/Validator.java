@@ -1,15 +1,16 @@
 package baseball;
 
+import static baseball.GameRule.COMMAND_END;
+import static baseball.GameRule.COMMAND_RESTART;
+import static baseball.GameRule.DIGITS;
+import static baseball.GameRule.RANDOM_MAX;
+import static baseball.GameRule.RANDOM_MIN;
+
 import java.util.List;
 import java.util.Set;
 
-import static baseball.GameRule.DIGITS;
-import static baseball.GameRule.RANDOM_MIN;
-import static baseball.GameRule.RANDOM_MAX;
-import static baseball.GameRule.COMMAND_RESTART;
-import static baseball.GameRule.COMMAND_END;
-
 public class Validator {
+
 	public static boolean isNumber(String input) {
 		return input.chars()
 			.allMatch(Character::isDigit);

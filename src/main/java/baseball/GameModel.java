@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameModel {
+
 	public static List<Integer> createComputerNumber() {
 		List<Integer> computerNumber = new ArrayList<>();
 
