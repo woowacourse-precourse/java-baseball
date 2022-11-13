@@ -3,6 +3,7 @@ package baseball;
 import baseball.domain.Judgement;
 import baseball.domain.NumberGenerator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +21,9 @@ public class Application {
 //        System.out.println(numbers);
 
         Judgement judgement = new Judgement();
-        int count = judgement.correctCount(Arrays.asList(2, 1, 9), Arrays.asList(1, 2, 3));
-        System.out.println(count);
+//        int count = judgement.correctCount(Arrays.asList(2, 1, 9), Arrays.asList(1, 2, 3));
+//        System.out.println(count);
+        boolean place = judgement.hasPlace(Arrays.asList(1,2,3), 0,1);
+        System.out.println(place); // true
     }
 }
