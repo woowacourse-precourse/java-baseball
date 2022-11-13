@@ -24,15 +24,11 @@ public class Player {
             throw new IllegalArgumentException();
         }
         long count = playerStr.chars()
-                .filter(this::isNumber)
+                .filter(Character::isDigit)
                 .count();
         if (count != 3) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private boolean isNumber(int c) {
-        return '0' <= c && c <= '9';
     }
 
     public List<Integer> getNumbers() {
