@@ -6,8 +6,7 @@ import static baseball.Application.NUMBER_OF_DIGIT;
 import static baseball.CompareNumber.compare;
 import static baseball.Score.BALL;
 import static baseball.Score.STRIKE;
-import static baseball.Validation.hasOnlyNumber;
-import static baseball.Validation.isValidLength;
+import static baseball.Validation.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
@@ -24,7 +23,8 @@ public class Game {
             System.out.print("숫자를 입력해주세요 : ");
 
             List<String> userInput = new ArrayList<>(Arrays.asList(readLine().split("")));
-            if (!isValidLength(userInput, NUMBER_OF_DIGIT) || !hasOnlyNumber(userInput)) {
+            if (!isValidLength(userInput, NUMBER_OF_DIGIT) || !hasOnlyNumber(userInput)
+                    || !isValidRange(userInput) || !checkDuplication(userInput)) {
                 throw new IllegalArgumentException();
             }
 
