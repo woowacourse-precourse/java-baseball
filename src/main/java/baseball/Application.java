@@ -3,6 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
+
+    public static final String RETRY = "1";
+    public static final String QUIT = "2";
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
@@ -21,11 +25,11 @@ public class Application {
     }
 
     private static boolean wantRestart(String line) {
-        return "1".equals(line);
+        return RETRY.equals(line);
     }
 
     private static boolean wantExit(String line) {
-        return "2".equals(line);
+        return QUIT.equals(line);
     }
 
     private static void validInputReplay(String line) {
