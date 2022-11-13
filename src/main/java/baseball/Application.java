@@ -6,9 +6,9 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Application {
+    static final int REPLAY = 1;
+    static final int EXIT = 2;
     public static void main(String[] args) {
-        final int REPLAY = 1;
-        final int EXIT = 2;
         String numberPresentedByPlayer = "";
         List<String> threeNumber = new ArrayList<>(); // 컴퓨터가 선택한 3개의 수를 저정할 리스트
         String whetherToReplay = "";
@@ -16,7 +16,6 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             threeNumber = createThreeNumbers(); // 컴퓨터가 서로 다른 3개의 수를 선택
-            System.out.println(threeNumber);
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
                 numberPresentedByPlayer = receiveUserInput();
