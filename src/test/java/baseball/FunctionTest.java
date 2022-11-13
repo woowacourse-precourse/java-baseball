@@ -7,8 +7,7 @@ import java.util.*;
 
 import static baseball.CompareNumber.compare;
 import static baseball.Score.*;
-import static baseball.Validation.hasOnlyNumber;
-import static baseball.Validation.isValidLength;
+import static baseball.Validation.*;
 import static java.util.Arrays.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
@@ -84,6 +83,30 @@ public class FunctionTest {
 
             //then
             assertThat(existOnlyNumber).isEqualTo(false);
+        }
+
+        @Test
+        void 범위_밖_숫자를_입력한_경우_false_반환() {
+            //given
+            List<String> userInput = new ArrayList<>(asList("1", "2", "33"));
+
+            //when
+            boolean validRange = isValidRange(userInput);
+
+            //then
+            assertThat(validRange).isEqualTo(false);
+        }
+
+        @Test
+        void 중복된_숫자를_입력한_경우_false_반환() {
+            //given
+            List<String> userInput = new ArrayList<>(asList("1", "2", "2"));
+
+            //when
+            boolean isDuplicated = checkDuplication(userInput);
+
+            //then
+            assertThat(isDuplicated).isEqualTo(false);
         }
     }
 }
