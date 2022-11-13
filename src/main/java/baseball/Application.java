@@ -1,14 +1,12 @@
 package baseball;
 
-import baseball.domain.Judgement;
 import baseball.domain.NumberGenerator;
 import baseball.domain.Referee;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
+
 
 /**
  * 객체 지향 프로그래밍
@@ -44,8 +42,7 @@ public class Application {
 
     public static List<Integer> askNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.next();
+        String input = Console.readLine();
 
         List<Integer> numbers = new ArrayList<>();
         for(String number: input.split("")) {
@@ -55,7 +52,7 @@ public class Application {
             throw new IllegalArgumentException("중복된 숫자가 있습니다. 다시 입력해주세요");
         }
         if(!isCorrectForm(numbers)) {
-            throw new IllegalArgumentException(ZERO +"가 아닌 " + BASEBALL_LENGTH + "자리 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ZERO +"이 아닌 " + BASEBALL_LENGTH + "자리 숫자를 입력해주세요.");
         }
         return numbers;
     }
