@@ -1,30 +1,31 @@
 package bestpractice.baseball;
 
-import bestpractice.baseball.domain.Judgment;
 import bestpractice.baseball.domain.NumberGenerator;
 import bestpractice.baseball.domain.Referee;
+import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
+        NumberGenerator generator = new NumberGenerator();
+        List<Integer> computer = generator.createRandomNumbers();
 
         Referee referee = new Referee();
-        String result = referee.compare(Arrays.asList(6, 5, 4), Arrays.asList(1, 2, 3));
-        System.out.println(result);
 
-        NumberGenerator generator = new NumberGenerator();
-        List<Integer> randomNumbers = generator.createRandomNumbers();
-        System.out.println(randomNumbers);
+        String result = "";
+        while (!"0볼 3스트라이크".equals(result)) {
+            result = referee.compare(computer, askNumbers());
+            System.out.println(result);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-        Judgment judgment = new Judgment();
-        int count = judgment.correctCount(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 9));
-        System.out.println(count);
+    }
 
-        boolean place = judgment.hasPlace(Arrays.asList(1, 2, 3), 0, 2);
-        System.out.println(place);
-
-
+    public static List<Integer> askNumbers() {
+        System.out.print("숫자를 입력해 주세요 : ");
+        String input = Console.readLine();
+        return input.chars().map(Character::getNumericValue).boxed().collect(Collectors.toList());
     }
 }
