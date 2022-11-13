@@ -18,7 +18,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Referee referee = new Referee();
-        String result = referee.compare(Arrays.asList(7, 5, 3), Arrays.asList(1, 2, 3));
-        System.out.println(result);
+        String result = referee.compare(Arrays.asList(4, 5, 6), Arrays.asList(1, 2, 3));
+        System.out.println(result); // 낫싱
     }
 }

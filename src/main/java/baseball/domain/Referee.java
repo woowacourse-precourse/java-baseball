@@ -18,6 +18,9 @@ public class Referee {
             }
         }
         int ball = correctCount - strike;
+        if(strike == 0) {
+            return "낫싱";
+        }
         if (ball != 0) {
             return ball + "볼 " + strike + "스트라이크";
         }
