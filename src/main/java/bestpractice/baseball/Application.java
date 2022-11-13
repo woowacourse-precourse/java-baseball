@@ -1,7 +1,9 @@
 package bestpractice.baseball;
 
+import bestpractice.baseball.domain.Judgment;
 import bestpractice.baseball.domain.NumberGenerator;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -9,5 +11,10 @@ public class Application {
         NumberGenerator generator = new NumberGenerator();
         List<Integer> randomNumbers = generator.createRandomNumbers();
         System.out.println(randomNumbers);
+
+        Judgment judgment = new Judgment();
+        int count = judgment.correctCount(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 9));
+        System.out.println(count);
+
     }
 }
