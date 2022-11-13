@@ -24,6 +24,7 @@ public class Application {
     private static boolean flag = true;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
         NumberGenerator generator = new NumberGenerator();
         List<Integer> computer = generator.createRandomNumber();
 
