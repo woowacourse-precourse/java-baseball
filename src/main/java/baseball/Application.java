@@ -61,10 +61,10 @@ public class Application {
                 break;
             } else {
                 int selectedNumberByComputer = random.nextInt(9) + 1;
-                String selectedNumberByComputerStringType = String.valueOf(selectedNumberByComputer);
+                String selectedNumber = String.valueOf(selectedNumberByComputer);
                 // 생성된 난수가 이미 이전에 생성됐던 수가 아니라면 선택하기 (서로 다른 3개의 수이므로)
-                if (!threeNumbersOfComputer.contains(selectedNumberByComputerStringType)) {
-                    threeNumbersOfComputer.add(String.valueOf(selectedNumberByComputerStringType));
+                if (!threeNumbersOfComputer.contains(selectedNumber)) {
+                    threeNumbersOfComputer.add(String.valueOf(selectedNumber));
                 }
             }
         }
