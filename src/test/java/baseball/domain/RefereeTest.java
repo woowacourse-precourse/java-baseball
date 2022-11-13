@@ -13,7 +13,7 @@ class RefereeTest {
     private Referee referee;
 
     @BeforeEach
-    void serUp() {
+    void setUp() {
         referee = new Referee();
     }
 

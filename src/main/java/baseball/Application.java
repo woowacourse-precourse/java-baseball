@@ -16,6 +16,8 @@ import java.util.Scanner;
  * 3. 각 결과를 종합한다.
  */
 public class Application {
+    public static final int ZERO = 0;
+    public static final int BASEBALL_LENGTH = 3;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         NumberGenerator generator = new NumberGenerator();
@@ -40,6 +42,15 @@ public class Application {
         for(String number: input.split("")) {
             numbers.add(Integer.valueOf(number));
         }
+        if(!isCorrectForm(numbers)) {
+            throw new IllegalArgumentException(ZERO +"가 아닌 " + BASEBALL_LENGTH + "자리 숫자를 입력해주세요.");
+        }
         return numbers;
+    }
+    public static boolean isCorrectForm(List<Integer> numbers) {
+        if(numbers.size() == BASEBALL_LENGTH && !numbers.contains(ZERO)) {
+            return true;
+        }
+        return false;
     }
 }
