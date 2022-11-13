@@ -15,10 +15,15 @@ public class Computer {
         numbers.clear();
         while (numbers.size() < INIT_LIST_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(FIRST_NUMBER, LAST_NUMBER);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
+            addNumber(randomNumber);
         }
+    }
+
+    private void addNumber(int number) {
+        if (numbers.contains(number)) {
+            return;
+        }
+        numbers.add(number);
     }
 
     public List<Integer> getNumbers() {
