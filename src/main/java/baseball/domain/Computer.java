@@ -2,6 +2,7 @@ package baseball.domain;
 
 import baseball.model.Baseball;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class Computer {
         List<Integer> numbers = getRandomNumber();
         return new Baseball(numbers);
     }
+
     public List<Integer> getRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
         // 3개의 숫자가 담길 때까지

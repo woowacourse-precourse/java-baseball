@@ -15,19 +15,22 @@ public class BaseballResult {
     public BaseballResult(HashMap<String, Integer> result) {
         this.result = result;
     }
+
     public String getResult() {
-        if(result.isEmpty()) {
+        if (result.isEmpty()) {
             return NOTHING;
         }
         return ballAndStrike();
     }
+
     public boolean isAllCorrect() {
         return result.containsKey(STRIKE) && result.get(STRIKE) == ANSWER_COUNT;
     }
+
     public String ballAndStrike() {
-        if(!result.containsKey(STRIKE)) {
-            return result.get(BALL) +"볼";
-        } else if(result.get(STRIKE) == ANSWER_COUNT) {
+        if (!result.containsKey(STRIKE)) {
+            return result.get(BALL) + "볼";
+        } else if (result.get(STRIKE) == ANSWER_COUNT) {
             return result.get(STRIKE) + "스트라이크";
         } else {
             String ball = result.get(BALL) + "볼";
