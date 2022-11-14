@@ -53,3 +53,5 @@
     * [X] char형을 int로 바꿔주는 함수
 * [X] indent depth가 3이 넘지 않게 구현
 * [X] 3항 연산자를 쓰지 않고 구현
+
+# [2주차 회고](https://zerotodev.tistory.com/3)
