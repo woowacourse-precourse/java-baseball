@@ -23,3 +23,12 @@
 ### 스트라이크 추출 : getStrike
 ### 볼 저장 : setBall
 ### 볼 추출 : getBall
+fuck
+
+    hello
+    hello
+hello
+
+it's *rainny* day
+
+hello
