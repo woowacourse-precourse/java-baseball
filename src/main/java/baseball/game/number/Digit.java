@@ -11,9 +11,13 @@ public class Digit {
     }
 
     private void validateDigitValue(int number) {
-        if (number < 1 || number > 9) {
+        if (isNotOneDigitNumber(number)) {
             throw new IllegalArgumentException("1 이상 9 이하의 숫자가 아닙니다.");
         }
+    }
+
+    private boolean isNotOneDigitNumber(int number) {
+        return number < 1 || number > 9;
     }
 
     @Override
