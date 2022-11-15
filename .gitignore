@@ -5,6 +5,15 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+### Java ###
+.mtj.tmp/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
 ### STS ###
 .apt_generated
 .classpath
