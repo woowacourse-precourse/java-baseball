@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.util.CompareResult;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -26,47 +25,57 @@ public class Referee {
 
     public int countStrike(String input, String answer) {
         int count = 0;
-        for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
-            if (input.charAt(i) == answer.charAt(i)) {
+        for (int index = 0; index < MAX_NUMBER_SIZE; index++) {
+            if (isSame(input.charAt(index), answer.charAt(index))) {
                 count++;
             }
         }
         return count;
     }
 
+    public boolean isSame(char inputNumber, char answerNumber) {
+        return inputNumber == answerNumber;
+    }
+
     public int countBall(String input, String answer) {
-        Queue<Character> compareTarget = new LinkedList<>();
-        for (int answerIndex = 0; answerIndex < answer.length(); answerIndex++) {
-            char digitOfAnswer = answer.charAt(answerIndex);
-            compareTarget.add(digitOfAnswer);
-        }
+        Queue<Character> compareTarget = makeCompareTarget(answer);
 
         int count = 0;
         for (int inputIdx = 0; inputIdx < input.length(); inputIdx++) {
             char firstNumber = compareTarget.poll();
 
             char target = input.charAt(inputIdx);
-            if (compareTarget.contains(target)) {
+            if (isCompareTargetContainsTarget(compareTarget, target)) {
                 count++;
             }
-
             compareTarget.add(firstNumber);
         }
 
         return count;
     }
 
+    private Queue<Character> makeCompareTarget(String answer) {
+        Queue<Character> compareTarget = new LinkedList<>();
+        for (int answerIndex = 0; answerIndex < answer.length(); answerIndex++) {
+            char digitOfAnswer = answer.charAt(answerIndex);
+            compareTarget.add(digitOfAnswer);
+        }
+
+        return compareTarget;
+    }
+
+    private boolean isCompareTargetContainsTarget(Queue<Character> compareTarget, char target) {
+        return compareTarget.contains(target);
+    }
+
     public String createJudgement(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             return CompareResult.NOTHING.getValue();
-        }
-        if (strike == MAX_NUMBER_SIZE) {
+        } else if (strike == MAX_NUMBER_SIZE) {
             return CompareResult.THREE_STRIKE.getValue();
-        }
-        if (strike == 0 && ball != 0) {
+        } else if (strike == 0 && ball != 0) {
             return ball + CompareResult.BALL.getValue();
-        }
-        if (strike != 0 && ball == 0) {
+        } else if (strike != 0 && ball == 0) {
             return strike + CompareResult.STRIKE.getValue();
         }
         return ball + CompareResult.BALL.getValue() + " " + strike + CompareResult.STRIKE.getValue();
