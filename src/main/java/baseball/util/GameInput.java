@@ -21,10 +21,11 @@ public class GameInput {
         return readLine();
     }
 
-    public void isLegalInput(String input) throws IllegalArgumentException {
+    public void isLegalInput(String input) {
         if (isOnlyNumber(input) && isDontContainsZero(input) && isThreeDigit(input) && isAllDifferent(input)) {
             return;
         }
+        GameOutput.printInputExceptionLog();
         throw new IllegalArgumentException();
     }
 
