@@ -17,21 +17,39 @@ public class GameResult {
 
     public String convertToString() {
         StringBuilder resultStringBuilder = new StringBuilder();
-        boolean ballExists = ballCount != 0;
-        boolean strikeExists = strikeCount != 0;
-        if (ballExists) {
-            resultStringBuilder.append(ballCount);
-            resultStringBuilder.append(BALL_STRING);
-            resultStringBuilder.append(BLANK);
+        if (ballExists()) {
+            appendBallCount(resultStringBuilder);
         }
-        if (strikeExists) {
-            resultStringBuilder.append(strikeCount);
-            resultStringBuilder.append(STRIKE_STRING);
+        if (strikeExists()) {
+            appendStrikeCount(resultStringBuilder);
         }
-        if (!ballExists && !strikeExists) {
+        if (neitherBallNorStrike()) {
             resultStringBuilder.append(NOTHING_STRING);
         }
         return resultStringBuilder.toString();
+    }
+
+    private boolean strikeExists() {
+        return strikeCount != 0;
+    }
+
+    private boolean ballExists() {
+        return ballCount != 0;
+    }
+
+    private boolean neitherBallNorStrike() {
+        return (ballCount == 0) && (strikeCount == 0);
+    }
+
+    private void appendStrikeCount(StringBuilder resultStringBuilder) {
+        resultStringBuilder.append(strikeCount);
+        resultStringBuilder.append(STRIKE_STRING);
+    }
+
+    private void appendBallCount(StringBuilder resultStringBuilder) {
+        resultStringBuilder.append(ballCount);
+        resultStringBuilder.append(BALL_STRING);
+        resultStringBuilder.append(BLANK);
     }
 
     @Override
