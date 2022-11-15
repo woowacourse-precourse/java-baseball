@@ -9,7 +9,7 @@ public class Application {
     final static int GAME_OVER = 2;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
         while (true) {
 
             Domain domain = new Domain();

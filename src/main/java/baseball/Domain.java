@@ -11,7 +11,6 @@ public class Domain {
 
     final int NUMBER_SIZE = 3;
 
-
     public List<Integer> getUserNumber() {
         return convertStringToIntegerList(getInputUserNumber());
     }
@@ -48,7 +47,7 @@ public class Domain {
         }
 
         //입력시 길이가 숫자길이가 3이 아닌경우
-        if (userNumber.length() != 3) {
+        if (userNumber.length() != NUMBER_SIZE) {
             throw new IllegalArgumentException("입력 오류");
         }
 
