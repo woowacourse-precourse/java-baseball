@@ -7,7 +7,6 @@ import baseball.domain.Referee;
 import baseball.domain.User;
 import baseball.util.GameInput;
 import baseball.util.GameOutput;
-
 import java.time.LocalDateTime;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -26,7 +25,7 @@ public class Application {
     Referee referee = Referee.getInstance();
     DB database = DB.getInstance();
 
-    public void startGame() throws IllegalArgumentException {
+    public void startGame() {
         gameOutput.printStartLog();
         computer.generateAnswer();
 
@@ -34,7 +33,13 @@ public class Application {
         while (isContinue) {
             String input = gameInput.getInput();
             user.setInput(input);
-            gameInput.isLegalInput(user.getNumber());
+
+            try {
+                gameInput.isLegalInput(user.getNumber());
+            } catch (IllegalArgumentException illegalArgumentException) {
+                illegalArgumentException = new IllegalArgumentException("입력이 잘못되었습니다. 게임을 종료합니다.");
+                throw illegalArgumentException;
+            }
 
             tryCount++;
 
@@ -45,7 +50,7 @@ public class Application {
                 gameOutput.printGameEndInfo();
                 isContinue = isFinishGame();
             }
-        } // end of While
+        }
 
         finishGame();
     }
@@ -79,11 +84,6 @@ public class Application {
 
     public static void main(String[] args) {
         Application application = new Application();
-        try {
-            application.startGame();
-        } catch (IllegalArgumentException illegalArgumentException) {
-            GameOutput.printInputExceptionLog();
-            throw illegalArgumentException;
-        }
+        application.startGame();
     }
 }
