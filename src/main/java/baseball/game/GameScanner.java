@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameScanner {
     public GameNumber readPlayerNumber() {
         String numberString = Console.readLine();
-        return new GameNumber(numberString);
+        return GameNumber.of(numberString);
     }
 
     public FinishInput readFinishInput() {

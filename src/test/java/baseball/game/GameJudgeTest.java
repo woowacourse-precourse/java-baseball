@@ -21,8 +21,8 @@ class GameJudgeTest {
     class CountExactly {
         @Test
         public void 컴_425_플레이어_123() {
-            GameNumber mockRandomNumber = new GameNumber(425);
-            GameNumber mockPlayerInput = new GameNumber(123);
+            GameNumber mockRandomNumber = GameNumber.of(425);
+            GameNumber mockPlayerInput = GameNumber.of(123);
 
             GameResult result = gameJudge.countAndMakeResult(mockRandomNumber, mockPlayerInput);
 
@@ -31,8 +31,8 @@ class GameJudgeTest {
 
         @Test
         public void 컴_425_플레이어_456() {
-            GameNumber mockRandomNumber = new GameNumber(425);
-            GameNumber mockPlayerInput = new GameNumber(456);
+            GameNumber mockRandomNumber = GameNumber.of(425);
+            GameNumber mockPlayerInput = GameNumber.of(456);
 
             GameResult result = gameJudge.countAndMakeResult(mockRandomNumber, mockPlayerInput);
 
@@ -41,8 +41,8 @@ class GameJudgeTest {
 
         @Test
         public void 컴_425_플레이어_789() {
-            GameNumber mockRandomNumber = new GameNumber(425);
-            GameNumber mockPlayerInput = new GameNumber(789);
+            GameNumber mockRandomNumber = GameNumber.of(425);
+            GameNumber mockPlayerInput = GameNumber.of(789);
 
             GameResult result = gameJudge.countAndMakeResult(mockRandomNumber, mockPlayerInput);
 
@@ -55,8 +55,8 @@ class GameJudgeTest {
     class IsThreeStrike {
         @Test
         public void 모두_스트라이크_일때_true를_반환한다() {
-            GameNumber mockRandomNumber = new GameNumber(789);
-            GameNumber mockPlayerInput = new GameNumber(789);
+            GameNumber mockRandomNumber = GameNumber.of(789);
+            GameNumber mockPlayerInput = GameNumber.of(789);
 
             boolean isThreeStrike = gameJudge.isThreeStrike(mockRandomNumber, mockPlayerInput);
 
@@ -65,8 +65,8 @@ class GameJudgeTest {
 
         @Test
         public void 모두_스트라이크가_아니면_false를_반환한다() {
-            GameNumber mockRandomNumber = new GameNumber(789);
-            GameNumber mockPlayerInput = new GameNumber(127);
+            GameNumber mockRandomNumber = GameNumber.of(789);
+            GameNumber mockPlayerInput = GameNumber.of(127);
 
             boolean isThreeStrike = gameJudge.isThreeStrike(mockRandomNumber, mockPlayerInput);
 
