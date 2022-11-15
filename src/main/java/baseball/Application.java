@@ -27,8 +27,7 @@ public class Application {
             }
 
             game.printInputRequestMsg();
-            userInput = user.requestInputData();
-            List<Integer> userNumList = user.createUserList(userInput);
+            List<Integer> userNumList = getUserNumberList();
 
             strikeScore = game.userNumListAndComNumListCheckStrikeCount(userNumList, computerNumList);
             ballScore = game.userNumListAndComNumListCheckBallCount(userNumList, computerNumList) - strikeScore;
@@ -41,5 +40,12 @@ public class Application {
                 playingGames = false;
             }
         }
+    }
+
+    private static List<Integer> getUserNumberList() {
+        String userInput;
+        userInput = user.requestInputData();
+        List<Integer> userNumList = user.createUserList(userInput);
+        return userNumList;
     }
 }
