@@ -4,6 +4,9 @@ import baseball.game.utils.IntegerValidator;
 import baseball.game.utils.ScoreBoard;
 import java.util.List;
 
+import static baseball.game.config.constants.GameMessage.REQUEST_NUMBER;
+import static baseball.game.config.constants.GameMessage.THREE_OUT_GAME_END;
+
 public class Game {
 
     private Computer computer;
@@ -16,7 +19,7 @@ public class Game {
 
     public static boolean checkGameOver(ScoreBoard scoreBoard) {
         if (scoreBoard.checkStrikeOut()) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(THREE_OUT_GAME_END);
             return false;
         }
         return true;
@@ -27,7 +30,7 @@ public class Game {
 
         while (token) {
 
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(REQUEST_NUMBER);
             List<Integer> presumeNumbers = user.presume();
             IntegerValidator.validatePresume(presumeNumbers);
 

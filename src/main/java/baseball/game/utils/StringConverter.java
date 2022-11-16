@@ -4,11 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.game.config.constants.StringConverterMessage.ONLY_NUMBER;
+import static baseball.game.config.constants.StringConverterMessage.ONLY_ONE_WORD_LIMIT;
+
 public class StringConverter {
 
     public static int toInteger(String input) {
         if (input.length() > 1) {
-            throw new IllegalArgumentException("1글자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(ONLY_ONE_WORD_LIMIT);
         }
         checkChangeableToDigit(input);
         return Integer.parseInt(input);
@@ -27,7 +30,7 @@ public class StringConverter {
 
     private static void checkDigit(char word) {
         if (!Character.isDigit(word)) {
-            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(ONLY_NUMBER);
         }
     }
 }

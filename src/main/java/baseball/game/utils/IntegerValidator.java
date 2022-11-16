@@ -3,6 +3,8 @@ package baseball.game.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.game.config.constants.IntegerValidatorMessage.*;
+
 public class IntegerValidator {
 
     private static final int GAME_NUMBER_SIZE = 3;
@@ -23,13 +25,13 @@ public class IntegerValidator {
 
     public static void validateRestartChoice(int input) {
         if (!RESTART_CHOICE_OPTION.contains(input)) {
-            throw new IllegalArgumentException("선택 옵션에 없는 숫자입니다.");
+            throw new IllegalArgumentException(NOT_IN_OPTION);
         }
     }
 
     private static void checkPresumeSize(List<Integer> numbers) {
         if (numbers.size() != GAME_NUMBER_SIZE) {
-            throw new IllegalArgumentException(GAME_NUMBER_SIZE + "자리 숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(GAME_NUMBER_SIZE + SIZE_ERROR);
         }
     }
 
@@ -44,7 +46,7 @@ public class IntegerValidator {
 
     private static void checkContainNumber(List<Integer> numbers, int number) {
         if (numbers.contains(number)) {
-            throw new IllegalArgumentException("중복된 숫자를 포함할 수 없습니다.");
+            throw new IllegalArgumentException(FORBID_DUPLICATED);
         }
     }
 
