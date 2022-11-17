@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.game.utils.StringConverter;
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class User {

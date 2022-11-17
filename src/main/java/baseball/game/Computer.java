@@ -3,6 +3,7 @@ package baseball.game;
 import baseball.game.utils.NumberFactory;
 import baseball.game.utils.ScoreBoard;
 import baseball.game.utils.ScoreCalculator;
+
 import java.util.List;
 
 public class Computer {

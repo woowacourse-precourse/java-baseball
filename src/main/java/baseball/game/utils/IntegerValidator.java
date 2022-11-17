@@ -3,16 +3,10 @@ package baseball.game.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.game.config.constants.GameRule.*;
 import static baseball.game.config.constants.IntegerValidatorMessage.*;
 
 public class IntegerValidator {
-
-    private static final int GAME_NUMBER_SIZE = 3;
-
-    private static final int START_INCLUSIVE_INTEGER = 1;
-    private static final int END_INCLUSIVE_INTEGER = 9;
-
-    private static final List<Integer> RESTART_CHOICE_OPTION = List.of(1, 2);
 
     public static void validatePresume(List<Integer> numbers) {
         checkPresumeSize(numbers);

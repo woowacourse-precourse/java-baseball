@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.game.utils.IntegerValidator;
 import baseball.game.utils.ScoreBoard;
+
 import java.util.List;
 
 import static baseball.game.config.constants.GameMessage.REQUEST_NUMBER;
