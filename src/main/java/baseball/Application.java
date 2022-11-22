@@ -28,7 +28,6 @@ public class Application {
 		{
 			List<Integer> computer = getRandomNum();
 			nextGameOrNot(computer);
-
 			String number = "";
 			number = Console.readLine();
 			if (!GameOverOrRestart(number)) {
@@ -91,7 +90,7 @@ public class Application {
 		}
 	}
 
-	public static void makeException() {
+	public static void makeException() { // exception 발생 시키는 함수
 		try {
 			throw new IllegalArgumentException();
 		} catch (IllegalArgumentException e) {
@@ -99,7 +98,7 @@ public class Application {
 		}
 	}
 
-	public static boolean returnBallStrike(String number, List<Integer> computer) // "246" 135 비교
+	public static boolean returnBallStrike(String number, List<Integer> computer) // ?볼 ?스트라이크인지 알려줌
 	{
 		int ball = 0;
 		int strike = 0;
@@ -123,12 +122,11 @@ public class Application {
 		return false;
 	}
 
-	public static String makeStringNum(List<Integer> computer) {
+	public static String makeStringNum(List<Integer> computer) { //INTEGER 숫자를 STRING으로 바꿔줌
 		String result = "";
 		for (int i = 0; i < 3; i++) {
 			result += String.valueOf(computer.get(i));
 		}
-
 		return result;
 	}
 }
