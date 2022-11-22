@@ -9,6 +9,7 @@ public class startGame {
 
     public static int makegameStartEnd() {
         List<Integer> newAnswerNumber = answerNumber.makeAnswerNumber();
+        String getNum = getNumber.makeGetNumber();
         Scanner in = new Scanner(System.in);
         int returnNumber = 0;
 
@@ -16,7 +17,7 @@ public class startGame {
 
             List<Integer> newInputNumber = null;
             try {
-                newInputNumber = inputNumber.makeInputNumber();
+                newInputNumber = inputNumber.makeInputNumber(getNum);
             } catch (IllegalArgumentException e) {
                 throw e;
             }

@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class inputNumber {
-    public static List<Integer> makeInputNumber() throws IllegalArgumentException {
+    public static List<Integer> makeInputNumber(String num) throws IllegalArgumentException {
         List<Integer> inputNumber = new ArrayList<>();
         Scanner in = new Scanner(System.in);
 
         System.out.print("숫자를 입력해주세요 : ");
 
-        String num = Console.readLine();
+//        String num = Console.readLine();
 
 
 
