@@ -1,13 +1,11 @@
 package baseball.domain;
 
+import baseball.domain.dto.Score;
 import baseball.system.SystemConstant;
-
-import java.util.List;
 
 public class BaseballManager {
     private BaseballNumber userNumber;
     private BaseballNumber computerNumber;
-    private ScoreManager scoreManager = new ScoreManager();
 
     {
         initComputerNumber();
@@ -17,12 +15,8 @@ public class BaseballManager {
         userNumber = baseballNum1;
     }
 
-    public void computeUserScore() {
-        scoreManager.makeUserScore(userNumber, computerNumber);
-    }
-
-    public List<Integer> getUserScore() {
-        return scoreManager.getUserScore();
+    public Score computeUserScore() {
+        return ScoreCalculator.calculateUserFinalScore(userNumber, computerNumber);
     }
 
     public void initComputerNumber() {

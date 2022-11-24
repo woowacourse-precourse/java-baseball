@@ -1,5 +1,7 @@
 package baseball.domain.dto;
 
+import baseball.system.SystemConstant;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,7 +14,12 @@ public class Score {
         this.strike = strike;
     }
 
-    public ArrayList<Integer> getScore() {
-        return new ArrayList<>(Arrays.asList(ball, strike));
+    public boolean isGameOver() {
+        return strike == SystemConstant.GAME_DIGIT;
+    }
+
+    @Override
+    public String toString() {
+        return "";
     }
 }

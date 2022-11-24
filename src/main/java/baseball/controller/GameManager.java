@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.dto.Score;
 import baseball.system.SystemConstant;
 import baseball.domain.BaseballManager;
 import baseball.domain.BaseballNumber;
@@ -35,21 +36,21 @@ public class GameManager {
     }
 
     private void startLoop() {
-        List<Integer> userScore;
+        Score userScore;
         do {
             outputView.printMessageForData(OutputMsgContainer.GAME_INPUT_MESSAGE);
 
             baseballManager.addUserBaseballNumInfo(
                     new BaseballNumber(inputView.readGameInput()));
             baseballManager.computeUserScore();
-            userScore = baseballManager.getUserScore();
+            userScore = baseballManager.computeUserScore();
 
             outputView.printMessageForData(userScore);
         } while (!isGameOver(userScore));
         outputView.printMessageForData(OutputMsgContainer.GAME_END_AND_RESTART_MESSAGE);
     }
 
-    private boolean isGameOver(List<Integer> userScore) {
-        return userScore.get(1) == SystemConstant.GAME_DIGIT;
+    private boolean isGameOver(Score userScore) {
+        return userScore.isGameOver();
     }
 }
