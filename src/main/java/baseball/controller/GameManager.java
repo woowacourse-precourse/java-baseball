@@ -2,18 +2,15 @@ package baseball.controller;
 
 import baseball.domain.dto.Score;
 import baseball.system.SystemConstant;
-import baseball.domain.BaseballManager;
-import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballGame;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.view.OutputMsgContainer;
 
-import java.util.List;
-
 public class GameManager {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final BaseballManager baseballManager = new BaseballManager();
+    private final BaseballGame baseballGame = new BaseballGame();
 
     public void run() {
         startFirstGame();
@@ -30,7 +27,7 @@ public class GameManager {
         if (flag == SystemConstant.GAME_EXIT_CODE) {
             return;
         }
-        baseballManager.initComputerNumber();
+        baseballGame.initComputerNumber();
         startLoop();
         startRepeatedGame();
     }
@@ -40,11 +37,7 @@ public class GameManager {
         do {
             outputView.printMessageForData(OutputMsgContainer.GAME_INPUT_MESSAGE);
 
-            baseballManager.addUserBaseballNumInfo(
-                    new BaseballNumber(inputView.readGameInput()));
-            baseballManager.computeUserScore();
-            userScore = baseballManager.computeUserScore();
-
+            userScore = baseballGame.computeUserScore(inputView.readGameInput());
             outputView.printMessageForData(userScore);
         } while (!isGameOver(userScore));
         outputView.printMessageForData(OutputMsgContainer.GAME_END_AND_RESTART_MESSAGE);

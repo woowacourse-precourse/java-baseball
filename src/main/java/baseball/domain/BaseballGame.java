@@ -3,19 +3,11 @@ package baseball.domain;
 import baseball.domain.dto.Score;
 import baseball.system.SystemConstant;
 
-public class BaseballManager {
-    private BaseballNumber userNumber;
+public class BaseballGame {
     private BaseballNumber computerNumber;
 
-    {
-        initComputerNumber();
-    }
-
-    public void addUserBaseballNumInfo(BaseballNumber baseballNum1) {
-        userNumber = baseballNum1;
-    }
-
-    public Score computeUserScore() {
+    public Score computeUserScore(int number) {
+        BaseballNumber userNumber = new BaseballNumber(number);
         return ScoreCalculator.calculateUserFinalScore(userNumber, computerNumber);
     }
 
