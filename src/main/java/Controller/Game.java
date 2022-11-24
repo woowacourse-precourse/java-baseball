@@ -1,15 +1,11 @@
 package Controller;
 
-import baseball.Application;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import domain.Computer;
 import domain.User;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Game {
+
     public static String EXITSTATUS = "playing";
 
     public static void start() {
@@ -47,7 +43,7 @@ public class Game {
     public static String readLine() {
         String input = Console.readLine();
 
-        Utils.check_input(input);
+        validation.check_input(input);
         return input;
 
     }

@@ -5,7 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Utils {
+public class validation {
+
 
     public static List<Integer> get_ThreeRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
@@ -43,10 +44,11 @@ public class Utils {
     }
 
     public static void check_input(String input) {
-        if (overlap_Check(input)) throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        if (blank_Check(input)) throw new IllegalArgumentException("값을 입력해주세요.");
-        if (length_check(input)) throw new IllegalArgumentException("3글자 수가 아닙니다.");
-        if (zeroOrNumber_check(input)) throw new IllegalArgumentException("1~9숫자를 입력해주세요.");
+
+        if (overlap_Check(input)) throw exception.OVERLAP_EXCEPTION.getexception();
+        if (blank_Check(input)) throw exception.INPUT_BLANK_EXCEPTION.getexception();
+        if (length_check(input)) throw exception.NOT_EXACT_FORMAT_EXCEPTION.getexception();
+        if (zeroOrNumber_check(input)) throw exception.NOT_NUMBER_RANGE_EXCEPTION.getexception();
 
     }
 
