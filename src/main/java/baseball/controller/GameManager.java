@@ -3,15 +3,15 @@ package baseball.controller;
 import baseball.system.SystemConstant;
 import baseball.domain.BaseballManager;
 import baseball.domain.BaseballNumber;
-import baseball.view.InputHandler;
-import baseball.view.OutputHandler;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import baseball.view.OutputMsgContainer;
 
 import java.util.List;
 
 public class GameManager {
-    private final InputHandler inputHandler = new InputHandler();
-    private final OutputHandler outputHandler = new OutputHandler();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
     private final BaseballManager baseballManager = new BaseballManager();
 
     public void run() {
@@ -20,12 +20,12 @@ public class GameManager {
     }
 
     private void startFirstGame() {
-        outputHandler.printMessageForData(OutputMsgContainer.GAME_START_MESSAGE);
+        outputView.printMessageForData(OutputMsgContainer.GAME_START_MESSAGE);
         startLoop();
     }
 
     private void startRepeatedGame() {
-        int flag = inputHandler.readGameControlInput();
+        int flag = inputView.readGameControlInput();
         if (flag == SystemConstant.GAME_EXIT_CODE) {
             return;
         }
@@ -37,16 +37,16 @@ public class GameManager {
     private void startLoop() {
         List<Integer> userScore;
         do {
-            outputHandler.printMessageForData(OutputMsgContainer.GAME_INPUT_MESSAGE);
+            outputView.printMessageForData(OutputMsgContainer.GAME_INPUT_MESSAGE);
 
             baseballManager.addUserBaseballNumInfo(
-                    new BaseballNumber(inputHandler.readGameInput()));
+                    new BaseballNumber(inputView.readGameInput()));
             baseballManager.computeUserScore();
             userScore = baseballManager.getUserScore();
 
-            outputHandler.printMessageForData(userScore);
+            outputView.printMessageForData(userScore);
         } while (!isGameOver(userScore));
-        outputHandler.printMessageForData(OutputMsgContainer.GAME_END_AND_RESTART_MESSAGE);
+        outputView.printMessageForData(OutputMsgContainer.GAME_END_AND_RESTART_MESSAGE);
     }
 
     private boolean isGameOver(List<Integer> userScore) {
