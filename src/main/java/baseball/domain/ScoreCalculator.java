@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.domain.dto.Score;
 import baseball.system.SystemConstant;
 
 import java.util.stream.Stream;

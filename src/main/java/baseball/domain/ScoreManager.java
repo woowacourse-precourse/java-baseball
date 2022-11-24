@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.dto.Score;
+
 import java.util.List;
 
 public class ScoreManager {
