@@ -1,25 +1,24 @@
 package baseball.view;
 
+import baseball.verifier.BaseballNumVerifier;
 import baseball.verifier.ControlNumberVerifier;
-import baseball.verifier.GameVerifier;
 import baseball.verifier.Verifier;
 import camp.nextstep.edu.missionutils.Console;
 
 public final class InputHandler {
     public int readGameInput() {
-        String line = readLine();
-        GameVerifier.check(line);
+        String line = Console.readLine();
+
+        Verifier baseballNumVerifier = new BaseballNumVerifier();
+        baseballNumVerifier.check(line);
         return Integer.parseInt(line);
     }
 
     public int readGameControlInput() {
-        String line = readLine();
+        String line = Console.readLine();
+
         Verifier controlVerifier = new ControlNumberVerifier();
         controlVerifier.check(line);
         return Integer.parseInt(line);
-    }
-
-    private String readLine() {
-        return Console.readLine();
     }
 }
