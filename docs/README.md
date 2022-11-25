@@ -1,71 +1,44 @@
-기능 구현 목록(2주차 : 숫자 야구 게임)-최종
+기능 구현 (2주차 : 숫자 야구 게임)
 ===
 ---
-## ✨설계 계획
-- 1회성 게임으로 기능을 구현 및 검증
-  - 구현메서드 : `void game()`
-- 1회성 게임 Test 후, `main`메서드에서 `game`메서드 호출하여 다회성 게임으로 구현
-- 최종 테스트 검증 및 리팩토링
+## ✨ 클래스의 분리
+- [IO class] : 입출력을 위한 메시지, 입력된 값에 대한 검증메서드를 관리
+- [Game class] : 게임과 관련된 사항을 관리
+- [Controller class] : IO와 Game class를 이용한 숫자야구게임 프로그램을 구성
 
 
-## 🍀 1회성 게임 기능 구현 메서드 : `void game()`
-> 1회에 해당하는 게임을 실행<br>
-> 실행 시, 결과에 대한 내용을 콘솔창에 출력(ex. 1볼 2스트라이크)
+## 🍀 IO Class
+```
+게임의 입출력과 관련된 기능을 구성하였다. 
+사용자의 입력과 출력과 관련한 메시지가 필요하며, 이 메시지들은 상수필드를 통해 관리한다.
+사용자의 콘솔 입력을 위한 기능이과 이 입력이 올바른 값인지 검증하는 기능이 요구된다.
 
-1. `List<Integer> createRandomThreeDigitNumber()` :
-   - 중복되지 않은 랜덤한 3자리 숫자를 List에 담아 반환
+해당 클래스의 메서드들은 static 접근제어자로 구성하였다. 
+Contorller를 통해 게임의 흐름을 제어함에 있어서, IO라는 객체를 생성해야할 필요성은 없기에
+static 메서드로 호출되는 것이, 보다 유효하다 판단하였다.
+```
+ - [x] 게임을 위한 메시지를 콘솔에 출력하는 기능
+ - [x] 사용자의 숫자를 콘솔을 통해 입력받는 기능
+ - [x] 사용자가 입력한 숫자의 유효성을 검증하는 기능
 
+## 🍀 Game Class
+```
+게임 진행을 위한 기능을 구성하였다.
+게임의 상태와 관련된 값 및 게임에서 만들어지는 데이터를 관리한다.
+컴퓨터가 생성한 값과 사용자의 입력 값에 대한 정보를 가져야 하며,
+이 값의 비교를 통해 연산을 수행 및 게임 결과를 생성해 낸다.
 
-2. `List<Integer> userInputToList(String userInput)` :
-   - String으로 입력된 user의 입력을 List로 반환
+IO와 같은 외부 클래스의 호출없이, 기능을 구성하고자 하였으며 이를 통해 캡슐화를 추구하였다.
+값을 입력받고, 그 값을 처리하는 등의 객체간 상호작용은 controller에서 수행될 수 있을 것이다.
+```
+- [x] 컴퓨터가 세자리의 랜덤한 숫자를 생성하며, 이를 저장하는 기능
+- [x] 사용자가 입력한 값을 파라미터로 받아, 이를 저장하는 기능
+- [x] 컴퓨터 및 사용자 값에 대해, 스트라이크와 볼 수를 계산하는 기능
+- [x] 사용자의 재시작/종료 입력에 대해, 게임의 상태값을 조정하는 기능 
 
-
-3. `List<Integer> strikeAndBallCounter(List<Integer> computer, List<Integer> user) ` :
-   - computer와 user의 숫자를 비교하여, 스트라이크/볼 개수를 List에 담아 반환
-   - 스트라이크/볼 카운팅을 위해, 자료구조로 Map 사용
-   - 메서드 호출 스택
-     - `countDigitMatched(computer, user)`
-     - `countContainedAll(computer, user)`
-
-
-4. `int countDigitMatched(List<Integer> computer, List<Integer> user)` :
-    - computer 와 user의 List의 동일한 index에 동일한 값을 가지는 개수를 반환
-
-
-5. `int countContainedAll(List<Integer> computer, List<Integer> user)` :
-    - user List를 순서대로 읽고, computer List에 포함되는 값의 개수를 반환 
-
-6. `void printResult(int strikes, int balls)` :
-    - 스트라이크/볼 개수에 따른 출력
-
-
-7. `void inputValidationOfUser(String input)` :
-    - 사용자의 야구게임을 위한 숫자 입력 유효성 검증
-    - 유효하지 않을 경우 `IllegalArgumentException` 발생 및 애플리케이션 종료
-
-
-8. `void inputValidationOfStartEndCondition(String input)` :
-    - 게임 종료 후, [재시작 / 종료] 입력의 유효성 검증
-    - 유효하지 않을 경우 `IllegalArgumentException` 발생 및 애플리케이션 종료
-
-
-## 🍀 다회성 게임 기능 구현
-> `main()`메서드에 기능 구현<br>
-> `while`내부 `game()` 메서드를 호출하여 반복 가능한 게임을 구현<br>
-> 3스트라이크 성공하여 게임 종료시, 게임 재시작(1) or 종료(2)에 관한 사용자의 입력을 요청
-> 재시작 종료에 대한 입력은 `runState` 에 저장하며, while문은 이 상태값을 참조하여 재시작과 종료 판단
-
-## 🍀 테스트 검증(MyTest)
-- [x] `inputValidationOfUser(String input)` 테스트 완료
-  - 사용자가 입력한 값이 유효한 입력인지 검증<br></br>
-- [x] `inputValidationOfStartEndCondition(String input) ` 테스트 완료
-  - 게임 종료 시, 사용자가 재시작/종료 여부에 대한 입력이 유효한지 검증 <br></br>
-- [x] `createRandomThreeDigitNumber()` 테스트 완료
-  - 컴퓨터가 세자리의 중복되지 않은 숫자값을 만들어 내는지 검증<br></br>
-- [x] `strikeAndBallCounter(List<Integer> computer, List<Integer> user)` 테스트 완료
-  - 컴퓨터와 유저의 값을 비교하여, 스트라이크/볼 수를 센 결과를 검증<br></br>
-- [x] `printResult(int strikes, int balls) ` 테스트 완료
-  - 콘솔에 출력된 결과가 유효한지 검증 
-
-## 🍀 Future work
-    Junit Test Code 추가 학습
+## 🍀 Controller Class
+```aidl
+IO 및 Game 클래스를 호출하여, 게임의 진행 로직에 대한 부분을 담당한다.
+Controller를 통해서 사용자 입출력에 대한 정보와 Game 클래스가 상호작용 하도록 하였으며,
+되도록 게임의 로직이 쉽고 간단하게 드러날 수 있도록 하였다.
+```
