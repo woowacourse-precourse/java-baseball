@@ -9,17 +9,16 @@ public final class OutputView {
     private final String DELIMITER = " ";
 
     public void printResult(Score userScore) {
-        printMessage(userScore);
+        System.out.println(makeUserScoreMessage(userScore));
     }
 
-    private void printMessage(Score score) {
+    private String makeUserScoreMessage(Score score) {
         if (score.isZeroPoint()) {
-            System.out.println(NOTHING);
-            return;
+            return NOTHING;
         }
-        System.out.println(makeBallMessageIfExists(score.getBall()) +
+        return makeBallMessageIfExists(score.getBall()) +
                 DELIMITER +
-                makeStrikeMessageIfExists(score.getStrike()));
+                makeStrikeMessageIfExists(score.getStrike());
     }
 
     private String makeBallMessageIfExists(int ballCount) {
