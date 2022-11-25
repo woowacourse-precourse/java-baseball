@@ -37,6 +37,10 @@ public class IO {
         validate(input);
         return input;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d8ee934 ([Refactoring] All-new)
     private static void validate(String input) {
         validateFormat(input);
         validateHasDuplicatedNumber(input);
@@ -76,6 +80,10 @@ public class IO {
         validateRetryInput(retryInput);
         return retryInput;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d8ee934 ([Refactoring] All-new)
     private static void validateRetryInput(String retryInput) {
         if (!retryInput.matches("[1]|[2]")){
             throw new IllegalArgumentException();

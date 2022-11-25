@@ -1,5 +1,6 @@
 package baseball;
 
+import java.io.PrintStream;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -11,11 +12,18 @@ public class Application {
 
         int runState = 0;
         while (runState != 2) {
-            runState = game();
+            game();
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String conditionOfStartOrEnd = Console.readLine();
+            inputValidationOfStartEndCondition(conditionOfStartOrEnd);
+            runState = Integer.parseInt(conditionOfStartOrEnd);
         }
     }
 
-    static int game() {
+    /* Single game method */
+    static void game() {
         List<Integer> computer = createRandomThreeDigitNumber();
         List<Integer> user;
 
@@ -31,16 +39,9 @@ public class Application {
             int balls = strikesAndBalls.get(1);
             printResult(strikes, balls);
         }
-
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String startEndCondition = Console.readLine();
-        inputValidationOfStartEndCondition(startEndCondition);
-
-        return Integer.parseInt(startEndCondition);
     }
 
-
+    /* Method area for single game implementation */
     static List<Integer> createRandomThreeDigitNumber() {
         List<Integer> computer = new ArrayList<>();
 
@@ -109,7 +110,7 @@ public class Application {
         System.out.printf("%d볼 %d스트라이크\n", balls, strikes);
     }
 
-
+    /* Method area for input validation check */
     static void inputValidationOfUser(String input) {
         //1~9 범위의 숫자가 아닌 문자를 포함하는 경우
         String temp = input.replaceAll("[1-9]", "");

@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+<<<<<<< HEAD
 
     public static final String CONTINUE = "1";
 
+=======
+>>>>>>> d8ee934 ([Refactoring] All-new)
     public List<Integer> result;
     public boolean runState = true;
 
@@ -55,7 +58,11 @@ public class Game {
     }
 
     public void retry(String retryCommand) {
+<<<<<<< HEAD
         if (retryCommand.equals(CONTINUE)) {
+=======
+        if (retryCommand.equals("1")) {
+>>>>>>> d8ee934 ([Refactoring] All-new)
             runState = true;
             setComputerNumber();
             return;
@@ -63,9 +70,12 @@ public class Game {
 
         runState = false;
     }
+<<<<<<< HEAD
 
 
     void setComputerForTest(List<Integer> list) {
         computer = list;
     }
+=======
+>>>>>>> d8ee934 ([Refactoring] All-new)
 }
