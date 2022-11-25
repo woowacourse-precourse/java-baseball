@@ -42,7 +42,7 @@ public class GameManager {
         Score userScore;
         do {
             userScore = baseballGame.computeUserScore(inputView.readGameInput());
-            outputView.printProgress(userScore);
+            outputView.printResult(userScore);
         } while (!isGameOver(userScore));
         System.out.println(GAME_END_AND_RESTART_MESSAGE);
     }

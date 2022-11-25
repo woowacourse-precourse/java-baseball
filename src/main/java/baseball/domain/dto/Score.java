@@ -22,4 +22,8 @@ public class Score {
     public boolean isGameOver() {
         return strike == SystemConstant.GAME_DIGIT;
     }
+
+    public boolean isZeroPoint() {
+        return ball == 0 && strike == 0;
+    }
 }
