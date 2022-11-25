@@ -45,6 +45,6 @@ public class Computer {
     }
 
     public List<Integer> getComputerNumber() {
-        return Collections.unmodifiableList(computerNumber);
+        return computerNumber;
     }
 }
