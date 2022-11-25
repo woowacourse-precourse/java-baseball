@@ -13,7 +13,7 @@ public class NumbersValidator {
     public static void validateNonNumeric(String input) {
         String changeTypeString = String.valueOf(input);
         for (char charString : changeTypeString.toCharArray()) {
-            if (charString >= 48 && charString <= 57) {
+            if ((int) charString >= 48 && (int) charString <= 57) {
                 continue;
             }
             throw new IllegalArgumentException(NON_NUMERIC_ERROR_MESSAGE);
