@@ -8,7 +8,7 @@ public class BaseballGame {
 
     public Score computeUserScore(int number) {
         BaseballNumber userNumber = new BaseballNumber(number);
-        return ScoreCalculator.calculateUserFinalScore(userNumber, computerNumber);
+        return Referee.makeScore(userNumber, computerNumber);
     }
 
     public void initComputerNumber() {
