@@ -2,9 +2,6 @@ package baseball.domain.dto;
 
 import baseball.system.SystemConstant;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Score {
     private final int ball;
     private final int strike;
@@ -14,12 +11,15 @@ public class Score {
         this.strike = strike;
     }
 
-    public boolean isGameOver() {
-        return strike == SystemConstant.GAME_DIGIT;
+    public int getBall() {
+        return ball;
     }
 
-    @Override
-    public String toString() {
-        return "";
+    public int getStrike() {
+        return strike;
+    }
+
+    public boolean isGameOver() {
+        return strike == SystemConstant.GAME_DIGIT;
     }
 }

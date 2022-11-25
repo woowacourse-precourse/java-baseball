@@ -3,8 +3,6 @@ package baseball.view;
 import baseball.domain.dto.Score;
 import baseball.system.SystemConstant;
 
-import java.util.List;
-
 public final class OutputView {
     private final String BALL = "볼";
     private final String STRIKE = "스트라이크";
@@ -14,38 +12,39 @@ public final class OutputView {
             "게임을 새로 시작하려면 " + SystemConstant.GAME_RESTART_CODE +
             ", 종료하려면 " + SystemConstant.GAME_EXIT_CODE + "를 입력하세요.\n";
 
-
-    public void printProgress(Score data) {
-        printMessage(data);
+    public void printFinalResult(Score userScore) {
+        printProgress(userScore);
+        System.out.println(GAME_END_AND_RESTART_MESSAGE);
     }
 
-    public void printFinalResult(Score data) {
-        printMessage(data);
+    public void printProgress(Score userScore) {
+        printMessage(userScore);
     }
+    
 
-    public static void printMessage(Score score) {
-        if (score.get(0) == 0 && score.get(1) == 0) {
-            System.out.println(NOTHING.message);
+    private void printMessage(Score score) {
+        if (score.getBall() == 0 && score.getStrike() == 0) {
+            System.out.println(NOTHING);
             return;
         }
         System.out.println(
-                makeBallMessageIfExists(score.get(0))
-                        + SPACE.message
-                        + makeStrikeMessageIfExists(score.get(1))
+                makeBallMessageIfExists(score.getBall())
+                        + " "
+                        + makeStrikeMessageIfExists(score.getStrike())
         );
     }
 
-    private static String makeBallMessageIfExists(int ballCount) {
+    private String makeBallMessageIfExists(int ballCount) {
         if (ballCount == 0) {
             return "";
         }
-        return ballCount + BALL.message;
+        return ballCount + BALL;
     }
 
-    private static String makeStrikeMessageIfExists(int strikeCount) {
+    private String makeStrikeMessageIfExists(int strikeCount) {
         if (strikeCount == 0) {
             return "";
         }
-        return strikeCount + STRIKE.message;
+        return strikeCount + STRIKE;
     }
 }
