@@ -5,7 +5,7 @@ import java.util.List;
 import baseball.utils.ListUtility;
 
 public class BaseballNumber {
-    public final List<Integer> splitNumber;
+    private final List<Integer> splitNumber;
 
     public BaseballNumber(int number) {
         this.splitNumber = ListUtility.splitDigitsIntoList(number);
