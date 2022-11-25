@@ -11,13 +11,14 @@ import static baseball.view.InputView.getPlayerRandomNumbers;
 
 public class BaseBallGame {
     private RandomNumbers computerNumbers;
+    private final static String SUCCESS = "3스트라이크";
 
     private void getRandomNumbers() {
         computerNumbers = new RandomNumbers();
     }
 
     public void startGame() {
-        boolean play = true;
+        boolean play;
         OutputView.printStartMessage();
         do {
             getRandomNumbers();
@@ -30,7 +31,7 @@ public class BaseBallGame {
             List<Integer> playerNumbers = getPlayerRandomNumbers();
             GameLogic result = new GameLogic(computerNumbers, playerNumbers);
             OutputView.printResult(result);
-            if (result.equals("3스트라이크")) {
+            if (result.equals(SUCCESS)) {
                 OutputView.printSuccessMessage();
                 return InputView.restartOrEndGame();
             }
