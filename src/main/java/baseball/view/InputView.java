@@ -1,26 +1,33 @@
 package baseball.view;
 
-import static baseball.util.NumberValidator.validateNumberLength;
-import static baseball.util.NumberValidator.validateNumberType;
+import static baseball.util.NumberValidator.getValidUserNumber;
+import static baseball.util.NumberValidator.validateLength;
+import static baseball.util.NumberValidator.validateType;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
 
     public List<Integer> readUserNumber() {
-        String input = Console.readLine();
-        System.out.println(input);
-        // 세 자리 숫자가 아니면 예외 처리한다.
-        validateNumberType(input);
-        validateNumberLength(input);
-        // 각 숫자가 1부터 9까지의 숫자가 아니면 예외 처리한다.
-        // split to list
+        List<Integer> userNumber = new ArrayList<>();
+        while (userNumber.isEmpty()) {
+            userNumber = getValidUserNumber(Console.readLine());
+        }
+        return userNumber;
+    }
 
-        // validation
-
-        return List.of(0, 0, 0);
+    private static List<Integer> getValidUserNumber(String input) {
+        try {
+            validateLength(input);
+            validateType(input);
+        } catch (IllegalArgumentException e) {
+            System.out.printf(e.getMessage());
+            return new ArrayList<>();
+        }
+        return Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 }
