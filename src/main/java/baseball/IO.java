@@ -37,7 +37,6 @@ public class IO {
         validate(input);
         return input;
     }
-
     private static void validate(String input) {
         validateFormat(input);
         validateHasDuplicatedNumber(input);
@@ -77,7 +76,6 @@ public class IO {
         validateRetryInput(retryInput);
         return retryInput;
     }
-
     private static void validateRetryInput(String retryInput) {
         if (!retryInput.matches("[1]|[2]")){
             throw new IllegalArgumentException();
