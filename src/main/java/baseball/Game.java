@@ -60,4 +60,9 @@ public class Game {
 
         runState = false;
     }
+
+
+    void setComputerForTest(List<Integer> list) {
+        computer = list;
+    }
 }
