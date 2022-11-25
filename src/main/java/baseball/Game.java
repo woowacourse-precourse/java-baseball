@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+
+    public static final String CONTINUE = "1";
+
     public List<Integer> result;
     public boolean runState = true;
 
@@ -52,7 +55,7 @@ public class Game {
     }
 
     public void retry(String retryCommand) {
-        if (retryCommand.equals("1")) {
+        if (retryCommand.equals(CONTINUE)) {
             runState = true;
             setComputerNumber();
             return;

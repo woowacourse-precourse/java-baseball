@@ -15,13 +15,16 @@ public class gameController {
             game.calculateBallAndStrikeResult();
 
             List<Integer> result = game.result;
-            IO.printResult(result.get(0), result.get(1));
+            int ballCounts = result.get(0);
+            int strikeCounts = result.get(1);
+            IO.printResult(ballCounts, strikeCounts);
 
-            if (result.get(1) == 3) {
+            if (strikeCounts == 3) {
                 IO.printClearMSG();
                 IO.printRestartMSG();
                 game.retry(IO.retryInput());
             }
         }
     }
+
 }
