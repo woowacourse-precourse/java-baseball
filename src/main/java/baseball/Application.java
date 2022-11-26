@@ -1,20 +1,15 @@
 package baseball;
 
-import baseball.objects.Computer;
-import baseball.objects.Game;
-import baseball.objects.Player;
-import baseball.objects.Referee;
-import baseball.view.View;
+import baseball.domain.*;
+import baseball.generator.BaseBallNumberGenerator;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        View.start();
-        boolean isRestart;
-        do {
-            Game game = new Game(new Computer(), new Referee(), new Player());
-            isRestart = game.start();
+        Game game = new Game(new Computer(new BaseBallNumberGenerator()), new Player(), new Referee());
 
-        } while (isRestart);
+        boolean isPass = false;
+        while (!isPass) {
+            isPass = game.isRestartOrEnd(game.start());
+        }
     }
 }
