@@ -48,3 +48,7 @@ Controller를 통해서 사용자 입출력에 대한 정보와 Game 클래스�
 구현한 기능에 대한 테스트 코드 작성 완료 및 검증 수행 완료.
 미션 Test code 검증 완료.
 ```
+
+
+## 🐋 Reference Diagram
+<p align="center"><img src="./baseball_diagram.png" width="300">

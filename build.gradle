@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.0.0'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 }
 
 java {
