@@ -18,11 +18,6 @@ public class Computer {
 	public void makeRandomNumber() {
 		initRandomNumber();
 		selectNumber();
-
-		// for(Integer number:randomNumber){
-		// 	System.out.print(number);
-		// }
-		// System.out.println();
 	}
 
 	private void initRandomNumber() {
