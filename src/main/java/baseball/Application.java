@@ -8,9 +8,9 @@ public class Application {
         Game game = new Game(new Referee(new Computer(new BaseBallNumberGenerator(), new Compare())));
         Player player = new Player();
 
-        boolean isPass = game.start(player);
-        while (!isPass) {
-            isPass = game.isRestartOrEnd(isPass);
+        boolean isRestart = false;
+        while (!isRestart) {
+            isRestart = game.isRestartOrEnd(game.start(player));
         }
     }
 }

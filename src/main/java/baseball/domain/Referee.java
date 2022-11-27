@@ -8,7 +8,7 @@ public class Referee {
         this.computer = computer;
     }
 
-    public boolean gameStart(Player player) {
-        return computer.compareTo(player);
+    public boolean compareStart(Player player) {
+        return computer.compare(player);
     }
 }

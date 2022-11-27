@@ -13,22 +13,18 @@ public class Game {
 
     public boolean start(Player player) {
         OutputView.printStart();
-
-        boolean isPass = false;
-        while (!isPass) {
-            isPass = referee.gameStart(player);
-        }
+        boolean isPass = referee.compareStart(player);
         OutputView.printEnd();
-        return true;
+        return isPass;
     }
 
     public boolean isRestartOrEnd(boolean isPass) {
         int num = Integer.parseInt(InputView.readRestartOrEnd());
 
         if (num == 1) {
-            return !isPass;
+            return isPass;
         }
 
-        return isPass;
+        return !isPass;
     }
 }

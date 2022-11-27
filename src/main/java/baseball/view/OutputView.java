@@ -18,24 +18,6 @@ public class OutputView {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void toOutputView(int strikeCount, int ballCount) {
-        if (strikeCount != 0 && ballCount == 0)  {
-            OutputView.printStrike(strikeCount);
-        }
-
-        if (strikeCount == 0 && ballCount != 0) {
-            OutputView.printBall(ballCount);
-        }
-
-        if (strikeCount != 0 && ballCount != 0) {
-            OutputView.printBallAndStrike(ballCount, strikeCount);
-        }
-
-        if (strikeCount == 0 && ballCount == 0) {
-            OutputView.printNothing();
-        }
-    }
-
     public static void printStrike(int strikeCount) {
         System.out.printf("%d스트라이크\n", strikeCount);
     }
