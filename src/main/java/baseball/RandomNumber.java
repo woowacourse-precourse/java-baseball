@@ -4,12 +4,12 @@ public class RandomNumber {
     private Integer randomNumber;
 
     private RandomNumber(Integer randomNumber) {
-        Exception.randomNumberRangeException(randomNumber);
+        Exception.isRandomNumberRangeException(randomNumber);
         this.randomNumber = randomNumber;
     }
 
     public static RandomNumber valueOf(Integer randomNumber) {
-        Exception.randomNumberRangeException(randomNumber);
+        Exception.isRandomNumberRangeException(randomNumber);
 
         return new RandomNumber(randomNumber);
     }
