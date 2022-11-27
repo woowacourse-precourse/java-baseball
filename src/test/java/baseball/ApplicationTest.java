@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.validation.Validation;
+import baseball.view.View;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,9 +14,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 class ApplicationTest extends NsTest {
 
@@ -27,7 +29,7 @@ class ApplicationTest extends NsTest {
 		player = new Player();
 
 		randomNumberList = computer.getRandomNumber();
-		userNumberList = player.getUserNumberList();
+		userNumberList = player.getPlayerNumberList();
 	}
 
 	@Test
@@ -72,7 +74,7 @@ class ApplicationTest extends NsTest {
 	void isSameNumberExistInRandomNumber_메서드로_숫자_중복_알아냄() {
 		int input = randomNumberList.get(0);
 
-		assertThat(Checker.isSameNumberExistInRandomNumber(input, randomNumberList)).isTrue();
+		assertThat(Validation.isSameNumberExistInRandomNumber(input, randomNumberList)).isTrue();
 	}
 
 	@Test
@@ -84,7 +86,7 @@ class ApplicationTest extends NsTest {
 
 	@Test
 	void 사용자_입력_범위_테스트() {
-		int input = 123;
+		String input = "123";
 		player.separateNumbersByUnit(input);
 
 		assertThat(userNumberList.stream().allMatch(n -> n >= 1 && n <= 9)).isTrue();
@@ -111,7 +113,7 @@ class ApplicationTest extends NsTest {
 
 	@Test
 	void 사용자_입력_중복_테스트() {
-		int input = 123;
+		String input = "123";
 
 		player.separateNumbersByUnit(input);
 
@@ -124,14 +126,14 @@ class ApplicationTest extends NsTest {
 
 	@Test
 	void separateNumbersByUnit_메서드로_각_자릿수_구분() {
-		int input = 123;
+		String input = "123";
 
-		player.getUserNumberList().clear();
+		player.getPlayerNumberList().clear();
 		player.separateNumbersByUnit(input);
 
-		assertThat(player.getUserNumberList().get(0)).isEqualTo(1);
-		assertThat(player.getUserNumberList().get(1)).isEqualTo(2);
-		assertThat(player.getUserNumberList().get(2)).isEqualTo(3);
+		assertThat(player.getPlayerNumberList().get(0)).isEqualTo(1);
+		assertThat(player.getPlayerNumberList().get(1)).isEqualTo(2);
+		assertThat(player.getPlayerNumberList().get(2)).isEqualTo(3);
 	}
 
 	@Test

@@ -2,6 +2,12 @@ package baseball;
 
 import java.util.List;
 
+import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.input.Input;
+import baseball.validation.Validation;
+import baseball.view.View;
+
 public class Game {
 	private static final int MAX_STRIKE = 3;
 	private static final int INIT_INDEX = 0;
@@ -20,10 +26,10 @@ public class Game {
 
 			View.showEndOrRestartGuideMessage();
 			String userInput = Input.inputNumber();
-			Checker.userInputChecker(userInput, END_OR_RESTART_INPUT_LENGTH, player.getUserNumberList());
+			Validation.userInputChecker(userInput, END_OR_RESTART_INPUT_LENGTH, player.getPlayerNumberList());
 
-			isEnd = Checker.checkEndGame(Integer.parseInt(userInput));
-			Checker.checkReStart(computer, !isEnd);
+			isEnd = Validation.checkEndGame(Integer.parseInt(userInput));
+			Validation.checkReStart(computer, !isEnd);
 		} while (!isEnd);
 	}
 
@@ -35,10 +41,10 @@ public class Game {
 			View.showUserInputGuideMessage();
 
 			String userInput = Input.inputNumber();
-			Checker.userInputChecker(userInput, NUMBERS_INPUT_LENGTH, player.getUserNumberList());
-			player.addUserNumberInList(userInput);
+			Validation.userInputChecker(userInput, NUMBERS_INPUT_LENGTH, player.getPlayerNumberList());
+			player.addPlayerNumberInList(userInput);
 
-			calculateStrikeAndBall(computer.getRandomNumber(), player.getUserNumberList());
+			calculateStrikeAndBall(computer.getRandomNumber(), player.getPlayerNumberList());
 
 			View.showResult(ball, strike, INIT_STRIKE_AND_BALL);
 		} while (strike != MAX_STRIKE);
@@ -65,9 +71,9 @@ public class Game {
 
 	private void strikeOrBall(int userNumber, int computerNumber, List<Integer> randomNumber) {
 
-		if (Checker.isStrike(computerNumber, userNumber)) {
+		if (Validation.isStrike(computerNumber, userNumber)) {
 			strike++;
-		} else if (Checker.isBall(userNumber, randomNumber)) {
+		} else if (Validation.isBall(userNumber, randomNumber)) {
 			ball++;
 		}
 
