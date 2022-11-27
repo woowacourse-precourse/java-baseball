@@ -1,42 +1,42 @@
 package domain;
 
+import Controller.validation;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private static String INPUT;
+    private String INPUT;
 
-    public static void setNumber(String input) {
-        User.INPUT = input;
+    public User(String input) {
+        validation.check_input(input);
+        INPUT=input;
     }
 
-    public static String getNumber() {
-        return User.INPUT;
+    public String getNumber() {
+        return INPUT;
     }
 
-    public static int strike_count() {
-        int STRIKE_COUNTERNUMBER = 0;
+    public int strike_count() {
+        int STRIKE_COUNT_NUMBER=0;
         for (int index = 0; index < 3; index++) {
             if (Computer.getNumber().charAt(index) == getNumber().charAt(index)) {
-                STRIKE_COUNTERNUMBER++;
+                STRIKE_COUNT_NUMBER++;
             }
         }
-        return STRIKE_COUNTERNUMBER;
+
+        return STRIKE_COUNT_NUMBER;
     }
 
-    public static int ball_count() {
-        int BALL_COUNTNUMBER = 0;
+    public int ball_count() {
+        int BALL_COUNT_NUMBER=0;
         for (int index = 0; index < 3; index++) {
-            if (Computer.getNumber_List().get(index) == Character.getNumericValue(User.getNumber().charAt(index))) {
-                continue;
-            }
-
-            if (Computer.getNumber_List().contains(Character.getNumericValue((User.getNumber().charAt(index))))) {
-                BALL_COUNTNUMBER++;
+            if (Computer.getNumber_List().contains(Character.getNumericValue((getNumber().charAt(index))))) {
+                BALL_COUNT_NUMBER++;
             }
 
         }
-        return BALL_COUNTNUMBER;
+        return BALL_COUNT_NUMBER;
     }
 }
 
