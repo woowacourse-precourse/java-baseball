@@ -22,17 +22,17 @@ class NumbersTest {
         assertThatThrownBy(() -> new Numbers(Arrays.asList(-1,3,8))).isInstanceOf(IllegalArgumentException.class);
     }
 
-//    @Test
-//    void countStrike_올바른_반환값() {
-//        Numbers baseball1 = new Numbers(Arrays.asList(1,2,3));
-//        Numbers baseball2 = new Numbers(Arrays.asList(1,5,3));
-//        assertThat(baseball1.countStrike(baseball2)).isEqualTo(2);
-//    }
-//
-//    @Test
-//    void countBall_올바른_반환값() {
-//        Numbers baseball1 = new Numbers(Arrays.asList(1,2,3));
-//        Numbers baseball2 = new Numbers(Arrays.asList(3,5,2));
-//        assertThat(baseball1.countBall(baseball2)).isEqualTo(2);
-//    }
+    @Test
+    void countSameNumber_올바른_반환값() {
+        Numbers number = new Numbers(Arrays.asList(1,2,3));
+        Numbers other = new Numbers(Arrays.asList(2,1,3));
+        assertThat(number.countSameNumber(other)).isEqualTo(3);
+    }
+
+    @Test
+    void countCorrectNumber_올바른_반환값() {
+        Numbers number = new Numbers(Arrays.asList(1,2,3));
+        Numbers other = new Numbers(Arrays.asList(1,5,2));
+        assertThat(number.countCorrectNumber(other)).isEqualTo(1);
+    }
 }
