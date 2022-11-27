@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private String INPUT;
+    private final String INPUT;
 
     public User(String input) {
         validation.check_input(input);
@@ -36,7 +36,7 @@ public class User {
             }
 
         }
-        return BALL_COUNT_NUMBER;
+        return BALL_COUNT_NUMBER-strike_count();
     }
 }
 
