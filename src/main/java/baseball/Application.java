@@ -5,11 +5,12 @@ import baseball.generator.BaseBallNumberGenerator;
 
 public class Application {
     public static void main(String[] args) {
-        Game game = new Game(new Computer(new BaseBallNumberGenerator()), new Player(), new Referee());
+        Game game = new Game(new Referee(new Computer(new BaseBallNumberGenerator(), new Compare())));
+        Player player = new Player();
 
-        boolean isPass = false;
+        boolean isPass = game.start(player);
         while (!isPass) {
-            isPass = game.isRestartOrEnd(game.start());
+            isPass = game.isRestartOrEnd(isPass);
         }
     }
 }

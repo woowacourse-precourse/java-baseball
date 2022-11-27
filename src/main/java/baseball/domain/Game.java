@@ -3,31 +3,21 @@ package baseball.domain;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
-
 public class Game {
 
-    private Computer computer;
-    private Player player;
-    private Referee referee;
+    private final Referee referee;
 
-    public Game(Computer computer, Player player, Referee referee) {
-        this.computer = computer;
-        this.player = player;
+    public Game(Referee referee) {
         this.referee = referee;
     }
 
-    public boolean start() {
+    public boolean start(Player player) {
         OutputView.printStart();
-        List<Integer> computerNumbers = computer.generateNumber();
 
-        boolean pass = referee.isPass();
-        while (!pass) {
-            List<Integer> playerNumbers = player.selectNumbers(InputView.readNumbers());
-            referee.compareTo(computerNumbers, playerNumbers);
-            pass = referee.isPass();
+        boolean isPass = false;
+        while (!isPass) {
+            isPass = referee.gameStart(player);
         }
-
         OutputView.printEnd();
         return true;
     }

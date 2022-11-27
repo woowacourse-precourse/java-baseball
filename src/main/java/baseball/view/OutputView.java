@@ -18,37 +18,37 @@ public class OutputView {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void printBaseBallResult(int strikeCount, int ballCount) {
+    public static void toOutputView(int strikeCount, int ballCount) {
         if (strikeCount != 0 && ballCount == 0)  {
-            printStrike(strikeCount);
+            OutputView.printStrike(strikeCount);
         }
 
         if (strikeCount == 0 && ballCount != 0) {
-            printBall(ballCount);
+            OutputView.printBall(ballCount);
         }
 
         if (strikeCount != 0 && ballCount != 0) {
-            printBallAndStrike(ballCount, strikeCount);
+            OutputView.printBallAndStrike(ballCount, strikeCount);
         }
 
         if (strikeCount == 0 && ballCount == 0) {
-            printNothing();
+            OutputView.printNothing();
         }
     }
 
-    private static void printStrike(int strikeCount) {
+    public static void printStrike(int strikeCount) {
         System.out.printf("%d스트라이크\n", strikeCount);
     }
 
-    private static void printBall(int ballCount) {
+    public static void printBall(int ballCount) {
         System.out.printf("%d볼\n", ballCount);
     }
 
-    private static void printBallAndStrike(int ballCount, int strikeCount) {
+    public static void printBallAndStrike(int ballCount, int strikeCount) {
         System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
     }
 
-    private static void printNothing() {
+    public static void printNothing() {
         System.out.println("낫싱");
     }
 }
