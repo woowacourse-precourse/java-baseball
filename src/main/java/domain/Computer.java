@@ -4,17 +4,16 @@ import Controller.validation;
 
 import java.util.List;
 
-public class Computer {
-    public static List<Integer> number_List;
+public class Computer{
+        private static List<Integer> number;
 
-    public static void setNumber() {
-        Computer.number_List = validation.get_ThreeRandomNumbers();
+    public static void setNumber(List<Integer> numbers) {
+        number = numbers;
     }
-
     public static String getNumber() {
         StringBuilder numbers = new StringBuilder();
 
-        for (Integer item : Computer.number_List) {
+        for (Integer item : Computer.number) {
             numbers.append(item);
         }
 
@@ -22,6 +21,6 @@ public class Computer {
     }
 
     public static List<Integer> getNumber_List() {
-        return number_List;
+        return number;
     }
 }
