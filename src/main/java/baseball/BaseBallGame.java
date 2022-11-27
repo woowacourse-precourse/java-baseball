@@ -11,7 +11,7 @@ import baseball.input.InputLength;
 import baseball.validation.Validation;
 import baseball.view.View;
 
-public class Game {
+public class BaseBallGame {
 	private static final int MAX_STRIKE = 3;
 	private static final int INIT = 0;
 	private int strike;
