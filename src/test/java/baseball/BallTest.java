@@ -2,6 +2,7 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import baseball.domain.Ball;
 import org.junit.jupiter.api.Test;
 
 public class BallTest {
