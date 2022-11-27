@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import baseball.input.Number;
@@ -40,6 +41,6 @@ public class Computer {
 	}
 
 	public List<Integer> getRandomNumber() {
-		return randomNumber;
+		return Collections.unmodifiableList(randomNumber);
 	}
 }

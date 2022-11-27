@@ -2,6 +2,7 @@ package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -24,14 +25,14 @@ public class Player {
 	}
 
 	public void separateNumbersByUnit(String playerInput) {
-		int[] hi = Stream.of(String.valueOf(playerInput).split("")).mapToInt(Integer::parseInt).toArray();
+		int[] numbers = Stream.of(String.valueOf(playerInput).split("")).mapToInt(Integer::parseInt).toArray();
 
-		playerNumberList = Arrays.stream(hi)
+		playerNumberList = Arrays.stream(numbers)
 			.boxed()
 			.collect(Collectors.toList());
 	}
 
 	public List<Integer> getPlayerNumberList() {
-		return playerNumberList;
+		return Collections.unmodifiableList(playerNumberList);
 	}
 }
