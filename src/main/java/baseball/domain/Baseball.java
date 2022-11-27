@@ -2,38 +2,29 @@ package baseball.domain;
 
 import baseball.utils.BaseballNumbersGenerator;
 import baseball.utils.Constants;
-import java.util.List;
 
 public class Baseball {
 
-    private final List<Integer> computerNumbers;
+    private final Numbers computerNumbers;
+    private boolean gameContinue = true;
 
     public Baseball(BaseballNumbersGenerator numbersGenerator) {
-        Numbers numbers = new Numbers(numbersGenerator.generate());
-        this.computerNumbers = numbers.getNumbers();
+        this.computerNumbers = new Numbers(numbersGenerator.generate());
     }
 
-    public boolean isGameContinue(Numbers user) {
-        return !(countStrike(user) == Constants.NUMBERS_SIZE);
+    public boolean isGameContinue() {
+        return gameContinue;
     }
 
-    public int countStrike(Numbers user) {
-        int strikeCount = 0;
-        for (int i = 0; i < Constants.NUMBERS_SIZE; i++) {
-            if (user.getNumbers().get(i) == computerNumbers.get(i)) {
-                strikeCount++;
-            }
+    public int countStrike(Numbers userNumbers) {
+        int strikeCount = computerNumbers.countCorrectNumber(userNumbers);
+        if (strikeCount == Constants.NUMBERS_SIZE) {
+            gameContinue = false;
         }
         return strikeCount;
     }
 
-    public int countBall(Numbers numbers) {
-        int sameNumberCount = 0;
-        for (int number : numbers.getNumbers()) {
-            if (computerNumbers.contains(number)) {
-                sameNumberCount++;
-            }
-        }
-        return sameNumberCount - countStrike(numbers);
+    public int countBall(Numbers userNumbers) {
+        return computerNumbers.countSameNumber(userNumbers) - computerNumbers.countCorrectNumber(userNumbers);
     }
 }
