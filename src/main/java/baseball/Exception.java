@@ -27,15 +27,21 @@ public class Exception {
         }
     }
 
-    public static void randomNumberRangeException(Integer randomNumber) {
+    public static void isRandomNumberRangeException(Integer randomNumber) {
         if ((randomNumber < MIN_NUMBER) || (randomNumber > MAX_NUMBER)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void randomNumberDuplicationException(List<RandomNumber> randomNumbers) {
-        HashSet<RandomNumber> nonDuplicateRandomNumbers = new HashSet<>();
-        if (randomNumbers.size() != DIGIT_NUMBER) {
+    public static void isRandomNumberDuplicationException(List<RandomNumber> randomNumbers) {
+        HashSet<RandomNumber> nonDuplicateRandomNumbers = new HashSet<>(randomNumbers);
+        if (nonDuplicateRandomNumbers.size() != DIGIT_NUMBER) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void isRandomNumbersException(List<RandomNumber> randomNumbers) {
+        if (randomNumbers.size()!= DIGIT_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
