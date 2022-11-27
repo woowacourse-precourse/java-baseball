@@ -15,10 +15,10 @@ public class GameManager {
 
     public void run() {
         System.out.println(GAME_START_MESSAGE);
-        startGameUntilUserQuit();
+        doGameUntilUserQuit();
     }
 
-    private void startGameUntilUserQuit() {
+    private void doGameUntilUserQuit() {
         int control;
         do {
             baseballGame.initComputerNumber();
@@ -33,13 +33,6 @@ public class GameManager {
            int userNumber = inputView.readGameInput();
            userScore = baseballGame.computeUserScore(userNumber);
            outputView.printResult(userScore);
-       } while(!isGameOver(userScore));
-    }
-
-    private boolean isGameOver(Score userScore) {
-        if (userScore.isGameOver()) {
-            return true;
-        }
-        return false;
+       } while(!userScore.isGameOver());
     }
 }
