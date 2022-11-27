@@ -13,21 +13,24 @@ public class Compare {
     public boolean compareTo(List<Integer> computerNumbers, Player player) {
         while (!isPass()) {
             List<Integer> playerNumbers = player.selectNumbers(InputView.readNumbers());
-            for (int index = 0; index < computerNumbers.size(); index++) {
-                if (computerNumbers.get(index).equals(playerNumbers.get(index))) {
-                    strikeCount += 1;
-                    continue;
-                }
-
-                if (computerNumbers.contains(playerNumbers.get(index))) {
-                    ballCount += 1;
-                }
-            }
-
+            strikeOrBallCount(computerNumbers, playerNumbers);
             OutputViewService.of(strikeCount, ballCount).test();
         }
 
         return isPass();
+    }
+
+    private void strikeOrBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        for (int index = 0; index < computerNumbers.size(); index++) {
+            if (computerNumbers.get(index).equals(playerNumbers.get(index))) {
+                strikeCount += 1;
+                continue;
+            }
+
+            if (computerNumbers.contains(playerNumbers.get(index))) {
+                ballCount += 1;
+            }
+        }
     }
 
     private boolean isPass() {
