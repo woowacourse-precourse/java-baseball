@@ -1,16 +1,19 @@
 package baseball;
 
 import Controller.Game;
+import Controller.validation;
 import domain.Computer;
+
 
 public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다");
 
-        Computer.setNumber();
+        Game game= new Game();
+        Computer.setNumber(validation.get_ThreeRandomNumbers());
         while (true) {
-            Game.start();
+            game.start();
             if (Game.EXITSTATUS.equals("exit")) break;
 
             else Game.EXITSTATUS="playing";
