@@ -12,6 +12,8 @@ public class Application {
 
         Game game= new Game();
         Computer.setNumber(validation.get_ThreeRandomNumbers());
+        System.out.println(Computer.getNumber());
+
         while (true) {
             game.start();
             if (Game.EXITSTATUS.equals("exit")) break;
