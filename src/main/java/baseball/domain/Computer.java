@@ -13,12 +13,16 @@ public class Computer {
 
 	public Computer() {
 		randomNumber = new ArrayList<>(INIT_RANDOM_NUMBER_CAPACITY);
-		makeRandomNumber();
 	}
 
 	public void makeRandomNumber() {
 		initRandomNumber();
 		selectNumber();
+
+		// for(Integer number:randomNumber){
+		// 	System.out.print(number);
+		// }
+		// System.out.println();
 	}
 
 	private void initRandomNumber() {

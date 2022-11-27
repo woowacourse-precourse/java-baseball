@@ -5,7 +5,7 @@ public enum Number {
 
 	private int number;
 
-	Number(int number){
+	Number(int number) {
 		this.number = number;
 	}
 

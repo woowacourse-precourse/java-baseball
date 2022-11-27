@@ -26,6 +26,7 @@ class ApplicationTest extends NsTest {
 	@BeforeEach
 	void setUp() {
 		computer = new Computer();
+		computer.makeRandomNumber();
 		player = new Player();
 
 		randomNumberList = computer.getRandomNumber();
@@ -73,6 +74,7 @@ class ApplicationTest extends NsTest {
 	@Test
 	void isSameNumberExistInRandomNumber_메서드로_숫자_중복_알아냄() {
 		int input = randomNumberList.get(0);
+		randomNumberList = computer.getRandomNumber();
 
 		assertThat(Validation.isSameNumberExistInRandomNumber(input, randomNumberList)).isTrue();
 	}
@@ -172,12 +174,12 @@ class ApplicationTest extends NsTest {
 	void showResult_메서드로_결과_출력() {
 		int ball = 2;
 		int strike = 1;
-		View.showResult(ball, strike, 0);
+		View.showResult(ball, strike);
 		assertThat(output()).contains("2볼", "1스트라이크");
 
 		ball = 0;
 		strike = 0;
-		View.showResult(ball, strike, 0);
+		View.showResult(ball, strike);
 		assertThat(output()).contains("낫싱");
 	}
 

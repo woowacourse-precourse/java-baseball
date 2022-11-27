@@ -1,48 +1,63 @@
 package baseball.view;
 
 public class View {
+	public static String result;
+	public static int NO_BALL = 0;
+	public static int NO_STRIKE = 0;
 
 	public static void showStartGameGuideMessage() {
-		System.out.println(GameGuideMessage.START_GAME_GUIDE_MESSAGE);
+		System.out.println(GameGuideMessage.START_GAME_GUIDE_MESSAGE.getMessage());
 	}
 
-	public static void showUserInputGuideMessage() {
+	public static void showPlayerInputGuideMessage() {
 		System.out.print(GameGuideMessage.USER_INPUT_GUIDE_MESSAGE.getMessage());
 	}
 
-	public static void showResult(int ball, int strike, int zero) {
-		String result = GameResult.INIT_RESULT.getMessage();
+	public static void showResult(int ball, int strike) {
+		result = GameResult.INIT_RESULT.getMessage();
 
-		if (isBall(ball, zero)) {
-			result += ball + GameResult.BALL.getMessage();
-		}
-		if (isStrike(strike, zero)) {
-			result += strike + GameResult.STRIKE.getMessage();
-		}
-		if (isNothing(ball, strike, zero)) {
-			result += GameResult.NOTHING.getMessage();
-		}
+		ball(ball);
+		strike(strike);
+		nothing(ball, strike);
 
 		System.out.println(result);
 	}
 
-	private static boolean isNothing(int ball, int strike, int zero) {
-		return ball == zero && strike == zero;
+	private static void nothing(int ball, int strike) {
+		if (isNothing(ball, strike)) {
+			result += GameResult.NOTHING.getMessage();
+		}
 	}
 
-	private static boolean isStrike(int strike, int zero) {
-		return strike != zero;
+	private static void strike(int strike) {
+		if (isStrike(strike)) {
+			result += strike + GameResult.STRIKE.getMessage();
+		}
 	}
 
-	private static boolean isBall(int ball, int zero) {
-		return isStrike(ball, zero);
+	private static void ball(int ball) {
+		if (isBall(ball)) {
+			result += ball + GameResult.BALL.getMessage();
+		}
+	}
+
+	private static boolean isNothing(int ball, int strike) {
+		return ball == NO_BALL && strike == NO_STRIKE;
+	}
+
+	private static boolean isStrike(int strike) {
+		return strike != NO_STRIKE;
+	}
+
+	private static boolean isBall(int ball) {
+		return ball != NO_BALL;
 	}
 
 	public static void showThreeStrike() {
 		System.out.println(GameGuideMessage.THREE_STRIKE_MESSAGE.getMessage());
 	}
 
-	public static void showEndOrRestartGuideMessage() {
+	public static void showGameCommandGuideMessage() {
 		System.out.println(GameGuideMessage.END_OR_RESTART_MESSAGE.getMessage());
 	}
 }
