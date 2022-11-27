@@ -23,8 +23,7 @@ class BaseBallRandomNumbersGeneratorTest {
 
     @Test
     void generate_반환_List_크기_3_확인() {
-        // TODO 테스트 코드도 wrapping 처리?
-        assertThat(numbersGenerator.generate().size()).isEqualTo(3);
+        assertThat(numbersGenerator.generate().size()).isEqualTo(Constants.NUMBERS_SIZE);
     }
 
     @Test
@@ -38,6 +37,6 @@ class BaseBallRandomNumbersGeneratorTest {
     @Test
     void generate_반환값_모두_다른_숫자_확인() {
         Set<Integer> randomNumbers = new HashSet<>(numbersGenerator.generate());
-        assertThat(randomNumbers.size()).isEqualTo(3);
+        assertThat(randomNumbers.size()).isEqualTo(Constants.NUMBERS_SIZE);
     }
 }
