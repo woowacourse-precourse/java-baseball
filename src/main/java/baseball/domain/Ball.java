@@ -1,12 +1,10 @@
-package baseball;
+package baseball.domain;
 
 public class Ball {
 
     private final Integer number;
-    Validator validator = new Validator();
 
     public Ball(int ball) {
-        validator.validateRange(ball);
         this.number = ball;
     }
 

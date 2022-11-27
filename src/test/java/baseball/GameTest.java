@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.domain.Ball;
+import baseball.domain.Balls;
+import baseball.domain.Game;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -88,11 +91,5 @@ public class GameTest {
         assertEquals(game.strikeCount, 3);
         assertEquals(game.ballCount, 0);
         assertEquals(game.printMessage(), "3스트라이크");
-    }
-
-    @Test
-    void checkMakeComputerBalls() {
-        Balls comBalls = game.makeComputerBalls();
-        assertEquals(comBalls.size(), 3);
     }
 }
