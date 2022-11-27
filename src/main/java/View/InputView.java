@@ -1,14 +1,17 @@
 package View;
 
+import Controller.Game;
 import Controller.validation;
 import camp.nextstep.edu.missionutils.Console;
+import domain.User;
 
 public class InputView {
-    public static String readLine() {
+
+    public String readnumber() {
         String input = Console.readLine();
 
-        validation.check_input(input);
         return input;
 
     }
+
 }
