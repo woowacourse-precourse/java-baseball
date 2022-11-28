@@ -1,8 +1,6 @@
 package baseball.validator;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Arrays;
 
 public class NumbersValidator {
     private final static int INPUT_DIGIT = 3;
@@ -24,9 +22,9 @@ public class NumbersValidator {
         }
     }
 
-    public static void validateDuplicateNumber(List<Integer> numbers) {
-        Set<Integer> numSet = new HashSet<>(numbers);
-        if (numSet.size() != numbers.size()) {
+    public static void validateDuplicateNumber(String input) {
+        String[] numbers = input.split("");
+        if (numbers.length != Arrays.stream(numbers).distinct().count()) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }
