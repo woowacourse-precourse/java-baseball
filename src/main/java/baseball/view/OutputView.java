@@ -11,6 +11,10 @@ public class OutputView {
         System.out.print(INPUT_PLAYER_NUM_MESSAGE.get());
     }
 
+    public static void printInputGameCommandMessage() {
+        System.out.print(INPUT_GAME_COMMAND_MESSAGE.get());
+    }
+
     public static void printResult(String result) {
         System.out.print(result);
     }
