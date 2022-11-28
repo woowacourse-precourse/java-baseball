@@ -14,7 +14,7 @@
 
 
 ### 예외
-- [ ] 플레이어의 숫자가 1에서 9까지 서로 다른 3가지 수가 아니면 `IllegalArgumentException` 발생
+- [x] 플레이어의 숫자가 1에서 9까지 서로 다른 3가지 수가 아니면 `IllegalArgumentException` 발생
 - [ ] 게임 재시작/종료에 대한 입력이 1 혹은 2가 아니면 `IllegalArgumentException` 발생
 
 ### 게임 진행 로직
