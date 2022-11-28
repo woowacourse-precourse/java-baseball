@@ -1,5 +1,6 @@
-package baseball.model.valid;
+package baseball.valid;
 
+import baseball.util.message.ExceptionMessage;
 import baseball.util.GameNumberConst;
 
 import java.util.Arrays;
@@ -14,7 +15,8 @@ public class PlayerNumberValidator implements InputValidator {
         if (!hasCorrectSize(numbers)
                 || !inRange(numbers)
                 || !isDistinct(numbers)) {
-            throw new IllegalArgumentException();
+            String message = ExceptionMessage.READ_INVALID_PLAYER_NUMBER_ERROR.getMessage();
+            throw new IllegalArgumentException(message);
         }
     }
 
