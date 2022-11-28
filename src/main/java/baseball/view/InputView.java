@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputView {
+public final class InputView {
+
+    private InputView() {
+
+    }
 
     public static List<Integer> readUserNumbers() throws IllegalArgumentException {
         String input = Console.readLine();
