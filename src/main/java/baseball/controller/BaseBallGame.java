@@ -1,22 +1,24 @@
 package baseball.controller;
 
+import baseball.domain.GameResult;
 import baseball.domain.Numbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class BaseBallGame {
-    private Numbers computerNumbers;
-    private final static String SUCCESS = "3스트라이크";
+import java.util.Objects;
 
-    private void initComputerNumbers() {
-        computerNumbers = new Numbers();
-    }
+public class BaseBallGame {
+    private static Numbers computerNumbers;
 
     public void gameStart() {
         do {
             initComputerNumbers();
             oneGame();
-        } while (retry());
+        } while (restart());
+    }
+
+    private void initComputerNumbers() {
+        computerNumbers = new Numbers();
     }
 
     private void oneGame() {
@@ -29,7 +31,7 @@ public class BaseBallGame {
         OutputView.printSuccessMessage();
     }
 
-    private boolean retry() {
-        return Objects.equals(InputView.readRetry(), "1");
+    private boolean restart() {
+        return Objects.equals(InputView.readRestartOrEndGame(), "1");
     }
 }
