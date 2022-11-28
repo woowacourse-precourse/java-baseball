@@ -10,6 +10,14 @@ public class GameNumber {
         this.number = number;
     }
 
+    public boolean hasOnlyDifferentIndexWith(Object obj) {
+        if (obj instanceof GameNumber) {
+            GameNumber other = (GameNumber) obj;
+            return (this.index != other.index) && (this.number == other.number);
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
