@@ -12,6 +12,14 @@ public class GameNumberCollectionTest {
     private static final GameNumberCollection playerNumbers = new GameNumberCollection(List.of(3, 2, 1));
 
 
+    @DisplayName("스트라이크 개수를 반환한다")
+    @Test
+    void countStrikesTest() {
+        int actual = computerNumbers.countStrikes(playerNumbers);
+        assertThat(actual).isEqualTo(1);
+    }
+
+
     @DisplayName("볼 개수를 반환한다")
     @Test
     void countBallsTest() {

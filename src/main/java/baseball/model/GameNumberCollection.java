@@ -19,6 +19,17 @@ public class GameNumberCollection {
         return gameNumbers;
     }
 
+    public int countStrikes(GameNumberCollection otherObj) {
+        return (int) gameNumbers.stream()
+                .filter(otherObj::hasStrikeOf)
+                .count();
+    }
+
+    private boolean hasStrikeOf(GameNumber otherGameNumber) {
+        return gameNumbers.stream()
+                .anyMatch(gameNumber -> gameNumber.equals(otherGameNumber));
+    }
+
     public int countBalls(GameNumberCollection otherObj) {
         return (int) gameNumbers.stream()
                 .filter(otherObj::hasBallOf)
