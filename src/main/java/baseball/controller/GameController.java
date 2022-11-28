@@ -10,15 +10,9 @@ public enum GameController {
     INSTANCE;
 
     public static void startGame() {
-        Game game = initializeGame();
+        Game game = GameInitializer.initializeGame();
         progress(game);
         endGame();
-    }
-
-    private static Game initializeGame() {
-        NumberGenerator numberGenerator = new RandomNumberGenerator();
-        NumberCollection computerNumbers = new NumberCollection(numberGenerator.generate());
-        return new Game(computerNumbers);
     }
 
     private static void progress(Game game) {
