@@ -11,14 +11,14 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameTest {
-    private static final GameNumberCollection computerNumbers = new GameNumberCollection(List.of(1, 2, 3));
+    private static final NumberCollection computerNumbers = new NumberCollection(List.of(1, 2, 3));
     private static final Game game = new Game(computerNumbers);
 
     @DisplayName("플레이어 숫자에 대한 게임 결과 객체를 반환한다")
     @ParameterizedTest
     @MethodSource("resultOfPlayerNumbersTestSource")
     void resultOfPlayerNumbersTest(List<Integer> numbers, GameResult expected) {
-        GameNumberCollection playerNumbers = new GameNumberCollection(numbers);
+        NumberCollection playerNumbers = new NumberCollection(numbers);
         GameResult actual = game.getResultOf(playerNumbers);
         assertThat(actual).isEqualTo(expected);
     }

@@ -2,6 +2,6 @@ package baseball.model;
 
 import java.util.List;
 
-public interface GameNumberGenerator {
+public interface NumberGenerator {
     List<Integer> generate();
 }

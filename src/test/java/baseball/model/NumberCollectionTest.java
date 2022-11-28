@@ -7,9 +7,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameNumberCollectionTest {
-    private static final GameNumberCollection computerNumbers = new GameNumberCollection(List.of(1, 2, 3));
-    private static final GameNumberCollection playerNumbers = new GameNumberCollection(List.of(3, 2, 1));
+public class NumberCollectionTest {
+    private static final NumberCollection computerNumbers = new NumberCollection(List.of(1, 2, 3));
+    private static final NumberCollection playerNumbers = new NumberCollection(List.of(3, 2, 1));
 
 
     @DisplayName("스트라이크 개수를 반환한다")

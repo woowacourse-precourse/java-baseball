@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.GameNumberCollection;
+import baseball.model.NumberCollection;
 import baseball.view.InputView;
 
 import java.util.Arrays;
@@ -11,9 +11,9 @@ public enum PlayerNumberController {
 
     INSTANCE;
 
-    public static GameNumberCollection getPlayerNumbers() {
+    public static NumberCollection getPlayerNumbers() {
         List<Integer> numbers = convertInputToNumbers();
-        return new GameNumberCollection(numbers);
+        return new NumberCollection(numbers);
     }
 
     private static List<Integer> convertInputToNumbers() {

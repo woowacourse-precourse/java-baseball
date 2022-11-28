@@ -1,13 +1,13 @@
 package baseball.model;
 
 public class Game {
-    private final GameNumberCollection computerNumbers;
+    private final NumberCollection computerNumbers;
 
-    public Game(GameNumberCollection computerNumbers) {
+    public Game(NumberCollection computerNumbers) {
         this.computerNumbers = computerNumbers;
     }
 
-    public GameResult getResultOf(GameNumberCollection playerNumbers) {
+    public GameResult getResultOf(NumberCollection playerNumbers) {
         int ballCnt = computerNumbers.countBalls(playerNumbers);
         int strikeCnt = computerNumbers.countStrikes(playerNumbers);
 

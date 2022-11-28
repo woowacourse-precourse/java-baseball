@@ -1,4 +1,4 @@
-package baseball.valid;
+package baseball.model.valid;
 
 import baseball.util.GameNumberConst;
 

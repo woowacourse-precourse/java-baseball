@@ -8,13 +8,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class GameRandomNumberGeneratorTest {
-    GameNumberGenerator gameRandomNumberGenerator = new GameRandomNumberGenerator();
+public class RandomNumberGeneratorTest {
+    NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
     @DisplayName("1에서 9까지 서로 다른 임의의 수 3개를 선택한다")
     @Test
     void generateRandomNumberTest() {
-        List<Integer> actual = gameRandomNumberGenerator.generate();
+        List<Integer> actual = randomNumberGenerator.generate();
 
         assertThat(actual)
                 .hasSize(3)

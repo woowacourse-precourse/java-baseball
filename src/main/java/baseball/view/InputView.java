@@ -1,12 +1,10 @@
 package baseball.view;
 
 import baseball.util.InputViewMessage;
-import baseball.valid.GameCommandValidator;
-import baseball.valid.InputValidator;
-import baseball.valid.PlayerNumberValidator;
+import baseball.model.valid.GameCommandValidator;
+import baseball.model.valid.InputValidator;
+import baseball.model.valid.PlayerNumberValidator;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 
 public enum InputView {
 

@@ -15,14 +15,14 @@ public enum GameController {
     }
 
     private static Game initializeGame() {
-        GameNumberGenerator gameNumberGenerator = new GameRandomNumberGenerator();
-        GameNumberCollection computerNumbers = new GameNumberCollection(gameNumberGenerator.generate());
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        NumberCollection computerNumbers = new NumberCollection(numberGenerator.generate());
         return new Game(computerNumbers);
     }
 
     private static void progress(Game game) {
         while (true) {
-            GameNumberCollection playerNumbers = PlayerNumberController.getPlayerNumbers();
+            NumberCollection playerNumbers = PlayerNumberController.getPlayerNumbers();
             GameResult gameResult = game.getResultOf(playerNumbers);
             printGameResult(gameResult);
 
