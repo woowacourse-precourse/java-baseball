@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class NumbersValidator {
     private final static int INPUT_DIGIT = 3;
-    private final static String DIGIT_ERROR_MESSAGE = "입력 길이는 3입니다.";
+    private final static String INVALID_DIGIT_ERROR_MESSAGE = "입력 길이는 3입니다.";
     private final static String NON_NUMERIC_ERROR_MESSAGE = "숫자로만 이루어진 값을 입력해주세요.";
     private final static String DUPLICATE_ERROR_MESSAGE = "중복된 숫자가 포함되어 있습니다.";
 
@@ -19,9 +19,8 @@ public class NumbersValidator {
     }
 
     public static void validateDigit(String input) {
-        int inputLength = input.length();
-        if (inputLength != INPUT_DIGIT) {
-            throw new IllegalArgumentException(DIGIT_ERROR_MESSAGE);
+        if (input.length() != INPUT_DIGIT) {
+            throw new IllegalArgumentException(INVALID_DIGIT_ERROR_MESSAGE);
         }
     }
 
