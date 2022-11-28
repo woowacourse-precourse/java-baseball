@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.domain.RandomNumbers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.BeforeEach;

@@ -29,4 +29,12 @@ public class Numbers {
         }
         return transformNumbers;
     }
+
+    private boolean isSamePosition(int number, int position) {
+        return position == numbers.indexOf(number);
+    }
+
+    private boolean isContainNumber(int number, int position) {
+        return position != numbers.indexOf(number) && numbers.contains(number);
+    }
 }
