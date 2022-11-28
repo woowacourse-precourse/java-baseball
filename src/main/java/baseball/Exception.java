@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Exception {
-    private static final int DIGIT_NUMBER = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
+    public static final int DIGIT_NUMBER = 3;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 9;
 
     public static void userDigitNumberException(String user) {
         if (user.length() != DIGIT_NUMBER) {
