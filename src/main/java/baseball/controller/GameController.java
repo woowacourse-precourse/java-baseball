@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.model.game.*;
 import baseball.model.number.*;
-import baseball.util.GameCommandConst;
+import baseball.util.constant.GameCommandConst;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

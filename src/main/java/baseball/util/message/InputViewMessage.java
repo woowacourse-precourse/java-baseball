@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.util.message;
 
 public enum InputViewMessage {
 

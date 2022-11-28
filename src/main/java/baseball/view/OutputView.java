@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.util.GameControllerMessage;
+import baseball.util.message.GameControllerMessage;
 
 public enum OutputView {
     INSTANCE;

@@ -2,7 +2,7 @@ package baseball.model.number;
 
 import baseball.exception.WrongNumberIndexException;
 import baseball.exception.WrongNumberValueException;
-import baseball.util.GameNumberConst;
+import baseball.util.constant.GameNumberConst;
 
 public class Number {
     private final int index;

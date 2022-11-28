@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.util.InputViewMessage;
+import baseball.util.message.InputViewMessage;
 import baseball.valid.GameCommandValidator;
 import baseball.valid.InputValidator;
 import baseball.valid.PlayerNumberValidator;

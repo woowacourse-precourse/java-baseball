@@ -1,6 +1,6 @@
 package baseball.exception;
 
-import baseball.util.ExceptionMessage;
+import baseball.util.message.ExceptionMessage;
 
 public class WrongNumberIndexException extends RuntimeException {
     public WrongNumberIndexException() {

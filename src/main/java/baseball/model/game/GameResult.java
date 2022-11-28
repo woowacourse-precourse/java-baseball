@@ -1,8 +1,8 @@
 package baseball.model.game;
 
 import baseball.exception.WrongGameResultException;
-import baseball.util.GameNumberConst;
-import baseball.util.GameResultMessage;
+import baseball.util.constant.GameNumberConst;
+import baseball.util.message.GameResultMessage;
 
 public class GameResult {
 

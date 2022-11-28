@@ -1,7 +1,7 @@
 package baseball.valid;
 
 import baseball.util.message.ExceptionMessage;
-import baseball.util.GameCommandConst;
+import baseball.util.constant.GameCommandConst;
 
 import java.util.List;
 

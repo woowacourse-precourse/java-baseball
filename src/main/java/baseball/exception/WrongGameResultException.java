@@ -1,6 +1,6 @@
 package baseball.exception;
 
-import baseball.util.ExceptionMessage;
+import baseball.util.message.ExceptionMessage;
 
 public class WrongGameResultException extends RuntimeException {
     public WrongGameResultException() {
