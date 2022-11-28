@@ -19,16 +19,15 @@ public class PlayerTest {
     @Test
     @DisplayName("올바른 입력값")
     void rightPlayer() {
-        Player player=new Player("123");
-        assertThat(player.get()).isEqualTo(List.of(1,2,3));
+        Player player = new Player("123");
+        assertThat(player.get()).isEqualTo(List.of(1, 2, 3));
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"012","1234","334","sd3"})
-    @DisplayName("잘못된 입력값 예외 테스트")
+    @ValueSource(strings = {"012", "1234", "334", "sd3"})
+    @DisplayName("잘못된 입력값(플레이어의 수) 예외 테스트")
     void wrongPlayer(String input) {
         assertThatThrownBy(() -> new Player(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 }
