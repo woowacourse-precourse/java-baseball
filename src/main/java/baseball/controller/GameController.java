@@ -32,4 +32,7 @@ public class GameController {
         OutputView.printResult(judge.setResult().toString());
     }
 
+    public boolean replayGame() {
+        return gameCommand.equals(REPLAY.get());
+    }
 }
