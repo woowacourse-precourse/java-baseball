@@ -8,11 +8,11 @@ public class Application {
     public static void main(String[] args) {
         OutputView.printStartMessage();
         GameController gameController;
-        boolean replay = true;
-        while (replay) {
+        boolean isGameFinished = false;
+        while (!isGameFinished) {
             gameController = new GameController();
             gameController.startGame();
-            replay = gameController.replayGame();
+            isGameFinished = gameController.finishGame();
         }
     }
 }

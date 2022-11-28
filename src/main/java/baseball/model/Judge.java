@@ -30,7 +30,7 @@ public class Judge {
         return resultMessage;
     }
 
-    public boolean gameSucceeded() {
+    public boolean isRoundFinished() {
         return strike == SIZE.get();
     }
 }

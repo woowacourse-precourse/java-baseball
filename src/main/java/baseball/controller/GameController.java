@@ -7,6 +7,7 @@ import baseball.model.Validator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import static baseball.model.GameCommand.END;
 import static baseball.model.GameCommand.REPLAY;
 
 public class GameController {
@@ -16,7 +17,7 @@ public class GameController {
 
     public void startGame() {
         Computer computer = new Computer();
-        while (!judge.gameSucceeded()) {
+        while (!judge.isRoundFinished()) {
             judge = new Judge();
             guess(computer, judge);
         }
@@ -32,7 +33,7 @@ public class GameController {
         OutputView.printResult(judge.setResult().toString());
     }
 
-    public boolean replayGame() {
-        return gameCommand.equals(REPLAY.get());
+    public boolean finishGame() {
+        return gameCommand.equals(END.get());
     }
 }
