@@ -11,7 +11,7 @@ public class Computer {
 
     private final List<Integer> computer;
 
-    Computer() {
+    public Computer() {
         computer = new ArrayList<Integer>();
         while (computer.size() < SIZE.get()) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUM.get(), MAX_NUM.get());
