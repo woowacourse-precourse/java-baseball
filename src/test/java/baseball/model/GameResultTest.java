@@ -1,6 +1,7 @@
 package baseball.model;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -27,6 +28,22 @@ public class GameResultTest {
     void isAllStrikeTest(int strikeCnt, boolean expected) {
         GameResult gameResult = new GameResult(0, strikeCnt);
         assertThat(gameResult.isAllStrike()).isEqualTo(expected);
+    }
+
+    @DisplayName("볼 개수와 스트라이크 개수가 같다면 같은 객체이다")
+    @Test
+    void equalsTest() {
+        GameResult gameResult1 = new GameResult(0, 0);
+        GameResult gameResult2 = new GameResult(0, 0);
+        assertThat(gameResult1.equals(gameResult2)).isTrue();
+    }
+
+    @DisplayName("볼 개수나 스트라이크 개수 중 하나라도 다르다면 다른 객체이다")
+    @Test
+    void differentTest() {
+        GameResult gameResult1 = new GameResult(1, 0);
+        GameResult gameResult2 = new GameResult(0, 0);
+        assertThat(gameResult1.equals(gameResult2)).isFalse();
     }
 
 

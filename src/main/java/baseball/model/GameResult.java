@@ -29,4 +29,13 @@ public class GameResult {
     public boolean isAllStrike() {
         return strikeCnt == GameNumberConst.NUMBER_SIZE;
     }
+
+    @Override
+    public boolean equals(Object otherObj) {
+        if (otherObj instanceof GameResult) {
+            GameResult other = (GameResult) otherObj;
+            return (this.ballCnt == other.ballCnt) && (this.strikeCnt == other.strikeCnt);
+        }
+        return false;
+    }
 }
