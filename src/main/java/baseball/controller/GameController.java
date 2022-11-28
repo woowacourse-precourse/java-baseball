@@ -31,6 +31,7 @@ public enum GameController {
             }
         }
     }
+
     private static void printGameResult(GameResult gameResult) {
         String message = gameResult.getMessage();
         OutputView.printGameResult(message);
@@ -38,10 +39,11 @@ public enum GameController {
 
     private static void endGame() {
         OutputView.printGameEnd();
-        if(selectRestart()) {
+        if (selectRestart()) {
             startGame();
         }
     }
+
     private static boolean selectRestart() {
         String input = InputView.readGameCommand();
         return input.equals(GameCommandConst.RESTART);

@@ -12,7 +12,7 @@ public class GameNumberCollection {
 
     private List<GameNumber> setGameNumbers(List<Integer> numbers) {
         List<GameNumber> gameNumbers = new ArrayList<>();
-        for(int index = 0; index < numbers.size(); index++) {
+        for (int index = 0; index < numbers.size(); index++) {
             GameNumber instance = new GameNumber(index, numbers.get(index));
             gameNumbers.add(instance);
         }
