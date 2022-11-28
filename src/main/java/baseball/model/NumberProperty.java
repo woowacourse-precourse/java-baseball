@@ -8,10 +8,10 @@ public enum NumberProperty {
     private final int property;
 
     NumberProperty(int property) {
-        this.property=property;
+        this.property = property;
     }
 
-    public int get(){
+    public int get() {
         return property;
     }
 }

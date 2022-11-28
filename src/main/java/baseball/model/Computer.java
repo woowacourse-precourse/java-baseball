@@ -21,7 +21,7 @@ public class Computer {
         }
     }
 
-    public List<Integer> getComputer() {
+    public List<Integer> get() {
         return computer;
     }
 }
