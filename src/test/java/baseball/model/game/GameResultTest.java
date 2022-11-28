@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.game;
 
 import baseball.model.game.GameResult;
 import org.junit.jupiter.api.DisplayName;
