@@ -10,8 +10,8 @@ public enum OutputView {
         System.out.println(GameControllerMessage.GAME_START);
     }
 
-    public static void printGameResult(GameResult gameResult) {
-        System.out.println(gameResult.getMessage());
+    public static void printGameResult(String gameResult) {
+        System.out.println(gameResult);
     }
 
     public static void printGameEnd() {
