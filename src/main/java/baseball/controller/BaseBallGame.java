@@ -1,11 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.GameLogic;
 import baseball.domain.Numbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.List;
 
 public class BaseBallGame {
     private Numbers computerNumbers;
@@ -15,24 +12,24 @@ public class BaseBallGame {
         computerNumbers = new Numbers();
     }
 
-    public void startGame() {
-        boolean play;
-        OutputView.printStartMessage();
+    public void gameStart() {
         do {
-            getRandomNumbers();
-            play = oneGame();
-        } while (play);
+            initComputerNumbers();
+            oneGame();
+        } while (retry());
     }
 
-    private boolean oneGame() {
-        while (true) {
-            List<Integer> playerNumbers = getPlayerRandomNumbers();
-            GameLogic result = new GameLogic(computerNumbers, playerNumbers);
-            OutputView.printResult(result);
-            if (result.equals(SUCCESS)) {
-                OutputView.printSuccessMessage();
-                return InputView.restartOrEndGame();
-            }
-        }
+    private void oneGame() {
+        GameResult result;
+        do {
+            Numbers playerNumbers = InputView.readNumbers();
+            result = playerNumbers.compareToNumbers(computerNumbers);
+            result.showResult();
+        } while (!result.isSuccess());
+        OutputView.printSuccessMessage();
+    }
+
+    private boolean retry() {
+        return Objects.equals(InputView.readRetry(), "1");
     }
 }
