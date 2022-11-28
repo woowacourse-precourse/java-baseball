@@ -25,10 +25,11 @@ public class InputView {
         return player;
     }
 
-    public static boolean restartOrEndGame() {
+    public static String readRestartOrEndGame() {
         OutputView.printRestartOrEnd();
-        int startOrEnd = Integer.parseInt(Console.readLine());
-        validateRestartNumber(startOrEnd);
-        return startOrEnd == 1;
+
+        String input = Console.readLine();
+        validateRestartNumber(input);
+        return input;
     }
 }
