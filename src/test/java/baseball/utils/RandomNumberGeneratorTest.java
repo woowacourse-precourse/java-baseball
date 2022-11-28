@@ -9,14 +9,14 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BaseBallRandomNumbersGeneratorTest {
+class RandomNumberGeneratorTest {
 
-    private BaseballNumbersGenerator numbersGenerator;
+    private NumberGenerator numbersGenerator;
     private List<Integer> validNumbers = Arrays.asList(1,2,3,4,5,6,7,8,9);
 
     @BeforeEach
     void setUp() {
-        BaseBallRandomNumbersGenerator numbersGenerator = new BaseBallRandomNumbersGenerator();
+        RandomNumberGenerator numbersGenerator = new RandomNumberGenerator();
         this.numbersGenerator = numbersGenerator;
     }
 
