@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.model.number.NumberGenerator;
 import baseball.model.number.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class RandomNumberGeneratorTest {
-    NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.INSTANCE;
 
     @DisplayName("1에서 9까지 서로 다른 임의의 수 3개를 선택한다")
     @Test
