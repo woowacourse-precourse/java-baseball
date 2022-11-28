@@ -1,5 +1,6 @@
 package baseball.model.game;
 
+import baseball.exception.WrongGameResultException;
 import baseball.util.GameNumberConst;
 import baseball.util.GameResultMessage;
 
@@ -9,8 +10,25 @@ public class GameResult {
     private final int strikeCnt;
 
     public GameResult(int ballCnt, int strikeCnt) {
+        validate(ballCnt, strikeCnt);
         this.ballCnt = ballCnt;
         this.strikeCnt = strikeCnt;
+    }
+
+    private static void validate(int ballCnt, int strikeCnt) {
+        if (notInRange(ballCnt)
+                || notInRange(strikeCnt)
+                || nonExists(ballCnt, strikeCnt)) {
+            throw new WrongGameResultException();
+        }
+    }
+
+    private static boolean notInRange(int cnt) {
+        return (cnt < 0) || (cnt > GameNumberConst.NUMBER_SIZE);
+    }
+
+    private static boolean nonExists(int ballCnt, int strikeCnt) {
+        return (ballCnt + strikeCnt > GameNumberConst.NUMBER_SIZE) || (ballCnt == 1 && strikeCnt == 2);
     }
 
     public String getMessage() {
