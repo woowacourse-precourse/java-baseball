@@ -32,7 +32,7 @@ public class NumbersValidator {
         }
     }
 
-    public static void validationRange(String input) {
+    public static void validateRange(String input) {
         String[] numbers = input.split("");
         for (String number : numbers) {
             if (Integer.parseInt(number) < MIN_RANGE_NUM || Integer.parseInt(number) > MAX_RANGE_NUM) {

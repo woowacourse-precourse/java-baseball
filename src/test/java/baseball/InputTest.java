@@ -13,20 +13,20 @@ public class InputTest {
     @DisplayName("올바른 숫자 범위 테스트1")
     @Test
     void validateRange() {
-        final int input = 0;
+        final String input = "0";
 
         assertThrows(IllegalArgumentException.class, ()->{
-            CommandValidator.validateRange(input);
+            NumbersValidator.validateRange(input);
         });
     }
 
     @DisplayName("올바른 숫자 범위 테스트2")
     @Test
     void validateRange2() {
-        final int input = 10;
+        final String input = "10";
 
         assertThrows(IllegalArgumentException.class, ()->{
-            CommandValidator.validateRange(input);
+            NumbersValidator.validateRange(input);
         });
     }
 
@@ -53,7 +53,7 @@ public class InputTest {
     @DisplayName("리스트에 중복되는 숫자가 있는지 확인하는 테스트")
     @Test
     void validateDuplicateNumber() {
-        final List<Integer> input = List.of(1, 2, 2);
+        final String input = "122";
 
         assertThrows(IllegalArgumentException.class, ()->{
             NumbersValidator.validateDuplicateNumber(input);

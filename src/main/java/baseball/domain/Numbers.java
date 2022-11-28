@@ -17,7 +17,7 @@ public class Numbers {
         validateNonNumeric(input);
         validateDigit(input);
         validateDuplicateNumber(input);
-        validationRange(input);
+        validateRange(input);
 
         this.numbers = transformInputNumbers(input);
     }

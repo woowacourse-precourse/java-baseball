@@ -10,25 +10,25 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseBallGameTest {
-    RandomNumbers randomNumbers;
-    GameLogic result;
-
-    @BeforeEach
-    void createNewRandomNumbers() {
-        randomNumbers = new RandomNumbers();
-        List<Integer> playerNumbers = List.of(5, 9, 7);
-        result = new GameLogic(randomNumbers, playerNumbers);
-        System.out.println("randomNumbers = " + randomNumbers.toString());
-    }
-
-    @Nested
-    class randomNumbers {
-        @DisplayName("컴퓨터 랜덤 숫자 생성 테스트")
-        @Test
-        void getComputerRandomNumbers() {
-            assertThat(randomNumbers.size()).isEqualTo(3);
-        }
-    }
+//    RandomNumbers randomNumbers;
+//    GameLogic result;
+//
+//    @BeforeEach
+//    void createNewRandomNumbers() {
+//        randomNumbers = new RandomNumbers();
+//        List<Integer> playerNumbers = List.of(5, 9, 7);
+//        result = new GameLogic(randomNumbers, playerNumbers);
+//        System.out.println("randomNumbers = " + randomNumbers.toString());
+//    }
+//
+//    @Nested
+//    class randomNumbers {
+//        @DisplayName("컴퓨터 랜덤 숫자 생성 테스트")
+//        @Test
+//        void getComputerRandomNumbers() {
+//            assertThat(randomNumbers.size()).isEqualTo(3);
+//        }
+//    }
 
     @Nested
     class hintTest {
