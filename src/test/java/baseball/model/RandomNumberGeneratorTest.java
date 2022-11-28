@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.model.number.NumberGenerator;
+import baseball.model.number.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

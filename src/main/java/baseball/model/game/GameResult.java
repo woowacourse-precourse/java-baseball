@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.game;
 
 import baseball.util.GameNumberConst;
 import baseball.util.GameResultMessage;

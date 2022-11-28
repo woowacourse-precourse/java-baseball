@@ -1,6 +1,5 @@
 package baseball.view;
 
-import baseball.model.GameResult;
 import baseball.util.GameControllerMessage;
 
 public enum OutputView {

@@ -1,4 +1,6 @@
-package baseball.model;
+package baseball.model.game;
+
+import baseball.model.number.NumberCollection;
 
 public class Game {
     private final NumberCollection computerNumbers;

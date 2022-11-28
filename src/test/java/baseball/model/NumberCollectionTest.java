@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.model.number.NumberCollection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

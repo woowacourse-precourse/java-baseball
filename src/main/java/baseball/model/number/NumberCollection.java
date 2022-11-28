@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.number;
 
 import java.util.ArrayList;
 import java.util.List;

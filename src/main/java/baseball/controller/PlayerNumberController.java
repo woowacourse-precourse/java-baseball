@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.model.NumberCollection;
+import baseball.model.number.NumberCollection;
 import baseball.view.InputView;
 
 import java.util.Arrays;
