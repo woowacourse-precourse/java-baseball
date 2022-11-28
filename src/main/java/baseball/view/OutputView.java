@@ -29,6 +29,10 @@ public final class OutputView {
         System.out.printf(message.toString());
     }
 
+    public static void printErrorMessage(String message) {
+        System.out.println("[ERROR]" + message);
+    }
+
     public static void printGameStatus(Result result) {
         System.out.println(result.makeMessage());
     }
