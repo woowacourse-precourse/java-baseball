@@ -30,11 +30,42 @@ public class Numbers {
         return transformNumbers;
     }
 
+    public GameResult compareToNumbers(Numbers inputNumbers) {
+        return new GameResult(countBall(inputNumbers), countStrike(inputNumbers));
+    }
+
     private boolean isSamePosition(int number, int position) {
         return position == numbers.indexOf(number);
     }
 
     private boolean isContainNumber(int number, int position) {
         return position != numbers.indexOf(number) && numbers.contains(number);
+    }
+
+    private int countBall(Numbers inputNumbers) {
+        int ball = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (inputNumbers.isContainNumber(numbers.get(i), i)) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+    private int countStrike(Numbers inputNumbers) {
+        int strike = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (inputNumbers.isSamePosition(numbers.get(i), i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    @Override
+    public String toString() {
+        return "Numbers{" +
+                "numbers=" + numbers +
+                '}';
     }
 }
