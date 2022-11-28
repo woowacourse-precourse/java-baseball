@@ -1,6 +1,7 @@
 package baseball.util;
 
 public enum GameControllerMessage {
+
     INSTANCE;
 
     public static final String GAME_START = "숫자 야구 게임을 시작합니다.";

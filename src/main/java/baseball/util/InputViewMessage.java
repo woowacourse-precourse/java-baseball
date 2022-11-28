@@ -1,6 +1,7 @@
 package baseball.util;
 
 public enum InputViewMessage {
+
     INSTANCE;
 
     public static final String READ_PLAYER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
