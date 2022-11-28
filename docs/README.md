@@ -6,7 +6,10 @@
   - [x] 1~9 사이의 서로 다른 수로 이루어진 숫자 Randoms를 이용하여 값 추출
 
 ## RandomNumbers
-  - [] RandomNumber를 이용하여 3자리 수 생성
+  - [] RandomNumber를 이용하여 3자리 수 생성하는 기능
+
+## Computer
+  - [] RandomNubers를 생성하는 기능
 
 # Controller
 ## GAME
