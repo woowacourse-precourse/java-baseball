@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.validator.NumberValidator;
+import baseball.validator.CommandValidator;
 import baseball.validator.NumbersValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ public class InputTest {
         final int input = 0;
 
         assertThrows(IllegalArgumentException.class, ()->{
-            NumberValidator.validateRange(input);
+            CommandValidator.validateRange(input);
         });
     }
 
@@ -26,7 +26,7 @@ public class InputTest {
         final int input = 10;
 
         assertThrows(IllegalArgumentException.class, ()->{
-            NumberValidator.validateRange(input);
+            CommandValidator.validateRange(input);
         });
     }
 

@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.validator.NumberValidator.*;
+import static baseball.validator.CommandValidator.*;
 import static baseball.validator.NumbersValidator.*;
 
 public class InputView {

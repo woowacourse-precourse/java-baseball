@@ -1,6 +1,6 @@
 package baseball.validator;
 
-public class NumberValidator {
+public class CommandValidator {
     private final static String RESTART_ERROR_MESSAGE = "1또는 2를 입력해주세요.";
 
 
