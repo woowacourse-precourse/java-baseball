@@ -11,11 +11,9 @@ public class NumbersValidator {
     private final static String DUPLICATE_ERROR_MESSAGE = "중복된 숫자가 포함되어 있습니다.";
 
     public static void validateNonNumeric(String input) {
-        String changeTypeString = String.valueOf(input);
-        for (char charString : changeTypeString.toCharArray()) {
-            if ((int) charString >= 48 && (int) charString <= 57) {
-                continue;
-            }
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NON_NUMERIC_ERROR_MESSAGE);
         }
     }
