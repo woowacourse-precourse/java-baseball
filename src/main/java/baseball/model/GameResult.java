@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.util.GameNumberConst;
 import baseball.util.GameResultMessage;
 
 public class GameResult {
@@ -23,5 +24,9 @@ public class GameResult {
             return String.format(GameResultMessage.BALL_STRIKE, ballCnt, strikeCnt);
         }
         return GameResultMessage.NOTHING;
+    }
+
+    public boolean isAllStrike() {
+        return strikeCnt == GameNumberConst.NUMBER_SIZE;
     }
 }

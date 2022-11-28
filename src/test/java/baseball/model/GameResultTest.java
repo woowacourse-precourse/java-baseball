@@ -3,7 +3,9 @@ package baseball.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -18,6 +20,15 @@ public class GameResultTest {
         GameResult gameResult = new GameResult(ballCnt, strikeCnt);
         assertThat(gameResult.getMessage()).isEqualTo(expected);
     }
+
+    @DisplayName("3스트라이크이면 참을 반환한다")
+    @ParameterizedTest
+    @CsvSource(value = {"1:false", "3:true"}, delimiter = ':')
+    void isAllStrikeTest(int strikeCnt, boolean expected) {
+        GameResult gameResult = new GameResult(0, strikeCnt);
+        assertThat(gameResult.isAllStrike()).isEqualTo(expected);
+    }
+
 
     private static Stream<Arguments> gameResultMessageTestSource() {
         return Stream.of(
