@@ -51,4 +51,4 @@ Controller를 통해서 사용자 입출력에 대한 정보와 Game 클래스�
 
 
 ## 🐋 Reference Diagram
-<p align="center"><img src="./baseball_diagram.png" width="300">
+<p align="center"><img src="./baseball_diagram.png" width="450">
