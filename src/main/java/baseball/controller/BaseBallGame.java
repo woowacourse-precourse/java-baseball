@@ -1,20 +1,18 @@
 package baseball.controller;
 
 import baseball.domain.GameLogic;
-import baseball.domain.RandomNumbers;
+import baseball.domain.Numbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.List;
 
-import static baseball.view.InputView.getPlayerRandomNumbers;
-
 public class BaseBallGame {
-    private RandomNumbers computerNumbers;
+    private Numbers computerNumbers;
     private final static String SUCCESS = "3스트라이크";
 
-    private void getRandomNumbers() {
-        computerNumbers = new RandomNumbers();
+    private void initComputerNumbers() {
+        computerNumbers = new Numbers();
     }
 
     public void startGame() {
