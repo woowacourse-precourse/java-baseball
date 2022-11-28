@@ -24,5 +24,12 @@ public class GameController {
         gameCommand = InputView.readGameCommand();
         Validator.validateGameCommand(gameCommand);
     }
-    
+
+    public void guess(Computer computer, Judge judge) {
+        OutputView.printInputPlayerNumMessage();
+        Player player = new Player(InputView.readPlayerNum());
+        judge.compareNumbers(computer.get(), player.get());
+        OutputView.printResult(judge.setResult().toString());
+    }
+
 }
