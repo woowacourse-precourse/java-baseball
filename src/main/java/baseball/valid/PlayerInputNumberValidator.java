@@ -19,14 +19,16 @@ public class PlayerInputNumberValidator {
     }
 
     public static void validateLength(String input) {
-        if (input.length() != NUMBER_LENGTH) throw new IllegalArgumentException(invalidLengthMessage);
+        if (input.length() != NUMBER_LENGTH) {
+            throw new IllegalArgumentException(invalidLengthMessage);
+        }
     }
 
     public static void validateDuplicate(String input) {
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < input.length(); i++) {
             char target = input.charAt(i);
-            if (set.contains(target)) throw new IllegalArgumentException(duplicateMessage);
+            validateEachDuplicate(set, target);
             set.add(target);
         }
     }
@@ -35,7 +37,19 @@ public class PlayerInputNumberValidator {
         for (int i = 0; i < input.length(); i++) {
             char target = input.charAt(i);
             int targetInt = Character.getNumericValue(target);
-            if (targetInt > MAX_NUMBER || targetInt < MIN_NUMBER) throw new IllegalArgumentException(numberRangeMessage);
+            validateEachNumberRange(targetInt);
+        }
+    }
+
+    private static void validateEachDuplicate(Set<Character> set, char target) {
+        if (set.contains(target)) {
+            throw new IllegalArgumentException(duplicateMessage);
+        }
+    }
+
+    private static void validateEachNumberRange(int targetInt) {
+        if (targetInt > MAX_NUMBER || targetInt < MIN_NUMBER) {
+            throw new IllegalArgumentException(numberRangeMessage);
         }
     }
 }
