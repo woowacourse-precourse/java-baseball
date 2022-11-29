@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Result {
-    private Map<BallCount, Integer> result ;
+    private Map<BallCount, Integer> result;
 
     public Result(Map<BallCount, Integer> result) {
         this.result = result;
@@ -14,6 +14,7 @@ public class Result {
         Map<BallCount, Integer> result = new HashMap<>();
         result.put(BallCount.BALL, 0);
         result.put(BallCount.STRIKE, 0);
+        result.put(BallCount.NOTHING, 0);
         return new Result(result);
     }
 

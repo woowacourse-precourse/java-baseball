@@ -20,21 +20,19 @@ public class Referee {
 
     public Map<BallCount, Integer> getBallCountJudgement() {
         Result result = Result.initialBallCount();
-
         for (int position = 0; position < BALL_LENGTH; position++) {
-            int userChoice = player.getNumberByPosition(position);
-            BallCount ballCount = BallCount.decideBallCount(hasCommonNumber(userChoice), isInSamePosition(position));
+            BallCount ballCount = BallCount.decideBallCount(hasCommonNumber(position), isInSamePosition(position));
             result.updateBallCount(ballCount);
         }
         return result.getResult();
     }
 
-    private boolean isInSamePosition( int position) {
-        return position == computer.getComputerNumber().indexOf(player.getNumberByPosition(position));
+    private boolean isInSamePosition(int position) {
+        return computer.getNumberByPosition(position) == player.getNumberByPosition(position);
     }
 
-    private boolean hasCommonNumber(int number) {
-        return computer.getComputerNumber().contains(number);
+    private boolean hasCommonNumber(int position) {
+        return computer.getComputerNumber().contains(player.getNumberByPosition(position));
     }
 
 
