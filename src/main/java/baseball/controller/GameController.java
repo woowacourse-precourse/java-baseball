@@ -17,13 +17,16 @@ public class GameController {
     }
 
     public void play() {
-        outputView.printGameStart();
+        try {
+            outputView.printGameStart();
 
-        Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
-        System.out.println(computer.getComputerNumber());
+            Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
+            System.out.println(computer.getComputerNumber());
 
-        Player player = Player.createByNumber(inputView.readPlayerNumber());
-        System.out.println(player.getPlayerNumber());
+            Player player = Player.createByNumber(inputView.readPlayerNumber());
+            System.out.println(player.getPlayerNumber());
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
-
 }
