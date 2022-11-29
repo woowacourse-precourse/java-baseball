@@ -9,7 +9,7 @@ public class PlayerInputNumberValidator {
     private static final int MAX_NUMBER = 9;
 
     private final static String invalidLengthMessage = "길이가 " +  NUMBER_LENGTH + "이어야 합니다.";
-    private final static String duplicateMessage = "엽력값이 중복되지 않아야 합니다.";
+    private final static String duplicateMessage = "입력값이 중복되지 않아야 합니다.";
     private final static String numberRangeMessage = MIN_NUMBER + "에서 " + MAX_NUMBER +"사이 범위의 숫자가 입력되어야 합니다.";
 
     public static void validateFormat(String input) {
