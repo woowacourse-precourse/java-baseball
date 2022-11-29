@@ -12,7 +12,7 @@ public class Computer {
         this.computerNumber = computerNumber;
     }
 
-    public static Computer createComputerByNumber(List<Integer> computerNumber) {
+    public static Computer createByNumber(List<Integer> computerNumber) {
         return new Computer(computerNumber);
     }
 

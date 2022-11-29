@@ -1,8 +1,10 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class GameController {
 
@@ -17,9 +19,11 @@ public class GameController {
     public void play() {
         outputView.printGameStart();
 
-        Computer computer = Computer.createComputerByNumber(Computer.createRandomNumbers());
+        Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
         System.out.println(computer.getComputerNumber());
 
+        Player player = Player.createByNumber(inputView.readPlayerNumber());
+        System.out.println(player.getPlayerNumber());
     }
 
 }
