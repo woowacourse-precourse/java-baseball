@@ -8,8 +8,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         while (true) {
-            Game game = new Game();
-            game.play();
+            BaseballGame baseballGame = new BaseballGame();
+            baseballGame.play();
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             if (getRepeatOption().equals(QUIT_GAME_CONDITION)) {

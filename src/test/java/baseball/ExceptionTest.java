@@ -68,7 +68,7 @@ public class ExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    public Game makeGameInstance() {
-        return new Game();
+    public BaseballGame makeGameInstance() {
+        return new BaseballGame();
     }
 }

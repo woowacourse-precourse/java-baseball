@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Game {
+public class BaseballGame {
     final static int BALL = 1;
     final static int STRIKE = 0;
     final static String WIN_CONDITION = "3스트라이크";
@@ -13,7 +13,7 @@ public class Game {
     private Computer computer;
     private String computerNumbers;
 
-    Game() {
+    BaseballGame() {
         this.computer = new Computer();
         this.computerNumbers = computer.getStringRandomNumbers();
     }

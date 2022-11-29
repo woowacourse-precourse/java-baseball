@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameTest extends NsTest {
+public class BaseballGameTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
     }
 
-    public Game makeGameInstance() {
-        return new Game();
+    public BaseballGame makeGameInstance() {
+        return new BaseballGame();
     }
 
     @Test
