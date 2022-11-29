@@ -2,8 +2,8 @@ package baseball.util;
 
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -11,9 +11,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 class ValidatorTest {
 
     @Nested
-    class invalidInput {
+    class invalidInputTest {
 
-        @DisplayName("입력 범위 초과")
         @ParameterizedTest
         @ValueSource(strings = {"222222222222222222", "12731267764214627128721763"})
         void int_범위를_초과한_입력(String input) {
@@ -36,6 +35,16 @@ class ValidatorTest {
             assertThatThrownBy(() -> Validator.getValidatedPlayerNumber(input))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ExceptionMessage.INVALID_LENGTH.getMessage());
+        }
+    }
+
+    @Nested
+    class validInputTest {
+        @ParameterizedTest
+        @ValueSource(strings = {"123", "213", "262", "111"})
+        void 정상_입력(String input) {
+            assertThatCode(() -> Validator.getValidatedPlayerNumber(input))
+                    .doesNotThrowAnyException();
         }
     }
 
