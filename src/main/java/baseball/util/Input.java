@@ -11,11 +11,11 @@ public class Input {
     InputValidation inputValidation = new InputValidation();
 
     public List<String> inputNumber() {
-        String inputNumber = Console.readLine();
-        inputValidation.isNumberDigit(inputNumber);
-        inputValidation.isValidNumberAmount(inputNumber);
-        inputValidation.isDuplicateNumber(inputNumber);
-        return List.of(inputNumber.split(""));
+        String input = Console.readLine();
+        inputValidation.isNumberDigit(input);
+        inputValidation.isValidNumberAmount(input);
+        inputValidation.isDuplicateNumber(input);
+        return List.of(input.split(""));
     }
 
     public String inputReplayAnswer() {
