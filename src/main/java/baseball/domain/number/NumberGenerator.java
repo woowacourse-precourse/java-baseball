@@ -1,9 +1,9 @@
-package baseball.utils;
+package baseball.domain.number;
 
 import java.util.List;
 
 @FunctionalInterface
 public interface NumberGenerator {
 
-    List<Integer> generate();
+    public List<Integer> generate();
 }
