@@ -16,7 +16,7 @@ public class Computer {
         return new Computer(computerNumber);
     }
 
-    public static  List<Integer> createRandomNumbers() {
+    public static List<Integer> createRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -25,10 +25,6 @@ public class Computer {
             }
         }
         return numbers;
-    }
-
-    public boolean hasCommonNumber(int number) {
-        return computerNumber.contains(number);
     }
 
     public List<Integer> getComputerNumber() {
