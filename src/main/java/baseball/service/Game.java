@@ -30,15 +30,15 @@ public class Game {
 
     private boolean startSet() {
         message.askPlayerInputAnswer();
+
         set = new Set(computerAnswer);
         set.inputUserAnswer();
         Map<String, Integer> setResult = set.calculate();
-
         int ball = setResult.get(ResultKeys.BALL.getKey());
         int strike = setResult.get(ResultKeys.STRIKE.getKey());
 
         message.gameResultMessage(ball, strike);
-        return strike == GameSetting.GAME_END.getAttribute();
+        return strike == GameSetting.GAME_END_CONDITION.getAttribute();
     }
 
     public boolean replay() {
