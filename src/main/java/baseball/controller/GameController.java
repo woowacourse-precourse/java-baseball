@@ -1,7 +1,12 @@
 package baseball.controller;
 
+import baseball.model.Computer;
+import baseball.model.Number;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameController {
 
@@ -14,6 +19,12 @@ public class GameController {
     }
 
     public void play() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        outputView.printGameStart();
+        Number number = new Number();
+
+        Computer computer = Computer.createComputerByNumber(number.getRandomNumbers());
+        System.out.println(computer.getComputerNumber());
     }
+
+
 }
