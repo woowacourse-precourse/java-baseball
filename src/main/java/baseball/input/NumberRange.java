@@ -1,11 +1,11 @@
 package baseball.input;
 
-public enum Number {
+public enum NumberRange {
 	MIN(1), MAX(9);
 
 	private int number;
 
-	Number(int number) {
+	NumberRange(int number) {
 		this.number = number;
 	}
 

@@ -14,16 +14,23 @@ import baseball.view.View;
 public class BaseBallGame {
 	private static final int MAX_STRIKE = 3;
 	private static final int INIT = 0;
+	private static Computer computer;
+	private static Player player;
 	private int strike;
 	private int ball;
 
-	public void start(Computer computer, Player player) {
+	public BaseBallGame(Computer computer, Player player){
+		this.computer = computer;
+		this.player = player;
+	}
+
+	public void start() {
 		boolean isEnd;
 
 		do {
 			View.showStartGameGuideMessage();
 			computer.makeRandomNumber();
-			game(computer, player);
+			game();
 			isEnd = gameCommand();
 		} while (!isEnd);
 	}
@@ -36,10 +43,10 @@ public class BaseBallGame {
 		return isEndCommand(Integer.parseInt(playerInput));
 	}
 
-	private void game(Computer computer, Player player) {
+	private void game() {
 		do {
 			initBallAndStrike();
-			playerGuessNumber(player);
+			playerGuessNumber();
 			calculateStrikeAndBall(computer.getRandomNumber(), player.getPlayerNumberList());
 			View.showResult(ball, strike);
 		} while (strike != MAX_STRIKE);
@@ -47,7 +54,7 @@ public class BaseBallGame {
 		View.showThreeStrike();
 	}
 
-	private void playerGuessNumber(Player player) {
+	private void playerGuessNumber() {
 		View.showPlayerInputGuideMessage();
 
 		String userInput = Input.inputNumber();

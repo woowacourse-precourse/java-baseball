@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import baseball.input.Number;
+import baseball.input.NumberRange;
 import baseball.validation.Validation;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -28,7 +28,7 @@ public class Computer {
 	private void selectNumber() {
 
 		while (randomNumber.size() < INIT_RANDOM_NUMBER_CAPACITY) {
-			int number = Randoms.pickNumberInRange(Number.MIN.getNumber(), Number.MAX.getNumber());
+			int number = Randoms.pickNumberInRange(NumberRange.MIN.getNumber(), NumberRange.MAX.getNumber());
 
 			if (!Validation.isSameNumberExistInRandomNumber(number, randomNumber)) {
 				addRandomNumber(number);

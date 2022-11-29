@@ -7,20 +7,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import baseball.input.InputLength;
+
 public class Player {
-	private static final int INIT_LIST_CAPACITY = 3;
 	private List<Integer> playerNumberList;
 
 	public Player() {
-		playerNumberList = new ArrayList<>(INIT_LIST_CAPACITY);
+		playerNumberList = new ArrayList<>(InputLength.NUMBER_INPUT_LENGTH.getLength());
 	}
 
 	public void addPlayerNumberInList(String playerInput) {
-		initUserNumber();
+		initPlayerNumber();
 		separateNumbersByUnit(playerInput);
 	}
 
-	private void initUserNumber() {
+	private void initPlayerNumber() {
 		playerNumberList.clear();
 	}
 

@@ -2,11 +2,10 @@ package baseball.validation;
 
 import java.util.List;
 
-import baseball.domain.Computer;
 import baseball.exception.Exception;
 import baseball.input.GameCommand;
 import baseball.input.InputLength;
-import baseball.input.Number;
+import baseball.input.NumberRange;
 
 public class Validation {
 
@@ -17,7 +16,7 @@ public class Validation {
 		validateNumberRange(playerNumberList);
 	}
 
-	private static void validateNumberOnly(String playerInput) {
+	public static void validateNumberOnly(String playerInput) {
 		try {
 			Integer.parseInt(playerInput);
 		} catch (NumberFormatException e) {
@@ -25,7 +24,7 @@ public class Validation {
 		}
 	}
 
-	private static void validateLength(String playerInput, int length) {
+	public static void validateLength(String playerInput, int length) {
 		if (isLengthException(playerInput, length)) {
 			throw Exception.LENGTH_EXCEPTION.getException();
 		}
@@ -35,7 +34,7 @@ public class Validation {
 		return playerInput.length() != length;
 	}
 
-	private static void validateNumberRange(List<Integer> playerNumberList) {
+	public static void validateNumberRange(List<Integer> playerNumberList) {
 		for (Integer number : playerNumberList) {
 			if (isNumberRangeException(number)) {
 				throw Exception.NUMBER_RANGE_EXCEPTION.getException();
@@ -44,11 +43,11 @@ public class Validation {
 	}
 
 	private static boolean isNumberRangeException(int playerInput) {
-		return playerInput > Number.MAX.getNumber()
-			|| playerInput < Number.MIN.getNumber();
+		return playerInput > NumberRange.MAX.getNumber()
+			|| playerInput < NumberRange.MIN.getNumber();
 	}
 
-	private static void validateSameLetter(List<Integer> playerNumberList) {
+	public static void validateSameLetter(List<Integer> playerNumberList) {
 		if (isPlayerInputSameNumber(playerNumberList)) {
 			throw Exception.SAME_LETTER_EXCEPTION.getException();
 		}
@@ -83,7 +82,7 @@ public class Validation {
 		validateGameCommandRange(Integer.parseInt(playerInput));
 	}
 
-	private static void validateGameCommandRange(int playerInput) {
+	public static void validateGameCommandRange(int playerInput) {
 		if (isGameCommandRangeException(playerInput)) {
 			throw Exception.GAME_COMMAND_EXCEPTION.getException();
 		}
