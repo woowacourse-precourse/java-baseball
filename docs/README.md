@@ -1,5 +1,9 @@
 # 구현할 기능 목록
 
+## 0. 객체 UML Diagram
+
+![image](../img/OOP%20Architecture.png)
+
 ## 1. 게임 시작
 ### 세부 기능
 - [x] 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택
