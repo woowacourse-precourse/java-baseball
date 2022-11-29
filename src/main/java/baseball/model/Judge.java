@@ -19,8 +19,9 @@ public class Judge {
         return  (playerNumbers.equals(answer));
     }
 
-    public Hint getHint() {
-        return Hint.findHint(ball, strike);
+    public String getHintMessage() {
+        Hint findHint = Hint.findHint(ball, strike);
+        return findHint.printHintMessage(ball, strike);
     }
 
     public void countScore() {
@@ -35,13 +36,5 @@ public class Judge {
         int findIndex = answer.indexOf(target);
         if (findIndex == index) strike++;
         else if (findIndex != -1) ball++;
-    }
-
-    public int getBall() {
-        return ball;
-    }
-
-    public int getStrike() {
-        return strike;
     }
 }

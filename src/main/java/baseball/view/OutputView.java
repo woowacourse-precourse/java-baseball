@@ -16,11 +16,7 @@ public class OutputView {
     }
 
     public static void printHint(Judge judge) {
-        Hint hint = judge.getHint();
-
-        int ballCnt = judge.getBall();
-        int strikeCnt = judge.getStrike();
-        String message = hint.printHintMessage(ballCnt, strikeCnt);
+        String message = judge.getHintMessage();
         System.out.println(message);
     }
 }
