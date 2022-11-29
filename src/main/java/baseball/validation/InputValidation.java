@@ -1,10 +1,13 @@
 package baseball.validation;
 
+import baseball.service.GameSetting;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputValidation {
+import static baseball.service.GameCommand.*;
 
+public class InputValidation {
 
     public void isNumberDigit(String input) {
         if (!input.matches("[1-9]+")) {
@@ -13,7 +16,7 @@ public class InputValidation {
     }
 
     public void isValidNumberAmount(String input) {
-        if (input.length() != 3) {
+        if (input.length() != GameSetting.GAME_END_CONDITION.getAttribute()) {
             throw new IllegalArgumentException();
         }
     }
@@ -27,7 +30,7 @@ public class InputValidation {
     }
 
     public void isValidReplayCommand(String input) {
-        if (!input.equals("1") && !input.equals("2")) {
+        if (!input.equals(RETRY.getCommand()) && !input.equals(QUIT.getCommand())) {
             throw new IllegalArgumentException();
         }
     }
