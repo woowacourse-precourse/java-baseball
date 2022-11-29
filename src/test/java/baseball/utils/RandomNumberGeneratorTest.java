@@ -2,6 +2,9 @@ package baseball.utils;
 
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.domain.number.NumberGenerator;
+import baseball.domain.number.RandomNumberGenerator;
+import baseball.system.Constant;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -23,7 +26,7 @@ class RandomNumberGeneratorTest {
 
     @Test
     void generate_반환_List_크기_3_확인() {
-        assertThat(numbersGenerator.generate().size()).isEqualTo(Constants.NUMBERS_SIZE);
+        assertThat(numbersGenerator.generate().size()).isEqualTo(Constant.NUMBERS_SIZE);
     }
 
     @Test
@@ -37,6 +40,6 @@ class RandomNumberGeneratorTest {
     @Test
     void generate_반환값_모두_다른_숫자_확인() {
         Set<Integer> randomNumbers = new HashSet<>(numbersGenerator.generate());
-        assertThat(randomNumbers.size()).isEqualTo(Constants.NUMBERS_SIZE);
+        assertThat(randomNumbers.size()).isEqualTo(Constant.NUMBERS_SIZE);
     }
 }
