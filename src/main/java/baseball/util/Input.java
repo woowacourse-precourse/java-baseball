@@ -1,37 +1,28 @@
 package baseball.util;
 
 
+import baseball.validation.InputValidation;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Input {
 
-    public static List<String> inputNumber() {
-        List<String> inputNumberList = List.of(Console.readLine().split(""));
-        isValidNumber(inputNumberList);
-        return inputNumberList;
+    InputValidation inputValidation = new InputValidation();
+
+    public List<String> inputNumber() {
+        String input = Console.readLine();
+        inputValidation.isNumberDigit(input);
+        inputValidation.isValidNumberAmount(input);
+        inputValidation.isDuplicateNumber(input);
+        return List.of(input.split(""));
     }
 
-    private static void isValidNumber(List<String> inputNumberList) {
-        Set<String> listSet = new HashSet<>(inputNumberList);
-        if (listSet.size() != 3) {
-            throw new IllegalArgumentException();
-        }
+    public String inputReplayAnswer() {
+        String inputCommand = Console.readLine();
+        inputValidation.isValidReplayCommand(inputCommand);
+        return inputCommand;
     }
 
-    public static String inputReplayAnswer() {
-        String userReplayAnswer = Console.readLine();
-        isValidReplayNumber(userReplayAnswer);
-        return userReplayAnswer;
-    }
-
-    private static void isValidReplayNumber(String inputNumber) {
-        if (!inputNumber.equals("1") && !inputNumber.equals("2")) {
-            throw new IllegalArgumentException();
-        }
-    }
 
 }
