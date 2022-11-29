@@ -20,10 +20,7 @@ public class Judge {
     }
 
     public Hint getHint() {
-        if (ball == 0 && strike == 0) return Hint.NOTHING;
-        if (ball == 0) return Hint.ONLY_STRIKE;
-        if (strike == 0) return Hint.ONLY_BALL;
-        return Hint.BALL_AND_STRIKE;
+        return Hint.findHint(ball, strike);
     }
 
     public void countScore() {
