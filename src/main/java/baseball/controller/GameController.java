@@ -48,11 +48,15 @@ public class GameController {
         judge.countScore();
         OutputView.printHint(judge);
 
-        if (gameSuccess) OutputView.printGameClear();
+        if (gameSuccess) {
+            OutputView.printGameClear();
+        }
     }
 
     public void gameRestartOrStop() {
         Boolean isGameRestart = InputView.isGameRestart();
-        if (isGameRestart) init();
+        if (isGameRestart) {
+            init();
+        }
     }
 }
