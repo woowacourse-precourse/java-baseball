@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.Result;
+import baseball.domain.GameResult;
 
 public final class OutputView {
     public enum Message {
@@ -33,7 +33,7 @@ public final class OutputView {
         System.out.println("[ERROR]" + message);
     }
 
-    public static void printGameStatus(Result result) {
-        System.out.println(result.makeMessage());
+    public static void printGameStatus(GameResult gameResult) {
+        System.out.println(gameResult.getMessage());
     }
 }
