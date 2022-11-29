@@ -2,7 +2,6 @@ package baseball.model;
 
 import static baseball.util.Constants.BALL_LENGTH;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,21 +19,22 @@ public class Referee {
     }
 
     public Map<BallCount, Integer> getBallCountJudgement() {
-        Map<BallCount, Integer> ballCount = new HashMap<>();
-        ballCount.put(BallCount.BALL, 0);
-        ballCount.put(BallCount.STRIKE, 0);
+        Result result = Result.initialBallCount();
+
         List<Integer> computerNumber = computer.getComputerNumber();
-        List<Integer> playerNumber = player.getPlayerNumber();
-        for (int i = 0; i < BALL_LENGTH; i++) {
-            if (computerNumber.contains(playerNumber.get(i))) {
-                if (i != computerNumber.indexOf(playerNumber.get(i))) {
-                    ballCount.put(BallCount.BALL, ballCount.get(BallCount.BALL) + 1);
+        for (int position = 0; position < BALL_LENGTH; position++) {
+            if (computer.hasCommonNumber(player.getNumberByPosition(position))) {
+                if (position != computerNumber.indexOf(player.getNumberByPosition(position))) {
+                   result.updateBallCount(BallCount.BALL);
+
                 }
-                if (i == computerNumber.indexOf(playerNumber.get(i))) {
-                    ballCount.put(BallCount.STRIKE, ballCount.get(BallCount.STRIKE) + 1);
+                if (position == computerNumber.indexOf(player.getNumberByPosition(position))) {
+                    result.updateBallCount(BallCount.STRIKE);
                 }
             }
         }
-        return ballCount;
+        return result.getResult();
     }
+
+
 }

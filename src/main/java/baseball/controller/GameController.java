@@ -26,7 +26,6 @@ public class GameController {
             System.out.println(computer.getComputerNumber());
 
             Player player = Player.createByNumber(inputView.readPlayerNumber());
-            System.out.println(player.getPlayerNumber());
 
             Referee referee = Referee.judge(computer, player);
             Map<BallCount, Integer> ballCount = referee.getBallCountJudgement();

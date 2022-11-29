@@ -1,5 +1,8 @@
 package baseball.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum BallCount {
     STRIKE("스트라이크", true, true),
     BALL("볼", true, false),
@@ -9,10 +12,12 @@ public enum BallCount {
     private final boolean hasCommonNumber;
     private final boolean isInSamePosition;
 
+
     BallCount(String display, boolean hasCommonNumber, boolean isInSamePosition) {
         this.display = display;
         this.hasCommonNumber = hasCommonNumber;
         this.isInSamePosition = isInSamePosition;
     }
+
 
 }
