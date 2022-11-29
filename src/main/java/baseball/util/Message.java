@@ -16,9 +16,9 @@ public class Message {
     }
 
     public void gameResultMessage(int countBall, int countStrike) {
-        if (countStrike == 3) {
+        if (countStrike == GameSetting.GAME_END_CONDITION.getAttribute()) {
             System.out.println(countStrike + STRIKE.getMessage());
-            System.out.printf((GAME_FINISH_MESSAGE.getMessage()) + "%n", GameSetting.GAME_END.getAttribute());
+            System.out.printf((GAME_FINISH_MESSAGE.getMessage()) + "%n", GameSetting.GAME_END_CONDITION.getAttribute());
         } else if (countBall != 0 && countStrike == 0) {
             System.out.println(countBall + BALL.getMessage());
         } else if (countBall == 0 && countStrike != 0) {
