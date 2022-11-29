@@ -14,8 +14,8 @@ public class Calculator {
 
     public Map<String, Integer> getResult() {
         return Map.of(
-                ResultKeys.BALL.getKey(), ballResult,
-                ResultKeys.STRIKE.getKey(), strikeResult
+            ResultKeys.BALL.getKey(), ballResult,
+            ResultKeys.STRIKE.getKey(), strikeResult
         );
     }
 
