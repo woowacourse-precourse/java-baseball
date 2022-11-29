@@ -27,7 +27,7 @@ public class Computer {
         return numbers;
     }
 
-    public  int getNumberByPosition(int position) {
+    public int getNumberByPosition(int position) {
         return computerNumber.get(position);
     }
 

@@ -9,7 +9,7 @@ public class Application {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        GameController gameController = new GameController(inputView,outputView);
+        GameController gameController = new GameController(inputView, outputView);
         gameController.play();
     }
 }

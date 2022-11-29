@@ -6,7 +6,7 @@ public enum ConsoleMessage {
     private final String message;
 
     ConsoleMessage(String message) {
-        this.message =message;
+        this.message = message;
     }
 
     public String getMessage() {

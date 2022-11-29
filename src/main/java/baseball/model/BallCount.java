@@ -1,12 +1,11 @@
 package baseball.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 public enum BallCount {
     STRIKE("스트라이크", true, true),
     BALL("볼", true, false),
-    NOTHING("낫싱", true, false);
+    NOTHING("낫싱", false, false);
 
     private final String display;
     private final boolean hasCommonNumber;
@@ -20,12 +19,10 @@ public enum BallCount {
     }
 
     public static BallCount decideBallCount(boolean hasCommonNumber, boolean isInSamePosition) {
-        if (hasCommonNumber && isInSamePosition) {
-            return STRIKE;
-        }
-        if (hasCommonNumber && !isInSamePosition) {
-            return BALL;
-        }
-        return NOTHING;
+        return Arrays.stream(BallCount.values())
+                .filter(ballCount -> ballCount.hasCommonNumber == hasCommonNumber)
+                .filter(ballCount -> ballCount.isInSamePosition == isInSamePosition)
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("올바른 값을 입력해 주세요."));
     }
 }

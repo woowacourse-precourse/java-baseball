@@ -1,12 +1,11 @@
 package baseball.controller;
 
-import baseball.model.BallCount;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.model.Referee;
+import baseball.model.Result;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import java.util.Map;
 
 public class GameController {
 
@@ -28,9 +27,9 @@ public class GameController {
             Player player = Player.createByNumber(inputView.readPlayerNumber());
 
             Referee referee = Referee.judge(computer, player);
-            Map<BallCount, Integer> ballCount = referee.getBallCountJudgement();
+            Result result = referee.judgeBallCount();
 
-            System.out.println(ballCount);
+            outputView.printGameResult(result);
 
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
