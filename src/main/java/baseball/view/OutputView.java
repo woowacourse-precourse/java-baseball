@@ -1,17 +1,9 @@
 package baseball.view;
 
-public class View {
+public class OutputView {
 	public static String result;
 	public static int NO_BALL = 0;
 	public static int NO_STRIKE = 0;
-
-	public static void showStartGameGuideMessage() {
-		System.out.println(GameGuideMessage.START_GAME_GUIDE_MESSAGE.getMessage());
-	}
-
-	public static void showPlayerInputGuideMessage() {
-		System.out.print(GameGuideMessage.USER_INPUT_GUIDE_MESSAGE.getMessage());
-	}
 
 	public static void showResult(int ball, int strike) {
 		result = GameResult.INIT_RESULT.getMessage();
@@ -55,10 +47,6 @@ public class View {
 
 	public static void showThreeStrike() {
 		System.out.println(GameGuideMessage.THREE_STRIKE_MESSAGE.getMessage());
-	}
-
-	public static void showGameCommandGuideMessage() {
-		System.out.println(GameGuideMessage.END_OR_RESTART_MESSAGE.getMessage());
 	}
 
 	public static void showExceptionMessage(IllegalArgumentException exception) {

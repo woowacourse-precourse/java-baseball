@@ -1,6 +1,9 @@
 package baseball.validation;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import baseball.exception.Exception;
 import baseball.input.GameCommand;
@@ -8,12 +11,14 @@ import baseball.input.InputLength;
 import baseball.input.NumberRange;
 
 public class Validation {
+	public static List<Integer> playerNumbers;
 
-	public static void validatePlayerInput(String playerInput, int length, List<Integer> playerNumberList) {
+	public static void validatePlayerInput(String playerInput) {
 		validateNumberOnly(playerInput);
-		validateLength(playerInput, length);
-		validateSameLetter(playerNumberList);
-		validateNumberRange(playerNumberList);
+		validateLength(playerInput, InputLength.NUMBER_INPUT_LENGTH.getLength());
+		setPlayerNumbers(playerInput);
+		validateSameLetter();
+		validateNumberRange();
 	}
 
 	public static void validateNumberOnly(String playerInput) {
@@ -34,8 +39,8 @@ public class Validation {
 		return playerInput.length() != length;
 	}
 
-	public static void validateNumberRange(List<Integer> playerNumberList) {
-		for (Integer number : playerNumberList) {
+	public static void validateNumberRange() {
+		for (Integer number : playerNumbers) {
 			if (isNumberRangeException(number)) {
 				throw Exception.NUMBER_RANGE_EXCEPTION.getException();
 			}
@@ -47,18 +52,16 @@ public class Validation {
 			|| playerInput < NumberRange.MIN.getNumber();
 	}
 
-	public static void validateSameLetter(List<Integer> playerNumberList) {
-		if (isPlayerInputSameNumber(playerNumberList)) {
+	public static void validateSameLetter() {
+		if (isPlayerInputSameNumber()) {
 			throw Exception.SAME_LETTER_EXCEPTION.getException();
 		}
 	}
 
-	private static boolean isPlayerInputSameNumber(List<Integer> playerNumberList) {
-		boolean isSameNumberExist = playerNumberList.stream()
+	private static boolean isPlayerInputSameNumber() {
+		return playerNumbers.stream()
 			.distinct()
-			.count() != playerNumberList.size();
-
-		return isSameNumberExist;
+			.count() != playerNumbers.size();
 	}
 
 	public static boolean isSameNumberExistInRandomNumber(int number, List<Integer> randomNumber) {
@@ -90,6 +93,12 @@ public class Validation {
 
 	private static boolean isGameCommandRangeException(int playerInput) {
 		return playerInput != GameCommand.RE_START.getCommand() && playerInput != GameCommand.END.getCommand();
+	}
+
+	private static void setPlayerNumbers(String playerInput) {
+		playerNumbers =  Arrays.stream(Stream.of(String.valueOf(playerInput).split("")).mapToInt(Integer::parseInt).toArray())
+			.boxed()
+			.collect(Collectors.toList());
 	}
 }
 

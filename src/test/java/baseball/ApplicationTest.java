@@ -3,7 +3,7 @@ package baseball;
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.validation.Validation;
-import baseball.view.View;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -63,12 +63,12 @@ class ApplicationTest extends NsTest {
 	void showResult_메서드로_결과_출력() {
 		int ball = 2;
 		int strike = 1;
-		View.showResult(ball, strike);
+		OutputView.showResult(ball, strike);
 		assertThat(output()).contains("2볼", "1스트라이크");
 
 		ball = 0;
 		strike = 0;
-		View.showResult(ball, strike);
+		OutputView.showResult(ball, strike);
 		assertThat(output()).contains("낫싱");
 	}
 

@@ -9,7 +9,8 @@ import baseball.input.GameCommand;
 import baseball.input.Input;
 import baseball.input.InputLength;
 import baseball.validation.Validation;
-import baseball.view.View;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class BaseBallGameProgram {
 	private static final int MAX_STRIKE = 3;
@@ -20,22 +21,14 @@ public class BaseBallGameProgram {
 	private int ball;
 	private static boolean isEnd = false;
 
-	public BaseBallGameProgram(Computer computer, Player player){
+	public BaseBallGameProgram(Computer computer, Player player) {
 		this.computer = computer;
 		this.player = player;
 	}
 
-	public void start() {
-		try {
-			baseBallGame();
-		}catch(IllegalArgumentException exception){
-			View.showExceptionMessage(exception);
-		}
-	}
-
-	private void baseBallGame() {
+	public void baseBallGame() {
 		do {
-			View.showStartGameGuideMessage();
+			InputView.showStartGameGuideMessage();
 			computer.makeRandomNumber();
 			matchingNumbers();
 			isEnd = gameCommand();
@@ -43,7 +36,7 @@ public class BaseBallGameProgram {
 	}
 
 	private boolean gameCommand() {
-		View.showGameCommandGuideMessage();
+		InputView.showGameCommandGuideMessage();
 		String playerInput = Input.inputNumber();
 		Validation.validateGameCommand(playerInput);
 
@@ -55,20 +48,18 @@ public class BaseBallGameProgram {
 			initBallAndStrike();
 			playerGuessNumber();
 			calculateStrikeAndBall(computer.getRandomNumber(), player.getPlayerNumberList());
-			View.showResult(ball, strike);
+			OutputView.showResult(ball, strike);
 		} while (strike != MAX_STRIKE);
 
-		View.showThreeStrike();
+		OutputView.showThreeStrike();
 	}
 
 	private void playerGuessNumber() {
-		View.showPlayerInputGuideMessage();
+		InputView.showPlayerInputGuideMessage();
 
 		String userInput = Input.inputNumber();
+		Validation.validatePlayerInput(userInput);
 		player.addPlayerNumberInList(userInput);
-
-		Validation.validatePlayerInput(userInput, InputLength.NUMBER_INPUT_LENGTH.getLength(),
-			player.getPlayerNumberList());
 	}
 
 	private void initBallAndStrike() {
