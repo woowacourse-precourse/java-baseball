@@ -25,4 +25,8 @@ public enum BallCount {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("올바른 값을 입력해 주세요."));
     }
+
+    public String getDisplay() {
+        return display;
+    }
 }

@@ -11,8 +11,19 @@ public class OutputView {
     public void printGameResult(Result result) {
         int strike = result.getResultByBallCount(BallCount.STRIKE);
         int ball = result.getResultByBallCount(BallCount.BALL);
-        int nothing = result.getResultByBallCount(BallCount.NOTHING);
 
-        System.out.println(result.getResult());
+        if (strike == 0 && ball == 0) {
+            System.out.println(BallCount.NOTHING.getDisplay());
+            return;
+        }
+        StringBuilder gameResult = new StringBuilder();
+        if (ball > 0) {
+            gameResult.append("" + ball + BallCount.BALL.getDisplay());
+        }
+        if (strike > 0) {
+            gameResult.append(" " + strike + BallCount.STRIKE.getDisplay());
+        }
+        System.out.println(gameResult);
+
     }
 }
