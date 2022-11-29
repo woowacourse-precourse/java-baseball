@@ -30,11 +30,22 @@ public class Judge {
         }
     }
 
-    public void countBallOrStrike(int index) {
-        Integer target = playerNumbers.get(index);
+    public void countBallOrStrike(int playerIndex) {
+        Integer target = playerNumbers.get(playerIndex);
 
         int findIndex = answer.indexOf(target);
-        if (findIndex == index) strike++;
-        else if (findIndex != -1) ball++;
+        findIndexOfPlayerNumber(findIndex, playerIndex);
+    }
+
+    private void findIndexOfPlayerNumber(int findIndex, int playerIndex) {
+
+        if (findIndex == -1) {
+            return;
+        }
+        if (findIndex == playerIndex) {
+            strike ++;
+            return;
+        }
+        ball++;
     }
 }
