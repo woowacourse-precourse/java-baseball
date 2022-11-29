@@ -11,26 +11,33 @@ import baseball.input.InputLength;
 import baseball.validation.Validation;
 import baseball.view.View;
 
-public class BaseBallGame {
+public class BaseBallGameProgram {
 	private static final int MAX_STRIKE = 3;
 	private static final int INIT = 0;
 	private static Computer computer;
 	private static Player player;
 	private int strike;
 	private int ball;
+	private static boolean isEnd = false;
 
-	public BaseBallGame(Computer computer, Player player){
+	public BaseBallGameProgram(Computer computer, Player player){
 		this.computer = computer;
 		this.player = player;
 	}
 
 	public void start() {
-		boolean isEnd;
+		try {
+			baseBallGame();
+		}catch(IllegalArgumentException exception){
+			View.showExceptionMessage(exception);
+		}
+	}
 
+	private void baseBallGame() {
 		do {
 			View.showStartGameGuideMessage();
 			computer.makeRandomNumber();
-			game();
+			matchingNumbers();
 			isEnd = gameCommand();
 		} while (!isEnd);
 	}
@@ -43,7 +50,7 @@ public class BaseBallGame {
 		return isEndCommand(Integer.parseInt(playerInput));
 	}
 
-	private void game() {
+	private void matchingNumbers() {
 		do {
 			initBallAndStrike();
 			playerGuessNumber();

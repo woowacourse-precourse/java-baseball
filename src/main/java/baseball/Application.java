@@ -5,7 +5,7 @@ import baseball.domain.Player;
 
 public class Application {
 	public static void main(String[] args) {
-		BaseBallGame baseBallGame = new BaseBallGame(new Computer(), new Player());
-		baseBallGame.start();
+		BaseBallGameProgram baseBallGameProgram = new BaseBallGameProgram(new Computer(), new Player());
+		baseBallGameProgram.start();
 	}
 }

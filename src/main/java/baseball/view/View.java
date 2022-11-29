@@ -60,4 +60,8 @@ public class View {
 	public static void showGameCommandGuideMessage() {
 		System.out.println(GameGuideMessage.END_OR_RESTART_MESSAGE.getMessage());
 	}
+
+	public static void showExceptionMessage(IllegalArgumentException exception) {
+		System.out.println(exception.getMessage());
+	}
 }
