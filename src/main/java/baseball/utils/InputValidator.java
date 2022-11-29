@@ -1,6 +1,6 @@
 package baseball.utils;
 
-import static baseball.utils.Constants.*;
+import static baseball.system.Constant.*;
 
 public final class InputValidator {
     public static final String INVALID_LENGTH_EXCEPTION = "띄어쓰기 없이 연속해서 숫자 3개를 입력해주세요.";
@@ -26,7 +26,7 @@ public final class InputValidator {
     }
 
     public static void isOneOrTwo(String input) {
-        if (!(input.equals(GAME_RESTART) || input.equals(GAME_QUIT))) {
+        if (!input.equals(GAME_RESTART) && !input.equals(GAME_QUIT)) {
             throw new IllegalArgumentException(NOT_ONE_OR_TWO_EXCEPTION);
         }
     }

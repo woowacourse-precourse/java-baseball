@@ -18,10 +18,10 @@ public final class InputView {
         return stringToList(input);
     }
 
-    public static int readGameCommand() throws IllegalArgumentException {
+    public static String readGameCommand() throws IllegalArgumentException {
         String input = Console.readLine();
         InputValidator.isOneOrTwo(input);
-        return Integer.parseInt(input);
+        return input;
     }
 
     private static List<Integer> stringToList(String input) {
