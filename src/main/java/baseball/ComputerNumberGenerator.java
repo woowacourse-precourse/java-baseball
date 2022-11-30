@@ -39,8 +39,4 @@ public class ComputerNumberGenerator {
     private static Integer pickRandomNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
-
-    private String getStringRandomNumbers(List<Integer> numbers) {
-        return String.join("", numbers.toString());
-    }
 }
