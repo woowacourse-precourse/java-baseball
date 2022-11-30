@@ -51,15 +51,17 @@
 │          │  Application.java
 │          │
 │          ├─controller
-│          │      BaseBallGame.java
+│          │      BaseBallGameController.java
 │          │
 │          ├─domain
-│          │      GameLogic.java
-│          │      RandomNumbers.java
+│          │      GameResult.java
+│          │      GenerateNumbersImple.java
+│          │      GenerateRandomNumbersImple.java
+│          │      Numbers.java
 │          │
 │          ├─validator
+│          │      CommandValidator.java
 │          │      NumbersValidator.java
-│          │      NumberValidator.java
 │          │
 │          └─view
 │                  InputView.java
