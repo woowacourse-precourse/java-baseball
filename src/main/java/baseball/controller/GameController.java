@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.GameStatus;
 import baseball.model.Player;
 import baseball.model.Referee;
 import baseball.model.Result;
@@ -32,9 +33,13 @@ public class GameController {
 
                 outputView.printGameResult(result);
 
-                if (result.isThreeStrike()) {
+                boolean isThreeStrike = result.isThreeStrike();
+                boolean selectedRetry = false;
+
+                if (GameStatus.findGameState(isThreeStrike, selectedRetry) == GameStatus.APPLICATION_EXIT) {
                     break;
                 }
+
             }
 
         } catch (IllegalArgumentException exception) {
