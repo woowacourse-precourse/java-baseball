@@ -1,30 +1,30 @@
 package baseball.model;
 
-import static baseball.model.Number.*;
-import static java.util.stream.Collector.*;
-import static java.util.stream.Collectors.*;
-import static java.util.stream.Collectors.toList;
 
+
+import static baseball.controller.Separator.SEPARATOR;
+
+import baseball.view.InputView;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Player {
+public enum Player {
+    PLAYER;
 
-    public List<Integer> generateNumber(String readLine) {
+    private String readLine;
 
-        return (List<Integer>) separateReadLine(readLine)
-                .stream()
-                .map(Character::getNumericValue)
-                .collect(toList());
+    public List<Integer> number() {
+
+        return generateNumber();
     }
 
-    private static List<Character> separateReadLine(String readLine) {
-        List<Character> separate = new ArrayList<>();
-        for (int index = 0; index < LENGTH.getNumber(); index++) {
-            char eachNumber = readLine.charAt(index);
-            separate.add(eachNumber);
-        }
-        return separate;
+
+    private List<Integer> generateNumber() {
+        return SEPARATOR.execute()
+                .stream()
+                .map(Character::getNumericValue)
+                .collect(Collectors.toList());
     }
 
 }
