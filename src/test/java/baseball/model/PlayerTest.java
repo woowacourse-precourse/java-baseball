@@ -20,14 +20,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayNameGeneration(ReplaceUnderscores.class)
 class PlayerTest {
 
-    private Player player;
-
-    @BeforeEach
-    void setUp(){
-
-//        player = new Player(new InputView().putReadLine());
-    }
-
     public static InputStream setReadLine(String readLine) {
 
         return new ByteArrayInputStream(readLine.getBytes());
