@@ -1,9 +1,9 @@
 package baseball.model;
 
+import static baseball.model.Player.PLAYER;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-import baseball.view.InputView;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
@@ -21,12 +21,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 class PlayerTest {
 
     private Player player;
-    private InputView inputView;
 
     @BeforeEach
     void setUp(){
-        player = new Player();
-        inputView = new InputView();
+
+//        player = new Player(new InputView().putReadLine());
     }
 
     public static InputStream setReadLine(String readLine) {
@@ -41,7 +40,7 @@ class PlayerTest {
         System.setIn(setReadLine(readLine));
 
         //when
-        List<Integer> actual = player.generateNumber(inputView.putReadLine());
+        List<Integer> actual = PLAYER.number();
 
         //then
         assertEquals(expect, actual);
@@ -54,5 +53,4 @@ class PlayerTest {
                 arguments("789", List.of(7,8,9))
         );
     }
-
 }
