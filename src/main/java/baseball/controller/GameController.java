@@ -37,6 +37,7 @@ public class GameController {
                     outputView.printGameResult(result);
 
                     if (result.isThreeStrike()) {
+                        outputView.printThreeStrike();
                         break;
                     }
                 }
@@ -47,9 +48,10 @@ public class GameController {
 
             }
 
-        } catch (
-                IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
+
+        } catch (IllegalArgumentException exception) {
+            outputView.printExceptionMessage(exception);
+            throw exception;
         }
     }
 }
