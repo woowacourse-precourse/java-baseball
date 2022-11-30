@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.GameCommand;
 import baseball.model.GameStatus;
 import baseball.model.Player;
 import baseball.model.Referee;
@@ -22,27 +23,32 @@ public class GameController {
         try {
             outputView.printGameStart();
 
-            Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
-            System.out.println(computer.getComputerNumber());
-
             while (true) {
-                Player player = Player.createByNumber(inputView.readPlayerNumber());
 
-                Referee referee = Referee.judge(computer, player);
-                Result result = referee.judgeBallCount();
+                Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
+                System.out.println(computer.getComputerNumber());
 
-                outputView.printGameResult(result);
+                while (true) {
+                    Player player = Player.createByNumber(inputView.readPlayerNumber());
 
-                boolean isThreeStrike = result.isThreeStrike();
-                boolean selectedRetry = false;
+                    Referee referee = Referee.judge(computer, player);
+                    Result result = referee.judgeBallCount();
 
-                if (GameStatus.findGameState(isThreeStrike, selectedRetry) == GameStatus.APPLICATION_EXIT) {
+                    outputView.printGameResult(result);
+
+                    if (result.isThreeStrike()) {
+                        break;
+                    }
+                }
+
+                if (!GameCommand.selectedRetry(inputView.readGameCommand())) {
                     break;
                 }
 
             }
 
-        } catch (IllegalArgumentException exception) {
+        } catch (
+                IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
     }
