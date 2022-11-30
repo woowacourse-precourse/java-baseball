@@ -24,12 +24,18 @@ public class GameController {
             Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
             System.out.println(computer.getComputerNumber());
 
-            Player player = Player.createByNumber(inputView.readPlayerNumber());
+            while (true) {
+                Player player = Player.createByNumber(inputView.readPlayerNumber());
 
-            Referee referee = Referee.judge(computer, player);
-            Result result = referee.judgeBallCount();
+                Referee referee = Referee.judge(computer, player);
+                Result result = referee.judgeBallCount();
 
-            outputView.printGameResult(result);
+                outputView.printGameResult(result);
+
+                if (result.isThreeStrike()) {
+                    break;
+                }
+            }
 
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());

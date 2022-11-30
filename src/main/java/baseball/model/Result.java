@@ -23,6 +23,10 @@ public class Result {
         result.put(ballCount, result.get(ballCount) + 1);
     }
 
+    public boolean isThreeStrike() {
+        return result.get(BallCount.STRIKE) == 3;
+    }
+
 
     public String getFormattedResult() {
         int strike = result.get(BallCount.STRIKE);
