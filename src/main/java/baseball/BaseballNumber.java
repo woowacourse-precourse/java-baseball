@@ -10,12 +10,14 @@ import java.util.List;
 import static constant.BaseballConstant.*;
 
 public class BaseballNumber {
+    private final int MIN_NUMBER = 1;
+    private final int MAX_NUMBER = 9;
 
     public List<Integer> makeRandomNumber() {
         List<Integer> numbers = new ArrayList<>();
 
         while (numbers.size() < NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
             }
