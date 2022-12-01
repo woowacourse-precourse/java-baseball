@@ -4,7 +4,7 @@ public class BaseballNumber {
 
     private String targetNumber;
 
-    public BaseballNumber(String targetNumber) {
+    protected BaseballNumber(String targetNumber) {
         this.targetNumber = targetNumber;
     }
 
@@ -56,5 +56,10 @@ public class BaseballNumber {
         char digitOfTarget = targetNumber.charAt(indexOfTarget);
         if (digitOfTarget == digitOfInput) return true;
         return false;
+    }
+
+    //== getter ==//
+    protected String getTargetNumber() {
+        return this.targetNumber;
     }
 }
