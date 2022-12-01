@@ -3,35 +3,42 @@ package baseball;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BaseballGame {
     private final int ORIGINAL_COUNT = 3;
     private final String WIN_CONDITION = "3스트라이크";
-    private final ComputerNumbers computerNumbers;
+    private ComputerNumbers computerNumbers;
+    private ScoreBoard scoreBoard;
 
-    BaseballGame() {
-        ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
+    public void generateComputerNumbers(ComputerNumberGenerator computerNumberGenerator) {
         computerNumbers = new ComputerNumbers(computerNumberGenerator.generate());
     }
 
-    public ScoreBoard getResult(String playerNumbers) {
-        List<String> strikeDeletedNumbers = computerNumbers.deleteStrike(stringToList(playerNumbers));
-        int strike = getStrikeCount(strikeDeletedNumbers);
-        int ball = getBallCount(strikeDeletedNumbers);
-        return new ScoreBoard(ball, strike);
+    public String getResult(String playerNumbers) {
+        List<String> numbersWithoutStrike = deleteStrike(stringToList(playerNumbers));
+        System.out.println(numbersWithoutStrike);
+        scoreBoard = new ScoreBoard(getBallCount(numbersWithoutStrike), getStrikeCount(numbersWithoutStrike));
+        return scoreBoard.get();
     }
 
-    public boolean isWin(ScoreBoard scoreBoard) {
-        return scoreBoard.get().equals(WIN_CONDITION);
+    public boolean isWin() {
+        return scoreBoard.get().contains(WIN_CONDITION);
+    }
+
+    private List<String> deleteStrike(List<String> playerNumbers) {
+        return playerNumbers.stream()
+                .filter(number -> !computerNumbers.isStrike(number, playerNumbers.indexOf(number)))
+                .collect(Collectors.toList());
     }
 
     private int getStrikeCount(List<String> strikeDeletedNumbers) {
         return ORIGINAL_COUNT - strikeDeletedNumbers.size();
     }
 
-    private int getBallCount(List<String> playerNumbers) {
+    private int getBallCount(List<String> strikeDeletedNumbers) {
         int ball = 0;
-        for (String number : playerNumbers) {
+        for (String number : strikeDeletedNumbers) {
             if (computerNumbers.isBall(number)) {
                 ball++;
             }

@@ -9,6 +9,7 @@ public class ComputerNumbers {
 
     public ComputerNumbers(List<String> computerNumbers) {
         ComputerNumbersException.validate(computerNumbers);
+        System.out.println(computerNumbers);
         this.computerNumbers = computerNumbers;
     }
 
