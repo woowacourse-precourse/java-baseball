@@ -6,7 +6,11 @@ import static baseball.util.Constants.BALL_MIN;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Computer {
 
@@ -22,14 +26,11 @@ public class Computer {
     }
 
     public static List<Integer> createRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
+        Set<Integer> numbers = new LinkedHashSet<>();
         while (numbers.size() < BALL_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(BALL_MIN, BALL_MAX);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
+            numbers.add(Randoms.pickNumberInRange(BALL_MIN, BALL_MAX));
         }
-        return numbers;
+        return numbers.stream().collect(Collectors.toList());
     }
 
     public int getNumberByPosition(int position) {

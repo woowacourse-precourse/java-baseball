@@ -21,9 +21,4 @@ class ComputerTest {
         Assertions.assertEquals(COMPUTER_NUMBER.get(2), computer.getNumberByPosition(2));
     }
 
-    @Test
-    void 랜덤_숫자_중복_테스트() {
-        List<Integer> randomNumbers = Computer.createRandomNumbers();
-        Assertions.assertTrue(randomNumbers.stream().distinct().count() == BALL_LENGTH);
-    }
 }
