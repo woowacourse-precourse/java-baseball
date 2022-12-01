@@ -24,7 +24,7 @@ public class BaseballGame {
             printMessage(INPUT_MESSAGE);
             userNumber = baseballNumber.inputUserNumber();
 
-            baseballScore.compareComputerAndUser(computerNumbers, userNumber);
+            baseballScore.countStrikesAndBalls(computerNumbers, userNumber);
             printMessage(baseballScore.getResult() + ENTER);
 
             if (baseballScore.checkCorrect()) {

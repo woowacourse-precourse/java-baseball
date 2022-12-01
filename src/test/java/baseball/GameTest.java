@@ -15,7 +15,7 @@ public class GameTest extends NsTest {
         String userNumber = "264";
         List<Integer> computerNumber = List.of(2, 6, 4);
 
-        baseballScore.compareComputerAndUser(computerNumber, userNumber);
+        baseballScore.countStrikesAndBalls(computerNumber, userNumber);
 
         assertThat(baseballScore.getResult()).isEqualTo("3스트라이크");
     }
@@ -26,7 +26,7 @@ public class GameTest extends NsTest {
         String userNumber = "234";
         List<Integer> computerNumber = List.of(2, 6, 4);
 
-        baseballScore.compareComputerAndUser(computerNumber, userNumber);
+        baseballScore.countStrikesAndBalls(computerNumber, userNumber);
 
         assertThat(baseballScore.getResult()).isEqualTo("2스트라이크");
     }
@@ -37,7 +37,7 @@ public class GameTest extends NsTest {
         String userNumber = "874";
         List<Integer> computerNumber = List.of(2, 6, 4);
 
-        baseballScore.compareComputerAndUser(computerNumber, userNumber);
+        baseballScore.countStrikesAndBalls(computerNumber, userNumber);
 
         assertThat(baseballScore.getResult()).isEqualTo("1스트라이크");
     }
@@ -48,7 +48,7 @@ public class GameTest extends NsTest {
         String userNumber = "642";
         List<Integer> computerNumber = List.of(2, 6, 4);
 
-        baseballScore.compareComputerAndUser(computerNumber, userNumber);
+        baseballScore.countStrikesAndBalls(computerNumber, userNumber);
 
         assertThat(baseballScore.getResult()).isEqualTo("3볼");
     }
@@ -59,7 +59,7 @@ public class GameTest extends NsTest {
         String userNumber = "476";
         List<Integer> computerNumber = List.of(2, 6, 4);
 
-        baseballScore.compareComputerAndUser(computerNumber, userNumber);
+        baseballScore.countStrikesAndBalls(computerNumber, userNumber);
 
         assertThat(baseballScore.getResult()).isEqualTo("2볼");
     }
@@ -70,7 +70,7 @@ public class GameTest extends NsTest {
         String userNumber = "613";
         List<Integer> computerNumber = List.of(2, 6, 4);
 
-        baseballScore.compareComputerAndUser(computerNumber, userNumber);
+        baseballScore.countStrikesAndBalls(computerNumber, userNumber);
 
         assertThat(baseballScore.getResult()).isEqualTo("1볼");
     }
@@ -81,7 +81,7 @@ public class GameTest extends NsTest {
         String userNumber = "243";
         List<Integer> computerNumber = List.of(2, 6, 4);
 
-        baseballScore.compareComputerAndUser(computerNumber, userNumber);
+        baseballScore.countStrikesAndBalls(computerNumber, userNumber);
 
         assertThat(baseballScore.getResult()).isEqualTo("1볼 1스트라이크");
     }
@@ -92,7 +92,7 @@ public class GameTest extends NsTest {
         String userNumber = "462";
         List<Integer> computerNumber = List.of(2, 6, 4);
 
-        baseballScore.compareComputerAndUser(computerNumber, userNumber);
+        baseballScore.countStrikesAndBalls(computerNumber, userNumber);
 
         assertThat(baseballScore.getResult()).isEqualTo("2볼 1스트라이크");
     }
@@ -103,7 +103,7 @@ public class GameTest extends NsTest {
         String userNumber = "789";
         List<Integer> computerNumber = List.of(2, 6, 4);
 
-        baseballScore.compareComputerAndUser(computerNumber, userNumber);
+        baseballScore.countStrikesAndBalls(computerNumber, userNumber);
 
         assertThat(baseballScore.getResult()).isEqualTo("낫싱");
     }

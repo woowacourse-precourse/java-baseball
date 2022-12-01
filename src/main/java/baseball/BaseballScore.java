@@ -14,7 +14,7 @@ public class BaseballScore {
         ball = 0;
     }
 
-    public void compareComputerAndUser(List<Integer> computerNumbers, String userNumber) {
+    public void countStrikesAndBalls(List<Integer> computerNumbers, String userNumber) {
         for (int index = 0; index < NUMBER_LENGTH; index++) {
             if (isStrike(computerNumbers, userNumber, index)) {
                 strike++;
