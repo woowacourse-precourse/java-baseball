@@ -37,16 +37,28 @@ public class OutputView {
 
     private static String formatBallCount(int strike, int ball) {
         StringBuilder gameResult = new StringBuilder();
-        if (ball > 0) {
-            gameResult.append(ball).append(BallCount.BALL.getDisplay());
-        }
-        if (ball > 0 && strike > 0) {
-            gameResult.append(RESULT_SPACE);
-        }
+        appendBall(ball, gameResult);
+        appendSpace(strike, ball, gameResult);
+        appendStrike(strike, gameResult);
+        return gameResult.toString();
+    }
+
+    private static void appendStrike(int strike, StringBuilder gameResult) {
         if (strike > 0) {
             gameResult.append(strike).append(BallCount.STRIKE.getDisplay());
         }
-        return gameResult.toString();
+    }
+
+    private static void appendSpace(int strike, int ball, StringBuilder gameResult) {
+        if (ball > 0 && strike > 0) {
+            gameResult.append(RESULT_SPACE);
+        }
+    }
+
+    private static void appendBall(int ball, StringBuilder gameResult) {
+        if (ball > 0) {
+            gameResult.append(ball).append(BallCount.BALL.getDisplay());
+        }
     }
 
     private static boolean isNothing(int strike, int ball) {
