@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.view.InputView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +8,8 @@ public enum Separator {
 
     private List<Character> separator;
 
-    public List<Character> execute() {
+    public List<Character> execute(String readLine) {
         separator = new ArrayList<>();
-        String readLine = new InputView().putReadLine();
         return separate(readLine);
     }
 
@@ -21,5 +19,6 @@ public enum Separator {
                 .mapToObj(element -> (char) element)
                 .forEach(separator::add);
         return separator;
+
     }
 }
