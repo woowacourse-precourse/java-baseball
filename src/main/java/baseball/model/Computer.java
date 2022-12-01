@@ -1,18 +1,25 @@
 package baseball.model;
 
 import static baseball.util.Constants.BALL_LENGTH;
-import static baseball.util.Constants.BALL_MAX;
-import static baseball.util.Constants.BALL_MIN;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Computer {
 
+    private enum Range {
+        BALL_MIN(1),
+        BALL_MAX(9);
+
+        private final int value;
+
+        Range(int value) {
+            this.value = value;
+        }
+    }
 
     private final List<Integer> computerNumber;
 
@@ -33,7 +40,7 @@ public class Computer {
     }
 
     private static int createRandomNumber() {
-        return Randoms.pickNumberInRange(BALL_MIN, BALL_MAX);
+        return Randoms.pickNumberInRange(Range.BALL_MIN.value, Range.BALL_MAX.value);
     }
 
 
