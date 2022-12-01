@@ -18,10 +18,13 @@ public class Referee {
     public Result judgeBallCount() {
         Result result = Result.initialBallCount();
         for (int position = 0; position < BALL_LENGTH; position++) {
-            BallCount ballCount = BallCount.decideBallCount(hasCommonNumber(position), isInSamePosition(position));
-            result.updateBallCount(ballCount);
+            result.updateBallCount(getBallCount(position));
         }
         return result;
+    }
+
+    private BallCount getBallCount(int position) {
+        return BallCount.decideBallCount(hasCommonNumber(position), isInSamePosition(position));
     }
 
     private boolean isInSamePosition(int position) {
@@ -29,7 +32,7 @@ public class Referee {
     }
 
     private boolean hasCommonNumber(int position) {
-        return computer.getComputerNumber().contains(player.getNumberByPosition(position));
+        return computer.hasCommonNumber(player.getNumberByPosition(position));
     }
 
 }

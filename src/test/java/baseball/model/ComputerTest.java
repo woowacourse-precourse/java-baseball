@@ -1,8 +1,10 @@
 package baseball.model;
 
+import static baseball.util.Constants.BALL_LENGTH;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,5 +19,11 @@ class ComputerTest {
         Assertions.assertEquals(COMPUTER_NUMBER.get(0), computer.getNumberByPosition(0));
         Assertions.assertEquals(COMPUTER_NUMBER.get(1), computer.getNumberByPosition(1));
         Assertions.assertEquals(COMPUTER_NUMBER.get(2), computer.getNumberByPosition(2));
+    }
+
+    @Test
+    void 랜덤_숫자_중복_테스트() {
+        List<Integer> randomNumbers = Computer.createRandomNumbers();
+        Assertions.assertTrue(randomNumbers.stream().distinct().count() == BALL_LENGTH);
     }
 }

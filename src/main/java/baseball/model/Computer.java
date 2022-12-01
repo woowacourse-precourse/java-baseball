@@ -36,7 +36,7 @@ public class Computer {
         return computerNumber.get(position);
     }
 
-    public List<Integer> getComputerNumber() {
-        return computerNumber;
+    public boolean hasCommonNumber(int playerNumber) {
+        return computerNumber.contains(playerNumber);
     }
 }
