@@ -1,31 +1,24 @@
 package baseball.controller;
 
-import static baseball.model.Number.LENGTH;
-
-import baseball.model.Number;
-import baseball.model.Player;
-import baseball.view.InputView;
+import baseball.model.Builder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class Hint {
-    String readLine;
-    List<Integer> player;
-    List<Integer> computer;
-    int ball;
-    int strike;
-
+public class Hint extends Builder {
 
     public Hint() {
-        this.readLine = new InputView().putReadLine();
-        this.player = new Player().generateNumber(readLine);
-        this.computer = Number.generateNumber();
-        this.ball = 0;
-        this.strike = 0;
+        super();
     }
 
-    public void buildHint() {
+    public List<Integer> buildHint() {
+
         computer.forEach( computerNumber -> comparing(computerNumber) );
+        List<Integer> hint = new ArrayList<>();
+        hint.add(ball);
+        hint.add(strike);
+        return hint;
+
     }
 
     private void comparing(int computerNumber) {
@@ -33,16 +26,13 @@ public class Hint {
         ListIterator<Integer> playerList = player.listIterator();
         int playerNumber = playerList.next();
 
-        if ( computer.contains(playerNumber) && computerNumber != playerNumber) {   ball++;  }
-        if ( computerNumber == playerNumber) {   strike++;  }
+        if (computer.contains(playerNumber) && computerNumber != playerNumber) {
+            ball++;
+        }
+        if (computerNumber == playerNumber) {
+            strike++;
+        }
 
     }
 
-    public int getBall() {
-        return ball;
-    }
-
-    public int getStrike() {
-        return strike;
-    }
 }
