@@ -16,7 +16,7 @@ public class InputView {
     public String putReadLine() {
         System.out.println(PUT.render());
         new Validator(readLine);
-        return Console.readLine();
+        return readLine;
     }
 
 
