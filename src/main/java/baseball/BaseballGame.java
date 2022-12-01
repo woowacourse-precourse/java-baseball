@@ -1,87 +1,45 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class BaseballGame {
-    final static int BALL = 1;
-    final static int STRIKE = 0;
-    final static String WIN_CONDITION = "3스트라이크";
-    final static int NUMBER_LENGTH = 3;
-    private Computer computer;
-    private String computerNumbers;
+    private final int ORIGINAL_COUNT = 3;
+    private final String WIN_CONDITION = "3스트라이크";
+    private final ComputerNumbers computerNumbers;
 
     BaseballGame() {
-        this.computer = new Computer();
-        this.computerNumbers = computer.getStringRandomNumbers();
+        ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
+        computerNumbers = new ComputerNumbers(computerNumberGenerator.generate());
     }
 
-    public void play() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String playerNumbers = getGamePlayerInput();
+    public ScoreBoard getResult(String playerNumbers) {
+        List<String> strikeDeletedNumbers = computerNumbers.deleteStrike(stringToList(playerNumbers));
+        int strike = getStrikeCount(strikeDeletedNumbers);
+        int ball = getBallCount(strikeDeletedNumbers);
+        return new ScoreBoard(ball, strike);
+    }
 
-            String result = getResult(playerNumbers);
-            System.out.println(result);
-            if (result.contains(WIN_CONDITION)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
+    public boolean isWin(ScoreBoard scoreBoard) {
+        return scoreBoard.get().equals(WIN_CONDITION);
+    }
+
+    private int getStrikeCount(List<String> strikeDeletedNumbers) {
+        return ORIGINAL_COUNT - strikeDeletedNumbers.size();
+    }
+
+    private int getBallCount(List<String> playerNumbers) {
+        int ball = 0;
+        for (String number : playerNumbers) {
+            if (computerNumbers.isBall(number)) {
+                ball++;
             }
         }
+        return ball;
     }
 
-    public String getGamePlayerInput() {
-        String playerNumbers = Console.readLine();
-        verifyPlayerNumbers(playerNumbers);
-        return playerNumbers;
-    }
-
-    public void verifyPlayerNumbers(String playerNumbers) {
-        PlayerNumbersException.verify(playerNumbers);
-    }
-
-    public String getResult(String playerNumbers) {
-        List<Integer> result = new ArrayList<>(2);
-        result.add(countStrikes(playerNumbers));
-        result.add(countBalls(playerNumbers) - result.get(STRIKE));
-        return getResultMessage(result);
-    }
-
-    private String getResultMessage(List<Integer> result) {
-        String resultMessage = "";
-        if (result.get(BALL) > 0) {
-            resultMessage = Integer.toString(result.get(BALL)).concat("볼 ");
-        }
-        if (result.get(STRIKE) > 0) {
-            resultMessage = resultMessage
-                    .concat(Integer.toString(result.get(STRIKE)).concat("스트라이크"));
-        }
-        if (resultMessage.length() == 0) {
-            resultMessage = "낫싱";
-        }
-        return resultMessage;
-    }
-
-    private Integer countStrikes(String playerNumbers) {
-        int strikes = 0;
-        for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
-            if (this.computerNumbers.charAt(stringIndex) == playerNumbers.charAt(stringIndex)) {
-                strikes++;
-            }
-        }
-        return strikes;
-    }
-
-    private Integer countBalls(String playerNumbers) {
-        int balls = 0;
-        for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
-            if (this.computerNumbers.contains(Character.toString(playerNumbers.charAt(stringIndex)))) {
-                balls++;
-            }
-        }
-        return balls;
+    private ArrayList<String> stringToList(String playerNumbers) {
+        return new ArrayList<>(Arrays.asList(playerNumbers.split("")));
     }
 }
