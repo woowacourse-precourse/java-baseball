@@ -11,6 +11,10 @@ public class InputView {
     public List<Integer> readPlayerNumber() {
         printConsoleMessage(ConsoleMessage.INPUT_PLAYER_NUMBER.getMessage());
         String input = Validator.getValidatedPlayerNumber(Console.readLine());
+        return convertToIntegerList(input);
+    }
+
+    private static List<Integer> convertToIntegerList(String input) {
         return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
