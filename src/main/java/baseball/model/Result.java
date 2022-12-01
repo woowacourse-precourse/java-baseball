@@ -1,7 +1,5 @@
 package baseball.model;
 
-import static baseball.util.Constants.RESULT_SPACE;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,23 +27,12 @@ public class Result {
         return result.get(BallCount.STRIKE) == 3;
     }
 
-
-    public String getFormattedResult() {
-        int strike = result.get(BallCount.STRIKE);
-        int ball = result.get(BallCount.BALL);
-        if (strike == 0 && ball == 0) {
-            return BallCount.NOTHING.getDisplay();
-        }
-        StringBuilder gameResult = new StringBuilder();
-        if (ball > 0) {
-            gameResult.append("" + ball + BallCount.BALL.getDisplay());
-        }
-        if (ball > 0 && strike > 0) {
-            gameResult.append(RESULT_SPACE);
-        }
-        if (strike > 0) {
-            gameResult.append("" + strike + BallCount.STRIKE.getDisplay());
-        }
-        return gameResult.toString();
+    public int getStrike() {
+        return result.get(BallCount.STRIKE);
     }
+
+    public int getBall() {
+        return result.get(BallCount.BALL);
+    }
+
 }
