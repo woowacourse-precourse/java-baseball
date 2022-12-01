@@ -7,6 +7,8 @@ import domain.Computer;
 import domain.User;
 
 public class OutputView {
+    private final int NOTHING = 0;
+    private final int ALL_HIT = 3;
 
     public void print_Message(User user) {
         ball_Message(user);
@@ -15,8 +17,8 @@ public class OutputView {
     }
 
     public void strike_Message(User user) {
-        if (user.strike_count() != 0) {
-            if (user.strike_count() == 3) {
+        if (user.strike_count() != NOTHING) {
+            if (user.strike_count() == ALL_HIT) {
                 whenCorrect_Message(user);
 
                 set_exitstatus(Console.readLine());
@@ -27,14 +29,14 @@ public class OutputView {
     }
 
     public void ball_Message(User user) {
-        if (user.ball_count() != 0) {
+        if (user.ball_count() != NOTHING) {
             System.out.print(user.ball_count() + "볼 ");
         }
     }
 
 
     public void nothing_Message(User user) {
-        if (user.strike_count() == 0 && user.ball_count() == 0) {
+        if (user.strike_count() == NOTHING && user.ball_count() == NOTHING) {
             System.out.print("낫싱" + "\n");
         }
     }
@@ -53,7 +55,7 @@ public class OutputView {
         if (input.equals("2")) {
             System.out.print("게임 종료");
 
-            Game.EXITSTATUS = "exit";
+            Game.STATUS = "exit";
         }
     }
 

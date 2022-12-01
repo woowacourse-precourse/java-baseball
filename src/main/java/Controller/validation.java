@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class validation {
-
+    private static final String NUMBER = "[0-9]+";
 
     public static List<Integer> get_ThreeRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
@@ -22,7 +22,7 @@ public class validation {
     }
 
     public static boolean blank_Check(String input) {
-        return (input.equals(""));
+        return ("".equals(input));
     }
 
     public static boolean overlap_Check(String input) {
@@ -34,13 +34,12 @@ public class validation {
         return input.charAt(0) == input.charAt(2);
     }
 
-
     public static boolean length_check(String input) {
         return (input.length() != 3);
     }
 
     public static boolean zeroOrNumber_check(String input) {
-        return !(input.matches("[0-9]+"));
+        return !(input.matches(NUMBER));
     }
 
     public static void check_input(String input) {
