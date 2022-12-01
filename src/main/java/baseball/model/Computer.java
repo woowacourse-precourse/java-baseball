@@ -26,8 +26,16 @@ public class Computer {
     private List<Integer> createRandomNumbers() {
         Set<Integer> numbers = new LinkedHashSet<>();
         while (numbers.size() < BALL_LENGTH) {
-            numbers.add(Randoms.pickNumberInRange(BALL_MIN, BALL_MAX));
+            numbers.add(createRandomNumber());
         }
+        return convertToList(numbers);
+    }
+
+    private static int createRandomNumber() {
+        return Randoms.pickNumberInRange(BALL_MIN, BALL_MAX);
+    }
+
+    private static List<Integer> convertToList(Set<Integer> numbers) {
         return numbers.stream().collect(Collectors.toList());
     }
 
