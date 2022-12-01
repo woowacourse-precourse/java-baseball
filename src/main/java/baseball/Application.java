@@ -12,10 +12,9 @@ public class Application {
 
         Game game = new Game();
         Computer.setNumber(validation.get_ThreeRandomNumbers());
-        System.out.println(Computer.getNumber());
 
         do {
             game.start();
-        } while (!Game.EXITSTATUS.equals("exit"));
+        } while (!Game.STATUS.equals("exit"));
     }
 }
