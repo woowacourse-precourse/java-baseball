@@ -5,6 +5,7 @@ import static baseball.util.Constants.BALL_MAX;
 import static baseball.util.Constants.BALL_MIN;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,16 +29,13 @@ public class Computer {
         while (numbers.size() < BALL_LENGTH) {
             numbers.add(createRandomNumber());
         }
-        return convertToList(numbers);
+        return new ArrayList<>(numbers);
     }
 
     private static int createRandomNumber() {
         return Randoms.pickNumberInRange(BALL_MIN, BALL_MAX);
     }
 
-    private static List<Integer> convertToList(Set<Integer> numbers) {
-        return numbers.stream().collect(Collectors.toList());
-    }
 
     public int getNumberByPosition(int position) {
         return computerNumber.get(position);
