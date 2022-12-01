@@ -33,19 +33,19 @@ public class BaseballScore {
     }
 
     public String getResult() {
-        String resultMessage = "";
         if (ball == 0 && strike == 0) {
             return NOTHING_MESSAGE;
         }
         if (ball > 0 && strike == 0) {
-            resultMessage = ball + BALL_MESSAGE;
-        } else if (strike > 0 && ball == 0) {
-            resultMessage = strike + STRIKE_MESSAGE;
-        } else if (ball > 0 && strike > 0) {
-            resultMessage = ball + BALL_MESSAGE + SPACE + strike + STRIKE_MESSAGE;
+            return ball + BALL_MESSAGE;
         }
-
-        return resultMessage;
+        if (strike > 0 && ball == 0) {
+            return strike + STRIKE_MESSAGE;
+        }
+        if (ball > 0 && strike > 0) {
+            return ball + BALL_MESSAGE + SPACE + strike + STRIKE_MESSAGE;
+        }
+        return null;
     }
 
     public boolean checkCorrect() {
