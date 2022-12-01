@@ -1,30 +1,48 @@
 package baseball.core;
 
+import baseball.type.GameStatus;
+import baseball.type.SuccessCondition;
+
 public class BaseballGame {
 
-    private String targetNumber;
-    private GameStatus currentStatus;
+    private final int NUMBER_TO_COMPLETE = 3;
 
-    public BaseballGame(String targetNumber, GameStatus currentStatus) {
-        this.targetNumber = targetNumber;
-        this.currentStatus = currentStatus;
+    private BaseballNumber baseballNumber;
+    private GameStatusOperator gameStatusOperator;
+
+    private BaseballGame(BaseballNumber baseballNumber, GameStatusOperator gameStatusOperator) {
+        this.baseballNumber = baseballNumber;
+        this.gameStatusOperator = gameStatusOperator;
     }
 
-    public void checkSuccessOrFail() {
-
+    public static BaseballGame initBaseballGame() {
+        BaseballNumber baseballNumber = GameInitializer.initBaseballNumber();
+        GameStatusOperator gameStatusOperator = GameInitializer.initGameStatusOperator();
+        return new BaseballGame(baseballNumber, gameStatusOperator);
     }
 
-    //== Getter & Setter ==//
-    public String getTargetNumber() {
-        return targetNumber;
+    public void startGame() {
+        gameStatusOperator.setGameStatus(GameStatus.ONGOING);
     }
-    public void setTargetNumber(String targetNumber) {
-        this.targetNumber = targetNumber;
+
+    public void executeGameRound(String inputNumber) {
+        int numberOfBall = baseballNumber.countTheNumberOfBall(inputNumber);
+        int numberOfStrike = baseballNumber.countTheNumberOfStrike(inputNumber);
+        gameStatusOperator.updateNumberOfBall(numberOfBall);
+        gameStatusOperator.updateNumberOfStrike(numberOfStrike);
     }
+
+    public SuccessCondition checkSuccessOrFail() {
+        int numberOfStrike = gameStatusOperator.getNumberOfStrike();
+        if (numberOfStrike == NUMBER_TO_COMPLETE) return SuccessCondition.SUCCESS;
+        return SuccessCondition.FAIL;
+    }
+
+    public GameStatus executeGameByCommand(String gameCommand) {
+        return gameStatusOperator.changeGameStatus(gameCommand);
+    }
+
     public GameStatus getCurrentStatus() {
-        return currentStatus;
-    }
-    public void setCurrentStatus(GameStatus currentStatus) {
-        this.currentStatus = currentStatus;
+        return gameStatusOperator.getGameStatus();
     }
 }
