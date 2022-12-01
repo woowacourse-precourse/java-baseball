@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.util.ExceptionMessage;
+
 public enum GameStatus {
 
     GAME_START,
@@ -15,7 +17,7 @@ public enum GameStatus {
         if (!isThreeStrike) {
             return CREATE_PLAYER_NUMBER;
         }
-        throw new IllegalArgumentException("해당하는 게임 상태가 없습니다.");
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_GAME_STATUS.getMessage());
     }
 
     public static GameStatus fromSelectedRetry(boolean selectedRetry) {
@@ -25,14 +27,14 @@ public enum GameStatus {
         if (!selectedRetry) {
             return APPLICATION_EXIT;
         }
-        throw new IllegalArgumentException("해당하는 게임 상태가 없습니다.");
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_GAME_STATUS.getMessage());
     }
 
     public static boolean isApplicationExit(GameStatus gameStatus) {
         return gameStatus == GameStatus.APPLICATION_EXIT;
     }
 
-    public static boolean isGameOver(GameStatus gameStatus){
+    public static boolean isGameOver(GameStatus gameStatus) {
         return gameStatus == GameStatus.GAME_OVER;
     }
 }

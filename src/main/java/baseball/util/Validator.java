@@ -8,6 +8,7 @@ public class Validator {
     private static final Pattern NUMBER_REGEX = Pattern.compile("^[1-9]+$");
 
     public static String getValidatedPlayerNumber(String playerNumber) {
+        /* 중복되는 숫자 입력은 사용자의 전략의 일부라고 생각하여 허용했습니다. */
         if (!isNumeric(playerNumber)) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_NUMERIC.getMessage());
         }
