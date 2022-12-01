@@ -32,7 +32,7 @@ public class GameController {
     private void playUntilExit() {
         outputView.printGameStart();
         while (!GameStatus.isApplicationExit(gameStatus)) {
-            Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
+            Computer computer = Computer.createByRandomNumber();
             playUntilThreeStrikes(computer);
             handleRetry();
         }

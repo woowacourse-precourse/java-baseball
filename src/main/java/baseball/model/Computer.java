@@ -5,27 +5,25 @@ import static baseball.util.Constants.BALL_MAX;
 import static baseball.util.Constants.BALL_MIN;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Computer {
 
 
     private final List<Integer> computerNumber;
 
-    private Computer(List<Integer> computerNumber) {
-        this.computerNumber = computerNumber;
+    private Computer() {
+        this.computerNumber = createRandomNumbers();
     }
 
-    public static Computer createByNumber(List<Integer> computerNumber) {
-        return new Computer(computerNumber);
+    public static Computer createByRandomNumber() {
+        return new Computer();
     }
 
-    public static List<Integer> createRandomNumbers() {
+    private List<Integer> createRandomNumbers() {
         Set<Integer> numbers = new LinkedHashSet<>();
         while (numbers.size() < BALL_LENGTH) {
             numbers.add(Randoms.pickNumberInRange(BALL_MIN, BALL_MAX));
