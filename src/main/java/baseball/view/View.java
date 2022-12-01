@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 public class View {
     public static void getRestartGameMessage() {

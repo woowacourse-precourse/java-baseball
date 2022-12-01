@@ -1,8 +1,8 @@
 package baseball;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
+import baseball.controller.Game;
 import java.lang.reflect.Method;
 import org.junit.jupiter.api.Test;
 

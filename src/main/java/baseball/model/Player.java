@@ -1,5 +1,6 @@
-package baseball;
+package baseball.model;
 
+import baseball.utils.Exception;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;

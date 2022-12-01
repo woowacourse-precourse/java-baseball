@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -7,14 +7,14 @@ import java.util.List;
 
 public class Computer {
 
-    private final List<Integer> computerNumbersList;
+    private final List<Integer> computerNumbers;
 
     public Computer() {
-        this.computerNumbersList = setComputerNumbersByList();
+        this.computerNumbers = setComputerNumbersByList();
     }
 
     public List<Integer> getComputerNumbersList() {
-        return this.computerNumbersList;
+        return this.computerNumbers;
     }
 
     private List<Integer> setComputerNumbersByList() {

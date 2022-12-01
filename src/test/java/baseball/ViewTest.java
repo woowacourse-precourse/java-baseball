@@ -3,6 +3,7 @@ package baseball;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
+import baseball.view.View;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;

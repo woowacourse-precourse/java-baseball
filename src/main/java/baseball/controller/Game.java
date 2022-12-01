@@ -1,5 +1,9 @@
-package baseball;
+package baseball.controller;
 
+import baseball.model.Computer;
+import baseball.utils.Exception;
+import baseball.model.Player;
+import baseball.view.View;
 import java.util.List;
 import java.util.Objects;
 
