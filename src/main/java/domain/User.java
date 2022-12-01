@@ -24,7 +24,7 @@ public class User {
     public int ball_count() {
         int BALL_COUNT_NUMBER = 0;
         for (int index = 0; index < 3; index++) {
-            if (Computer.getNumber_List().contains(Character.getNumericValue((this.INPUT.charAt(index))))) {
+            if (Computer.getNumbers().contains(Character.getNumericValue((this.INPUT.charAt(index))))) {
                 BALL_COUNT_NUMBER++;
             }
 
