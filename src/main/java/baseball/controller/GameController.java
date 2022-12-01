@@ -15,6 +15,7 @@ public class GameController {
     private final OutputView outputView;
     private boolean selectedRetry = true;
     private boolean isThreeStrike;
+    private GameStatus gameStatus = GameStatus.GAME_START;
 
     public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -25,11 +26,11 @@ public class GameController {
         try {
             outputView.printGameStart();
 
-            while (selectedRetry) {
+            while (gameStatus != GameStatus.APPLICATION_EXIT) {
                 Computer computer = Computer.createByNumber(Computer.createRandomNumbers());
                 System.out.println(computer.getComputerNumber());
 
-                while (!isThreeStrike) {
+                while (gameStatus != GameStatus.GAME_OVER) {
                     Player player = Player.createByNumber(inputView.readPlayerNumber());
 
                     Referee referee = Referee.judge(computer, player);
@@ -37,20 +38,17 @@ public class GameController {
 
                     outputView.printGameResult(result);
                     isThreeStrike = result.isThreeStrike();
+                    gameStatus = GameStatus.fromIsThreeStrike(isThreeStrike);
                 }
                 outputView.printThreeStrike();
+
                 selectedRetry = GameCommand.selectedRetry(inputView.readGameCommand());
-                if(selectedRetry) {
-                    isThreeStrike = false;
-                }
+                gameStatus = GameStatus.fromSelectedRetry(selectedRetry);
             }
 
-    } catch(
-    IllegalArgumentException exception)
-
-    {
-        outputView.printExceptionMessage(exception);
-        throw exception;
+        } catch (IllegalArgumentException exception) {
+            outputView.printExceptionMessage(exception);
+            throw exception;
+        }
     }
-}
 }
