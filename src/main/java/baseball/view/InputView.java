@@ -21,7 +21,7 @@ public class InputView {
     }
 
     public String readGameCommand() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        printConsoleMessage(ConsoleMessage.INPUT_GAME_COMMAND.getMessage());
         return Console.readLine();
     }
 

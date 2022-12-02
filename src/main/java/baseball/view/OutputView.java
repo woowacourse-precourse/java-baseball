@@ -21,7 +21,7 @@ public class OutputView {
     }
 
     public void printExceptionMessage(Exception exception) {
-        System.out.printf(ExceptionMessage.BASE.getMessage(), exception.getMessage());
+        System.out.println(exception.getMessage());
     }
 
     private String getFormattedResult(Result result) {

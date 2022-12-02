@@ -12,21 +12,21 @@ public class Validator {
         if (!isNumeric(playerNumber)) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_NUMERIC.getMessage());
         }
-        if (isInRange(playerNumber)) {
+        if (!isInRange(playerNumber)) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_IN_RANGE.getMessage());
         }
-        if (isLengthThree(playerNumber)) {
+        if (!isLengthThree(playerNumber)) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_LENGTH.getMessage());
         }
         return playerNumber;
     }
 
     private static boolean isLengthThree(String playerNumber) {
-        return playerNumber.length() != BALL_LENGTH;
+        return playerNumber.length() == BALL_LENGTH;
     }
 
     private static boolean isInRange(String playerNumber) {
-        return !NUMBER_REGEX.matcher(playerNumber).matches();
+        return NUMBER_REGEX.matcher(playerNumber).matches();
     }
 
     private static boolean isNumeric(String input) {

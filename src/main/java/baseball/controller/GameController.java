@@ -50,11 +50,11 @@ public class GameController {
     }
 
     private void handleRetry() {
-        gameStatus = GameStatus.fromSelectedRetry(isSelectedRetry());
+        gameStatus = GameStatus.fromSelectedRetry( isSelectedRetry());
     }
 
     private boolean isSelectedRetry() {
-        return GameCommand.selectedRetry(inputView.readGameCommand());
+        return GameCommand.from(inputView.readGameCommand()).selectedRetry();
     }
 
     private void handleException(IllegalArgumentException exception) {
