@@ -10,7 +10,7 @@ public class BaseballGame {
     private BaseballNumber baseballNumber;
     private GameStatusOperator gameStatusOperator;
 
-    private BaseballGame(BaseballNumber baseballNumber, GameStatusOperator gameStatusOperator) {
+    protected BaseballGame(BaseballNumber baseballNumber, GameStatusOperator gameStatusOperator) {
         this.baseballNumber = baseballNumber;
         this.gameStatusOperator = gameStatusOperator;
     }

@@ -29,19 +29,19 @@ public class GameStatusOperator {
 
     //== getter & setter ==//
 
-    public GameStatus getGameStatus() {
+    protected GameStatus getGameStatus() {
         return gameStatus;
     }
 
-    public void setGameStatus(GameStatus gameStatus) {
+    protected void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
     }
 
-    public int getNumberOfBall() {
+    protected int getNumberOfBall() {
         return numberOfBall;
     }
 
-    public int getNumberOfStrike() {
+    protected int getNumberOfStrike() {
         return numberOfStrike;
     }
 }
