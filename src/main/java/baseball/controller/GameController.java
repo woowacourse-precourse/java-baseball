@@ -4,28 +4,32 @@ import baseball.core.BaseballGame;
 import baseball.exception.InputException;
 import baseball.type.GameStatus;
 import baseball.type.SuccessCondition;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
+import baseball.view.OutputView;
+
+import java.util.Map;
 
 import static baseball.type.GameStatus.*;
-import static baseball.display.OutputStatement.*;
 
 public class GameController {
 
     private BaseballGame baseballGame;
+    private InputView inputView;
+    private OutputView outputView;
 
-    private GameController(BaseballGame baseballGame) {
+    private GameController(BaseballGame baseballGame, InputView inputView, OutputView outputView) {
         this.baseballGame = baseballGame;
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public static GameController initGame() {
-        return new GameController(BaseballGame.initBaseballGame());
+        return new GameController(BaseballGame.initBaseballGame(), new InputView(), new OutputView());
     }
 
     // 게임 시작부터 종료까지의 로직
     public void playGame() {
-
-        // TODO : OutputView에서 처리 예정
-        System.out.println(gameStart);
+        outputView.printStart();
         GameStatus currentStatus = baseballGame.getCurrentStatus();
         while (currentStatus == START) {
             this.baseballGame.startGame();
@@ -37,35 +41,18 @@ public class GameController {
     private GameStatus iterateGameLoop() {
         GameStatus currentStatus = baseballGame.getCurrentStatus();
         while (currentStatus == ONGOING) {
-            //  TODO : InputView 로직으로 이전 예정
-            System.out.print(enterNumber);
-            String inputNumber = Console.readLine();
+            String inputNumber = inputView.readInputNumber();
+            // TODO : validation 로직을 새로운 Validator 클래스에서 처리 예정
             InputException.validateInputNumber(inputNumber);
-            baseballGame.executeGameRound(inputNumber);
+            Map<String, Integer> resultOfGameRound = baseballGame.executeGameRound(inputNumber);
 
             if (baseballGame.checkSuccessOrFail() == SuccessCondition.SUCCESS) {
-                // TODO : InputView 로직으로 이전 예정
-                System.out.println(correctNumber);
-                String gameCommand = Console.readLine();
+                String gameCommand = inputView.readGameCommand();
                 currentStatus = baseballGame.executeGameByCommand(gameCommand);
             } else {
-//                printBallAndStrike(numberOfBall, numberOfStrike);
+                outputView.printBallAndStrike(resultOfGameRound.get("ball"), resultOfGameRound.get("strike"));
             }
         }
         return currentStatus;
-    }
-
-    // TODO : OutputView로 이전 예정
-    // 플레이어의 입력 숫자에 따라 볼과 스트라이크를 화면에 출력
-    private void printBallAndStrike(Integer numberOfBall, Integer numberOfStrike) {
-        if (numberOfBall == 0 && numberOfStrike == 0) {
-            System.out.println(nothing);
-        } else if (numberOfBall > 0 && numberOfStrike == 0) {
-            System.out.println(numberOfBall + ball);
-        } else if (numberOfBall == 0 && numberOfStrike > 0) {
-            System.out.println(numberOfStrike + strike);
-        } else {
-            System.out.println(numberOfBall + ball + " " + numberOfStrike + strike);
-        }
     }
 }
