@@ -3,6 +3,9 @@ package baseball.core;
 import baseball.type.GameStatus;
 import baseball.type.SuccessCondition;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BaseballGame {
 
     private final int NUMBER_TO_COMPLETE = 3;
@@ -25,11 +28,15 @@ public class BaseballGame {
         gameStatusOperator.setGameStatus(GameStatus.ONGOING);
     }
 
-    public void executeGameRound(String inputNumber) {
+    public Map<String, Integer> executeGameRound(String inputNumber) {
         int numberOfBall = baseballNumber.countTheNumberOfBall(inputNumber);
         int numberOfStrike = baseballNumber.countTheNumberOfStrike(inputNumber);
         gameStatusOperator.updateNumberOfBall(numberOfBall);
         gameStatusOperator.updateNumberOfStrike(numberOfStrike);
+        return new HashMap<>() {{
+            put("ball", numberOfBall);
+            put("strike", numberOfStrike);
+        }};
     }
 
     public SuccessCondition checkSuccessOrFail() {

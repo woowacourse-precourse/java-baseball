@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -39,9 +40,9 @@ class BaseballGameTest {
     @ParameterizedTest
     @CsvSource(value = {"345:1:0", "234:2:0", "425:0:1", "213:2:1", "123:0:3"}, delimiter = ':')
     void executeGameRound(String inputNumber, int numberOfBall, int numberOfStrike) {
-        baseballGame.executeGameRound(inputNumber);
-        assertThat(gameStatusOperator.getNumberOfBall()).isEqualTo(numberOfBall);
-        assertThat(gameStatusOperator.getNumberOfStrike()).isEqualTo(numberOfStrike);
+        Map<String, Integer> resultOfGame = baseballGame.executeGameRound(inputNumber);
+        assertThat(resultOfGame.get("ball")).isEqualTo(numberOfBall);
+        assertThat(resultOfGame.get("strike")).isEqualTo(numberOfStrike);
     }
 
     @DisplayName("플레이어가 입력한 숫자에 따라 정답 숫자를 맞춘 여부를 반환한다.")
