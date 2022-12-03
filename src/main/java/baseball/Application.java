@@ -1,13 +1,17 @@
 package baseball;
 
+import baseball.util.OutputPharse;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
 public class Application {
+    static OutputView outputView = new OutputView();
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        PrintResult.printLineln(PrintResult.GAME_START);
+
+        outputView.printMsgWithLn(OutputPharse.GAME_START.getMsg());
 
         try {
             startGame();
@@ -37,17 +41,17 @@ public class Application {
         Baseball baseball = new Baseball();
 
         while (true) {
-            PrintResult.printLine(PrintResult.INPUT_INFO);
+            outputView.printMsg(OutputPharse.INPUT_INFO.getMsg());
             String userInput = Console.readLine();
 
              isGameNumber(userInput);
 
             List<Integer> baseballCount = baseball.getTotalBallCount(userInput);
             String hintCode = baseball.getHintCode(baseballCount);
-            PrintResult.printLineln(hintCode);
+            outputView.printMsgWithLn(hintCode);
 
             if (baseballCount.get(1) == Baseball.GAME_NUMBER_SIZE) {
-                PrintResult.printLineln(PrintResult.GAME_END);
+                outputView.printMsgWithLn(OutputPharse.GAME_END.getMsg());
                 return;
             }
         }
