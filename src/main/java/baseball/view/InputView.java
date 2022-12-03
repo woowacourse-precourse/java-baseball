@@ -12,13 +12,13 @@ public class InputView {
      * 사용자 숫자 입력
      * @return
      */
-    public int getUserNumber() throws IllegalArgumentException {
+    public String getUserNumber() throws IllegalArgumentException {
         String userInput = getUserInput();
         InputException.nullException(userInput);
         InputException.notNumberSizeException(userInput);
         InputException.notNumber(userInput);
 
-        return Integer.parseInt(userInput);
+        return userInput;
     }
 
     /**

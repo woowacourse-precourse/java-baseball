@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -7,20 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Baseball {
-    public enum GameStatus {
-        RESTART("1"),
-        EXIT("2");
 
-        private final String status;
-
-        GameStatus(String status) {
-            this.status = status;
-        }
-
-        public String getGameStatus() {
-            return status;
-        }
-    }
     public static final int GAME_NUMBER_SIZE = 3;
 
     List<Integer> gameNumber = new ArrayList<>();
@@ -50,7 +37,7 @@ public class Baseball {
      * @param userInput
      * @return 최종 볼과 스트라이크 갯수
      */
-    public List<Integer> getTotalBallCount(String userInput) {
+    public Result getTotalBallCount(String userInput) {
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -62,32 +49,7 @@ public class Baseball {
                 ballCount++;
             }
         }
-        return Arrays.asList(ballCount, strikeCount);
+        return Result.of(ballCount, strikeCount);
     }
 
-    /**
-     * 볼과 스트라이크 갯수로 힌트 출력 구문 생성
-     * @param baseballCount
-     * @return
-     */
-    public String getHintCode(List<Integer> baseballCount) {
-        int ballCount = baseballCount.get(0);
-        int strikeCount = baseballCount.get(1);
-
-        if ((ballCount + strikeCount) == 0) {
-            return "낫싱";
-        }
-
-        StringBuilder hintCode = new StringBuilder();
-
-        if (ballCount != 0) {
-            hintCode.append(ballCount+"볼");
-        }
-
-        if (strikeCount != 0) {
-            hintCode.append(" "+strikeCount+"스트라이크");
-        }
-
-        return hintCode.toString().strip();
-    }
 }
