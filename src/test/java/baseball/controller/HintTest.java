@@ -2,10 +2,11 @@ package baseball.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+import baseball.CONSOLE;
 import baseball.view.InputView;
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Scanner;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -17,38 +18,26 @@ import org.junit.jupiter.params.provider.CsvSource;
 @DisplayNameGeneration(ReplaceUnderscores.class)
 class HintTest {
 
-    private InputView inputView;
-    private Hint hint;
-
-    public static InputStream setReadLine(String readLine) {
-
-        return new ByteArrayInputStream(readLine.getBytes());
-    }
-
-    @BeforeEach
-    void setUp() {
-        inputView = new InputView();
-        hint = new Hint();
+    private static void setConsole(String expect) {
+        InputStream console = CONSOLE.setInputStream(expect);
+        System.setIn(console);
     }
 
 
     @ParameterizedTest
-    @CsvSource(value = {"123", "246", "926"})
+    @CsvSource(value = {"123","457","369"})
     public void 힌트_생성(String readLine){
         //given
-        InputStream console = setReadLine(readLine);
-        System.setIn(console);
-
-        hint.buildHint();
-        int actualBall = hint.getBall();
-        int actualStrike = hint.getStrike();
+        setConsole(readLine);
 
         //when
-        boolean expectBall =  actualBall > 0;
-        boolean expectStrike =  actualStrike > 0;
+        List<Integer> builder = new Hint().buildHint();
+        int expect = 2;
+        int actual = builder.size();
 
         //then
-        assertEquals(expectBall, true);
-        assertEquals(expectStrike, true);
+        assertEquals(expect,actual);
+
     }
+
 }
