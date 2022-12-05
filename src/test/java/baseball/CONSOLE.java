@@ -7,10 +7,12 @@ public enum CONSOLE {
 
     CONSOLE;
 
+    public static void setUp(String readLine) {
 
-    public static InputStream setConsole(String readLine) {
-
-        return new ByteArrayInputStream(readLine.getBytes());
+        InputStream console = new ByteArrayInputStream(readLine.getBytes());
+        System.setIn(console);
 
     }
+
+
 }
