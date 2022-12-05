@@ -1,6 +1,5 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -20,6 +19,6 @@ class RandomNumberGeneratorTest {
     void 컴퓨터객체_생성() {
         randomNumberGenerator.generate();
         Computer computer = new Computer(randomNumberGenerator.getRandomNumberList());
-        System.out.println("computer.getRandomNumber() = " + computer.getRandomNumber());
+        System.out.println("computer.getRandomNumber() = " + computer.getRandomNumberList());
     }
 }
