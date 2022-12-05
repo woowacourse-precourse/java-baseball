@@ -48,11 +48,11 @@ class CountScoreTest {
 
     @Test
     void 점수_카운팅5() {
-        List list1 = Converter.stringToList("465");
-        List list2 = Converter.stringToList("456");
+        List list1 = Converter.stringToList("235");
+        List list2 = Converter.stringToList("145");
         CountScore countScore = new CountScore();
         countScore.compare(list1, list2);
-        Assertions.assertThat(countScore.getBall()).isEqualTo(2);
+        Assertions.assertThat(countScore.getBall()).isEqualTo(0);
         Assertions.assertThat(countScore.getStrike()).isEqualTo(1);
     }
 }
