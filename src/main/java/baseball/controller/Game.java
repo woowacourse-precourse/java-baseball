@@ -16,9 +16,11 @@ public class Game {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final Exception exception;
     public Game(){
         this.inputView = new InputView();
         this.outputView = new OutputView();
+        this.exception = new Exception();
     }
     public void startGame() {
         outputView.getStartGameMessage();
@@ -80,17 +82,21 @@ public class Game {
 
     private void checkRestartGame() {
         outputView.getRestartGameMessage();
-        String inputNumber = getOneInputNumber();
-        if (inputNumber.equals("1")) {
+        int inputNumber = getOneInputNumber();
+        if (inputNumber==Constant.PLAYER_RESTART) {
             playGame();
         }
         outputView.getEndGameMessage();
     }
 
-    private String getOneInputNumber() {
-        String inputNumber = inputView.inputNumbers();
-        Exception.checkInputNumber(inputNumber);
-        return inputNumber;
+    private int getOneInputNumber() {
+        try {
+            int oneDigitNumber = Integer.parseInt(inputView.inputNumbers());
+            exception.checkOneDigitNumber(oneDigitNumber);
+            return oneDigitNumber;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Wrong input Number Format");
+        }
     }
 
 }

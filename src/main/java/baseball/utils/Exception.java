@@ -18,14 +18,9 @@ public class Exception {
         checkInputZero(inputNumberList);
     }
 
-    public static void checkInputNumber(String inputNumber) {
-        checkNumberLength(inputNumber);
-        checkCharDetect(inputNumber);
-    }
-
-    public static void checkNumberLength(String inputNumber) {
-        if (!(inputNumber.length() == 1)) {
-            throw new IllegalArgumentException("잘못된 길이의 숫자입니다");
+    public void checkOneDigitNumber(int inputNumber) {
+        if (!((inputNumber == Constant.PLAYER_RESTART)||(inputNumber == Constant.PLAYER_ENDGAME))) {
+            throw new NumberFormatException("잘못된 입력의 숫자입니다");
         }
     }
 
