@@ -3,11 +3,16 @@ package baseball.utils;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Exception {
+
+    //regex for 1~9  3 digits
+    public static final Pattern NUMBER_PATTERN = Pattern.compile("([0-9]{1,3})$");
+
     // change to regex
-    public static void checkInputNumbers(List<Integer> inputNumberList) {
+    public void checkInputNumbers(List<Integer> inputNumberList) {
         checkNumbersLength(inputNumberList);
         checkDuplicated(inputNumberList);
         checkInputZero(inputNumberList);
