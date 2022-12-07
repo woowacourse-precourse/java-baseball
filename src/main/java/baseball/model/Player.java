@@ -3,42 +3,40 @@ package baseball.model;
 import baseball.utils.Exception;
 import baseball.view.InputView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Player {
-    private final String playerNumbers;
     private InputView inputView;
     private Exception exception;
-    private final List<Integer> playerNumbersList;
+    private List<Integer> playerNumbers;
 
     public Player() {
-        this.playerNumbers = setPlayerInput();
-        this.playerNumbersList = setPlayerNumberList(this.playerNumbers);
+        this.playerNumbers = new ArrayList<>();
         this.inputView = new InputView();
         this.exception = new Exception();
     }
 
-    public List<Integer> getPlayerNumbersList() {
-        return playerNumbersList;
+    public List<Integer> getPlayerNumbers() {
+        return playerNumbers;
     }
-
+    public void setNumbers(){
+        String input = setPlayerInput();
+        playerNumbers = setPlayerNumbers(input);
+    }
     private String setPlayerInput() {
         String userInput = inputView.inputNumbers();
-        printInputNumber(userInput);
+        inputView.printInputNumber(userInput);
+        exception.checkInputNumbers(userInput);
         return userInput;
     }
 
-    private void printInputNumber(String userInput) {
-        System.out.println(userInput);
-    }
-
-    private List<Integer> setPlayerNumberList(String inputNumber) {
-        List<Integer> inputNumberList = Arrays.stream(inputNumber.split("", inputNumber.length()))
+    private List<Integer> setPlayerNumbers(String inputNumber) {
+        List<Integer> inputNumbers = Arrays.stream(inputNumber.split("", inputNumber.length()))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        exception.checkInputNumbers(inputNumberList);
-        return inputNumberList;
+        return inputNumbers;
     }
 }

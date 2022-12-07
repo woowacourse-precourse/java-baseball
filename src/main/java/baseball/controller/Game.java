@@ -40,7 +40,7 @@ public class Game {
         int gameRound = Constant.GAME_INIT;
         while (gameRound != Constant.RESULT_FULL_STRIKE) {
             readyPlayer();
-            swingBat(computer.getComputerNumbers(), player.getPlayerNumbersList());
+            swingBat(computer.getComputerNumbers(), player.getPlayerNumbers());
             gameRound = setResultGame();
             outputView.getResultGameMessage(gameRound,this.getBall(),this.getStrike());
         }
@@ -48,8 +48,13 @@ public class Game {
     }
 
     private void readyPlayer() {
-        inputView.getInputMessage();
-        player = new Player();
+        try{
+            inputView.getInputMessage();
+            player = new Player();
+            player.setNumbers() ;
+        }catch (IllegalArgumentException  e){
+            return;
+        }
     }
 
     private void swingBat(List<Integer> computerNumbers, List<Integer> playerNumbers) {

@@ -9,13 +9,12 @@ import java.util.stream.Collectors;
 public class Exception {
 
     //regex for 1~9  3 digits
-    public static final Pattern NUMBER_PATTERN = Pattern.compile("([0-9]{1,3})$");
+    public static final Pattern NUMBERS_PATTERN = Pattern.compile("([0-9]{1,3})$");
 
     // change to regex
-    public void checkInputNumbers(List<Integer> inputNumberList) {
-        checkNumbersLength(inputNumberList);
-        checkDuplicated(inputNumberList);
-        checkInputZero(inputNumberList);
+    public void checkInputNumbers(String inputNumbers) {
+        checkThreeDigitNumber(inputNumbers);
+        //checkDuplicated(inputNumbers);
     }
 
     public void checkOneDigitNumber(int inputNumber) {
@@ -24,15 +23,9 @@ public class Exception {
         }
     }
 
-    public static void checkCharDetect(String inputNumber) {
-        if (!(inputNumber.charAt(0) >= 49) || !(inputNumber.charAt(0) <= 58)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static void checkNumbersLength(List<Integer> playerNumber) {
-        if (!(playerNumber.size() == 3)) {
-            throw new IllegalArgumentException();
+    public static void checkThreeDigitNumber(String inputNumbers) {
+        if (!NUMBERS_PATTERN.matcher(inputNumbers).matches()) {
+            throw new IllegalArgumentException("wrong");
         }
     }
 
@@ -42,12 +35,6 @@ public class Exception {
                 .filter(n -> !items.add(n))
                 .collect(Collectors.toSet());
         if (items.size() != 3) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static void checkInputZero(List<Integer> playerNumber) {
-        if (playerNumber.contains(0)) {
             throw new IllegalArgumentException();
         }
     }
