@@ -1,7 +1,7 @@
 package baseball.model;
 
 import baseball.utils.Exception;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,23 +9,21 @@ import java.util.stream.Collectors;
 
 public class Player {
     private final String playerNumbers;
+    private InputView inputView;
     private final List<Integer> playerNumbersList;
 
     public Player() {
         this.playerNumbers = setPlayerInput();
         this.playerNumbersList = setPlayerNumberList(this.playerNumbers);
+        this.inputView = new InputView();
     }
 
     public List<Integer> getPlayerNumbersList() {
         return playerNumbersList;
     }
 
-    public String inputNumbers() {
-        return Console.readLine();
-    }
-
     private String setPlayerInput() {
-        String userInput = inputNumbers();
+        String userInput = inputView.inputNumbers();
         printInputNumber(userInput);
         return userInput;
     }

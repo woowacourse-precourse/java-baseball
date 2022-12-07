@@ -3,7 +3,8 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.utils.Exception;
 import baseball.model.Player;
-import baseball.view.View;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,10 +13,16 @@ public class Game {
     private int ball;
     private int strike;
 
+    private final InputView inputView;
+    private final OutputView outputView;
     public static final int GAME_INIT = 0;
     public static final int GAME_SIZE = 3;
+    public Game(){
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+    }
     public void startGame() {
-        View.getStartGameMessage();
+        outputView.getStartGameMessage();
         playGame();
     }
 
@@ -34,13 +41,13 @@ public class Game {
             readyPlayer();
             swingBat(computer.getComputerNumbers(), player.getPlayerNumbersList());
             gameRound = setResultGame();
-            View.getResultGameMessage(gameRound,this.getBall(),this.getStrike());
+            outputView.getResultGameMessage(gameRound,this.getBall(),this.getStrike());
         }
         checkRestartGame();
     }
 
     private void readyPlayer() {
-        View.getInputMessage();
+        inputView.getInputMessage();
         player = new Player();
     }
 
@@ -49,7 +56,8 @@ public class Game {
         for (int i = GAME_INIT; i < GAME_SIZE; i++) {
             if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))) {
                 strike++;
-            } else if (computerNumbers.contains(playerNumbers.get(i))) {
+            }
+            if (computerNumbers.contains(playerNumbers.get(i))) {
                 ball++;
             }
         }
@@ -71,17 +79,16 @@ public class Game {
     }
 
     private void checkRestartGame() {
-        View.getRestartGameMessage();
+        outputView.getRestartGameMessage();
         String inputNumber = getOneInputNumber();
         if (inputNumber.equals("1")) {
             playGame();
-        } else {
-            View.getEndGameMessage();
         }
+        outputView.getEndGameMessage();
     }
 
     private String getOneInputNumber() {
-        String inputNumber = player.inputNumbers();
+        String inputNumber = inputView.inputNumbers();
         Exception.checkInputNumber(inputNumber);
         return inputNumber;
     }
