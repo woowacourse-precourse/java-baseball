@@ -36,7 +36,7 @@ public class Game {
     private void playGame() {
         Computer computer = new Computer();
         int gameRound = Constant.GAME_INIT;
-        while (gameRound != 1) {
+        while (gameRound != Constant.RESULT_FULL_STRIKE) {
             readyPlayer();
             swingBat(computer.getComputerNumbers(), player.getPlayerNumbersList());
             gameRound = setResultGame();
@@ -65,12 +65,12 @@ public class Game {
     // 3 개의 상태를 나타내는 코드를 리펙 ?
     private int setResultGame() {
         if ((ball == Constant.GAME_INIT) && (strike == Constant.GAME_INIT)) {
-            return 0;
+            return Constant.RESULT_NOTHING;
         }
         if (strike == Constant.GAME_SIZE) {
-            return 1;
+            return Constant.RESULT_FULL_STRIKE;
         }
-        return 2;
+        return Constant.RESULT_COMBINE;
     }
 
     private void initBalls() {
