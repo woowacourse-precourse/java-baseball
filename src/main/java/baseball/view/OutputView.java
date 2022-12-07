@@ -5,9 +5,25 @@ import static baseball.util.Constants.RESULT_SPACE;
 import baseball.model.BallCount;
 import baseball.model.Result;
 import baseball.util.ConsoleMessage;
-import baseball.util.ExceptionMessage;
 
 public class OutputView {
+
+    private enum BallCount {
+        STRIKE("스트라이크"),
+        BALL("볼"),
+        NOTHING("낫싱");
+
+        private final String display;
+
+        BallCount(String display) {
+            this.display = display;
+        }
+
+        public String getDisplay() {
+            return display;
+        }
+    }
+
     public void printGameStart() {
         System.out.println(ConsoleMessage.START_GAME.getMessage());
     }
@@ -16,7 +32,7 @@ public class OutputView {
         System.out.println(getFormattedResult(result));
     }
 
-    public void printThreeStrike() {
+    public void printFullStrike() {
         System.out.println(ConsoleMessage.THREE_STRIKE.getMessage());
     }
 
@@ -29,6 +45,7 @@ public class OutputView {
     }
 
     private static String getDisplay(int strike, int ball) {
+
         if (isNothing(strike, ball)) {
             return BallCount.NOTHING.getDisplay();
         }

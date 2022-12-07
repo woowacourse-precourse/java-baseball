@@ -12,11 +12,10 @@ class BallCountTest {
         Assertions.assertEquals(BallCount.NOTHING, BallCount.decideBallCount(false, false));
     }
 
-    @Test
-    void 올바른_display_반환() {
-        Assertions.assertEquals("스트라이크", BallCount.STRIKE.getDisplay());
-        Assertions.assertEquals("볼", BallCount.BALL.getDisplay());
-        Assertions.assertEquals("낫싱", BallCount.NOTHING.getDisplay());
-
-    }
+//    @Test
+//    void 올바른_display_반환() {
+//        Assertions.assertEquals("스트라이크", BallCount.STRIKE.getDisplay());
+//        Assertions.assertEquals("볼", BallCount.BALL.getDisplay());
+//        Assertions.assertEquals("낫싱", BallCount.NOTHING.getDisplay());
+//    }
 }

@@ -46,7 +46,7 @@ public class GameController {
             outputView.printGameResult(result);
             gameStatus = GameStatus.fromIsThreeStrike(result.isThreeStrike());
         }
-        outputView.printThreeStrike();
+        outputView.printFullStrike();
     }
 
     private void handleRetry() {
