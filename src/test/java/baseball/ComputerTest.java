@@ -15,7 +15,7 @@ class ComputerTest {
         //given
         Computer computer = new Computer();
         //when
-        List<Integer> expected = computer.getComputerNumbersList();
+        List<Integer> expected = computer.getComputerNumbers();
         //then
         assertThat(expected.size()).isEqualTo(3);
     }
@@ -25,7 +25,7 @@ class ComputerTest {
         //given
         Computer computer = new Computer();
         // when
-        List<Integer> expected = computer.getComputerNumbersList();
+        List<Integer> expected = computer.getComputerNumbers();
         Set<Integer> actual = new HashSet<>(expected);
         //then
         assertThat(expected.size()).isEqualTo(actual.size());
