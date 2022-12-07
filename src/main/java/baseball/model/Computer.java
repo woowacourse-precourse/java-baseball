@@ -10,14 +10,14 @@ public class Computer {
     private final List<Integer> computerNumbers;
 
     public Computer() {
-        this.computerNumbers = setComputerNumbersByList();
+        this.computerNumbers = setComputerNumbers();
     }
 
-    public List<Integer> getComputerNumbersList() {
+    public List<Integer> getComputerNumbers() {
         return this.computerNumbers;
     }
 
-    private List<Integer> setComputerNumbersByList() {
+    private List<Integer> setComputerNumbers() {
         List<Integer> newComputerNumber = new ArrayList<>();
         while (newComputerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

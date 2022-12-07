@@ -12,6 +12,8 @@ public class Game {
     private int ball;
     private int strike;
 
+    public static final int GAME_INIT = 0;
+    public static final int GAME_SIZE = 3;
     public void startGame() {
         View.getStartGameMessage();
         playGame();
@@ -27,10 +29,10 @@ public class Game {
 
     private void playGame() {
         Computer computer = new Computer();
-        int gameRound = 0;
+        int gameRound = GAME_INIT;
         while (gameRound != 1) {
             readyPlayer();
-            swingBat(computer.getComputerNumbersList(), player.getPlayerNumbersList());
+            swingBat(computer.getComputerNumbers(), player.getPlayerNumbersList());
             gameRound = setResultGame();
             View.getResultGameMessage(gameRound,this.getBall(),this.getStrike());
         }
@@ -44,7 +46,7 @@ public class Game {
 
     private void swingBat(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         initBalls();
-        for (int i = 0; i < 3; i++) {
+        for (int i = GAME_INIT; i < GAME_SIZE; i++) {
             if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))) {
                 strike++;
             } else if (computerNumbers.contains(playerNumbers.get(i))) {
@@ -54,9 +56,9 @@ public class Game {
     }
 
     private int setResultGame() {
-        if ((ball == 0) && (strike == 0)) {
+        if ((ball == GAME_INIT) && (strike == GAME_INIT)) {
             return 0;
-        } else if (strike == 3) {
+        } else if (strike == GAME_SIZE) {
             return 1;
         } else {
             return 2;
@@ -64,8 +66,8 @@ public class Game {
     }
 
     private void initBalls() {
-        ball = 0;
-        strike = 0;
+        ball = GAME_INIT;
+        strike = GAME_INIT;
     }
 
     private void checkRestartGame() {

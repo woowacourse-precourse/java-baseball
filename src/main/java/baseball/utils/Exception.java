@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Exception {
+    // change to regex
     public static void checkInputNumbers(List<Integer> inputNumberList) {
         checkNumbersLength(inputNumberList);
         checkDuplicated(inputNumberList);
