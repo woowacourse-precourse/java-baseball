@@ -20,7 +20,7 @@ public class Exception {
 
     public static void checkNumberLength(String inputNumber) {
         if (!(inputNumber.length() == 1)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 길이의 숫자입니다");
         }
     }
 

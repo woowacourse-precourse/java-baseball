@@ -1,5 +1,18 @@
 # 미션 - 숫자 야구
 
+```bash
+└── baseball
+├── Application.java
+├── controller
+|  └── Game.java
+├── model
+│   ├── Computer.java
+│   └── Player.java
+├── utils
+│   └── Exception.java
+└── view
+  └── View.java
+```
 ---
 
 ## 🚀 기능 요구 사항

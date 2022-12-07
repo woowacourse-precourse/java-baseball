@@ -58,11 +58,11 @@ public class Game {
     private int setResultGame() {
         if ((ball == GAME_INIT) && (strike == GAME_INIT)) {
             return 0;
-        } else if (strike == GAME_SIZE) {
-            return 1;
-        } else {
-            return 2;
         }
+        if (strike == GAME_SIZE) {
+            return 1;
+        }
+        return 2;
     }
 
     private void initBalls() {
