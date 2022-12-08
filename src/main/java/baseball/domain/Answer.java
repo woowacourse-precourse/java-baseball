@@ -1,10 +1,13 @@
 package baseball.domain;
 
-import baseball.utils.ErrorMessage;
+import baseball.utils.BaseBallStatus;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static baseball.utils.BaseBallStatus.BASEBALL_DEFAULT_SIZE;
+import static baseball.utils.ErrorMessage.*;
 
 public class Answer {
 
@@ -16,9 +19,29 @@ public class Answer {
     }
 
     private void validateAnswer(List<Integer> numbers) {
-        if (numbers.size() != BASEBALL_DEFAULT_SIZE.getCode()) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_BASEBALL_SIZE.getMessage());
+        if (isWrongSize(numbers)) {
+            throw new IllegalArgumentException(INVALID_BASEBALL_SIZE.getMessage());
         }
+        if (isDuplicated(numbers)) {
+            throw new IllegalArgumentException(DUPLICATED_BASEBALL_NUMBER.getMessage());
+        }
+        if (isOutOfRange(numbers)) {
+            throw new IllegalArgumentException(OUT_OF_RANGE_BASEBALL_NUMBER.getMessage());
+        }
+    }
+
+    private boolean isOutOfRange(List<Integer> numbers) {
+        return numbers.stream()
+                .anyMatch(BaseBallStatus::isOutOfRange);
+    }
+    
+    private boolean isDuplicated(List<Integer> numbers) {
+        Set<Integer> duplicateRemoved = new HashSet<>(numbers);
+        return duplicateRemoved.size() != numbers.size();
+    }
+
+    private static boolean isWrongSize(List<Integer> numbers) {
+        return numbers.size() != BASEBALL_DEFAULT_SIZE.getCode();
     }
 
     public int get(int index) {
