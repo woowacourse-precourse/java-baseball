@@ -25,7 +25,7 @@ public class InputView {
         return userInputNumber;
     }
 
-    public boolean ask_restart() {
+    public boolean askNewGame() {
         System.out.println(GAME_RESTART_ASK);
         String answer = Console.readLine();
         return answer.equals(RESTART_ANSWER);
