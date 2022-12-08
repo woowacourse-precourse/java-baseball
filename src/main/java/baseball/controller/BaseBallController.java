@@ -31,6 +31,7 @@ public class BaseBallController {
     }
 
     private void init() {
+        outputView.init();
         Answer generate = computer.generate();
         judge = new Judge(generate);
     }
