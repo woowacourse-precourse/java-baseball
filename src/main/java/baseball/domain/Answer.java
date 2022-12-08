@@ -13,4 +13,8 @@ public class Answer {
     public int get(int index) {
         return numbers.get(index);
     }
+
+    public int size() {
+        return numbers.size();
+    }
 }
