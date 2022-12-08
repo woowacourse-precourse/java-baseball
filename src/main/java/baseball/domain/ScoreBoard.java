@@ -54,18 +54,29 @@ public class ScoreBoard {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        if (ball != 0) {
-            builder.append(ball).append("볼 ");
-        }
 
-        if (strike != 0) {
-            builder.append(strike).append("스트라이크");
-        }
+        appendBall(builder);
+        appendStrike(builder);
+        appendNothing(builder);
 
+        return builder.toString();
+    }
+
+    private static void appendNothing(StringBuilder builder) {
         if (builder.length() == 0) {
             builder.append("낫싱");
         }
+    }
 
-        return builder.toString();
+    private void appendStrike(StringBuilder builder) {
+        if (strike != 0) {
+            builder.append(strike).append("스트라이크");
+        }
+    }
+
+    private void appendBall(StringBuilder builder) {
+        if (ball != 0) {
+            builder.append(ball).append("볼 ");
+        }
     }
 }
