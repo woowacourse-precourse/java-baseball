@@ -2,10 +2,16 @@ package baseball.domain;
 
 import static baseball.utils.ErrorMessage.INVALID_BALL_NUMBER;
 import static baseball.utils.ErrorMessage.INVALID_STRIKE_NUMBER;
+import static baseball.utils.ProgressMessage.*;
 
 public class ScoreBoard {
-    private final int strike;
+
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_BALL = 4;
+    private static final int MAX_STRIKE = 3;
+
     private final int ball;
+    private final int strike;
 
     ScoreBoard(int ball, int strike) {
         validateBall(ball);
@@ -21,7 +27,7 @@ public class ScoreBoard {
     }
 
     private boolean isOutOfRangeByBall(int ball) {
-        return (ball < 0) || (ball > 4);
+        return (ball < MIN_NUMBER) || (ball > MAX_BALL);
     }
 
     private void validateStrike(int strike) {
@@ -31,14 +37,14 @@ public class ScoreBoard {
     }
 
     private static boolean isOutOfRangeByStrike(int strike) {
-        return (strike < 0) || (strike > 3);
+        return (strike < MIN_NUMBER) || (strike > MAX_STRIKE);
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof ScoreBoard) {
             ScoreBoard other = (ScoreBoard) obj;
-            return this.strike == other.getStrike() && this.ball == other.getBall();
+            return (this.strike == other.getStrike()) && (this.ball == other.getBall());
         }
         return false;
     }
@@ -62,21 +68,22 @@ public class ScoreBoard {
         return builder.toString();
     }
 
-    private static void appendNothing(StringBuilder builder) {
-        if (builder.length() == 0) {
-            builder.append("낫싱");
+    private void appendBall(StringBuilder builder) {
+        if (this.ball != 0) {
+            builder.append(this.ball).append(BALL).append(" ");
         }
     }
 
     private void appendStrike(StringBuilder builder) {
-        if (strike != 0) {
-            builder.append(strike).append("스트라이크");
+        if (this.strike != 0) {
+            builder.append(this.strike).append(STRIKE);
         }
     }
 
-    private void appendBall(StringBuilder builder) {
-        if (ball != 0) {
-            builder.append(ball).append("볼 ");
+    private static void appendNothing(StringBuilder builder) {
+        if (builder.length() == 0) {
+            builder.append(NOTHING);
         }
     }
+
 }
