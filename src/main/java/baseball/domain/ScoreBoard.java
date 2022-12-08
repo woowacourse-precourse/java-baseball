@@ -55,7 +55,7 @@ public class ScoreBoard {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         if (ball != 0) {
-            builder.append(ball).append("볼");
+            builder.append(ball).append("볼 ");
         }
 
         if (strike != 0) {

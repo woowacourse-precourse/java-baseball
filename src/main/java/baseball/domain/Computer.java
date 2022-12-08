@@ -8,7 +8,7 @@ public class Computer {
 
     private final RandomNumberGenerator generator;
 
-    Computer(RandomNumberGenerator generator) {
+    public Computer(RandomNumberGenerator generator) {
         this.generator = generator;
     }
 

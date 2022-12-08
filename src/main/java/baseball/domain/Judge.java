@@ -9,7 +9,7 @@ public class Judge {
     private final Answer computer;
     private static final int ANSWER_SIZE = BASEBALL_DEFAULT_SIZE.getCode();
 
-    Judge(Answer computer) {
+    public Judge(Answer computer) {
         this.computer = computer;
     }
 
