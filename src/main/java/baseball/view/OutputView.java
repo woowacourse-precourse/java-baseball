@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.domain.GameResult;
+
 import java.util.ArrayList;
 
 public class OutputView {
@@ -23,7 +25,10 @@ public class OutputView {
         System.out.println(GAME_SUCCESS_MESSAGE);
     }
 
-    public static void printResult(int ballCount, int strikeCount) {
+    public static void printResult(GameResult gameResult) {
+        int ballCount = gameResult.getBallCount();
+        int strikeCount = gameResult.getStrikeCountCount();
+
         ArrayList<String> result = new ArrayList<>();
         if (ballCount == 0 && strikeCount == 0) result.add(NOTHING_MESSAGE);
         if (ballCount != 0) result.add(String.format(BALL_MESSAGE, ballCount));

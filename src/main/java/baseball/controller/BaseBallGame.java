@@ -26,7 +26,7 @@ public class BaseBallGame {
         do {
             Numbers playerNumbers = InputView.readNumbers();
             result = playerNumbers.compareToNumbers(computerNumbers);
-            result.showResult();
+            OutputView.printResult(result);
         } while (!result.isSuccess());
         OutputView.printSuccessMessage();
     }
