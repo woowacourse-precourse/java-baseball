@@ -34,13 +34,13 @@ public class Answer {
         return numbers.stream()
                 .anyMatch(BaseBallStatus::isOutOfRange);
     }
-    
+
     private boolean isDuplicated(List<Integer> numbers) {
         Set<Integer> duplicateRemoved = new HashSet<>(numbers);
         return duplicateRemoved.size() != numbers.size();
     }
 
-    private static boolean isWrongSize(List<Integer> numbers) {
+    private boolean isWrongSize(List<Integer> numbers) {
         return numbers.size() != BASEBALL_DEFAULT_SIZE.getCode();
     }
 
