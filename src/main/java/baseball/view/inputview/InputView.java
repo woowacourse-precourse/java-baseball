@@ -14,15 +14,18 @@ public class InputView {
 
     public String inputNumber() {
         System.out.print(INPUT_NUMBER_REQUEST);
-
         String userInputNumber = Console.readLine();
+        isValidateInput(userInputNumber);
+        return userInputNumber;
+    }
+
+    private static void isValidateInput(String userInputNumber) {
         if (!InputViewValidator.validateSize(userInputNumber)) {
             throw new IllegalArgumentException(INPUT_NUMBER_ERROR);
         }
         if (!InputViewValidator.validateDifferenceNumber(userInputNumber)) {
             throw new IllegalArgumentException(INPUT_NUMBER_ERROR);
         }
-        return userInputNumber;
     }
 
     public boolean askNewGame() {

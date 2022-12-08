@@ -14,18 +14,39 @@ public class OutView {
     public static final String STRIKE = "스트라이크";
 
     public static void print(List<Integer> reportList) {
-        int strikeCount = reportList.get(STRIKE_INDEX);
-        int ballCount = reportList.get(BALL_INDEX);
-        int nothingCount = reportList.get(NOTHING_INDEX);
+        printNothing(reportList);
+        printBall(reportList);
+        printStrike(reportList);
+    }
 
+    private static void printNothing(List<Integer> reportList) {
+        int nothingCount = reportList.get(NOTHING_INDEX);
+        printNothing(nothingCount);
+    }
+
+    private static void printNothing(int nothingCount) {
         if (nothingCount == MAX_COUNT) {
             System.out.println(NOTHING);
         }
+    }
 
+    private static void printBall(List<Integer> reportList) {
+        int ballCount = reportList.get(BALL_INDEX);
+        printBall(ballCount);
+    }
+
+    private static void printBall(int ballCount) {
         if (ballCount != ZERO_COUNT) {
             System.out.print(ballCount + BALL);
         }
+    }
 
+    private static void printStrike(List<Integer> reportList) {
+        int strikeCount = reportList.get(STRIKE_INDEX);
+        printStrike(strikeCount);
+    }
+
+    private static void printStrike(int strikeCount) {
         if (strikeCount != ZERO_COUNT) {
             System.out.println(strikeCount + STRIKE);
         }

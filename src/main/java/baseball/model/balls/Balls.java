@@ -2,6 +2,8 @@ package baseball.model.balls;
 
 import baseball.model.ball.Ball;
 import baseball.model.ball.BallNumber;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -26,6 +28,17 @@ public class Balls {
         if (userBalls.size() != BALLS_MAX_SIZE) {
             throw new IllegalArgumentException(BALLS_RANGE_ERROR);
         }
+    }
+
+    public static Balls createRandomNewBalls(int size,int start ,int end) {
+        List<Integer> computerBalls = new ArrayList<>();
+        while (computerBalls.size() < size) {
+            int randomNumber = Randoms.pickNumberInRange(start, end);
+            if (!computerBalls.contains(randomNumber)) {
+                computerBalls.add(randomNumber);
+            }
+        }
+        return new Balls(computerBalls);
     }
 
 
