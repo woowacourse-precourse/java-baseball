@@ -17,4 +17,9 @@ public class Answer {
     public int size() {
         return numbers.size();
     }
+
+    public boolean contains(Integer number) {
+        return numbers.contains(number);
+    }
+
 }
