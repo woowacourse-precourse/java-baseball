@@ -1,7 +1,7 @@
 package baseball.utils;
 
 public enum BaseBallStatus {
-    BASEBALL_DEFAULT_SIZE(3),
+    ANSWER_DEFAULT_SIZE(3),
     MIN_BASEBALL_NUMBER(1),
     MAX_BASEBALL_NUMBER(9);
 

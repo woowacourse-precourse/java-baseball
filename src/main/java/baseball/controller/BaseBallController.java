@@ -10,7 +10,7 @@ import baseball.utils.ProgressStatus;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import static baseball.utils.BaseBallStatus.BASEBALL_DEFAULT_SIZE;
+import static baseball.utils.BaseBallStatus.ANSWER_DEFAULT_SIZE;
 
 public class BaseBallController {
 
@@ -60,6 +60,6 @@ public class BaseBallController {
     }
 
     private boolean isEnd(ScoreBoard scoreBoard) {
-        return scoreBoard.getStrike() == BASEBALL_DEFAULT_SIZE.getCode();
+        return scoreBoard.getStrike() == ANSWER_DEFAULT_SIZE.getCode();
     }
 }

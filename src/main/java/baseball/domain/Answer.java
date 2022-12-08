@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.utils.BaseBallStatus.BASEBALL_DEFAULT_SIZE;
+import static baseball.utils.BaseBallStatus.ANSWER_DEFAULT_SIZE;
 import static baseball.utils.ErrorMessage.*;
 
 public class Answer {
@@ -31,7 +31,7 @@ public class Answer {
     }
 
     private boolean isWrongSize(List<Integer> numbers) {
-        return numbers.size() != BASEBALL_DEFAULT_SIZE.getCode();
+        return numbers.size() != ANSWER_DEFAULT_SIZE.getCode();
     }
 
     private boolean isDuplicated(List<Integer> numbers) {
@@ -43,7 +43,7 @@ public class Answer {
         return numbers.stream()
                 .anyMatch(BaseBallStatus::isOutOfRange);
     }
-    
+
     public int get(int index) {
         return numbers.get(index);
     }

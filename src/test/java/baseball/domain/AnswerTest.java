@@ -18,7 +18,7 @@ class AnswerTest {
     Answer answer = new Answer(init);
 
     // 기본 길이
-    BaseBallStatus status = BaseBallStatus.BASEBALL_DEFAULT_SIZE;
+    BaseBallStatus status = BaseBallStatus.ANSWER_DEFAULT_SIZE;
 
     @Test
     void Answer_생성자의_인자가_기본길이를_충족하지않으면_예외() {

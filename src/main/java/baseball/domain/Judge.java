@@ -2,12 +2,11 @@ package baseball.domain;
 
 import java.util.stream.IntStream;
 
-import static baseball.utils.BaseBallStatus.BASEBALL_DEFAULT_SIZE;
+import static baseball.utils.BaseBallStatus.ANSWER_DEFAULT_SIZE;
 
 public class Judge {
 
     private final Answer computer;
-    private static final int ANSWER_SIZE = BASEBALL_DEFAULT_SIZE.getCode();
 
     public Judge(Answer computer) {
         this.computer = computer;
@@ -25,14 +24,14 @@ public class Judge {
     }
 
     private int getContainsNumberCount(Answer user) {
-        return (int) IntStream.range(0, ANSWER_SIZE)
+        return (int) IntStream.range(0, ANSWER_DEFAULT_SIZE.getCode())
                 .map(user::get)
                 .filter(computer::contains)
                 .count();
     }
 
     private int getStrikeCount(Answer user) {
-        return (int) IntStream.range(0, ANSWER_SIZE)
+        return (int) IntStream.range(0, ANSWER_DEFAULT_SIZE.getCode())
                 .filter(index -> computer.get(index) == user.get(index))
                 .count();
     }
