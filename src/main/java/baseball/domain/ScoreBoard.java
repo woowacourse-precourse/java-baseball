@@ -35,6 +35,23 @@ public class ScoreBoard {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof ScoreBoard) {
+            ScoreBoard other = (ScoreBoard) obj;
+            return this.strike == other.getStrike() && this.ball == other.getBall();
+        }
+        return false;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         if (ball != 0) {

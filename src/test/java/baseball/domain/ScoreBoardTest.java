@@ -48,7 +48,7 @@ class ScoreBoardTest {
             if (strike != 0) {
                 resultMessage.add(strike + "스트라이크");
             }
-            
+
             assertThat(scoreBoard.toString()).contains(resultMessage);
         }
 
@@ -57,5 +57,28 @@ class ScoreBoardTest {
             ScoreBoard scoreBoard = new ScoreBoard(0, 0);
             assertThat(scoreBoard.toString()).isEqualTo("낫싱");
         }
+    }
+
+    @Test
+    void equals_메소드에_ScoreBoard가_아닌_다른객체가_들어오면_거짓이다() {
+        ScoreBoard scoreBoardA = new ScoreBoard(1, 2);
+        Integer integer = 2;
+        assertThat(scoreBoardA.equals(integer)).isFalse();
+    }
+
+    @Test
+    void equals_메소드는_각각의_strike와_ball의_값이_모두_같으면_참이다() {
+        ScoreBoard scoreBoardA = new ScoreBoard(1, 2);
+        ScoreBoard scoreBoardB = new ScoreBoard(1, 2);
+
+        assertThat(scoreBoardA.equals(scoreBoardB)).isTrue();
+    }
+
+    @Test
+    void equals_메소드는_각각의_strike와_ball의_값이_하나라도_다르면_거짓이다() {
+        ScoreBoard scoreBoardA = new ScoreBoard(1, 2);
+        ScoreBoard scoreBoardB = new ScoreBoard(2, 2);
+
+        assertThat(scoreBoardA.equals(scoreBoardB)).isFalse();
     }
 }
