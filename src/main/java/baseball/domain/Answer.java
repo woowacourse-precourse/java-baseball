@@ -30,9 +30,8 @@ public class Answer {
         }
     }
 
-    private boolean isOutOfRange(List<Integer> numbers) {
-        return numbers.stream()
-                .anyMatch(BaseBallStatus::isOutOfRange);
+    private boolean isWrongSize(List<Integer> numbers) {
+        return numbers.size() != BASEBALL_DEFAULT_SIZE.getCode();
     }
 
     private boolean isDuplicated(List<Integer> numbers) {
@@ -40,10 +39,11 @@ public class Answer {
         return duplicateRemoved.size() != numbers.size();
     }
 
-    private boolean isWrongSize(List<Integer> numbers) {
-        return numbers.size() != BASEBALL_DEFAULT_SIZE.getCode();
+    private boolean isOutOfRange(List<Integer> numbers) {
+        return numbers.stream()
+                .anyMatch(BaseBallStatus::isOutOfRange);
     }
-
+    
     public int get(int index) {
         return numbers.get(index);
     }
