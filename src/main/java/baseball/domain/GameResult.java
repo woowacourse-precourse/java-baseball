@@ -11,12 +11,16 @@ public class GameResult {
         this.strikeCount = strike;
     }
 
-    public void showResult() {
-        OutputView.printResult(ballCount, strikeCount);
-    }
-
     public boolean isSuccess() {
         return strikeCount == 3;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCountCount() {
+        return strikeCount;
     }
 
     @Override
