@@ -6,14 +6,13 @@ import baseball.domain.Answer;
 import baseball.domain.Computer;
 import baseball.domain.Judge;
 import baseball.domain.ScoreBoard;
-import baseball.utils.BaseBallStatus;
+import baseball.utils.ProgressStatus;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import static baseball.utils.BaseBallStatus.BASEBALL_DEFAULT_SIZE;
 
 public class BaseBallController {
-
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -45,7 +44,7 @@ public class BaseBallController {
     }
 
     private void endProgress(int restartFlag) {
-        if (BaseBallStatus.isRestart(restartFlag)) {
+        if (ProgressStatus.isRestart(restartFlag)) {
             play();
         }
     }
