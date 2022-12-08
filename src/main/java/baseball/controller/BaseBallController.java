@@ -6,6 +6,7 @@ import baseball.domain.Answer;
 import baseball.domain.Computer;
 import baseball.domain.Judge;
 import baseball.domain.ScoreBoard;
+import baseball.utils.BaseBallStatus;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -13,7 +14,6 @@ import static baseball.utils.BaseBallStatus.BASEBALL_DEFAULT_SIZE;
 
 public class BaseBallController {
 
-    private static final int END_STATUS = BASEBALL_DEFAULT_SIZE.getCode();
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -39,8 +39,12 @@ public class BaseBallController {
         init();
         progressing();
 
-        int isRestart = inputView.restart();
-        if (isRestart == 1) {
+        int restartFlag = inputView.getRestartFlag();
+        endProgress(restartFlag);
+    }
+
+    private void endProgress(int restartFlag) {
+        if (BaseBallStatus.isRestart(restartFlag)) {
             play();
         }
     }
@@ -48,7 +52,7 @@ public class BaseBallController {
     private void progressing() {
         ScoreBoard scoreBoard;
         do {
-            Answer gussNumber = inputView.inputNumber();
+            Answer gussNumber = inputView.getInputNumber();
             scoreBoard = judge.getScoreBoard(gussNumber);
             outputView.baseBallResult(scoreBoard);
         }
@@ -56,6 +60,6 @@ public class BaseBallController {
     }
 
     private boolean isEnd(ScoreBoard scoreBoard) {
-        return scoreBoard.getStrike() == END_STATUS;
+        return scoreBoard.getStrike() == BASEBALL_DEFAULT_SIZE.getCode();
     }
 }

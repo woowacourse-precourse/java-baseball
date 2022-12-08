@@ -11,7 +11,7 @@ public class InputView {
 
     private final OutputView outputView = new OutputView();
 
-    public Answer inputNumber() {
+    public Answer getInputNumber() {
         outputView.inputNumber();
         String input = Console.readLine();
         List<Integer> casting = parseToListInteger(input);
@@ -24,7 +24,7 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
-    public int restart() {
+    public int getRestartFlag() {
         outputView.endGame();
         String input = Console.readLine();
         return Integer.parseInt(input);
