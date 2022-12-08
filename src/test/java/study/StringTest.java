@@ -1,5 +1,6 @@
 package study;
 
+import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -46,5 +47,51 @@ public class StringTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
     }
+    @Test
+    void regex_test_correct(){
 
+        final Pattern NUMBER_PATTERN = Pattern.compile("([1-9][1-9][1-9])$");
+
+        String userInput = "111";
+
+        boolean target = NUMBER_PATTERN.matcher(userInput).matches();
+
+        assertThat(target).isEqualTo(true);
+    }
+
+
+    @Test
+    void regex_test_stat_zero_case(){
+
+        final Pattern NUMBER_PATTERN = Pattern.compile("([0-9][1-9][1-9])$");
+
+        String userInput = "011";
+
+        boolean target = NUMBER_PATTERN.matcher(userInput).matches();
+
+        assertThat(target).isEqualTo(true);
+    }
+
+    @Test
+    void regex_test_state_differnt_patter_case(){
+
+        final Pattern NUMBER_PATTERN = Pattern.compile("[0-9]{1,3}$");
+
+        String userInput = "000";
+
+        boolean target = NUMBER_PATTERN.matcher(userInput).matches();
+
+        assertThat(target).isEqualTo(true);
+    }
+    @Test
+    void regex_test_state_differnt_patter_case_one(){
+
+        final Pattern NUMBER_PATTERN = Pattern.compile("[1-9]{1,3}$");
+
+        String userInput = "111"; // case 111 , 123 ,222 ~ 999
+
+        boolean target = NUMBER_PATTERN.matcher(userInput).matches();
+
+        assertThat(target).isEqualTo(true);
+    }
 }
