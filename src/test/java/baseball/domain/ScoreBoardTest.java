@@ -35,7 +35,7 @@ class ScoreBoardTest {
     }
 
     @Nested
-    class toString_메소드는_메시지_형태의_문자열을_반환한다 {
+    class toScoreMessage_메소드는_메시지_형태의_문자열을_반환한다 {
         @ParameterizedTest(name = "{0}볼 {1}스트라이크인 경우")
         @CsvSource(value = {"1:1", "2:1", "3:2", "0:1"}, delimiter = ':')
         void parameterized_toString_test(int ball, int strike) {
@@ -49,13 +49,13 @@ class ScoreBoardTest {
                 resultMessage.add(strike + "스트라이크");
             }
 
-            assertThat(scoreBoard.toString()).contains(resultMessage);
+            assertThat(scoreBoard.toScoreMessage()).contains(resultMessage);
         }
 
         @Test
         void 점수가_0볼_0스트라이크인_경우_낫싱을_반환한다() {
             ScoreBoard scoreBoard = new ScoreBoard(0, 0);
-            assertThat(scoreBoard.toString()).isEqualTo("낫싱");
+            assertThat(scoreBoard.toScoreMessage()).isEqualTo("낫싱");
         }
     }
 

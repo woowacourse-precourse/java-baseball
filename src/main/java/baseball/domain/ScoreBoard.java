@@ -57,8 +57,8 @@ public class ScoreBoard {
         return ball;
     }
 
-    @Override
-    public String toString() {
+
+    public String toScoreMessage() {
         StringBuilder builder = new StringBuilder();
 
         appendBall(builder);

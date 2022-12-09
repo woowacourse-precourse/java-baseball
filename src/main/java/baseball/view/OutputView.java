@@ -15,7 +15,7 @@ public class OutputView {
     }
 
     public void baseBallResult(ScoreBoard scoreBoard) {
-        System.out.println(scoreBoard);
+        System.out.println(scoreBoard.toScoreMessage());
     }
 
     public void endGame() {
