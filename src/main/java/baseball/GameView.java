@@ -10,6 +10,8 @@ public class GameView {
     private final String EXIT_GAME_TEXT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final String RESTART_OR_EXIT_GAME_TEXT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    private BaseballGame game;
+    private  InputValidation inputValidation;
     public void startGame() {
         System.out.println(GAME_START_TEXT);
         String status;
@@ -19,20 +21,11 @@ public class GameView {
     }
 
     private String proceedGame() {
-        BaseballGame game = new BaseballGame();
-        InputValidation inputValidation = new InputValidation();
-        String inputValue;
+        this.game = new BaseballGame();
+        this.inputValidation = new InputValidation();
 
         while (game.getStrike() != NUMBER_LENGTH) {
-            System.out.print(INPUT_NUMBER_TEXT);
-            inputValue = Console.readLine();
-
-            try {
-                inputValidation.validateInputValue(inputValue);
-            } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException(e.getMessage());
-            }
-            System.out.println(game.startMatch(inputValue));
+            inputNumber();
         }
         System.out.print(EXIT_GAME_TEXT);
 
@@ -44,5 +37,15 @@ public class GameView {
             throw new IllegalArgumentException(e.getMessage());
         }
         return status;
+    }
+    private void inputNumber(){
+        System.out.print(INPUT_NUMBER_TEXT);
+        String inputValue = Console.readLine();
+        try {
+            inputValidation.validateInputValue(inputValue);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+        System.out.println(game.startMatch(inputValue));
     }
 }
