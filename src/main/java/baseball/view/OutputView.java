@@ -1,8 +1,9 @@
-package baseball;
+package baseball.view;
 
-import java.util.HashMap;
+import baseball.dto.Hints;
+import baseball.model.Hint;
 
-public class Print {
+public class OutputView {
 
     private static final String ROUND_START_MESSAGE = "숫자를 입력해주세요 : ";
 
@@ -19,7 +20,9 @@ public class Print {
         int strikeCount = hints.findHintCount(Hint.STRIKE);
         int ballCount = hints.findHintCount(Hint.BALL);
         int nothingCount = hints.findHintCount(Hint.NOTHING);
-
+        //3볼'
+        //3스트라이크'
+        //1볼 2스트라이크
         if (ballCount > 0) {
             System.out.print(ballCount + Hint.BALL.getValue() + " ");
         }

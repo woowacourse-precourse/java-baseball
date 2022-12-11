@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.model.Computer;
+import baseball.dto.Number;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

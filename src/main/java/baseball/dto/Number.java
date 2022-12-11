@@ -1,5 +1,6 @@
-package baseball;
+package baseball.dto;
 
+import baseball.util.Errors;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Number {

@@ -1,4 +1,8 @@
-package baseball;
+package baseball.model;
+
+import baseball.dto.ReplayNumber;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Game {
 
@@ -12,13 +16,13 @@ public class Game {
         this.computer = computer;
         this.user = user;
         this.round = new Round();
-        Print.printGameStart();
+        OutputView.printGameStart();
     }
 
     public void startNewGame() {
         this.computer.pickRandomNumbers();
         playGame();
-        Print.printGameEnd();
+        OutputView.printGameEnd();
     }
 
     private void playGame() {
@@ -28,8 +32,8 @@ public class Game {
     }
 
     public boolean replayGame() {
-        Print.printReplayGame();
-        int inputInt = Input.readInt();
+        OutputView.printReplayGame();
+        int inputInt = InputView.readInt();
         ReplayNumber replayNumber = new ReplayNumber(inputInt);
         return replayNumber.isReplay();
     }

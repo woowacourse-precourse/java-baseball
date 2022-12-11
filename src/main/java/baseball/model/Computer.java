@@ -1,4 +1,7 @@
-package baseball;
+package baseball.model;
+
+import baseball.dto.Number;
+import baseball.dto.Numbers;
 
 public class Computer {
 

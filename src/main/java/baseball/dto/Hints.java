@@ -1,4 +1,6 @@
-package baseball;
+package baseball.dto;
+
+import baseball.model.Hint;
 
 import java.util.HashMap;
 

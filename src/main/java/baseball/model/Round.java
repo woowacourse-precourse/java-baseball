@@ -1,6 +1,9 @@
-package baseball;
+package baseball.model;
 
-import org.mockito.exceptions.misusing.CannotVerifyStubOnlyMock;
+import baseball.dto.Hints;
+import baseball.dto.Number;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Round {
 
@@ -11,14 +14,14 @@ public class Round {
     public Round() {}
 
     public void startNewRound(User user, Computer computer)  {
-        Print.printRoundStart();
+        OutputView.printRoundStart();
         readNumbers(user);
         getHints(user, computer);
-        Print.printRoundResult(hints);
+        OutputView.printRoundResult(hints);
     }
 
     private void readNumbers(User user) {
-        int inputInt = Input.readInt();
+        int inputInt = InputView.readInt();
         user.inputNewNumbers(inputInt);
     }
 

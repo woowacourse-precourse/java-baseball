@@ -1,13 +1,14 @@
 package baseball;
 
+import baseball.model.Computer;
+import baseball.model.Game;
+import baseball.model.User;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import java.io.*;
 
@@ -60,7 +61,6 @@ public class GameTest {
     @Test
     void winPrintTest() {
         String input = "123";
-
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 

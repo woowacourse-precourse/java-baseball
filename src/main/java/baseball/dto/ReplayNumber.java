@@ -1,4 +1,6 @@
-package baseball;
+package baseball.dto;
+
+import baseball.util.Errors;
 
 public class ReplayNumber {
 

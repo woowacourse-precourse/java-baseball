@@ -1,8 +1,14 @@
 package baseball;
 
+import baseball.dto.Hints;
+import baseball.model.Computer;
+import baseball.model.Hint;
+import baseball.model.Round;
+import baseball.model.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,6 +18,7 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -146,6 +153,16 @@ public class RoundTest {
                 Arguments.of(threeBall, 3, Hint.BALL),
                 Arguments.of(threeNothing, 3, Hint.NOTHING)
         );
+    }
+
+    @Test
+    void RoundTest() throws Exception {
+        //given
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+        //when
+
+        //then
     }
 
 }

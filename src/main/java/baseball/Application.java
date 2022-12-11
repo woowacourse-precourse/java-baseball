@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.model.Computer;
+import baseball.model.Game;
+import baseball.model.User;
+
 public class Application {
     public static void main(String[] args) {
 

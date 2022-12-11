@@ -1,8 +1,9 @@
-package baseball;
+package baseball.view;
 
+import baseball.util.Errors;
 import camp.nextstep.edu.missionutils.Console;
 
-public class Input {
+public class InputView {
 
     public static String readString() {
         String inputString;
@@ -21,5 +22,4 @@ public class Input {
             throw new IllegalArgumentException(Errors.INPUT_BLANK.getValue());
         }
     }
-
 }

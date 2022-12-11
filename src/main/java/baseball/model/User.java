@@ -1,4 +1,7 @@
-package baseball;
+package baseball.model;
+
+import baseball.dto.Numbers;
+import baseball.dto.Number;
 
 public class User {
 

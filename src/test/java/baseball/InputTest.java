@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.dto.Numbers;
+import baseball.dto.Number;
+import baseball.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -40,7 +43,7 @@ public class InputTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(() -> Input.readInt())
+        assertThatThrownBy(() -> InputView.readInt())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
