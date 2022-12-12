@@ -1,9 +1,6 @@
 package Views;
 
 import Utils.Messages;
-import camp.nextstep.edu.missionutils.Console;
-
-import static Views.InputView.INPUT_VIEW;
 
 public class OutputView {
     public static final OutputView OUTPUT_VIEW = new OutputView();
@@ -14,7 +11,6 @@ public class OutputView {
 
     public void PrintInputNumber() {
         System.out.println(Messages.NUMBER_INPUT_MESSAGE);
-        INPUT_VIEW.InputUserNumber(Console.readLine());
     }
 }
 
