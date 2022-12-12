@@ -15,10 +15,10 @@ public class BaseballController {
     private final OutputView outputView;
     private final BaseballService baseballService;
 
-    public BaseballController() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
-        this.baseballService = new BaseballService();
+    public BaseballController(InputView inputView, OutputView outputView, BaseballService baseballService) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.baseballService = baseballService;
     }
 
     public void turnOn() {
@@ -35,7 +35,7 @@ public class BaseballController {
             outputView.printRoundStart();
             int inputNumbers = inputView.readInt();
             NumbersRequestDTO numbersRequestDTO = new NumbersRequestDTO(inputNumbers);
-            betting(numbersRequestDTO); // 따지자면 리다이렉트?
+            betting(numbersRequestDTO); // 따지자면 PRG 패턴 중 Post
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e);
         }
@@ -45,10 +45,10 @@ public class BaseballController {
         ResultResponseDTO resultResponseDTO = baseballService.bettingBall(numbersRequestDTO);
         outputView.printRoundResult(resultResponseDTO);
         if (resultResponseDTO.getSuccess() == Success.SUCCESS) {
-            gameComplete();
+            gameComplete(); // 이게 리다이렉트
         }
         if (resultResponseDTO.getSuccess() == Success.FAIL) {
-            bettingForm();
+            bettingForm(); // 이게 리다이렉트
         }
     }
 
