@@ -11,7 +11,6 @@ public class GameView {
     private final String RESTART_OR_EXIT_GAME_TEXT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private BaseballGame game;
-    private  InputValidation inputValidation;
     public void startGame() {
         System.out.println(GAME_START_TEXT);
         String status;
@@ -22,7 +21,6 @@ public class GameView {
 
     private String proceedGame() {
         this.game = new BaseballGame();
-        this.inputValidation = new InputValidation();
 
         while (game.getStrike() != NUMBER_LENGTH) {
             inputNumber();
@@ -32,7 +30,7 @@ public class GameView {
         System.out.println(RESTART_OR_EXIT_GAME_TEXT);
         String status = Console.readLine();
         try {
-            inputValidation.validateIsOneOrTwo(status);
+            InputValidation.validateIsOneOrTwo(status);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
@@ -42,7 +40,7 @@ public class GameView {
         System.out.print(INPUT_NUMBER_TEXT);
         String inputValue = Console.readLine();
         try {
-            inputValidation.validateInputValue(inputValue);
+            InputValidation.validateInputValue(inputValue);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
