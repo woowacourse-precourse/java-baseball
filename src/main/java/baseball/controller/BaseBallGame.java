@@ -8,6 +8,7 @@ import baseball.view.OutputView;
 import java.util.Objects;
 
 public class BaseBallGame {
+    private static final String RESTART = "1";
     private static Numbers computerNumbers;
 
     public void gameStart() {
@@ -32,6 +33,6 @@ public class BaseBallGame {
     }
 
     private boolean restart() {
-        return Objects.equals(InputView.readRestartOrEndGame(), "1");
+        return Objects.equals(InputView.readRestartOrEndGame(), RESTART);
     }
 }
