@@ -15,12 +15,16 @@ public class Hints {
         }
     }
 
-    public void addHint(Hint hint){
-        int prevScore = hints.get(hint);
+    public void addHint(Hint hint) {
+        Integer prevScore = hints.get(hint); // 스코어도 감싸야할까?
         hints.put(hint, prevScore + 1);
     }
 
-    public int findHintCount(Hint hint) {
+    public int getScore(Hint hint) {
         return hints.get(hint);
+    }
+
+    public HashMap<Hint, Integer> getHints() {
+        return hints;
     }
 }

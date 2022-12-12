@@ -1,49 +1,59 @@
 package baseball.view;
 
 import baseball.dto.Hints;
+import baseball.dto.ResultResponseDTO;
 import baseball.model.Hint;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class OutputView {
 
-    private static final String ROUND_START_MESSAGE = "숫자를 입력해주세요 : ";
+    private final String ROUND_START_MESSAGE = "숫자를 입력해주세요 : ";
 
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final List<Hint> orderHint = new ArrayList<>(List.of(Hint.BALL, Hint.STRIKE, Hint.NOTHING));
 
-    public static void printRoundStart() {
+    public void printRoundStart() {
         System.out.print(ROUND_START_MESSAGE);
     }
 
-    public static void printRoundResult(Hints hints) {
-        int strikeCount = hints.findHintCount(Hint.STRIKE);
-        int ballCount = hints.findHintCount(Hint.BALL);
-        int nothingCount = hints.findHintCount(Hint.NOTHING);
-        //3볼'
-        //3스트라이크'
-        //1볼 2스트라이크
-        if (ballCount > 0) {
-            System.out.print(ballCount + Hint.BALL.getValue() + " ");
-        }
-        if (strikeCount > 0) {
-            System.out.print(strikeCount + Hint.STRIKE.getValue());
-        }
-        if (nothingCount == 3) {
-            System.out.print(Hint.NOTHING.getValue());
-        }
+    public void printRoundResult(ResultResponseDTO result) {
+        HashMap<Hint, Integer> resultHints = result.getHints();
+        String resultScore = getStringBuilder(resultHints);
+        System.out.println(resultScore);
         System.out.println();
     }
 
-    public static void printGameStart(){
+    private String getStringBuilder(HashMap<Hint, Integer> resultHints) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Hint hint : orderHint) {
+            if (resultHints.get(hint) > 0) {
+                stringBuilder.append(resultHints.get(hint));
+                stringBuilder.append(hint.getValue());
+                stringBuilder.append(" ");
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    public void printGameStart(){
         System.out.println(GAME_START_MESSAGE);
     }
 
-    public static void printGameEnd(){
+    public void printGameEnd(){
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public static void printReplayGame() {
+    public void printReplayGame() {
         System.out.println(REPLAY_MESSAGE);
+    }
+
+    public void printErrorMessage(Exception e) {
+        System.out.println(e.getMessage());
     }
 }

@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.model.Computer;
-import baseball.dto.Number;
+import baseball.model.BaseballNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,8 +16,8 @@ public class ComputerTest {
         computer.pickRandomNumbers();
 
         for (int i = 0; i < 3; i++) {
-            Number computerNumber = computer.findComputerNumber(i);
-            assertThat(computerNumber).isInstanceOf(Number.class);
+            BaseballNumber computerBaseballNumber = computer.findComputerNumber(i);
+            assertThat(computerBaseballNumber).isInstanceOf(BaseballNumber.class);
         }
     }
 

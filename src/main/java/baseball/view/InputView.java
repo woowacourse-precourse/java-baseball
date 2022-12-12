@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    public static String readString() {
+    public String readString() {
         String inputString;
         inputString = Console.readLine();
         inputString = inputString.trim();
@@ -13,11 +13,11 @@ public class InputView {
         return inputString.trim();
     }
 
-    public static int readInt() {
+    public int readInt() {
         return Integer.parseInt(readString());
     }
 
-    private static void validateBlank(String input) {
+    private void validateBlank(String input) {
         if (input.equals("")) {
             throw new IllegalArgumentException(Errors.INPUT_BLANK.getValue());
         }

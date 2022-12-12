@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.dto.Numbers;
-import baseball.dto.Number;
+import baseball.model.Numbers;
+import baseball.model.BaseballNumber;
 import baseball.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,7 +24,7 @@ public class InputTest {
 
         for (int index = 0; index < 3; index++) {
             assertThat(numbers.findNumber(index))
-                    .isEqualTo(Number.createNumber(inputs[index]));
+                    .isEqualTo(BaseballNumber.createNumber(inputs[index]));
         }
     }
 

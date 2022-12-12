@@ -1,19 +1,18 @@
 package baseball.model;
 
-import baseball.dto.Numbers;
-import baseball.dto.Number;
+import java.util.List;
 
 public class User {
 
-    private Numbers userNumbers;
+    private Numbers userBaseballNumbers;
 
-    public User () {}
+    public User() {}
 
-    public void inputNewNumbers(int input) {
-        this.userNumbers = Numbers.createNumbers(input);
+    public void updateNumbers(int inputNumbers) {
+        this.userBaseballNumbers = Numbers.createNumbers(inputNumbers);
     }
 
-    public Number findUserNumber(int index) {
-        return this.userNumbers.findNumber(index);
+    public BaseballNumber findUserNumber(int index) {
+        return userBaseballNumbers.findNumber(index);
     }
 }

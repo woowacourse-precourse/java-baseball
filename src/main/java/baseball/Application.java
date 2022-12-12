@@ -1,21 +1,14 @@
 package baseball;
 
-import baseball.model.Computer;
-import baseball.model.Game;
-import baseball.model.User;
+import baseball.controller.BaseballController;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-
-        Game game = new Game();
-        Computer computer = new Computer();
-        User user = new User();
-
-        game.turnOnGame(computer, user);
-
-        do {
-            game.startNewGame();
-        } while (game.replayGame());
-
+        BaseballController baseballController = new BaseballController();
+        baseballController.turnOn();
+        baseballController.newGame();
+        baseballController.bettingForm();
     }
 }
