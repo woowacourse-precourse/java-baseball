@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import baseball.view.OutputView;
-
 public class GameResult {
     private final int ballCount;
     private final int strikeCount;
