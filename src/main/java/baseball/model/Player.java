@@ -9,28 +9,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Player {
-    private InputView inputView;
     private Exception exception;
     private List<Integer> playerNumbers;
 
     public Player() {
         this.playerNumbers = new ArrayList<>();
-        this.inputView = new InputView();
         this.exception = new Exception();
     }
 
     public List<Integer> getPlayerNumbers() {
         return playerNumbers;
     }
-    public void setNumbers(){
-        String input = setPlayerInput();
-        playerNumbers = setPlayerNumbers(input);
-    }
-    private String setPlayerInput() {
-        String userInput = inputView.inputNumbers();
-        inputView.printInputNumber(userInput);
+    public void setNumbers(String userInput){
         exception.checkInputNumbers(userInput);
-        return userInput;
+        playerNumbers = setPlayerNumbers(userInput);
     }
 
     private List<Integer> setPlayerNumbers(String inputNumber) {

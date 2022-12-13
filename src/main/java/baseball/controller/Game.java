@@ -13,7 +13,6 @@ public class Game {
     private Player player;
     private int ball;
     private int strike;
-
     private final InputView inputView;
     private final OutputView outputView;
     private final Exception exception;
@@ -51,7 +50,8 @@ public class Game {
         try{
             inputView.getInputMessage();
             player = new Player();
-            player.setNumbers() ;
+            String userInput = inputView.inputNumbers();
+            player.setNumbers(userInput) ;
         }catch (IllegalArgumentException  e){
             return;
         }
