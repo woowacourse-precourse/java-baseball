@@ -8,7 +8,7 @@ public class Application {
     public static void main(String[] args) {
         OUTPUT_VIEW.PrintGameStartMessage();
         GAME_CONTROLLER.SelectGoOrStopGame();
-    }//public static void main
+    }
 
 
 }
