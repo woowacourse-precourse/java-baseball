@@ -1,8 +1,13 @@
 package study;
 
+import domain.Computer;
+import domain.User;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class StringTest {
 
@@ -47,4 +52,28 @@ public class StringTest {
                 .hasMessageContaining("String index out of range: 5");
     }
 
+    @Test
+    void strike_count_테스트() {
+        //given
+        User user= new User("123");
+        Computer.setNumber(List.of(1,2,3));
+        System.out.println(Computer.getNumber());
+        //when
+
+
+        //then
+        assertThat(3).isEqualTo(user.strike_count());
+
+    }
+
+    @Test
+    void ball_count_테스트(){
+        //given
+        User user =new User("123");
+        Computer.setNumber(List.of(7,2,1));
+        //when
+
+        //then
+        assertThat(2).isEqualTo(user.ball_count());
+    }
 }
