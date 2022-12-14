@@ -15,6 +15,7 @@ public class GameController {
     private int ball;
     private int strike;
     private final InputView inputView;
+    private final InputController inputController;
     private final OutputView outputView;
     private final Exception exception;
 
@@ -22,6 +23,7 @@ public class GameController {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.exception = new Exception();
+        this.inputController = new InputController() ;
     }
 
     public void startGame() {
@@ -41,23 +43,12 @@ public class GameController {
         Computer computer = new Computer();
         int gameRound = Constant.GAME_INIT;
         while (gameRound != Constant.RESULT_FULL_STRIKE) {
-            readyPlayer();
+            inputController.readyPlayer();
             swingBat(computer.getComputerNumbers(), player.getPlayerNumbers());
             gameRound = setResultGame();
             outputView.getResultGameMessage(gameRound, this.getBall(), this.getStrike());
         }
         checkRestartGame();
-    }
-
-    private void readyPlayer() {
-        try {
-            inputView.getInputMessage();
-            player = new Player();
-            String userInput = inputView.inputNumbers();
-            player.setNumbers(userInput);
-        } catch (IllegalArgumentException e) {
-            return;
-        }
     }
 
     private void swingBat(List<Integer> computerNumbers, List<Integer> playerNumbers) {
@@ -70,15 +61,6 @@ public class GameController {
                 ball++;
             }
         });
-
-        for (int i = Constant.GAME_INIT; i < Constant.GAME_SIZE; i++) {
-            if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))) {
-                strike++;
-            }
-            else if (computerNumbers.contains(playerNumbers.get(i))) {
-                ball++;
-            }
-        }
     }
 
     // 3 개의 상태를 나타내는 코드를 리펙 ?
