@@ -14,7 +14,6 @@ public class Exception {
     // change to regex
     public void checkInputNumbers(String inputNumbers) {
         checkThreeDigitNumber(inputNumbers);
-        //checkDuplicated(inputNumbers);
     }
 
     public void checkOneDigitNumber(int inputNumber) {
@@ -29,14 +28,14 @@ public class Exception {
         }
     }
 
-    public static void checkDuplicated(List<Integer> playerNumber) {
-        Set<Integer> items = new HashSet<>();
-        playerNumber.stream()
-                .filter(n -> !items.add(n))
-                .collect(Collectors.toSet());
-        if (items.size() != 3) {
-            throw new IllegalArgumentException();
-        }
-    }
+//    public static void checkDuplicated(List<Integer> playerNumber) {
+//        Set<Integer> items = new HashSet<>();
+//        playerNumber.stream()
+//                .filter(n -> !items.add(n))
+//                .collect(Collectors.toSet());
+//        if (items.size() != 3) {
+//            throw new IllegalArgumentException();
+//        }
+//    }
 }
 

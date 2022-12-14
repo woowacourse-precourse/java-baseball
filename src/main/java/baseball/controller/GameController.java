@@ -8,19 +8,22 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
-public class Game {
+public class GameController {
     private Player player;
     private int ball;
     private int strike;
     private final InputView inputView;
     private final OutputView outputView;
     private final Exception exception;
-    public Game(){
+
+    public GameController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.exception = new Exception();
     }
+
     public void startGame() {
         outputView.getStartGameMessage();
         playGame();
@@ -41,29 +44,38 @@ public class Game {
             readyPlayer();
             swingBat(computer.getComputerNumbers(), player.getPlayerNumbers());
             gameRound = setResultGame();
-            outputView.getResultGameMessage(gameRound,this.getBall(),this.getStrike());
+            outputView.getResultGameMessage(gameRound, this.getBall(), this.getStrike());
         }
         checkRestartGame();
     }
 
     private void readyPlayer() {
-        try{
+        try {
             inputView.getInputMessage();
             player = new Player();
             String userInput = inputView.inputNumbers();
-            player.setNumbers(userInput) ;
-        }catch (IllegalArgumentException  e){
+            player.setNumbers(userInput);
+        } catch (IllegalArgumentException e) {
             return;
         }
     }
 
     private void swingBat(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         initBalls();
+        IntStream.range(0,3).forEach(i -> {
+            if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))){
+            strike++;
+            }
+            if (computerNumbers.contains(playerNumbers.get(i))) {
+                ball++;
+            }
+        });
+
         for (int i = Constant.GAME_INIT; i < Constant.GAME_SIZE; i++) {
             if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))) {
                 strike++;
             }
-            if (computerNumbers.contains(playerNumbers.get(i))) {
+            else if (computerNumbers.contains(playerNumbers.get(i))) {
                 ball++;
             }
         }
@@ -88,7 +100,7 @@ public class Game {
     private void checkRestartGame() {
         outputView.getRestartGameMessage();
         int inputNumber = getOneInputNumber();
-        if (inputNumber==Constant.PLAYER_RESTART) {
+        if (inputNumber == Constant.PLAYER_RESTART) {
             playGame();
         }
         outputView.getEndGameMessage();

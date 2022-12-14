@@ -1,6 +1,9 @@
 package study;
 
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -94,4 +97,24 @@ public class StringTest {
 
         assertThat(target).isEqualTo(true);
     }
+
+    @DisplayName("Stream test")
+    @Test
+    void regex_text_state(){
+        IntStream.range(0,4).forEach
+                (i -> {
+                    if (i % 2 == 0) {
+                        System.out.println("1");
+                    }
+                    if (i % 2 == 1 ){
+                        System.out.println("2");
+                    }
+                }
+        );
+
+
+
+
+    }
+
 }
