@@ -11,14 +11,13 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class GameController {
-    private Player player;
-    private int ball;
-    private int strike;
     private final InputView inputView;
     private final InputController inputController;
     private final OutputView outputView;
     private final Exception exception;
 
+    private int ball;
+    private int strike;
     public GameController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
@@ -43,7 +42,7 @@ public class GameController {
         Computer computer = new Computer();
         int gameRound = Constant.GAME_INIT;
         while (gameRound != Constant.RESULT_FULL_STRIKE) {
-            inputController.readyPlayer();
+            Player player = inputController.readyPlayer();
             swingBat(computer.getComputerNumbers(), player.getPlayerNumbers());
             gameRound = setResultGame();
             outputView.getResultGameMessage(gameRound, this.getBall(), this.getStrike());
@@ -51,17 +50,24 @@ public class GameController {
         checkRestartGame();
     }
 
-    private void swingBat(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    public void swingBat(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         initBalls();
-        IntStream.range(0,3).forEach(i -> {
-            if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))){
-            strike++;
-            }
-            if (computerNumbers.contains(playerNumbers.get(i))) {
-                ball++;
-            }
+        IntStream.range(Constant.GAME_INIT,Constant.GAME_SIZE).forEach(i -> {
+            checkResult(computerNumbers,playerNumbers,i);
         });
     }
+    public void checkResult(List<Integer> computerNumbers, List<Integer> playerNumbers,int index){
+        int i = index;
+        if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))){
+            strike++;
+            return;
+        }
+        if (computerNumbers.contains(playerNumbers.get(i))) {
+            ball++;
+        }
+    }
+
+
 
     // 3 개의 상태를 나타내는 코드를 리펙 ?
     private int setResultGame() {
@@ -79,7 +85,7 @@ public class GameController {
         strike = Constant.GAME_INIT;
     }
 
-    private void checkRestartGame() {
+    public void checkRestartGame() {
         outputView.getRestartGameMessage();
         int inputNumber = getOneInputNumber();
         if (inputNumber == Constant.PLAYER_RESTART) {
@@ -88,7 +94,7 @@ public class GameController {
         outputView.getEndGameMessage();
     }
 
-    private int getOneInputNumber() {
+    public int getOneInputNumber() {
         try {
             int oneDigitNumber = Integer.parseInt(inputView.inputNumbers());
             exception.checkOneDigitNumber(oneDigitNumber);

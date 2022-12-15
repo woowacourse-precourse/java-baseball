@@ -1,8 +1,6 @@
 package baseball.model;
 
 import baseball.utils.Exception;
-import baseball.view.InputView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
