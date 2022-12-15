@@ -18,11 +18,12 @@ public class GameController {
 
     private int ball;
     private int strike;
+
     public GameController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.exception = new Exception();
-        this.inputController = new InputController() ;
+        this.inputController = new InputController();
     }
 
     public void startGame() {
@@ -52,13 +53,14 @@ public class GameController {
 
     public void swingBat(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         initBalls();
-        IntStream.range(Constant.GAME_INIT,Constant.GAME_SIZE).forEach(i -> {
-            checkResult(computerNumbers,playerNumbers,i);
+        IntStream.range(Constant.GAME_INIT, Constant.GAME_SIZE).forEach(i -> {
+            checkResult(computerNumbers, playerNumbers, i);
         });
     }
-    public void checkResult(List<Integer> computerNumbers, List<Integer> playerNumbers,int index){
+
+    public void checkResult(List<Integer> computerNumbers, List<Integer> playerNumbers, int index) {
         int i = index;
-        if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))){
+        if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))) {
             strike++;
             return;
         }
@@ -67,9 +69,6 @@ public class GameController {
         }
     }
 
-
-
-    // 3 개의 상태를 나타내는 코드를 리펙 ?
     private int setResultGame() {
         if ((ball == Constant.GAME_INIT) && (strike == Constant.GAME_INIT)) {
             return Constant.RESULT_NOTHING;
@@ -87,21 +86,11 @@ public class GameController {
 
     public void checkRestartGame() {
         outputView.getRestartGameMessage();
-        int inputNumber = getOneInputNumber();
+        int inputNumber = inputController.getOneInputNumber();
         if (inputNumber == Constant.PLAYER_RESTART) {
             playGame();
         }
         outputView.getEndGameMessage();
-    }
-
-    public int getOneInputNumber() {
-        try {
-            int oneDigitNumber = Integer.parseInt(inputView.inputNumbers());
-            exception.checkOneDigitNumber(oneDigitNumber);
-            return oneDigitNumber;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Wrong input Number Format");
-        }
     }
 
 }

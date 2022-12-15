@@ -2,12 +2,14 @@ package baseball.controller;
 
 import baseball.model.Player;
 import baseball.view.InputView;
+import baseball.utils.Exception;
 
 public class InputController {
     private final InputView inputView;
-
+    private final Exception exception;
     public InputController(){
-        inputView = new InputView();
+        this.inputView = new InputView();
+        this.exception = new Exception();
     }
     // model ->  controller
     public  Player readyPlayer() {
@@ -22,5 +24,13 @@ public class InputController {
             return new Player();
         }
     }
-
+    public int getOneInputNumber() {
+        try {
+            int oneDigitNumber = Integer.parseInt(inputView.inputNumbers());
+            exception.checkOneDigitNumber(oneDigitNumber);
+            return oneDigitNumber;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Wrong input Number Format");
+        }
+    }
 }
