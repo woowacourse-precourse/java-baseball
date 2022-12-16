@@ -8,7 +8,6 @@ public class Exception {
     //regex for 1~9  3 digits
     public static final Pattern NUMBERS_PATTERN = Pattern.compile("([0-9]{1,3})$");
 
-    // change to regex
     public void checkInputNumbers(String inputNumbers) {
         checkThreeDigitNumber(inputNumbers);
     }
