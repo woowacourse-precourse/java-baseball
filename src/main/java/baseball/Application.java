@@ -17,6 +17,8 @@ public class Application {
         startGame();
     }
 
+    //테스트
+
     //5. 컴퓨터 숫자 설정하고 게임 진행 method
     public static void startGame(){
         computerNum = getComputerNum();
